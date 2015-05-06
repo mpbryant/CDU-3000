@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("CDU3000")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("CDU-3000")]
+[assembly: AssemblyDescription("Copyright (c) 2014 by Goel Training and Consultants Inc. (GTC).- All Rights Reserved. This program may not be copied in whole or in part without the written consent of GTC and program author. This presentation is presented for educational purposes and is therefore supplementary and not to be considered exhaustive. GTC, its officers, directors, as well as the programs' author/ producer, Michael Bryant,  hereby disclaim any and all responsibility for any loss, injury, damage or expense directly or indirectly arising out of or relating to use or reliance on this presentation or the material contained in this presentation.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("CDU3000")]
+[assembly: AssemblyCompany("Goel Training and Consultants Inc.")]
+[assembly: AssemblyProduct("CDU-3000")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyTrademark("GTC")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
