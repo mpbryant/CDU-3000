@@ -84,13 +84,13 @@
             this.ViewMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.WindowBorderMenu});
             this.ViewMenu.Name = "ViewMenu";
-            this.ViewMenu.Size = new System.Drawing.Size(38, 20);
+            this.ViewMenu.Size = new System.Drawing.Size(44, 20);
             this.ViewMenu.Text = "VIew";
             // 
             // WindowBorderMenu
             // 
             this.WindowBorderMenu.Name = "WindowBorderMenu";
-            this.WindowBorderMenu.Size = new System.Drawing.Size(138, 22);
+            this.WindowBorderMenu.Size = new System.Drawing.Size(156, 22);
             this.WindowBorderMenu.Text = "Window Border";
             this.WindowBorderMenu.Click += new System.EventHandler(this.windowBorderToolStripMenuItem_Click);
             // 
@@ -105,6 +105,7 @@
             this.MaximizeBox = false;
             this.Name = "Readme";
             this.Text = "Readme";
+            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.tabControl1.ResumeLayout(false);
             this.ReadmeMenu.ResumeLayout(false);
             this.ReadmeMenu.PerformLayout();
