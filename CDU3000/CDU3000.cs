@@ -915,7 +915,8 @@ namespace CDU3000
             CreateTB(ref l2, col1, row4, "- - -", Color.White);
                         
             TextBox r2title = new TextBox();
-            CreateTB(ref r2title, col5, row3, "NAVAID INHIBIT");
+            CreateTB(ref r2title, col1, row3, "NAVAID INHIBIT");
+            CenterMe(r2title);
 
             TextBox l3 = new TextBox();
             CreateTB(ref l3, col1, row6, "- - -", Color.White);
@@ -1798,6 +1799,12 @@ namespace CDU3000
         }
 
 
+        private int CenterMe(TextBox tb)    //centers the text on the screen
+        {
+            tb.Location = new Point(((backgroundShp.Location.X + backgroundShp.Width) - (backgroundShp.Width / 2)) - (TbWidth(ref tb) / 2), tb.Location.Y);
+            return tb.Location.X;
+        }
+
         
         private void JustifyTBs(ref TextBox tb)
         {
@@ -1815,7 +1822,7 @@ namespace CDU3000
 
             if (tb.Location.X == col7 & tb.Location.Y == row0)
             {
-                tb.Location = new Point(((backgroundShp.Location.X + backgroundShp.Width) - (backgroundShp.Width / 2)) - (TbWidth(ref tb) / 2), tb.Location.Y);
+                CenterMe(tb);//tb.Location = new Point(((backgroundShp.Location.X + backgroundShp.Width) - (backgroundShp.Width / 2)) - (TbWidth(ref tb) / 2), tb.Location.Y);
             }
             
         }
