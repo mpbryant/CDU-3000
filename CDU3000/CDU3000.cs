@@ -38,6 +38,8 @@ namespace CDU3000
 		string r5text = null;
 		string r6text = null;
 
+        
+
 
 		//tracksthe last button pressed
 		string btnPressed = null;
@@ -117,102 +119,102 @@ namespace CDU3000
 			currentPageNumber = 1;
 
 			TextBox title = new TextBox();
-			CreateTB(title, col2, row0, "ACT LEGS");
+			TB(title, col2, row0, "ACT LEGS");
 
 			TextBox page = new TextBox();
-			CreateTB(page, col14, row0, "1/6");
+			TB(page, col14, row0, "1/6");
 
 			TextBox sequence = new TextBox();
-			CreateTB(sequence, col11, row1, "SEQUENCE");
+			TB(sequence, col11, row1, "SEQUENCE");
 
 			TextBox l1 = new TextBox();
 			l1text="KICT";
-			CreateTB(l1, col1, row2, l1text);
+			TB(l1, col1, row2, l1text);
 
 			TextBox l1B = new TextBox();
-			CreateTB(l1B, col2, row3, "309" + (char)176, Color.Green);
+			TB(l1B, col2, row3, "309" + (char)176, Color.Green);
 
 			TextBox l1Bdistance = new TextBox();
-			CreateTB(l1Bdistance, col5, row3, "12NM", Color.Green);
+			TB(l1Bdistance, col5, row3, "12NM", Color.Green);
 			l1Bdistance.TextAlign = HorizontalAlignment.Right;
 
 			TextBox l2 = new TextBox();
 			l2text="ICT";
-			CreateTB(l2, col1, row4, l2text, Color.Green);
+			TB(l2, col1, row4, l2text, Color.Green);
 
 			TextBox l2b = new TextBox();
-			CreateTB(l2b, col2, row5, "307" + (char)176, Color.White);
+			TB(l2b, col2, row5, "307" + (char)176, Color.White);
 
 			TextBox l2Bdistance = new TextBox();
-			CreateTB(l2Bdistance, col5, row5, "9.2NM", Color.White);
+			TB(l2Bdistance, col5, row5, "9.2NM", Color.White);
 			l2Bdistance.TextAlign = HorizontalAlignment.Right;
 
 			TextBox l3 = new TextBox();
 			l3text="MUGER";
-			CreateTB(l3, col1, row6, l3text, Color.White);
+			TB(l3, col1, row6, l3text, Color.White);
 
 			TextBox l3b = new TextBox();
-			CreateTB(l3b, col2, row7, "307" + (char)176, Color.White);
+			TB(l3b, col2, row7, "307" + (char)176, Color.White);
 
 			TextBox l3Bdistance = new TextBox();
-			CreateTB(l3Bdistance, col5, row7, "3.3NM", Color.White);
+			TB(l3Bdistance, col5, row7, "3.3NM", Color.White);
 			l3Bdistance.TextAlign = HorizontalAlignment.Right;
 
 			TextBox l4 = new TextBox();
 			l4text="WUKOL";
-			CreateTB( l4, col1, row8, l4text, Color.White);
+			TB( l4, col1, row8, l4text, Color.White);
 
 			TextBox l4b = new TextBox();
-			CreateTB( l4b, col2, row9, "307" + (char)176, Color.White);
+			TB( l4b, col2, row9, "307" + (char)176, Color.White);
 
 			TextBox l4Bdistance = new TextBox();
-			CreateTB( l4Bdistance, col5, row9, "0.5NM", Color.White);
+			TB( l4Bdistance, col5, row9, "0.5NM", Color.White);
 			l4Bdistance.TextAlign = HorizontalAlignment.Right;
 
 			TextBox l5 = new TextBox();
 			l5text="WUKUS";
-			CreateTB( l5, col1, row10, l5text, Color.White);
+			TB( l5, col1, row10, l5text, Color.White);
 
 			TextBox r1 = new TextBox();
 			r1text = "AUTO";
-			CreateTB( r1, col9, row2, r1text, Color.Green);
+			TB( r1, col9, row2, r1text, Color.Green);
 			r1.TextAlign = HorizontalAlignment.Right;
 
 			TextBox r1right = new TextBox();
-			CreateTB( r1right, col12, row2, "/INHIBIT", Color.White);
+			TB( r1right, col12, row2, "/INHIBIT", Color.White);
 
 
 			TextBox r2 = new TextBox();
 			r2text="- - - / - - - - -";
-			CreateTB( r2, col15, row4, r2text, Color.DeepPink);
+			TB( r2, col15, row4, r2text, Color.DeepPink);
 
 			TextBox r3 = new TextBox();
 			r3text="- - - / - - - - -";
-			CreateTB( r3, col15, row6, r3text, Color.DeepPink);
+			TB( r3, col15, row6, r3text, Color.DeepPink);
 
 			TextBox r4 = new TextBox();
 			r4text="- - - / - - - - -";
-			CreateTB(r4, col15, row8, r4text, Color.DeepPink);
+			TB(r4, col15, row8, r4text, Color.DeepPink);
 
 			TextBox r5 = new TextBox();
 			r5text="- - - / - - - - -";
-			CreateTB( r5, col15, row10, r5text, Color.DeepPink);
+			TB( r5, col15, row10, r5text, Color.DeepPink);
 
 			TextBox divider = new TextBox();
-			CreateTB( divider, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+			TB( divider, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
 
 			TextBox r6 = new TextBox();
 			r6text="LEG WIND";
-			CreateTB( r6, col15, row12, r6text, Color.White);
+			TB( r6, col15, row12, r6text, Color.White);
 
 			TextBox r6right = new TextBox();
-			CreateTB( r6right, col16, row12, ">", Color.White);
+			TB( r6right, col16, row12, ">", Color.White);
 
 			TextBox l6b = new TextBox();
-			CreateTB( l6b, col1, row13, "[");
+			TB( l6b, col1, row13, "[");
 
 			TextBox r6b = new TextBox();
-			CreateTB( r6b, col16, row13, "]");
+			TB( r6b, col16, row13, "]");
 
 		   
 		}
@@ -224,44 +226,44 @@ namespace CDU3000
 			currentPageNumber = 1;
 
 			TextBox title = new TextBox();
-			CreateTB(title, col2, row0, "ACT DIRECT-TO");
+			TB(title, col2, row0, "ACT DIRECT-TO");
 
 			TextBox page = new TextBox();
-			CreateTB(page, col14, row0, "1/1");
+			TB(page, col14, row0, "1/1");
 
 			TextBox titleb = new TextBox();
-			CreateTB(titleb, col6, row1, "HISTORY");
+			TB(titleb, col6, row1, "HISTORY");
 			titleb.TextAlign = HorizontalAlignment.Right;
 
 			TextBox l2b = new TextBox();
-			CreateTB( l2b, col2, row5, "250" + (char)176);
+			TB( l2b, col2, row5, "250" + (char)176);
 
 			TextBox l3 = new TextBox();
 			l3text = "<(6935)";
-			CreateTB( l3, col1, row6, l3text, Color.White);
+			TB( l3, col1, row6, l3text, Color.White);
 
 			TextBox l3b = new TextBox();
-			CreateTB( l3b, col2, row7, "215" + (char)176);
+			TB( l3b, col2, row7, "215" + (char)176);
 
 			TextBox l4 = new TextBox();
 			l4text = "<(6935)";
-			CreateTB( l4, col1, row8, l4text, Color.White);
+			TB( l4, col1, row8, l4text, Color.White);
 
 			TextBox l4b = new TextBox();
-			CreateTB( l4b, col2, row9, "R322" + (char)176);
+			TB( l4b, col2, row9, "R322" + (char)176);
 
 			TextBox l5 = new TextBox();
 			l5text = "<KIRLE";
-			CreateTB( l5, col1, row10, l5text, Color.White);
+			TB( l5, col1, row10, l5text, Color.White);
 			
 			TextBox divider = new TextBox();
-			CreateTB( divider, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+			TB( divider, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
 
 			TextBox l6b = new TextBox();
-			CreateTB( l6b, col1, row13, "[");
+			TB( l6b, col1, row13, "[");
 
 			TextBox r6b = new TextBox();
-			CreateTB( r6b, col16, row13, "]");
+			TB( r6b, col16, row13, "]");
 		}
 
 		private void FixPage1()
@@ -270,86 +272,86 @@ namespace CDU3000
 			currentPageNumber = 1;
 
 			TextBox title = new TextBox();
-			CreateTB(title, col2, row0, "FIX INFO");
+			TB(title, col2, row0, "FIX INFO");
 			CenterMe(title);
 
 			TextBox page = new TextBox();
-			CreateTB(page, col14, row0, "1/1");
+			TB(page, col14, row0, "1/1");
 
 			TextBox l1title = new TextBox();
-			CreateTB(l1title, col1, row1, "REF");
+			TB(l1title, col1, row1, "REF");
 
 			TextBox l1 = new TextBox();
 			l1text = "SGF";
-			CreateTB(l1, col1, row2, l1text, Color.White);
+			TB(l1, col1, row2, l1text, Color.White);
 			
 			TextBox l2title = new TextBox();
-			CreateTB(l2title, col1, row3, "RAD CROSS");
+			TB(l2title, col1, row3, "RAD CROSS");
 
 			TextBox l2 = new TextBox();
 			l2text = "002°";
-			CreateTB(l2, col1, row4, l2text, Color.White);
+			TB(l2, col1, row4, l2text, Color.White);
 
 			TextBox l3title = new TextBox();
-			CreateTB(l3title, col1, row5, "DIS CROSS");
+			TB(l3title, col1, row5, "DIS CROSS");
 
 			TextBox l3 = new TextBox();
 			l3text = "63.3";
-			CreateTB(l3, col1, row6, l3text, Color.White);
+			TB(l3, col1, row6, l3text, Color.White);
 
 			TextBox l4 = new TextBox();
 			l4text = "< ABEAM REF";
-			CreateTB(l4, col1, row8, l4text, Color.White);
+			TB(l4, col1, row8, l4text, Color.White);
 
 			TextBox l5 = new TextBox();
 			l5text = "ABEAM REF";
-			CreateTB(l5, col1, row10, l5text, Color.White);
+			TB(l5, col1, row10, l5text, Color.White);
 			CenterMe(l5);
 
 			TextBox r2title = new TextBox();
-			CreateTB(r2title, col15, row3, "LAT CROSS");
+			TB(r2title, col15, row3, "LAT CROSS");
 
 			TextBox r2 = new TextBox();
 			r2text="- - - ° - - . - -";
-			CreateTB(r2, col15, row4, r2text, Color.White);
+			TB(r2, col15, row4, r2text, Color.White);
 
 			TextBox r3title = new TextBox();
-			CreateTB(r3title, col15, row5, "LON CROSS");
+			TB(r3title, col15, row5, "LON CROSS");
 
 			TextBox r3 = new TextBox();
 			r3text="- - - - ° - - . - -";
-			CreateTB(r3, col15, row6, r3text, Color.White);
+			TB(r3, col15, row6, r3text, Color.White);
 
 			TextBox crs = new TextBox();
-			CreateTB(crs, col1, row11, "CRS");
+			TB(crs, col1, row11, "CRS");
 
 			TextBox crsData = new TextBox();
-			CreateTB(crsData, col1, row12, "     ", Color.White);
+			TB(crsData, col1, row12, "     ", Color.White);
 
 			TextBox dist = new TextBox();
-			CreateTB(dist, col5, row11, "DIST");
+			TB(dist, col5, row11, "DIST");
 
 			TextBox distData = new TextBox();
-			CreateTB(distData, col4+10, row12, "95.4NM", Color.White);
+			TB(distData, col4+10, row12, "95.4NM", Color.White);
 
 			TextBox ete = new TextBox();
-			CreateTB(ete, col10, row11, "ETE");
+			TB(ete, col10, row11, "ETE");
 
 			TextBox eteData = new TextBox();
-			CreateTB(eteData, col10, row12, "0:16", Color.White);
+			TB(eteData, col10, row12, "0:16", Color.White);
 
 			TextBox fuel = new TextBox();
-			CreateTB(fuel, col15, row11, "FUEL");
+			TB(fuel, col15, row11, "FUEL");
 
 			TextBox fuelData = new TextBox();
-			CreateTB(fuelData, col15, row12, "480", Color.White);
+			TB(fuelData, col15, row12, "480", Color.White);
 
 			
 			TextBox l6b = new TextBox();
-			CreateTB(l6b, col1, row13, "[");
+			TB(l6b, col1, row13, "[");
 
 			TextBox r6b = new TextBox();
-			CreateTB(r6b, col16, row13, "]");
+			TB(r6b, col16, row13, "]");
 		}
 
 		private void FmsControlPage()
@@ -360,45 +362,45 @@ namespace CDU3000
 			currentPageNumber = 1;
 
 			TextBox title = new TextBox();//displayed top center of screen
-			CreateTB( title, col7, row0, currentPageTitle);
+			TB( title, col7, row0, currentPageTitle);
 
 			TextBox subtitle = new TextBox();
-			CreateTB( subtitle, col1, row1, "DISPLAY MODE");
+			TB( subtitle, col1, row1, "DISPLAY MODE");
 			
 			TextBox l1 = new TextBox();
 			l1text = "<KIRLE";
-			CreateTB( l1, col1, row2, l1text, Color.Green);
+			TB( l1, col1, row2, l1text, Color.Green);
 
 			TextBox l1slash = new TextBox();
-			CreateTB( l1slash, l1.Location.X + l1.Width, row2, "/", Color.White);
+			TB( l1slash, l1.Location.X + l1.Width, row2, "/", Color.White);
 
 			TextBox l1TRUE = new TextBox();
-			CreateTB( l1TRUE, l1slash.Location.X + l1slash.Width, row2, "TRUE",Color.White);
+			TB( l1TRUE, l1slash.Location.X + l1slash.Width, row2, "TRUE",Color.White);
 
 			TextBox l2title = new TextBox();
-			CreateTB( l2title, col1, row3, "FMS COORD MODE");
+			TB( l2title, col1, row3, "FMS COORD MODE");
 
 			TextBox l2 = new TextBox();
 			l2text = "<KIRLE";
-			CreateTB( l2, col1, row4, l2text, Color.White);
+			TB( l2, col1, row4, l2text, Color.White);
 
 			TextBox l2slash = new TextBox();
-			CreateTB( l2slash, l2.Location.X + l2.Width, row4, "/", Color.White);
+			TB( l2slash, l2.Location.X + l2.Width, row4, "/", Color.White);
 
 			TextBox l2INDEP = new TextBox();
-			CreateTB( l2INDEP, l2slash.Location.X + l2slash.Width, row4, "INDEP", Color.Green);
+			TB( l2INDEP, l2slash.Location.X + l2slash.Width, row4, "INDEP", Color.Green);
 
 			TextBox l6 = new TextBox();
-			CreateTB( l6, col1, row12, l6text, Color.White);
+			TB( l6, col1, row12, l6text, Color.White);
 
 			TextBox l5b = new TextBox();
-			CreateTB( l5b, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+			TB( l5b, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
 
 			TextBox l6b = new TextBox();
-			CreateTB( l6b, col1, row13, "[");
+			TB( l6b, col1, row13, "[");
 
 			TextBox r6b = new TextBox();
-			CreateTB( r6b, col16, row13, "]");
+			TB( r6b, col16, row13, "]");
 		}
 				
 		private void FPLNpage1()
@@ -408,87 +410,87 @@ namespace CDU3000
 			currentPageNumber = 1;
 
 			TextBox title = new TextBox();
-			CreateTB( title, col2, row0, "ACT FPLN");
+			TB( title, col2, row0, "ACT FPLN");
 
 			TextBox page = new TextBox();
-			CreateTB( page, col14, row0, "1/4");
+			TB( page, col14, row0, "1/4");
 
 			TextBox origin = new TextBox();
-			CreateTB( origin, col2, row1, "ORIGIN");
+			TB( origin, col2, row1, "ORIGIN");
 
 			TextBox dist = new TextBox();
-			CreateTB( dist, col7, row1, "DIST");
+			TB( dist, col7, row1, "DIST");
 			dist.TextAlign = HorizontalAlignment.Right;
 
 			TextBox dest = new TextBox();
-			CreateTB( dest, col13, row1, "DEST");
+			TB( dest, col13, row1, "DEST");
 
 			TextBox l1 = new TextBox();
 			l1text = "KICT";
-			CreateTB( l1, col1, row2, l1text, Color.White);
+			TB( l1, col1, row2, l1text, Color.White);
 
 			TextBox nm = new TextBox();
-			CreateTB( nm, col8, row2, "452", Color.White);
+			TB( nm, col8, row2, "452", Color.White);
 
 			TextBox r1 = new TextBox();
 			r1text = "KDEN";
-			CreateTB( r1, col15, row2, r1text, Color.White);
+			TB( r1, col15, row2, r1text, Color.White);
 			
 			TextBox route = new TextBox();
-			CreateTB( route, col2, row3, "ROUTE");
+			TB( route, col2, row3, "ROUTE");
 
 			TextBox altn = new TextBox();
-			CreateTB( altn, col13, row3, "ALTN");
+			TB( altn, col13, row3, "ALTN");
 
 			TextBox l2 = new TextBox();
 			l2text = "PLANT2";
-			CreateTB( l2, col1, row4, l2text, Color.White);
+			TB( l2, col1, row4, l2text, Color.White);
 
 			TextBox r2 = new TextBox();
 			r2text = "KAPA";
-			CreateTB( r2, col15, row4, r2text, Color.White);
+			TB( r2, col15, row4, r2text, Color.White);
 			
 			TextBox r2b = new TextBox();
-			CreateTB( r2b, col11, row5, "ORIG RWY");
+			TB( r2b, col11, row5, "ORIG RWY");
 
 			TextBox via = new TextBox();
-			CreateTB( via, col2, row7, "VIA");
+			TB( via, col2, row7, "VIA");
 
 			TextBox to = new TextBox();
-			CreateTB( to, col14, row7, "TO");
+			TB( to, col14, row7, "TO");
 			to.TextAlign = HorizontalAlignment.Right;
 
 			TextBox l4 = new TextBox();
 			l4text = "DIRECT";
-			CreateTB( l4, col1, row8, l4text, Color.Green);
+			TB( l4, col1, row8, l4text, Color.Green);
 
 			TextBox r4 = new TextBox();
 			r4text = "ICT";
-			CreateTB( r4, col15, row8, r4text, Color.Green);
+			TB( r4, col15, row8, r4text, Color.Green);
 			
 			TextBox divider = new TextBox();
-			CreateTB( divider, col1, row9, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+			TB( divider, col1, row9, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
 
 			TextBox l5 = new TextBox();
 			l5text = "<COPY ACTIVE";
-			CreateTB( l5, col1, row10, l5text, Color.White);
+			TB( l5, col1, row10, l5text, Color.White);
 
 			TextBox l6 = new TextBox();
 			l6text = "<SEC FPLN";
-			CreateTB( l6, col1, row12, l6text, Color.White);
+			TB( l6, col1, row12, l6text, Color.White);
 
 			TextBox r6 = new TextBox();
 			r6text = "PERF INIT";
-			CreateTB( r6, col15, row12, r6text, Color.White);
+			TB( r6, col15, row12, r6text, Color.White);
 
 			TextBox r6right = new TextBox();
-			CreateTB( r6right, col16, row12, ">", Color.White);
+			TB( r6right, col16, row12, ">", Color.White);
 
 			TextBox l6b = new TextBox();
-			CreateTB( l6b, col1, row13, "[");
+			TB( l6b, col1, row13, "[");
 
 			TextBox r6b = new TextBox();
-			CreateTB( r6b, col16, row13, "]");
+			TB( r6b, col16, row13, "]");
 		}
 
 		private void FrequencyDataPage1()
@@ -499,104 +501,104 @@ namespace CDU3000
 			currentPageNumber = 1;
 
 			TextBox title = new TextBox();//displayed top center of screen
-			CreateTB( title, col7, row0, currentPageTitle);
+			TB( title, col7, row0, currentPageTitle);
 
 			TextBox page = new TextBox();
-			CreateTB( page, col14, row0, "1/2");
+			TB( page, col14, row0, "1/2");
 
 			TextBox l1title = new TextBox();
-			CreateTB( l1title, col1, row1, "SEL APT");
+			TB( l1title, col1, row1, "SEL APT");
 
 			TextBox l1 = new TextBox();
 			l1text = "KCID";
-			CreateTB( l1, col1, row2, l1text, Color.White);
+			TB( l1, col1, row2, l1text, Color.White);
 
 			TextBox l1slash1 = new TextBox();
-			CreateTB( l1slash1, l1.Location.X + l1.Width, row2, "/", Color.White);
+			TB( l1slash1, l1.Location.X + l1.Width, row2, "/", Color.White);
 
 			TextBox l1Loc2 = new TextBox();
-			CreateTB( l1Loc2, l1slash1.Location.X + l1slash1.Width, row2, "KMSP", Color.Green);
+			TB( l1Loc2, l1slash1.Location.X + l1slash1.Width, row2, "KMSP", Color.Green);
 
 			TextBox l1slash2 = new TextBox();
-			CreateTB( l1slash2, l1Loc2.Location.X + l1Loc2.Width, row2, "/", Color.White);
+			TB( l1slash2, l1Loc2.Location.X + l1Loc2.Width, row2, "/", Color.White);
 
 			TextBox l1Loc3 = new TextBox();
-			CreateTB( l1Loc3, l1slash2.Location.X + l1slash2.Width, row2, "KORD", Color.White);
+			TB( l1Loc3, l1slash2.Location.X + l1slash2.Width, row2, "KORD", Color.White);
 
 			TextBox l1slash3 = new TextBox();
-			CreateTB( l1slash3, l1Loc3.Location.X + l1Loc3.Width, row2, "/", Color.White);
+			TB( l1slash3, l1Loc3.Location.X + l1Loc3.Width, row2, "/", Color.White);
 
 			TextBox l1Loc4 = new TextBox();
-			CreateTB( l1Loc4, l1slash3.Location.X + l1slash3.Width, row2, "KDFW", Color.White);
+			TB( l1Loc4, l1slash3.Location.X + l1slash3.Width, row2, "KDFW", Color.White);
 
 			TextBox l2title = new TextBox();
-			CreateTB( l2title, col1, row3, "ATIS");
+			TB( l2title, col1, row3, "ATIS");
 
 			TextBox l2 = new TextBox();
 			l2text = "133.25";
-			CreateTB( l2, col1, row4, l2text, Color.White);
+			TB( l2, col1, row4, l2text, Color.White);
 
 			TextBox l3title = new TextBox();
-			CreateTB( l3title, col1, row5, "AWAS");
+			TB( l3title, col1, row5, "AWAS");
 
 			TextBox l3 = new TextBox();
 			l3text = "121.900";
-			CreateTB( l3, col1, row6, l3text, Color.White);
+			TB( l3, col1, row6, l3text, Color.White);
 
 			TextBox l4title = new TextBox();
-			CreateTB( l4title, col1, row7, "GND");
+			TB( l4title, col1, row7, "GND");
 
 			TextBox l4 = new TextBox();
 			l4text = "134.000";
-			CreateTB( l4, col1, row8, l4text, Color.White);
+			TB( l4, col1, row8, l4text, Color.White);
 
 			TextBox l5title = new TextBox();
-			CreateTB( l5title, col1, row9, "TCA");
+			TB( l5title, col1, row9, "TCA");
 
 			TextBox l5 = new TextBox();
-			CreateTB( l5, col1, row10, l5text, Color.White);
+			TB( l5, col1, row10, l5text, Color.White);
 
 			TextBox l6 = new TextBox();
-			CreateTB( l6, col1, row12, l6text, Color.White);
+			TB( l6, col1, row12, l6text, Color.White);
 
 			TextBox r2title = new TextBox();
-			CreateTB( r2title, col15, row3, "AIRLIFT CP");
+			TB( r2title, col15, row3, "AIRLIFT CP");
 
 			TextBox r2 = new TextBox();
-			CreateTB( r2, col15, row4, r2text, Color.White);
+			TB( r2, col15, row4, r2text, Color.White);
 
 			TextBox r2right = new TextBox();
-			CreateTB( r2right, col16, row4, ">", Color.White);
+			TB( r2right, col16, row4, ">", Color.White);
 
 			TextBox r3title = new TextBox();
-			CreateTB( r3title, col15, row5, "RDR");
+			TB( r3title, col15, row5, "RDR");
 
 			TextBox r3 = new TextBox();
 			r3text = "160.00";
-			CreateTB( r3, col15, row6, r3text, Color.White);
+			TB( r3, col15, row6, r3text, Color.White);
 
 			TextBox r4title = new TextBox();
-			CreateTB( r4title, col15, row7, "GPS");
+			TB( r4title, col15, row7, "GPS");
 
 			TextBox r4 = new TextBox();
 			r4text = "10120.00";
-			CreateTB( r4, col15, row8, r4text, Color.White);
+			TB( r4, col15, row8, r4text, Color.White);
 
 			TextBox r5title = new TextBox();
-			CreateTB( r5title, col15, row9, "RFSS");
+			TB( r5title, col15, row9, "RFSS");
 
 			TextBox r5 = new TextBox();
 			r5text = "110.155";
-			CreateTB( r5, col15, row10, r5text, Color.White);
+			TB( r5, col15, row10, r5text, Color.White);
 
 			TextBox l5b = new TextBox();
-			CreateTB( l5b, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+			TB( l5b, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
 
 			TextBox l6b = new TextBox();
-			CreateTB( l6b, col1, row13, "[");
+			TB( l6b, col1, row13, "[");
 
 			TextBox r6b = new TextBox();
-			CreateTB( r6b, col16, row13, "]");
+			TB( r6b, col16, row13, "]");
 		}
 
 		#region GNSS pages
@@ -608,48 +610,48 @@ namespace CDU3000
 			currentPageNumber = 1;
 
 			TextBox title = new TextBox();//displayed top center of screen
-			CreateTB( title, col7, row0, "FMS1 GNSS CONTROL");
+			TB( title, col7, row0, "FMS1 GNSS CONTROL");
 
 			TextBox l1 = new TextBox();
 			l1text = "<ENABLED> GNSS1";
-			CreateTB( l1, col1, row2, l1text, Color.Green);
+			TB( l1, col1, row2, l1text, Color.Green);
 
 			TextBox l2 = new TextBox();
 			l2text = "<ENABLED> GNSS2";
-			CreateTB( l2, col1, row4, l2text, Color.Green);
+			TB( l2, col1, row4, l2text, Color.Green);
 
 			TextBox l5 = new TextBox();
-			CreateTB( l5, col1, row10, l5text, Color.White);
+			TB( l5, col1, row10, l5text, Color.White);
 
 			TextBox l6 = new TextBox();
-			CreateTB( l6, col1, row12, l6text, Color.White);
+			TB( l6, col1, row12, l6text, Color.White);
 
 			TextBox r1 = new TextBox();
-			CreateTB( r1, col15, row2, r1text, Color.White);
+			TB( r1, col15, row2, r1text, Color.White);
 
 			TextBox r1right = new TextBox();
-			CreateTB( r1right, col16, row2, ">", Color.White);
+			TB( r1right, col16, row2, ">", Color.White);
 
 			TextBox r2 = new TextBox();
-			CreateTB( r2, col15, row4, r2text, Color.White);
+			TB( r2, col15, row4, r2text, Color.White);
 
 			TextBox r2right = new TextBox();
-			CreateTB( r2right, col16, row4, ">", Color.White);
+			TB( r2right, col16, row4, ">", Color.White);
 
 			TextBox r5title = new TextBox();
-			CreateTB( r5title, col15, row9, "3 / 3 ENABLED", Color.Green);
+			TB( r5title, col15, row9, "3 / 3 ENABLED", Color.Green);
 
 			TextBox r5 = new TextBox();
-			CreateTB( r5, col15, row10, r5text, Color.White);
+			TB( r5, col15, row10, r5text, Color.White);
 
 			TextBox r5right = new TextBox();
-			CreateTB( r5right, col16, row10, ">", Color.White);
+			TB( r5right, col16, row10, ">", Color.White);
 
 			TextBox l6b = new TextBox();
-			CreateTB( l6b, col1, row13, "[");
+			TB( l6b, col1, row13, "[");
 
 			TextBox r6b = new TextBox();
-			CreateTB( r6b, col16, row13, "]");
+			TB( r6b, col16, row13, "]");
 		}
 
 		private void GNSS1statusPage1()
@@ -660,84 +662,84 @@ namespace CDU3000
 			currentPageNumber = 1;
 
 			TextBox title = new TextBox();//displayed top center of screen
-			CreateTB( title, col7, row0, "GNSS1 STATUS");
+			TB( title, col7, row0, "GNSS1 STATUS");
 
 			TextBox page = new TextBox();
-			CreateTB( page, col14, row0, "1/2");
+			TB( page, col14, row0, "1/2");
 
 			TextBox l1title = new TextBox();
-			CreateTB( l1title, col1, row1, "GNSS1 POS");
+			TB( l1title, col1, row1, "GNSS1 POS");
 
 			TextBox l1 = new TextBox();
 			l1text = "N38°10.14 W097°01.29";
-			CreateTB( l1, col1, row2, l1text, Color.White);
+			TB( l1, col1, row2, l1text, Color.White);
 
 			TextBox l2title = new TextBox();
-			CreateTB( l2title, col1, row3, "TRK / SPD");
+			TB( l2title, col1, row3, "TRK / SPD");
 
 			TextBox l2 = new TextBox();
 			l2text = "081° / 331 KT";
-			CreateTB( l2, col1, row4, l2text, Color.White);
+			TB( l2, col1, row4, l2text, Color.White);
 
 			TextBox l3title = new TextBox();
-			CreateTB( l3title, col1, row5, "SAT FAULT");
+			TB( l3title, col1, row5, "SAT FAULT");
 
 			TextBox l3 = new TextBox();
 			l3text = "NO";
-			CreateTB( l3, col1, row6, l3text, Color.White);
+			TB( l3, col1, row6, l3text, Color.White);
 
 			TextBox l4title = new TextBox();
-			CreateTB( l4title, col1, row7, "MODE");
+			TB( l4title, col1, row7, "MODE");
 
 			TextBox l4 = new TextBox();
 			l4text = "SBAS PA";
-			CreateTB( l4, col1, row8, l4text, Color.White);
+			TB( l4, col1, row8, l4text, Color.White);
 
 			TextBox l5title = new TextBox();
-			CreateTB( l5title, col1, row9, "FMS1 POS DIFF");
+			TB( l5title, col1, row9, "FMS1 POS DIFF");
 
 			TextBox l5 = new TextBox();
 			l5text = "081° / 00.05 NM";
-			CreateTB( l5, col1, row10, l5text, Color.White);
+			TB( l5, col1, row10, l5text, Color.White);
 
 			TextBox l6 = new TextBox();
-			CreateTB( l6, col1, row12, l6text, Color.White);
+			TB( l6, col1, row12, l6text, Color.White);
 
 			TextBox r2title = new TextBox();
-			CreateTB( r2title, col15, row3, "GNSS HEIGHT");
+			TB( r2title, col15, row3, "GNSS HEIGHT");
 
 			TextBox r2 = new TextBox();
 			r2text = "13400 FT";
-			CreateTB( r2, col15, row4, r2text, Color.White);
+			TB( r2, col15, row4, r2text, Color.White);
 
 			TextBox r3title = new TextBox();
-			CreateTB( r3title, col15, row5, "GNSS ALT");
+			TB( r3title, col15, row5, "GNSS ALT");
 
 			TextBox r3 = new TextBox();
 			r3text = "13300 FT";
-			CreateTB( r3, col15, row6, r3text, Color.White);
+			TB( r3, col15, row6, r3text, Color.White);
 
 			TextBox r4title = new TextBox();
-			CreateTB( r4title, col15, row7, "SATELLITES");
+			TB( r4title, col15, row7, "SATELLITES");
 
 			TextBox r4 = new TextBox();
 			r4text = "8";
-			CreateTB( r4, col15, row8, r4text, Color.White);
+			TB( r4, col15, row8, r4text, Color.White);
 
 			TextBox r6 = new TextBox();
-			CreateTB( r6, col15, row12, r6text, Color.White);
+			TB( r6, col15, row12, r6text, Color.White);
 
 			TextBox r6right = new TextBox();
-			CreateTB( r6right, col16, row12, ">", Color.White);
+			TB( r6right, col16, row12, ">", Color.White);
 
 			TextBox l5b = new TextBox();
-			CreateTB( l5b, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+			TB( l5b, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
 
 			TextBox l6b = new TextBox();
-			CreateTB( l6b, col1, row13, "[");
+			TB( l6b, col1, row13, "[");
 
 			TextBox r6b = new TextBox();
-			CreateTB( r6b, col16, row13, "]");
+			TB( r6b, col16, row13, "]");
 		}
 
 		private void GNSS1statusPage2()
@@ -748,96 +750,96 @@ namespace CDU3000
 			currentPageNumber = 2;
 
 			TextBox title = new TextBox();//displayed top center of screen
-			CreateTB( title, col7, row0, currentPageTitle);
+			TB( title, col7, row0, currentPageTitle);
 
 			TextBox page = new TextBox();
-			CreateTB( page, col14, row0, "2/2");
+			TB( page, col14, row0, "2/2");
 
 			TextBox l1title = new TextBox();
-			CreateTB( l1title, col1, row1, "HAL");
+			TB( l1title, col1, row1, "HAL");
 
 			TextBox l1 = new TextBox();
 			l1text = "7409 M / 4.00 NM";
-			CreateTB( l1, col1, row2, l1text, Color.White);
+			TB( l1, col1, row2, l1text, Color.White);
 
 			TextBox l2title = new TextBox();
-			CreateTB( l2title, col1, row3, "HPL");
+			TB( l2title, col1, row3, "HPL");
 
 			TextBox l2 = new TextBox();
 			l2text = "18 M";
-			CreateTB( l2, col1, row4, l2text, Color.White);
+			TB( l2, col1, row4, l2text, Color.White);
 
 			TextBox l3title = new TextBox();
-			CreateTB( l3title, col1, row5, "HFOM");
+			TB( l3title, col1, row5, "HFOM");
 
 			TextBox l3 = new TextBox();
 			l3text = "6 M";
-			CreateTB( l3, col1, row6, l3text, Color.White);
+			TB( l3, col1, row6, l3text, Color.White);
 
 			TextBox l4title = new TextBox();
-			CreateTB( l4title, col1, row7, "HUL");
+			TB( l4title, col1, row7, "HUL");
 
 			TextBox l4 = new TextBox();
 			l4text = "12 M";
-			CreateTB( l4, col1, row8, l4text, Color.White);
+			TB( l4, col1, row8, l4text, Color.White);
 
 			TextBox l5title = new TextBox();
-			CreateTB( l5title, col1, row9, "SERVICE IN USE");
+			TB( l5title, col1, row9, "SERVICE IN USE");
 
 			TextBox l5 = new TextBox();
 			l5text = "WASS     EGNOS";
-			CreateTB( l5, col1, row10, l5text, Color.White);
+			TB( l5, col1, row10, l5text, Color.White);
 
 			TextBox l6 = new TextBox();
-			CreateTB( l6, col1, row12, l6text, Color.White);
+			TB( l6, col1, row12, l6text, Color.White);
 
 			TextBox r1title = new TextBox();
-			CreateTB( r1title, col15, row1, "APPR VAL");
+			TB( r1title, col15, row1, "APPR VAL");
 
 			TextBox r1 = new TextBox();
 			r1text = "N / A";
-			CreateTB( r1, col15, row2, r1text, Color.White);
+			TB( r1, col15, row2, r1text, Color.White);
 
 			TextBox r2title = new TextBox();
-			CreateTB( r2title, col15, row3, "VPL");
+			TB( r2title, col15, row3, "VPL");
 
 			TextBox r2 = new TextBox();
 			r2text = "30 M";
-			CreateTB( r2, col15, row4, r2text, Color.White);
+			TB( r2, col15, row4, r2text, Color.White);
 
 			TextBox r3title = new TextBox();
-			CreateTB( r3title, col15, row5, "VFOM");
+			TB( r3title, col15, row5, "VFOM");
 
 			TextBox r3 = new TextBox();
 			r3text = "12 M";
-			CreateTB( r3, col15, row6, r3text, Color.White);
+			TB( r3, col15, row6, r3text, Color.White);
 
 			TextBox r4title = new TextBox();
-			CreateTB( r4title, col15, row7, "GNSS UNITS");
+			TB( r4title, col15, row7, "GNSS UNITS");
 
 			TextBox r4meters = new TextBox();
-			CreateTB( r4meters, col8 + 10, row8, "METERS", Color.Green);
+			TB( r4meters, col8 + 10, row8, "METERS", Color.Green);
 
 			TextBox r4slash = new TextBox();
-			CreateTB( r4slash, r4meters.Location.X + r4meters.Width, row8, "/", Color.White);
+			TB( r4slash, r4meters.Location.X + r4meters.Width, row8, "/", Color.White);
 
 			TextBox r4feet = new TextBox();
-			CreateTB( r4feet, col15, row8, "FEET", Color.White);
+			TB( r4feet, col15, row8, "FEET", Color.White);
 
 			TextBox r6 = new TextBox();
-			CreateTB( r6, col15, row12, r6text, Color.White);
+			TB( r6, col15, row12, r6text, Color.White);
 
 			TextBox r6right = new TextBox();
-			CreateTB( r6right, col16, row12, ">", Color.White);
+			TB( r6right, col16, row12, ">", Color.White);
 
 			TextBox l5b = new TextBox();
-			CreateTB( l5b, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+			TB( l5b, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
 
 			TextBox l6b = new TextBox();
-			CreateTB( l6b, col1, row13, "[");
+			TB( l6b, col1, row13, "[");
 
 			TextBox r6b = new TextBox();
-			CreateTB( r6b, col16, row13, "]");
+			TB( r6b, col16, row13, "]");
 		}
 
 		private void GNSS2statusPage1()
@@ -848,84 +850,84 @@ namespace CDU3000
 			currentPageNumber = 1;
 
 			TextBox title = new TextBox();//displayed top center of screen
-			CreateTB( title, col7, row0, "GNSS2 STATUS");
+			TB( title, col7, row0, "GNSS2 STATUS");
 
 			TextBox page = new TextBox();
-			CreateTB( page, col14, row0, "1/2");
+			TB( page, col14, row0, "1/2");
 
 			TextBox l1title = new TextBox();
-			CreateTB( l1title, col1, row1, "GNSS2 POS");
+			TB( l1title, col1, row1, "GNSS2 POS");
 
 			TextBox l1 = new TextBox();
 			l1text = "N38°10.14 W097°01.29";
-			CreateTB( l1, col1, row2, l1text, Color.White);
+			TB( l1, col1, row2, l1text, Color.White);
 
 			TextBox l2title = new TextBox();
-			CreateTB( l2title, col1, row3, "TRK / SPD");
+			TB( l2title, col1, row3, "TRK / SPD");
 
 			TextBox l2 = new TextBox();
 			l2text = "081° / 331 KT";
-			CreateTB( l2, col1, row4, l2text, Color.White);
+			TB( l2, col1, row4, l2text, Color.White);
 
 			TextBox l3title = new TextBox();
-			CreateTB( l3title, col1, row5, "SAT FAULT");
+			TB( l3title, col1, row5, "SAT FAULT");
 
 			TextBox l3 = new TextBox();
 			l3text = "NO";
-			CreateTB( l3, col1, row6, l3text, Color.White);
+			TB( l3, col1, row6, l3text, Color.White);
 
 			TextBox l4title = new TextBox();
-			CreateTB( l4title, col1, row7, "MODE");
+			TB( l4title, col1, row7, "MODE");
 
 			TextBox l4 = new TextBox();
 			l4text = "SBAS PA";
-			CreateTB( l4, col1, row8, l4text, Color.White);
+			TB( l4, col1, row8, l4text, Color.White);
 
 			TextBox l5title = new TextBox();
-			CreateTB( l5title, col1, row9, "FMS1 POS DIFF");
+			TB( l5title, col1, row9, "FMS1 POS DIFF");
 
 			TextBox l5 = new TextBox();
 			l5text = "081° / 00.05 NM";
-			CreateTB( l5, col1, row10, l5text, Color.White);
+			TB( l5, col1, row10, l5text, Color.White);
 
 			TextBox l6 = new TextBox();
-			CreateTB( l6, col1, row12, l6text, Color.White);
+			TB( l6, col1, row12, l6text, Color.White);
 
 			TextBox r2title = new TextBox();
-			CreateTB( r2title, col15, row3, "GNSS HEIGHT");
+			TB( r2title, col15, row3, "GNSS HEIGHT");
 
 			TextBox r2 = new TextBox();
 			r2text = "13400 FT";
-			CreateTB( r2, col15, row4, r2text, Color.White);
+			TB( r2, col15, row4, r2text, Color.White);
 
 			TextBox r3title = new TextBox();
-			CreateTB( r3title, col15, row5, "GNSS ALT");
+			TB( r3title, col15, row5, "GNSS ALT");
 
 			TextBox r3 = new TextBox();
 			r3text = "13300 FT";
-			CreateTB( r3, col15, row6, r3text, Color.White);
+			TB( r3, col15, row6, r3text, Color.White);
 
 			TextBox r4title = new TextBox();
-			CreateTB( r4title, col15, row7, "SATELLITES");
+			TB( r4title, col15, row7, "SATELLITES");
 
 			TextBox r4 = new TextBox();
 			r4text = "8";
-			CreateTB( r4, col15, row8, r4text, Color.White);
+			TB( r4, col15, row8, r4text, Color.White);
 
 			TextBox r6 = new TextBox();
-			CreateTB( r6, col15, row12, r6text, Color.White);
+			TB( r6, col15, row12, r6text, Color.White);
 
 			TextBox r6right = new TextBox();
-			CreateTB( r6right, col16, row12, ">", Color.White);
+			TB( r6right, col16, row12, ">", Color.White);
 
 			TextBox l5b = new TextBox();
-			CreateTB( l5b, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+			TB( l5b, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
 
 			TextBox l6b = new TextBox();
-			CreateTB( l6b, col1, row13, "[");
+			TB( l6b, col1, row13, "[");
 
 			TextBox r6b = new TextBox();
-			CreateTB( r6b, col16, row13, "]");
+			TB( r6b, col16, row13, "]");
 		}
 
 		private void GNSS2statusPage2()
@@ -936,96 +938,96 @@ namespace CDU3000
 			currentPageNumber = 2;
 
 			TextBox title = new TextBox();//displayed top center of screen
-			CreateTB( title, col7, row0, currentPageTitle);
+			TB( title, col7, row0, currentPageTitle);
 
 			TextBox page = new TextBox();
-			CreateTB( page, col14, row0, "2/2");
+			TB( page, col14, row0, "2/2");
 
 			TextBox l1title = new TextBox();
-			CreateTB( l1title, col1, row1, "HAL");
+			TB( l1title, col1, row1, "HAL");
 
 			TextBox l1 = new TextBox();
 			l1text = "7409 M / 4.00 NM";
-			CreateTB( l1, col1, row2, l1text, Color.White);
+			TB( l1, col1, row2, l1text, Color.White);
 
 			TextBox l2title = new TextBox();
-			CreateTB( l2title, col1, row3, "HPL");
+			TB( l2title, col1, row3, "HPL");
 
 			TextBox l2 = new TextBox();
 			l2text = "18 M";
-			CreateTB( l2, col1, row4, l2text, Color.White);
+			TB( l2, col1, row4, l2text, Color.White);
 
 			TextBox l3title = new TextBox();
-			CreateTB( l3title, col1, row5, "HFOM");
+			TB( l3title, col1, row5, "HFOM");
 
 			TextBox l3 = new TextBox();
 			l3text = "6 M";
-			CreateTB( l3, col1, row6, l3text, Color.White);
+			TB( l3, col1, row6, l3text, Color.White);
 
 			TextBox l4title = new TextBox();
-			CreateTB( l4title, col1, row7, "HUL");
+			TB( l4title, col1, row7, "HUL");
 
 			TextBox l4 = new TextBox();
 			l4text = "12 M";
-			CreateTB( l4, col1, row8, l4text, Color.White);
+			TB( l4, col1, row8, l4text, Color.White);
 
 			TextBox l5title = new TextBox();
-			CreateTB( l5title, col1, row9, "SERVICE IN USE");
+			TB( l5title, col1, row9, "SERVICE IN USE");
 
 			TextBox l5 = new TextBox();
 			l5text = "WASS     EGNOS";
-			CreateTB( l5, col1, row10, l5text, Color.White);
+			TB( l5, col1, row10, l5text, Color.White);
 
 			TextBox l6 = new TextBox();
-			CreateTB( l6, col1, row12, l6text, Color.White);
+			TB( l6, col1, row12, l6text, Color.White);
 
 			TextBox r1title = new TextBox();
-			CreateTB( r1title, col15, row1, "APPR VAL");
+			TB( r1title, col15, row1, "APPR VAL");
 
 			TextBox r1 = new TextBox();
 			r1text = "N / A";
-			CreateTB( r1, col15, row2, r1text, Color.White);
+			TB( r1, col15, row2, r1text, Color.White);
 
 			TextBox r2title = new TextBox();
-			CreateTB( r2title, col15, row3, "VPL");
+			TB( r2title, col15, row3, "VPL");
 
 			TextBox r2 = new TextBox();
 			r2text = "30 M";
-			CreateTB( r2, col15, row4, r2text, Color.White);
+			TB( r2, col15, row4, r2text, Color.White);
 
 			TextBox r3title = new TextBox();
-			CreateTB( r3title, col15, row5, "VFOM");
+			TB( r3title, col15, row5, "VFOM");
 
 			TextBox r3 = new TextBox();
 			r3text = "12 M";
-			CreateTB( r3, col15, row6, r3text, Color.White);
+			TB( r3, col15, row6, r3text, Color.White);
 
 			TextBox r4title = new TextBox();
-			CreateTB( r4title, col15, row7, "GNSS UNITS");
+			TB( r4title, col15, row7, "GNSS UNITS");
 
 			TextBox r4meters = new TextBox();
-			CreateTB( r4meters, col8 + 10, row8, "METERS", Color.Green);
+			TB( r4meters, col8 + 10, row8, "METERS", Color.Green);
 
 			TextBox r4slash = new TextBox();
-			CreateTB( r4slash, r4meters.Location.X + r4meters.Width, row8, "/", Color.White);
+			TB( r4slash, r4meters.Location.X + r4meters.Width, row8, "/", Color.White);
 
 			TextBox r4feet = new TextBox();
-			CreateTB( r4feet, col15, row8, "FEET", Color.White);
+			TB( r4feet, col15, row8, "FEET", Color.White);
 
 			TextBox r6 = new TextBox();
-			CreateTB( r6, col15, row12, r6text, Color.White);
+			TB( r6, col15, row12, r6text, Color.White);
 
 			TextBox r6right = new TextBox();
-			CreateTB( r6right, col16, row12, ">", Color.White);
+			TB( r6right, col16, row12, ">", Color.White);
 
 			TextBox l5b = new TextBox();
-			CreateTB( l5b, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+			TB( l5b, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
 
 			TextBox l6b = new TextBox();
-			CreateTB( l6b, col1, row13, "[");
+			TB( l6b, col1, row13, "[");
 
 			TextBox r6b = new TextBox();
-			CreateTB( r6b, col16, row13, "]");
+			TB( r6b, col16, row13, "]");
 		}
 		#endregion
 
@@ -1035,116 +1037,116 @@ namespace CDU3000
             currentPageNumber = 1;
 
             TextBox title = new TextBox();
-            CreateTB(title, col2, row0, "ACT LEGS");
+            TB(title, col2, row0, "ACT LEGS");
 
             TextBox page = new TextBox();
-            CreateTB(page, col14, row0, "1/4");
+            TB(page, col14, row0, "1/4");
 
             TextBox sequence = new TextBox();
-            CreateTB(sequence, col11, row1, "SEQUENCE");
+            TB(sequence, col11, row1, "SEQUENCE");
 
             TextBox l1 = new TextBox();
             l1text = "PEABO";
-            CreateTB(l1, col1, row2, l1text);
+            TB(l1, col1, row2, l1text);
 
             TextBox l1B = new TextBox();
-            CreateTB(l1B, col2, row3, "079" + (char)176, Color.Green);
+            TB(l1B, col2, row3, "079" + (char)176, Color.Green);
 
             TextBox l1Bdistance = new TextBox();
-            CreateTB(l1Bdistance, col5, row3, "115NM", Color.Green);
+            TB(l1Bdistance, col5, row3, "115NM", Color.Green);
             l1Bdistance.TextAlign = HorizontalAlignment.Right;
 
             TextBox l2 = new TextBox();
             l2text = "BUM";
-            CreateTB(l2, col1, row4, l2text, Color.Green);
+            TB(l2, col1, row4, l2text, Color.Green);
 
             TextBox l2b = new TextBox();
-            CreateTB(l2b, col2, row5, "077" + (char)176, Color.White);
+            TB(l2b, col2, row5, "077" + (char)176, Color.White);
 
             TextBox l2Bdistance = new TextBox();
-            CreateTB(l2Bdistance, col5, row5, "131NM", Color.White);
+            TB(l2Bdistance, col5, row5, "131NM", Color.White);
             l2Bdistance.TextAlign = HorizontalAlignment.Right;
 
             TextBox l3 = new TextBox();
             l3text = "TRAKE";
-            CreateTB(l3, col1, row6, l3text, Color.White);
+            TB(l3, col1, row6, l3text, Color.White);
 
             TextBox l3b = new TextBox();
-            CreateTB(l3b, col2, row7, "089" + (char)176, Color.White);
+            TB(l3b, col2, row7, "089" + (char)176, Color.White);
 
             TextBox l3Bdistance = new TextBox();
-            CreateTB(l3Bdistance, col5, row7, "25.2NM", Color.White);
+            TB(l3Bdistance, col5, row7, "25.2NM", Color.White);
             l3Bdistance.TextAlign = HorizontalAlignment.Right;
 
             TextBox l4 = new TextBox();
             l4text = "KAYLA";
-            CreateTB(l4, col1, row8, l4text, Color.White);
+            TB(l4, col1, row8, l4text, Color.White);
 
             TextBox l4b = new TextBox();
-            CreateTB(l4b, col2, row9, "085" + (char)176, Color.White);
+            TB(l4b, col2, row9, "085" + (char)176, Color.White);
 
             TextBox l4Bdistance = new TextBox();
-            CreateTB(l4Bdistance, col5, row9, "11.2NM", Color.White);
+            TB(l4Bdistance, col5, row9, "11.2NM", Color.White);
             l4Bdistance.TextAlign = HorizontalAlignment.Right;
 
             TextBox l5 = new TextBox();
             l5text = "FTZ";
-            CreateTB(l5, col1, row10, l5text, Color.White);
+            TB(l5, col1, row10, l5text, Color.White);
 
             TextBox l6 = new TextBox();
-            CreateTB(l6, col1, row12, emptyDigit + emptyDigit + emptyDigit + emptyDigit + emptyDigit, Color.White);
+            TB(l6, col1, row12, emptyDigit + emptyDigit + emptyDigit + emptyDigit + emptyDigit, Color.White);
 
             TextBox r1 = new TextBox();
             r1text = "AUTO";
-            CreateTB(r1, col9, row2, r1text, Color.Green);
+            TB(r1, col9, row2, r1text, Color.Green);
             r1.TextAlign = HorizontalAlignment.Right;
 
             TextBox r1right = new TextBox();
-            CreateTB(r1right, col12, row2, "/INHIBIT", Color.White);
+            TB(r1right, col12, row2, "/INHIBIT", Color.White);
 
 
             TextBox r2 = new TextBox();
             r2text = "- - - / FL290";
-            CreateTB(r2, col15, row4, r2text, Color.DeepPink);
+            TB(r2, col15, row4, r2text, Color.DeepPink);
 
             TextBox r3 = new TextBox();
             r3text = "- - - / FL200";
-            CreateTB(r3, col15, row6, r3text, Color.DeepPink);
+            TB(r3, col15, row6, r3text, Color.DeepPink);
 
             TextBox r4 = new TextBox();
             r4text = "- - - / 12000";
-            CreateTB(r4, col15, row8, r4text, Color.DeepPink);
+            TB(r4, col15, row8, r4text, Color.DeepPink);
 
             TextBox r4Degree = new TextBox();
-            CreateTB(r4Degree, col11, row7, "3.0°", Color.DeepPink);
+            TB(r4Degree, col11, row7, "3.0°", Color.DeepPink);
 
             TextBox r5 = new TextBox();
             r5text = "- - - /  9000";
-            CreateTB(r5, col15, row10, r5text, Color.DeepPink);
+            TB(r5, col15, row10, r5text, Color.DeepPink);
 
             TextBox r5Degree = new TextBox();
-            CreateTB(r5Degree, col11, row9, "1.7°", Color.DeepPink);
+            TB(r5Degree, col11, row9, "1.7°", Color.DeepPink);
 
             TextBox holdAt = new TextBox();
-            CreateTB(holdAt, col8, row11, "HOLD AT");
+            TB(holdAt, col8, row11, "HOLD AT");
             holdAt.TextAlign = HorizontalAlignment.Center;
             CenterMe(holdAt);
 
             TextBox divider = new TextBox();
-            CreateTB(divider, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+            TB(divider, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
             
             TextBox r6 = new TextBox();
             r6text = "PPOS";
-            CreateTB(r6, col15, row12, r6text, Color.White);
+            TB(r6, col15, row12, r6text, Color.White);
 
             TextBox r6right = new TextBox();
-            CreateTB(r6right, col16, row12, ">", Color.White);
+            TB(r6right, col16, row12, ">", Color.White);
 
             TextBox l6b = new TextBox();
-            CreateTB(l6b, col1, row13, "[");
+            TB(l6b, col1, row13, "[");
 
             TextBox r6b = new TextBox();
-            CreateTB(r6b, col16, row13, "]");
+            TB(r6b, col16, row13, "]");
         }
 
 		#region Index Pages
@@ -1159,82 +1161,82 @@ namespace CDU3000
 			currentPageNumber = 1;
 
 			TextBox title = new TextBox();
-			CreateTB( title, col7, row0, "INDEX");
+			TB( title, col7, row0, "INDEX");
 
 			TextBox page = new TextBox();
-			CreateTB( page, col14, row0, "1/3");
+			TB( page, col14, row0, "1/3");
 
 			TextBox l1 = new TextBox();
-			CreateTB( l1, col1, row2, l1text, Color.White);
+			TB( l1, col1, row2, l1text, Color.White);
 
 			TextBox l2 = new TextBox();
-			CreateTB( l2, col1, row4, l2text, Color.White);
+			TB( l2, col1, row4, l2text, Color.White);
 
 			TextBox l3 = new TextBox();
-			CreateTB( l3, col1, row6, l3text, Color.White);
+			TB( l3, col1, row6, l3text, Color.White);
 
 			TextBox l4 = new TextBox();
-			CreateTB( l4, col1, row8, l4text, Color.White);
+			TB( l4, col1, row8, l4text, Color.White);
 
 			TextBox l4b = new TextBox();
-			CreateTB( l4b, col2, row9, "FMS1", Color.White);
+			TB( l4b, col2, row9, "FMS1", Color.White);
 
 			TextBox l5 = new TextBox();
-			CreateTB( l5, col1, row10, l5text, Color.White);
+			TB( l5, col1, row10, l5text, Color.White);
 
 			TextBox l5b = new TextBox();
-			CreateTB( l5b, col2, row11, "FMS1", Color.White);
+			TB( l5b, col2, row11, "FMS1", Color.White);
 
 			TextBox l6 = new TextBox();
-			CreateTB( l6, col1, row12, l6text, Color.White);
+			TB( l6, col1, row12, l6text, Color.White);
 
 			TextBox r1 = new TextBox();
-			CreateTB( r1, col15, row2, r1text, Color.White);
+			TB( r1, col15, row2, r1text, Color.White);
 			r1.TextAlign = HorizontalAlignment.Right;
 
 			TextBox r2 = new TextBox();
-			CreateTB( r2, col15, row4, r2text, Color.White);
+			TB( r2, col15, row4, r2text, Color.White);
 			r2.TextAlign = HorizontalAlignment.Right;
 
 			TextBox r3 = new TextBox();
-			CreateTB( r3, col15, row6, r3text, Color.White);
+			TB( r3, col15, row6, r3text, Color.White);
 			r3.TextAlign = HorizontalAlignment.Right;
 
 			TextBox r4 = new TextBox();
-			CreateTB( r4, col15, row8, r4text, Color.White);
+			TB( r4, col15, row8, r4text, Color.White);
 			r4.TextAlign = HorizontalAlignment.Right;
 
 			TextBox r5 = new TextBox();
-			CreateTB( r5, col15, row10, r5text, Color.White);
+			TB( r5, col15, row10, r5text, Color.White);
 			r5.TextAlign = HorizontalAlignment.Right;
 
 			TextBox r6 = new TextBox();
-			CreateTB( r6, col15, row12, r6text, Color.White);
+			TB( r6, col15, row12, r6text, Color.White);
 			r6.TextAlign = HorizontalAlignment.Right;
 
 			TextBox r1right = new TextBox();
-			CreateTB( r1right, col16, row2, ">", Color.White);
+			TB( r1right, col16, row2, ">", Color.White);
 
 			TextBox r2right = new TextBox();
-			CreateTB( r2right, col16, row4, ">", Color.White);
+			TB( r2right, col16, row4, ">", Color.White);
 
 			TextBox r3right = new TextBox();
-			CreateTB( r3right, col16, row6, ">", Color.White);
+			TB( r3right, col16, row6, ">", Color.White);
 
 			TextBox r4right = new TextBox();
-			CreateTB( r4right, col16, row8, ">", Color.White);
+			TB( r4right, col16, row8, ">", Color.White);
 
 			TextBox r5right = new TextBox();
-			CreateTB( r5right, col16, row10, ">", Color.White);
+			TB( r5right, col16, row10, ">", Color.White);
 
 			TextBox r6right = new TextBox();
-			CreateTB( r6right, col16, row12, ">", Color.White);
+			TB( r6right, col16, row12, ">", Color.White);
 
 			TextBox l6b = new TextBox();
-			CreateTB( l6b, col1, row13, "[");
+			TB( l6b, col1, row13, "[");
 
 			TextBox r6b = new TextBox();
-			CreateTB( r6b, col16, row13, "]");
+			TB( r6b, col16, row13, "]");
 
 		}
 
@@ -1247,64 +1249,64 @@ namespace CDU3000
 			currentPageNumber = 2;
 
 			TextBox title = new TextBox();
-			CreateTB( title, col7, row0, "INDEX");
+			TB( title, col7, row0, "INDEX");
 
 			TextBox page = new TextBox();
-			CreateTB( page, col14, row0, "2/3");
+			TB( page, col14, row0, "2/3");
 
 			TextBox l1 = new TextBox();
-			CreateTB( l1, col1, row2, l1text, Color.White);
+			TB( l1, col1, row2, l1text, Color.White);
 
 			TextBox l2 = new TextBox();
-			CreateTB( l2, col1, row4, l2text, Color.White);
+			TB( l2, col1, row4, l2text, Color.White);
 
 			TextBox r1 = new TextBox();
-			CreateTB( r1, col15, row2, r1text, Color.White);
+			TB( r1, col15, row2, r1text, Color.White);
 			r1.TextAlign = HorizontalAlignment.Right;
 
 			TextBox r2 = new TextBox();
-			CreateTB( r2, col15, row4, r2text, Color.White);
+			TB( r2, col15, row4, r2text, Color.White);
 			r2.TextAlign = HorizontalAlignment.Right;
 
 			TextBox r3 = new TextBox();
-			CreateTB( r3, col15, row6, r3text, Color.White);
+			TB( r3, col15, row6, r3text, Color.White);
 			r3.TextAlign = HorizontalAlignment.Right;
 
 			TextBox r4 = new TextBox();
-			CreateTB( r4, col15, row8, r4text, Color.White);
+			TB( r4, col15, row8, r4text, Color.White);
 			r4.TextAlign = HorizontalAlignment.Right;
 
 			TextBox r5 = new TextBox();
-			CreateTB( r5, col15, row10, r5text, Color.White);
+			TB( r5, col15, row10, r5text, Color.White);
 			r5.TextAlign = HorizontalAlignment.Right;
 
 			TextBox r6 = new TextBox();
-			CreateTB( r6, col15, row12, r6text, Color.White);
+			TB( r6, col15, row12, r6text, Color.White);
 			r6.TextAlign = HorizontalAlignment.Right;
 
 			TextBox r1right = new TextBox();
-			CreateTB( r1right, col16, row2, ">", Color.White);
+			TB( r1right, col16, row2, ">", Color.White);
 
 			TextBox r2right = new TextBox();
-			CreateTB( r2right, col16, row4, ">", Color.White);
+			TB( r2right, col16, row4, ">", Color.White);
 
 			TextBox r3right = new TextBox();
-			CreateTB( r3right, col16, row6, ">", Color.White);
+			TB( r3right, col16, row6, ">", Color.White);
 
 			TextBox r4right = new TextBox();
-			CreateTB( r4right, col16, row8, ">", Color.White);
+			TB( r4right, col16, row8, ">", Color.White);
 
 			TextBox r5right = new TextBox();
-			CreateTB( r5right, col16, row10, ">", Color.White);
+			TB( r5right, col16, row10, ">", Color.White);
 
 			TextBox r6right = new TextBox();
-			CreateTB( r6right, col16, row12, ">", Color.White);
+			TB( r6right, col16, row12, ">", Color.White);
 
 			TextBox l6b = new TextBox();
-			CreateTB( l6b, col1, row13, "[");
+			TB( l6b, col1, row13, "[");
 
 			TextBox r6b = new TextBox();
-			CreateTB( r6b, col16, row13, "]");
+			TB( r6b, col16, row13, "]");
 		}
 
 		private void IdxPage3()
@@ -1316,31 +1318,31 @@ namespace CDU3000
 			currentPageNumber = 3;
 
 			TextBox title = new TextBox();
-			CreateTB( title, col7, row0, "INDEX");
+			TB( title, col7, row0, "INDEX");
 
 			TextBox page = new TextBox();
-			CreateTB( page, col14, row0, "3/3");
+			TB( page, col14, row0, "3/3");
 
 
 			TextBox r1 = new TextBox();
-			CreateTB( r1, col15, row2, r1text, Color.White);
+			TB( r1, col15, row2, r1text, Color.White);
 			r1.TextAlign = HorizontalAlignment.Right;
 
 			TextBox r2 = new TextBox();
-			CreateTB( r2, col15, row4, r2text, Color.White);
+			TB( r2, col15, row4, r2text, Color.White);
 			r2.TextAlign = HorizontalAlignment.Right;
 
 			TextBox r1right = new TextBox();
-			CreateTB( r1right, col16, row2, ">", Color.White);
+			TB( r1right, col16, row2, ">", Color.White);
 
 			TextBox r2right = new TextBox();
-			CreateTB( r2right, col16, row4, ">", Color.White);
+			TB( r2right, col16, row4, ">", Color.White);
 
 			TextBox l6b = new TextBox();
-			CreateTB( l6b, col1, row13, "[");
+			TB( l6b, col1, row13, "[");
 
 			TextBox r6b = new TextBox();
-			CreateTB( r6b, col16, row13, "]");
+			TB( r6b, col16, row13, "]");
 		}
 
 		#endregion
@@ -1353,39 +1355,39 @@ namespace CDU3000
 			currentPageNumber = 1;
 
 			TextBox title = new TextBox();//displayed top center of screen
-			CreateTB( title, col7, row0, "FMS1 IRS CONTROL");
+			TB( title, col7, row0, "FMS1 IRS CONTROL");
 
 			TextBox l2 = new TextBox();
 			l2text = "IRS  <ENABLED>";
-			CreateTB( l2, col1, row4, l2text, Color.Green);
+			TB( l2, col1, row4, l2text, Color.Green);
 
 			TextBox l5b = new TextBox();
-			CreateTB( l5b, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+			TB( l5b, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
 
 			TextBox l6 = new TextBox();
-			CreateTB( l6, col1, row12, l6text, Color.White);
+			TB( l6, col1, row12, l6text, Color.White);
 
 			TextBox l6b = new TextBox();
-			CreateTB( l6b, col1, row13, "[");
+			TB( l6b, col1, row13, "[");
 
 			TextBox r2title = new TextBox();
-			CreateTB( r2title, col15, row3, "POS DIFF");
+			TB( r2title, col15, row3, "POS DIFF");
 
 			TextBox r2 = new TextBox();
 			r2text = "- - -° / - . -";
-			CreateTB( r2, col15, row4, r2text, Color.White);
+			TB( r2, col15, row4, r2text, Color.White);
 
 			TextBox drift = new TextBox();
-			CreateTB( drift, col7, row5, "DRIFT");
+			TB( drift, col7, row5, "DRIFT");
 
 			TextBox driftData = new TextBox();
-			CreateTB( driftData, col10, row5, " - . - ", Color.White);
+			TB( driftData, col10, row5, " - . - ", Color.White);
 
 			TextBox NMperHR = new TextBox();
-			CreateTB( NMperHR, col15, row5, "NM / HR", Color.White);
+			TB( NMperHR, col15, row5, "NM / HR", Color.White);
 
 			TextBox r6b = new TextBox();
-			CreateTB( r6b, col16, row13, "]");
+			TB( r6b, col16, row13, "]");
 		}
 
 		private void MCDU()
@@ -1396,31 +1398,31 @@ namespace CDU3000
 			currentPageNumber = 1;
 
 			TextBox title = new TextBox();
-			CreateTB( title, col6, row0, "MCDU MENU");
+			TB( title, col6, row0, "MCDU MENU");
 
 			TextBox l1 = new TextBox();
-			CreateTB( l1, col1, row2, l1text, Color.White);
+			TB( l1, col1, row2, l1text, Color.White);
 
 			TextBox l2 = new TextBox();
-			CreateTB( l2, col1, row4, l2text, Color.White);
+			TB( l2, col1, row4, l2text, Color.White);
 
 			TextBox l3 = new TextBox();
-			CreateTB( l3, col1, row6, l3text, Color.White);
+			TB( l3, col1, row6, l3text, Color.White);
 
 			TextBox l4 = new TextBox();
-			CreateTB( l4, col1, row8, l4text, Color.White);
+			TB( l4, col1, row8, l4text, Color.White);
 
 			TextBox r1 = new TextBox();
-			CreateTB( r1, col15, row2, r1text, Color.White);
+			TB( r1, col15, row2, r1text, Color.White);
 
 			TextBox r1right = new TextBox();
-			CreateTB( r1right, col16, row2, ">", Color.White);
+			TB( r1right, col16, row2, ">", Color.White);
 
 			TextBox l6b = new TextBox();
-			CreateTB( l6b, col1, row13, "[");
+			TB( l6b, col1, row13, "[");
 
 			TextBox r6b = new TextBox();
-			CreateTB( r6b, col16, row13, "]");
+			TB( r6b, col16, row13, "]");
 		}
 
 		private void NonPrecisionApprRaimPage()
@@ -1431,59 +1433,59 @@ namespace CDU3000
 			currentPageNumber = 1;
 
 			TextBox title = new TextBox();//displayed top center of screen
-			CreateTB( title, col7, row0, currentPageTitle);
+			TB( title, col7, row0, currentPageTitle);
 
 			TextBox subtitle = new TextBox();
-			CreateTB( subtitle, col1, row1, "APPROACH RAIM");
+			TB( subtitle, col1, row1, "APPROACH RAIM");
 			CenterMe(subtitle);
 
 			TextBox l2title = new TextBox();
-			CreateTB( l2title, col1, row3, "DEST");
+			TB( l2title, col1, row3, "DEST");
 
 			TextBox l2titleCenter = new TextBox();
-			CreateTB( l2titleCenter, col3, row3, "NPA RAIM");
+			TB( l2titleCenter, col3, row3, "NPA RAIM");
 			CenterMe(l2titleCenter);
 
 			TextBox l2center = new TextBox();
-			CreateTB( l2center, col3, row4, "AVAILABLE",Color.White);
+			TB( l2center, col3, row4, "AVAILABLE",Color.White);
 			CenterMe(l2center);
 
 			TextBox l2 = new TextBox();
 			l2text = "KORD";
-			CreateTB( l2, col1, row4, l2text, Color.White);
+			TB( l2, col1, row4, l2text, Color.White);
 
 			TextBox l3title = new TextBox();
-			CreateTB( l3title, col1, row5, "SATELLITE DESELECT");
+			TB( l3title, col1, row5, "SATELLITE DESELECT");
 			CenterMe(l3title);
 
 			TextBox l3 = new TextBox();
 			l3text = "1    5   10  13  24";
-			CreateTB( l3, col1, row6, l3text, Color.White);
+			TB( l3, col1, row6, l3text, Color.White);
 
 			TextBox l6 = new TextBox();
-			CreateTB( l6, col1, row12, l6text, Color.White);
+			TB( l6, col1, row12, l6text, Color.White);
 
 			TextBox r2title = new TextBox();
-			CreateTB( r2title, col15, row3, "ETA");
+			TB( r2title, col15, row3, "ETA");
 
 			TextBox r2 = new TextBox();
 			r2text = "07:05";
-			CreateTB( r2, col15, row4, r2text, Color.White);
+			TB( r2, col15, row4, r2text, Color.White);
 
 			TextBox r6 = new TextBox();
-			CreateTB( r6, col15, row12, r6text, Color.White);
+			TB( r6, col15, row12, r6text, Color.White);
 
 			TextBox r6right = new TextBox();
-			CreateTB( r6right, col16, row12, ">", Color.White);
+			TB( r6right, col16, row12, ">", Color.White);
 
 			TextBox l5b = new TextBox();
-			CreateTB( l5b, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+			TB( l5b, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
 
 			TextBox l6b = new TextBox();
-			CreateTB( l6b, col1, row13, "[");
+			TB( l6b, col1, row13, "[");
 
 			TextBox r6b = new TextBox();
-			CreateTB( r6b, col16, row13, "]");
+			TB( r6b, col16, row13, "]");
 		}
 
 		#region  PosInit Pages
@@ -1497,62 +1499,62 @@ namespace CDU3000
 			currentPageNumber = 1;
 
 			TextBox title = new TextBox();            
-			CreateTB( title, col7, row0, "POS INIT");
+			TB( title, col7, row0, "POS INIT");
 
 			TextBox page = new TextBox();
-			CreateTB( page, col14, row0, "1/2");
+			TB( page, col14, row0, "1/2");
 
 			TextBox l1Title = new TextBox();
-			CreateTB( l1Title, col2, row1, "FMS POS");
+			TB( l1Title, col2, row1, "FMS POS");
 
 			TextBox l1 = new TextBox();
 			l1text = "N00°00.00 E000°00.00";
-			CreateTB( l1, col1, row2, l1text, Color.White);
+			TB( l1, col1, row2, l1text, Color.White);
 
 			TextBox l2Title = new TextBox();
-			CreateTB( l2Title, col2, row3, "AIRPORT");
+			TB( l2Title, col2, row3, "AIRPORT");
 
 			TextBox l2 = new TextBox();
 			l2text = "KNEL";
-			CreateTB( l2, col1, row4, l2text, Color.White);
+			TB( l2, col1, row4, l2text, Color.White);
 
 			TextBox l3Title = new TextBox();
-			CreateTB( l3Title, col2, row5, "PILOT/ WPT");
+			TB( l3Title, col2, row5, "PILOT/ WPT");
 
 			TextBox l3 = new TextBox();
 			l3text = "- - - - -";
-			CreateTB( l3, col1, row6, l3text, Color.White);
+			TB( l3, col1, row6, l3text, Color.White);
 
 			TextBox r2 = new TextBox();
 			r2text = "N40°02.0 W074°21.2";
-			CreateTB( r2, col15, row4, r2text, Color.White);
+			TB( r2, col15, row4, r2text, Color.White);
 
 			TextBox r5Title = new TextBox();
-			CreateTB( r5Title, col8, row9, "SET POS");
+			TB( r5Title, col8, row9, "SET POS");
 
 			TextBox r5 = new TextBox();
 			r5text = emptyLatLong;
-			CreateTB( r5, col15, row10, r5text, Color.White);
+			TB( r5, col15, row10, r5text, Color.White);
 
 			TextBox l5b = new TextBox();
-			CreateTB( l5b, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+			TB( l5b, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
 
 			TextBox r6 = new TextBox();
 			r6text = "FPLN";
-			CreateTB( r6, col15, row12, r6text, Color.White);
+			TB( r6, col15, row12, r6text, Color.White);
 
 			TextBox r6right = new TextBox();
-			CreateTB( r6right, col16, row12, ">", Color.White);
+			TB( r6right, col16, row12, ">", Color.White);
 
 			TextBox l6 = new TextBox();
 			l6text = "< INDEX";
-			CreateTB( l6, col1, row12, l6text, Color.White);
+			TB( l6, col1, row12, l6text, Color.White);
 
 			TextBox l6b = new TextBox();
-			CreateTB( l6b, col1, row13, "[");
+			TB( l6b, col1, row13, "[");
 
 			TextBox r6b = new TextBox();
-			CreateTB( r6b, col16, row13, "]");
+			TB( r6b, col16, row13, "]");
 		}
 		
 
@@ -1564,83 +1566,205 @@ namespace CDU3000
 			currentPageNumber = 2;
 
 			TextBox title = new TextBox();
-			CreateTB( title, col7, row0, "POS INIT");
+			TB( title, col7, row0, "POS INIT");
 
 			TextBox page = new TextBox();
-			CreateTB( page, col14, row0, "2/2");
+			TB( page, col14, row0, "2/2");
 
 			TextBox l1Title = new TextBox();
-			CreateTB( l1Title, col2, row1, "FMS POS");
+			TB( l1Title, col2, row1, "FMS POS");
 
 			TextBox l1 = new TextBox();
 			l1text = "N38°15.59 W094°52.82";
-			CreateTB( l1, col1, row2, l1text, Color.White);
+			TB( l1, col1, row2, l1text, Color.White);
 
 			TextBox l2Title = new TextBox();
-			CreateTB( l2Title, col2, row3, "GNSS1");
+			TB( l2Title, col2, row3, "GNSS1");
 
 			TextBox l2 = new TextBox();
 			l2text = "N38°15.58 W094°52.87";
-			CreateTB( l2, col1, row4, l2text, Color.White);
+			TB( l2, col1, row4, l2text, Color.White);
 
 			TextBox l3Title = new TextBox();
-			CreateTB( l3Title, col2, row5, "GNSS2");
+			TB( l3Title, col2, row5, "GNSS2");
 
 			TextBox l3 = new TextBox();
 			l3text = "N38°15.57 W094°52.84";
-			CreateTB( l3, col1, row6, l3text, Color.White);
+			TB( l3, col1, row6, l3text, Color.White);
 
 			TextBox l5title = new TextBox();
-			CreateTB( l5title, col2, row9, "UPDATE FROM", Color.White);
+			TB( l5title, col2, row9, "UPDATE FROM", Color.White);
 
 			TextBox l5 = new TextBox();
 			l5text = "< NAVAID";
-			CreateTB( l5, col1, row10, l5text, Color.White);
+			TB( l5, col1, row10, l5text, Color.White);
 
 			TextBox r1title = new TextBox();
-			CreateTB( r1title, col15, row1, "GS");
+			TB( r1title, col15, row1, "GS");
 
 			TextBox r1 = new TextBox();
 			r1text = "406";
-			CreateTB( r1, col15, row2, r1text, Color.White);
+			TB( r1, col15, row2, r1text, Color.White);
 
 			TextBox r2 = new TextBox();
 			r2text = "406";
-			CreateTB( r2, col15, row4, r2text, Color.White);
+			TB( r2, col15, row4, r2text, Color.White);
 
 			TextBox r3 = new TextBox();
 			r3text = "406";
-			CreateTB( r3, col15, row6, r3text, Color.White);
+			TB( r3, col15, row6, r3text, Color.White);
 
 			TextBox r5Title = new TextBox();
-			CreateTB( r5Title, col15, row9, "NAVAID");
+			TB( r5Title, col15, row9, "NAVAID");
 
 			TextBox r5 = new TextBox();
 			r5text = "BUM";
-			CreateTB( r5, col15, row10, r5text, Color.White);
+			TB( r5, col15, row10, r5text, Color.White);
 
 			TextBox l5b = new TextBox();
-			CreateTB( l5b, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+			TB( l5b, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
 
 			TextBox r6 = new TextBox();
 			r6text = "FPLN";
-			CreateTB( r6, col15, row12, r6text, Color.White);
+			TB( r6, col15, row12, r6text, Color.White);
 
 			TextBox r6right = new TextBox();
-			CreateTB( r6right, col16, row12, ">", Color.White);
+			TB( r6right, col16, row12, ">", Color.White);
 
 			TextBox l6 = new TextBox();
 			l6text="< INDEX";
-			CreateTB( l6, col1, row12, l6text, Color.White);
+			TB( l6, col1, row12, l6text, Color.White);
 
 			TextBox l6b = new TextBox();
-			CreateTB( l6b, col1, row13, "[");
+			TB( l6b, col1, row13, "[");
 
 			TextBox r6b = new TextBox();
-			CreateTB( r6b, col16, row13, "]");
+			TB( r6b, col16, row13, "]");
 		}
 
 		#endregion
+
+        private void ProgressPage1()
+        {
+            currentPageTitle = "progress";
+            currentPageNumber = 1;
+
+            TextBox title = new TextBox();
+            TB(title, col2, row0, "PROGRESS");
+            CenterMe(title);
+
+            TextBox page = new TextBox();
+            TB(page, col14, row0, "1/2");
+
+            TextBox l1title = new TextBox();
+            TB(l1title, col1, row1, " LAST");
+
+            TextBox dist = new TextBox();
+            TB(dist, col5, row1, "DIST");
+
+            TextBox ete = new TextBox();
+            TB(ete, col9, row1, "ETE");
+
+            TextBox fuel = new TextBox();
+            TB(fuel, col15, row1, "FUEL-LB");
+
+
+            TextBox l1 = new TextBox();
+            l1text = "PEABO";
+            TB(l1, col1, row2, l1text);
+
+            TextBox l2title = new TextBox();
+            TB(l2title, col1, row3, " TO");
+
+            TextBox l2 = new TextBox();
+            l2text = "BUM";
+            TB(l2, col1, row4, l2text, Color.Green);
+
+            TextBox l3title = new TextBox();
+            TB(l3title, col1, row5, " NEXT");
+
+            TextBox l3 = new TextBox();
+            l3text = "TRAKE";
+            TB(l3, col1, row6, l3text, Color.White);
+
+            TextBox l4title = new TextBox();
+            TB(l4title, col1, row7, " DEST");
+
+            TextBox l4 = new TextBox();
+            l4text = "KSTL";
+            TB(l4, col1, row8, l4text, Color.White);
+
+            TextBox l5title = new TextBox();
+            TB(l5title, col1, row9, " ALTN");
+
+            TextBox l5 = new TextBox();
+            l5text = "KBLV";
+            TB(l5, col1, row10, l5text, Color.White);
+
+            TextBox l6title = new TextBox();
+            TB(l6title, col1, row11, " NAVIGATION");
+
+            TextBox l6 = new TextBox();
+            TB(l6, col1, row12, "GNSS1", Color.Green);
+            CenterMe(l6);
+
+            TextBox l1dist = new TextBox();
+            TB(l1dist, col5, row2, "53.2");
+            
+            TextBox l2dist = new TextBox();
+            TB(l2dist, col5, row4, "83.4", Color.Green);
+
+            TextBox l3dist = new TextBox();
+            TB(l3dist, col5, row6, "214",Color.White);
+
+            TextBox l4dist = new TextBox();
+            TB(l4dist, col5, row8, "299", Color.White);
+
+            TextBox l5dist = new TextBox();
+            TB(l5dist, col5, row10, "326", Color.White);
+
+
+            TextBox l2ete = new TextBox();
+            TB(l2ete, col9, row4, "0:11", Color.Green);
+
+            TextBox l3ete = new TextBox();
+            TB(l3ete, col9, row6, "0:28", Color.White);
+
+            TextBox l4ete = new TextBox();
+            TB(l4ete, col9, row8, "0:40", Color.White);
+
+            TextBox l5ete = new TextBox();
+            TB(l5ete, col9, row10, "0:42", Color.White);
+
+
+
+            TextBox l1fuel = new TextBox();
+            TB(l1fuel, col15, row2, "2280");
+
+            TextBox l2fuel = new TextBox();
+            TB(l2fuel, col15, row4, "1710",Color.Green);
+
+            TextBox l3fuel = new TextBox();
+            TB(l3fuel, col15, row6, "1140", Color.White);
+
+            TextBox l4fuel = new TextBox();
+            TB(l4fuel, col15, row8, "730", Color.White);
+
+            TextBox l5fuel = new TextBox();
+            TB(l5fuel, col15, row10, "570", Color.White);
+
+
+            
+
+            
+
+
+            TextBox l6b = new TextBox();
+            TB(l6b, col1, row13, "[");
+
+            TextBox r6b = new TextBox();
+            TB(r6b, col16, row13, "]");
+        }
 
 		private void SBASpage()
 		{
@@ -1650,42 +1774,140 @@ namespace CDU3000
 			currentPageNumber = 1;
 
 			TextBox title = new TextBox();//displayed top center of screen
-			CreateTB( title, col7, row0, currentPageTitle);
+			TB( title, col7, row0, currentPageTitle);
 
 			TextBox subtitle = new TextBox();
-			CreateTB( subtitle, col1, row1, "SERVICE PROVIDERS");
+			TB( subtitle, col1, row1, "SERVICE PROVIDERS");
 			CenterMe(subtitle);
 
 			TextBox l1 = new TextBox();
 			l1text = "WASS   <ENABLED>";
-			CreateTB( l1, col1, row2, l1text, Color.Green);
+			TB( l1, col1, row2, l1text, Color.Green);
 
 			TextBox l2 = new TextBox();
 			l2text = "EGNOS <ENABLED>";
-			CreateTB( l2, col1, row4, l2text, Color.Green);
+			TB( l2, col1, row4, l2text, Color.Green);
 
 			TextBox l3 = new TextBox();
 			l3text = "MSAS   <ENABLED>";
-			CreateTB( l3, col1, row6, l3text, Color.Green);
+			TB( l3, col1, row6, l3text, Color.Green);
 
 			TextBox l6 = new TextBox();
-			CreateTB( l6, col1, row12, l6text, Color.White);
+			TB( l6, col1, row12, l6text, Color.White);
 
 			TextBox r6 = new TextBox();
-			CreateTB( r6, col15, row12, r6text, Color.White);
+			TB( r6, col15, row12, r6text, Color.White);
 
 			TextBox r6right = new TextBox();
-			CreateTB( r6right, col16, row12, ">", Color.White);
+			TB( r6right, col16, row12, ">", Color.White);
 
 			TextBox l5b = new TextBox();
-			CreateTB( l5b, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+			TB( l5b, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
 
 			TextBox l6b = new TextBox();
-			CreateTB( l6b, col1, row13, "[");
+			TB( l6b, col1, row13, "[");
 
 			TextBox r6b = new TextBox();
-			CreateTB( r6b, col16, row13, "]");
+			TB( r6b, col16, row13, "]");
 		}
+
+        private void SECFPLNpage1()
+        {
+
+            l2text = "LINDYHOP";
+
+
+            PopulateNames("SECFPLNpage1");
+
+            currentPageTitle = "SEC FPLN"; //page title and number used for navigating
+            currentPageNumber = 1;
+
+            TextBox title = new TextBox();//displayed top center of screen
+            TB(title, col2, row0, currentPageTitle+" "+l2text);
+
+            TextBox page = new TextBox();
+            TB(page, col14, row0, "1/3");
+
+            TextBox origin = new TextBox();
+            TB(origin, col2, row1, "ORIGIN");
+
+            TextBox dist = new TextBox();
+            TB(dist, col8, row1, "DIST");
+
+            TextBox l1dist = new TextBox();
+            TB(l1dist, col8, row2, "249", Color.White);
+
+            TextBox dest = new TextBox ();
+            TB(dest, col15, row1, "DEST");
+            
+
+            TextBox l1 = new TextBox();
+            l1text = "KSTL";
+            TB(l1, col1, row2, l1text, Color.White);
+
+            TextBox l2title = new TextBox();
+            TB(l2title, col2, row3, "ROUTE");
+
+            TextBox l2 = new TextBox();
+            
+            TB(l2, col1, row4, l2text, Color.White);
+
+            TextBox l4title = new TextBox();
+            TB(l4title, col2, row7, "VIA");
+
+            TextBox l4 = new TextBox();
+            l4text = "CARDS6.CAP";
+            TB(l4, col1, row8, l4text, Color.White);
+
+            TextBox l6 = new TextBox();
+            l6text = "< SEC LEGS";
+            TB(l6, col1, row12, l6text, Color.White);
+
+            TextBox r1 = new TextBox();
+            l1text = "KCID";
+            TB(r1, col15, row2, l1text, Color.White);
+
+            TextBox altn = new TextBox();
+            TB(altn, col15, row3, "ALTN");
+
+            TextBox r2 = new TextBox();
+            l2text = "KDVN";
+            TB(r2, col15, row4, l2text, Color.White);
+
+            TextBox origRwy = new TextBox();
+            TB(origRwy, col15, row5, "ORIG RWY");
+
+            TextBox r3 = new TextBox();
+            l3text = "RW12R";
+            TB(r3, col15, row6, l3text, Color.White);
+
+            TextBox to = new TextBox();
+            TB(to, col15, row7, "TO");
+
+            TextBox r4 = new TextBox();
+            r4text = "CAP";
+            TB(r4, col15, row8, r4text, Color.Green);
+
+            TextBox r5 = new TextBox();
+            r5text = "ACTIVATE";
+            TB(r5, col15, row10, r5text, Color.White);
+
+            TextBox r5right = new TextBox();
+            TB(r5right, col16, row10, ">", Color.White);
+
+            TextBox l5 = new TextBox();
+            l5text = "< ROUTE MENU";
+            TB(l5, col1, row10, l5text, Color.White);
+
+            TextBox l4b = new TextBox();
+            TB(l4b, col1, row9, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+            TextBox l6b = new TextBox();
+            TB(l6b, col1, row13, "[");
+
+            TextBox r6b = new TextBox();
+            TB(r6b, col16, row13, "]");
+        }
 
 		private void StatusPage()
 		{
@@ -1696,70 +1918,70 @@ namespace CDU3000
 			currentPageNumber = 1;
 
 			TextBox title = new TextBox();//displayed top center of screen
-			CreateTB( title, col7, row0, "STATUS");
+			TB( title, col7, row0, "STATUS");
 
 			TextBox navData = new TextBox();
-			CreateTB( navData, col2, row1, "NAV DATA");
+			TB( navData, col2, row1, "NAV DATA");
 
 			TextBox l1 = new TextBox();
 			l1text = "WORLD";
-			CreateTB( l1, col1, row2, l1text, Color.White);
+			TB( l1, col1, row2, l1text, Color.White);
 
 			TextBox l1b = new TextBox();
-			CreateTB( l1b, col2, row3, "ACTIVE DATA BASE");
+			TB( l1b, col2, row3, "ACTIVE DATA BASE");
 
 			TextBox l2 = new TextBox();
 			l2text = "09JAN15 05FEB15";
-			CreateTB( l2, col1, row4, l2text, Color.Yellow);
+			TB( l2, col1, row4, l2text, Color.Yellow);
 
 			TextBox l2b = new TextBox();
-			CreateTB( l2b, col2, row5, "SEC DATA BASE");
+			TB( l2b, col2, row5, "SEC DATA BASE");
 
 			TextBox l3 = new TextBox();
 			l3text = "06SEP15 03OCT15";
-			CreateTB( l3, col1, row6, l3text, Color.White);
+			TB( l3, col1, row6, l3text, Color.White);
 
 			TextBox l3b = new TextBox();
-			CreateTB( l3b, col2, row7, "UTC");
+			TB( l3b, col2, row7, "UTC");
 
 			TextBox l4 = new TextBox();
 			l4text = "12:00";
-			CreateTB( l4, col1, row8, l4text, Color.White);
+			TB( l4, col1, row8, l4text, Color.White);
 
 			TextBox l4b = new TextBox();
-			CreateTB( l4b, col2, row9, "PROGRAM");
+			TB( l4b, col2, row9, "PROGRAM");
 
 			TextBox l5 = new TextBox();
 			l5text="SCID D 001 CNN107";
-			CreateTB( l5, col1, row10, l5text, Color.White);
+			TB( l5, col1, row10, l5text, Color.White);
 
 			TextBox l5b = new TextBox();
-			CreateTB( l5b, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+			TB( l5b, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
 
 			TextBox l6 = new TextBox();
-			CreateTB( l6, col1, row12, l6text, Color.White);
+			TB( l6, col1, row12, l6text, Color.White);
 
 			TextBox l6b = new TextBox();
-			CreateTB( l6b, col1, row13, "[");
+			TB( l6b, col1, row13, "[");
 
 			TextBox r3b = new TextBox();
-			CreateTB( r3b, col13, row7, " DATE");
+			TB( r3b, col13, row7, " DATE");
 
 			TextBox r4 = new TextBox();
 			r4text="12MAY15";
-			CreateTB( r4, col15, row8, r4text, Color.White);
+			TB( r4, col15, row8, r4text, Color.White);
 
 			TextBox r6 = new TextBox();
-			CreateTB( r6, col15, row12, r6text, Color.White);
+			TB( r6, col15, row12, r6text, Color.White);
 
 
 			TextBox r6right = new TextBox();
-			CreateTB( r6right, col16, row12, ">", Color.White);
+			TB( r6right, col16, row12, ">", Color.White);
 
 			
 
 			TextBox r6b = new TextBox();
-			CreateTB( r6b, col16, row13, "]");
+			TB( r6b, col16, row13, "]");
 		}
 
 		private void TunPage1()
@@ -1768,99 +1990,99 @@ namespace CDU3000
 			currentPageNumber = 1;
 
 			TextBox title = new TextBox();
-			CreateTB( title, col7, row0, "TUNE");
+			TB( title, col7, row0, "TUNE");
 
 			TextBox com1 = new TextBox();
-			CreateTB( com1, col2, row1, "COM1", Color.White);
+			TB( com1, col2, row1, "COM1", Color.White);
 
 			TextBox com2 = new TextBox();
-			CreateTB( com2, col13, row1, "COM2", Color.White);
+			TB( com2, col13, row1, "COM2", Color.White);
 
 			TextBox page = new TextBox();
-			CreateTB( page, col14, row0, "1/2");
+			TB( page, col14, row0, "1/2");
 
 			TextBox l1 = new TextBox();
 			l1text = "122.875";
-			CreateTB( l1, col1, row2, l1text, Color.Green);
+			TB( l1, col1, row2, l1text, Color.Green);
 
 			TextBox l1b = new TextBox();
-			CreateTB( l1b, col2, row3, "RECALL", Color.White);
+			TB( l1b, col2, row3, "RECALL", Color.White);
 
 			TextBox l2 = new TextBox();
 			l2text = "134.250";
-			CreateTB( l2, col1, row4, l2text, Color.White);
+			TB( l2, col1, row4, l2text, Color.White);
 
 			TextBox l2b = new TextBox();
-			CreateTB( l2b, col2, row5, "NAV1", Color.White);
+			TB( l2b, col2, row5, "NAV1", Color.White);
 
 			TextBox l3 = new TextBox();
 			l3text = "113.80/ICT";
-			CreateTB( l3, col1, row6, l3text, Color.Green);
+			TB( l3, col1, row6, l3text, Color.Green);
 
 			TextBox l3b = new TextBox();
-			CreateTB( l3b, col2, row7, "DME1", Color.White);
+			TB( l3b, col2, row7, "DME1", Color.White);
 
 			TextBox l4 = new TextBox();
 			l4text = "HOLD";
-			CreateTB( l4, col1, row8, l4text);
+			TB( l4, col1, row8, l4text);
 
 			TextBox l4right = new TextBox();
-			CreateTB( l4right, col4, row8, "116.80", Color.Green);
+			TB( l4right, col4, row8, "116.80", Color.Green);
 
 			TextBox l4b = new TextBox();
-			CreateTB( l4b, col2, row9, "ATC1", Color.White);
+			TB( l4b, col2, row9, "ATC1", Color.White);
 
 			TextBox l5 = new TextBox();
 			l5text = "3144";
-			CreateTB( l5, col1, row10, l5text, Color.Green);
+			TB( l5, col1, row10, l5text, Color.Green);
 
 
 			TextBox l5b = new TextBox();
-			CreateTB( l5b, col2, row11, "ADF", Color.White);
+			TB( l5b, col2, row11, "ADF", Color.White);
 
 			TextBox l6 = new TextBox();
 			l6text = "412.5";
-			CreateTB( l6, col1, row12, l6text, Color.Green);
+			TB( l6, col1, row12, l6text, Color.Green);
 
 			TextBox r1 = new TextBox();
 			r1text = "121.700";
-			CreateTB( r1, col15, row2, r1text, Color.Green);
+			TB( r1, col15, row2, r1text, Color.Green);
 			//r1.TextAlign = HorizontalAlignment.Left;
 
 
 			TextBox r1b = new TextBox();
-			CreateTB( r1b, col12, row3, "RECALL", Color.White);
+			TB( r1b, col12, row3, "RECALL", Color.White);
 
 			TextBox r2 = new TextBox();
 			r2text = "123.875";
-			CreateTB( r2, col15, row4, r2text, Color.White);
+			TB( r2, col15, row4, r2text, Color.White);
 			//r2.TextAlign = HorizontalAlignment.Left;
 
 			TextBox r2b = new TextBox();
-			CreateTB( r2b, col10, row5, "MK-HI");
+			TB( r2b, col10, row5, "MK-HI");
 
 			TextBox r2bright = new TextBox();
-			CreateTB( r2bright, col13, row5, " NAV2", Color.White);
+			TB( r2bright, col13, row5, " NAV2", Color.White);
 
 			TextBox r3 = new TextBox();
 			r3text = "110.30";
-			CreateTB( r3, col15, row6, r3text, Color.Green);
+			TB( r3, col15, row6, r3text, Color.Green);
 			//r3.TextAlign = HorizontalAlignment.Right;
 
 			TextBox r3b = new TextBox();
-			CreateTB( r3b, col13, row7, " DME2", Color.White);
+			TB( r3b, col13, row7, " DME2", Color.White);
 
 			TextBox r4 = new TextBox();
 			r4text = " HOLD";
-			CreateTB( r4, col15, row8, r4text, Color.White);
+			TB( r4, col15, row8, r4text, Color.White);
 			//r4.TextAlign = HorizontalAlignment.Right;
 
 
 			TextBox l6b = new TextBox();
-			CreateTB( l6b, col1, row13, "[");
+			TB( l6b, col1, row13, "[");
 
 			TextBox r6b = new TextBox();
-			CreateTB( r6b, col16, row13, "]");
+			TB( r6b, col16, row13, "]");
 		}
 
 		private void VorDmeCtlPage()
@@ -1871,80 +2093,80 @@ namespace CDU3000
 			currentPageNumber = 1;
 
 			TextBox title = new TextBox();//displayed top center of screen
-			CreateTB( title, col7, row0, "FMS1 VOR/DME CONTROL");
+			TB( title, col7, row0, "FMS1 VOR/DME CONTROL");
 
 			TextBox l1 = new TextBox();
 			l1text = "IOW";
-			CreateTB( l1, col1, row2, l1text, Color.White);
+			TB( l1, col1, row2, l1text, Color.White);
 
 			TextBox l2 = new TextBox();
 			l2text = "- - -";
-			CreateTB( l2, col1, row4, l2text, Color.White);
+			TB( l2, col1, row4, l2text, Color.White);
 						
 			TextBox r2title = new TextBox();
-			CreateTB( r2title, col1, row3, "NAVAID INHIBIT");
+			TB( r2title, col1, row3, "NAVAID INHIBIT");
 			CenterMe(r2title);
 
 			TextBox l3 = new TextBox();
 			l3text = "- - -";
-			CreateTB( l3, col1, row6, l3text, Color.White);
+			TB( l3, col1, row6, l3text, Color.White);
 
 			TextBox l4 = new TextBox();
 			l4text = "- - -";
-			CreateTB( l4, col1, row8, l4text, Color.White);
+			TB( l4, col1, row8, l4text, Color.White);
 
 			TextBox r1 = new TextBox();
 			r1text = "- - -";
-			CreateTB( r1, col15, row2, r1text, Color.White);
+			TB( r1, col15, row2, r1text, Color.White);
 
 			TextBox r2 = new TextBox();
 			r2text = "- - -";
-			CreateTB( r2, col15, row4, r2text, Color.White);
+			TB( r2, col15, row4, r2text, Color.White);
 
 			TextBox r3 = new TextBox();
 			r3text = "- - -";
-			CreateTB( r3, col15, row6, r3text, Color.White);
+			TB( r3, col15, row6, r3text, Color.White);
 
 			TextBox r4 = new TextBox();
 			r4text = "- - -";
-			CreateTB( r4, col15, row8, r4text, Color.White);
+			TB( r4, col15, row8, r4text, Color.White);
 
 			TextBox l5title = new TextBox();
-			CreateTB( l5title, col1, row9, "VOR - USAGE");
+			TB( l5title, col1, row9, "VOR - USAGE");
 
 			TextBox r5title = new TextBox();
-			CreateTB( r5title, col15, row9, "DME - USAGE");
+			TB( r5title, col15, row9, "DME - USAGE");
 
 			TextBox l5YES = new TextBox();
-			CreateTB( l5YES, col1, row10, "YES", Color.White);
+			TB( l5YES, col1, row10, "YES", Color.White);
 
 			TextBox l5slash = new TextBox();
-			CreateTB( l5slash, col1 + l5YES.Width, row10, "/", Color.White);
+			TB( l5slash, col1 + l5YES.Width, row10, "/", Color.White);
 
 			TextBox l5NO = new TextBox();
-			CreateTB( l5NO, col1 + l5YES.Width +l5slash.Width , row10, "NO", Color.Green);
+			TB( l5NO, col1 + l5YES.Width +l5slash.Width , row10, "NO", Color.Green);
 
 			TextBox r5YES = new TextBox();
-			CreateTB( r5YES, col11 + 10, row10, "YES", Color.Green);
+			TB( r5YES, col11 + 10, row10, "YES", Color.Green);
 
 			TextBox r5slash = new TextBox();
-			CreateTB( r5slash, r5YES.Location.X + r5YES.Width, row10, "/", Color.White);
+			TB( r5slash, r5YES.Location.X + r5YES.Width, row10, "/", Color.White);
 
 			TextBox r5NO = new TextBox();
-			CreateTB( r5NO, col15, row10, "NO", Color.White);
+			TB( r5NO, col15, row10, "NO", Color.White);
 			
 			TextBox l5b = new TextBox();
-			CreateTB( l5b, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+			TB( l5b, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
 
 			TextBox l6 = new TextBox();
-			CreateTB( l6, col1, row12, l6text, Color.White);
+			TB( l6, col1, row12, l6text, Color.White);
 
 			TextBox l6b = new TextBox();
-			CreateTB( l6b, col1, row13, "[");
+			TB( l6b, col1, row13, "[");
 
 
 			TextBox r6b = new TextBox();
-			CreateTB( r6b, col16, row13, "]");
+			TB( r6b, col16, row13, "]");
 		}
 
 		
@@ -1959,70 +2181,70 @@ namespace CDU3000
 			currentPageNumber = 1;
 
 			TextBox title = new TextBox();
-			CreateTB( title, col7, row0, "INDEX");
+			TB( title, col7, row0, "INDEX");
 
 
 			TextBox l1 = new TextBox();
 			l1text = "< START INIT";
-			CreateTB( l1, col1, row2, l1text, Color.White);
+			TB( l1, col1, row2, l1text, Color.White);
 
 			TextBox l2 = new TextBox();
 			l2text = "< LOAD SAVE";
-			CreateTB( l2, col1, row4, l2text, Color.White);
+			TB( l2, col1, row4, l2text, Color.White);
 
 			TextBox l3 = new TextBox();
 			l3text = "< ERASE";
-			CreateTB( l3, col1, row6, l3text, Color.White);
+			TB( l3, col1, row6, l3text, Color.White);
 
 			TextBox l4 = new TextBox();
 			l4text = "< COM";
-			CreateTB( l4, col1, row8, l4text, Color.White);
+			TB( l4, col1, row8, l4text, Color.White);
 
 
 			TextBox l5 = new TextBox();
 			l5text = "< TACAN";
-			CreateTB( l5, col1, row10, l5text, Color.White);
+			TB( l5, col1, row10, l5text, Color.White);
 
 
 			TextBox l6 = new TextBox();
 			l6text = "< MSG";
-			CreateTB( l6, col1, row12, l6text, Color.White);
+			TB( l6, col1, row12, l6text, Color.White);
 
 			TextBox r1 = new TextBox();
 			r1text = "GPS SA/AS";
-			CreateTB( r1, col15, row2, r1text, Color.White);
+			TB( r1, col15, row2, r1text, Color.White);
 
 			TextBox r2 = new TextBox();
 			r2text = "STATUS";
-			CreateTB( r2, col15, row4, r2text, Color.White);
+			TB( r2, col15, row4, r2text, Color.White);
 
 			TextBox r3 = new TextBox();
 			r3text = " ZEROIZE";
-			CreateTB( r3, col15, row6, r3text, Color.White);
+			TB( r3, col15, row6, r3text, Color.White);
 
 			TextBox r4 = new TextBox();
 			r4text = " SURV";
-			CreateTB( r4, col15, row8, r4text, Color.White);
+			TB( r4, col15, row8, r4text, Color.White);
 
 
 			TextBox r1right = new TextBox();
-			CreateTB( r1right, col16, row2, ">", Color.White);
+			TB( r1right, col16, row2, ">", Color.White);
 
 			TextBox r2right = new TextBox();
-			CreateTB( r2right, col16, row4, ">", Color.White);
+			TB( r2right, col16, row4, ">", Color.White);
 
 			TextBox r3right = new TextBox();
-			CreateTB( r3right, col16, row6, ">", Color.White);
+			TB( r3right, col16, row6, ">", Color.White);
 
 			TextBox r4right = new TextBox();
-			CreateTB( r4right, col16, row8, ">", Color.White);
+			TB( r4right, col16, row8, ">", Color.White);
 
 
 			TextBox l6b = new TextBox();
-			CreateTB( l6b, col1, row13, "[");
+			TB( l6b, col1, row13, "[");
 
 			TextBox r6b = new TextBox();
-			CreateTB( r6b, col16, row13, "]");
+			TB( r6b, col16, row13, "]");
 		}
 
 		//Communication Pages
@@ -2036,67 +2258,67 @@ namespace CDU3000
 			currentPageNumber = 1;
 
 			TextBox title = new TextBox();
-			CreateTB( title, col7, row0, "COMM");
+			TB( title, col7, row0, "COMM");
 
 			TextBox l0 = new TextBox();
 			l0text = "!";
-			CreateTB( l0, col1, row1, l0text, Color.Orange);
+			TB( l0, col1, row1, l0text, Color.Orange);
 
 			TextBox l0right = new TextBox();
-			CreateTB( l0right, col2, row1, "V/U1");
+			TB( l0right, col2, row1, "V/U1");
 
 
 			TextBox l1 = new TextBox();
 			l1text = "<";
-			CreateTB( l1, col1, row2, l1text, Color.White);
+			TB( l1, col1, row2, l1text, Color.White);
 
 			TextBox l1right = new TextBox();
-			CreateTB( l1right, col2, row2, "20  TOWERS  C17", Color.White);
+			TB( l1right, col2, row2, "20  TOWERS  C17", Color.White);
 
 			TextBox lb = new TextBox();
-			CreateTB( lb, col2, row3, "V/U2");
+			TB( lb, col2, row3, "V/U2");
 
 
 			TextBox l2 = new TextBox();
-			CreateTB( l2, col1, row4, "<", Color.White);
+			TB( l2, col1, row4, "<", Color.White);
 
 			TextBox l2b = new TextBox();
-			CreateTB( l2b, col1, row5, "!", Color.Orange);
+			TB( l2b, col1, row5, "!", Color.Orange);
 
 			TextBox l2bright = new TextBox();
-			CreateTB( l2bright, col2, row5, "HF1 -BASIC-");
+			TB( l2bright, col2, row5, "HF1 -BASIC-");
 
 			TextBox l3 = new TextBox();
-			CreateTB( l3, col1, row6, "<", Color.White);
+			TB( l3, col1, row6, "<", Color.White);
 
 
 			TextBox r1 = new TextBox();
 			r1text = "45.100";
-			CreateTB( r1, col17, row2, r1text, Color.White);
+			TB( r1, col17, row2, r1text, Color.White);
 
 			TextBox r2 = new TextBox();
 			r2text = "F136.075";
-			CreateTB( r2, col17, row4, r2text, Color.White);
+			TB( r2, col17, row4, r2text, Color.White);
 
 			TextBox r3 = new TextBox();
 			r3text = "17.0075";
-			CreateTB( r3, col17, row6, r3text, Color.White);
+			TB( r3, col17, row6, r3text, Color.White);
 
 			TextBox r6 = new TextBox();
 			r6text = "RETURN";
-			CreateTB( r6, col15, row12, r6text, Color.White);
+			TB( r6, col15, row12, r6text, Color.White);
 
 
 
 			TextBox r6right = new TextBox();
-			CreateTB( r6right, col16, row12, ">", Color.White);
+			TB( r6right, col16, row12, ">", Color.White);
 
 
 			TextBox l6b = new TextBox();
-			CreateTB( l6b, col1, row13, "[");
+			TB( l6b, col1, row13, "[");
 
 			TextBox r6b = new TextBox();
-			CreateTB( r6b, col16, row13, "]");
+			TB( r6b, col16, row13, "]");
 		}
 
 		#endregion
@@ -3271,7 +3493,7 @@ namespace CDU3000
 			
 		}
 
-		private void CreateTB( TextBox myName, int col, int row, string tbText, Color? charColor = null, Color? backgroundColor = null, string fontType = "Arial", int fontSize = 20, FontStyle fstyle = FontStyle.Regular, BorderStyle bstyle = BorderStyle.None)
+		private void TB( TextBox myName, int col, int row, string tbText, Color? charColor = null, Color? backgroundColor = null, string fontType = "Arial", int fontSize = 20, FontStyle fstyle = FontStyle.Regular, BorderStyle bstyle = BorderStyle.None)
 		{
 			myName.Location = new Point(col, row);
 
@@ -3289,13 +3511,13 @@ namespace CDU3000
 			}
 			else
 			{
-				myName.ForeColor = (Color)charColor;
+                myName.ForeColor = (Color)charColor;
 			}
 
 
 			if (backgroundColor == null)
 			{
-				myName.BackColor = Color.Black;
+                myName.BackColor = Color.Black;
 			}
 			else
 			{
@@ -3469,6 +3691,18 @@ namespace CDU3000
 							PosInitPage1();
 							break;
 
+                        //PROG page1
+                        case "PROG":
+                            StartFresh();//clears all  TextBoxes before writing new page
+                            ProgressPage1();
+                            break;
+
+                        //SEC page
+                        case "SEC FPLN":
+                            StartFresh();//clears all  TextBoxes before writing new page
+                            SECFPLNpage1();
+                            break;
+
 						//SBASpage
 						case "SELECT SBAS":
 							StartFresh();//clears all  TextBoxes before writing new page
@@ -3516,13 +3750,13 @@ namespace CDU3000
 						default:
 							try
 							{
-								if (scratchpad!=null)
+								if (scratchpad!=null)//if the scratchpad is not null
 								{
-									TransferScratch();
+									TransferScratch();//transfer the scratchpad data to the textbox adjacent to the button pushed
 								}
 								else
 								{
-									Scratch(trimmedString,e);
+									Scratch(trimmedString,e);//add text tothe scratchpad
 								}
 							}
 							catch (Exception)
@@ -3740,12 +3974,15 @@ namespace CDU3000
 								if (c.Location.Y == myRow & c.Location.X < col3 & mySide=="left")
 								{
 									c.Text = scratchpad;
+                                    Size size = TextRenderer.MeasureText(c.Text, c.Font);
+                                    c.Size = size;
 									
 								}else
 									if (c.Location.Y == myRow & ((c.Location.X +c.Width)>col14) & mySide == "right")
 									{
 										c.Text = scratchpad;
-										
+                                        Size size = TextRenderer.MeasureText(c.Text, c.Font);
+                                        c.Size = size;
 									}
 
 							}
