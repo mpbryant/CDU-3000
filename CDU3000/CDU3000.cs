@@ -38,7 +38,7 @@ namespace CDU3000
 		string r5text = null;
 		string r6text = null;
 
-        
+		
 
 
 		//tracksthe last button pressed
@@ -114,7 +114,17 @@ namespace CDU3000
 		
 		private void ActiveLegsPage1()
 		{
-
+            l1text = "KICT";
+            l2text = "ICT";
+            l3text = "MUGER";
+            l4text = "WUKOL";
+            l5text = "WUKUS";
+            r2text = "- - - / - - - - -";
+            r3text = "- - - / - - - - -";
+            r4text = "- - - / - - - - -";
+            r5text = "- - - / - - - - -";
+            r6text = "LEG WIND";
+			
 			currentPageTitle = "leg";
 			currentPageNumber = 1;
 
@@ -128,7 +138,6 @@ namespace CDU3000
 			TB(sequence, col11, row1, "SEQUENCE");
 
 			TextBox l1 = new TextBox();
-			l1text="KICT";
 			TB(l1, col1, row2, l1text);
 
 			TextBox l1B = new TextBox();
@@ -139,7 +148,6 @@ namespace CDU3000
 			l1Bdistance.TextAlign = HorizontalAlignment.Right;
 
 			TextBox l2 = new TextBox();
-			l2text="ICT";
 			TB(l2, col1, row4, l2text, Color.Green);
 
 			TextBox l2b = new TextBox();
@@ -150,7 +158,6 @@ namespace CDU3000
 			l2Bdistance.TextAlign = HorizontalAlignment.Right;
 
 			TextBox l3 = new TextBox();
-			l3text="MUGER";
 			TB(l3, col1, row6, l3text, Color.White);
 
 			TextBox l3b = new TextBox();
@@ -161,7 +168,6 @@ namespace CDU3000
 			l3Bdistance.TextAlign = HorizontalAlignment.Right;
 
 			TextBox l4 = new TextBox();
-			l4text="WUKOL";
 			TB( l4, col1, row8, l4text, Color.White);
 
 			TextBox l4b = new TextBox();
@@ -172,7 +178,6 @@ namespace CDU3000
 			l4Bdistance.TextAlign = HorizontalAlignment.Right;
 
 			TextBox l5 = new TextBox();
-			l5text="WUKUS";
 			TB( l5, col1, row10, l5text, Color.White);
 
 			TextBox r1 = new TextBox();
@@ -185,27 +190,22 @@ namespace CDU3000
 
 
 			TextBox r2 = new TextBox();
-			r2text="- - - / - - - - -";
-			TB( r2, col15, row4, r2text, Color.DeepPink);
+            TB( r2, col15, row4, r2text, Color.DeepPink);
 
 			TextBox r3 = new TextBox();
-			r3text="- - - / - - - - -";
-			TB( r3, col15, row6, r3text, Color.DeepPink);
+            TB( r3, col15, row6, r3text, Color.DeepPink);
 
 			TextBox r4 = new TextBox();
-			r4text="- - - / - - - - -";
-			TB(r4, col15, row8, r4text, Color.DeepPink);
+            TB(r4, col15, row8, r4text, Color.DeepPink);
 
 			TextBox r5 = new TextBox();
-			r5text="- - - / - - - - -";
-			TB( r5, col15, row10, r5text, Color.DeepPink);
+            TB( r5, col15, row10, r5text, Color.DeepPink);
 
 			TextBox divider = new TextBox();
 			TB( divider, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
 
 			TextBox r6 = new TextBox();
-			r6text="LEG WIND";
-			TB( r6, col15, row12, r6text, Color.White);
+            TB( r6, col15, row12, r6text, Color.White);
 
 			TextBox r6right = new TextBox();
 			TB( r6right, col16, row12, ">", Color.White);
@@ -218,9 +218,131 @@ namespace CDU3000
 
 		   
 		}
+
+        private void DataBasePage1()
+        {
+            l1text = emptyDigit+emptyDigit+emptyDigit+emptyDigit+emptyDigit;
+            l2text = "";
+            l3text = "";
+            l4text = "";
+            l5text = "";
+            l6text = "< INDEX";
+            r1text = "";
+            r2text = "";
+            r3text = "";
+            r4text = "";
+            r5text = "WPT LIST";
+            r6text = "DEFINE WPT";
+
+            currentPageTitle = "DATA BASE"; //page title and number used for navigating
+            currentPageNumber = 1;
+
+            TextBox title = new TextBox();//displayed top center of screen
+            TB(title, col7, row0, currentPageTitle);
+
+            //TextBox page = new TextBox();
+            //TB(page, col14, row0, currentPageNumber + "/1");
+
+            TextBox l1t = new TextBox();
+            TB(l1t, col2, row1, "IDENT");
+
+            TextBox l1 = new TextBox();
+            TB(l1, col1, row2, l1text, Color.White);
+
+            TextBox l2t = new TextBox();
+            TB(l2t, col2, row3, "LOCATION");
+
+            TextBox l2 = new TextBox();
+            TB(l2, col1, row4, l2text, Color.White);
+
+            TextBox l3 = new TextBox();
+            TB(l3, col1, row6, l3text, Color.White);
+
+            TextBox l4 = new TextBox();
+            TB(l4, col1, row8, l4text, Color.White);
+
+            TextBox r1 = new TextBox();
+            TB(r1, col15, row2, r1text, Color.White);
+
+            TextBox r2 = new TextBox();
+            TB(r2, col15, row4, r2text, Color.White);
+
+            TextBox r3 = new TextBox();
+            TB(r3, col15, row6, r3text, Color.White);
+
+            TextBox r4 = new TextBox();
+            TB(r4, col15, row8, r4text, Color.White);
+
+            TextBox r5t = new TextBox();
+            TB(r5t, col15, row9, "PILOT", Color.White);
+
+            TextBox l5t = new TextBox();
+            TB(l5t, col1, row9, "- - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+            
+
+            TextBox r5 = new TextBox();
+            TB(r5, col15, row10, r5text, Color.White);
+
+            TextBox l6 = new TextBox();
+            TB(l6, col1, row12, l6text, Color.White);
+
+            TextBox r6 = new TextBox();
+            TB(r6, col15, row12, r6text, Color.White);
+
+            #region Add Arrows if Needed
+            if (r1text != "")
+            {
+                TextBox r1r = new TextBox();
+                TB(r1r, col16, row2, ">", Color.White);
+            }
+
+            if (r2text != "")
+            {
+                TextBox r2r = new TextBox();
+                TB(r2r, col16, row4, ">", Color.White);
+            }
+
+            if (r3text != "")
+            {
+                TextBox r3r = new TextBox();
+                TB(r3r, col16, row6, ">", Color.White);
+            }
+
+            if (r4text != "")
+            {
+                TextBox r4r = new TextBox();
+                TB(r4r, col16, row8, ">", Color.White);
+            }
+
+            if (r5text != "")
+            {
+                TextBox r5r = new TextBox();
+                TB(r5r, col16, row10, ">", Color.White);
+            }
+
+
+            if (r6text != "")
+            {
+                TextBox r6r = new TextBox();
+                TB(r6r, col16, row12, ">", Color.White);
+            } 
+            #endregion
+
+            TextBox l6b = new TextBox();
+            TB(l6b, col1, row13, "[");
+
+
+            TextBox r6b = new TextBox();
+            TB(r6b, col16, row13, "]");
+        }
 		
 		private void DirPage1()
 		{
+            l3text = "<(6935)";
+            l4text = "<(6935)";
+            l5text = "<KIRLE";
+			
 
 			currentPageTitle = "direct";
 			currentPageNumber = 1;
@@ -239,22 +361,19 @@ namespace CDU3000
 			TB( l2b, col2, row5, "250" + (char)176);
 
 			TextBox l3 = new TextBox();
-			l3text = "<(6935)";
 			TB( l3, col1, row6, l3text, Color.White);
 
 			TextBox l3b = new TextBox();
 			TB( l3b, col2, row7, "215" + (char)176);
 
 			TextBox l4 = new TextBox();
-			l4text = "<(6935)";
-			TB( l4, col1, row8, l4text, Color.White);
+            TB( l4, col1, row8, l4text, Color.White);
 
 			TextBox l4b = new TextBox();
 			TB( l4b, col2, row9, "R322" + (char)176);
 
 			TextBox l5 = new TextBox();
-			l5text = "<KIRLE";
-			TB( l5, col1, row10, l5text, Color.White);
+            TB( l5, col1, row10, l5text, Color.White);
 			
 			TextBox divider = new TextBox();
 			TB( divider, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
@@ -266,8 +385,91 @@ namespace CDU3000
 			TB( r6b, col16, row13, "]");
 		}
 
+        private void DiskRouteList()
+        {
+            l1text = "";
+            l2text = "";
+            l3text = "";
+            l4text = "";
+            l5text = "";
+            l6text = "< READ DISK";
+            r1text = "";
+            r2text = "";
+            r3text = "";
+            r4text = "";
+            r5text = "";
+            r6text = "ROUTE MENU";
+
+            currentPageTitle = "DISK ROUTE LIST"; //page title and number used for navigating
+            currentPageNumber = 1;
+
+            TextBox title = new TextBox();//displayed top center of screen
+            TB(title, col7, row0, currentPageTitle);
+
+            TextBox page = new TextBox();
+            TB(page, col14, row0, currentPageNumber + "/1");
+
+            TextBox l1t = new TextBox();
+            TB(l1t, col2, row1, "LOAD PLAN", Color.White);
+
+            TextBox l1 = new TextBox();
+            TB(l1, col1, row2, l1text, Color.White);
+
+            TextBox l2 = new TextBox();
+            TB(l2, col1, row4, l2text, Color.White);
+
+            TextBox l3 = new TextBox();
+            TB(l3, col1, row6, l3text, Color.White);
+
+            TextBox l4 = new TextBox();
+            TB(l4, col1, row8, l4text, Color.White);
+
+            TextBox r1t = new TextBox();
+            TB(r1t, col12,row1,"DATE",Color.White);
+
+            TextBox r1 = new TextBox();
+            TB(r1, col15, row2, r1text, Color.White);
+
+            TextBox r2 = new TextBox();
+            TB(r2, col15, row4, r2text, Color.White);
+
+            TextBox r3 = new TextBox();
+            TB(r3, col15, row6, r3text, Color.White);
+
+            TextBox r4 = new TextBox();
+            TB(r4, col15, row8, r4text, Color.White);
+
+
+            TextBox l5b = new TextBox();
+            TB(l5b, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+            TextBox l6 = new TextBox();
+            TB(l6, col1, row12, l6text, Color.White);
+
+            TextBox r6 = new TextBox();
+            TB(r6, col15, row12, r6text, Color.White);
+
+            TextBox r6r = new TextBox();
+            TB(r6r, col16, row12, ">", Color.White);
+
+            TextBox l6b = new TextBox();
+            TB(l6b, col1, row13, "[");
+
+
+            TextBox r6b = new TextBox();
+            TB(r6b, col16, row13, "]");
+        }
+
 		private void FixPage1()
 		{
+            l1text = "SGF";
+            l2text = "002°";
+            l3text = "63.3";
+            l4text = "< ABEAM REF";
+            l5text = "ABEAM REF";
+            r2text = "- - - ° - - . - -";
+            r3text = "- - - - ° - - . - -";
+			
 			currentPageTitle = "fix";
 			currentPageNumber = 1;
 
@@ -282,45 +484,38 @@ namespace CDU3000
 			TB(l1title, col1, row1, "REF");
 
 			TextBox l1 = new TextBox();
-			l1text = "SGF";
 			TB(l1, col1, row2, l1text, Color.White);
 			
 			TextBox l2title = new TextBox();
 			TB(l2title, col1, row3, "RAD CROSS");
 
 			TextBox l2 = new TextBox();
-			l2text = "002°";
-			TB(l2, col1, row4, l2text, Color.White);
+            TB(l2, col1, row4, l2text, Color.White);
 
 			TextBox l3title = new TextBox();
 			TB(l3title, col1, row5, "DIS CROSS");
 
 			TextBox l3 = new TextBox();
-			l3text = "63.3";
-			TB(l3, col1, row6, l3text, Color.White);
+            TB(l3, col1, row6, l3text, Color.White);
 
 			TextBox l4 = new TextBox();
-			l4text = "< ABEAM REF";
-			TB(l4, col1, row8, l4text, Color.White);
+            TB(l4, col1, row8, l4text, Color.White);
 
 			TextBox l5 = new TextBox();
-			l5text = "ABEAM REF";
-			TB(l5, col1, row10, l5text, Color.White);
+            TB(l5, col1, row10, l5text, Color.White);
 			CenterMe(l5);
 
 			TextBox r2title = new TextBox();
 			TB(r2title, col15, row3, "LAT CROSS");
 
 			TextBox r2 = new TextBox();
-			r2text="- - - ° - - . - -";
-			TB(r2, col15, row4, r2text, Color.White);
+            TB(r2, col15, row4, r2text, Color.White);
 
 			TextBox r3title = new TextBox();
 			TB(r3title, col15, row5, "LON CROSS");
 
 			TextBox r3 = new TextBox();
-			r3text="- - - - ° - - . - -";
-			TB(r3, col15, row6, r3text, Color.White);
+            TB(r3, col15, row6, r3text, Color.White);
 
 			TextBox crs = new TextBox();
 			TB(crs, col1, row11, "CRS");
@@ -356,7 +551,18 @@ namespace CDU3000
 
 		private void FmsControlPage()
 		{
-			PopulateNames("FmsControlPage");
+            l1text = "<KIRLE";
+            l2text = "<KIRLE";
+            l3text = "";
+            l4text = "";
+            l5text = "";
+            l6text = "< INDEX";
+            r1text = "";
+            r2text = "";
+            r3text = "";
+            r4text = "";
+            r5text = "";
+            r6text = "";
 
 			currentPageTitle = "FMS CONTROL"; //page title and number used for navigating
 			currentPageNumber = 1;
@@ -368,7 +574,6 @@ namespace CDU3000
 			TB( subtitle, col1, row1, "DISPLAY MODE");
 			
 			TextBox l1 = new TextBox();
-			l1text = "<KIRLE";
 			TB( l1, col1, row2, l1text, Color.Green);
 
 			TextBox l1slash = new TextBox();
@@ -380,8 +585,7 @@ namespace CDU3000
 			TextBox l2title = new TextBox();
 			TB( l2title, col1, row3, "FMS COORD MODE");
 
-			TextBox l2 = new TextBox();
-			l2text = "<KIRLE";
+			TextBox l2 = new TextBox();			
 			TB( l2, col1, row4, l2text, Color.White);
 
 			TextBox l2slash = new TextBox();
@@ -405,7 +609,16 @@ namespace CDU3000
 				
 		private void FPLNpage1()
 		{
-
+            l1text = "KICT";
+            r1text = "KDEN";
+            l2text = "PLANT2";
+            r2text = "KAPA";
+            l4text = "DIRECT";
+            r4text = "ICT";
+            l5text = "<COPY ACTIVE";
+            l6text = "<SEC FPLN";
+            r6text = "PERF INIT";
+			
 			currentPageTitle = "flightplan";
 			currentPageNumber = 1;
 
@@ -426,15 +639,13 @@ namespace CDU3000
 			TB( dest, col13, row1, "DEST");
 
 			TextBox l1 = new TextBox();
-			l1text = "KICT";
 			TB( l1, col1, row2, l1text, Color.White);
 
 			TextBox nm = new TextBox();
 			TB( nm, col8, row2, "452", Color.White);
 
 			TextBox r1 = new TextBox();
-			r1text = "KDEN";
-			TB( r1, col15, row2, r1text, Color.White);
+            TB( r1, col15, row2, r1text, Color.White);
 			
 			TextBox route = new TextBox();
 			TB( route, col2, row3, "ROUTE");
@@ -443,12 +654,10 @@ namespace CDU3000
 			TB( altn, col13, row3, "ALTN");
 
 			TextBox l2 = new TextBox();
-			l2text = "PLANT2";
-			TB( l2, col1, row4, l2text, Color.White);
+            TB( l2, col1, row4, l2text, Color.White);
 
 			TextBox r2 = new TextBox();
-			r2text = "KAPA";
-			TB( r2, col15, row4, r2text, Color.White);
+            TB( r2, col15, row4, r2text, Color.White);
 			
 			TextBox r2b = new TextBox();
 			TB( r2b, col11, row5, "ORIG RWY");
@@ -461,27 +670,22 @@ namespace CDU3000
 			to.TextAlign = HorizontalAlignment.Right;
 
 			TextBox l4 = new TextBox();
-			l4text = "DIRECT";
-			TB( l4, col1, row8, l4text, Color.Green);
+            TB( l4, col1, row8, l4text, Color.Green);
 
 			TextBox r4 = new TextBox();
-			r4text = "ICT";
-			TB( r4, col15, row8, r4text, Color.Green);
+           TB( r4, col15, row8, r4text, Color.Green);
 			
 			TextBox divider = new TextBox();
 			TB( divider, col1, row9, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
 
 			TextBox l5 = new TextBox();
-			l5text = "<COPY ACTIVE";
-			TB( l5, col1, row10, l5text, Color.White);
+            TB( l5, col1, row10, l5text, Color.White);
 
 			TextBox l6 = new TextBox();
-			l6text = "<SEC FPLN";
-			TB( l6, col1, row12, l6text, Color.White);
+            TB( l6, col1, row12, l6text, Color.White);
 
 			TextBox r6 = new TextBox();
-			r6text = "PERF INIT";
-			TB( r6, col15, row12, r6text, Color.White);
+            TB( r6, col15, row12, r6text, Color.White);
 
 			TextBox r6right = new TextBox();
 			TB( r6right, col16, row12, ">", Color.White);
@@ -495,7 +699,19 @@ namespace CDU3000
 
 		private void FrequencyDataPage1()
 		{
-			PopulateNames("FrequencyDataPage1");
+            l1text = "KCID";
+            l2text = "133.25";
+            l3text = "121.900";
+            l4text = "134.000";
+            l5text = "< MULTIPLE";
+            l6text = "< INDEX";
+            r1text = "";
+            r2text = "MULTIPLE";
+            r3text = "160.00";
+            r6text = "";
+            r4text = "10120.00";
+            r5text = "110.155";
+			
 
 			currentPageTitle = "FREQUENCY DATA"; //page title and number used for navigating
 			currentPageNumber = 1;
@@ -504,13 +720,13 @@ namespace CDU3000
 			TB( title, col7, row0, currentPageTitle);
 
 			TextBox page = new TextBox();
-			TB( page, col14, row0, "1/2");
+			TB( page, col14, row0, "1/1");
 
 			TextBox l1title = new TextBox();
 			TB( l1title, col1, row1, "SEL APT");
 
 			TextBox l1 = new TextBox();
-			l1text = "KCID";
+			
 			TB( l1, col1, row2, l1text, Color.White);
 
 			TextBox l1slash1 = new TextBox();
@@ -535,21 +751,21 @@ namespace CDU3000
 			TB( l2title, col1, row3, "ATIS");
 
 			TextBox l2 = new TextBox();
-			l2text = "133.25";
+			
 			TB( l2, col1, row4, l2text, Color.White);
 
 			TextBox l3title = new TextBox();
 			TB( l3title, col1, row5, "AWAS");
 
 			TextBox l3 = new TextBox();
-			l3text = "121.900";
+			
 			TB( l3, col1, row6, l3text, Color.White);
 
 			TextBox l4title = new TextBox();
 			TB( l4title, col1, row7, "GND");
 
 			TextBox l4 = new TextBox();
-			l4text = "134.000";
+			
 			TB( l4, col1, row8, l4text, Color.White);
 
 			TextBox l5title = new TextBox();
@@ -574,22 +790,20 @@ namespace CDU3000
 			TB( r3title, col15, row5, "RDR");
 
 			TextBox r3 = new TextBox();
-			r3text = "160.00";
+			
 			TB( r3, col15, row6, r3text, Color.White);
 
 			TextBox r4title = new TextBox();
 			TB( r4title, col15, row7, "GPS");
 
 			TextBox r4 = new TextBox();
-			r4text = "10120.00";
 			TB( r4, col15, row8, r4text, Color.White);
 
 			TextBox r5title = new TextBox();
 			TB( r5title, col15, row9, "RFSS");
 
 			TextBox r5 = new TextBox();
-			r5text = "110.155";
-			TB( r5, col15, row10, r5text, Color.White);
+            TB( r5, col15, row10, r5text, Color.White);
 
 			TextBox l5b = new TextBox();
 			TB( l5b, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
@@ -604,7 +818,18 @@ namespace CDU3000
 		#region GNSS pages
 		private void GNSScontrolPage()
 		{
-			PopulateNames("GNSS CTL");
+            l1text = "<ENABLED> GNSS1";
+            l2text = "<ENABLED> GNSS2";
+            l3text = "";
+            l4text = "";
+            l5text = "< NPA RAIM";
+            l6text = "< INDEX";
+            r1text = "STATUS";
+            r2text = "STATUS";
+            r3text = "";
+            r4text = "";
+            r5text = "SELECT SBAS";
+            r6text = "";
 
 			currentPageTitle = "GNSS CTL"; //page title and number used for navigating
 			currentPageNumber = 1;
@@ -613,12 +838,10 @@ namespace CDU3000
 			TB( title, col7, row0, "FMS1 GNSS CONTROL");
 
 			TextBox l1 = new TextBox();
-			l1text = "<ENABLED> GNSS1";
 			TB( l1, col1, row2, l1text, Color.Green);
 
 			TextBox l2 = new TextBox();
-			l2text = "<ENABLED> GNSS2";
-			TB( l2, col1, row4, l2text, Color.Green);
+            TB( l2, col1, row4, l2text, Color.Green);
 
 			TextBox l5 = new TextBox();
 			TB( l5, col1, row10, l5text, Color.White);
@@ -656,7 +879,21 @@ namespace CDU3000
 
 		private void GNSS1statusPage1()
 		{
-			PopulateNames("GNSS1 STATUS");
+           
+            
+            
+            l1text = "N38°10.14 W097°01.29";
+            l2text = "081° / 331 KT";
+            l3text = "NO";
+            l4text = "SBAS PA";
+            l5text = "081° / 00.05 NM";
+            l6text = "< INDEX";
+            r1text = "";
+            r2text = "13400 FT";
+            r3text = "13300 FT";
+            r4text = "8";
+            r5text = "";
+            r6text = "GNSS CTL";
 
 			currentPageTitle = "GNSS1 STATUS"; //page title and number used for navigating
 			currentPageNumber = 1;
@@ -671,35 +908,30 @@ namespace CDU3000
 			TB( l1title, col1, row1, "GNSS1 POS");
 
 			TextBox l1 = new TextBox();
-			l1text = "N38°10.14 W097°01.29";
 			TB( l1, col1, row2, l1text, Color.White);
 
 			TextBox l2title = new TextBox();
 			TB( l2title, col1, row3, "TRK / SPD");
 
 			TextBox l2 = new TextBox();
-			l2text = "081° / 331 KT";
-			TB( l2, col1, row4, l2text, Color.White);
+            TB( l2, col1, row4, l2text, Color.White);
 
 			TextBox l3title = new TextBox();
 			TB( l3title, col1, row5, "SAT FAULT");
 
 			TextBox l3 = new TextBox();
-			l3text = "NO";
-			TB( l3, col1, row6, l3text, Color.White);
+            TB( l3, col1, row6, l3text, Color.White);
 
 			TextBox l4title = new TextBox();
 			TB( l4title, col1, row7, "MODE");
 
 			TextBox l4 = new TextBox();
-			l4text = "SBAS PA";
-			TB( l4, col1, row8, l4text, Color.White);
+            TB( l4, col1, row8, l4text, Color.White);
 
 			TextBox l5title = new TextBox();
 			TB( l5title, col1, row9, "FMS1 POS DIFF");
 
 			TextBox l5 = new TextBox();
-			l5text = "081° / 00.05 NM";
 			TB( l5, col1, row10, l5text, Color.White);
 
 			TextBox l6 = new TextBox();
@@ -709,22 +941,19 @@ namespace CDU3000
 			TB( r2title, col15, row3, "GNSS HEIGHT");
 
 			TextBox r2 = new TextBox();
-			r2text = "13400 FT";
-			TB( r2, col15, row4, r2text, Color.White);
+            TB( r2, col15, row4, r2text, Color.White);
 
 			TextBox r3title = new TextBox();
 			TB( r3title, col15, row5, "GNSS ALT");
 
 			TextBox r3 = new TextBox();
-			r3text = "13300 FT";
-			TB( r3, col15, row6, r3text, Color.White);
+            TB( r3, col15, row6, r3text, Color.White);
 
 			TextBox r4title = new TextBox();
 			TB( r4title, col15, row7, "SATELLITES");
 
 			TextBox r4 = new TextBox();
-			r4text = "8";
-			TB( r4, col15, row8, r4text, Color.White);
+            TB( r4, col15, row8, r4text, Color.White);
 
 			TextBox r6 = new TextBox();
 			TB( r6, col15, row12, r6text, Color.White);
@@ -744,7 +973,18 @@ namespace CDU3000
 
 		private void GNSS1statusPage2()
 		{
-			PopulateNames("GNSS1statusPage2");
+            l1text = "";
+            l2text = "";
+            l3text = "";
+            l4text = "";
+            l5text = "";
+            l6text = "< INDEX";
+            r1text = "";
+            r2text = "";
+            r3text = "";
+            r4text = "";
+            r5text = "";
+            r6text = "GNSS CTL";
 
 			currentPageTitle = "GNSS1 STATUS"; //page title and number used for navigating
 			currentPageNumber = 2;
@@ -844,7 +1084,18 @@ namespace CDU3000
 
 		private void GNSS2statusPage1()
 		{
-			PopulateNames("GNSS2 STATUS");
+            l1text = "";
+            l2text = "";
+            l3text = "";
+            l4text = "";
+            l5text = "";
+            l6text = "< INDEX";
+            r1text = "";
+            r2text = "";
+            r3text = "";
+            r4text = "";
+            r5text = "";
+            r6text = "GNSS CTL";
 
 			currentPageTitle = "GNSS2 STATUS"; //page title and number used for navigating
 			currentPageNumber = 1;
@@ -932,7 +1183,18 @@ namespace CDU3000
 
 		private void GNSS2statusPage2()
 		{
-			PopulateNames("GNSS2statusPage2");
+            l1text = "";
+            l2text = "";
+            l3text = "";
+            l4text = "";
+            l5text = "";
+            l6text = "< INDEX";
+            r1text = "";
+            r2text = "";
+            r3text = "";
+            r4text = "";
+            r5text = "";
+            r6text = "GNSS CTL";
 
 			currentPageTitle = "GNSS2 STATUS"; //page title and number used for navigating
 			currentPageNumber = 2;
@@ -1031,132 +1293,143 @@ namespace CDU3000
 		}
 		#endregion
 
-        private void HoldPage1()
-        {
-            currentPageTitle = "hold";
-            currentPageNumber = 1;
-
-            TextBox title = new TextBox();
-            TB(title, col2, row0, "ACT LEGS");
-
-            TextBox page = new TextBox();
-            TB(page, col14, row0, "1/4");
-
-            TextBox sequence = new TextBox();
-            TB(sequence, col11, row1, "SEQUENCE");
-
-            TextBox l1 = new TextBox();
+		private void HoldPage1()
+		{
             l1text = "PEABO";
-            TB(l1, col1, row2, l1text);
-
-            TextBox l1B = new TextBox();
-            TB(l1B, col2, row3, "079" + (char)176, Color.Green);
-
-            TextBox l1Bdistance = new TextBox();
-            TB(l1Bdistance, col5, row3, "115NM", Color.Green);
-            l1Bdistance.TextAlign = HorizontalAlignment.Right;
-
-            TextBox l2 = new TextBox();
             l2text = "BUM";
+            l3text = "TRAKE";
+            l4text = "KAYLA";
+            l5text = "FTZ";
+            r1text = "AUTO";
+            r2text = "- - - / FL290";
+            r3text = "- - - / FL200";
+            r4text = "- - - / 12000";
+            r5text = "- - - /  9000";
+            r6text = "LEG WIND";
+			
+			currentPageTitle = "hold";
+			currentPageNumber = 1;
+
+			TextBox title = new TextBox();
+			TB(title, col2, row0, "ACT LEGS");
+
+			TextBox page = new TextBox();
+			TB(page, col14, row0, "1/4");
+
+			TextBox sequence = new TextBox();
+			TB(sequence, col11, row1, "SEQUENCE");
+
+			TextBox l1 = new TextBox();
+			TB(l1, col1, row2, l1text);
+
+			TextBox l1B = new TextBox();
+			TB(l1B, col2, row3, "079" + (char)176, Color.Green);
+
+			TextBox l1Bdistance = new TextBox();
+			TB(l1Bdistance, col5, row3, "115NM", Color.Green);
+			l1Bdistance.TextAlign = HorizontalAlignment.Right;
+
+			TextBox l2 = new TextBox();
             TB(l2, col1, row4, l2text, Color.Green);
 
-            TextBox l2b = new TextBox();
-            TB(l2b, col2, row5, "077" + (char)176, Color.White);
+			TextBox l2b = new TextBox();
+			TB(l2b, col2, row5, "077" + (char)176, Color.White);
 
-            TextBox l2Bdistance = new TextBox();
-            TB(l2Bdistance, col5, row5, "131NM", Color.White);
-            l2Bdistance.TextAlign = HorizontalAlignment.Right;
+			TextBox l2Bdistance = new TextBox();
+			TB(l2Bdistance, col5, row5, "131NM", Color.White);
+			l2Bdistance.TextAlign = HorizontalAlignment.Right;
 
-            TextBox l3 = new TextBox();
-            l3text = "TRAKE";
+			TextBox l3 = new TextBox();
             TB(l3, col1, row6, l3text, Color.White);
 
-            TextBox l3b = new TextBox();
-            TB(l3b, col2, row7, "089" + (char)176, Color.White);
+			TextBox l3b = new TextBox();
+			TB(l3b, col2, row7, "089" + (char)176, Color.White);
 
-            TextBox l3Bdistance = new TextBox();
-            TB(l3Bdistance, col5, row7, "25.2NM", Color.White);
-            l3Bdistance.TextAlign = HorizontalAlignment.Right;
+			TextBox l3Bdistance = new TextBox();
+			TB(l3Bdistance, col5, row7, "25.2NM", Color.White);
+			l3Bdistance.TextAlign = HorizontalAlignment.Right;
 
-            TextBox l4 = new TextBox();
-            l4text = "KAYLA";
+			TextBox l4 = new TextBox();
             TB(l4, col1, row8, l4text, Color.White);
 
-            TextBox l4b = new TextBox();
-            TB(l4b, col2, row9, "085" + (char)176, Color.White);
+			TextBox l4b = new TextBox();
+			TB(l4b, col2, row9, "085" + (char)176, Color.White);
 
-            TextBox l4Bdistance = new TextBox();
-            TB(l4Bdistance, col5, row9, "11.2NM", Color.White);
-            l4Bdistance.TextAlign = HorizontalAlignment.Right;
+			TextBox l4Bdistance = new TextBox();
+			TB(l4Bdistance, col5, row9, "11.2NM", Color.White);
+			l4Bdistance.TextAlign = HorizontalAlignment.Right;
 
-            TextBox l5 = new TextBox();
-            l5text = "FTZ";
+			TextBox l5 = new TextBox();
             TB(l5, col1, row10, l5text, Color.White);
 
-            TextBox l6 = new TextBox();
-            TB(l6, col1, row12, emptyDigit + emptyDigit + emptyDigit + emptyDigit + emptyDigit, Color.White);
+			TextBox l6 = new TextBox();
+			TB(l6, col1, row12, emptyDigit + emptyDigit + emptyDigit + emptyDigit + emptyDigit, Color.White);
 
-            TextBox r1 = new TextBox();
-            r1text = "AUTO";
+			TextBox r1 = new TextBox();
             TB(r1, col9, row2, r1text, Color.Green);
-            r1.TextAlign = HorizontalAlignment.Right;
+			r1.TextAlign = HorizontalAlignment.Right;
 
-            TextBox r1right = new TextBox();
-            TB(r1right, col12, row2, "/INHIBIT", Color.White);
+			TextBox r1right = new TextBox();
+			TB(r1right, col12, row2, "/INHIBIT", Color.White);
 
 
-            TextBox r2 = new TextBox();
-            r2text = "- - - / FL290";
+			TextBox r2 = new TextBox();
             TB(r2, col15, row4, r2text, Color.DeepPink);
 
-            TextBox r3 = new TextBox();
-            r3text = "- - - / FL200";
+			TextBox r3 = new TextBox();
             TB(r3, col15, row6, r3text, Color.DeepPink);
 
-            TextBox r4 = new TextBox();
-            r4text = "- - - / 12000";
+			TextBox r4 = new TextBox();
             TB(r4, col15, row8, r4text, Color.DeepPink);
 
-            TextBox r4Degree = new TextBox();
-            TB(r4Degree, col11, row7, "3.0°", Color.DeepPink);
+			TextBox r4Degree = new TextBox();
+			TB(r4Degree, col11, row7, "3.0°", Color.DeepPink);
 
-            TextBox r5 = new TextBox();
-            r5text = "- - - /  9000";
+			TextBox r5 = new TextBox();
             TB(r5, col15, row10, r5text, Color.DeepPink);
 
-            TextBox r5Degree = new TextBox();
-            TB(r5Degree, col11, row9, "1.7°", Color.DeepPink);
+			TextBox r5Degree = new TextBox();
+			TB(r5Degree, col11, row9, "1.7°", Color.DeepPink);
 
-            TextBox holdAt = new TextBox();
-            TB(holdAt, col8, row11, "HOLD AT");
-            holdAt.TextAlign = HorizontalAlignment.Center;
-            CenterMe(holdAt);
+			TextBox holdAt = new TextBox();
+			TB(holdAt, col8, row11, "HOLD AT");
+			holdAt.TextAlign = HorizontalAlignment.Center;
+			CenterMe(holdAt);
 
-            TextBox divider = new TextBox();
-            TB(divider, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
-            
-            TextBox r6 = new TextBox();
-            r6text = "PPOS";
+			TextBox divider = new TextBox();
+			TB(divider, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+			
+			TextBox r6 = new TextBox();
             TB(r6, col15, row12, r6text, Color.White);
 
-            TextBox r6right = new TextBox();
-            TB(r6right, col16, row12, ">", Color.White);
+			TextBox r6right = new TextBox();
+			TB(r6right, col16, row12, ">", Color.White);
 
-            TextBox l6b = new TextBox();
-            TB(l6b, col1, row13, "[");
+			TextBox l6b = new TextBox();
+			TB(l6b, col1, row13, "[");
 
-            TextBox r6b = new TextBox();
-            TB(r6b, col16, row13, "]");
-        }
+			TextBox r6b = new TextBox();
+			TB(r6b, col16, row13, "]");
+		}
 
 		#region Index Pages
 
 		private void IdxPage1()
 		{
-
-			PopulateNames("IdxPage1");
-
-
+            l1text = "< MCDU MENU";
+            l2text = "< STATUS";
+            l3text = "< POS INIT";
+            l4text = "< IRS CTL";
+            l5text = "< VORDME CTL";
+            l6text = "< GNSS CTL";
+            r1text = "GNSS1 POS";
+            r2text = "FREQUENCY";
+            r3text = "FIX";
+            r4text = "HOLD";
+            r5text = "PROG";
+            r6text = "SEC FPLN";
+			
+			
 			currentPageTitle = "index";
 			currentPageNumber = 1;
 
@@ -1167,51 +1440,51 @@ namespace CDU3000
 			TB( page, col14, row0, "1/3");
 
 			TextBox l1 = new TextBox();
-			TB( l1, col1, row2, l1text, Color.White);
+            TB( l1, col1, row2, l1text, Color.White);
 
 			TextBox l2 = new TextBox();
-			TB( l2, col1, row4, l2text, Color.White);
+            TB( l2, col1, row4, l2text, Color.White);
 
 			TextBox l3 = new TextBox();
-			TB( l3, col1, row6, l3text, Color.White);
+            TB( l3, col1, row6, l3text, Color.White);
 
 			TextBox l4 = new TextBox();
-			TB( l4, col1, row8, l4text, Color.White);
+            TB( l4, col1, row8, l4text, Color.White);
 
 			TextBox l4b = new TextBox();
 			TB( l4b, col2, row9, "FMS1", Color.White);
 
 			TextBox l5 = new TextBox();
-			TB( l5, col1, row10, l5text, Color.White);
+            TB( l5, col1, row10, l5text, Color.White);
 
 			TextBox l5b = new TextBox();
 			TB( l5b, col2, row11, "FMS1", Color.White);
 
 			TextBox l6 = new TextBox();
-			TB( l6, col1, row12, l6text, Color.White);
+            TB( l6, col1, row12, l6text, Color.White);
 
 			TextBox r1 = new TextBox();
-			TB( r1, col15, row2, r1text, Color.White);
+            TB( r1, col15, row2, r1text, Color.White);
 			r1.TextAlign = HorizontalAlignment.Right;
 
 			TextBox r2 = new TextBox();
-			TB( r2, col15, row4, r2text, Color.White);
+            TB( r2, col15, row4, r2text, Color.White);
 			r2.TextAlign = HorizontalAlignment.Right;
 
 			TextBox r3 = new TextBox();
-			TB( r3, col15, row6, r3text, Color.White);
+            TB( r3, col15, row6, r3text, Color.White);
 			r3.TextAlign = HorizontalAlignment.Right;
 
 			TextBox r4 = new TextBox();
-			TB( r4, col15, row8, r4text, Color.White);
+            TB( r4, col15, row8, r4text, Color.White);
 			r4.TextAlign = HorizontalAlignment.Right;
 
 			TextBox r5 = new TextBox();
-			TB( r5, col15, row10, r5text, Color.White);
+            TB( r5, col15, row10, r5text, Color.White);
 			r5.TextAlign = HorizontalAlignment.Right;
 
 			TextBox r6 = new TextBox();
-			TB( r6, col15, row12, r6text, Color.White);
+            TB( r6, col15, row12, r6text, Color.White);
 			r6.TextAlign = HorizontalAlignment.Right;
 
 			TextBox r1right = new TextBox();
@@ -1242,7 +1515,18 @@ namespace CDU3000
 
 		private void IdxPage2()
 		{
-			PopulateNames("IdxPage2");
+            l1text = "< FMS CTL";
+            l2text = "";
+            l3text = "";
+            l4text = "";
+            l5text = "";
+            l6text = "";
+            r1text = "ROUTE MENU";
+            r2text = "DATA BASE";
+            r3text = "DB DISK OPS";
+            r4text = "DEFAULTS";
+            r5text = "ARR DATA";
+            r6text = "SEARCH";
 
 
 			currentPageTitle = "index";
@@ -1311,8 +1595,18 @@ namespace CDU3000
 
 		private void IdxPage3()
 		{
-			PopulateNames("IdxPage3");
-
+            l1text = "";
+            l2text = "";
+            l3text = "";
+            l4text = "";
+            l5text = "";
+            l6text = "";
+            r1text = "MARK POINTS";
+            r2text = "";
+            r3text = "";
+            r4text = "";
+            r5text = "";
+            r6text = "";
 
 			currentPageTitle = "index";
 			currentPageNumber = 3;
@@ -1335,9 +1629,7 @@ namespace CDU3000
 			TextBox r1right = new TextBox();
 			TB( r1right, col16, row2, ">", Color.White);
 
-			TextBox r2right = new TextBox();
-			TB( r2right, col16, row4, ">", Color.White);
-
+			
 			TextBox l6b = new TextBox();
 			TB( l6b, col1, row13, "[");
 
@@ -1349,7 +1641,18 @@ namespace CDU3000
 		
 		private void IRSctlPage()
 		{
-			PopulateNames("IRS CTL");
+            l1text = "";
+            l2text = "";
+            l3text = "";
+            l4text = "";
+            l5text = "";
+            l6text = "< INDEX";
+            r1text = "";
+            r2text = "";
+            r3text = "";
+            r4text = "";
+            r5text = "";
+            r6text = "";
 
 			currentPageTitle = "FMS1 IRS CONTROL"; //page title and number used for navigating
 			currentPageNumber = 1;
@@ -1392,8 +1695,20 @@ namespace CDU3000
 
 		private void MCDU()
 		{
-			PopulateNames("MCDU");
 
+            l1text = "< FMS 1";
+            l2text = "";
+            l3text = "< DBU";
+            l4text = "< MISSION";
+            l5text = "";
+            l6text = "";
+            r1text = "GPS 1 POS";
+            r2text = "";
+            r3text = "";
+            r4text = "";
+            r5text = "";
+            r6text = "";
+			
 			currentPageTitle = "mcdu";
 			currentPageNumber = 1;
 
@@ -1427,7 +1742,18 @@ namespace CDU3000
 
 		private void NonPrecisionApprRaimPage()
 		{
-			PopulateNames("NonPrecisionApprRaimPage");
+            l1text = "";
+            l2text = "";
+            l3text = "";
+            l4text = "";
+            l5text = "";
+            l6text = "< INDEX";
+            r1text = "";
+            r2text = "";
+            r3text = "";
+            r4text = "";
+            r5text = "";
+            r6text = "GNSS CTL";
 
 			currentPageTitle = "NON PRECISION"; //page title and number used for navigating
 			currentPageNumber = 1;
@@ -1488,12 +1814,122 @@ namespace CDU3000
 			TB( r6b, col16, row13, "]");
 		}
 
+        private void PilotRouteList()
+        {
+            l1text = "< KCID : KMKC";
+            l2text = "< KICT : KSTL";
+            l3text = "< KCLT : KBNA";
+            l4text = "";
+            l5text = "< SEC FPLN";
+            l6text = "< - - - - - - - - -";
+            r1text = "KIAH : KGPT";
+            r2text = "";
+            r3text = "";
+            r4text = "FROM XSIDE";
+            r5text = "ROUTE MENU";
+            r6text = "- - - - - - - - -";
+
+            currentPageTitle = "PILOT ROUTE LIST"; //page title and number used for navigating
+            currentPageNumber = 1;
+
+            TextBox title = new TextBox();//displayed top center of screen
+            TB(title, col7, row0, currentPageTitle);
+
+            TextBox page = new TextBox();
+            TB(page, col14, row0, currentPageNumber + "/3");
+
+            TextBox l1t = new TextBox();
+            TB(l1t, col2, row1, "LOAD PLAN");
+
+            TextBox l1 = new TextBox();
+            TB(l1, col1, row2, l1text, Color.White);
+
+            TextBox l2 = new TextBox();
+            TB(l2, col1, row4, l2text, Color.White);
+
+            TextBox l3 = new TextBox();
+            TB(l3, col1, row6, l3text, Color.White);
+
+            TextBox l4 = new TextBox();
+            TB(l4, col1, row8, l4text, Color.White);
+
+            TextBox l5 = new TextBox();
+            TB(l5, col1, row10, l5text, Color.White);
+
+            TextBox r1t = new TextBox();
+            TB(r1t, col15, row1, "LOAD PLAN");
+
+            TextBox r1 = new TextBox();
+            TB(r1, col15, row2, r1text, Color.White);
+
+            TextBox r1r = new TextBox();
+            TB(r1r, col16, row2, ">", Color.White);
+
+            TextBox r2 = new TextBox();
+            TB(r2, col15, row4, r2text, Color.White);
+
+            TextBox r3 = new TextBox();
+            TB(r3, col15, row6, r3text, Color.White);
+
+            TextBox r4t = new TextBox();
+            TB(r4t, col15, row7, "RTE TRANSFER", Color.White);
+
+            TextBox r4 = new TextBox();
+            TB(r4, col15, row8, r4text, Color.White);
+
+            TextBox r4r = new TextBox();
+            TB(r4r, col16, row8, ">", Color.White);
+
+            TextBox r5 = new TextBox();
+            TB(r5, col15, row10, r5text, Color.White);
+
+            TextBox r5r = new TextBox();
+            TB(r5r, col16, row10, ">", Color.White);
+
+            TextBox r6t = new TextBox();
+            TB(r6t, col15, row11, "SEC STORE");
+
+            TextBox r6 = new TextBox();
+            TB(r6, col15, row12, r6text, Color.White);
+
+            TextBox r6r = new TextBox();
+            TB(r6r, col16, row12, ">", Color.White);
+
+
+            TextBox l4b = new TextBox();
+            TB(l4b, col1, row9, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+            TextBox l6t = new TextBox();
+            TB(l6t, col2, row11, "ACT STORE");
+
+            TextBox l6 = new TextBox();
+            TB(l6, col1, row12, l6text, Color.White);
+
+            TextBox l6b = new TextBox();
+            TB(l6b, col1, row13, "[");
+
+
+            TextBox r6b = new TextBox();
+            TB(r6b, col16, row13, "]");
+        }
+
 		#region  PosInit Pages
 
 		private void PosInitPage1()
 		{
 
-			PopulateNames("PosInitPage1");
+            l1text = "";
+            l2text = "";
+            l3text = "";
+            l4text = "";
+            l5text = "";
+            l6text = "< INDEX";
+            r1text = "";
+            r2text = "";
+            r3text = "";
+            r4text = "";
+            r5text = "";
+            r6text = "FPLN";
 
 			currentPageTitle = "posinit";
 			currentPageNumber = 1;
@@ -1560,7 +1996,18 @@ namespace CDU3000
 
 		private void PosInitPage2()
 		{
-			PopulateNames("PosInitPage2");
+            l1text = "";
+            l2text = "";
+            l3text = "";
+            l4text = "";
+            l5text = "< NAVAID";
+            l6text = "< INDEX";
+            r1text = "";
+            r2text = "";
+            r3text = "";
+            r4text = "";
+            r5text = "";
+            r6text = "FPLN";
 
 			currentPageTitle = "posinit";
 			currentPageNumber = 2;
@@ -1644,123 +2091,184 @@ namespace CDU3000
 
 		#endregion
 
-        private void ProgressPage1()
-        {
-            currentPageTitle = "progress";
-            currentPageNumber = 1;
-
-            TextBox title = new TextBox();
-            TB(title, col2, row0, "PROGRESS");
-            CenterMe(title);
-
-            TextBox page = new TextBox();
-            TB(page, col14, row0, "1/2");
-
-            TextBox l1title = new TextBox();
-            TB(l1title, col1, row1, " LAST");
-
-            TextBox dist = new TextBox();
-            TB(dist, col5, row1, "DIST");
-
-            TextBox ete = new TextBox();
-            TB(ete, col9, row1, "ETE");
-
-            TextBox fuel = new TextBox();
-            TB(fuel, col15, row1, "FUEL-LB");
-
-
-            TextBox l1 = new TextBox();
+		private void ProgressPage1()
+		{
             l1text = "PEABO";
-            TB(l1, col1, row2, l1text);
-
-            TextBox l2title = new TextBox();
-            TB(l2title, col1, row3, " TO");
-
-            TextBox l2 = new TextBox();
             l2text = "BUM";
+            l3text = "TRAKE";
+            l4text = "KSTL";
+            l5text = "KBLV";
+			
+			currentPageTitle = "progress";
+			currentPageNumber = 1;
+
+			TextBox title = new TextBox();
+			TB(title, col2, row0, "PROGRESS");
+			CenterMe(title);
+
+			TextBox page = new TextBox();
+			TB(page, col14, row0, "1/2");
+
+			TextBox l1title = new TextBox();
+			TB(l1title, col1, row1, " LAST");
+
+			TextBox dist = new TextBox();
+			TB(dist, col5, row1, "DIST");
+
+			TextBox ete = new TextBox();
+			TB(ete, col9, row1, "ETE");
+
+			TextBox fuel = new TextBox();
+			TB(fuel, col15, row1, "FUEL-LB");
+
+
+			TextBox l1 = new TextBox();
+			TB(l1, col1, row2, l1text);
+
+			TextBox l2title = new TextBox();
+			TB(l2title, col1, row3, " TO");
+
+			TextBox l2 = new TextBox();
             TB(l2, col1, row4, l2text, Color.Green);
 
-            TextBox l3title = new TextBox();
-            TB(l3title, col1, row5, " NEXT");
+			TextBox l3title = new TextBox();
+			TB(l3title, col1, row5, " NEXT");
 
-            TextBox l3 = new TextBox();
-            l3text = "TRAKE";
+			TextBox l3 = new TextBox();
             TB(l3, col1, row6, l3text, Color.White);
 
-            TextBox l4title = new TextBox();
-            TB(l4title, col1, row7, " DEST");
+			TextBox l4title = new TextBox();
+			TB(l4title, col1, row7, " DEST");
 
-            TextBox l4 = new TextBox();
-            l4text = "KSTL";
+			TextBox l4 = new TextBox();
             TB(l4, col1, row8, l4text, Color.White);
 
-            TextBox l5title = new TextBox();
-            TB(l5title, col1, row9, " ALTN");
+			TextBox l5title = new TextBox();
+			TB(l5title, col1, row9, " ALTN");
 
-            TextBox l5 = new TextBox();
-            l5text = "KBLV";
+			TextBox l5 = new TextBox();
             TB(l5, col1, row10, l5text, Color.White);
 
-            TextBox l6title = new TextBox();
-            TB(l6title, col1, row11, " NAVIGATION");
+			TextBox l6title = new TextBox();
+			TB(l6title, col1, row11, " NAVIGATION");
+
+			TextBox l6 = new TextBox();
+			TB(l6, col1, row12, "GNSS1", Color.Green);
+			CenterMe(l6);
+
+			TextBox l1dist = new TextBox();
+			TB(l1dist, col5, row2, "53.2");
+			
+			TextBox l2dist = new TextBox();
+			TB(l2dist, col5, row4, "83.4", Color.Green);
+
+			TextBox l3dist = new TextBox();
+			TB(l3dist, col5, row6, "214",Color.White);
+
+			TextBox l4dist = new TextBox();
+			TB(l4dist, col5, row8, "299", Color.White);
+
+			TextBox l5dist = new TextBox();
+			TB(l5dist, col5, row10, "326", Color.White);
+
+
+			TextBox l2ete = new TextBox();
+			TB(l2ete, col9, row4, "0:11", Color.Green);
+
+			TextBox l3ete = new TextBox();
+			TB(l3ete, col9, row6, "0:28", Color.White);
+
+			TextBox l4ete = new TextBox();
+			TB(l4ete, col9, row8, "0:40", Color.White);
+
+			TextBox l5ete = new TextBox();
+			TB(l5ete, col9, row10, "0:42", Color.White);
+
+
+
+			TextBox l1fuel = new TextBox();
+			TB(l1fuel, col15, row2, "2280");
+
+			TextBox l2fuel = new TextBox();
+			TB(l2fuel, col15, row4, "1710",Color.Green);
+
+			TextBox l3fuel = new TextBox();
+			TB(l3fuel, col15, row6, "1140", Color.White);
+
+			TextBox l4fuel = new TextBox();
+			TB(l4fuel, col15, row8, "730", Color.White);
+
+			TextBox l5fuel = new TextBox();
+			TB(l5fuel, col15, row10, "570", Color.White);
+
+
+			
+
+			
+
+
+			TextBox l6b = new TextBox();
+			TB(l6b, col1, row13, "[");
+
+			TextBox r6b = new TextBox();
+			TB(r6b, col16, row13, "]");
+		}
+
+        private void RoutePage1()
+        {
+            l1text = "< PILOT ROUTE LIST";
+            l2text = "< DISK ROUTE LIST";
+            l3text = "< FPLN RECALL";
+            l4text = "< FPLN WIND";
+            l5text = "";
+            l6text = "< SEC FPLN";
+            r1text = "";
+            r2text = "";
+            r3text = "";
+            r4text = "";
+            r5text = "";
+            r6text = "";
+
+            currentPageTitle = "ROUTE MENU"; //page title and number used for navigating
+            currentPageNumber = 1;
+
+            TextBox title = new TextBox();//displayed top center of screen
+            TB(title, col7, row0, currentPageTitle);
+
+            TextBox l1 = new TextBox();
+            TB(l1, col1, row2, l1text, Color.White);
+
+            TextBox l2 = new TextBox();
+            TB(l2, col1, row4, l2text, Color.White);
+
+            TextBox l3 = new TextBox();
+            TB(l3, col1, row6, l3text, Color.White);
+
+            TextBox l4 = new TextBox();
+            TB(l4, col1, row8, l4text, Color.White);
+
+            TextBox r1 = new TextBox();
+            TB(r1, col15, row2, r1text, Color.White);
+
+            TextBox r2 = new TextBox();
+            TB(r2, col15, row4, r2text, Color.White);
+
+            TextBox r3 = new TextBox();
+            TB(r3, col15, row6, r3text, Color.White);
+
+            TextBox r4 = new TextBox();
+            TB(r4, col15, row8, r4text, Color.White);
+
+            
+            TextBox l5b = new TextBox();
+            TB(l5b, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
 
             TextBox l6 = new TextBox();
-            TB(l6, col1, row12, "GNSS1", Color.Green);
-            CenterMe(l6);
-
-            TextBox l1dist = new TextBox();
-            TB(l1dist, col5, row2, "53.2");
-            
-            TextBox l2dist = new TextBox();
-            TB(l2dist, col5, row4, "83.4", Color.Green);
-
-            TextBox l3dist = new TextBox();
-            TB(l3dist, col5, row6, "214",Color.White);
-
-            TextBox l4dist = new TextBox();
-            TB(l4dist, col5, row8, "299", Color.White);
-
-            TextBox l5dist = new TextBox();
-            TB(l5dist, col5, row10, "326", Color.White);
-
-
-            TextBox l2ete = new TextBox();
-            TB(l2ete, col9, row4, "0:11", Color.Green);
-
-            TextBox l3ete = new TextBox();
-            TB(l3ete, col9, row6, "0:28", Color.White);
-
-            TextBox l4ete = new TextBox();
-            TB(l4ete, col9, row8, "0:40", Color.White);
-
-            TextBox l5ete = new TextBox();
-            TB(l5ete, col9, row10, "0:42", Color.White);
-
-
-
-            TextBox l1fuel = new TextBox();
-            TB(l1fuel, col15, row2, "2280");
-
-            TextBox l2fuel = new TextBox();
-            TB(l2fuel, col15, row4, "1710",Color.Green);
-
-            TextBox l3fuel = new TextBox();
-            TB(l3fuel, col15, row6, "1140", Color.White);
-
-            TextBox l4fuel = new TextBox();
-            TB(l4fuel, col15, row8, "730", Color.White);
-
-            TextBox l5fuel = new TextBox();
-            TB(l5fuel, col15, row10, "570", Color.White);
-
-
-            
-
-            
-
+            TB(l6, col1, row12, l6text, Color.White);
 
             TextBox l6b = new TextBox();
             TB(l6b, col1, row13, "[");
+
 
             TextBox r6b = new TextBox();
             TB(r6b, col16, row13, "]");
@@ -1768,7 +2276,18 @@ namespace CDU3000
 
 		private void SBASpage()
 		{
-			PopulateNames("SBASpage");
+            l1text = "WASS   <ENABLED>";
+            l2text = "EGNOS <ENABLED>";
+            l3text = "MSAS   <ENABLED>";
+            l4text = "";
+            l5text = "";
+            l6text = "< INDEX";
+            r1text = "";
+            r2text = "";
+            r3text = "";
+            r4text = "";
+            r5text = "";
+            r6text = "GNSS CTL";
 
 			currentPageTitle = "SBAS"; //page title and number used for navigating
 			currentPageNumber = 1;
@@ -1780,16 +2299,13 @@ namespace CDU3000
 			TB( subtitle, col1, row1, "SERVICE PROVIDERS");
 			CenterMe(subtitle);
 
-			TextBox l1 = new TextBox();
-			l1text = "WASS   <ENABLED>";
+			TextBox l1 = new TextBox();			
 			TB( l1, col1, row2, l1text, Color.Green);
 
-			TextBox l2 = new TextBox();
-			l2text = "EGNOS <ENABLED>";
+			TextBox l2 = new TextBox();			
 			TB( l2, col1, row4, l2text, Color.Green);
 
-			TextBox l3 = new TextBox();
-			l3text = "MSAS   <ENABLED>";
+			TextBox l3 = new TextBox();			
 			TB( l3, col1, row6, l3text, Color.Green);
 
 			TextBox l6 = new TextBox();
@@ -1811,108 +2327,119 @@ namespace CDU3000
 			TB( r6b, col16, row13, "]");
 		}
 
-        private void SECFPLNpage1()
-        {
-
-            l2text = "LINDYHOP";
-
-
-            PopulateNames("SECFPLNpage1");
-
-            currentPageTitle = "SEC FPLN"; //page title and number used for navigating
-            currentPageNumber = 1;
-
-            TextBox title = new TextBox();//displayed top center of screen
-            TB(title, col2, row0, currentPageTitle+" "+l2text);
-
-            TextBox page = new TextBox();
-            TB(page, col14, row0, "1/3");
-
-            TextBox origin = new TextBox();
-            TB(origin, col2, row1, "ORIGIN");
-
-            TextBox dist = new TextBox();
-            TB(dist, col8, row1, "DIST");
-
-            TextBox l1dist = new TextBox();
-            TB(l1dist, col8, row2, "249", Color.White);
-
-            TextBox dest = new TextBox ();
-            TB(dest, col15, row1, "DEST");
-            
-
-            TextBox l1 = new TextBox();
+		private void SECFPLNpage1()
+		{
             l1text = "KSTL";
-            TB(l1, col1, row2, l1text, Color.White);
-
-            TextBox l2title = new TextBox();
-            TB(l2title, col2, row3, "ROUTE");
-
-            TextBox l2 = new TextBox();
-            
-            TB(l2, col1, row4, l2text, Color.White);
-
-            TextBox l4title = new TextBox();
-            TB(l4title, col2, row7, "VIA");
-
-            TextBox l4 = new TextBox();
+			l2text = "LINDYHOP";            
             l4text = "CARDS6.CAP";
+            l5text = "< ROUTE MENU";
+            l6text = "< SEC LEGS";
+            r1text = "KCID";
+            r2text = "KDVN";
+            r3text = "RW12R";
+            r5text = "ACTIVATE";
+			
+
+			
+
+			currentPageTitle = "SEC FPLN"; //page title and number used for navigating
+			currentPageNumber = 1;
+
+			TextBox title = new TextBox();//displayed top center of screen
+			TB(title, col2, row0, currentPageTitle+" "+l2text);
+
+			TextBox page = new TextBox();
+			TB(page, col14, row0, "1/2");
+
+			TextBox origin = new TextBox();
+			TB(origin, col2, row1, "ORIGIN");
+
+			TextBox dist = new TextBox();
+			TB(dist, col8, row1, "DIST");
+
+			TextBox l1dist = new TextBox();
+			TB(l1dist, col8, row2, "249", Color.White);
+
+			TextBox dest = new TextBox ();
+			TB(dest, col15, row1, "DEST");
+			
+
+			TextBox l1 = new TextBox();
+			TB(l1, col1, row2, l1text, Color.White);
+
+			TextBox l2title = new TextBox();
+			TB(l2title, col2, row3, "ROUTE");
+
+			TextBox l2 = new TextBox();
+			
+			TB(l2, col1, row4, l2text, Color.White);
+
+			TextBox l4title = new TextBox();
+			TB(l4title, col2, row7, "VIA");
+
+			TextBox l4 = new TextBox();
             TB(l4, col1, row8, l4text, Color.White);
 
-            TextBox l6 = new TextBox();
-            l6text = "< SEC LEGS";
+			TextBox l6 = new TextBox();
             TB(l6, col1, row12, l6text, Color.White);
 
-            TextBox r1 = new TextBox();
-            l1text = "KCID";
+			TextBox r1 = new TextBox();
             TB(r1, col15, row2, l1text, Color.White);
 
-            TextBox altn = new TextBox();
-            TB(altn, col15, row3, "ALTN");
+			TextBox altn = new TextBox();
+			TB(altn, col15, row3, "ALTN");
 
-            TextBox r2 = new TextBox();
-            l2text = "KDVN";
+			TextBox r2 = new TextBox();
             TB(r2, col15, row4, l2text, Color.White);
 
-            TextBox origRwy = new TextBox();
-            TB(origRwy, col15, row5, "ORIG RWY");
+			TextBox origRwy = new TextBox();
+			TB(origRwy, col15, row5, "ORIG RWY");
 
-            TextBox r3 = new TextBox();
-            l3text = "RW12R";
+			TextBox r3 = new TextBox();
             TB(r3, col15, row6, l3text, Color.White);
 
-            TextBox to = new TextBox();
-            TB(to, col15, row7, "TO");
+			TextBox to = new TextBox();
+			TB(to, col15, row7, "TO");
 
-            TextBox r4 = new TextBox();
-            r4text = "CAP";
-            TB(r4, col15, row8, r4text, Color.Green);
+			TextBox r4 = new TextBox();
+			r4text = "CAP";
+			TB(r4, col15, row8, r4text, Color.Green);
 
             TextBox r5 = new TextBox();
-            r5text = "ACTIVATE";
             TB(r5, col15, row10, r5text, Color.White);
 
             TextBox r5right = new TextBox();
             TB(r5right, col16, row10, ">", Color.White);
 
-            TextBox l5 = new TextBox();
-            l5text = "< ROUTE MENU";
+			
+			TextBox l5 = new TextBox();
             TB(l5, col1, row10, l5text, Color.White);
 
-            TextBox l4b = new TextBox();
-            TB(l4b, col1, row9, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+			TextBox l4b = new TextBox();
+			TB(l4b, col1, row9, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
 
-            TextBox l6b = new TextBox();
-            TB(l6b, col1, row13, "[");
+			TextBox l6b = new TextBox();
+			TB(l6b, col1, row13, "[");
 
-            TextBox r6b = new TextBox();
-            TB(r6b, col16, row13, "]");
-        }
+			TextBox r6b = new TextBox();
+			TB(r6b, col16, row13, "]");
+		}
 
 		private void StatusPage()
 		{
 
-			PopulateNames("StatusPage");
+            l1text = "";
+            l2text = "";
+            l3text = "";
+            l4text = "";
+            l5text = "";
+            l6text = "< INDEX";
+            r1text = "";
+            r2text = "";
+            r3text = "";
+            r4text = "";
+            r5text = "";
+            r6text = "POS INIT";
 
 			currentPageTitle = "status"; //page title and number used for navigating
 			currentPageNumber = 1;
@@ -1986,6 +2513,17 @@ namespace CDU3000
 
 		private void TunPage1()
 		{
+            l1text = "122.875";
+            l2text = "134.250";
+            l3text = "113.80/ICT";
+            l4text = "HOLD";
+            l5text = "3144";
+            l6text = "412.5";
+            r1text = "121.700";
+            r2text = "123.875";
+            r3text = "110.30";
+            r4text = " HOLD";
+			
 			currentPageTitle = "tune";
 			currentPageNumber = 1;
 
@@ -2002,29 +2540,25 @@ namespace CDU3000
 			TB( page, col14, row0, "1/2");
 
 			TextBox l1 = new TextBox();
-			l1text = "122.875";
 			TB( l1, col1, row2, l1text, Color.Green);
 
 			TextBox l1b = new TextBox();
 			TB( l1b, col2, row3, "RECALL", Color.White);
 
 			TextBox l2 = new TextBox();
-			l2text = "134.250";
-			TB( l2, col1, row4, l2text, Color.White);
+            TB( l2, col1, row4, l2text, Color.White);
 
 			TextBox l2b = new TextBox();
 			TB( l2b, col2, row5, "NAV1", Color.White);
 
 			TextBox l3 = new TextBox();
-			l3text = "113.80/ICT";
-			TB( l3, col1, row6, l3text, Color.Green);
+            TB( l3, col1, row6, l3text, Color.Green);
 
 			TextBox l3b = new TextBox();
 			TB( l3b, col2, row7, "DME1", Color.White);
 
 			TextBox l4 = new TextBox();
-			l4text = "HOLD";
-			TB( l4, col1, row8, l4text);
+            TB( l4, col1, row8, l4text);
 
 			TextBox l4right = new TextBox();
 			TB( l4right, col4, row8, "116.80", Color.Green);
@@ -2033,20 +2567,17 @@ namespace CDU3000
 			TB( l4b, col2, row9, "ATC1", Color.White);
 
 			TextBox l5 = new TextBox();
-			l5text = "3144";
-			TB( l5, col1, row10, l5text, Color.Green);
+            TB( l5, col1, row10, l5text, Color.Green);
 
 
 			TextBox l5b = new TextBox();
 			TB( l5b, col2, row11, "ADF", Color.White);
 
 			TextBox l6 = new TextBox();
-			l6text = "412.5";
-			TB( l6, col1, row12, l6text, Color.Green);
+            TB( l6, col1, row12, l6text, Color.Green);
 
 			TextBox r1 = new TextBox();
-			r1text = "121.700";
-			TB( r1, col15, row2, r1text, Color.Green);
+            TB( r1, col15, row2, r1text, Color.Green);
 			//r1.TextAlign = HorizontalAlignment.Left;
 
 
@@ -2054,8 +2585,7 @@ namespace CDU3000
 			TB( r1b, col12, row3, "RECALL", Color.White);
 
 			TextBox r2 = new TextBox();
-			r2text = "123.875";
-			TB( r2, col15, row4, r2text, Color.White);
+            TB( r2, col15, row4, r2text, Color.White);
 			//r2.TextAlign = HorizontalAlignment.Left;
 
 			TextBox r2b = new TextBox();
@@ -2065,16 +2595,14 @@ namespace CDU3000
 			TB( r2bright, col13, row5, " NAV2", Color.White);
 
 			TextBox r3 = new TextBox();
-			r3text = "110.30";
-			TB( r3, col15, row6, r3text, Color.Green);
+            TB( r3, col15, row6, r3text, Color.Green);
 			//r3.TextAlign = HorizontalAlignment.Right;
 
 			TextBox r3b = new TextBox();
 			TB( r3b, col13, row7, " DME2", Color.White);
 
 			TextBox r4 = new TextBox();
-			r4text = " HOLD";
-			TB( r4, col15, row8, r4text, Color.White);
+            TB( r4, col15, row8, r4text, Color.White);
 			//r4.TextAlign = HorizontalAlignment.Right;
 
 
@@ -2087,7 +2615,18 @@ namespace CDU3000
 
 		private void VorDmeCtlPage()
 		{
-			PopulateNames("VORDME CTL");
+            l1text = "";
+            l2text = "";
+            l3text = "";
+            l4text = "";
+            l5text = "";
+            l6text = "< INDEX";
+            r1text = "";
+            r2text = "";
+            r3text = "";
+            r4text = "";
+            r5text = "";
+            r6text = "";
 
 			currentPageTitle = "VORDME CTL"; //page title and number used for navigating
 			currentPageNumber = 1;
@@ -2169,6 +2708,70 @@ namespace CDU3000
 			TB( r6b, col16, row13, "]");
 		}
 
+        private void ZeroizePage()
+        {
+            l1text = "> ZERO ALL";
+            l2text = "> EGI KEYS";
+            l3text = "> DATA CARDS";
+            l4text = "";
+            l5text = "";
+            l6text = "";
+            r1text = "";
+            r2text = "COM PRESETS";
+            r3text = "COM KEYS";
+            r4text = "";
+            r5text = "";
+            r6text = "RETURN";
+
+            currentPageTitle = "ZEROIZE"; //page title and number used for navigating
+            currentPageNumber = 1;
+
+            TextBox title = new TextBox();//displayed top center of screen
+            TB(title, col7, row0, "ZEROIZE");
+
+            TextBox l1 = new TextBox();
+            TB(l1, col1, row2, l1text, Color.White);
+
+            TextBox l2 = new TextBox();
+            TB(l2, col1, row4, l2text, Color.White);
+
+            TextBox l3 = new TextBox();
+            TB(l3, col1, row6, l3text, Color.White);
+
+            TextBox l4 = new TextBox();
+            TB(l4, col1, row8, l4text, Color.White);
+
+            TextBox r1 = new TextBox();
+            TB(r1, col15, row2, r1text, Color.White);
+
+            TextBox r2 = new TextBox();
+            TB(r2, col15, row4, r2text, Color.White);
+
+            TextBox r3 = new TextBox();
+            TB(r3, col15, row6, r3text, Color.White);
+
+            TextBox r4 = new TextBox();
+            TB(r4, col15, row8, r4text, Color.White);
+
+            TextBox l5title = new TextBox();
+            TB(l5title, col1, row9, "VOR - USAGE");
+
+            
+
+            TextBox l5b = new TextBox();
+            TB(l5b, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+            TextBox l6 = new TextBox();
+            TB(l6, col1, row12, l6text, Color.White);
+
+            TextBox l6b = new TextBox();
+            TB(l6b, col1, row13, "[");
+
+
+            TextBox r6b = new TextBox();
+            TB(r6b, col16, row13, "]");
+        }   //untested
+
 		
 
 
@@ -2211,7 +2814,7 @@ namespace CDU3000
 			TB( l6, col1, row12, l6text, Color.White);
 
 			TextBox r1 = new TextBox();
-			r1text = "GPS SA/AS";
+			r1text = "EGI SA/AS";
 			TB( r1, col15, row2, r1text, Color.White);
 
 			TextBox r2 = new TextBox();
@@ -2955,198 +3558,237 @@ namespace CDU3000
 		#region Letters
 		private void btnA_Click(object sender, EventArgs e)
 		{
+            btnPressed = "A";
 			Scratch("A");
 		}
 
 		private void btnB_Click(object sender, EventArgs e)
 		{
+            btnPressed = "B";
 			Scratch("B");
 		}
 
 		private void btnC_Click(object sender, EventArgs e)
 		{
+            btnPressed = "C";
 			Scratch("C");
 		}
 
 		private void btnD_Click(object sender, EventArgs e)
-		{
+        {
+            btnPressed = "D";
 			Scratch("D");
 		}
 
 		private void btnE_Click(object sender, EventArgs e)
-		{
+        {
+            btnPressed = "E";
 			Scratch("E");
 		}
 
 		private void btnF_Click(object sender, EventArgs e)
-		{
+        {
+            btnPressed = "F";
 			Scratch("F");
 		}
 
 		private void btnG_Click(object sender, EventArgs e)
-		{
+        {
+            btnPressed = "G";
 			Scratch("G");
 		}
 
 		private void btnH_Click(object sender, EventArgs e)
-		{
+        {
+            btnPressed = "H";
 			Scratch("H");
 		}
 
 		private void btnI_Click(object sender, EventArgs e)
-		{
+        {
+            btnPressed = "I";
 			Scratch("I");
 		}
 
 		private void btnJ_Click(object sender, EventArgs e)
-		{
+        {
+            btnPressed = "J";
 			Scratch("J");
 		}
 
 		private void btnK_Click(object sender, EventArgs e)
-		{
+        {
+            btnPressed = "K";
 			Scratch("K");
 		}
 
 		private void btnL_Click(object sender, EventArgs e)
-		{
+        {
+            btnPressed = "L";
 			Scratch("L");
 		}
 
 		private void btnM_Click(object sender, EventArgs e)
-		{
+        {
+            btnPressed = "M";
 			Scratch("M");
 		}
 
 		private void btnN_Click(object sender, EventArgs e)
-		{
+        {
+            btnPressed = "N";
 			Scratch("N");
 		}
 
 		private void btnO_Click(object sender, EventArgs e)
-		{
+        {
+            btnPressed = "O";
 			Scratch("O");
 		}
 
 		private void btnP_Click(object sender, EventArgs e)
-		{
+        {
+            btnPressed = "P";
 			Scratch("P");
 		}
 
 		private void btnQ_Click(object sender, EventArgs e)
-		{
+        {
+            btnPressed = "Q";
 			Scratch("Q");
 		}
 
 		private void btnR_Click(object sender, EventArgs e)
-		{
+        {
+            btnPressed = "R";
 			Scratch("R");
 		}
 
 		private void btnS_Click(object sender, EventArgs e)
-		{
+        {
+            btnPressed = "S";
 			Scratch("S");
 		}
 
 		private void btnT_Click(object sender, EventArgs e)
-		{
+        {
+            btnPressed = "T";
 			Scratch("T");
 		}
 
 		private void btnU_Click(object sender, EventArgs e)
-		{
+        {
+            btnPressed = "U";
 			Scratch("U");
 		}
 
 		private void btnV_Click(object sender, EventArgs e)
-		{
+        {
+            btnPressed = "V";
 			Scratch("V");
 		}
 
 		private void btnW_Click(object sender, EventArgs e)
-		{
+        {
+            btnPressed = "W";
 			Scratch("W");
 		}
 
 		private void btnX_Click(object sender, EventArgs e)
-		{
+        {
+            btnPressed = "X";
 			Scratch("X");
 		}
 
 		private void btnY_Click(object sender, EventArgs e)
-		{
+        {
+            btnPressed = "Y";
 			Scratch("Y");
 		}
 
 		private void btnZ_Click(object sender, EventArgs e)
-		{
+        {
+            btnPressed = "Z";
 			Scratch("Z");
 		}
 
 		private void btnSP_Click(object sender, EventArgs e)
 		{
-
+            btnPressed = "  ";
+            Scratch("  ");
 		}
 
 		private void btnSlash_Click(object sender, EventArgs e)
-		{
+        {
+            btnPressed = "/";
 			Scratch("/");
 		} 
 		#endregion
 
 		#region Numbers
 		private void btn1_Click(object sender, EventArgs e)
-		{
+        {
+            btnPressed = "1";
 			Scratch("1");
 		}
 
 		private void btn2_Click(object sender, EventArgs e)
-		{
+        {
+            btnPressed = "2";
 			Scratch("2");
 		}
 
 		private void btn3_Click(object sender, EventArgs e)
-		{
+        {
+            btnPressed = "3";
 			Scratch("3");
 		}
 
 		private void btn4_Click(object sender, EventArgs e)
-		{
+        {
+            btnPressed = "4";
 			Scratch("4");
 		}
 
 		private void btn5_Click(object sender, EventArgs e)
-		{
+        {
+            btnPressed = "5";
 			Scratch("5");
 		}
 
 		private void btn6_Click(object sender, EventArgs e)
-		{
+        {
+            btnPressed = "6";
 			Scratch("6");
 		}
 
 		private void btn7_Click(object sender, EventArgs e)
-		{
+        {
+            btnPressed = "7";
 			Scratch("7");
 		}
 
 		private void btn8_Click(object sender, EventArgs e)
-		{
+        {
+            btnPressed = "8";
 			Scratch("8");
 		}
 
 		private void btn9_Click(object sender, EventArgs e)
-		{
+        {
+            btnPressed = "9";
 			Scratch("9");
 		}
 
 		private void btnZero_Click(object sender, EventArgs e)
-		{
+        {
+            btnPressed = "0";
 			Scratch("0");
 		}
 
 		private void btnPeriod_Click(object sender, EventArgs e)
-		{
+        {
+            btnPressed = ".";
 			Scratch(".");
 		}
 
@@ -3175,294 +3817,7 @@ namespace CDU3000
 
 
 
-		private void PopulateNames(string pageName)
-		{
-			switch(pageName)
-			{
-				#region FMS1 GNSS Control Pages
-				case "GNSS CTL":
-					l1text = "";
-					l2text = "";
-					l3text = "";
-					l4text = "";
-					l5text = "< NPA RAIM";
-					l6text = "< INDEX";
-					r1text = "STATUS";
-					r2text = "STATUS";
-					r3text = "";
-					r4text = "";
-					r5text = "SELECT SBAS";
-					r6text = "";
-					break; 
-				#endregion
-
-				#region FMS1 GNSS1 STATUS Pages
-				case "GNSS1 STATUS":
-					l1text = "";
-					l2text = "";
-					l3text = "";
-					l4text = "";
-					l5text = "";
-					l6text = "< INDEX";
-					r1text = "";
-					r2text = "";
-					r3text = "";
-					r4text = "";
-					r5text = "";
-					r6text = "GNSS CTL";
-					break;
-				#endregion
-
-				#region GNSS1statusPage2
-				case "GNSS1statusPage2":
-					l1text = "";
-					l2text = "";
-					l3text = "";
-					l4text = "";
-					l5text = "";
-					l6text = "< INDEX";
-					r1text = "";
-					r2text = "";
-					r3text = "";
-					r4text = "";
-					r5text = "";
-					r6text = "GNSS CTL";
-					break;
-				#endregion
-
-				#region FmsControlPage
-				case "FmsControlPage":
-					l1text = "";
-					l2text = "";
-					l3text = "";
-					l4text = "";
-					l5text = "";
-					l6text = "< INDEX";
-					r1text = "";
-					r2text = "";
-					r3text = "";
-					r4text = "";
-					r5text = "";
-					r6text = "";
-					break;
-				#endregion
-
-				#region FMS1 GNSS2 STATUS Pages
-				case "GNSS2 STATUS":
-					l1text = "";
-					l2text = "";
-					l3text = "";
-					l4text = "";
-					l5text = "";
-					l6text = "< INDEX";
-					r1text = "";
-					r2text = "";
-					r3text = "";
-					r4text = "";
-					r5text = "";
-					r6text = "GNSS CTL";
-					break;
-				#endregion
-
-				#region FMS1 IRS Control pages
-				case "IRS CTL":
-					l1text = "";
-					l2text = "";
-					l3text = "";
-					l4text = "";
-					l5text = "";
-					l6text = "< INDEX";
-					r1text = "";
-					r2text = "";
-					r3text = "";
-					r4text = "";
-					r5text = "";
-					r6text = "";
-					break;
-				#endregion
-
-				#region FrequencyDataPage1
-				case "FrequencyDataPage1":
-					l1text = "";
-					l2text = "";
-					l3text = "";
-					l4text = "";
-					l5text = "< MULTIPLE";
-					l6text = "< INDEX";
-					r1text = "";
-					r2text = "MULTIPLE";
-					r3text = "";
-					r4text = "";
-					r5text = "";
-					r6text = "";
-					break;
-				#endregion
-
-				#region Index pages
-				case "IdxPage1":
-					l1text = "< MCDU MENU";
-					l2text = "< DATALINK";
-					l3text = "< STATUS";
-					l4text = "< POS INIT";
-					l5text = "< IRS CTL";
-					l6text = "< VORDME CTL";
-					r1text = "FREQUENCY";
-					r2text = "GNSS1 POS";
-					r3text = "FIX";
-					r4text = "HOLD";
-					r5text = "PROG";
-					r6text = "SEC FPLN";
-					break;
-
-				case "IdxPage2":
-					l1text = "< GNSS CTL";
-					l2text = "< FMS CTL";
-					l3text = "";
-					l4text = "";
-					l5text = "";
-					l6text = "";
-					r1text = "ROUTE MENU";
-					r2text = "DATA BASE";
-					r3text = "DB DISK OPS";
-					r4text = "DEFAULTS";
-					r5text = "ARR DATA";
-					r6text = "SEARCH";
-					break;
-
-				case "IdxPage3":
-					l1text = "";
-					l2text = "";
-					l3text = "";
-					l4text = "";
-					l5text = "";
-					l6text = "";
-					r1text = "MARK POINTS";
-					r2text = "TEMP COMP";
-					r3text = "";
-					r4text = "";
-					r5text = "";
-					r6text = "";
-					break;
-				#endregion
-
-				#region NonPrecisionApprRaimPage
-				case "NonPrecisionApprRaimPage":
-					l1text = "";
-					l2text = "";
-					l3text = "";
-					l4text = "";
-					l5text = "";
-					l6text = "< INDEX";
-					r1text = "";
-					r2text = "";
-					r3text = "";
-					r4text = "";
-					r5text = "";
-					r6text = "GNSS CTL";
-					break;
-				#endregion
-
-				#region Pos Init pages
-				case "PosInitPage1":
-					l1text = "";
-					l2text = "";
-					l3text = "";
-					l4text = "";
-					l5text = "";
-					l6text = "< INDEX";
-					r1text = "";
-					r2text = "";
-					r3text = "";
-					r4text = "";
-					r5text = "";
-					r6text = "FPLN";
-					break;
-
-				case "PosInitPage2":
-					l1text = "";
-					l2text = "";
-					l3text = "";
-					l4text = "";
-					l5text = "< NAVAID";
-					l6text = "< INDEX";
-					r1text = "";
-					r2text = "";
-					r3text = "";
-					r4text = "";
-					r5text = "";
-					r6text = "FPLN";
-					break; 
-				#endregion
-
-				#region SBASpage
-				case "SBASpage":
-					l1text = "";
-					l2text = "";
-					l3text = "";
-					l4text = "";
-					l5text = "";
-					l6text = "< INDEX";
-					r1text = "";
-					r2text = "";
-					r3text = "";
-					r4text = "";
-					r5text = "";
-					r6text = "GNSS CTL";
-					break;
-				#endregion
-
-				#region Status pages
-				case "StatusPage":
-					l1text = "";
-					l2text = "";
-					l3text = "";
-					l4text = "";
-					l5text = "";
-					l6text = "< INDEX";
-					r1text = "";
-					r2text = "";
-					r3text = "";
-					r4text = "";
-					r5text = "";
-					r6text = "POS INIT";
-					break; 
-				#endregion
-
-				#region MCDU pages
-				case "MCDU":
-					l1text = "< FMS 1";
-					l2text = "< DL";
-					l3text = "< DBU";
-					l4text = "< MISSION";
-					l5text = "";
-					l6text = "";
-					r1text = "GPS 1 POS";
-					r2text = "";
-					r3text = "";
-					r4text = "";
-					r5text = "";
-					r6text = "";
-					break; 
-				#endregion
-
-				#region VORDME Control pages
-				case "VORDME CTL":
-					l1text = "";
-					l2text = "";
-					l3text = "";
-					l4text = "";
-					l5text = "";
-					l6text = "< INDEX";
-					r1text = "";
-					r2text = "";
-					r3text = "";
-					r4text = "";
-					r5text = "";
-					r6text = "";
-					break;
-				#endregion
-			}
-		}
+		
 
 
 		private int CenterMe(TextBox tb)    //centers the text on the screen
@@ -3511,13 +3866,13 @@ namespace CDU3000
 			}
 			else
 			{
-                myName.ForeColor = (Color)charColor;
+				myName.ForeColor = (Color)charColor;
 			}
 
 
 			if (backgroundColor == null)
 			{
-                myName.BackColor = Color.Black;
+				myName.BackColor = Color.Black;
 			}
 			else
 			{
@@ -3618,6 +3973,19 @@ namespace CDU3000
 					//check current input string
 					switch (trimmedString)
 					{
+
+                        //Data Base Page1
+                        case "DATA BASE":
+                            StartFresh();
+                            DataBasePage1();
+                            break;
+
+                        //Disk Route List page1
+                        case "DISK ROUTE LIST":
+                            StartFresh();
+                            DiskRouteList();
+                            break;
+
 						//MCDU page 1
 						case "MCDU MENU":
 							StartFresh();//clears all  TextBoxes before writing new page
@@ -3643,11 +4011,11 @@ namespace CDU3000
 							FixPage1();
 							break;
 
-                        //GNSS1 Pos Page
-                        case"GNSS1 POS":
-                            StartFresh();
-                            GNSS1statusPage1();
-                            break;
+						//GNSS1 Pos Page
+						case"GNSS1 POS":
+							StartFresh();
+							GNSS1statusPage1();
+							break;
 
 						//GNSS Control Page
 						case "GNSS CTL":
@@ -3655,11 +4023,11 @@ namespace CDU3000
 							GNSScontrolPage();
 							break;
 
-                        //HOLD page1
-                        case "HOLD":
-                            StartFresh();
-                            HoldPage1();
-                            break;
+						//HOLD page1
+						case "HOLD":
+							StartFresh();
+							HoldPage1();
+							break;
 
 						//INDEX page 1
 						case "INDEX":
@@ -3685,23 +4053,35 @@ namespace CDU3000
 							NonPrecisionApprRaimPage();
 							break;
 
+                        //Pilot Route List page1
+                        case "PILOT ROUTE LIST":
+                            StartFresh();
+                            PilotRouteList();
+                            break;
+
 						//POS INIT page
 						case "POS INIT":
 							StartFresh();//clears all  TextBoxes before writing new page
 							PosInitPage1();
 							break;
 
-                        //PROG page1
-                        case "PROG":
-                            StartFresh();//clears all  TextBoxes before writing new page
-                            ProgressPage1();
+						//PROG page1
+						case "PROG":
+							StartFresh();//clears all  TextBoxes before writing new page
+							ProgressPage1();
+							break;
+
+                        //ROUTE page1
+                        case "ROUTE MENU":
+                            StartFresh();
+                            RoutePage1();
                             break;
 
-                        //SEC page
-                        case "SEC FPLN":
-                            StartFresh();//clears all  TextBoxes before writing new page
-                            SECFPLNpage1();
-                            break;
+						//SEC page
+						case "SEC FPLN":
+							StartFresh();//clears all  TextBoxes before writing new page
+							SECFPLNpage1();
+							break;
 
 						//SBASpage
 						case "SELECT SBAS":
@@ -3838,7 +4218,7 @@ namespace CDU3000
 
 			if (btnPressed == "l1" || btnPressed == "l2" || btnPressed == "l3" || btnPressed == "l4" || btnPressed == "l5" || btnPressed == "l6" ) //determine pushed button
 			{
-				if (fullText.Contains("<")||(fullText.Contains("-"))) //check if < or > exist next to that button
+				if (fullText==""|| fullText.Contains("<")||(fullText.Contains("-")) || (fullText.Contains(emptyDigit))) //check if < or > exist next to that button
 				{
 					//exit scratch if true
 				}
@@ -3856,7 +4236,7 @@ namespace CDU3000
 				{
 					isPresent = FindPushedButon(btnPressed);
 
-					if (!isPresent & (fullText.Contains("-")==false))
+                    if (fullText != "" & (fullText.Contains(emptyDigit)==false) &!isPresent & (fullText.Contains("-") == false))
 					{
 						scratchpad += e;    //adds the last button press to the scratchpad string
 						sPad.Visible = true;
@@ -3964,31 +4344,34 @@ namespace CDU3000
 
 				try
 				{
-					for (int i = 0; i < tbCount; i++)//iterates through all  TextBoxes on the form
-					{
-						foreach (Control c in this.Controls)
-						{
+                    
+                        for (int i = 0; i < tbCount; i++)//iterates through all  TextBoxes on the form
+                        {
+                            foreach (Control c in this.Controls)
+                            {
 
-							if (c.GetType() == typeof(TextBox))
-							{
-								if (c.Location.Y == myRow & c.Location.X < col3 & mySide=="left")
-								{
-									c.Text = scratchpad;
-                                    Size size = TextRenderer.MeasureText(c.Text, c.Font);
-                                    c.Size = size;
-									
-								}else
-									if (c.Location.Y == myRow & ((c.Location.X +c.Width)>col14) & mySide == "right")
-									{
-										c.Text = scratchpad;
+                                if (c.GetType() == typeof(TextBox))
+                                {
+                                    if (c.Location.Y == myRow & c.Location.X < col3 & mySide == "left")
+                                    {
+                                        c.Text = scratchpad;
                                         Size size = TextRenderer.MeasureText(c.Text, c.Font);
                                         c.Size = size;
-									}
 
-							}
+                                    }
+                                    else
+                                        if (c.Location.Y == myRow & ((c.Location.X + c.Width) > col14) & mySide == "right")
+                                        {
+                                            c.Text = scratchpad;
+                                            Size size = TextRenderer.MeasureText(c.Text, c.Font);
+                                            c.Size = size;
+                                        }
 
-						}
-					}
+                                }
+
+                            }
+                        } 
+                    
 
 				}
 				catch (Exception)
