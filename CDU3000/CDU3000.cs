@@ -4996,7 +4996,7 @@ namespace CDU3000
 
 
             TextBox r1 = new TextBox();
-            r1text = "45.100";
+            r1text = VU1freq;
             TB(r1, col17, row2, r1text, Color.White);
 
             TextBox r2 = new TextBox();
@@ -5092,13 +5092,13 @@ namespace CDU3000
             CDU7000Page = true;
 
             #region MyRegion
-            l1text = "< 20";
+            l1text = "< 0";
             l2text = "TR";
             l3text = "0";
             l4text = "HIGH";
             l5text = "";
             l6text = "< COMSEC";
-            r1text = "F136.000";
+            r1text = VU1freq ;
             r2text = "UHF";
             r3text = "";
             r4text = "";
@@ -5176,7 +5176,21 @@ namespace CDU3000
             TB(l4t, col2, row7, "POWER");
 
             TextBox l4 = new TextBox();
-            TB(l4, col1, row8, l4text, Color.White);
+            TB(l4, col1, row8, l4text, Color.Green);
+
+            TextBox l4slash1 = new TextBox();
+            TB(l4slash1, l4.Location.X + l4.Width, row8, "/", Color.White);
+
+            TextBox med = new TextBox();
+            TB(med, l4slash1.Location.X + l4slash1.Width, row8, "MED", Color.White);
+
+            TextBox l4slash2 = new TextBox();
+            TB(l4slash2, med.Location.X + med.Width, row8, "/", Color.White);
+
+            TextBox low = new TextBox();
+            TB(low, l4slash2.Location.X + l4slash2.Width, row8, "LOW", Color.White);
+
+
 
             //TextBox l5t = new TextBox();
             //TB(l5t, col2, row1, "IDENT");
@@ -5193,6 +5207,9 @@ namespace CDU3000
             //TextBox r1t = new TextBox();
             //TB(r1t, col2, row1, "IDENT");
 
+            TextBox comsec = new TextBox();
+            TB(comsec, col9, row2, "P2", Color.White);
+
             TextBox r1 = new TextBox();
             TB(r1, col15, row2, r1text, Color.White);
 
@@ -5201,6 +5218,20 @@ namespace CDU3000
 
             TextBox r2 = new TextBox();
             TB(r2, col15, row4, r2text, Color.White);
+
+            TextBox off = new TextBox();
+            TB(off, col8, row4, "OFF", Color.Green);
+
+            TextBox r2slash1 = new TextBox();
+            TB(r2slash1, off.Location.X + off.Width, row4, "/", Color.White);
+
+            TextBox vhf = new TextBox();
+            TB(vhf, r2slash1.Location.X + r2slash1.Width, row4, "VHF", Color.White);
+
+            TextBox r2slash2 = new TextBox();
+            TB(r2slash2, vhf.Location.X + vhf.Width, row4, "/", Color.White);
+
+
 
             //TextBox r3t = new TextBox();
             //TB(r3t, col2, row1, "IDENT");
@@ -5282,11 +5313,354 @@ namespace CDU3000
         private void VU1controlPage2()
         {
             CDU7000Page = true;
+
+            #region MyRegion
+            l1text = "NOR";
+            l2text = "[15]";
+            l3text = "";
+            l4text = "< MAINTENANCE";
+            l5text = "";
+            l6text = "";
+            r1text = "";
+            r2text = "";
+            r3text = "SINCGARS";
+            r4text = "";
+            r5text = "";
+            r6text = "RETURN";
+
+            currentPageTitle = "V/U1 CONTROL"; //page title and number used for navigating
+            currentPageNumber = 2;
+
+            TextBox title = new TextBox ( );//displayed top center of screen
+            TB (title, col7, row0, currentPageTitle);
+
+            TextBox page = new TextBox ( );
+            TB (page, col14, row0, currentPageNumber + "/2");
+
+            TextBox l1t = new TextBox ( );
+            TB (l1t, col2, row1, "CHAN MODE");
+
+            TextBox l1 = new TextBox ( );
+            TB (l1, col1, row2, l1text, Color.Green);
+
+            TextBox l1slash1 = new TextBox ( );
+            TB (l1slash1, l1.Location.X + l1.Width, row2, "/", Color.White);
+
+            TextBox nar = new TextBox ( );
+            TB (nar, l1slash1.Location.X + l1slash1.Width, row2, "NAR", Color.White);
+
+            TextBox l1slash2 = new TextBox ( );
+            TB (l1slash2, nar.Location.X + nar.Width, row2, "/", Color.White);
+
+            TextBox atc = new TextBox ( );
+            TB (atc, l1slash2.Location.X + l1slash2.Width, row2, "ATC", Color.White);
+
+            TextBox l2t = new TextBox ( );
+            TB (l2t, col2, row3, "SIDETONE");
+
+            TextBox l2 = new TextBox ( );
+            TB (l2, col1, row4, l2text, Color.White);
+
+            //TextBox l3t = new TextBox();
+            //TB(l3t, col2, row1, "IDENT");
+
+            TextBox l3 = new TextBox ( );
+            TB (l3, col1, row6, l3text, Color.White);
+
+            //TextBox l4t = new TextBox();
+            //TB(l4t, col2, row1, "IDENT");
+
+            TextBox l4 = new TextBox ( );
+            TB (l4, col1, row8, l4text, Color.White);
+
+            //TextBox l5t = new TextBox();
+            //TB(l5t, col2, row1, "IDENT");
+
+            TextBox l5 = new TextBox ( );
+            TB (l5, col1, row10, l5text, Color.White);
+
+            //TextBox l6t = new TextBox();
+            //TB(l6t, col2, row1, "IDENT");
+
+            TextBox l6 = new TextBox ( );
+            TB (l6, col1, row12, l6text, Color.White);
+
+            //TextBox r1t = new TextBox();
+            //TB(r1t, col2, row1, "IDENT");
+
+            TextBox r1 = new TextBox ( );
+            TB (r1, col15, row2, r1text, Color.White);
+
+            //TextBox r2t = new TextBox();
+            //TB(r2t, col2, row1, "IDENT");
+
+            TextBox r2 = new TextBox ( );
+            TB (r2, col15, row4, r2text, Color.White);
+
+            //TextBox r3t = new TextBox();
+            //TB(r3t, col2, row1, "IDENT");
+
+            TextBox r3 = new TextBox ( );
+            TB (r3, col15, row6, r3text, Color.White);
+
+            //TextBox r4t = new TextBox();
+            //TB(r4t, col2, row1, "IDENT");
+
+            TextBox r4 = new TextBox ( );
+            TB (r4, col15, row8, r4text, Color.White);
+
+            //TextBox r5t = new TextBox();
+            //TB(r5t, col15, row9, "PILOT", Color.White);
+
+            TextBox r5 = new TextBox ( );
+            TB (r5, col15, row10, r5text, Color.White);
+
+            //TextBox r6t = new TextBox();
+            //TB(r6t, col2, row1, "IDENT");
+
+            TextBox r6 = new TextBox ( );
+            TB (r6, col15, row12, r6text, Color.White);
+
+            //TextBox divider = new TextBox ( );
+            //TB (divider, col1, row9, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+
+
+            #region Add Arrows if Needed
+            if (r1text != "")
+            {
+                TextBox r1r = new TextBox ( );
+                TB (r1r, col16, row2, ">", Color.White);
+            }
+
+            if (r2text != "")
+            {
+                TextBox r2r = new TextBox ( );
+                TB (r2r, col16, row4, ">", Color.White);
+            }
+
+            if (r3text != "")
+            {
+                TextBox r3r = new TextBox ( );
+                TB (r3r, col16, row6, ">", Color.White);
+            }
+
+            if (r4text != "")
+            {
+                TextBox r4r = new TextBox ( );
+                TB (r4r, col16, row8, ">", Color.White);
+            }
+
+            if (r5text != "")
+            {
+                TextBox r5r = new TextBox ( );
+                TB (r5r, col16, row10, ">", Color.White);
+            }
+
+
+            if (r6text != "")
+            {
+                TextBox r6r = new TextBox ( );
+                TB (r6r, col16, row12, ">", Color.White);
+            }
+            #endregion
+
+            TextBox l6b = new TextBox ( );
+            TB (l6b, col1, row13, "[");
+
+
+            TextBox r6b = new TextBox ( );
+            TB (r6b, col16, row13, "]");
+            #endregion
         }
 
         private void VU1comsecControlPage()
         {
             CDU7000Page = true;
+
+            #region MyRegion
+            l1text = "< 12 VINSON";
+            l2text = "PLAIN";
+            l3text = "DATA";
+            l4text = "VINSON";
+            l5text = "1.2K";
+            l6text = "";
+            r1text = "GET KEYS <";
+            r2text = "";
+            r3text = "";
+            r4text = "";
+            r5text = "";
+            r6text = "RETURN";
+
+            currentPageTitle = "V/U1 COMSEC CONTROL"; //page title and number used for navigating
+            currentPageNumber = 1;
+
+            TextBox title = new TextBox ( );//displayed top center of screen
+            TB (title, col7, row0, currentPageTitle);
+
+            //TextBox page = new TextBox ( );
+            //TB (page, col14, row0, currentPageNumber + "/1");
+
+            TextBox l1t = new TextBox ( );
+            TB (l1t, col2, row1, "KEY");
+
+            TextBox l1 = new TextBox ( );
+            TB (l1, col1, row2, l1text, Color.White);
+
+            TextBox l2t = new TextBox ( );
+            TB (l2t, col2, row3, "COMSEC MODE");
+
+            TextBox l2 = new TextBox ( );
+            TB (l2, col1, row4, l2text, Color.Green);
+
+            TextBox l2slash = new TextBox ( );
+            TB (l2slash, l2.Location.X + l2.Width, row4, "/", Color.White);
+
+            TextBox cipher = new TextBox ( );
+            TB (cipher, l2slash.Location.X + l2slash.Width, row4, "CIPHER", Color.White);
+
+            //TextBox l3t = new TextBox();
+            //TB(l3t, col2, row1, "IDENT");
+
+            TextBox l3 = new TextBox ( );
+            TB (l3, col1, row6, l3text, Color.Green);
+
+            TextBox l3slash = new TextBox ( );
+            TB (l3slash, l3.Location.X + l3.Width, row6, "/", Color.White);
+
+            TextBox voice = new TextBox ( );
+            TB (voice, l3slash.Location.X + l3slash.Width, row6, "VOICE", Color.White);
+
+            TextBox l4t = new TextBox ( );
+            TB (l4t, col2, row7, "KEY TYPE");
+
+            TextBox l4 = new TextBox ( );
+            TB (l4, col1, row8, l4text, Color.White);
+
+            TextBox l5t = new TextBox ( );
+            TB (l5t, col2, row9, "BAUD");
+
+            TextBox l5 = new TextBox ( );
+            TB (l5, col1, row10, l5text, Color.White);
+
+            TextBox l5slash1 = new TextBox ( );
+            TB (l5slash1, l5.Location.X + l5.Width, row10, "/", Color.White);
+
+            TextBox k24 = new TextBox ( );
+            TB (k24, l5slash1.Location.X + l5slash1.Width, row10, "2.4K", Color.White);
+
+            TextBox l5slash2 = new TextBox ( );
+            TB (l5slash2, k24.Location.X + k24.Width, row10, "/", Color.White);
+
+            TextBox k96 = new TextBox ( );
+            TB (k96, l5slash2.Location.X + l5slash2.Width, row10, "9.6K", Color.White);
+
+            TextBox l5slash3 = new TextBox ( );
+            TB (l5slash3, k96.Location.X + k96.Width, row10, "/", Color.White);
+
+            TextBox k12 = new TextBox ( );
+            TB (k12, l5slash3.Location.X + l5slash3.Width, row10, "12K", Color.White);
+
+            TextBox l5slash4 = new TextBox ( );
+            TB (l5slash4, k12.Location.X + k12.Width, row10, "/", Color.White);
+
+            TextBox k16 = new TextBox ( );
+            TB (k16, l5slash4.Location.X + l5slash4.Width, row10, "16K", Color.Green);
+
+            //TextBox l6t = new TextBox();
+            //TB(l6t, col2, row1, "IDENT");
+
+            TextBox l6 = new TextBox ( );
+            TB (l6, col1, row12, l6text, Color.White);
+
+            //TextBox r1t = new TextBox();
+            //TB(r1t, col2, row1, "IDENT");
+
+            TextBox r1 = new TextBox ( );
+            TB (r1, col15, row2, r1text, Color.White);
+            r1.Location = new Point(r1.Location.X + 24, r1.Location.Y);
+
+            //TextBox r2t = new TextBox();
+            //TB(r2t, col2, row1, "IDENT");
+
+            TextBox r2 = new TextBox ( );
+            TB (r2, col15, row4, r2text, Color.White);
+
+            //TextBox r3t = new TextBox();
+            //TB(r3t, col2, row1, "IDENT");
+
+            TextBox r3 = new TextBox ( );
+            TB (r3, col15, row6, r3text, Color.White);
+
+            //TextBox r4t = new TextBox();
+            //TB(r4t, col2, row1, "IDENT");
+
+            TextBox r4 = new TextBox ( );
+            TB (r4, col15, row8, r4text, Color.White);
+
+            //TextBox r5t = new TextBox();
+            //TB(r5t, col15, row9, "PILOT", Color.White);
+
+            TextBox r5 = new TextBox ( );
+            TB (r5, col15, row10, r5text, Color.White);
+
+            //TextBox r6t = new TextBox();
+            //TB(r6t, col2, row1, "IDENT");
+
+            TextBox r6 = new TextBox ( );
+            TB (r6, col15, row12, r6text, Color.White);
+
+            //TextBox divider = new TextBox ( );
+            //TB (divider, col1, row9, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+
+
+            #region Add Arrows if Needed
+            //if (r1text != "")
+            //{
+            //    TextBox r1r = new TextBox ( );
+            //    TB (r1r, col16, row2, "<", Color.White);
+            //}
+
+            if (r2text != "")
+            {
+                TextBox r2r = new TextBox ( );
+                TB (r2r, col16, row4, ">", Color.White);
+            }
+
+            if (r3text != "")
+            {
+                TextBox r3r = new TextBox ( );
+                TB (r3r, col16, row6, ">", Color.White);
+            }
+
+            if (r4text != "")
+            {
+                TextBox r4r = new TextBox ( );
+                TB (r4r, col16, row8, ">", Color.White);
+            }
+
+            if (r5text != "")
+            {
+                TextBox r5r = new TextBox ( );
+                TB (r5r, col16, row10, ">", Color.White);
+            }
+
+
+            if (r6text != "")
+            {
+                TextBox r6r = new TextBox ( );
+                TB (r6r, col16, row12, ">", Color.White);
+            }
+            #endregion
+
+            TextBox l6b = new TextBox ( );
+            TB (l6b, col1, row13, "[");
+
+
+            TextBox r6b = new TextBox ( );
+            TB (r6b, col16, row13, "]");
+            #endregion
         }
 
         private void VU1comsecVarPage1()
@@ -5388,11 +5762,388 @@ namespace CDU3000
         private void VU2controlPage1()
         {
             CDU7000Page = true;
+
+            #region MyRegion
+            l1text = "< 0";
+            l2text = "TR";
+            l3text = "0";
+            l4text = "HIGH";
+            l5text = "";
+            l6text = "< COMSEC";
+            r1text = "F136.000";
+            r2text = "UHF";
+            r3text = "";
+            r4text = "";
+            r5text = "PRESETS";
+            r6text = "RETURN";
+
+
+
+            currentPageTitle = "V/U2 CONTROL"; //page title and number used for navigating
+            currentPageNumber = 1;
+
+            TextBox title = new TextBox ( );//displayed top center of screen
+            TB (title, col7, row0, currentPageTitle);
+
+            TextBox page = new TextBox ( );
+            TB (page, col14, row0, currentPageNumber + "/2");
+
+            //TextBox l1t = new TextBox();
+            //TB(l1t, col2, row1, "IDENT");
+
+            TextBox l1 = new TextBox ( );
+            TB (l1, col1, row2, l1text, Color.White);
+
+            TextBox l2t = new TextBox ( );
+            TB (l2t, col2, row3, "MODE");
+
+            TextBox l2 = new TextBox ( );
+            TB (l2, col1, row4, l2text, Color.Green);
+
+            TextBox l2slash = new TextBox ( );
+            TB (l2slash, l2.Location.X + l2.Width, row4, "/", Color.White);
+
+            TextBox trg = new TextBox ( );
+            TB (trg, l2slash.Location.X + l2slash.Width, row4, "TR+G", Color.White);
+
+            TextBox l3t = new TextBox ( );
+            TB (l3t, col2, row5, "SQUELCH");
+
+            TextBox l3 = new TextBox ( );
+            TB (l3, col1, row6, l3text, Color.White);
+
+            TextBox l3slash1 = new TextBox ( );
+            TB (l3slash1, l3.Location.X + l3.Width, row6, "/", Color.White);
+
+            TextBox l31 = new TextBox ( );
+            TB (l31, l3slash1.Location.X + l3slash1.Width, row6, "1", Color.Green);
+
+            TextBox l3slash2 = new TextBox ( );
+            TB (l3slash2, l31.Location.X + l31.Width, row6, "/", Color.White);
+
+            TextBox l32 = new TextBox ( );
+            TB (l32, l3slash2.Location.X + l3slash2.Width, row6, "2", Color.White);
+
+            TextBox l3slash3 = new TextBox ( );
+            TB (l3slash3, l32.Location.X + l32.Width, row6, "/", Color.White);
+
+            TextBox l33 = new TextBox ( );
+            TB (l33, l3slash3.Location.X + l3slash3.Width, row6, "3", Color.White);
+
+            TextBox l3slash4 = new TextBox ( );
+            TB (l3slash4, l33.Location.X + l33.Width, row6, "/", Color.White);
+
+            TextBox l34 = new TextBox ( );
+            TB (l34, l3slash4.Location.X + l3slash4.Width, row6, "4", Color.White);
+
+            TextBox l3slash5 = new TextBox ( );
+            TB (l3slash5, l34.Location.X + l34.Width, row6, "/", Color.White);
+
+            TextBox l35 = new TextBox ( );
+            TB (l35, l3slash5.Location.X + l3slash5.Width, row6, "5", Color.White);
+
+
+
+            TextBox l4t = new TextBox ( );
+            TB (l4t, col2, row7, "POWER");
+
+            TextBox l4 = new TextBox ( );
+            TB (l4, col1, row8, l4text, Color.Green);
+
+            TextBox l4slash1 = new TextBox ( );
+            TB (l4slash1, l4.Location.X + l4.Width, row8, "/", Color.White);
+
+            TextBox med = new TextBox ( );
+            TB (med, l4slash1.Location.X + l4slash1.Width, row8, "MED", Color.White);
+
+            TextBox l4slash2 = new TextBox ( );
+            TB (l4slash2, med.Location.X + med.Width, row8, "/", Color.White);
+
+            TextBox low = new TextBox ( );
+            TB (low, l4slash2.Location.X + l4slash2.Width, row8, "LOW", Color.White);
+
+
+
+            //TextBox l5t = new TextBox();
+            //TB(l5t, col2, row1, "IDENT");
+
+            TextBox l5 = new TextBox ( );
+            TB (l5, col1, row10, l5text, Color.White);
+
+            //TextBox l6t = new TextBox();
+            //TB(l6t, col2, row1, "IDENT");
+
+            TextBox l6 = new TextBox ( );
+            TB (l6, col1, row12, l6text, Color.White);
+
+            //TextBox r1t = new TextBox();
+            //TB(r1t, col2, row1, "IDENT");
+
+            TextBox comsec = new TextBox ( );
+            TB (comsec, col9, row2, "P2", Color.White);
+
+            TextBox r1 = new TextBox ( );
+            TB (r1, col15, row2, r1text, Color.White);
+
+            TextBox r2t = new TextBox ( );
+            TB (r2t, col12, row3, "GUARD");
+
+            TextBox r2 = new TextBox ( );
+            TB (r2, col15, row4, r2text, Color.White);
+
+            TextBox off = new TextBox ( );
+            TB (off, col8, row4, "OFF", Color.Green);
+
+            TextBox r2slash1 = new TextBox ( );
+            TB (r2slash1, off.Location.X + off.Width, row4, "/", Color.White);
+
+            TextBox vhf = new TextBox ( );
+            TB (vhf, r2slash1.Location.X + r2slash1.Width, row4, "VHF", Color.White);
+
+            TextBox r2slash2 = new TextBox ( );
+            TB (r2slash2, vhf.Location.X + vhf.Width, row4, "/", Color.White);
+
+
+
+            //TextBox r3t = new TextBox();
+            //TB(r3t, col2, row1, "IDENT");
+
+            TextBox r3 = new TextBox ( );
+            TB (r3, col15, row6, r3text, Color.White);
+
+            //TextBox r4t = new TextBox();
+            //TB(r4t, col2, row1, "IDENT");
+
+            TextBox r4 = new TextBox ( );
+            TB (r4, col15, row8, r4text, Color.White);
+
+            //TextBox r5t = new TextBox();
+            //TB(r5t, col15, row9, "PILOT", Color.White);
+
+            TextBox r5 = new TextBox ( );
+            TB (r5, col15, row10, r5text, Color.White);
+
+            //TextBox r6t = new TextBox();
+            //TB(r6t, col2, row1, "IDENT");
+
+            TextBox r6 = new TextBox ( );
+            TB (r6, col15, row12, r6text, Color.White);
+
+            //TextBox divider = new TextBox();
+            //TB(divider, col1, row9, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+
+
+            #region Add Arrows if Needed
+            //if (r1text != "")
+            //{
+            //    TextBox r1r = new TextBox();
+            //    TB(r1r, col16, row2, ">", Color.White);
+            //}
+
+            //if (r2text != "")
+            //{
+            //    TextBox r2r = new TextBox();
+            //    TB(r2r, col16, row4, ">", Color.White);
+            //}
+
+            if (r3text != "")
+                {
+                TextBox r3r = new TextBox ( );
+                TB (r3r, col16, row6, ">", Color.White);
+                }
+
+            if (r4text != "")
+                {
+                TextBox r4r = new TextBox ( );
+                TB (r4r, col16, row8, ">", Color.White);
+                }
+
+            if (r5text != "")
+                {
+                TextBox r5r = new TextBox ( );
+                TB (r5r, col16, row10, ">", Color.White);
+                }
+
+
+            if (r6text != "")
+                {
+                TextBox r6r = new TextBox ( );
+                TB (r6r, col16, row12, ">", Color.White);
+                }
+            #endregion
+
+            TextBox l6b = new TextBox ( );
+            TB (l6b, col1, row13, "[");
+
+
+            TextBox r6b = new TextBox ( );
+            TB (r6b, col16, row13, "]");
+            #endregion
         }
 
         private void VU2controlPage2()
         {
             CDU7000Page = true;
+
+            #region MyRegion
+            l1text = "NOR";
+            l2text = "[15]";
+            l3text = "";
+            l4text = "< MAINTENANCE";
+            l5text = "";
+            l6text = "";
+            r1text = "";
+            r2text = "";
+            r3text = "SINCGARS";
+            r4text = "";
+            r5text = "";
+            r6text = "RETURN";
+
+            currentPageTitle = "V/U2 CONTROL"; //page title and number used for navigating
+            currentPageNumber = 2;
+
+            TextBox title = new TextBox ( );//displayed top center of screen
+            TB (title, col7, row0, currentPageTitle);
+
+            TextBox page = new TextBox ( );
+            TB (page, col14, row0, currentPageNumber + "/2");
+
+            TextBox l1t = new TextBox ( );
+            TB (l1t, col2, row1, "CHAN MODE");
+
+            TextBox l1 = new TextBox ( );
+            TB (l1, col1, row2, l1text, Color.Green);
+
+            TextBox l1slash1 = new TextBox ( );
+            TB (l1slash1, l1.Location.X + l1.Width, row2, "/", Color.White);
+
+            TextBox nar = new TextBox ( );
+            TB (nar, l1slash1.Location.X + l1slash1.Width, row2, "NAR", Color.White);
+
+            TextBox l1slash2 = new TextBox ( );
+            TB (l1slash2, nar.Location.X + nar.Width, row2, "/", Color.White);
+
+            TextBox atc = new TextBox ( );
+            TB (atc, l1slash2.Location.X + l1slash2.Width, row2, "ATC", Color.White);
+
+            TextBox l2t = new TextBox ( );
+            TB (l2t, col2, row3, "SIDETONE");
+
+            TextBox l2 = new TextBox ( );
+            TB (l2, col1, row4, l2text, Color.White);
+
+            //TextBox l3t = new TextBox();
+            //TB(l3t, col2, row1, "IDENT");
+
+            TextBox l3 = new TextBox ( );
+            TB (l3, col1, row6, l3text, Color.White);
+
+            //TextBox l4t = new TextBox();
+            //TB(l4t, col2, row1, "IDENT");
+
+            TextBox l4 = new TextBox ( );
+            TB (l4, col1, row8, l4text, Color.White);
+
+            //TextBox l5t = new TextBox();
+            //TB(l5t, col2, row1, "IDENT");
+
+            TextBox l5 = new TextBox ( );
+            TB (l5, col1, row10, l5text, Color.White);
+
+            //TextBox l6t = new TextBox();
+            //TB(l6t, col2, row1, "IDENT");
+
+            TextBox l6 = new TextBox ( );
+            TB (l6, col1, row12, l6text, Color.White);
+
+            //TextBox r1t = new TextBox();
+            //TB(r1t, col2, row1, "IDENT");
+
+            TextBox r1 = new TextBox ( );
+            TB (r1, col15, row2, r1text, Color.White);
+
+            //TextBox r2t = new TextBox();
+            //TB(r2t, col2, row1, "IDENT");
+
+            TextBox r2 = new TextBox ( );
+            TB (r2, col15, row4, r2text, Color.White);
+
+            //TextBox r3t = new TextBox();
+            //TB(r3t, col2, row1, "IDENT");
+
+            TextBox r3 = new TextBox ( );
+            TB (r3, col15, row6, r3text, Color.White);
+
+            //TextBox r4t = new TextBox();
+            //TB(r4t, col2, row1, "IDENT");
+
+            TextBox r4 = new TextBox ( );
+            TB (r4, col15, row8, r4text, Color.White);
+
+            //TextBox r5t = new TextBox();
+            //TB(r5t, col15, row9, "PILOT", Color.White);
+
+            TextBox r5 = new TextBox ( );
+            TB (r5, col15, row10, r5text, Color.White);
+
+            //TextBox r6t = new TextBox();
+            //TB(r6t, col2, row1, "IDENT");
+
+            TextBox r6 = new TextBox ( );
+            TB (r6, col15, row12, r6text, Color.White);
+
+            //TextBox divider = new TextBox ( );
+            //TB (divider, col1, row9, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+
+
+            #region Add Arrows if Needed
+            if (r1text != "")
+            {
+                TextBox r1r = new TextBox ( );
+                TB (r1r, col16, row2, ">", Color.White);
+            }
+
+            if (r2text != "")
+            {
+                TextBox r2r = new TextBox ( );
+                TB (r2r, col16, row4, ">", Color.White);
+            }
+
+            if (r3text != "")
+            {
+                TextBox r3r = new TextBox ( );
+                TB (r3r, col16, row6, ">", Color.White);
+            }
+
+            if (r4text != "")
+            {
+                TextBox r4r = new TextBox ( );
+                TB (r4r, col16, row8, ">", Color.White);
+            }
+
+            if (r5text != "")
+            {
+                TextBox r5r = new TextBox ( );
+                TB (r5r, col16, row10, ">", Color.White);
+            }
+
+
+            if (r6text != "")
+            {
+                TextBox r6r = new TextBox ( );
+                TB (r6r, col16, row12, ">", Color.White);
+            }
+            #endregion
+
+            TextBox l6b = new TextBox ( );
+            TB (l6b, col1, row13, "[");
+
+
+            TextBox r6b = new TextBox ( );
+            TB (r6b, col16, row13, "]");
+            #endregion
         }
 
         private void VU2comsecControlPage()
@@ -5730,6 +6481,45 @@ namespace CDU3000
 
             #endregion
 
+            #region VU1 Control Pages
+            if (currentPageTitle == "V/U1 CONTROL")
+            {
+                if (currentPageNumber == 1)
+                {
+                    StartFresh ( );
+                    VU1controlPage2 ( );
+                    UpdateDisplay ( );
+                }
+                else
+                    if (currentPageNumber == 2)
+                    {
+                        StartFresh ( );
+                        VU1controlPage1 ( );
+                        UpdateDisplay ( );
+                    }
+
+            }
+            #endregion
+
+            #region VU2 Control Pages
+            if (currentPageTitle == "V/U2 CONTROL")
+            {
+                if (currentPageNumber == 1)
+                {
+                    StartFresh ( );
+                    VU2controlPage2 ( );
+                    UpdateDisplay ( );
+                }
+                else
+                    if (currentPageNumber == 2)
+                    {
+                        StartFresh ( );
+                        VU2controlPage1 ( );
+                        UpdateDisplay ( );
+                    }
+
+            }
+            #endregion
 
         }
 
@@ -5843,6 +6633,25 @@ namespace CDU3000
                     UpdateDisplay();
                 }
 
+            #endregion
+
+            #region VU1 Control Pages
+            if (currentPageTitle == "V/U1 CONTROL")
+            {
+                if (currentPageNumber == 1)
+                {
+                    StartFresh ( );
+                    VU1controlPage2 ( );
+                    UpdateDisplay ( );
+                }
+                else
+                    if (currentPageNumber == 2)
+                    {
+                        StartFresh ( );
+                        VU1controlPage1 ( );
+                        UpdateDisplay ( );
+                    }
+            }
             #endregion
         }
 
@@ -6180,18 +6989,12 @@ namespace CDU3000
 
         }
 
-
-
-
-
-
         private int CenterMe(TextBox tb)    //centers the text on the screen
         {
             tb.Location = new Point(((backgroundShp.Location.X + backgroundShp.Width) - (backgroundShp.Width / 2)) - (TbWidth(tb) / 2), tb.Location.Y);
             return tb.Location.X;
         }
-
-
+        
         private void JustifyTBs(TextBox tb)
         {
             if (tb.Location.X == col15)
@@ -6326,11 +7129,12 @@ namespace CDU3000
 
         private void PageSelection(String e) //used to select the proper Page from the input string
         {
+            string myTxt = null;
             string trimmedString = TrimSelection(e);   //holds the trimmed version of the passed string argument
 
-            #region Color toggle of Yes/No, Comp/Uncomp, Inhibit, etc
+            #region Color toggle of Yes/No, Comp/Uncomp, Inhibit, etc (maximum two choices only)
 
-            if (trimmedString == "ORIGIN" || trimmedString == "ON" || trimmedString == "UNCOMP" || trimmedString == "YES" || trimmedString == "NO" || trimmedString == "INHIBIT")//**Toggle colors
+            if (trimmedString == "PLAIN" || trimmedString == "DATA" || trimmedString == "TR" || trimmedString == "ORIGIN" || trimmedString == "ON" || trimmedString == "UNCOMP" || trimmedString == "YES" || trimmedString == "NO" || trimmedString == "INHIBIT")//**Toggle colors
             {
                 try
                 {
@@ -6381,14 +7185,268 @@ namespace CDU3000
                 catch (Exception)
                 {
 
-                    //throw;
                 }
 
                 return;
             }
             #endregion
 
-            #region Handles calls from COMM page
+            #region Color toggle of multiple choices (more than two choices only)
+
+            if (trimmedString == "1.2K" || trimmedString == "HIGH" || trimmedString == "UHF" || trimmedString == "0" || trimmedString == "NOR")//**Toggle colors
+            {
+                try
+                {
+                    for (int i = 0; i < tbCount; i++)//iterates through all  TextBoxes on the form
+                    {
+                        foreach (Control c in this.Controls)
+                        {
+
+                            if (c.GetType() == typeof(TextBox) & (Math.Abs(c.Location.Y - clickedButton.Location.Y) <= 5) & (Math.Abs(c.Location.X - clickedButton.Location.X) <= 500))//finds the textboxes within 5 points Y of the pushed button
+                            {
+                                if (c.ForeColor == Color.Green)
+                                {
+                                    myTxt = c.Text;
+                                    c.ForeColor = Color.White;
+
+                                    //tricky, find the next textbox that does not contain a slash
+                                    foreach (Control y in this.Controls)
+                                    {
+                                        if (trimmedString == "HIGH")
+                                        {
+                                            #region High, Med, and Low
+                                            if (myTxt == "HIGH")
+                                            {
+                                                if (y.Text == "MED")
+                                                {
+                                                    y.ForeColor = Color.Green;
+                                                    return;
+                                                }
+                                            }
+                                            else
+                                                if (myTxt == "MED")
+                                                {
+                                                    if (y.Text == "LOW")
+                                                    {
+                                                        y.ForeColor = Color.Green;
+                                                        return;
+                                                    }
+                                                }
+                                                else
+                                                    if (myTxt == "LOW")
+                                                    {
+                                                        if (y.Text == "HIGH")
+                                                        {
+                                                            y.ForeColor = Color.Green;
+                                                            return;
+                                                        }
+                                                    }
+                                            #endregion 
+                                        }
+                                        else
+                                            if (trimmedString == "UHF")
+                                            {
+                                                #region UHF, VHF,OFF
+
+                                                if (myTxt == "UHF")
+                                                {
+                                                    if (y.Text == "OFF")
+                                                    {
+                                                        y.ForeColor = Color.Green;
+                                                        return;
+                                                    }
+                                                }
+                                                else
+                                                    if (myTxt == "OFF")
+                                                    {
+                                                        if (y.Text == "VHF")
+                                                        {
+                                                            y.ForeColor = Color.Green;
+                                                            return;
+                                                        }
+                                                    }
+                                                    else
+                                                        if (myTxt == "VHF")
+                                                        {
+                                                            if (y.Text == "UHF")
+                                                            {
+                                                                y.ForeColor = Color.Green;
+                                                                return;
+                                                            }
+                                                        }
+
+                                                #endregion
+                                            }
+                                            else
+                                                if (trimmedString == "0")
+                                                {
+                                                    #region 0,1,2,3,4,5
+
+                                                    if (myTxt == "0")
+                                                    {
+                                                        if (y.Text == "1")
+                                                        {
+                                                            y.ForeColor = Color.Green;
+                                                            return;
+                                                        }
+                                                    }
+                                                    else
+                                                        if (myTxt == "1")
+                                                        {
+                                                            if (y.Text == "2")
+                                                            {
+                                                                y.ForeColor = Color.Green;
+                                                                return;
+                                                            }
+                                                        }
+                                                        else
+                                                            if (myTxt == "2")
+                                                            {
+                                                                if (y.Text == "3")
+                                                                {
+                                                                    y.ForeColor = Color.Green;
+                                                                    return;
+                                                                }
+                                                            }
+                                                            else
+                                                                if (myTxt == "3")
+                                                                {
+                                                                    if (y.Text == "4")
+                                                                    {
+                                                                        y.ForeColor = Color.Green;
+                                                                        return;
+                                                                    }
+                                                                }
+                                                                else
+                                                                    if (myTxt == "4")
+                                                                    {
+                                                                        if (y.Text == "5")
+                                                                        {
+                                                                            y.ForeColor = Color.Green;
+                                                                            return;
+                                                                        }
+                                                                    }
+                                                                    else
+                                                                        if (myTxt == "5")
+                                                                        {
+                                                                            if (y.Text == "0")
+                                                                            {
+                                                                                y.ForeColor = Color.Green;
+                                                                                return;
+                                                                            }
+                                                                        }
+
+                                                    #endregion
+                                                }
+                                                else
+                                                    if (trimmedString == "NOR")
+                                                    {
+                                                        #region NOR,NAR,ATC
+
+                                                        if (myTxt == "NOR")
+                                                        {
+                                                            if (y.Text == "NAR")
+                                                            {
+                                                                y.ForeColor = Color.Green;
+                                                                return;
+                                                            }
+                                                        }
+                                                        else
+                                                            if (myTxt == "NAR")
+                                                            {
+                                                                if (y.Text == "ATC")
+                                                                {
+                                                                    y.ForeColor = Color.Green;
+                                                                    return;
+                                                                }
+                                                            }
+                                                            else
+                                                                if (myTxt == "ATC")
+                                                                {
+                                                                    if (y.Text == "NOR")
+                                                                    {
+                                                                        y.ForeColor = Color.Green;
+                                                                        return;
+                                                                    }
+                                                                }
+
+                                                        #endregion
+                                                    }
+                                                    else
+                                                        if (trimmedString == "1.2K")
+                                                        {
+                                                            #region 1.2K,2.4K,9.6K,12K,16K
+
+                                                            if (myTxt == "1.2K")
+                                                            {
+                                                                if (y.Text == "2.4K")
+                                                                {
+                                                                    y.ForeColor = Color.Green;
+                                                                    return;
+                                                                }
+                                                            }
+                                                            else
+                                                                if (myTxt == "2.4K")
+                                                                {
+                                                                    if (y.Text == "9.6K")
+                                                                    {
+                                                                        y.ForeColor = Color.Green;
+                                                                        return;
+                                                                    }
+                                                                }
+                                                                else
+                                                                    if (myTxt == "9.6K")
+                                                                    {
+                                                                        if (y.Text == "12K")
+                                                                        {
+                                                                            y.ForeColor = Color.Green;
+                                                                            return;
+                                                                        }
+                                                                    }
+                                                                    else
+                                                                        if (myTxt == "12K")
+                                                                        {
+                                                                            if (y.Text == "16K")
+                                                                            {
+                                                                                y.ForeColor = Color.Green;
+                                                                                return;
+                                                                            }
+                                                                        }
+                                                                        else
+                                                                            if (myTxt == "16K")
+                                                                            {
+                                                                                if (y.Text == "1.2K")
+                                                                                {
+                                                                                    y.ForeColor = Color.Green;
+                                                                                    return;
+                                                                                }
+                                                                            }
+
+                                                            #endregion
+                                                        }
+
+                                    }
+
+                                }
+
+                            }
+
+                        }
+                    }
+
+                }
+                catch (Exception)
+                {
+
+                }
+
+                return;
+            }
+            #endregion
+
+            //because the VU1 and VU2 COMM pages do not have a fixed button selection,
+            //this section was added prior to the switch statement to handle the oddity
+            #region Handles page selection calls from COMM page
 
             if (currentPageTitle == "comm" & clickedButton == l1Btn)
             {
@@ -6396,6 +7454,13 @@ namespace CDU3000
                 VU1controlPage1();
                 return;
             }
+            else
+                if (currentPageTitle == "comm" & clickedButton == l2Btn)
+                    {
+                    StartFresh ( );
+                    VU2controlPage1 ( );
+                    return;
+                    }
 
             #endregion
 
@@ -6575,6 +7640,12 @@ namespace CDU3000
                             ProgressPage1();
                             break;
 
+                        //Return List 
+                        case "RETURN":
+                            StartFresh ( );
+                            ReturnList (currentPageTitle);
+                            break;
+
                         //ROUTE page1
                         case "ROUTE MENU":
                             StartFresh();
@@ -6668,6 +7739,20 @@ namespace CDU3000
                             COMpage();
                             break;
 
+                        //Return List 
+                        case "RETURN":
+                            StartFresh ( );
+                            ReturnList (currentPageTitle);
+                            break;
+
+                        //VU1 COMSEC CONTROL Page
+                        case "COMSEC":
+                            StartFresh ( );
+                            VU1comsecControlPage ( );
+                            break;
+
+                        
+
 
                         //default to scratchpad
                         default:
@@ -6715,9 +7800,6 @@ namespace CDU3000
             return e;
         }
 
-
-
-
         private void Scratch(string e, string fullText = "")  //Updates scratchpad info when buttons are pressed 
         {
             bool isPresent = false;
@@ -6740,6 +7822,10 @@ namespace CDU3000
             else
                 if (btnPressed == "r1" || btnPressed == "r2" || btnPressed == "r3" || btnPressed == "r4" || btnPressed == "r5" || btnPressed == "r6")
                 {
+                    if (fullText.Contains ("<"))
+                    {
+                        return;
+                    }
                     isPresent = FindPushedButon(btnPressed);
 
                     if (fullText != "" & (fullText.Contains(emptyDigit) == false) & !isPresent & (fullText.Contains("-") == false))
@@ -6764,8 +7850,6 @@ namespace CDU3000
 
 
         }
-
-
 
         private void TransferScratch()//transfers the scratchpad information into a line
         {
@@ -6955,6 +8039,36 @@ namespace CDU3000
             return value;
 
         }
+
+        private void ReturnList(string e)   //handles all RETURN butons
+            {
+            switch (e)
+                {
+                case "V/U1 CONTROL":
+                        {
+                            COMpage ( );
+                            break;
+                        }
+
+                case "V/U2 CONTROL":
+                        {
+                            COMpage ( );
+                            break;
+                        }
+
+                case "comm":
+                        {
+                            MissionPage ( );
+                            break;
+                        }
+
+                case "MARK POINTS":
+                        {
+                            IdxPage1 ( );
+                            break;
+                        }
+                }
+            }
 
 
 
