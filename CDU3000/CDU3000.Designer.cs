@@ -145,6 +145,7 @@
             this.btnDim = new System.Windows.Forms.Button();
             this.sPad = new System.Windows.Forms.TextBox();
             this.DeleteBtnTimer = new System.Windows.Forms.Timer(this.components);
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // closeBtn
@@ -228,7 +229,7 @@
             this.lineShape3,
             this.lineShape2,
             this.lineShape1});
-            this.shapeContainer1.Size = new System.Drawing.Size(754, 832);
+            this.shapeContainer1.Size = new System.Drawing.Size(753, 832);
             this.shapeContainer1.TabIndex = 2;
             this.shapeContainer1.TabStop = false;
             // 
@@ -1756,6 +1757,15 @@
             this.DeleteBtnTimer.Interval = 500;
             this.DeleteBtnTimer.Tick += new System.EventHandler(this.DeleteBtnTimer_Tick);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(816, 64);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.TabIndex = 78;
+            this.label5.Text = "label5";
+            // 
             // CDU3000
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1763,7 +1773,8 @@
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(754, 832);
+            this.ClientSize = new System.Drawing.Size(753, 832);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.sPad);
             this.Controls.Add(this.btnDim);
             this.Controls.Add(this.btnBrt);
@@ -1970,6 +1981,7 @@
         private System.Windows.Forms.Button btnDim;
         private System.Windows.Forms.TextBox sPad;
         private System.Windows.Forms.Timer DeleteBtnTimer;
+        private System.Windows.Forms.Label label5;
     }
 }
 
