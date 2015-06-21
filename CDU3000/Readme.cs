@@ -19,6 +19,8 @@ namespace CDU3000
         
         #endregion
 
+        
+
 
 
         #region Initializes the Readme and CDU3000 forms
@@ -30,6 +32,8 @@ namespace CDU3000
             
             //Initializes the CDU3000 form
             myCDU.Show();
+
+            
             
         }
         

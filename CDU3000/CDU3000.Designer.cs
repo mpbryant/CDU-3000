@@ -15,9 +15,9 @@
         {
             if (disposing && (components != null))
             {
-                components.Dispose();
+                components.Dispose ( );
             }
-            base.Dispose(disposing);
+            base.Dispose (disposing);
         }
 
         #region Windows Form Designer generated code
@@ -26,7 +26,7 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        private void InitializeComponent( )
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CDU3000));
@@ -146,6 +146,7 @@
             this.sPad = new System.Windows.Forms.TextBox();
             this.DeleteBtnTimer = new System.Windows.Forms.Timer(this.components);
             this.label5 = new System.Windows.Forms.Label();
+            this.DimBrtTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // closeBtn
@@ -1724,6 +1725,9 @@
             this.btnBrt.Size = new System.Drawing.Size(64, 36);
             this.btnBrt.TabIndex = 75;
             this.btnBrt.UseVisualStyleBackColor = false;
+            this.btnBrt.Click += new System.EventHandler(this.btnBrt_Click);
+            this.btnBrt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnBrt_MouseDown);
+            this.btnBrt.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnBrt_MouseUp);
             // 
             // btnDim
             // 
@@ -1739,6 +1743,9 @@
             this.btnDim.Size = new System.Drawing.Size(64, 36);
             this.btnDim.TabIndex = 76;
             this.btnDim.UseVisualStyleBackColor = false;
+            this.btnDim.Click += new System.EventHandler(this.btnDim_Click);
+            this.btnDim.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnDim_MouseDown);
+            this.btnDim.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnDim_MouseUp);
             // 
             // sPad
             // 
@@ -1765,6 +1772,11 @@
             this.label5.Size = new System.Drawing.Size(35, 13);
             this.label5.TabIndex = 78;
             this.label5.Text = "label5";
+            // 
+            // DimBrtTimer
+            // 
+            this.DimBrtTimer.Interval = 250;
+            this.DimBrtTimer.Tick += new System.EventHandler(this.DimBrtTimer_Tick);
             // 
             // CDU3000
             // 
@@ -1859,6 +1871,7 @@
             this.Name = "CDU3000";
             this.Text = "CDU-3000";
             this.Activated += new System.EventHandler(this.InitialPageLoad);
+            this.LocationChanged += new System.EventHandler(this.CDU3000_LocationChanged);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1982,6 +1995,7 @@
         private System.Windows.Forms.TextBox sPad;
         private System.Windows.Forms.Timer DeleteBtnTimer;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Timer DimBrtTimer;
     }
 }
 
