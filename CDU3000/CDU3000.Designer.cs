@@ -1872,6 +1872,7 @@
             this.Text = "CDU-3000";
             this.Activated += new System.EventHandler(this.InitialPageLoad);
             this.LocationChanged += new System.EventHandler(this.CDU3000_LocationChanged);
+            this.StyleChanged += new System.EventHandler(this.CDU3000_StyleChanged);
             this.ResumeLayout(false);
             this.PerformLayout();
 

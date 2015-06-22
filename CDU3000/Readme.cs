@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CDU3000
@@ -15,28 +8,28 @@ namespace CDU3000
         #region Fields
 
         //creates a new instanceof the CDU3000 class
-        CDU3000 myCDU = new CDU3000();
-        
+        CDU3000 myCDU = new CDU3000 ( );
+
         #endregion
 
-        
+
 
 
 
         #region Initializes the Readme and CDU3000 forms
 
-        public Readme()
+        public Readme( )
         {
             //Initializes the Readme form
-            InitializeComponent();
-            
-            //Initializes the CDU3000 form
-            myCDU.Show();
+            InitializeComponent ( );
 
-            
-            
+            //Initializes the CDU3000 form
+            myCDU.Show ( );
+
+
+
         }
-        
+
         #endregion
 
         #region Change CDU3000 Border and Buttons
@@ -48,16 +41,16 @@ namespace CDU3000
             if (myCDU.FormBorderStyle == FormBorderStyle.None)
             {
                 myCDU.FormBorderStyle = FormBorderStyle.Fixed3D;
-                myCDU.HideFormBtns();
+                myCDU.HideFormBtns ( );
             }
             else
             {
                 myCDU.FormBorderStyle = FormBorderStyle.None;
-                myCDU.ShowFormBtns();
+                myCDU.ShowFormBtns ( );
             }
 
         }
-        
+
         #endregion
 
     }

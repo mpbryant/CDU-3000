@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CDU3000
@@ -20,8 +14,8 @@ namespace CDU3000
         {
             set
             {
-                locX = value;
-                UpdateLoc ( );
+                locX = value;//set from the mainform 
+                UpdateLoc ( );//causes the form to reposition with the mainform
             }
         }
 
@@ -29,20 +23,19 @@ namespace CDU3000
         {
             set
             {
-                locY = value;
-                UpdateLoc ( );
+                locY = value;//set from the mainform 
+                UpdateLoc ( );//causes the form to reposition with the mainform
             }
         }
 
         private void UpdateLoc( )
         {
-            this.Location = new Point (locX, locY);
+            this.Location = new Point (locX, locY);//from DimmerLocx and y
         }
 
         public DimmerForm( )
         {
             InitializeComponent ( );
-            
         }
 
         private void DimmerForm_Load(object sender, EventArgs e)
@@ -50,6 +43,6 @@ namespace CDU3000
 
         }
 
-        
+
     }
 }

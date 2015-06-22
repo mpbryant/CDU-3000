@@ -7856,7 +7856,7 @@ namespace CDU3000
             btnPressed = "btnBrt";
             if (alpha >= .05)
             {
-                alpha = alpha - .05; 
+                alpha = alpha - .05;
             }
             DM.Opacity = alpha;
             //DM.BackColor = Color.FromArgb (alpha, 0, 0, 0);
@@ -7866,9 +7866,9 @@ namespace CDU3000
         {
             clickedButton = (Button)sender;
             btnPressed = "btnDim";
-            if (alpha<=.80)
+            if (alpha <= .80)
             {
-                alpha = alpha + .05; 
+                alpha = alpha + .05;
             }
             DM.Opacity = alpha;
             //DM.BackColor = Color.FromArgb (alpha, 0, 0, 0);
@@ -9462,11 +9462,8 @@ namespace CDU3000
         public CDU3000( )
         {
             InitializeComponent ( );
-
-
-            DM.Show ( );
-            DM.TopMost = true;
-
+            DM.Show ( );//displays the dimmer form over the main form
+            DM.Owner = this;//causes the dimmer form to be above the mainform but not over other forms
         }
 
         private void InitialPageLoad(object sender, EventArgs e) //loads the initial page seen on the CDU
@@ -9498,15 +9495,13 @@ namespace CDU3000
 
 
 
-        
+
 
         #region Dimming methods
 
         private void CDU3000_LocationChanged(object sender, EventArgs e)
         {
-            //positions the dimmer form (DM) when the main form moves
-            DM.DimmerLocX = this.Location.X + 145;
-            DM.DimmerLocY = this.Location.Y + 88;
+            CheckForBorder ( );//refactored into this
         }
 
         private void btnDim_MouseDown(object sender, MouseEventArgs e)
@@ -9554,8 +9549,31 @@ namespace CDU3000
                     }
                     DM.Opacity = alpha;
                 }
-        } 
+        }
+
+        private void CDU3000_StyleChanged(object sender, EventArgs e)
+        {
+            CheckForBorder ( );//refactored into this
+        }
+
+        private void CheckForBorder( )
+        {
+            if (this.FormBorderStyle == FormBorderStyle.None)
+            {
+                //positions the dimmer form (DM) when the main form moves and the border is not visible
+                DM.DimmerLocX = this.Location.X + 134;
+                DM.DimmerLocY = this.Location.Y + 52;
+            }
+            else
+            {
+                //positions the dimmer form (DM) when the main form moves
+                DM.DimmerLocX = this.Location.X + 145;
+                DM.DimmerLocY = this.Location.Y + 88;
+            }
+        }
+
         #endregion Dimming Methods
+
 
 
 
