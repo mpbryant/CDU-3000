@@ -38,7 +38,7 @@
             this.ClientSize = new System.Drawing.Size(488, 444);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "DimmerForm";
-            this.Opacity = 0.5D;
+            this.Opacity = 0.2D;
             this.Text = "DimmerForm";
             this.Load += new System.EventHandler(this.DimmerForm_Load);
             this.ResumeLayout(false);
