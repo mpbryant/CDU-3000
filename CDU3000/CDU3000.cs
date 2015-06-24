@@ -83,9 +83,29 @@ namespace CDU3000
         private string emptyLatLong = ('\uE000').ToString ( ) + ('\uE000').ToString ( ) + ('\uE000').ToString ( ) + ('\u00B0').ToString ( ) + ('\uE000').ToString ( ) + ('\uE000').ToString ( ) + "." + ('\uE000').ToString ( ) + ('\uE000').ToString ( ) + "  " + ('\uE000').ToString ( ) + ('\uE000').ToString ( ) + ('\uE000').ToString ( ) + ('\uE000').ToString ( ) + ('\u00B0').ToString ( ) + ('\uE000').ToString ( ) + ('\uE000').ToString ( ) + "." + ('\uE000').ToString ( ) + ('\uE000').ToString ( );
 
         private double alpha = .20;
-
         DimmerForm DM = new DimmerForm ( );
 
+        //NAV fields
+        private string navStatus;
+
+        //TACAN specific fields
+        private string tcnStatus;
+        private string tcnRT;
+        private string tcnAudio;
+        private string tcnMicro;
+        private string tcnNVRAM;
+        private string tcnAlert;
+        private string tcnTun;
+        private string tcnRAM;
+        private string tcnSUB;
+        private string tcn1553Bus;
+        private string tcnRCV;
+        private string tcnROM;
+        private string tcnPWR;
+        private string tcnTRM;
+        private string tcnDPRAM;
+        private string tcnDPDAT;
+        private string tcnSynth;
 
         #region VU1 fields
 
@@ -4797,69 +4817,7 @@ namespace CDU3000
             TB (r6b, col16, row13, "]");
         }
 
-        private void ZeroizePage( )
-        {
-            l1text = "> ZERO ALL";
-            l2text = "> EGI KEYS";
-            l3text = "> DATA CARDS";
-            l4text = "";
-            l5text = "";
-            l6text = "";
-            r1text = "";
-            r2text = "COM PRESETS";
-            r3text = "COM KEYS";
-            r4text = "";
-            r5text = "";
-            r6text = "RETURN";
 
-            currentPageTitle = "ZEROIZE"; //page title and number used for navigating
-            currentPageNumber = 1;
-
-            TextBox title = new TextBox ( );//displayed top center of screen
-            TB (title, col7, row0, "ZEROIZE");
-
-            TextBox l1 = new TextBox ( );
-            TB (l1, col1, row2, l1text, Color.White);
-
-            TextBox l2 = new TextBox ( );
-            TB (l2, col1, row4, l2text, Color.White);
-
-            TextBox l3 = new TextBox ( );
-            TB (l3, col1, row6, l3text, Color.White);
-
-            TextBox l4 = new TextBox ( );
-            TB (l4, col1, row8, l4text, Color.White);
-
-            TextBox r1 = new TextBox ( );
-            TB (r1, col15, row2, r1text, Color.White);
-
-            TextBox r2 = new TextBox ( );
-            TB (r2, col15, row4, r2text, Color.White);
-
-            TextBox r3 = new TextBox ( );
-            TB (r3, col15, row6, r3text, Color.White);
-
-            TextBox r4 = new TextBox ( );
-            TB (r4, col15, row8, r4text, Color.White);
-
-            TextBox l5title = new TextBox ( );
-            TB (l5title, col1, row9, "VOR - USAGE");
-
-
-
-            TextBox l5b = new TextBox ( );
-            TB (l5b, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
-
-            TextBox l6 = new TextBox ( );
-            TB (l6, col1, row12, l6text, Color.White);
-
-            TextBox l6b = new TextBox ( );
-            TB (l6b, col1, row13, "[");
-
-
-            TextBox r6b = new TextBox ( );
-            TB (r6b, col16, row13, "]");
-        }   //untested 
 
         #endregion
 
@@ -4983,8 +4941,10 @@ namespace CDU3000
             TextBox l2 = new TextBox ( );
             TB (l2, col1, row4, l2text, Color.White);
 
+
             TextBox l2r = new TextBox ( );
             TB (l2r, col2, row4, "NGO", Color.White);
+            navStatus = l2r.Text;
 
             TextBox l3t = new TextBox ( );
             TB (l3t, col2, row5, "SURV");
@@ -5278,9 +5238,393 @@ namespace CDU3000
 
         #endregion
 
+        #region NAV Status page
+
+        private void NAVstatusPage( )
+        {
+            CDU7000Page = true;
+
+            #region MyRegion
+            l1text = "< GO";
+            l2text = "";
+            l3text = "";
+            l4text = "";
+            l5text = "";
+            l6text = "< FAULT HIST";
+            r1text = "GO";
+            r2text = "";
+            r3text = "";
+            r4text = "";
+            r5text = "EGI MAINT";
+            r6text = "RETURN";
+
+            currentPageTitle = "NAV STATUS"; //page title and number used for navigating
+            currentPageNumber = 1;
+
+            TextBox title = new TextBox ( );//displayed top center of screen
+            TB (title, col7, row0, currentPageTitle);
+
+            TextBox status = new TextBox ( );
+            TB (status, title.Location.X + title.Width, row0, navStatus);
+
+            if (navStatus == "NGO")
+            {
+                status.ForeColor = Color.Yellow;
+            }
+
+            TextBox l1t = new TextBox ( );
+            TB (l1t, col2, row1, "EGI");
+
+            TextBox l1 = new TextBox ( );
+            TB (l1, col1, row2, l1text, Color.White);
+
+            //TextBox l2t = new TextBox();
+            //TB(l2t, col2, row3, "LOCATION");
+
+            TextBox l2 = new TextBox ( );
+            TB (l2, col1, row4, l2text, Color.White);
+
+            //TextBox l3t = new TextBox();
+            //TB(l3t, col2, row5, "IDENT");
+
+            TextBox l3 = new TextBox ( );
+            TB (l3, col1, row6, l3text, Color.White);
+
+            //TextBox l4t = new TextBox();
+            //TB(l4t, col2, row7, "IDENT");
+
+            TextBox l4 = new TextBox ( );
+            TB (l4, col1, row8, l4text, Color.White);
+
+            //TextBox l5t = new TextBox();
+            //TB(l5t, col2, row9, "IDENT");
+
+            TextBox l5 = new TextBox ( );
+            TB (l5, col1, row10, l5text, Color.White);
+
+            //TextBox l6t = new TextBox();
+            //TB(l6t, col2, row11, "IDENT");
+
+            TextBox l6 = new TextBox ( );
+            TB (l6, col1, row12, l6text, Color.White);
+
+            TextBox r1t = new TextBox ( );
+            TB (r1t, col14 + 20, row1, "TACAN");
+            TypeLeft (r1t);
+
+            TextBox r1 = new TextBox ( );
+            TB (r1, col15, row2, r1text, Color.White);
+
+            //TextBox r2t = new TextBox();
+            //TB(r2t, col14+20, row3, "IDENT");
+            //TypeLeft(r2t);
+
+            TextBox r2 = new TextBox ( );
+            TB (r2, col15, row4, r2text, Color.White);
+
+            //TextBox r3t = new TextBox();
+            //TB(r3t, col14+20, row5, "IDENT");
+            //TypeLeft(r3t);
+
+            TextBox r3 = new TextBox ( );
+            TB (r3, col15, row6, r3text, Color.White);
+
+            //TextBox r4t = new TextBox();
+            //TB(r4t, col14+20, row7, "IDENT");
+            //TypeLeft(r4t);
+
+            TextBox r4 = new TextBox ( );
+            TB (r4, col15, row8, r4text, Color.White);
+
+            //TextBox r5t = new TextBox();
+            //TB(r5t, col14+20, row9, "PILOT", Color.White);
+            //TypeLeft(r5t);
+
+            TextBox r5 = new TextBox ( );
+            TB (r5, col15, row10, r5text, Color.White);
+
+            //TextBox r6t = new TextBox();
+            //TB(r6t, col14+20, row11, "IDENT");
+            //TypeLeft(r6t);
+
+            TextBox r6 = new TextBox ( );
+            TB (r6, col15, row12, r6text, Color.White);
+
+            TextBox divider = new TextBox ( );
+            TB (divider, col1, row9, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+
+
+            #region Add Arrows if Needed
+            if (r1text != "")
+            {
+                TextBox r1r = new TextBox ( );
+                TB (r1r, col16, row2, ">", Color.White);
+            }
+
+            if (r2text != "")
+            {
+                TextBox r2r = new TextBox ( );
+                TB (r2r, col16, row4, ">", Color.White);
+            }
+
+            if (r3text != "")
+            {
+                TextBox r3r = new TextBox ( );
+                TB (r3r, col16, row6, ">", Color.White);
+            }
+
+            if (r4text != "")
+            {
+                TextBox r4r = new TextBox ( );
+                TB (r4r, col16, row8, ">", Color.White);
+            }
+
+            if (r5text != "")
+            {
+                TextBox r5r = new TextBox ( );
+                TB (r5r, col16, row10, ">", Color.White);
+            }
+
+
+            if (r6text != "")
+            {
+                TextBox r6r = new TextBox ( );
+                TB (r6r, col16, row12, ">", Color.White);
+            }
+            #endregion
+
+            TextBox l6b = new TextBox ( );
+            TB (l6b, col1, row13, "[");
+
+
+            TextBox r6b = new TextBox ( );
+            TB (r6b, col16, row13, "]");
+            #endregion
+        }
+
+        #endregion
+
+        #region TACAN Status page
+
+        private void TACANstatusPage( )
+        {
+            CDU7000Page = true;
+
+            #region MyRegion
+            l1text = "ON";
+            l2text = "NGO";
+            l3text = "GO";
+            l4text = "GO";
+            l5text = "GO";
+            l6text = "< FAULT HIST";
+            r1text = "- - - ";
+            r2text = "NGO";
+            r3text = "GO";
+            r4text = "GO";
+            r5text = "";
+            r6text = "RETURN";
+
+            currentPageTitle = "TACAN STATUS"; //page title and number used for navigating
+            currentPageNumber = 1;
+
+            TextBox title = new TextBox ( );//displayed top center of screen
+            TB (title, col7, row0, currentPageTitle);
+
+            TextBox status = new TextBox ( );
+            TB (status, title.Location.X + title.Width, row0, tcnStatus);
+
+            TextBox l1t = new TextBox ( );
+            TB (l1t, col2, row1, "ALERT");
+
+            TextBox l1 = new TextBox ( );
+            TB (l1, col1, row2, l1text, Color.Green);
+
+            TextBox l1slash = new TextBox ( );
+            TB (l1slash, l1.Location.X + l1.Width, row2, "/", Color.White);
+
+            TextBox l1off = new TextBox ( );
+            TB (l1off, l1slash.Location.X + l1slash.Width, row2, "OFF", Color.White);
+
+            TextBox l1c = new TextBox ( );
+            TB (l1c, col7, row1, "1553 BUS");
+            CenterMe (l1c);
+
+            TextBox bus = new TextBox ( );
+            TB (bus, col9, row2, "GO", Color.White);
+
+            TextBox l2t = new TextBox ( );
+            TB (l2t, col2, row3, "NVRAM");
+
+            TextBox l2 = new TextBox ( );
+            TB (l2, col1, row4, l2text, Color.Yellow);
+
+            TextBox sub = new TextBox ( );
+            TB (sub, col6, row3, "SUB");
+
+            TextBox subGo = new TextBox ( );
+            TB (subGo, col6, row4, "GO", Color.White);
+
+            TextBox trm = new TextBox ( );
+            TB (trm, col9, row3, "TRM");
+
+            TextBox trmGo = new TextBox ( );
+            TB (trmGo, col9, row4, "GO", Color.White);
+
+            TextBox l3t = new TextBox ( );
+            TB (l3t, col2, row5, "MICRO");
+
+            TextBox l3 = new TextBox ( );
+            TB (l3, col1, row6, l3text, Color.White);
+
+            TextBox pwr = new TextBox ( );
+            TB (pwr, col9, row5, "PWR");
+
+            TextBox pwrGo = new TextBox ( );
+            TB (pwrGo, col9, row6, "GO", Color.White);
+
+            TextBox l4t = new TextBox ( );
+            TB (l4t, col2, row7, "AUDIO");
+
+            TextBox l4 = new TextBox ( );
+            TB (l4, col1, row8, l4text, Color.White);
+
+            TextBox ram = new TextBox ( );
+            TB (ram, col6, row7, "RAM");
+
+            TextBox ramGo = new TextBox ( );
+            TB (ramGo, col6, row8, "GO", Color.White);
+
+            TextBox rom = new TextBox ( );
+            TB (rom, col9, row7, "ROM");
+
+            TextBox romGo = new TextBox ( );
+            TB (romGo, col9, row8, "GO", Color.White);
+
+            TextBox l5t = new TextBox ( );
+            TB (l5t, col2, row9, "RT");
+
+            TextBox l5 = new TextBox ( );
+            TB (l5, col1, row10, l5text, Color.White);
+
+            TextBox tun = new TextBox ( );
+            TB (tun, col6, row9, "TUN");
+
+            TextBox tunGo = new TextBox ( );
+            TB (tunGo, col6, row10, "NGO", Color.Yellow);
+
+            TextBox rcv = new TextBox ( );
+            TB (rcv, col9, row9, "RCV");
+
+            TextBox rcvGo = new TextBox ( );
+            TB (rcvGo, col9, row10, "GO", Color.White);
+
+            //TextBox l6t = new TextBox();
+            //TB(l6t, col2, row11, "IDENT");
+
+            TextBox l6 = new TextBox ( );
+            TB (l6, col1, row12, l6text, Color.White);
+
+            TextBox r1t = new TextBox ( );
+            TB (r1t, col14 + 20, row1, "TEST");
+            TypeLeft (r1t);
+
+            TextBox r1 = new TextBox ( );
+            TB (r1, col15, row2, r1text, Color.White);
+
+            TextBox r2t = new TextBox ( );
+            TB (r2t, col14 + 20, row3, "SYNTH");
+            TypeLeft (r2t);
+
+            TextBox r2 = new TextBox ( );
+            TB (r2, col15, row4, r2text, Color.Yellow);
+
+            TextBox r3t = new TextBox ( );
+            TB (r3t, col14 + 20, row5, "DPDAT");
+            TypeLeft (r3t);
+
+            TextBox r3 = new TextBox ( );
+            TB (r3, col15, row6, r3text, Color.White);
+
+            TextBox r4t = new TextBox ( );
+            TB (r4t, col14 + 20, row7, "DPRAM");
+            TypeLeft (r4t);
+
+            TextBox r4 = new TextBox ( );
+            TB (r4, col15, row8, r4text, Color.White);
+
+            //TextBox r5t = new TextBox();
+            //TB(r5t, col14+20, row9, "PILOT", Color.White);
+            //TypeLeft(r5t);
+
+            TextBox r5 = new TextBox ( );
+            TB (r5, col15, row10, r5text, Color.White);
+
+            //TextBox r6t = new TextBox();
+            //TB(r6t, col14+20, row11, "IDENT");
+            //TypeLeft(r6t);
+
+            TextBox r6 = new TextBox ( );
+            TB (r6, col15, row12, r6text, Color.White);
+
+            TextBox divider = new TextBox ( );
+            TB (divider, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+
+
+            #region Add Arrows if Needed
+            if (r1text != "")
+            {
+                TextBox r1r = new TextBox ( );
+                TB (r1r, col16, row2, "<", Color.White);
+            }
+
+            //if (r2text != "")
+            //{
+            //    TextBox r2r = new TextBox ( );
+            //    TB (r2r, col16, row4, ">", Color.White);
+            //}
+
+            //if (r3text != "")
+            //{
+            //    TextBox r3r = new TextBox ( );
+            //    TB (r3r, col16, row6, ">", Color.White);
+            //}
+
+            //if (r4text != "")
+            //{
+            //    TextBox r4r = new TextBox ( );
+            //    TB (r4r, col16, row8, ">", Color.White);
+            //}
+
+            //if (r5text != "")
+            //{
+            //    TextBox r5r = new TextBox ( );
+            //    TB (r5r, col16, row10, ">", Color.White);
+            //}
+
+
+            if (r6text != "")
+            {
+                TextBox r6r = new TextBox ( );
+                TB (r6r, col16, row12, ">", Color.White);
+            }
+            #endregion
+
+            TextBox l6b = new TextBox ( );
+            TB (l6b, col1, row13, "[");
+
+
+            TextBox r6b = new TextBox ( );
+            TB (r6b, col16, row13, "]");
+            #endregion
+        }
+
+        #endregion
+
         #region PowerPage
 
-        private void PowerPage()
+        private void PowerPage( )
         {
             CDU7000Page = true;
 
@@ -5357,11 +5701,11 @@ namespace CDU3000
             TB (r1, col15, row2, r1text, Color.Green);
 
             TextBox r1on = new TextBox ( );
-            TB (r1on, col11 +10, row2, "ON", Color.White);
+            TB (r1on, col11 + 10, row2, "ON", Color.White);
 
             TextBox r1slash = new TextBox ( );
-            TB (r1slash, r1on.Location.X+r1on.Width , row2, "/", Color.White);
-            
+            TB (r1slash, r1on.Location.X + r1on.Width, row2, "/", Color.White);
+
             TextBox r2t = new TextBox ( );
             TB (r2t, col14 + 20, row3, "V/U2");
             TypeLeft (r2t);
@@ -5409,7 +5753,7 @@ namespace CDU3000
 
 
             #region Add Arrows if Needed
-            
+
 
 
             if (r6text != "")
@@ -5860,6 +6204,168 @@ namespace CDU3000
 
             #region Add Arrows if Needed
 
+
+
+            if (r6text != "")
+            {
+                TextBox r6r = new TextBox ( );
+                TB (r6r, col16, row12, ">", Color.White);
+            }
+            #endregion
+
+            TextBox l6b = new TextBox ( );
+            TB (l6b, col1, row13, "[");
+
+
+            TextBox r6b = new TextBox ( );
+            TB (r6b, col16, row13, "]");
+            #endregion
+        }
+
+        #endregion
+
+        #region Zeroize page
+
+        private void ZeroizePage( )
+        {
+            CDU7000Page = true;
+
+            #region MyRegion
+            l1text = "> ZEROIZE ALL";
+            l2text = "> EGI KEYS";
+            l3text = "> DATA CARDS";
+            l4text = "";
+            l5text = "";
+            l6text = "";
+            r1text = "";
+            r2text = "COM PRESETS";
+            r3text = "COM KEYS";
+            r4text = "";
+            r5text = "";
+            r6text = "RETURN";
+
+            currentPageTitle = "ZEROIZE"; //page title and number used for navigating
+            currentPageNumber = 1;
+
+            TextBox title = new TextBox ( );//displayed top center of screen
+            TB (title, col7, row0, currentPageTitle);
+
+            //TextBox page = new TextBox ( );
+            //TB (page, col14, row0, currentPageNumber + "/1");
+
+            //TextBox l1t = new TextBox();
+            //TB(l1t, col2, row1, "IDENT");
+
+            TextBox l1 = new TextBox ( );
+            TB (l1, col1, row2, l1text, Color.White);
+
+            //TextBox l2t = new TextBox();
+            //TB(l2t, col2, row3, "LOCATION");
+
+            TextBox l2 = new TextBox ( );
+            TB (l2, col1, row4, l2text, Color.White);
+
+            //TextBox l3t = new TextBox();
+            //TB(l3t, col2, row5, "IDENT");
+
+            TextBox l3 = new TextBox ( );
+            TB (l3, col1, row6, l3text, Color.White);
+
+            //TextBox l4t = new TextBox();
+            //TB(l4t, col2, row7, "IDENT");
+
+            TextBox l4 = new TextBox ( );
+            TB (l4, col1, row8, l4text, Color.White);
+
+            //TextBox l5t = new TextBox();
+            //TB(l5t, col2, row9, "IDENT");
+
+            TextBox l5 = new TextBox ( );
+            TB (l5, col1, row10, l5text, Color.White);
+
+            //TextBox l6t = new TextBox();
+            //TB(l6t, col2, row11, "IDENT");
+
+            TextBox l6 = new TextBox ( );
+            TB (l6, col1, row12, l6text, Color.White);
+
+            //TextBox r1t = new TextBox();
+            //TB(r1t, col14+20, row1, "IDENT");
+            //TypeLeft(r1t);
+
+            TextBox r1 = new TextBox ( );
+            TB (r1, col15, row2, r1text, Color.White);
+
+            //TextBox r2t = new TextBox();
+            //TB(r2t, col14+20, row3, "IDENT");
+            //TypeLeft(r2t);
+
+            TextBox r2 = new TextBox ( );
+            TB (r2, col15, row4, r2text, Color.White);
+
+            //TextBox r3t = new TextBox();
+            //TB(r3t, col14+20, row5, "IDENT");
+            //TypeLeft(r3t);
+
+            TextBox r3 = new TextBox ( );
+            TB (r3, col15, row6, r3text, Color.White);
+
+            //TextBox r4t = new TextBox();
+            //TB(r4t, col14+20, row7, "IDENT");
+            //TypeLeft(r4t);
+
+            TextBox r4 = new TextBox ( );
+            TB (r4, col15, row8, r4text, Color.White);
+
+            //TextBox r5t = new TextBox();
+            //TB(r5t, col14+20, row9, "PILOT", Color.White);
+            //TypeLeft(r5t);
+
+            TextBox r5 = new TextBox ( );
+            TB (r5, col15, row10, r5text, Color.White);
+
+            //TextBox r6t = new TextBox();
+            //TB(r6t, col14+20, row11, "IDENT");
+            //TypeLeft(r6t);
+
+            TextBox r6 = new TextBox ( );
+            TB (r6, col15, row12, r6text, Color.White);
+
+            TextBox divider = new TextBox ( );
+            TB (divider, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+
+
+            #region Add Arrows if Needed
+            if (r1text != "")
+            {
+                TextBox r1r = new TextBox ( );
+                TB (r1r, col16, row2, ">", Color.White);
+            }
+
+            if (r2text != "")
+            {
+                TextBox r2r = new TextBox ( );
+                TB (r2r, col16, row4, "<", Color.White);
+            }
+
+            if (r3text != "")
+            {
+                TextBox r3r = new TextBox ( );
+                TB (r3r, col16, row6, "<", Color.White);
+            }
+
+            if (r4text != "")
+            {
+                TextBox r4r = new TextBox ( );
+                TB (r4r, col16, row8, ">", Color.White);
+            }
+
+            if (r5text != "")
+            {
+                TextBox r5r = new TextBox ( );
+                TB (r5r, col16, row10, ">", Color.White);
+            }
 
 
             if (r6text != "")
@@ -6764,17 +7270,1732 @@ namespace CDU3000
         private void VU1sincgarsControlPage( )
         {
             CDU7000Page = true;
+
+            #region MyRegion
+            l1text = ": RECV HOP";
+            l2text = "NO FILL";
+            l3text = ": [1]";
+            l4text = "";
+            l5text = "[01/15:29]";
+            l6text = "< LOCKOUTS";
+            r1text = "ERF";
+            r2text = "OFF";
+            r3text = "H2";
+            r4text = "LATE ENTRY";
+            r5text = "GPS TIME";
+            r6text = "RETURN";
+
+            currentPageTitle = "V/U1 SINCGARS"; //page title and number used for navigating
+            currentPageNumber = 1;
+
+            TextBox title = new TextBox ( );//displayed top center of screen
+            TB (title, col7, row0, currentPageTitle);
+
+            //TextBox page = new TextBox ( );
+            //TB (page, col14, row0, currentPageNumber + "/1");
+
+            TextBox l1t = new TextBox ( );
+            TB (l1t, col2, row1, "RECV / SEND MODE");
+
+            TextBox l1 = new TextBox ( );
+            TB (l1, col1, row2, l1text, Color.White);
+
+            TextBox l2t = new TextBox ( );
+            TB (l2t, col2, row3, "CHANNEL STATUS");
+
+            TextBox l2 = new TextBox ( );
+            TB (l2, col1, row4, l2text, Color.White);
+
+            TextBox l3t = new TextBox ( );
+            TB (l3t, col2, row5, "CHANNEL");
+
+            TextBox l3 = new TextBox ( );
+            TB (l3, col1, row6, l3text, Color.White);
+
+            TextBox l4t = new TextBox ( );
+            TB (l4t, col2, row7, "CS COLD");
+
+            TextBox l4 = new TextBox ( );
+            TB (l4, col1, row8, l4text, Color.White);
+
+            TextBox l5t = new TextBox ( );
+            TB (l5t, col2, row9, "TOD");
+
+            TextBox l5 = new TextBox ( );
+            TB (l5, col1, row10, l5text, Color.White);
+
+            //TextBox l6t = new TextBox();
+            //TB(l6t, col2, row11, "IDENT");
+
+            TextBox l6 = new TextBox ( );
+            TB (l6, col1, row12, l6text, Color.White);
+
+            //TextBox r1t = new TextBox();
+            //TB(r1t, col14+20, row1, "IDENT");
+            //TypeLeft(r1t);
+
+            TextBox r1 = new TextBox ( );
+            TB (r1, col15, row2, r1text, Color.White);
+
+            TextBox r2t = new TextBox ( );
+            TB (r2t, col14 + 20, row3, "MASTER");
+            TypeLeft (r2t);
+
+            TextBox r2on = new TextBox ( );
+            TB (r2on, col11 + 10, row4, "ON", Color.White);
+
+            TextBox r2slash = new TextBox ( );
+            TB (r2slash, r2on.Location.X + r2on.Width, row4, "/", Color.White);
+
+            TextBox r2 = new TextBox ( );
+            TB (r2, col15, row4, r2text, Color.Green);
+
+            TextBox r3t = new TextBox ( );
+            TB (r3t, col14 + 20, row5, "FH MODE");
+            TypeLeft (r3t);
+
+            TextBox r3h1 = new TextBox ( );
+            TB (r3h1, col12, row6, "H1", Color.Green);
+
+            TextBox r3slash = new TextBox ( );
+            TB (r3slash, r3h1.Location.X + r3h1.Width, row6, "/", Color.White);
+
+            TextBox r3 = new TextBox ( );
+            TB (r3, col15, row6, r3text, Color.White);
+
+            TextBox r4t = new TextBox ( );
+            TB (r4t, col14 + 20, row7, "P1      F   50.075");
+            TypeLeft (r4t);
+
+            TextBox r4 = new TextBox ( );
+            TB (r4, col15, row8, r4text, Color.White);
+
+            //TextBox r5t = new TextBox();
+            //TB(r5t, col14+20, row9, "PILOT", Color.White);
+            //TypeLeft(r5t);
+
+            TextBox r5 = new TextBox ( );
+            TB (r5, col15, row10, r5text, Color.White);
+
+            //TextBox r6t = new TextBox();
+            //TB(r6t, col14+20, row11, "IDENT");
+            //TypeLeft(r6t);
+
+            TextBox r6 = new TextBox ( );
+            TB (r6, col15, row12, r6text, Color.White);
+
+            //TextBox divider = new TextBox ( );
+            //TB (divider, col1, row9, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+
+
+            #region Add Arrows if Needed
+            if (r1text != "")
+            {
+                TextBox r1r = new TextBox ( );
+                TB (r1r, col16, row2, "<", Color.White);
+            }
+
+            //if (r2text != "")
+            //{
+            //    TextBox r2r = new TextBox ( );
+            //    TB (r2r, col16, row4, ">", Color.White);
+            //}
+
+            //if (r3text != "")
+            //{
+            //    TextBox r3r = new TextBox ( );
+            //    TB (r3r, col16, row6, ">", Color.White);
+            //}
+
+            if (r4text != "")
+            {
+                TextBox r4r = new TextBox ( );
+                TB (r4r, col16, row8, "<", Color.White);
+            }
+
+            if (r5text != "")
+            {
+                TextBox r5r = new TextBox ( );
+                TB (r5r, col16, row10, "<", Color.White);
+            }
+
+
+            if (r6text != "")
+            {
+                TextBox r6r = new TextBox ( );
+                TB (r6r, col16, row12, ">", Color.White);
+            }
+            #endregion
+
+            TextBox l6b = new TextBox ( );
+            TB (l6b, col1, row13, "[");
+
+
+            TextBox r6b = new TextBox ( );
+            TB (r6b, col16, row13, "]");
+            #endregion
         }
 
         private void VU1lockoutsPage( )
         {
             CDU7000Page = true;
+
+            #region MyRegion
+            l1text = "L1";
+            l2text = "L217";
+            l3text = "L3";
+            l4text = "L488";
+            l5text = "L562";
+            l6text = "L6 - -";
+            r1text = "L7 - -";
+            r2text = "L8 - -";
+            r3text = "";
+            r4text = "";
+            r5text = "";
+            r6text = "RETURN";
+
+            currentPageTitle = "V/U1 LOCKOUTS"; //page title and number used for navigating
+            currentPageNumber = 1;
+
+            TextBox title = new TextBox ( );//displayed top center of screen
+            TB (title, col7, row0, currentPageTitle);
+
+            //TextBox page = new TextBox ( );
+            //TB (page, col14, row0, currentPageNumber + "/1");
+
+            //TextBox l1t = new TextBox();
+            //TB(l1t, col2, row1, "IDENT");
+
+            TextBox l1 = new TextBox ( );
+            TB (l1, col1, row2, l1text, Color.White);
+
+            //TextBox l2t = new TextBox();
+            //TB(l2t, col2, row3, "LOCATION");
+
+            TextBox l2 = new TextBox ( );
+            TB (l2, col1, row4, l2text, Color.White);
+
+            //TextBox l3t = new TextBox();
+            //TB(l3t, col2, row5, "IDENT");
+
+            TextBox l3 = new TextBox ( );
+            TB (l3, col1, row6, l3text, Color.White);
+
+            //TextBox l4t = new TextBox();
+            //TB(l4t, col2, row7, "IDENT");
+
+            TextBox l4 = new TextBox ( );
+            TB (l4, col1, row8, l4text, Color.White);
+
+            //TextBox l5t = new TextBox();
+            //TB(l5t, col2, row9, "IDENT");
+
+            TextBox l5 = new TextBox ( );
+            TB (l5, col1, row10, l5text, Color.White);
+
+            //TextBox l6t = new TextBox();
+            //TB(l6t, col2, row11, "IDENT");
+
+            TextBox l6 = new TextBox ( );
+            TB (l6, col1, row12, l6text, Color.White);
+
+            //TextBox r1t = new TextBox();
+            //TB(r1t, col14+20, row1, "IDENT");
+            //TypeLeft(r1t);
+
+            TextBox r1 = new TextBox ( );
+            TB (r1, col15, row2, r1text, Color.White);
+
+            //TextBox r2t = new TextBox();
+            //TB(r2t, col14+20, row3, "IDENT");
+            //TypeLeft(r2t);
+
+            TextBox r2 = new TextBox ( );
+            TB (r2, col15, row4, r2text, Color.White);
+
+            //TextBox r3t = new TextBox();
+            //TB(r3t, col14+20, row5, "IDENT");
+            //TypeLeft(r3t);
+
+            TextBox r3 = new TextBox ( );
+            TB (r3, col15, row6, r3text, Color.White);
+
+            //TextBox r4t = new TextBox();
+            //TB(r4t, col14+20, row7, "IDENT");
+            //TypeLeft(r4t);
+
+            TextBox r4 = new TextBox ( );
+            TB (r4, col15, row8, r4text, Color.White);
+
+            //TextBox r5t = new TextBox();
+            //TB(r5t, col14+20, row9, "PILOT", Color.White);
+            //TypeLeft(r5t);
+
+            TextBox r5 = new TextBox ( );
+            TB (r5, col15, row10, r5text, Color.White);
+
+            //TextBox r6t = new TextBox();
+            //TB(r6t, col14+20, row11, "IDENT");
+            //TypeLeft(r6t);
+
+            TextBox r6 = new TextBox ( );
+            TB (r6, col15, row12, r6text, Color.White);
+
+            //TextBox divider = new TextBox ( );
+            //TB (divider, col1, row9, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+
+
+            #region Add Arrows if Needed
+            //if (r1text != "")
+            //{
+            //    TextBox r1r = new TextBox ( );
+            //    TB (r1r, col16, row2, ">", Color.White);
+            //}
+
+            //if (r2text != "")
+            //{
+            //    TextBox r2r = new TextBox ( );
+            //    TB (r2r, col16, row4, ">", Color.White);
+            //}
+
+            //if (r3text != "")
+            //{
+            //    TextBox r3r = new TextBox ( );
+            //    TB (r3r, col16, row6, ">", Color.White);
+            //}
+
+            //if (r4text != "")
+            //{
+            //    TextBox r4r = new TextBox ( );
+            //    TB (r4r, col16, row8, ">", Color.White);
+            //}
+
+            //if (r5text != "")
+            //{
+            //    TextBox r5r = new TextBox ( );
+            //    TB (r5r, col16, row10, ">", Color.White);
+            //}
+
+
+            if (r6text != "")
+            {
+                TextBox r6r = new TextBox ( );
+                TB (r6r, col16, row12, ">", Color.White);
+            }
+            #endregion
+
+            TextBox l6b = new TextBox ( );
+            TB (l6b, col1, row13, "[");
+
+
+            TextBox r6b = new TextBox ( );
+            TB (r6b, col16, row13, "]");
+            #endregion
         }
+
+        #region VU1 MX Pages
 
         private void VU1maintenancePage( )
         {
             CDU7000Page = true;
+
+            #region MyRegion
+            l1text = "< LOOPBACK";
+            l2text = "";
+            l3text = "";
+            l4text = "";
+            l5text = "";
+            l6text = "";
+            r1text = "CLEAR";
+            r2text = "FILL";
+            r3text = "";
+            r4text = "";
+            r5text = "";
+            r6text = "RETURN";
+
+            currentPageTitle = "V/U1 MAINTENANCE"; //page title and number used for navigating
+            currentPageNumber = 1;
+
+            TextBox title = new TextBox ( );//displayed top center of screen
+            TB (title, col7, row0, currentPageTitle);
+
+            //TextBox page = new TextBox ( );
+            //TB (page, col14, row0, currentPageNumber + "/1");
+
+            //TextBox l1t = new TextBox();
+            //TB(l1t, col2, row1, "IDENT");
+
+            TextBox l1 = new TextBox ( );
+            TB (l1, col1, row2, l1text, Color.White);
+
+            //TextBox l2t = new TextBox();
+            //TB(l2t, col2, row3, "LOCATION");
+
+            TextBox l2 = new TextBox ( );
+            TB (l2, col1, row4, l2text, Color.White);
+
+            //TextBox l3t = new TextBox();
+            //TB(l3t, col2, row5, "IDENT");
+
+            TextBox l3 = new TextBox ( );
+            TB (l3, col1, row6, l3text, Color.White);
+
+            //TextBox l4t = new TextBox();
+            //TB(l4t, col2, row7, "IDENT");
+
+            TextBox l4 = new TextBox ( );
+            TB (l4, col1, row8, l4text, Color.White);
+
+            //TextBox l5t = new TextBox();
+            //TB(l5t, col2, row9, "IDENT");
+
+            TextBox l5 = new TextBox ( );
+            TB (l5, col1, row10, l5text, Color.White);
+
+            //TextBox l6t = new TextBox();
+            //TB(l6t, col2, row11, "IDENT");
+
+            TextBox l6 = new TextBox ( );
+            TB (l6, col1, row12, l6text, Color.White);
+
+            //TextBox r1t = new TextBox();
+            //TB(r1t, col14+20, row1, "IDENT");
+            //TypeLeft(r1t);
+
+            TextBox r1 = new TextBox ( );
+            TB (r1, col15, row2, r1text, Color.White);
+
+            //TextBox r2t = new TextBox();
+            //TB(r2t, col14+20, row3, "IDENT");
+            //TypeLeft(r2t);
+
+            TextBox r2 = new TextBox ( );
+            TB (r2, col15, row4, r2text, Color.White);
+
+            //TextBox r3t = new TextBox();
+            //TB(r3t, col14+20, row5, "IDENT");
+            //TypeLeft(r3t);
+
+            TextBox r3 = new TextBox ( );
+            TB (r3, col15, row6, r3text, Color.White);
+
+            //TextBox r4t = new TextBox();
+            //TB(r4t, col14+20, row7, "IDENT");
+            //TypeLeft(r4t);
+
+            TextBox r4 = new TextBox ( );
+            TB (r4, col15, row8, r4text, Color.White);
+
+            //TextBox r5t = new TextBox();
+            //TB(r5t, col14+20, row9, "PILOT", Color.White);
+            //TypeLeft(r5t);
+
+            TextBox r5 = new TextBox ( );
+            TB (r5, col15, row10, r5text, Color.White);
+
+            //TextBox r6t = new TextBox();
+            //TB(r6t, col14+20, row11, "IDENT");
+            //TypeLeft(r6t);
+
+            TextBox r6 = new TextBox ( );
+            TB (r6, col15, row12, r6text, Color.White);
+
+            //TextBox divider = new TextBox ( );
+            //TB (divider, col1, row9, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+
+
+            #region Add Arrows if Needed
+            if (r1text != "")
+            {
+                TextBox r1r = new TextBox ( );
+                TB (r1r, col16, row2, ">", Color.White);
+            }
+
+            if (r2text != "")
+            {
+                TextBox r2r = new TextBox ( );
+                TB (r2r, col16, row4, ">", Color.White);
+            }
+
+            if (r3text != "")
+            {
+                TextBox r3r = new TextBox ( );
+                TB (r3r, col16, row6, ">", Color.White);
+            }
+
+            if (r4text != "")
+            {
+                TextBox r4r = new TextBox ( );
+                TB (r4r, col16, row8, ">", Color.White);
+            }
+
+            if (r5text != "")
+            {
+                TextBox r5r = new TextBox ( );
+                TB (r5r, col16, row10, ">", Color.White);
+            }
+
+
+            if (r6text != "")
+            {
+                TextBox r6r = new TextBox ( );
+                TB (r6r, col16, row12, ">", Color.White);
+            }
+            #endregion
+
+            TextBox l6b = new TextBox ( );
+            TB (l6b, col1, row13, "[");
+
+
+            TextBox r6b = new TextBox ( );
+            TB (r6b, col16, row13, "]");
+            #endregion
         }
+
+        private void VU1ClearNVM( )
+        {
+            CDU7000Page = true;
+
+            #region MyRegion
+            l1text = "> CLEAR ALL";
+            l2text = "> CLEAR BIT FAULTS";
+            l3text = "> CLEAR PRESETS";
+            l4text = "";
+            l5text = "";
+            l6text = "";
+            r1text = "";
+            r2text = "";
+            r3text = "";
+            r4text = "";
+            r5text = "";
+            r6text = "RETURN";
+
+            currentPageTitle = "V/U1 CLEAR NVM"; //page title and number used for navigating
+            currentPageNumber = 1;
+
+            TextBox title = new TextBox ( );//displayed top center of screen
+            TB (title, col7, row0, currentPageTitle);
+
+            //TextBox page = new TextBox ( );
+            //TB (page, col14, row0, currentPageNumber + "/1");
+
+            //TextBox l1t = new TextBox();
+            //TB(l1t, col2, row1, "IDENT");
+
+            TextBox l1 = new TextBox ( );
+            TB (l1, col1, row2, l1text, Color.White);
+
+            //TextBox l2t = new TextBox();
+            //TB(l2t, col2, row3, "LOCATION");
+
+            TextBox l2 = new TextBox ( );
+            TB (l2, col1, row4, l2text, Color.White);
+
+            //TextBox l3t = new TextBox();
+            //TB(l3t, col2, row5, "IDENT");
+
+            TextBox l3 = new TextBox ( );
+            TB (l3, col1, row6, l3text, Color.White);
+
+            //TextBox l4t = new TextBox();
+            //TB(l4t, col2, row7, "IDENT");
+
+            TextBox l4 = new TextBox ( );
+            TB (l4, col1, row8, l4text, Color.White);
+
+            //TextBox l5t = new TextBox();
+            //TB(l5t, col2, row9, "IDENT");
+
+            TextBox l5 = new TextBox ( );
+            TB (l5, col1, row10, l5text, Color.White);
+
+            //TextBox l6t = new TextBox();
+            //TB(l6t, col2, row11, "IDENT");
+
+            TextBox l6 = new TextBox ( );
+            TB (l6, col1, row12, l6text, Color.White);
+
+            //TextBox r1t = new TextBox();
+            //TB(r1t, col14+20, row1, "IDENT");
+            //TypeLeft(r1t);
+
+            TextBox r1 = new TextBox ( );
+            TB (r1, col15, row2, r1text, Color.White);
+
+            //TextBox r2t = new TextBox();
+            //TB(r2t, col14+20, row3, "IDENT");
+            //TypeLeft(r2t);
+
+            TextBox r2 = new TextBox ( );
+            TB (r2, col15, row4, r2text, Color.White);
+
+            //TextBox r3t = new TextBox();
+            //TB(r3t, col14+20, row5, "IDENT");
+            //TypeLeft(r3t);
+
+            TextBox r3 = new TextBox ( );
+            TB (r3, col15, row6, r3text, Color.White);
+
+            //TextBox r4t = new TextBox();
+            //TB(r4t, col14+20, row7, "IDENT");
+            //TypeLeft(r4t);
+
+            TextBox r4 = new TextBox ( );
+            TB (r4, col15, row8, r4text, Color.White);
+
+            //TextBox r5t = new TextBox();
+            //TB(r5t, col14+20, row9, "PILOT", Color.White);
+            //TypeLeft(r5t);
+
+            TextBox r5 = new TextBox ( );
+            TB (r5, col15, row10, r5text, Color.White);
+
+            //TextBox r6t = new TextBox();
+            //TB(r6t, col14+20, row11, "IDENT");
+            //TypeLeft(r6t);
+
+            TextBox r6 = new TextBox ( );
+            TB (r6, col15, row12, r6text, Color.White);
+
+            //TextBox divider = new TextBox ( );
+            //TB (divider, col1, row9, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+
+
+            #region Add Arrows if Needed
+            if (r1text != "")
+            {
+                TextBox r1r = new TextBox ( );
+                TB (r1r, col16, row2, ">", Color.White);
+            }
+
+            if (r2text != "")
+            {
+                TextBox r2r = new TextBox ( );
+                TB (r2r, col16, row4, ">", Color.White);
+            }
+
+            if (r3text != "")
+            {
+                TextBox r3r = new TextBox ( );
+                TB (r3r, col16, row6, ">", Color.White);
+            }
+
+            if (r4text != "")
+            {
+                TextBox r4r = new TextBox ( );
+                TB (r4r, col16, row8, ">", Color.White);
+            }
+
+            if (r5text != "")
+            {
+                TextBox r5r = new TextBox ( );
+                TB (r5r, col16, row10, ">", Color.White);
+            }
+
+
+            if (r6text != "")
+            {
+                TextBox r6r = new TextBox ( );
+                TB (r6r, col16, row12, ">", Color.White);
+            }
+            #endregion
+
+            TextBox l6b = new TextBox ( );
+            TB (l6b, col1, row13, "[");
+
+
+            TextBox r6b = new TextBox ( );
+            TB (r6b, col16, row13, "]");
+            #endregion
+        }
+
+        private void VU1Fill( )
+        {
+            CDU7000Page = true;
+
+            #region MyRegion
+            l1text = "< COMSEC";
+            l2text = "";
+            l3text = "< TRANSEC";
+            l4text = "< SINCGARS";
+            l5text = "";
+            l6text = "";
+            r1text = "LOAD ALL";
+            r2text = "";
+            r3text = "";
+            r4text = "";
+            r5text = "";
+            r6text = "RETURN";
+
+            currentPageTitle = "V/U1 FILL"; //page title and number used for navigating
+            currentPageNumber = 1;
+
+            TextBox title = new TextBox ( );//displayed top center of screen
+            TB (title, col7, row0, currentPageTitle);
+
+            //TextBox page = new TextBox ( );
+            //TB (page, col14, row0, currentPageNumber + "/1");
+
+            TextBox l1 = new TextBox ( );
+            TB (l1, col1, row2, l1text, Color.White);
+
+            //TextBox l2t = new TextBox();
+            //TB(l2t, col2, row3, "LOCATION");
+
+            TextBox l2 = new TextBox ( );
+            TB (l2, col1, row4, l2text, Color.White);
+
+            //TextBox l3t = new TextBox();
+            //TB(l3t, col2, row5, "IDENT");
+
+            TextBox l3 = new TextBox ( );
+            TB (l3, col1, row6, l3text, Color.White);
+
+            //TextBox l4t = new TextBox();
+            //TB(l4t, col2, row7, "IDENT");
+
+            TextBox l4 = new TextBox ( );
+            TB (l4, col1, row8, l4text, Color.White);
+
+            //TextBox l5t = new TextBox();
+            //TB(l5t, col2, row9, "IDENT");
+
+            TextBox l5 = new TextBox ( );
+            TB (l5, col1, row10, l5text, Color.White);
+
+            //TextBox l6t = new TextBox();
+            //TB(l6t, col2, row11, "IDENT");
+
+            TextBox l6 = new TextBox ( );
+            TB (l6, col1, row12, l6text, Color.White);
+
+            //TextBox r1t = new TextBox();
+            //TB(r1t, col14+20, row1, "IDENT");
+            //TypeLeft(r1t);
+
+
+            TextBox r1r = new TextBox ( );
+            TB (r1r, col16, row2, "<", Color.White);
+
+            TextBox r1 = new TextBox ( );
+            TB (r1, col15, row2, r1text, Color.White);
+
+            //TextBox r2t = new TextBox();
+            //TB(r2t, col14+20, row3, "IDENT");
+            //TypeLeft(r2t);
+
+            TextBox r2 = new TextBox ( );
+            TB (r2, col15, row4, r2text, Color.White);
+
+            //TextBox r3t = new TextBox();
+            //TB(r3t, col14+20, row5, "IDENT");
+            //TypeLeft(r3t);
+
+            TextBox r3 = new TextBox ( );
+            TB (r3, col15, row6, r3text, Color.White);
+
+            //TextBox r4t = new TextBox();
+            //TB(r4t, col14+20, row7, "IDENT");
+            //TypeLeft(r4t);
+
+            TextBox r4 = new TextBox ( );
+            TB (r4, col15, row8, r4text, Color.White);
+
+            //TextBox r5t = new TextBox();
+            //TB(r5t, col14+20, row9, "PILOT", Color.White);
+            //TypeLeft(r5t);
+
+            TextBox r5 = new TextBox ( );
+            TB (r5, col15, row10, r5text, Color.White);
+
+            //TextBox r6t = new TextBox();
+            //TB(r6t, col14+20, row11, "IDENT");
+            //TypeLeft(r6t);
+
+            TextBox r6 = new TextBox ( );
+            TB (r6, col15, row12, r6text, Color.White);
+
+            //TextBox divider = new TextBox ( );
+            //TB (divider, col1, row9, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+
+
+            #region Add Arrows if Needed
+            if (r6text != "")
+            {
+                TextBox r6r = new TextBox ( );
+                TB (r6r, col16, row12, ">", Color.White);
+            }
+            #endregion
+
+            TextBox l6b = new TextBox ( );
+            TB (l6b, col1, row13, "[");
+
+
+            TextBox r6b = new TextBox ( );
+            TB (r6b, col16, row13, "]");
+            #endregion
+        }
+
+        private void VU1SincgarsFill( )
+        {
+            CDU7000Page = true;
+
+            #region MyRegion
+            l1text = "> FILL";
+            l2text = "> FILL";
+            l3text = "";
+            l4text = "";
+            l5text = "";
+            l6text = "";
+            r1text = "[ 1]";
+            r2text = "[1]";
+            r3text = "SET F2";
+            r4text = "";
+            r5text = "";
+            r6text = "RETURN";
+
+            currentPageTitle = "V/U1 SINCGARS FILL"; //page title and number used for navigating
+            currentPageNumber = 1;
+
+            TextBox title = new TextBox ( );//displayed top center of screen
+            TB (title, col7, row0, currentPageTitle);
+
+            //TextBox page = new TextBox ( );
+            //TB (page, col14, row0, currentPageNumber + "/1");
+
+            //TextBox l1t = new TextBox();
+            //TB(l1t, col2, row1, "IDENT");
+
+            TextBox l1 = new TextBox ( );
+            TB (l1, col1, row2, l1text, Color.White);
+
+            TextBox l1center = new TextBox ( );
+            TB (l1center, col5, row2, "HOP=256", Color.White);
+
+            //TextBox l2t = new TextBox();
+            //TB(l2t, col2, row3, "LOCATION");
+
+            TextBox l2 = new TextBox ( );
+            TB (l2, col1, row4, l2text, Color.White);
+
+            TextBox l2center = new TextBox ( );
+            TB (l2center, col5, row4, "LOCK=202", Color.White);
+
+            //TextBox l3t = new TextBox();
+            //TB(l3t, col2, row5, "IDENT");
+
+            TextBox l3 = new TextBox ( );
+            TB (l3, col1, row6, l3text, Color.White);
+
+            //TextBox l4t = new TextBox();
+            //TB(l4t, col2, row7, "IDENT");
+
+            TextBox l4 = new TextBox ( );
+            TB (l4, col1, row8, l4text, Color.White);
+
+            //TextBox l5t = new TextBox();
+            //TB(l5t, col2, row9, "IDENT");
+
+            TextBox l5 = new TextBox ( );
+            TB (l5, col1, row10, l5text, Color.White);
+
+            //TextBox l6t = new TextBox();
+            //TB(l6t, col2, row11, "IDENT");
+
+            TextBox l6 = new TextBox ( );
+            TB (l6, col1, row12, l6text, Color.White);
+
+            TextBox r1t = new TextBox ( );
+            TB (r1t, col14 + 20, row1, "CHANNEL");
+            TypeLeft (r1t);
+
+            TextBox r1 = new TextBox ( );
+            TB (r1, col15, row2, r1text, Color.White);
+
+            TextBox r2t = new TextBox ( );
+            TB (r2t, col14 + 20, row3, "CHANNEL");
+            TypeLeft (r2t);
+
+            TextBox r2 = new TextBox ( );
+            TB (r2, col15, row4, r2text, Color.White);
+
+            //TextBox r3t = new TextBox();
+            //TB(r3t, col14+20, row5, "IDENT");
+            //TypeLeft(r3t);
+
+            TextBox r3 = new TextBox ( );
+            TB (r3, col15, row6, r3text, Color.White);
+
+            //TextBox r4t = new TextBox();
+            //TB(r4t, col14+20, row7, "IDENT");
+            //TypeLeft(r4t);
+
+            TextBox r4 = new TextBox ( );
+            TB (r4, col15, row8, r4text, Color.White);
+
+            //TextBox r5t = new TextBox();
+            //TB(r5t, col14+20, row9, "PILOT", Color.White);
+            //TypeLeft(r5t);
+
+            TextBox r5 = new TextBox ( );
+            TB (r5, col15, row10, r5text, Color.White);
+
+            //TextBox r6t = new TextBox();
+            //TB(r6t, col14+20, row11, "IDENT");
+            //TypeLeft(r6t);
+
+            TextBox r6 = new TextBox ( );
+            TB (r6, col15, row12, r6text, Color.White);
+
+
+            #region Add Arrows if Needed
+            if (r1text != "")
+            {
+                TextBox r1r = new TextBox ( );
+                TB (r1r, col16, row2, ":", Color.White);
+            }
+
+            if (r2text != "")
+            {
+                TextBox r2r = new TextBox ( );
+                TB (r2r, col16, row4, ":", Color.White);
+            }
+
+            if (r3text != "")
+            {
+                TextBox r3r = new TextBox ( );
+                TB (r3r, col16, row6, "<", Color.White);
+            }
+
+            if (r4text != "")
+            {
+                TextBox r4r = new TextBox ( );
+                TB (r4r, col16, row8, ">", Color.White);
+            }
+
+            if (r5text != "")
+            {
+                TextBox r5r = new TextBox ( );
+                TB (r5r, col16, row10, ">", Color.White);
+            }
+
+
+            if (r6text != "")
+            {
+                TextBox r6r = new TextBox ( );
+                TB (r6r, col16, row12, ">", Color.White);
+            }
+            #endregion
+
+            TextBox l6b = new TextBox ( );
+            TB (l6b, col1, row13, "[");
+
+
+            TextBox r6b = new TextBox ( );
+            TB (r6b, col16, row13, "]");
+            #endregion
+        }
+
+        private void VU1TransecFill( )
+        {
+            CDU7000Page = true;
+
+            #region MyRegion
+            l1text = "[08]";
+            l2text = "> LOAD";
+            l3text = "";
+            l4text = "";
+            l5text = "";
+            l6text = "";
+            r1text = "";
+            r2text = "SET F2";
+            r3text = "";
+            r4text = "";
+            r5text = "";
+            r6text = "RETURN";
+
+            currentPageTitle = "V/U1 TRANSEC FILL"; //page title and number used for navigating
+            currentPageNumber = 1;
+
+            TextBox title = new TextBox ( );//displayed top center of screen
+            TB (title, col7, row0, currentPageTitle);
+
+            TextBox l1t = new TextBox ( );
+            TB (l1t, col2, row1, "KEY");
+
+            TextBox l1 = new TextBox ( );
+            TB (l1, col1, row2, l1text, Color.White);
+
+            //TextBox l2t = new TextBox();
+            //TB(l2t, col2, row3, "LOCATION");
+
+            TextBox l2 = new TextBox ( );
+            TB (l2, col1, row4, l2text, Color.White);
+
+            //TextBox l3t = new TextBox();
+            //TB(l3t, col2, row5, "IDENT");
+
+            TextBox l3center = new TextBox ( );
+            TB (l3center, col1, row6, "1  2  3  4  -  -  -  -", Color.White);
+            CenterMe (l3center);
+
+            //TextBox l4t = new TextBox();
+            //TB(l4t, col2, row7, "IDENT");
+
+            TextBox l4 = new TextBox ( );
+            TB (l4, col1, row8, l4text, Color.White);
+
+            //TextBox l5t = new TextBox();
+            //TB(l5t, col2, row9, "IDENT");
+
+            TextBox l5 = new TextBox ( );
+            TB (l5, col1, row10, l5text, Color.White);
+
+            //TextBox l6t = new TextBox();
+            //TB(l6t, col2, row11, "IDENT");
+
+            TextBox l6 = new TextBox ( );
+            TB (l6, col1, row12, l6text, Color.White);
+
+            //TextBox r1t = new TextBox();
+            //TB(r1t, col14+20, row1, "IDENT");
+            //TypeLeft(r1t);
+
+            TextBox r1 = new TextBox ( );
+            TB (r1, col15, row2, r1text, Color.White);
+
+            //TextBox r2t = new TextBox();
+            //TB(r2t, col14+20, row3, "IDENT");
+            //TypeLeft(r2t);
+
+            TextBox r2 = new TextBox ( );
+            TB (r2, col15, row4, r2text, Color.White);
+
+            //TextBox r3t = new TextBox();
+            //TB(r3t, col14+20, row5, "IDENT");
+            //TypeLeft(r3t);
+
+            TextBox r3 = new TextBox ( );
+            TB (r3, col15, row6, r3text, Color.White);
+
+            //TextBox r4t = new TextBox();
+            //TB(r4t, col14+20, row7, "IDENT");
+            //TypeLeft(r4t);
+
+            TextBox r4 = new TextBox ( );
+            TB (r4, col15, row8, r4text, Color.White);
+
+            //TextBox r5t = new TextBox();
+            //TB(r5t, col14+20, row9, "PILOT", Color.White);
+            //TypeLeft(r5t);
+
+            TextBox r5 = new TextBox ( );
+            TB (r5, col15, row10, r5text, Color.White);
+
+            //TextBox r6t = new TextBox();
+            //TB(r6t, col14+20, row11, "IDENT");
+            //TypeLeft(r6t);
+
+            TextBox r6 = new TextBox ( );
+            TB (r6, col15, row12, r6text, Color.White);
+
+
+            #region Add Arrows if Needed
+            if (r1text != "")
+            {
+                TextBox r1r = new TextBox ( );
+                TB (r1r, col16, row2, ">", Color.White);
+            }
+
+            if (r2text != "")
+            {
+                TextBox r2r = new TextBox ( );
+                TB (r2r, col16, row4, "<", Color.White);
+            }
+
+            if (r3text != "")
+            {
+                TextBox r3r = new TextBox ( );
+                TB (r3r, col16, row6, ">", Color.White);
+            }
+
+            if (r4text != "")
+            {
+                TextBox r4r = new TextBox ( );
+                TB (r4r, col16, row8, ">", Color.White);
+            }
+
+            if (r5text != "")
+            {
+                TextBox r5r = new TextBox ( );
+                TB (r5r, col16, row10, ">", Color.White);
+            }
+
+
+            if (r6text != "")
+            {
+                TextBox r6r = new TextBox ( );
+                TB (r6r, col16, row12, ">", Color.White);
+            }
+            #endregion
+
+            TextBox l6b = new TextBox ( );
+            TB (l6b, col1, row13, "[");
+
+
+            TextBox r6b = new TextBox ( );
+            TB (r6b, col16, row13, "]");
+            #endregion
+        }
+
+        private void VU1LoopbackTest( )
+        {
+            CDU7000Page = true;
+
+            #region MyRegion
+            l1text = "> TEST";
+            l2text = "";
+            l3text = "";
+            l4text = "";
+            l5text = "";
+            l6text = "";
+            r1text = "239";
+            r2text = "";
+            r3text = "";
+            r4text = "";
+            r5text = "";
+            r6text = "RETURN";
+
+            currentPageTitle = "V/U1 LOOPBACK TEST"; //page title and number used for navigating
+            currentPageNumber = 1;
+
+            TextBox title = new TextBox ( );//displayed top center of screen
+            TB (title, col7, row0, currentPageTitle);
+
+            //TextBox page = new TextBox ( );
+            //TB (page, col14, row0, currentPageNumber + "/1");
+
+            //TextBox l1t = new TextBox();
+            //TB(l1t, col2, row1, "IDENT");
+
+            TextBox l1 = new TextBox ( );
+            TB (l1, col1, row2, l1text, Color.White);
+
+            TextBox l1r = new TextBox ( );
+            TB (l1r, col5, row2, "- - - -", Color.White);
+
+            TextBox l2center = new TextBox ( );
+            TB (l2center, col1, row4, "RSS=234", Color.White);
+            CenterMe (l2center);
+
+            //TextBox l3t = new TextBox();
+            //TB(l3t, col2, row5, "IDENT");
+
+            TextBox l3 = new TextBox ( );
+            TB (l3, col1, row6, l3text, Color.White);
+
+            //TextBox l4t = new TextBox();
+            //TB(l4t, col2, row7, "IDENT");
+
+            TextBox l4 = new TextBox ( );
+            TB (l4, col1, row8, l4text, Color.White);
+
+            //TextBox l5t = new TextBox();
+            //TB(l5t, col2, row9, "IDENT");
+
+            TextBox l5 = new TextBox ( );
+            TB (l5, col1, row10, l5text, Color.White);
+
+            //TextBox l6t = new TextBox();
+            //TB(l6t, col2, row11, "IDENT");
+
+            TextBox l6 = new TextBox ( );
+            TB (l6, col1, row12, l6text, Color.White);
+
+            TextBox r1t = new TextBox ( );
+            TB (r1t, col14 + 20, row1, "CHANNEL");
+            TypeLeft (r1t);
+
+            TextBox r1 = new TextBox ( );
+            TB (r1, col15, row2, r1text, Color.White);
+
+            //TextBox r2t = new TextBox();
+            //TB(r2t, col14+20, row3, "IDENT");
+            //TypeLeft(r2t);
+
+            TextBox r2 = new TextBox ( );
+            TB (r2, col15, row4, r2text, Color.White);
+
+            //TextBox r3t = new TextBox();
+            //TB(r3t, col14+20, row5, "IDENT");
+            //TypeLeft(r3t);
+
+            TextBox r3 = new TextBox ( );
+            TB (r3, col15, row6, r3text, Color.White);
+
+            //TextBox r4t = new TextBox();
+            //TB(r4t, col14+20, row7, "IDENT");
+            //TypeLeft(r4t);
+
+            TextBox r4 = new TextBox ( );
+            TB (r4, col15, row8, r4text, Color.White);
+
+            //TextBox r5t = new TextBox();
+            //TB(r5t, col14+20, row9, "PILOT", Color.White);
+            //TypeLeft(r5t);
+
+            TextBox r5 = new TextBox ( );
+            TB (r5, col15, row10, r5text, Color.White);
+
+            //TextBox r6t = new TextBox();
+            //TB(r6t, col14+20, row11, "IDENT");
+            //TypeLeft(r6t);
+
+            TextBox r6 = new TextBox ( );
+            TB (r6, col15, row12, r6text, Color.White);
+
+            //TextBox divider = new TextBox ( );
+            //TB (divider, col1, row9, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+
+
+            #region Add Arrows if Needed
+
+
+
+            if (r6text != "")
+            {
+                TextBox r6r = new TextBox ( );
+                TB (r6r, col16, row12, ">", Color.White);
+            }
+            #endregion
+
+            TextBox l6b = new TextBox ( );
+            TB (l6b, col1, row13, "[");
+
+
+            TextBox r6b = new TextBox ( );
+            TB (r6b, col16, row13, "]");
+            #endregion
+        }
+
+        private void VU1ComsecFill( )
+        {
+            CDU7000Page = true;
+
+            #region MyRegion
+            l1text = "[19]";
+            l2text = "> LOAD";
+            l3text = "> UPDATE=99";
+            l4text = "";
+            l5text = "";
+            l6text = "";
+            r1text = "VINSON";
+            r2text = "STATES";
+            r3text = "SET F1";
+            r4text = "";
+            r5text = "";
+            r6text = "RETURN";
+
+            currentPageTitle = "V/U1 COMSEC FILL"; //page title and number used for navigating
+            currentPageNumber = 1;
+
+            TextBox title = new TextBox ( );//displayed top center of screen
+            TB (title, col7, row0, currentPageTitle);
+
+            //TextBox page = new TextBox ( );
+            //TB (page, col14, row0, currentPageNumber + "/1");
+
+            TextBox l1t = new TextBox ( );
+            TB (l1t, col2, row1, "KEY");
+
+            TextBox l1 = new TextBox ( );
+            TB (l1, col1, row2, l1text, Color.White);
+
+            //TextBox l2t = new TextBox();
+            //TB(l2t, col2, row3, "LOCATION");
+
+            TextBox l2 = new TextBox ( );
+            TB (l2, col1, row4, l2text, Color.White);
+
+            //TextBox l3t = new TextBox();
+            //TB(l3t, col2, row5, "IDENT");
+
+            TextBox l3 = new TextBox ( );
+            TB (l3, col1, row6, l3text, Color.White);
+
+            //TextBox l4t = new TextBox();
+            //TB(l4t, col2, row7, "IDENT");
+
+            TextBox l4 = new TextBox ( );
+            TB (l4, col1, row8, l4text, Color.White);
+
+            //TextBox l5t = new TextBox();
+            //TB(l5t, col2, row9, "IDENT");
+
+            TextBox l5 = new TextBox ( );
+            TB (l5, col1, row10, l5text, Color.White);
+
+            //TextBox l6t = new TextBox();
+            //TB(l6t, col2, row11, "IDENT");
+
+            TextBox l6 = new TextBox ( );
+            TB (l6, col1, row12, l6text, Color.White);
+
+            //TextBox r1t = new TextBox();
+            //TB(r1t, col14+20, row1, "IDENT");
+            //TypeLeft(r1t);
+
+            TextBox r1r = new TextBox ( );
+            TB (r1r, col16, row2, ":", Color.White);
+
+            TextBox r1 = new TextBox ( );
+            TB (r1, col15, row2, r1text, Color.White);
+
+            //TextBox r2t = new TextBox();
+            //TB(r2t, col14+20, row3, "IDENT");
+            //TypeLeft(r2t);
+
+            TextBox r2 = new TextBox ( );
+            TB (r2, col15, row4, r2text, Color.White);
+
+            //TextBox r3t = new TextBox();
+            //TB(r3t, col14+20, row5, "IDENT");
+            //TypeLeft(r3t);
+
+            TextBox r3r = new TextBox ( );
+            TB (r3r, col16, row6, "<", Color.White);
+
+            TextBox r3 = new TextBox ( );
+            TB (r3, col15, row6, r3text, Color.White);
+
+            //TextBox r4t = new TextBox();
+            //TB(r4t, col14+20, row7, "IDENT");
+            //TypeLeft(r4t);
+
+            TextBox r4 = new TextBox ( );
+            TB (r4, col15, row8, r4text, Color.White);
+
+            //TextBox r5t = new TextBox();
+            //TB(r5t, col14+20, row9, "PILOT", Color.White);
+            //TypeLeft(r5t);
+
+            TextBox r5 = new TextBox ( );
+            TB (r5, col15, row10, r5text, Color.White);
+
+            //TextBox r6t = new TextBox();
+            //TB(r6t, col14+20, row11, "IDENT");
+            //TypeLeft(r6t);
+
+            TextBox r6 = new TextBox ( );
+            TB (r6, col15, row12, r6text, Color.White);
+
+            //TextBox divider = new TextBox ( );
+            //TB (divider, col1, row9, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+
+
+            #region Add Arrows if Needed
+            if (r2text != "")
+            {
+                TextBox r2r = new TextBox ( );
+                TB (r2r, col16, row4, ">", Color.White);
+            }
+
+            if (r4text != "")
+            {
+                TextBox r4r = new TextBox ( );
+                TB (r4r, col16, row8, ">", Color.White);
+            }
+
+            if (r5text != "")
+            {
+                TextBox r5r = new TextBox ( );
+                TB (r5r, col16, row10, ">", Color.White);
+            }
+
+
+            if (r6text != "")
+            {
+                TextBox r6r = new TextBox ( );
+                TB (r6r, col16, row12, ">", Color.White);
+            }
+            #endregion
+
+            TextBox l6b = new TextBox ( );
+            TB (l6b, col1, row13, "[");
+
+
+            TextBox r6b = new TextBox ( );
+            TB (r6b, col16, row13, "]");
+            #endregion
+        }
+
+        private void VU1ComsecStatesPage1( )
+        {
+            CDU7000Page = true;
+
+            #region MyRegion
+            l1text = "";
+            l2text = "";
+            l3text = "";
+            l4text = "";
+            l5text = "";
+            l6text = "";
+            r1text = "";
+            r2text = "";
+            r3text = "";
+            r4text = "";
+            r5text = "";
+            r6text = "RETURN";
+
+            currentPageTitle = "V/U1 COMSEC STATES"; //page title and number used for navigating
+            currentPageNumber = 1;
+
+            TextBox title = new TextBox ( );//displayed top center of screen
+            TB (title, col7, row0, currentPageTitle);
+
+            TextBox page = new TextBox ( );
+            TB (page, col14, row0, currentPageNumber + "/2");
+
+            TextBox l1 = new TextBox ( );
+            TB (l1, col2, row2, "1", Color.White);
+            TypeLeft (l1);
+
+            TextBox l2 = new TextBox ( );
+            TB (l2, col2, row3, "2", Color.White);
+            TypeLeft (l2);
+
+            TextBox l3 = new TextBox ( );
+            TB (l3, col2, row4, "3", Color.White);
+            TypeLeft (l3);
+
+            TextBox l4 = new TextBox ( );
+            TB (l4, col2, row5, "4", Color.White);
+            TypeLeft (l4);
+
+            TextBox l5 = new TextBox ( );
+            TB (l5, col2, row6, "5", Color.White);
+            TypeLeft (l5);
+
+            TextBox l6 = new TextBox ( );
+            TB (l6, col2, row7, "6", Color.White);
+            TypeLeft (l6);
+
+            TextBox l7 = new TextBox ( );
+            TB (l7, col2, row8, "7", Color.White);
+            TypeLeft (l7);
+
+            TextBox l8 = new TextBox ( );
+            TB (l8, col2, row9, "8", Color.White);
+            TypeLeft (l8);
+
+            TextBox l9 = new TextBox ( );
+            TB (l9, col2, row10, "9", Color.White);
+            TypeLeft (l9);
+
+            TextBox l10 = new TextBox ( );
+            TB (l10, col2, row11, "10", Color.White);
+            TypeLeft (l10);
+
+
+
+            TextBox l1key = new TextBox ( );
+            TB (l1key, col4, row2, "TEK", Color.White);
+
+
+            TextBox l2key = new TextBox ( );
+            TB (l2key, col4, row3, "TEK", Color.White);
+
+
+            TextBox l3key = new TextBox ( );
+            TB (l3key, col4, row4, "TEK", Color.White);
+
+
+            TextBox l4key = new TextBox ( );
+            TB (l4key, col4, row5, "TEK", Color.White);
+
+
+            TextBox l5key = new TextBox ( );
+            TB (l5key, col4, row6, "- - -", Color.White);
+
+
+            TextBox l6key = new TextBox ( );
+            TB (l6key, col4, row7, "- - -", Color.White);
+
+
+            TextBox l7key = new TextBox ( );
+            TB (l7key, col4, row8, "- - -", Color.White);
+
+
+            TextBox l8key = new TextBox ( );
+            TB (l8key, col4, row9, "- - -", Color.White);
+
+
+            TextBox l9key = new TextBox ( );
+            TB (l9key, col4, row10, "- - -", Color.White);
+
+
+            TextBox l10key = new TextBox ( );
+            TB (l10key, col4, row11, "- - -", Color.White);
+
+
+
+
+            TextBox l1num = new TextBox ( );
+            TB (l1num, col7, row2, "76", Color.White);
+
+
+            TextBox l2num = new TextBox ( );
+            TB (l2num, col7, row3, "23", Color.White);
+
+
+            TextBox l3num = new TextBox ( );
+            TB (l3num, col7, row4, "10", Color.White);
+
+
+            TextBox l4num = new TextBox ( );
+            TB (l4num, col7, row5, "03", Color.White);
+
+
+            TextBox l5num = new TextBox ( );
+            TB (l5num, col7, row6, "- -", Color.White);
+
+
+            TextBox l6num = new TextBox ( );
+            TB (l6num, col7, row7, "- -", Color.White);
+
+
+            TextBox l7num = new TextBox ( );
+            TB (l7num, col7, row8, "- -", Color.White);
+
+
+            TextBox l8num = new TextBox ( );
+            TB (l8num, col7, row9, "- -", Color.White);
+
+
+            TextBox l9num = new TextBox ( );
+            TB (l9num, col7, row10, "- -", Color.White);
+
+
+            TextBox l10num = new TextBox ( );
+            TB (l10num, col7, row11, "- -", Color.White);
+
+
+
+
+
+            TextBox r6 = new TextBox ( );
+            TB (r6, col15, row12, r6text, Color.White);
+
+            //TextBox divider = new TextBox ( );
+            //TB (divider, col1, row9, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+
+
+            #region Add Arrows if Needed
+            if (r6text != "")
+            {
+                TextBox r6r = new TextBox ( );
+                TB (r6r, col16, row12, ">", Color.White);
+            }
+            #endregion
+
+            TextBox l6b = new TextBox ( );
+            TB (l6b, col1, row13, "[");
+
+
+            TextBox r6b = new TextBox ( );
+            TB (r6b, col16, row13, "]");
+            #endregion
+        }
+
+        private void VU1ComsecStatesPage2( )
+        {
+            CDU7000Page = true;
+
+            #region MyRegion
+            l1text = "";
+            l2text = "";
+            l3text = "";
+            l4text = "";
+            l5text = "";
+            l6text = "";
+            r1text = "";
+            r2text = "";
+            r3text = "";
+            r4text = "";
+            r5text = "";
+            r6text = "RETURN";
+
+            currentPageTitle = "V/U1 COMSEC STATES"; //page title and number used for navigating
+            currentPageNumber = 2;
+
+            TextBox title = new TextBox ( );//displayed top center of screen
+            TB (title, col7, row0, currentPageTitle);
+
+            TextBox page = new TextBox ( );
+            TB (page, col14, row0, currentPageNumber + "/2");
+
+            TextBox l1 = new TextBox ( );
+            TB (l1, col2, row2, "1", Color.White);
+            TypeLeft (l1);
+
+            TextBox l2 = new TextBox ( );
+            TB (l2, col2, row3, "2", Color.White);
+            TypeLeft (l2);
+
+            TextBox l3 = new TextBox ( );
+            TB (l3, col2, row4, "3", Color.White);
+            TypeLeft (l3);
+
+            TextBox l4 = new TextBox ( );
+            TB (l4, col2, row5, "4", Color.White);
+            TypeLeft (l4);
+
+            TextBox l5 = new TextBox ( );
+            TB (l5, col2, row6, "5", Color.White);
+            TypeLeft (l5);
+
+            TextBox l6 = new TextBox ( );
+            TB (l6, col2, row7, "6", Color.White);
+            TypeLeft (l6);
+
+            TextBox l7 = new TextBox ( );
+            TB (l7, col2, row8, "7", Color.White);
+            TypeLeft (l7);
+
+            TextBox l8 = new TextBox ( );
+            TB (l8, col2, row9, "8", Color.White);
+            TypeLeft (l8);
+
+            TextBox l9 = new TextBox ( );
+            TB (l9, col2, row10, "9", Color.White);
+            TypeLeft (l9);
+
+            TextBox l10 = new TextBox ( );
+            TB (l10, col2, row11, "10", Color.White);
+            TypeLeft (l10);
+
+
+
+            TextBox l1key = new TextBox ( );
+            TB (l1key, col4, row2, "- - -", Color.White);
+
+
+            TextBox l2key = new TextBox ( );
+            TB (l2key, col4, row3, "- - -", Color.White);
+
+
+            TextBox l3key = new TextBox ( );
+            TB (l3key, col4, row4, "- - -", Color.White);
+
+
+            TextBox l4key = new TextBox ( );
+            TB (l4key, col4, row5, "- - -", Color.White);
+
+
+            TextBox l5key = new TextBox ( );
+            TB (l5key, col4, row6, "- - -", Color.White);
+
+
+            TextBox l6key = new TextBox ( );
+            TB (l6key, col4, row7, "- - -", Color.White);
+
+
+            TextBox l7key = new TextBox ( );
+            TB (l7key, col4, row8, "- - -", Color.White);
+
+
+            TextBox l8key = new TextBox ( );
+            TB (l8key, col4, row9, "- - -", Color.White);
+
+
+            TextBox l9key = new TextBox ( );
+            TB (l9key, col4, row10, "- - -", Color.White);
+
+
+            TextBox l10key = new TextBox ( );
+            TB (l10key, col4, row11, "- - -", Color.White);
+
+
+
+
+            TextBox l1num = new TextBox ( );
+            TB (l1num, col7, row2, "- -", Color.White);
+
+
+            TextBox l2num = new TextBox ( );
+            TB (l2num, col7, row3, "- -", Color.White);
+
+
+            TextBox l3num = new TextBox ( );
+            TB (l3num, col7, row4, "- -", Color.White);
+
+
+            TextBox l4num = new TextBox ( );
+            TB (l4num, col7, row5, "- -", Color.White);
+
+
+            TextBox l5num = new TextBox ( );
+            TB (l5num, col7, row6, "- -", Color.White);
+
+
+            TextBox l6num = new TextBox ( );
+            TB (l6num, col7, row7, "- -", Color.White);
+
+
+            TextBox l7num = new TextBox ( );
+            TB (l7num, col7, row8, "- -", Color.White);
+
+
+            TextBox l8num = new TextBox ( );
+            TB (l8num, col7, row9, "- -", Color.White);
+
+
+            TextBox l9num = new TextBox ( );
+            TB (l9num, col7, row10, "- -", Color.White);
+
+
+            TextBox l10num = new TextBox ( );
+            TB (l10num, col7, row11, "- -", Color.White);
+
+
+
+
+
+            TextBox r6 = new TextBox ( );
+            TB (r6, col15, row12, r6text, Color.White);
+
+            //TextBox divider = new TextBox ( );
+            //TB (divider, col1, row9, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+
+
+            #region Add Arrows if Needed
+            if (r6text != "")
+            {
+                TextBox r6r = new TextBox ( );
+                TB (r6r, col16, row12, ">", Color.White);
+            }
+            #endregion
+
+            TextBox l6b = new TextBox ( );
+            TB (l6b, col1, row13, "[");
+
+
+            TextBox r6b = new TextBox ( );
+            TB (r6b, col16, row13, "]");
+            #endregion
+        }
+
+
+        #endregion
 
         private void VU1uhfPresetsPage1( )
         {
@@ -7488,45 +9709,6 @@ namespace CDU3000
             #endregion
         }
 
-        private void VU1loopbackTestPage( )
-        {
-            CDU7000Page = true;
-        }
-
-        private void VU1clearNVMPage( )
-        {
-            CDU7000Page = true;
-        }
-
-        private void VU1fillPage( )
-        {
-            CDU7000Page = true;
-        }
-
-        private void VU1sincgarsFillPage( )
-        {
-            CDU7000Page = true;
-        }
-
-        private void VU1transecFillPage( )
-        {
-            CDU7000Page = true;
-        }
-
-        private void VU1comsecFillPage( )
-        {
-            CDU7000Page = true;
-        }
-
-        private void VU1comsecStatesPage1( )
-        {
-            CDU7000Page = true;
-        }
-
-        private void VU1comsecStatesPage2( )
-        {
-            CDU7000Page = true;
-        }
 
 
 
@@ -8275,17 +10457,1732 @@ namespace CDU3000
         private void VU2sincgarsControlPage( )
         {
             CDU7000Page = true;
+
+            #region MyRegion
+            l1text = ": RECV HOP";
+            l2text = "NO FILL";
+            l3text = ": [1]";
+            l4text = "";
+            l5text = "[01/15:29]";
+            l6text = "< LOCKOUTS";
+            r1text = "ERF";
+            r2text = "OFF";
+            r3text = "H2";
+            r4text = "LATE ENTRY";
+            r5text = "GPS TIME";
+            r6text = "RETURN";
+
+            currentPageTitle = "V/U2 SINCGARS"; //page title and number used for navigating
+            currentPageNumber = 1;
+
+            TextBox title = new TextBox ( );//displayed top center of screen
+            TB (title, col7, row0, currentPageTitle);
+
+            //TextBox page = new TextBox ( );
+            //TB (page, col14, row0, currentPageNumber + "/1");
+
+            TextBox l1t = new TextBox ( );
+            TB (l1t, col2, row1, "RECV / SEND MODE");
+
+            TextBox l1 = new TextBox ( );
+            TB (l1, col1, row2, l1text, Color.White);
+
+            TextBox l2t = new TextBox ( );
+            TB (l2t, col2, row3, "CHANNEL STATUS");
+
+            TextBox l2 = new TextBox ( );
+            TB (l2, col1, row4, l2text, Color.White);
+
+            TextBox l3t = new TextBox ( );
+            TB (l3t, col2, row5, "CHANNEL");
+
+            TextBox l3 = new TextBox ( );
+            TB (l3, col1, row6, l3text, Color.White);
+
+            TextBox l4t = new TextBox ( );
+            TB (l4t, col2, row7, "CS COLD");
+
+            TextBox l4 = new TextBox ( );
+            TB (l4, col1, row8, l4text, Color.White);
+
+            TextBox l5t = new TextBox ( );
+            TB (l5t, col2, row9, "TOD");
+
+            TextBox l5 = new TextBox ( );
+            TB (l5, col1, row10, l5text, Color.White);
+
+            //TextBox l6t = new TextBox();
+            //TB(l6t, col2, row11, "IDENT");
+
+            TextBox l6 = new TextBox ( );
+            TB (l6, col1, row12, l6text, Color.White);
+
+            //TextBox r1t = new TextBox();
+            //TB(r1t, col14+20, row1, "IDENT");
+            //TypeLeft(r1t);
+
+            TextBox r1 = new TextBox ( );
+            TB (r1, col15, row2, r1text, Color.White);
+
+            TextBox r2t = new TextBox ( );
+            TB (r2t, col14 + 20, row3, "MASTER");
+            TypeLeft (r2t);
+
+            TextBox r2on = new TextBox ( );
+            TB (r2on, col11 + 10, row4, "ON", Color.White);
+
+            TextBox r2slash = new TextBox ( );
+            TB (r2slash, r2on.Location.X + r2on.Width, row4, "/", Color.White);
+
+            TextBox r2 = new TextBox ( );
+            TB (r2, col15, row4, r2text, Color.Green);
+
+            TextBox r3t = new TextBox ( );
+            TB (r3t, col14 + 20, row5, "FH MODE");
+            TypeLeft (r3t);
+
+            TextBox r3h1 = new TextBox ( );
+            TB (r3h1, col12, row6, "H1", Color.Green);
+
+            TextBox r3slash = new TextBox ( );
+            TB (r3slash, r3h1.Location.X + r3h1.Width, row6, "/", Color.White);
+
+            TextBox r3 = new TextBox ( );
+            TB (r3, col15, row6, r3text, Color.White);
+
+            TextBox r4t = new TextBox ( );
+            TB (r4t, col14 + 20, row7, "P1      F   50.075");
+            TypeLeft (r4t);
+
+            TextBox r4 = new TextBox ( );
+            TB (r4, col15, row8, r4text, Color.White);
+
+            //TextBox r5t = new TextBox();
+            //TB(r5t, col14+20, row9, "PILOT", Color.White);
+            //TypeLeft(r5t);
+
+            TextBox r5 = new TextBox ( );
+            TB (r5, col15, row10, r5text, Color.White);
+
+            //TextBox r6t = new TextBox();
+            //TB(r6t, col14+20, row11, "IDENT");
+            //TypeLeft(r6t);
+
+            TextBox r6 = new TextBox ( );
+            TB (r6, col15, row12, r6text, Color.White);
+
+            //TextBox divider = new TextBox ( );
+            //TB (divider, col1, row9, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+
+
+            #region Add Arrows if Needed
+            if (r1text != "")
+            {
+                TextBox r1r = new TextBox ( );
+                TB (r1r, col16, row2, "<", Color.White);
+            }
+
+            //if (r2text != "")
+            //{
+            //    TextBox r2r = new TextBox ( );
+            //    TB (r2r, col16, row4, ">", Color.White);
+            //}
+
+            //if (r3text != "")
+            //{
+            //    TextBox r3r = new TextBox ( );
+            //    TB (r3r, col16, row6, ">", Color.White);
+            //}
+
+            if (r4text != "")
+            {
+                TextBox r4r = new TextBox ( );
+                TB (r4r, col16, row8, "<", Color.White);
+            }
+
+            if (r5text != "")
+            {
+                TextBox r5r = new TextBox ( );
+                TB (r5r, col16, row10, "<", Color.White);
+            }
+
+
+            if (r6text != "")
+            {
+                TextBox r6r = new TextBox ( );
+                TB (r6r, col16, row12, ">", Color.White);
+            }
+            #endregion
+
+            TextBox l6b = new TextBox ( );
+            TB (l6b, col1, row13, "[");
+
+
+            TextBox r6b = new TextBox ( );
+            TB (r6b, col16, row13, "]");
+            #endregion
         }
 
         private void VU2lockoutsPage( )
         {
             CDU7000Page = true;
+
+            #region MyRegion
+            l1text = "L1";
+            l2text = "L217";
+            l3text = "L3";
+            l4text = "L488";
+            l5text = "L562";
+            l6text = "L6 - -";
+            r1text = "L7 - -";
+            r2text = "L8 - -";
+            r3text = "";
+            r4text = "";
+            r5text = "";
+            r6text = "RETURN";
+
+            currentPageTitle = "V/U2 LOCKOUTS"; //page title and number used for navigating
+            currentPageNumber = 1;
+
+            TextBox title = new TextBox ( );//displayed top center of screen
+            TB (title, col7, row0, currentPageTitle);
+
+            //TextBox page = new TextBox ( );
+            //TB (page, col14, row0, currentPageNumber + "/1");
+
+            //TextBox l1t = new TextBox();
+            //TB(l1t, col2, row1, "IDENT");
+
+            TextBox l1 = new TextBox ( );
+            TB (l1, col1, row2, l1text, Color.White);
+
+            //TextBox l2t = new TextBox();
+            //TB(l2t, col2, row3, "LOCATION");
+
+            TextBox l2 = new TextBox ( );
+            TB (l2, col1, row4, l2text, Color.White);
+
+            //TextBox l3t = new TextBox();
+            //TB(l3t, col2, row5, "IDENT");
+
+            TextBox l3 = new TextBox ( );
+            TB (l3, col1, row6, l3text, Color.White);
+
+            //TextBox l4t = new TextBox();
+            //TB(l4t, col2, row7, "IDENT");
+
+            TextBox l4 = new TextBox ( );
+            TB (l4, col1, row8, l4text, Color.White);
+
+            //TextBox l5t = new TextBox();
+            //TB(l5t, col2, row9, "IDENT");
+
+            TextBox l5 = new TextBox ( );
+            TB (l5, col1, row10, l5text, Color.White);
+
+            //TextBox l6t = new TextBox();
+            //TB(l6t, col2, row11, "IDENT");
+
+            TextBox l6 = new TextBox ( );
+            TB (l6, col1, row12, l6text, Color.White);
+
+            //TextBox r1t = new TextBox();
+            //TB(r1t, col14+20, row1, "IDENT");
+            //TypeLeft(r1t);
+
+            TextBox r1 = new TextBox ( );
+            TB (r1, col15, row2, r1text, Color.White);
+
+            //TextBox r2t = new TextBox();
+            //TB(r2t, col14+20, row3, "IDENT");
+            //TypeLeft(r2t);
+
+            TextBox r2 = new TextBox ( );
+            TB (r2, col15, row4, r2text, Color.White);
+
+            //TextBox r3t = new TextBox();
+            //TB(r3t, col14+20, row5, "IDENT");
+            //TypeLeft(r3t);
+
+            TextBox r3 = new TextBox ( );
+            TB (r3, col15, row6, r3text, Color.White);
+
+            //TextBox r4t = new TextBox();
+            //TB(r4t, col14+20, row7, "IDENT");
+            //TypeLeft(r4t);
+
+            TextBox r4 = new TextBox ( );
+            TB (r4, col15, row8, r4text, Color.White);
+
+            //TextBox r5t = new TextBox();
+            //TB(r5t, col14+20, row9, "PILOT", Color.White);
+            //TypeLeft(r5t);
+
+            TextBox r5 = new TextBox ( );
+            TB (r5, col15, row10, r5text, Color.White);
+
+            //TextBox r6t = new TextBox();
+            //TB(r6t, col14+20, row11, "IDENT");
+            //TypeLeft(r6t);
+
+            TextBox r6 = new TextBox ( );
+            TB (r6, col15, row12, r6text, Color.White);
+
+            //TextBox divider = new TextBox ( );
+            //TB (divider, col1, row9, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+
+
+            #region Add Arrows if Needed
+            //if (r1text != "")
+            //{
+            //    TextBox r1r = new TextBox ( );
+            //    TB (r1r, col16, row2, ">", Color.White);
+            //}
+
+            //if (r2text != "")
+            //{
+            //    TextBox r2r = new TextBox ( );
+            //    TB (r2r, col16, row4, ">", Color.White);
+            //}
+
+            //if (r3text != "")
+            //{
+            //    TextBox r3r = new TextBox ( );
+            //    TB (r3r, col16, row6, ">", Color.White);
+            //}
+
+            //if (r4text != "")
+            //{
+            //    TextBox r4r = new TextBox ( );
+            //    TB (r4r, col16, row8, ">", Color.White);
+            //}
+
+            //if (r5text != "")
+            //{
+            //    TextBox r5r = new TextBox ( );
+            //    TB (r5r, col16, row10, ">", Color.White);
+            //}
+
+
+            if (r6text != "")
+            {
+                TextBox r6r = new TextBox ( );
+                TB (r6r, col16, row12, ">", Color.White);
+            }
+            #endregion
+
+            TextBox l6b = new TextBox ( );
+            TB (l6b, col1, row13, "[");
+
+
+            TextBox r6b = new TextBox ( );
+            TB (r6b, col16, row13, "]");
+            #endregion
         }
+
+        #region VU2 MX Pages
 
         private void VU2maintenancePage( )
         {
             CDU7000Page = true;
+
+            #region MyRegion
+            l1text = "< LOOPBACK";
+            l2text = "";
+            l3text = "";
+            l4text = "";
+            l5text = "";
+            l6text = "";
+            r1text = "CLEAR";
+            r2text = "FILL";
+            r3text = "";
+            r4text = "";
+            r5text = "";
+            r6text = "RETURN";
+
+            currentPageTitle = "V/U2 MAINTENANCE"; //page title and number used for navigating
+            currentPageNumber = 1;
+
+            TextBox title = new TextBox ( );//displayed top center of screen
+            TB (title, col7, row0, currentPageTitle);
+
+            //TextBox page = new TextBox ( );
+            //TB (page, col14, row0, currentPageNumber + "/1");
+
+            //TextBox l1t = new TextBox();
+            //TB(l1t, col2, row1, "IDENT");
+
+            TextBox l1 = new TextBox ( );
+            TB (l1, col1, row2, l1text, Color.White);
+
+            //TextBox l2t = new TextBox();
+            //TB(l2t, col2, row3, "LOCATION");
+
+            TextBox l2 = new TextBox ( );
+            TB (l2, col1, row4, l2text, Color.White);
+
+            //TextBox l3t = new TextBox();
+            //TB(l3t, col2, row5, "IDENT");
+
+            TextBox l3 = new TextBox ( );
+            TB (l3, col1, row6, l3text, Color.White);
+
+            //TextBox l4t = new TextBox();
+            //TB(l4t, col2, row7, "IDENT");
+
+            TextBox l4 = new TextBox ( );
+            TB (l4, col1, row8, l4text, Color.White);
+
+            //TextBox l5t = new TextBox();
+            //TB(l5t, col2, row9, "IDENT");
+
+            TextBox l5 = new TextBox ( );
+            TB (l5, col1, row10, l5text, Color.White);
+
+            //TextBox l6t = new TextBox();
+            //TB(l6t, col2, row11, "IDENT");
+
+            TextBox l6 = new TextBox ( );
+            TB (l6, col1, row12, l6text, Color.White);
+
+            //TextBox r1t = new TextBox();
+            //TB(r1t, col14+20, row1, "IDENT");
+            //TypeLeft(r1t);
+
+            TextBox r1 = new TextBox ( );
+            TB (r1, col15, row2, r1text, Color.White);
+
+            //TextBox r2t = new TextBox();
+            //TB(r2t, col14+20, row3, "IDENT");
+            //TypeLeft(r2t);
+
+            TextBox r2 = new TextBox ( );
+            TB (r2, col15, row4, r2text, Color.White);
+
+            //TextBox r3t = new TextBox();
+            //TB(r3t, col14+20, row5, "IDENT");
+            //TypeLeft(r3t);
+
+            TextBox r3 = new TextBox ( );
+            TB (r3, col15, row6, r3text, Color.White);
+
+            //TextBox r4t = new TextBox();
+            //TB(r4t, col14+20, row7, "IDENT");
+            //TypeLeft(r4t);
+
+            TextBox r4 = new TextBox ( );
+            TB (r4, col15, row8, r4text, Color.White);
+
+            //TextBox r5t = new TextBox();
+            //TB(r5t, col14+20, row9, "PILOT", Color.White);
+            //TypeLeft(r5t);
+
+            TextBox r5 = new TextBox ( );
+            TB (r5, col15, row10, r5text, Color.White);
+
+            //TextBox r6t = new TextBox();
+            //TB(r6t, col14+20, row11, "IDENT");
+            //TypeLeft(r6t);
+
+            TextBox r6 = new TextBox ( );
+            TB (r6, col15, row12, r6text, Color.White);
+
+            //TextBox divider = new TextBox ( );
+            //TB (divider, col1, row9, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+
+
+            #region Add Arrows if Needed
+            if (r1text != "")
+            {
+                TextBox r1r = new TextBox ( );
+                TB (r1r, col16, row2, ">", Color.White);
+            }
+
+            if (r2text != "")
+            {
+                TextBox r2r = new TextBox ( );
+                TB (r2r, col16, row4, ">", Color.White);
+            }
+
+            if (r3text != "")
+            {
+                TextBox r3r = new TextBox ( );
+                TB (r3r, col16, row6, ">", Color.White);
+            }
+
+            if (r4text != "")
+            {
+                TextBox r4r = new TextBox ( );
+                TB (r4r, col16, row8, ">", Color.White);
+            }
+
+            if (r5text != "")
+            {
+                TextBox r5r = new TextBox ( );
+                TB (r5r, col16, row10, ">", Color.White);
+            }
+
+
+            if (r6text != "")
+            {
+                TextBox r6r = new TextBox ( );
+                TB (r6r, col16, row12, ">", Color.White);
+            }
+            #endregion
+
+            TextBox l6b = new TextBox ( );
+            TB (l6b, col1, row13, "[");
+
+
+            TextBox r6b = new TextBox ( );
+            TB (r6b, col16, row13, "]");
+            #endregion
         }
+
+        private void VU2ClearNVM( )
+        {
+            CDU7000Page = true;
+
+            #region MyRegion
+            l1text = "> CLEAR ALL";
+            l2text = "> CLEAR BIT FAULTS";
+            l3text = "> CLEAR PRESETS";
+            l4text = "";
+            l5text = "";
+            l6text = "";
+            r1text = "";
+            r2text = "";
+            r3text = "";
+            r4text = "";
+            r5text = "";
+            r6text = "RETURN";
+
+            currentPageTitle = "V/U2 CLEAR NVM"; //page title and number used for navigating
+            currentPageNumber = 1;
+
+            TextBox title = new TextBox ( );//displayed top center of screen
+            TB (title, col7, row0, currentPageTitle);
+
+            //TextBox page = new TextBox ( );
+            //TB (page, col14, row0, currentPageNumber + "/1");
+
+            //TextBox l1t = new TextBox();
+            //TB(l1t, col2, row1, "IDENT");
+
+            TextBox l1 = new TextBox ( );
+            TB (l1, col1, row2, l1text, Color.White);
+
+            //TextBox l2t = new TextBox();
+            //TB(l2t, col2, row3, "LOCATION");
+
+            TextBox l2 = new TextBox ( );
+            TB (l2, col1, row4, l2text, Color.White);
+
+            //TextBox l3t = new TextBox();
+            //TB(l3t, col2, row5, "IDENT");
+
+            TextBox l3 = new TextBox ( );
+            TB (l3, col1, row6, l3text, Color.White);
+
+            //TextBox l4t = new TextBox();
+            //TB(l4t, col2, row7, "IDENT");
+
+            TextBox l4 = new TextBox ( );
+            TB (l4, col1, row8, l4text, Color.White);
+
+            //TextBox l5t = new TextBox();
+            //TB(l5t, col2, row9, "IDENT");
+
+            TextBox l5 = new TextBox ( );
+            TB (l5, col1, row10, l5text, Color.White);
+
+            //TextBox l6t = new TextBox();
+            //TB(l6t, col2, row11, "IDENT");
+
+            TextBox l6 = new TextBox ( );
+            TB (l6, col1, row12, l6text, Color.White);
+
+            //TextBox r1t = new TextBox();
+            //TB(r1t, col14+20, row1, "IDENT");
+            //TypeLeft(r1t);
+
+            TextBox r1 = new TextBox ( );
+            TB (r1, col15, row2, r1text, Color.White);
+
+            //TextBox r2t = new TextBox();
+            //TB(r2t, col14+20, row3, "IDENT");
+            //TypeLeft(r2t);
+
+            TextBox r2 = new TextBox ( );
+            TB (r2, col15, row4, r2text, Color.White);
+
+            //TextBox r3t = new TextBox();
+            //TB(r3t, col14+20, row5, "IDENT");
+            //TypeLeft(r3t);
+
+            TextBox r3 = new TextBox ( );
+            TB (r3, col15, row6, r3text, Color.White);
+
+            //TextBox r4t = new TextBox();
+            //TB(r4t, col14+20, row7, "IDENT");
+            //TypeLeft(r4t);
+
+            TextBox r4 = new TextBox ( );
+            TB (r4, col15, row8, r4text, Color.White);
+
+            //TextBox r5t = new TextBox();
+            //TB(r5t, col14+20, row9, "PILOT", Color.White);
+            //TypeLeft(r5t);
+
+            TextBox r5 = new TextBox ( );
+            TB (r5, col15, row10, r5text, Color.White);
+
+            //TextBox r6t = new TextBox();
+            //TB(r6t, col14+20, row11, "IDENT");
+            //TypeLeft(r6t);
+
+            TextBox r6 = new TextBox ( );
+            TB (r6, col15, row12, r6text, Color.White);
+
+            //TextBox divider = new TextBox ( );
+            //TB (divider, col1, row9, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+
+
+            #region Add Arrows if Needed
+            if (r1text != "")
+            {
+                TextBox r1r = new TextBox ( );
+                TB (r1r, col16, row2, ">", Color.White);
+            }
+
+            if (r2text != "")
+            {
+                TextBox r2r = new TextBox ( );
+                TB (r2r, col16, row4, ">", Color.White);
+            }
+
+            if (r3text != "")
+            {
+                TextBox r3r = new TextBox ( );
+                TB (r3r, col16, row6, ">", Color.White);
+            }
+
+            if (r4text != "")
+            {
+                TextBox r4r = new TextBox ( );
+                TB (r4r, col16, row8, ">", Color.White);
+            }
+
+            if (r5text != "")
+            {
+                TextBox r5r = new TextBox ( );
+                TB (r5r, col16, row10, ">", Color.White);
+            }
+
+
+            if (r6text != "")
+            {
+                TextBox r6r = new TextBox ( );
+                TB (r6r, col16, row12, ">", Color.White);
+            }
+            #endregion
+
+            TextBox l6b = new TextBox ( );
+            TB (l6b, col1, row13, "[");
+
+
+            TextBox r6b = new TextBox ( );
+            TB (r6b, col16, row13, "]");
+            #endregion
+        }
+
+        private void VU2Fill( )
+        {
+            CDU7000Page = true;
+
+            #region MyRegion
+            l1text = "< COMSEC";
+            l2text = "";
+            l3text = "< TRANSEC";
+            l4text = "< SINCGARS";
+            l5text = "";
+            l6text = "";
+            r1text = "LOAD ALL";
+            r2text = "";
+            r3text = "";
+            r4text = "";
+            r5text = "";
+            r6text = "RETURN";
+
+            currentPageTitle = "V/U2 FILL"; //page title and number used for navigating
+            currentPageNumber = 1;
+
+            TextBox title = new TextBox ( );//displayed top center of screen
+            TB (title, col7, row0, currentPageTitle);
+
+            //TextBox page = new TextBox ( );
+            //TB (page, col14, row0, currentPageNumber + "/1");
+
+            TextBox l1 = new TextBox ( );
+            TB (l1, col1, row2, l1text, Color.White);
+
+            //TextBox l2t = new TextBox();
+            //TB(l2t, col2, row3, "LOCATION");
+
+            TextBox l2 = new TextBox ( );
+            TB (l2, col1, row4, l2text, Color.White);
+
+            //TextBox l3t = new TextBox();
+            //TB(l3t, col2, row5, "IDENT");
+
+            TextBox l3 = new TextBox ( );
+            TB (l3, col1, row6, l3text, Color.White);
+
+            //TextBox l4t = new TextBox();
+            //TB(l4t, col2, row7, "IDENT");
+
+            TextBox l4 = new TextBox ( );
+            TB (l4, col1, row8, l4text, Color.White);
+
+            //TextBox l5t = new TextBox();
+            //TB(l5t, col2, row9, "IDENT");
+
+            TextBox l5 = new TextBox ( );
+            TB (l5, col1, row10, l5text, Color.White);
+
+            //TextBox l6t = new TextBox();
+            //TB(l6t, col2, row11, "IDENT");
+
+            TextBox l6 = new TextBox ( );
+            TB (l6, col1, row12, l6text, Color.White);
+
+            //TextBox r1t = new TextBox();
+            //TB(r1t, col14+20, row1, "IDENT");
+            //TypeLeft(r1t);
+
+
+            TextBox r1r = new TextBox ( );
+            TB (r1r, col16, row2, "<", Color.White);
+
+            TextBox r1 = new TextBox ( );
+            TB (r1, col15, row2, r1text, Color.White);
+
+            //TextBox r2t = new TextBox();
+            //TB(r2t, col14+20, row3, "IDENT");
+            //TypeLeft(r2t);
+
+            TextBox r2 = new TextBox ( );
+            TB (r2, col15, row4, r2text, Color.White);
+
+            //TextBox r3t = new TextBox();
+            //TB(r3t, col14+20, row5, "IDENT");
+            //TypeLeft(r3t);
+
+            TextBox r3 = new TextBox ( );
+            TB (r3, col15, row6, r3text, Color.White);
+
+            //TextBox r4t = new TextBox();
+            //TB(r4t, col14+20, row7, "IDENT");
+            //TypeLeft(r4t);
+
+            TextBox r4 = new TextBox ( );
+            TB (r4, col15, row8, r4text, Color.White);
+
+            //TextBox r5t = new TextBox();
+            //TB(r5t, col14+20, row9, "PILOT", Color.White);
+            //TypeLeft(r5t);
+
+            TextBox r5 = new TextBox ( );
+            TB (r5, col15, row10, r5text, Color.White);
+
+            //TextBox r6t = new TextBox();
+            //TB(r6t, col14+20, row11, "IDENT");
+            //TypeLeft(r6t);
+
+            TextBox r6 = new TextBox ( );
+            TB (r6, col15, row12, r6text, Color.White);
+
+            //TextBox divider = new TextBox ( );
+            //TB (divider, col1, row9, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+
+
+            #region Add Arrows if Needed
+            if (r6text != "")
+            {
+                TextBox r6r = new TextBox ( );
+                TB (r6r, col16, row12, ">", Color.White);
+            }
+            #endregion
+
+            TextBox l6b = new TextBox ( );
+            TB (l6b, col1, row13, "[");
+
+
+            TextBox r6b = new TextBox ( );
+            TB (r6b, col16, row13, "]");
+            #endregion
+        }
+
+        private void VU2SincgarsFill( )
+        {
+            CDU7000Page = true;
+
+            #region MyRegion
+            l1text = "> FILL";
+            l2text = "> FILL";
+            l3text = "";
+            l4text = "";
+            l5text = "";
+            l6text = "";
+            r1text = "[ 1]";
+            r2text = "[1]";
+            r3text = "SET F2";
+            r4text = "";
+            r5text = "";
+            r6text = "RETURN";
+
+            currentPageTitle = "V/U2 SINCGARS FILL"; //page title and number used for navigating
+            currentPageNumber = 1;
+
+            TextBox title = new TextBox ( );//displayed top center of screen
+            TB (title, col7, row0, currentPageTitle);
+
+            //TextBox page = new TextBox ( );
+            //TB (page, col14, row0, currentPageNumber + "/1");
+
+            //TextBox l1t = new TextBox();
+            //TB(l1t, col2, row1, "IDENT");
+
+            TextBox l1 = new TextBox ( );
+            TB (l1, col1, row2, l1text, Color.White);
+
+            TextBox l1center = new TextBox ( );
+            TB (l1center, col5, row2, "HOP=256", Color.White);
+
+            //TextBox l2t = new TextBox();
+            //TB(l2t, col2, row3, "LOCATION");
+
+            TextBox l2 = new TextBox ( );
+            TB (l2, col1, row4, l2text, Color.White);
+
+            TextBox l2center = new TextBox ( );
+            TB (l2center, col5, row4, "LOCK=202", Color.White);
+
+            //TextBox l3t = new TextBox();
+            //TB(l3t, col2, row5, "IDENT");
+
+            TextBox l3 = new TextBox ( );
+            TB (l3, col1, row6, l3text, Color.White);
+
+            //TextBox l4t = new TextBox();
+            //TB(l4t, col2, row7, "IDENT");
+
+            TextBox l4 = new TextBox ( );
+            TB (l4, col1, row8, l4text, Color.White);
+
+            //TextBox l5t = new TextBox();
+            //TB(l5t, col2, row9, "IDENT");
+
+            TextBox l5 = new TextBox ( );
+            TB (l5, col1, row10, l5text, Color.White);
+
+            //TextBox l6t = new TextBox();
+            //TB(l6t, col2, row11, "IDENT");
+
+            TextBox l6 = new TextBox ( );
+            TB (l6, col1, row12, l6text, Color.White);
+
+            TextBox r1t = new TextBox ( );
+            TB (r1t, col14 + 20, row1, "CHANNEL");
+            TypeLeft (r1t);
+
+            TextBox r1 = new TextBox ( );
+            TB (r1, col15, row2, r1text, Color.White);
+
+            TextBox r2t = new TextBox ( );
+            TB (r2t, col14 + 20, row3, "CHANNEL");
+            TypeLeft (r2t);
+
+            TextBox r2 = new TextBox ( );
+            TB (r2, col15, row4, r2text, Color.White);
+
+            //TextBox r3t = new TextBox();
+            //TB(r3t, col14+20, row5, "IDENT");
+            //TypeLeft(r3t);
+
+            TextBox r3 = new TextBox ( );
+            TB (r3, col15, row6, r3text, Color.White);
+
+            //TextBox r4t = new TextBox();
+            //TB(r4t, col14+20, row7, "IDENT");
+            //TypeLeft(r4t);
+
+            TextBox r4 = new TextBox ( );
+            TB (r4, col15, row8, r4text, Color.White);
+
+            //TextBox r5t = new TextBox();
+            //TB(r5t, col14+20, row9, "PILOT", Color.White);
+            //TypeLeft(r5t);
+
+            TextBox r5 = new TextBox ( );
+            TB (r5, col15, row10, r5text, Color.White);
+
+            //TextBox r6t = new TextBox();
+            //TB(r6t, col14+20, row11, "IDENT");
+            //TypeLeft(r6t);
+
+            TextBox r6 = new TextBox ( );
+            TB (r6, col15, row12, r6text, Color.White);
+
+
+            #region Add Arrows if Needed
+            if (r1text != "")
+            {
+                TextBox r1r = new TextBox ( );
+                TB (r1r, col16, row2, ":", Color.White);
+            }
+
+            if (r2text != "")
+            {
+                TextBox r2r = new TextBox ( );
+                TB (r2r, col16, row4, ":", Color.White);
+            }
+
+            if (r3text != "")
+            {
+                TextBox r3r = new TextBox ( );
+                TB (r3r, col16, row6, "<", Color.White);
+            }
+
+            if (r4text != "")
+            {
+                TextBox r4r = new TextBox ( );
+                TB (r4r, col16, row8, ">", Color.White);
+            }
+
+            if (r5text != "")
+            {
+                TextBox r5r = new TextBox ( );
+                TB (r5r, col16, row10, ">", Color.White);
+            }
+
+
+            if (r6text != "")
+            {
+                TextBox r6r = new TextBox ( );
+                TB (r6r, col16, row12, ">", Color.White);
+            }
+            #endregion
+
+            TextBox l6b = new TextBox ( );
+            TB (l6b, col1, row13, "[");
+
+
+            TextBox r6b = new TextBox ( );
+            TB (r6b, col16, row13, "]");
+            #endregion
+        }
+
+        private void VU2TransecFill( )
+        {
+            CDU7000Page = true;
+
+            #region MyRegion
+            l1text = "[08]";
+            l2text = "> LOAD";
+            l3text = "";
+            l4text = "";
+            l5text = "";
+            l6text = "";
+            r1text = "";
+            r2text = "SET F2";
+            r3text = "";
+            r4text = "";
+            r5text = "";
+            r6text = "RETURN";
+
+            currentPageTitle = "V/U2 TRANSEC FILL"; //page title and number used for navigating
+            currentPageNumber = 1;
+
+            TextBox title = new TextBox ( );//displayed top center of screen
+            TB (title, col7, row0, currentPageTitle);
+
+            TextBox l1t = new TextBox ( );
+            TB (l1t, col2, row1, "KEY");
+
+            TextBox l1 = new TextBox ( );
+            TB (l1, col1, row2, l1text, Color.White);
+
+            //TextBox l2t = new TextBox();
+            //TB(l2t, col2, row3, "LOCATION");
+
+            TextBox l2 = new TextBox ( );
+            TB (l2, col1, row4, l2text, Color.White);
+
+            //TextBox l3t = new TextBox();
+            //TB(l3t, col2, row5, "IDENT");
+
+            TextBox l3center = new TextBox ( );
+            TB (l3center, col1, row6, "1  2  3  4  -  -  -  -", Color.White);
+            CenterMe (l3center);
+
+            //TextBox l4t = new TextBox();
+            //TB(l4t, col2, row7, "IDENT");
+
+            TextBox l4 = new TextBox ( );
+            TB (l4, col1, row8, l4text, Color.White);
+
+            //TextBox l5t = new TextBox();
+            //TB(l5t, col2, row9, "IDENT");
+
+            TextBox l5 = new TextBox ( );
+            TB (l5, col1, row10, l5text, Color.White);
+
+            //TextBox l6t = new TextBox();
+            //TB(l6t, col2, row11, "IDENT");
+
+            TextBox l6 = new TextBox ( );
+            TB (l6, col1, row12, l6text, Color.White);
+
+            //TextBox r1t = new TextBox();
+            //TB(r1t, col14+20, row1, "IDENT");
+            //TypeLeft(r1t);
+
+            TextBox r1 = new TextBox ( );
+            TB (r1, col15, row2, r1text, Color.White);
+
+            //TextBox r2t = new TextBox();
+            //TB(r2t, col14+20, row3, "IDENT");
+            //TypeLeft(r2t);
+
+            TextBox r2 = new TextBox ( );
+            TB (r2, col15, row4, r2text, Color.White);
+
+            //TextBox r3t = new TextBox();
+            //TB(r3t, col14+20, row5, "IDENT");
+            //TypeLeft(r3t);
+
+            TextBox r3 = new TextBox ( );
+            TB (r3, col15, row6, r3text, Color.White);
+
+            //TextBox r4t = new TextBox();
+            //TB(r4t, col14+20, row7, "IDENT");
+            //TypeLeft(r4t);
+
+            TextBox r4 = new TextBox ( );
+            TB (r4, col15, row8, r4text, Color.White);
+
+            //TextBox r5t = new TextBox();
+            //TB(r5t, col14+20, row9, "PILOT", Color.White);
+            //TypeLeft(r5t);
+
+            TextBox r5 = new TextBox ( );
+            TB (r5, col15, row10, r5text, Color.White);
+
+            //TextBox r6t = new TextBox();
+            //TB(r6t, col14+20, row11, "IDENT");
+            //TypeLeft(r6t);
+
+            TextBox r6 = new TextBox ( );
+            TB (r6, col15, row12, r6text, Color.White);
+
+
+            #region Add Arrows if Needed
+            if (r1text != "")
+            {
+                TextBox r1r = new TextBox ( );
+                TB (r1r, col16, row2, ">", Color.White);
+            }
+
+            if (r2text != "")
+            {
+                TextBox r2r = new TextBox ( );
+                TB (r2r, col16, row4, "<", Color.White);
+            }
+
+            if (r3text != "")
+            {
+                TextBox r3r = new TextBox ( );
+                TB (r3r, col16, row6, ">", Color.White);
+            }
+
+            if (r4text != "")
+            {
+                TextBox r4r = new TextBox ( );
+                TB (r4r, col16, row8, ">", Color.White);
+            }
+
+            if (r5text != "")
+            {
+                TextBox r5r = new TextBox ( );
+                TB (r5r, col16, row10, ">", Color.White);
+            }
+
+
+            if (r6text != "")
+            {
+                TextBox r6r = new TextBox ( );
+                TB (r6r, col16, row12, ">", Color.White);
+            }
+            #endregion
+
+            TextBox l6b = new TextBox ( );
+            TB (l6b, col1, row13, "[");
+
+
+            TextBox r6b = new TextBox ( );
+            TB (r6b, col16, row13, "]");
+            #endregion
+        }
+
+        private void VU2LoopbackTest( )
+        {
+            CDU7000Page = true;
+
+            #region MyRegion
+            l1text = "> TEST";
+            l2text = "";
+            l3text = "";
+            l4text = "";
+            l5text = "";
+            l6text = "";
+            r1text = "239";
+            r2text = "";
+            r3text = "";
+            r4text = "";
+            r5text = "";
+            r6text = "RETURN";
+
+            currentPageTitle = "V/U2 LOOPBACK TEST"; //page title and number used for navigating
+            currentPageNumber = 1;
+
+            TextBox title = new TextBox ( );//displayed top center of screen
+            TB (title, col7, row0, currentPageTitle);
+
+            //TextBox page = new TextBox ( );
+            //TB (page, col14, row0, currentPageNumber + "/1");
+
+            //TextBox l1t = new TextBox();
+            //TB(l1t, col2, row1, "IDENT");
+
+            TextBox l1 = new TextBox ( );
+            TB (l1, col1, row2, l1text, Color.White);
+
+            TextBox l1r = new TextBox ( );
+            TB (l1r, col5, row2, "- - - -", Color.White);
+
+            TextBox l2center = new TextBox ( );
+            TB (l2center, col1, row4, "RSS=234", Color.White);
+            CenterMe (l2center);
+
+            //TextBox l3t = new TextBox();
+            //TB(l3t, col2, row5, "IDENT");
+
+            TextBox l3 = new TextBox ( );
+            TB (l3, col1, row6, l3text, Color.White);
+
+            //TextBox l4t = new TextBox();
+            //TB(l4t, col2, row7, "IDENT");
+
+            TextBox l4 = new TextBox ( );
+            TB (l4, col1, row8, l4text, Color.White);
+
+            //TextBox l5t = new TextBox();
+            //TB(l5t, col2, row9, "IDENT");
+
+            TextBox l5 = new TextBox ( );
+            TB (l5, col1, row10, l5text, Color.White);
+
+            //TextBox l6t = new TextBox();
+            //TB(l6t, col2, row11, "IDENT");
+
+            TextBox l6 = new TextBox ( );
+            TB (l6, col1, row12, l6text, Color.White);
+
+            TextBox r1t = new TextBox ( );
+            TB (r1t, col14 + 20, row1, "CHANNEL");
+            TypeLeft (r1t);
+
+            TextBox r1 = new TextBox ( );
+            TB (r1, col15, row2, r1text, Color.White);
+
+            //TextBox r2t = new TextBox();
+            //TB(r2t, col14+20, row3, "IDENT");
+            //TypeLeft(r2t);
+
+            TextBox r2 = new TextBox ( );
+            TB (r2, col15, row4, r2text, Color.White);
+
+            //TextBox r3t = new TextBox();
+            //TB(r3t, col14+20, row5, "IDENT");
+            //TypeLeft(r3t);
+
+            TextBox r3 = new TextBox ( );
+            TB (r3, col15, row6, r3text, Color.White);
+
+            //TextBox r4t = new TextBox();
+            //TB(r4t, col14+20, row7, "IDENT");
+            //TypeLeft(r4t);
+
+            TextBox r4 = new TextBox ( );
+            TB (r4, col15, row8, r4text, Color.White);
+
+            //TextBox r5t = new TextBox();
+            //TB(r5t, col14+20, row9, "PILOT", Color.White);
+            //TypeLeft(r5t);
+
+            TextBox r5 = new TextBox ( );
+            TB (r5, col15, row10, r5text, Color.White);
+
+            //TextBox r6t = new TextBox();
+            //TB(r6t, col14+20, row11, "IDENT");
+            //TypeLeft(r6t);
+
+            TextBox r6 = new TextBox ( );
+            TB (r6, col15, row12, r6text, Color.White);
+
+            //TextBox divider = new TextBox ( );
+            //TB (divider, col1, row9, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+
+
+            #region Add Arrows if Needed
+
+
+
+            if (r6text != "")
+            {
+                TextBox r6r = new TextBox ( );
+                TB (r6r, col16, row12, ">", Color.White);
+            }
+            #endregion
+
+            TextBox l6b = new TextBox ( );
+            TB (l6b, col1, row13, "[");
+
+
+            TextBox r6b = new TextBox ( );
+            TB (r6b, col16, row13, "]");
+            #endregion
+        }
+
+        private void VU2ComsecFill( )
+        {
+            CDU7000Page = true;
+
+            #region MyRegion
+            l1text = "[19]";
+            l2text = "> LOAD";
+            l3text = "> UPDATE=99";
+            l4text = "";
+            l5text = "";
+            l6text = "";
+            r1text = "VINSON";
+            r2text = "STATES";
+            r3text = "SET F1";
+            r4text = "";
+            r5text = "";
+            r6text = "RETURN";
+
+            currentPageTitle = "V/U2 COMSEC FILL"; //page title and number used for navigating
+            currentPageNumber = 1;
+
+            TextBox title = new TextBox ( );//displayed top center of screen
+            TB (title, col7, row0, currentPageTitle);
+
+            //TextBox page = new TextBox ( );
+            //TB (page, col14, row0, currentPageNumber + "/1");
+
+            TextBox l1t = new TextBox ( );
+            TB (l1t, col2, row1, "KEY");
+
+            TextBox l1 = new TextBox ( );
+            TB (l1, col1, row2, l1text, Color.White);
+
+            //TextBox l2t = new TextBox();
+            //TB(l2t, col2, row3, "LOCATION");
+
+            TextBox l2 = new TextBox ( );
+            TB (l2, col1, row4, l2text, Color.White);
+
+            //TextBox l3t = new TextBox();
+            //TB(l3t, col2, row5, "IDENT");
+
+            TextBox l3 = new TextBox ( );
+            TB (l3, col1, row6, l3text, Color.White);
+
+            //TextBox l4t = new TextBox();
+            //TB(l4t, col2, row7, "IDENT");
+
+            TextBox l4 = new TextBox ( );
+            TB (l4, col1, row8, l4text, Color.White);
+
+            //TextBox l5t = new TextBox();
+            //TB(l5t, col2, row9, "IDENT");
+
+            TextBox l5 = new TextBox ( );
+            TB (l5, col1, row10, l5text, Color.White);
+
+            //TextBox l6t = new TextBox();
+            //TB(l6t, col2, row11, "IDENT");
+
+            TextBox l6 = new TextBox ( );
+            TB (l6, col1, row12, l6text, Color.White);
+
+            //TextBox r1t = new TextBox();
+            //TB(r1t, col14+20, row1, "IDENT");
+            //TypeLeft(r1t);
+
+            TextBox r1r = new TextBox ( );
+            TB (r1r, col16, row2, ":", Color.White);
+
+            TextBox r1 = new TextBox ( );
+            TB (r1, col15, row2, r1text, Color.White);
+
+            //TextBox r2t = new TextBox();
+            //TB(r2t, col14+20, row3, "IDENT");
+            //TypeLeft(r2t);
+
+            TextBox r2 = new TextBox ( );
+            TB (r2, col15, row4, r2text, Color.White);
+
+            //TextBox r3t = new TextBox();
+            //TB(r3t, col14+20, row5, "IDENT");
+            //TypeLeft(r3t);
+
+            TextBox r3r = new TextBox ( );
+            TB (r3r, col16, row6, "<", Color.White);
+
+            TextBox r3 = new TextBox ( );
+            TB (r3, col15, row6, r3text, Color.White);
+
+            //TextBox r4t = new TextBox();
+            //TB(r4t, col14+20, row7, "IDENT");
+            //TypeLeft(r4t);
+
+            TextBox r4 = new TextBox ( );
+            TB (r4, col15, row8, r4text, Color.White);
+
+            //TextBox r5t = new TextBox();
+            //TB(r5t, col14+20, row9, "PILOT", Color.White);
+            //TypeLeft(r5t);
+
+            TextBox r5 = new TextBox ( );
+            TB (r5, col15, row10, r5text, Color.White);
+
+            //TextBox r6t = new TextBox();
+            //TB(r6t, col14+20, row11, "IDENT");
+            //TypeLeft(r6t);
+
+            TextBox r6 = new TextBox ( );
+            TB (r6, col15, row12, r6text, Color.White);
+
+            //TextBox divider = new TextBox ( );
+            //TB (divider, col1, row9, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+
+
+            #region Add Arrows if Needed
+            if (r2text != "")
+            {
+                TextBox r2r = new TextBox ( );
+                TB (r2r, col16, row4, ">", Color.White);
+            }
+
+            if (r4text != "")
+            {
+                TextBox r4r = new TextBox ( );
+                TB (r4r, col16, row8, ">", Color.White);
+            }
+
+            if (r5text != "")
+            {
+                TextBox r5r = new TextBox ( );
+                TB (r5r, col16, row10, ">", Color.White);
+            }
+
+
+            if (r6text != "")
+            {
+                TextBox r6r = new TextBox ( );
+                TB (r6r, col16, row12, ">", Color.White);
+            }
+            #endregion
+
+            TextBox l6b = new TextBox ( );
+            TB (l6b, col1, row13, "[");
+
+
+            TextBox r6b = new TextBox ( );
+            TB (r6b, col16, row13, "]");
+            #endregion
+        }
+
+        private void VU2ComsecStatesPage1( )
+        {
+            CDU7000Page = true;
+
+            #region MyRegion
+            l1text = "";
+            l2text = "";
+            l3text = "";
+            l4text = "";
+            l5text = "";
+            l6text = "";
+            r1text = "";
+            r2text = "";
+            r3text = "";
+            r4text = "";
+            r5text = "";
+            r6text = "RETURN";
+
+            currentPageTitle = "V/U2 COMSEC STATES"; //page title and number used for navigating
+            currentPageNumber = 1;
+
+            TextBox title = new TextBox ( );//displayed top center of screen
+            TB (title, col7, row0, currentPageTitle);
+
+            TextBox page = new TextBox ( );
+            TB (page, col14, row0, currentPageNumber + "/2");
+
+            TextBox l1 = new TextBox ( );
+            TB (l1, col2, row2, "1", Color.White);
+            TypeLeft (l1);
+
+            TextBox l2 = new TextBox ( );
+            TB (l2, col2, row3, "2", Color.White);
+            TypeLeft (l2);
+
+            TextBox l3 = new TextBox ( );
+            TB (l3, col2, row4, "3", Color.White);
+            TypeLeft (l3);
+
+            TextBox l4 = new TextBox ( );
+            TB (l4, col2, row5, "4", Color.White);
+            TypeLeft (l4);
+
+            TextBox l5 = new TextBox ( );
+            TB (l5, col2, row6, "5", Color.White);
+            TypeLeft (l5);
+
+            TextBox l6 = new TextBox ( );
+            TB (l6, col2, row7, "6", Color.White);
+            TypeLeft (l6);
+
+            TextBox l7 = new TextBox ( );
+            TB (l7, col2, row8, "7", Color.White);
+            TypeLeft (l7);
+
+            TextBox l8 = new TextBox ( );
+            TB (l8, col2, row9, "8", Color.White);
+            TypeLeft (l8);
+
+            TextBox l9 = new TextBox ( );
+            TB (l9, col2, row10, "9", Color.White);
+            TypeLeft (l9);
+
+            TextBox l10 = new TextBox ( );
+            TB (l10, col2, row11, "10", Color.White);
+            TypeLeft (l10);
+
+
+
+            TextBox l1key = new TextBox ( );
+            TB (l1key, col4, row2, "TEK", Color.White);
+
+
+            TextBox l2key = new TextBox ( );
+            TB (l2key, col4, row3, "TEK", Color.White);
+
+
+            TextBox l3key = new TextBox ( );
+            TB (l3key, col4, row4, "TEK", Color.White);
+
+
+            TextBox l4key = new TextBox ( );
+            TB (l4key, col4, row5, "TEK", Color.White);
+
+
+            TextBox l5key = new TextBox ( );
+            TB (l5key, col4, row6, "- - -", Color.White);
+
+
+            TextBox l6key = new TextBox ( );
+            TB (l6key, col4, row7, "- - -", Color.White);
+
+
+            TextBox l7key = new TextBox ( );
+            TB (l7key, col4, row8, "- - -", Color.White);
+
+
+            TextBox l8key = new TextBox ( );
+            TB (l8key, col4, row9, "- - -", Color.White);
+
+
+            TextBox l9key = new TextBox ( );
+            TB (l9key, col4, row10, "- - -", Color.White);
+
+
+            TextBox l10key = new TextBox ( );
+            TB (l10key, col4, row11, "- - -", Color.White);
+
+
+
+
+            TextBox l1num = new TextBox ( );
+            TB (l1num, col7, row2, "76", Color.White);
+
+
+            TextBox l2num = new TextBox ( );
+            TB (l2num, col7, row3, "23", Color.White);
+
+
+            TextBox l3num = new TextBox ( );
+            TB (l3num, col7, row4, "10", Color.White);
+
+
+            TextBox l4num = new TextBox ( );
+            TB (l4num, col7, row5, "03", Color.White);
+
+
+            TextBox l5num = new TextBox ( );
+            TB (l5num, col7, row6, "- -", Color.White);
+
+
+            TextBox l6num = new TextBox ( );
+            TB (l6num, col7, row7, "- -", Color.White);
+
+
+            TextBox l7num = new TextBox ( );
+            TB (l7num, col7, row8, "- -", Color.White);
+
+
+            TextBox l8num = new TextBox ( );
+            TB (l8num, col7, row9, "- -", Color.White);
+
+
+            TextBox l9num = new TextBox ( );
+            TB (l9num, col7, row10, "- -", Color.White);
+
+
+            TextBox l10num = new TextBox ( );
+            TB (l10num, col7, row11, "- -", Color.White);
+
+
+
+
+
+            TextBox r6 = new TextBox ( );
+            TB (r6, col15, row12, r6text, Color.White);
+
+            //TextBox divider = new TextBox ( );
+            //TB (divider, col1, row9, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+
+
+            #region Add Arrows if Needed
+            if (r6text != "")
+            {
+                TextBox r6r = new TextBox ( );
+                TB (r6r, col16, row12, ">", Color.White);
+            }
+            #endregion
+
+            TextBox l6b = new TextBox ( );
+            TB (l6b, col1, row13, "[");
+
+
+            TextBox r6b = new TextBox ( );
+            TB (r6b, col16, row13, "]");
+            #endregion
+        }
+
+        private void VU2ComsecStatesPage2( )
+        {
+            CDU7000Page = true;
+
+            #region MyRegion
+            l1text = "";
+            l2text = "";
+            l3text = "";
+            l4text = "";
+            l5text = "";
+            l6text = "";
+            r1text = "";
+            r2text = "";
+            r3text = "";
+            r4text = "";
+            r5text = "";
+            r6text = "RETURN";
+
+            currentPageTitle = "V/U2 COMSEC STATES"; //page title and number used for navigating
+            currentPageNumber = 2;
+
+            TextBox title = new TextBox ( );//displayed top center of screen
+            TB (title, col7, row0, currentPageTitle);
+
+            TextBox page = new TextBox ( );
+            TB (page, col14, row0, currentPageNumber + "/2");
+
+            TextBox l1 = new TextBox ( );
+            TB (l1, col2, row2, "1", Color.White);
+            TypeLeft (l1);
+
+            TextBox l2 = new TextBox ( );
+            TB (l2, col2, row3, "2", Color.White);
+            TypeLeft (l2);
+
+            TextBox l3 = new TextBox ( );
+            TB (l3, col2, row4, "3", Color.White);
+            TypeLeft (l3);
+
+            TextBox l4 = new TextBox ( );
+            TB (l4, col2, row5, "4", Color.White);
+            TypeLeft (l4);
+
+            TextBox l5 = new TextBox ( );
+            TB (l5, col2, row6, "5", Color.White);
+            TypeLeft (l5);
+
+            TextBox l6 = new TextBox ( );
+            TB (l6, col2, row7, "6", Color.White);
+            TypeLeft (l6);
+
+            TextBox l7 = new TextBox ( );
+            TB (l7, col2, row8, "7", Color.White);
+            TypeLeft (l7);
+
+            TextBox l8 = new TextBox ( );
+            TB (l8, col2, row9, "8", Color.White);
+            TypeLeft (l8);
+
+            TextBox l9 = new TextBox ( );
+            TB (l9, col2, row10, "9", Color.White);
+            TypeLeft (l9);
+
+            TextBox l10 = new TextBox ( );
+            TB (l10, col2, row11, "10", Color.White);
+            TypeLeft (l10);
+
+
+
+            TextBox l1key = new TextBox ( );
+            TB (l1key, col4, row2, "- - -", Color.White);
+
+
+            TextBox l2key = new TextBox ( );
+            TB (l2key, col4, row3, "- - -", Color.White);
+
+
+            TextBox l3key = new TextBox ( );
+            TB (l3key, col4, row4, "- - -", Color.White);
+
+
+            TextBox l4key = new TextBox ( );
+            TB (l4key, col4, row5, "- - -", Color.White);
+
+
+            TextBox l5key = new TextBox ( );
+            TB (l5key, col4, row6, "- - -", Color.White);
+
+
+            TextBox l6key = new TextBox ( );
+            TB (l6key, col4, row7, "- - -", Color.White);
+
+
+            TextBox l7key = new TextBox ( );
+            TB (l7key, col4, row8, "- - -", Color.White);
+
+
+            TextBox l8key = new TextBox ( );
+            TB (l8key, col4, row9, "- - -", Color.White);
+
+
+            TextBox l9key = new TextBox ( );
+            TB (l9key, col4, row10, "- - -", Color.White);
+
+
+            TextBox l10key = new TextBox ( );
+            TB (l10key, col4, row11, "- - -", Color.White);
+
+
+
+
+            TextBox l1num = new TextBox ( );
+            TB (l1num, col7, row2, "- -", Color.White);
+
+
+            TextBox l2num = new TextBox ( );
+            TB (l2num, col7, row3, "- -", Color.White);
+
+
+            TextBox l3num = new TextBox ( );
+            TB (l3num, col7, row4, "- -", Color.White);
+
+
+            TextBox l4num = new TextBox ( );
+            TB (l4num, col7, row5, "- -", Color.White);
+
+
+            TextBox l5num = new TextBox ( );
+            TB (l5num, col7, row6, "- -", Color.White);
+
+
+            TextBox l6num = new TextBox ( );
+            TB (l6num, col7, row7, "- -", Color.White);
+
+
+            TextBox l7num = new TextBox ( );
+            TB (l7num, col7, row8, "- -", Color.White);
+
+
+            TextBox l8num = new TextBox ( );
+            TB (l8num, col7, row9, "- -", Color.White);
+
+
+            TextBox l9num = new TextBox ( );
+            TB (l9num, col7, row10, "- -", Color.White);
+
+
+            TextBox l10num = new TextBox ( );
+            TB (l10num, col7, row11, "- -", Color.White);
+
+
+
+
+
+            TextBox r6 = new TextBox ( );
+            TB (r6, col15, row12, r6text, Color.White);
+
+            //TextBox divider = new TextBox ( );
+            //TB (divider, col1, row9, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+
+
+            #region Add Arrows if Needed
+            if (r6text != "")
+            {
+                TextBox r6r = new TextBox ( );
+                TB (r6r, col16, row12, ">", Color.White);
+            }
+            #endregion
+
+            TextBox l6b = new TextBox ( );
+            TB (l6b, col1, row13, "[");
+
+
+            TextBox r6b = new TextBox ( );
+            TB (r6b, col16, row13, "]");
+            #endregion
+        }
+
+
+        #endregion
 
         private void VU2uhfPresetsPage1( )
         {
@@ -8999,45 +12896,7 @@ namespace CDU3000
             #endregion
         }
 
-        private void VU2loopbackTestPage( )
-        {
-            CDU7000Page = true;
-        }
 
-        private void VU2clearNVMPage( )
-        {
-            CDU7000Page = true;
-        }
-
-        private void VU2fillPage( )
-        {
-            CDU7000Page = true;
-        }
-
-        private void VU2sincgarsFillPage( )
-        {
-            CDU7000Page = true;
-        }
-
-        private void VU2transecFillPage( )
-        {
-            CDU7000Page = true;
-        }
-
-        private void VU2comsecFillPage( )
-        {
-            CDU7000Page = true;
-        }
-
-        private void VU2comsecStatesPage1( )
-        {
-            CDU7000Page = true;
-        }
-
-        private void VU2comsecStatesPage2( )
-        {
-            CDU7000Page = true;
-        }
 
         #endregion
 
@@ -9294,6 +13153,26 @@ namespace CDU3000
             }
             #endregion
 
+            #region VU1 COMSEC States
+            if (currentPageTitle == "V/U1 COMSEC STATES")
+            {
+                if (currentPageNumber == 1)
+                {
+                    StartFresh ( );
+                    VU1ComsecStatesPage2 ( );
+                    UpdateDisplay ( );
+                }
+                else
+                    if (currentPageNumber == 2)
+                    {
+                        StartFresh ( );
+                        VU1ComsecStatesPage1 ( );
+                        UpdateDisplay ( );
+                    }
+
+            }
+            #endregion
+
             #region VU2 Control Pages
             if (currentPageTitle == "V/U2 CONTROL")
             {
@@ -9308,6 +13187,26 @@ namespace CDU3000
                     {
                         StartFresh ( );
                         VU2controlPage1 ( );
+                        UpdateDisplay ( );
+                    }
+
+            }
+            #endregion
+
+            #region VU2 COMSEC States
+            if (currentPageTitle == "V/U2 COMSEC STATES")
+            {
+                if (currentPageNumber == 1)
+                {
+                    StartFresh ( );
+                    VU2ComsecStatesPage2 ( );
+                    UpdateDisplay ( );
+                }
+                else
+                    if (currentPageNumber == 2)
+                    {
+                        StartFresh ( );
+                        VU2ComsecStatesPage1 ( );
                         UpdateDisplay ( );
                     }
 
@@ -9428,6 +13327,26 @@ namespace CDU3000
 
             #endregion
 
+            #region VU1 COMSEC States
+            if (currentPageTitle == "V/U1 COMSEC STATES")
+            {
+                if (currentPageNumber == 1)
+                {
+                    StartFresh ( );
+                    VU1ComsecStatesPage2 ( );
+                    UpdateDisplay ( );
+                }
+                else
+                    if (currentPageNumber == 2)
+                    {
+                        StartFresh ( );
+                        VU1ComsecStatesPage1 ( );
+                        UpdateDisplay ( );
+                    }
+
+            }
+            #endregion
+
             #region VU1 Control Pages
             if (currentPageTitle == "V/U1 CONTROL")
             {
@@ -9444,6 +13363,46 @@ namespace CDU3000
                         VU1controlPage1 ( );
                         UpdateDisplay ( );
                     }
+            }
+            #endregion
+
+            #region VU2 Control Pages
+            if (currentPageTitle == "V/U2 CONTROL")
+            {
+                if (currentPageNumber == 1)
+                {
+                    StartFresh ( );
+                    VU2controlPage2 ( );
+                    UpdateDisplay ( );
+                }
+                else
+                    if (currentPageNumber == 2)
+                    {
+                        StartFresh ( );
+                        VU2controlPage1 ( );
+                        UpdateDisplay ( );
+                    }
+
+            }
+            #endregion
+
+            #region VU2 COMSEC States
+            if (currentPageTitle == "V/U2 COMSEC STATES")
+            {
+                if (currentPageNumber == 1)
+                {
+                    StartFresh ( );
+                    VU2ComsecStatesPage2 ( );
+                    UpdateDisplay ( );
+                }
+                else
+                    if (currentPageNumber == 2)
+                    {
+                        StartFresh ( );
+                        VU2ComsecStatesPage1 ( );
+                        UpdateDisplay ( );
+                    }
+
             }
             #endregion
         }
@@ -9955,7 +13914,7 @@ namespace CDU3000
 
             #region Color toggle of Yes/No, Comp/Uncomp, Inhibit, etc (maximum two choices only)
 
-            if (trimmedString=="OFF" || trimmedString == "PLAIN" || trimmedString == "DATA" || trimmedString == "TR" || trimmedString == "ORIGIN" || trimmedString == "ON" || trimmedString == "UNCOMP" || trimmedString == "YES" || trimmedString == "NO" || trimmedString == "INHIBIT")//**Toggle colors
+            if (trimmedString == "H2" || trimmedString == "OFF" || trimmedString == "PLAIN" || trimmedString == "DATA" || trimmedString == "TR" || trimmedString == "ORIGIN" || trimmedString == "ON" || trimmedString == "UNCOMP" || trimmedString == "YES" || trimmedString == "NO" || trimmedString == "INHIBIT")//**Toggle colors
             {
                 try
                 {
@@ -10266,7 +14225,7 @@ namespace CDU3000
             #endregion
 
             #region Non-Fixed Button Selection
-            //because the VU1 and VU2 COMM pages do not always have a fixed button selection,
+            //because the VU1 and VU2 COMM pages (for example but not limited to) do not always have a fixed button selection,
             //this section was added prior to the switch statement to handle the oddity
             #region Handles page selection calls from COMM page
 
@@ -10332,6 +14291,35 @@ namespace CDU3000
                     VU2comsecVarPage1 ( );
                     return;
                 }
+
+            #endregion
+
+            #region page selection from SYSTEM STATUS page
+
+            if (currentPageTitle == "SYSTEM STATUS")
+            {
+                if (pushedButton == l2Btn)
+                {
+                    StartFresh ( );
+                    NAVstatusPage ( );
+                    return;
+                }
+                return;
+            }
+
+            #endregion
+
+            #region page selection from NAV STATUS page
+
+            if (currentPageTitle == "NAV STATUS")
+            {
+                if (pushedButton == r1Btn)
+                {
+                    StartFresh ( );
+                    TACANstatusPage ( );
+                    return;
+                }
+            }
 
             #endregion
 
@@ -10606,16 +14594,29 @@ namespace CDU3000
                     //insert cdu7000 switch statements here
                     switch (trimmedString)
                     {
+
+                        //Clear NVM pages
+                        case "CLEAR":
+                            StartFresh ( );
+                            #region MyRegion
+                            if (currentPageTitle == "V/U1 MAINTENANCE")
+                            {
+                                VU1ClearNVM ( );
+                                break;
+                            }
+                            else
+                                if (currentPageTitle == "V/U2 MAINTENANCE")
+                                {
+                                    VU2ClearNVM ( );
+                                    break;
+                                }
+                            #endregion
+                            break;
+
                         //COMM page
                         case "COM":
                             StartFresh ( );//clears all  TextBoxes before writing new page
                             COMpage ( );
-                            break;
-
-                        //Return List 
-                        case "RETURN":
-                            StartFresh ( );
-                            ReturnList (currentPageTitle);
                             break;
 
                         //VU1 COMSEC CONTROL Page
@@ -10632,9 +14633,87 @@ namespace CDU3000
                                 {
                                     VU2comsecControlPage ( );
                                 }
+                                else
+                                    if (currentPageTitle == "V/U1 FILL")
+                                    {
+                                        VU1ComsecFill ( );
+                                    }
+                                    else
+                                        if (currentPageTitle == "V/U2 FILL")
+                                        {
+                                            VU2ComsecFill ( );
+                                        }
 
                             break;
                             #endregion
+
+                        //Fill page
+                        case "FILL":
+                            StartFresh ( );
+                            #region MyRegion
+                            if (currentPageTitle == "V/U1 MAINTENANCE")
+                            {
+                                VU1Fill ( );
+                            }
+                            else
+                                if (currentPageTitle == "V/U2 MAINTENANCE")
+                                {
+                                    VU2Fill ( );
+                                }
+                            #endregion
+                            break;
+
+                        //Lockouts page
+                        case "LOCKOUTS":
+                            StartFresh ( );
+
+                            #region MyRegion
+                            if (currentPageTitle == "V/U1 SINCGARS")
+                            {
+                                VU1lockoutsPage ( );
+                            }
+                            else
+                                if (currentPageTitle == "V/U2 SINCGARS")
+                                {
+                                    VU2lockoutsPage ( );
+                                }
+                            #endregion
+
+                            break;
+
+                        //Loopback page
+                        case "LOOPBACK":
+                            StartFresh ( );
+                            #region MyRegion
+                            if (currentPageTitle == "V/U1 MAINTENANCE")
+                            {
+                                VU1LoopbackTest ( );
+                                break;
+                            }
+                            else
+                                if (currentPageTitle == "V/U2 MAINTENANCE")
+                                {
+                                    VU2LoopbackTest ( );
+                                    break;
+                                }
+                            #endregion
+                            break;
+
+                        //Maintenance page
+                        case "MAINTENANCE":
+                            StartFresh ( );
+                            #region MyRegion
+                            if (currentPageTitle == "V/U1 CONTROL")
+                            {
+                                VU1maintenancePage ( );
+                            }
+                            else
+                                if (currentPageTitle == "V/U2 CONTROL")
+                                {
+                                    VU2maintenancePage ( );
+                                }
+                            #endregion
+                            break;
 
                         //Powerpage
                         case "POWER":
@@ -10646,6 +14725,58 @@ namespace CDU3000
                         case "PRESETS":
                             CheckPresets ( );
                             break;
+
+                        //Return List 
+                        case "RETURN":
+                            StartFresh ( );
+                            ReturnList (currentPageTitle);
+                            break;
+
+                        //Sincgars page
+                        case "SINCGARS":
+                            StartFresh ( );
+                            #region MyRegion
+                            if (currentPageTitle == "V/U1 FILL")
+                            {
+                                VU1SincgarsFill ( );
+                            }
+                            else
+                                if (currentPageTitle == "V/U2 FILL")
+                                {
+                                    VU2SincgarsFill ( );
+                                }
+                                else
+                                    if (currentPageTitle == "V/U1 CONTROL")
+                                    {
+                                        VU1sincgarsControlPage ( );
+                                    }
+                                    else
+                                        if (currentPageTitle == "V/U2 CONTROL")
+                                        {
+                                            VU2sincgarsControlPage ( );
+                                        }
+                            #endregion
+                            break;
+
+                        //States pages
+                        case "STATES":
+                            {
+                                StartFresh ( );
+
+                                #region MyRegion
+                                if (currentPageTitle == "V/U1 COMSEC FILL")
+                                {
+                                    VU1ComsecStatesPage1 ( );
+                                }
+                                else
+                                    if (currentPageTitle == "V/U2 COMSEC FILL")
+                                    {
+                                        VU2ComsecStatesPage1 ( );
+                                    }
+                                #endregion
+
+                                break;
+                            }
 
                         //Status pages
                         case "STATUS":
@@ -10659,6 +14790,29 @@ namespace CDU3000
                             StartInitPage ( );
                             break;
 
+                        //Transec page
+                        case "TRANSEC":
+                            StartFresh ( );
+
+                            #region MyRegion
+                            if (currentPageTitle == "V/U1 FILL")
+                            {
+                                VU1TransecFill ( );
+                            }
+                            else
+                                if (currentPageTitle == "V/U2 FILL")
+                                {
+                                    VU2TransecFill ( );
+                                }
+                            #endregion
+
+                            break;
+
+                        //Zeroize page
+                        case "ZEROIZE":
+                            StartFresh ( );
+                            ZeroizePage ( );
+                            break;
 
 
 
@@ -10946,11 +15100,28 @@ namespace CDU3000
 
         }
 
-        private void ReturnList(string e)   //handles all RETURN butons
+        private void ReturnList(string e)   //handles all RETURN buttons
         {
             switch (e)
             {
 
+                case "V/U1 CLEAR NVM":
+                    {
+                        VU1maintenancePage ( );
+                        break;
+                    }
+
+                case "V/U1 COMSEC FILL":
+                    {
+                        VU1Fill ( );
+                        break;
+                    }
+
+                case "V/U1 COMSEC STATES":
+                    {
+                        VU1Fill ( );
+                        break;
+                    }
 
                 case "V/U1 CONTROL":
                     {
@@ -10958,9 +15129,111 @@ namespace CDU3000
                         break;
                     }
 
+                case "V/U1 FILL":
+                    {
+                        VU1maintenancePage ( );
+                        break;
+                    }
+
+                case "V/U1 LOCKOUTS":
+                    {
+                        VU1controlPage2 ( );
+                        break;
+                    }
+
+                case "V/U1 LOOPBACK TEST":
+                    {
+                        VU1maintenancePage ( );
+                        break;
+                    }
+
+                case "V/U1 MAINTENANCE":
+                    {
+                        VU1controlPage2 ( );
+                        break;
+                    }
+
+                case "V/U1 SINCGARS":
+                    {
+                        VU1controlPage2 ( );
+                        break;
+                    }
+
+                case "V/U1 SINCGARS FILL":
+                    {
+                        VU1Fill ( );
+                        break;
+                    }
+
+                case "V/U1 TRANSEC FILL":
+                    {
+                        VU1Fill ( );
+                        break;
+                    }
+
+                case "V/U2 CLEAR NVM":
+                    {
+                        VU2maintenancePage ( );
+                        break;
+                    }
+
+                case "V/U2 COMSEC FILL":
+                    {
+                        VU2Fill ( );
+                        break;
+                    }
+
+                case "V/U2 COMSEC STATES":
+                    {
+                        VU2Fill ( );
+                        break;
+                    }
+
                 case "V/U2 CONTROL":
                     {
                         COMpage ( );
+                        break;
+                    }
+
+                case "V/U2 FILL":
+                    {
+                        VU2maintenancePage ( );
+                        break;
+                    }
+
+                case "V/U2 LOCKOUTS":
+                    {
+                        VU2controlPage2 ( );
+                        break;
+                    }
+
+                case "V/U2 LOOPBACK TEST":
+                    {
+                        VU2maintenancePage ( );
+                        break;
+                    }
+
+                case "V/U2 MAINTENANCE":
+                    {
+                        VU2controlPage2 ( );
+                        break;
+                    }
+
+                case "V/U2 SINCGARS":
+                    {
+                        VU2controlPage2 ( );
+                        break;
+                    }
+
+                case "V/U2 SINCGARS FILL":
+                    {
+                        VU2Fill ( );
+                        break;
+                    }
+
+                case "V/U2 TRANSEC FILL":
+                    {
+                        VU2Fill ( );
                         break;
                     }
 
@@ -10982,21 +15255,33 @@ namespace CDU3000
                         break;
                     }
 
+                case "NAV STATUS":
+                    {
+                        MissionStatusPage1 ( );
+                        break;
+                    }
+
                 case "POWER":
                     {
-                        StartInitPage  ( );
+                        StartInitPage ( );
                         break;
                     }
 
                 case "START INIT":
                     {
-                        MissionPage  ( );
+                        MissionPage ( );
                         break;
                     }
 
                 case "SYSTEM STATUS":
                     {
                         MissionPage ( );
+                        break;
+                    }
+
+                case "TACAN STATUS":
+                    {
+                        NAVstatusPage ( );
                         break;
                     }
 
@@ -11093,6 +15378,12 @@ namespace CDU3000
                 case "V/U2 UHF":
                     {
                         VU2controlPage1 ( );
+                        break;
+                    }
+
+                case "ZEROIZE":
+                    {
+                        MissionPage ( );
                         break;
                     }
             }
