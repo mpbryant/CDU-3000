@@ -85,37 +85,31 @@ namespace CDU3000
         private double alpha = .20;
         DimmerForm DM = new DimmerForm ( );
 
+        //creates a new controller form
+        Controller myCont = new Controller ( );
+
         //NAV fields
-        private string navStatus;
+        private string _navStatus;
 
         //TACAN specific fields
-        private string tcnStatus;
-        private string tcnRT;
-        private string tcnAudio;
-        private string tcnMicro;
-        private string tcnNVRAM;
-        private string tcnAlert;
-        private string tcnTun;
-        private string tcnRAM;
-        private string tcnSUB;
-        private string tcn1553Bus;
-        private string tcnRCV;
-        private string tcnROM;
-        private string tcnPWR;
-        private string tcnTRM;
-        private string tcnDPRAM;
-        private string tcnDPDAT;
-        private string tcnSynth;
+        private string _tcnStatus;
+
+        //EGI specific fields
+        private string _egiStatus;
+        
+
+        
+        
 
         #region VU1 fields
 
-        string VU1freq = "V136.000";
-        string VU1preset = "P2";
-        string VU1channel = "0";
-        string VU1mode = "TR";
-        string VU1squelch = "1";
-        string VU1power = "HIGH";
-        string VU1guard = "OFF";
+        string _VU1freq = "V136.000";
+        string _VU1preset = "P2";
+        string _VU1channel = "0";
+        string _VU1mode = "TR";
+        string _VU1squelch = "1";
+        string _VU1power = "HIGH";
+        string _VU1guard = "OFF";
 
         #endregion
 
@@ -4901,6 +4895,8 @@ namespace CDU3000
 
         private void MissionStatusPage1( )
         {
+            CheckStatus ( );
+
             CDU7000Page = true;
 
             #region MyRegion
@@ -4927,7 +4923,7 @@ namespace CDU3000
             //TB (page, col14, row0, currentPageNumber + "/1");
 
             TextBox l1t = new TextBox ( );
-            TB (l1t, col2, row1, "IMS");
+            TB (l1t, col2 + 10, row1, "IMS");
 
             TextBox l1 = new TextBox ( );
             TB (l1, col1, row2, l1text, Color.White);
@@ -4936,18 +4932,18 @@ namespace CDU3000
             TB (l1r, col2, row2, "GO", Color.White);
 
             TextBox l2t = new TextBox ( );
-            TB (l2t, col2, row3, "NAV");
+            TB (l2t, col2 + 10, row3, "NAV");
 
             TextBox l2 = new TextBox ( );
             TB (l2, col1, row4, l2text, Color.White);
 
 
             TextBox l2r = new TextBox ( );
-            TB (l2r, col2, row4, "NGO", Color.White);
-            navStatus = l2r.Text;
+            TB (l2r, col2, row4, _navStatus , Color.White);
+            
 
             TextBox l3t = new TextBox ( );
-            TB (l3t, col2, row5, "SURV");
+            TB (l3t, col2 + 10, row5, "SURV");
 
             TextBox l3 = new TextBox ( );
             TB (l3, col1, row6, l3text, Color.White);
@@ -4956,7 +4952,7 @@ namespace CDU3000
             TB (l3r, col2, row6, "- - -", Color.White);
 
             TextBox l4t = new TextBox ( );
-            TB (l4t, col2, row7, "COM");
+            TB (l4t, col2 + 10, row7, "COM");
 
             TextBox l4 = new TextBox ( );
             TB (l4, col1, row8, l4text, Color.White);
@@ -5238,20 +5234,261 @@ namespace CDU3000
 
         #endregion
 
-        #region NAV Status page
+        #region EGI STATUS Page
 
-        private void NAVstatusPage( )
+        private void EGIstatusPage()
         {
             CDU7000Page = true;
 
             #region MyRegion
-            l1text = "< GO";
+            l1text = "ON";
+            l2text = myCont.EGIsub ;
+            l3text = myCont.EGIcaic ;
+            l4text = "213100-AS1R4";
+            l5text = myCont.EGIinu ;
+            l6text = "< FAULT HIST";
+            r1text = "- - - ";
+            r2text = myCont.EGIio ;
+            r3text = myCont.EGIpwr ;
+            r4text = myCont.EGIproc ;
+            r5text = myCont.EGIgps ;
+            r6text = "RETURN";
+
+            currentPageTitle = "EGI STATUS"; //page title and number used for navigating
+            currentPageNumber = 1;
+
+            TextBox title = new TextBox ( );//displayed top center of screen
+            TB (title, col7, row0, currentPageTitle);
+
+            TextBox status = new TextBox ( );
+
+
+            #region Displays the status of the EGI in the upper right corner
+            if (myCont.EGIsub == "GO" & myCont.EGIcaic == "GO" & myCont.EGIinu == "GO" & myCont.EGIio == "GO" & myCont.EGIpwr == "GO" & myCont.EGIproc == "GO" & myCont.EGIgps == "GO" )
+            {
+                _egiStatus  = "GO";
+            }
+            else
+            {
+                _egiStatus  = "NGO";
+            }
+
+            TB (status, title.Location.X + title.Width, row0, _egiStatus, Color.White); 
+            #endregion
+
+
+            TextBox l1t = new TextBox ( );
+            TB (l1t, col2, row1, "ALERT");
+
+            TextBox l1 = new TextBox ( );
+            TB (l1, col1, row2, l1text, Color.Green);
+                        
+            TextBox l1slash = new TextBox ( );
+            TB (l1slash, l1.Location.X + l1.Width, row2, "/", Color.White);
+
+            TextBox l1off = new TextBox ( );
+            TB (l1off, l1slash.Location.X + l1slash.Width, row2, "OFF", Color.White);
+
+            TextBox l1c = new TextBox ( );
+            TB (l1c, col7, row1, "1553 BUS");
+            CenterMe (l1c);
+
+            TextBox bus = new TextBox ( );
+            TB (bus, col9-5, row2, myCont.EGI1553 , Color.White);//
+
+            TextBox l2t = new TextBox ( );
+            TB (l2t, col2, row3, "SUB");
+
+            TextBox l2 = new TextBox ( );
+            TB (l2, col1, row4, l2text, Color.White);
+
+            //TextBox trm = new TextBox ( );
+            //TB (trm, col6, row3, "TRM");
+
+            //TextBox trmGo = new TextBox ( );
+            //TB (trmGo, col6, row4, myCont.EGItrm , Color.White);
+
+            TextBox trm = new TextBox ( );
+            TB (trm, col10+4 , row3, "TRM");
+            TypeLeft (trm);
+            
+
+            TextBox ioGo = new TextBox ( );
+            TB (ioGo, col9 - 5, row4, myCont.EGItrm, Color.White);
+
+            TextBox l3t = new TextBox ( );
+            TB (l3t, col2, row5, "CAIC");
+
+            TextBox l3 = new TextBox ( );
+            TB (l3, col1, row6, myCont.EGIcaic , Color.White);
+
+            TextBox tempc = new TextBox ( );
+            TB (tempc, col10+4, row5, "IE/TEMPC");
+            TypeLeft (tempc);
+
+            TextBox tempGo = new TextBox ( );
+            TB (tempGo, col9 - 5, row6, myCont.EGIieTempc, Color.White);
+
+            TextBox l4t = new TextBox ( );
+            TB (l4t, col2, row7, "VSN");
+
+            TextBox l4 = new TextBox ( );
+            TB (l4, col1, row8, l4text, Color.White);
+
+            //TextBox ram = new TextBox ( );
+            //TB (ram, col6, row7, "RAM");
+
+            //TextBox ramGo = new TextBox ( );
+            //TB (ramGo, col6, row8, myCont.TacanRam, Color.White);
+
+            //TextBox rom = new TextBox ( );
+            //TB (rom, col9, row7, "ROM");
+
+            //TextBox romGo = new TextBox ( );
+            //TB (romGo, col9, row8, myCont.TacanRom, Color.White);
+
+            TextBox l5t = new TextBox ( );
+            TB (l5t, col2, row9, "INU");
+
+            TextBox l5l = new TextBox ( );
+            TB (l5l, col1, row10, "<", Color.White);
+
+            TextBox l5 = new TextBox ( );
+            TB (l5, l5l.Location.X+l5l.Width , row10, myCont.EGIinu , Color.White);
+
+            //TextBox tun = new TextBox ( );
+            //TB (tun, col6, row9, "TUN");
+
+            //TextBox tunGo = new TextBox ( );
+            //TB (tunGo, col6, row10, myCont.TacanTun, Color.White);
+
+            //TextBox rcv = new TextBox ( );
+            //TB (rcv, col9, row9, "RCV");
+
+            //TextBox rcvGo = new TextBox ( );
+            //TB (rcvGo, col9, row10, myCont.TacanRcv, Color.White);
+
+            //TextBox l6t = new TextBox();
+            //TB(l6t, col2, row11, "IDENT");
+
+            TextBox l6 = new TextBox ( );
+            TB (l6, col1, row12, l6text, Color.White);
+
+            TextBox r1t = new TextBox ( );
+            TB (r1t, col14 + 20, row1, "TEST");
+            TypeLeft (r1t);
+
+            TextBox r1 = new TextBox ( );
+            TB (r1, col15, row2, r1text, Color.White);
+
+            TextBox r2t = new TextBox ( );
+            TB (r2t, col14 + 20, row3, "I/O");
+            TypeLeft (r2t);
+
+            TextBox r2 = new TextBox ( );
+            TB (r2, col15, row4, myCont.EGIio , Color.White);
+
+            TextBox r3t = new TextBox ( );
+            TB (r3t, col14 + 20, row5, "POWER");
+            TypeLeft (r3t);
+
+            TextBox r3 = new TextBox ( );
+            TB (r3, col15, row6, myCont.EGIpwr , Color.White);
+
+            TextBox r4t = new TextBox ( );
+            TB (r4t, col14 + 20, row7, "PROCESSOR");
+            TypeLeft (r4t);
+
+            TextBox r4 = new TextBox ( );
+            TB (r4, col15, row8, myCont.EGIproc , Color.White);
+
+            TextBox r5t = new TextBox ( );
+            TB (r5t, col14 + 20, row9, "GPS");
+            TypeLeft (r5t);
+
+            TextBox r5 = new TextBox ( );
+            TB (r5, col15, row10, myCont.EGIgps , Color.White);
+
+            //TextBox r6t = new TextBox();
+            //TB(r6t, col14+20, row11, "IDENT");
+            //TypeLeft(r6t);
+
+            TextBox r6 = new TextBox ( );
+            TB (r6, col15, row12, r6text, Color.White);
+
+            TextBox divider = new TextBox ( );
+            TB (divider, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+
+
+            #region Add Arrows if Needed
+            if (r1text != "")
+            {
+                TextBox r1r = new TextBox ( );
+                TB (r1r, col16, row2, "<", Color.White);
+            }
+
+            //if (r2text != "")
+            //{
+            //    TextBox r2r = new TextBox ( );
+            //    TB (r2r, col16, row4, ">", Color.White);
+            //}
+
+            //if (r3text != "")
+            //{
+            //    TextBox r3r = new TextBox ( );
+            //    TB (r3r, col16, row6, ">", Color.White);
+            //}
+
+            //if (r4text != "")
+            //{
+            //    TextBox r4r = new TextBox ( );
+            //    TB (r4r, col16, row8, ">", Color.White);
+            //}
+
+            if (r5text != "")
+            {
+                TextBox r5r = new TextBox ( );
+                TB (r5r, col16, row10, ">", Color.White);
+            }
+
+
+            if (r6text != "")
+            {
+                TextBox r6r = new TextBox ( );
+                TB (r6r, col16, row12, ">", Color.White);
+            }
+            #endregion
+
+            TextBox l6b = new TextBox ( );
+            TB (l6b, col1, row13, "[");
+
+
+            TextBox r6b = new TextBox ( );
+            TB (r6b, col16, row13, "]");
+
+            myCont.EGIvalueChanged = false;
+            #endregion
+        }
+
+        #endregion
+
+        #region NAV Status page
+
+        private void NAVstatusPage( )
+        {
+            CheckStatus ( );
+
+            CDU7000Page = true;
+
+            #region MyRegion
+            l1text = "";
             l2text = "";
             l3text = "";
             l4text = "";
             l5text = "";
             l6text = "< FAULT HIST";
-            r1text = "GO";
+            r1text = _navStatus ;
             r2text = "";
             r3text = "";
             r4text = "";
@@ -5265,18 +5502,16 @@ namespace CDU3000
             TB (title, col7, row0, currentPageTitle);
 
             TextBox status = new TextBox ( );
-            TB (status, title.Location.X + title.Width, row0, navStatus);
-
-            if (navStatus == "NGO")
-            {
-                status.ForeColor = Color.Yellow;
-            }
+            TB (status, title.Location.X + title.Width, row0, _navStatus, Color.White);
 
             TextBox l1t = new TextBox ( );
             TB (l1t, col2, row1, "EGI");
 
+            TextBox l1l = new TextBox ( );
+            TB (l1l, col1, row2, "<", Color.White);
+
             TextBox l1 = new TextBox ( );
-            TB (l1, col1, row2, l1text, Color.White);
+            TB (l1, col2, row2, _egiStatus , Color.White);
 
             //TextBox l2t = new TextBox();
             //TB(l2t, col2, row3, "LOCATION");
@@ -5313,7 +5548,7 @@ namespace CDU3000
             TypeLeft (r1t);
 
             TextBox r1 = new TextBox ( );
-            TB (r1, col15, row2, r1text, Color.White);
+            TB (r1, col15, row2, _tcnStatus  , Color.White);
 
             //TextBox r2t = new TextBox();
             //TB(r2t, col14+20, row3, "IDENT");
@@ -5413,15 +5648,15 @@ namespace CDU3000
 
             #region MyRegion
             l1text = "ON";
-            l2text = "NGO";
-            l3text = "GO";
-            l4text = "GO";
-            l5text = "GO";
+            l2text = myCont.TacanNVRAM ;
+            l3text = myCont.TacanMicro  ;
+            l4text = myCont.TacanAudio  ;
+            l5text = myCont.TacanRt  ;
             l6text = "< FAULT HIST";
             r1text = "- - - ";
-            r2text = "NGO";
-            r3text = "GO";
-            r4text = "GO";
+            r2text = myCont.TacanSynth  ;
+            r3text = myCont.TacanDpdat  ;
+            r4text = myCont.TacanDpram  ;
             r5text = "";
             r6text = "RETURN";
 
@@ -5432,13 +5667,27 @@ namespace CDU3000
             TB (title, col7, row0, currentPageTitle);
 
             TextBox status = new TextBox ( );
-            TB (status, title.Location.X + title.Width, row0, tcnStatus);
+            
+
+            if (myCont.TacanNVRAM == "GO" & myCont.TacanMicro == "GO" & myCont.Tacan1553 == "GO" & myCont.TacanAudio == "GO" & myCont.TacanDpdat == "GO" & myCont.TacanDpram == "GO" & myCont.TacanPwr == "GO" & myCont.TacanRam == "GO" & myCont.TacanRcv == "GO" & myCont.TacanRom == "GO" & myCont.TacanRt == "GO" & myCont.TacanSub == "GO" & myCont.TacanSynth == "GO" & myCont.TacanTrm == "GO" & myCont.TacanTun == "GO")
+            {
+                _tcnStatus = "GO";
+            }
+            else
+            {
+                _tcnStatus = "NGO";
+            }
+
+            TB (status, title.Location.X + title.Width, row0, _tcnStatus,Color.White);
+            
 
             TextBox l1t = new TextBox ( );
             TB (l1t, col2, row1, "ALERT");
 
             TextBox l1 = new TextBox ( );
             TB (l1, col1, row2, l1text, Color.Green);
+
+
 
             TextBox l1slash = new TextBox ( );
             TB (l1slash, l1.Location.X + l1.Width, row2, "/", Color.White);
@@ -5451,25 +5700,25 @@ namespace CDU3000
             CenterMe (l1c);
 
             TextBox bus = new TextBox ( );
-            TB (bus, col9, row2, "GO", Color.White);
+            TB (bus, col9, row2, myCont.Tacan1553 , Color.White);
 
             TextBox l2t = new TextBox ( );
             TB (l2t, col2, row3, "NVRAM");
 
             TextBox l2 = new TextBox ( );
-            TB (l2, col1, row4, l2text, Color.Yellow);
+            TB (l2, col1, row4, l2text, Color.White);
 
             TextBox sub = new TextBox ( );
             TB (sub, col6, row3, "SUB");
 
             TextBox subGo = new TextBox ( );
-            TB (subGo, col6, row4, "GO", Color.White);
+            TB (subGo, col6, row4, myCont.TacanSub , Color.White);
 
             TextBox trm = new TextBox ( );
             TB (trm, col9, row3, "TRM");
 
             TextBox trmGo = new TextBox ( );
-            TB (trmGo, col9, row4, "GO", Color.White);
+            TB (trmGo, col9, row4, myCont.TacanTrm , Color.White);
 
             TextBox l3t = new TextBox ( );
             TB (l3t, col2, row5, "MICRO");
@@ -5481,7 +5730,7 @@ namespace CDU3000
             TB (pwr, col9, row5, "PWR");
 
             TextBox pwrGo = new TextBox ( );
-            TB (pwrGo, col9, row6, "GO", Color.White);
+            TB (pwrGo, col9, row6, myCont.TacanPwr , Color.White);
 
             TextBox l4t = new TextBox ( );
             TB (l4t, col2, row7, "AUDIO");
@@ -5493,13 +5742,13 @@ namespace CDU3000
             TB (ram, col6, row7, "RAM");
 
             TextBox ramGo = new TextBox ( );
-            TB (ramGo, col6, row8, "GO", Color.White);
+            TB (ramGo, col6, row8, myCont.TacanRam , Color.White);
 
             TextBox rom = new TextBox ( );
             TB (rom, col9, row7, "ROM");
 
             TextBox romGo = new TextBox ( );
-            TB (romGo, col9, row8, "GO", Color.White);
+            TB (romGo, col9, row8, myCont.TacanRom , Color.White);
 
             TextBox l5t = new TextBox ( );
             TB (l5t, col2, row9, "RT");
@@ -5511,13 +5760,13 @@ namespace CDU3000
             TB (tun, col6, row9, "TUN");
 
             TextBox tunGo = new TextBox ( );
-            TB (tunGo, col6, row10, "NGO", Color.Yellow);
+            TB (tunGo, col6, row10, myCont.TacanTun , Color.White);
 
             TextBox rcv = new TextBox ( );
             TB (rcv, col9, row9, "RCV");
 
             TextBox rcvGo = new TextBox ( );
-            TB (rcvGo, col9, row10, "GO", Color.White);
+            TB (rcvGo, col9, row10, myCont.TacanRcv , Color.White);
 
             //TextBox l6t = new TextBox();
             //TB(l6t, col2, row11, "IDENT");
@@ -5537,7 +5786,7 @@ namespace CDU3000
             TypeLeft (r2t);
 
             TextBox r2 = new TextBox ( );
-            TB (r2, col15, row4, r2text, Color.Yellow);
+            TB (r2, col15, row4, r2text, Color.White);
 
             TextBox r3t = new TextBox ( );
             TB (r3t, col14 + 20, row5, "DPDAT");
@@ -5602,6 +5851,182 @@ namespace CDU3000
             //    TextBox r5r = new TextBox ( );
             //    TB (r5r, col16, row10, ">", Color.White);
             //}
+
+
+            if (r6text != "")
+            {
+                TextBox r6r = new TextBox ( );
+                TB (r6r, col16, row12, ">", Color.White);
+            }
+            #endregion
+
+            TextBox l6b = new TextBox ( );
+            TB (l6b, col1, row13, "[");
+
+
+            TextBox r6b = new TextBox ( );
+            TB (r6b, col16, row13, "]");
+
+            myCont.TCNvalueChanged = false;
+            #endregion
+        }
+
+        #endregion
+
+        #region TACAN Control Page
+
+        private void TacanControlPage()
+        {
+            #region MyRegion
+            l1text = "";
+            l2text = "";
+            l3text = "TR";
+            l4text = "";
+            l5text = "";
+            l6text = "";
+            r1text = "17X";
+            r2text = "17X";
+            r3text = "";
+            r4text = "";
+            r5text = "";
+            r6text = "RETURN";
+
+            currentPageTitle = "TACAN CONTROL"; //page title and number used for navigating
+            currentPageNumber = 1;
+
+            TextBox title = new TextBox ( );//displayed top center of screen
+            TB (title, col7, row0, currentPageTitle);
+
+            //TextBox page = new TextBox ( );
+            //TB (page, col14, row0, currentPageNumber + "/1");
+
+            //TextBox l1t = new TextBox();
+            //TB(l1t, col2, row1, "IDENT");
+
+            TextBox l1 = new TextBox ( );
+            TB (l1, col1, row2, l1text, Color.White);
+
+            //TextBox l2t = new TextBox();
+            //TB(l2t, col2, row3, "LOCATION");
+
+            TextBox l2 = new TextBox ( );
+            TB (l2, col1, row4, l2text, Color.White);
+
+            TextBox l3t = new TextBox ( );
+            TB (l3t, col2, row5, "TACAN MODE");
+
+            TextBox l3 = new TextBox ( );
+            TB (l3, col1, row6, l3text, Color.Green);
+
+            TextBox l3slash1 = new TextBox ( );
+            TB (l3slash1, l3.Location.X + l3.Width, row6, "/", Color.White);
+
+            TextBox r = new TextBox ( );
+            TB (r, l3slash1.Location.X + l3slash1.Width, row6, "R", Color.White);
+
+            TextBox l3slash2 = new TextBox ( );
+            TB (l3slash2, r.Location.X + r.Width, row6, "/", Color.White);
+
+            TextBox aatr = new TextBox ( );
+            TB (aatr, l3slash2.Location.X + l3slash2.Width, row6, "AATR", Color.White);
+
+            TextBox l3slash3 = new TextBox ( );
+            TB (l3slash3, aatr.Location.X + aatr.Width, row6, "/", Color.White);
+
+            TextBox aar = new TextBox ( );
+            TB (aar, l3slash3.Location.X + l3slash3.Width, row6, "AAR", Color.White);
+
+            //TextBox l4t = new TextBox();
+            //TB(l4t, col2, row7, "IDENT");
+
+            TextBox l4 = new TextBox ( );
+            TB (l4, col1, row8, l4text, Color.White);
+
+            //TextBox l5t = new TextBox();
+            //TB(l5t, col2, row9, "IDENT");
+
+            TextBox l5 = new TextBox ( );
+            TB (l5, col1, row10, l5text, Color.White);
+
+            //TextBox l6t = new TextBox();
+            //TB(l6t, col2, row11, "IDENT");
+
+            TextBox l6 = new TextBox ( );
+            TB (l6, col1, row12, l6text, Color.White);
+
+            TextBox r1t = new TextBox ( );
+            TB (r1t, col14 + 20, row1, "TACAN CHAN");
+            TypeLeft (r1t);
+
+            TextBox r1 = new TextBox ( );
+            TB (r1, col15, row2, r1text, Color.White);
+
+            TextBox r2t = new TextBox ( );
+            TB (r2t, col14 + 20, row3, "STBY CHAN");
+            TypeLeft (r2t);
+
+            TextBox r2 = new TextBox ( );
+            TB (r2, col15, row4, r2text, Color.White);
+
+            //TextBox r3t = new TextBox();
+            //TB(r3t, col14+20, row5, "IDENT");
+            //TypeLeft(r3t);
+
+            TextBox r3 = new TextBox ( );
+            TB (r3, col15, row6, r3text, Color.White);
+
+            //TextBox r4t = new TextBox();
+            //TB(r4t, col14+20, row7, "IDENT");
+            //TypeLeft(r4t);
+
+            TextBox r4 = new TextBox ( );
+            TB (r4, col15, row8, r4text, Color.White);
+
+            //TextBox r5t = new TextBox();
+            //TB(r5t, col14+20, row9, "PILOT", Color.White);
+            //TypeLeft(r5t);
+
+            TextBox r5 = new TextBox ( );
+            TB (r5, col15, row10, r5text, Color.White);
+
+            //TextBox r6t = new TextBox();
+            //TB(r6t, col14+20, row11, "IDENT");
+            //TypeLeft(r6t);
+
+            TextBox r6 = new TextBox ( );
+            TB (r6, col15, row12, r6text, Color.White);
+
+            TextBox divider = new TextBox ( );
+            TB (divider, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+
+
+            #region Add Arrows if Needed
+            
+
+            if (r2text != "")
+            {
+                TextBox r2r = new TextBox ( );
+                TB (r2r, col16, row4, "<", Color.White);
+            }
+
+            if (r3text != "")
+            {
+                TextBox r3r = new TextBox ( );
+                TB (r3r, col16, row6, ">", Color.White);
+            }
+
+            if (r4text != "")
+            {
+                TextBox r4r = new TextBox ( );
+                TB (r4r, col16, row8, ">", Color.White);
+            }
+
+            if (r5text != "")
+            {
+                TextBox r5r = new TextBox ( );
+                TB (r5r, col16, row10, ">", Color.White);
+            }
 
 
             if (r6text != "")
@@ -6438,7 +6863,7 @@ namespace CDU3000
 
 
             TextBox r1 = new TextBox ( );
-            r1text = VU1freq;
+            r1text = _VU1freq;
             TB (r1, col17, row2, r1text, Color.White);
 
             TextBox r2 = new TextBox ( );
@@ -6540,7 +6965,7 @@ namespace CDU3000
             l4text = "HIGH";
             l5text = "";
             l6text = "< COMSEC";
-            r1text = VU1freq;
+            r1text = _VU1freq;
             r2text = "UHF";
             r3text = "";
             r4text = "";
@@ -13815,7 +14240,20 @@ namespace CDU3000
             }
             else
             {
-                myName.ForeColor = (Color)charColor;
+                if (myName.Text == "GO")
+                {
+                    myName.ForeColor = Color.White;
+                }
+                else                    
+                    if (myName.Text == "NGO" & (myCont.TCNvalueChanged==true || myCont.EGIvalueChanged==true))
+                        {
+                            myName.ForeColor = Color.Yellow;
+                        }                                     
+                        else
+                            {
+                                myName.ForeColor = (Color)charColor;
+                            }
+                
             }
 
 
@@ -13914,7 +14352,7 @@ namespace CDU3000
 
             #region Color toggle of Yes/No, Comp/Uncomp, Inhibit, etc (maximum two choices only)
 
-            if (trimmedString == "H2" || trimmedString == "OFF" || trimmedString == "PLAIN" || trimmedString == "DATA" || trimmedString == "TR" || trimmedString == "ORIGIN" || trimmedString == "ON" || trimmedString == "UNCOMP" || trimmedString == "YES" || trimmedString == "NO" || trimmedString == "INHIBIT")//**Toggle colors
+            if (trimmedString == "H2" || trimmedString == "OFF" || trimmedString == "PLAIN" || trimmedString == "DATA" || (trimmedString == "TR" & currentPageTitle!="TACAN CONTROL")|| trimmedString == "ORIGIN" || trimmedString == "ON" || trimmedString == "UNCOMP" || trimmedString == "YES" || trimmedString == "NO" || trimmedString == "INHIBIT")//**Toggle colors
             {
                 try
                 {
@@ -13973,7 +14411,7 @@ namespace CDU3000
 
             #region Color toggle of multiple choices (more than two choices only)
 
-            if (trimmedString == "1.2K" || trimmedString == "HIGH" || trimmedString == "UHF" || trimmedString == "0" || trimmedString == "NOR")//**Toggle colors
+            if (trimmedString == "1.2K" || trimmedString == "HIGH" || trimmedString == "UHF" || trimmedString == "0" || trimmedString == "NOR" || (trimmedString == "TR" & currentPageTitle == "TACAN CONTROL"))//**Toggle colors
             {
                 try
                 {
@@ -14204,6 +14642,49 @@ namespace CDU3000
 
                                                             #endregion
                                                         }
+                                                        else
+                                                            if (trimmedString == "TR")
+                                                            {
+                                                                #region TR,R,AATR,AAR
+
+                                                                if (myTxt == "TR")
+                                                                {
+                                                                    if (y.Text == "R")
+                                                                    {
+                                                                        y.ForeColor = Color.Green;
+                                                                        return;
+                                                                    }
+                                                                }
+                                                                else
+                                                                    if (myTxt == "R")
+                                                                    {
+                                                                        if (y.Text == "AATR")
+                                                                        {
+                                                                            y.ForeColor = Color.Green;
+                                                                            return;
+                                                                        }
+                                                                    }
+                                                                    else
+                                                                        if (myTxt == "AATR")
+                                                                        {
+                                                                            if (y.Text == "AAR")
+                                                                            {
+                                                                                y.ForeColor = Color.Green;
+                                                                                return;
+                                                                            }
+                                                                        }
+                                                                        else
+                                                                            if (myTxt == "AAR")
+                                                                            {
+                                                                                if (y.Text == "TR")
+                                                                                {
+                                                                                    y.ForeColor = Color.Green;
+                                                                                    return;
+                                                                                }
+                                                                            }
+                                                                            
+                                                                #endregion
+                                                            }
 
                                     }
 
@@ -14304,6 +14785,15 @@ namespace CDU3000
                     NAVstatusPage ( );
                     return;
                 }
+                else
+                {
+                    if (pushedButton == r6Btn)
+                    {
+                        StartFresh ( );
+                        ReturnList ("SYSTEM STATUS");
+                        return;
+                    }
+                }
                 return;
             }
 
@@ -14319,6 +14809,13 @@ namespace CDU3000
                     TACANstatusPage ( );
                     return;
                 }
+                else
+                    if (pushedButton == l1Btn)
+                    {
+                        StartFresh ( );//clears all  TextBoxes before writing new page
+                        EGIstatusPage ( );
+                        return;
+                    }
             }
 
             #endregion
@@ -14647,6 +15144,7 @@ namespace CDU3000
                             break;
                             #endregion
 
+                        
                         //Fill page
                         case "FILL":
                             StartFresh ( );
@@ -14788,6 +15286,12 @@ namespace CDU3000
                         case "START INIT":
                             StartFresh ( );
                             StartInitPage ( );
+                            break;
+
+                        //TACAN Control Page
+                        case "TACAN":
+                            StartFresh ( );
+                            TacanControlPage ( );
                             break;
 
                         //Transec page
@@ -15104,6 +15608,65 @@ namespace CDU3000
         {
             switch (e)
             {
+                case "comm":
+                    {
+                        MissionPage ( );
+                        break;
+                    }
+
+                case "COM STATUS":
+                    {
+                        MissionStatusPage1 ( );
+                        break;
+                    }
+
+                case "EGI STATUS":
+                    {
+                        NAVstatusPage ( );
+                        break;
+                    }
+
+                case "MARK POINTS":
+                    {
+                        IdxPage1 ( );
+                        break;
+                    }
+
+                case "NAV STATUS":
+                    {
+                        MissionStatusPage1 ( );
+                        break;
+                    }
+
+                case "POWER":
+                    {
+                        StartInitPage ( );
+                        break;
+                    }
+
+                case "START INIT":
+                    {
+                        MissionPage ( );
+                        break;
+                    }
+
+                case "SYSTEM STATUS":
+                    {
+                        MissionPage ( );
+                        break;
+                    }
+
+                case "TACAN CONTROL":
+                    {
+                        MissionPage ( );
+                        break;
+                    }
+
+                case "TACAN STATUS":
+                    {
+                        NAVstatusPage ( );
+                        break;
+                    }
 
                 case "V/U1 CLEAR NVM":
                     {
@@ -15237,54 +15800,6 @@ namespace CDU3000
                         break;
                     }
 
-                case "comm":
-                    {
-                        MissionPage ( );
-                        break;
-                    }
-
-                case "COM STATUS":
-                    {
-                        MissionStatusPage1 ( );
-                        break;
-                    }
-
-                case "MARK POINTS":
-                    {
-                        IdxPage1 ( );
-                        break;
-                    }
-
-                case "NAV STATUS":
-                    {
-                        MissionStatusPage1 ( );
-                        break;
-                    }
-
-                case "POWER":
-                    {
-                        StartInitPage ( );
-                        break;
-                    }
-
-                case "START INIT":
-                    {
-                        MissionPage ( );
-                        break;
-                    }
-
-                case "SYSTEM STATUS":
-                    {
-                        MissionPage ( );
-                        break;
-                    }
-
-                case "TACAN STATUS":
-                    {
-                        NAVstatusPage ( );
-                        break;
-                    }
-
                 case "V/U1 COMSEC CONTROL":
                     {
                         VU1controlPage1 ( );
@@ -15397,35 +15912,35 @@ namespace CDU3000
                 if (scratchpad == null)
                 {
                     #region MyRegion
-                    if (VU1freq.Contains ("F"))
+                    if (_VU1freq.Contains ("F"))
                     {
                         StartFresh ( );
                         VU1vhfFMpresetsPage1 ( );
 
                     }
                     else
-                        if (VU1freq.Contains ("V"))
+                        if (_VU1freq.Contains ("V"))
                         {
                             StartFresh ( );
                             VU1vhfAMpresetsPage1 ( );
 
                         }
                         else
-                            if (VU1freq.Contains ("U"))
+                            if (_VU1freq.Contains ("U"))
                             {
                                 StartFresh ( );
                                 VU1uhfPresetsPage1 ( );
 
                             }
                             else
-                                if (VU1freq.Contains ("S"))
+                                if (_VU1freq.Contains ("S"))
                                 {
                                     StartFresh ( );
                                     VU1satcomPresetsPage1 ( );
 
                                 }
                                 else
-                                    if (VU1freq.Contains ("E"))
+                                    if (_VU1freq.Contains ("E"))
                                     {
                                         StartFresh ( );
                                         VU1hopsetsPage1 ( );
@@ -15561,6 +16076,37 @@ namespace CDU3000
 
         }
 
+        private void CheckStatus( )
+        {
+            if (myCont.TacanNVRAM == "GO" & myCont.TacanMicro == "GO" & myCont.Tacan1553 == "GO" & myCont.TacanAudio == "GO" & myCont.TacanDpdat == "GO" & myCont.TacanDpram == "GO" & myCont.TacanPwr == "GO" & myCont.TacanRam == "GO" & myCont.TacanRcv == "GO" & myCont.TacanRom == "GO" & myCont.TacanRt == "GO" & myCont.TacanSub == "GO" & myCont.TacanSynth == "GO" & myCont.TacanTrm == "GO" & myCont.TacanTun == "GO")
+            {
+                _tcnStatus = "GO";
+            }
+            else
+            {
+                _tcnStatus = "NGO";
+            }
+
+            if (myCont.EGIsub == "GO" & myCont.EGIcaic == "GO" & myCont.EGIinu == "GO" & myCont.EGIio == "GO" & myCont.EGIpwr == "GO" & myCont.EGIproc == "GO" & myCont.EGIgps == "GO")
+            {
+                _egiStatus = "GO";
+            }
+            else
+            {
+                _egiStatus = "NGO";
+            }
+
+
+            if (_egiStatus == "GO" & _tcnStatus == "GO")
+            {
+                _navStatus = "GO";
+            }
+            else
+            {
+                _navStatus = "NGO";
+            }
+        }
+
 
         #region Move Form without border
 
@@ -15636,19 +16182,26 @@ namespace CDU3000
             InitializeComponent ( );
             DM.Show ( );//displays the dimmer form over the main form
             DM.Owner = this;//causes the dimmer form to be above the mainform but not over other forms
+
+            myCont.Show ( );
         }
 
         private void InitialPageLoad(object sender, EventArgs e) //loads the initial page seen on the CDU
         {
             if (initialLoad == true)//if this is the initial load of the program
             {
+                CheckStatus ( );//checks the status of all items
                 StatusPage ( );//load the status page
                 initialLoad = false;//change the initialLoad state to false
+
+                
 
             }
 
 
         }
+
+        
 
 
 
@@ -15666,7 +16219,7 @@ namespace CDU3000
         #endregion
 
 
-
+        
 
 
         #region Dimming methods

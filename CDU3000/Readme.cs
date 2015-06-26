@@ -10,6 +10,8 @@ namespace CDU3000
         //creates a new instanceof the CDU3000 class
         CDU3000 myCDU = new CDU3000 ( );
 
+        
+
         #endregion
 
 
@@ -25,6 +27,8 @@ namespace CDU3000
 
             //Initializes the CDU3000 form
             myCDU.Show ( );
+
+            
 
 
 

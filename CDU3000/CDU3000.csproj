@@ -64,6 +64,12 @@
     <Compile Include="CDU3000.Designer.cs">
       <DependentUpon>CDU3000.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controller.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controller.Designer.cs">
+      <DependentUpon>Controller.cs</DependentUpon>
+    </Compile>
     <Compile Include="DimmerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +89,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CDU3000.resx">
       <DependentUpon>CDU3000.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controller.resx">
+      <DependentUpon>Controller.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DimmerForm.resx">
       <DependentUpon>DimmerForm.cs</DependentUpon>
