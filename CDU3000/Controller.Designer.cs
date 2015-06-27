@@ -84,8 +84,26 @@
             this.label28 = new System.Windows.Forms.Label();
             this.EgiCaiccb = new System.Windows.Forms.CheckBox();
             this.label29 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.EgiInuAllNGObtn = new System.Windows.Forms.Button();
+            this.EgiInuAllGObtn = new System.Windows.Forms.Button();
+            this.EgiInuSensRefcb = new System.Windows.Forms.CheckBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.EgiInuWgyrocb = new System.Windows.Forms.CheckBox();
+            this.EgiInuVgyrocb = new System.Windows.Forms.CheckBox();
+            this.EgiInuUgyrocb = new System.Windows.Forms.CheckBox();
+            this.EgiInuTaccelcb = new System.Windows.Forms.CheckBox();
+            this.EgiInuSaccelcb = new System.Windows.Forms.CheckBox();
+            this.label34 = new System.Windows.Forms.Label();
+            this.EgiInuRaccelcb = new System.Windows.Forms.CheckBox();
+            this.label35 = new System.Windows.Forms.Label();
             this.TACANgb.SuspendLayout();
             this.EGIgb.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // TACANgb
@@ -750,11 +768,211 @@
             this.label29.TabIndex = 3;
             this.label29.Text = "1553";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.EgiInuAllNGObtn);
+            this.groupBox1.Controls.Add(this.EgiInuAllGObtn);
+            this.groupBox1.Controls.Add(this.EgiInuSensRefcb);
+            this.groupBox1.Controls.Add(this.label19);
+            this.groupBox1.Controls.Add(this.label22);
+            this.groupBox1.Controls.Add(this.label23);
+            this.groupBox1.Controls.Add(this.label24);
+            this.groupBox1.Controls.Add(this.label30);
+            this.groupBox1.Controls.Add(this.EgiInuWgyrocb);
+            this.groupBox1.Controls.Add(this.EgiInuVgyrocb);
+            this.groupBox1.Controls.Add(this.EgiInuUgyrocb);
+            this.groupBox1.Controls.Add(this.EgiInuTaccelcb);
+            this.groupBox1.Controls.Add(this.EgiInuSaccelcb);
+            this.groupBox1.Controls.Add(this.label34);
+            this.groupBox1.Controls.Add(this.EgiInuRaccelcb);
+            this.groupBox1.Controls.Add(this.label35);
+            this.groupBox1.Location = new System.Drawing.Point(302, 16);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(128, 424);
+            this.groupBox1.TabIndex = 2;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "EGI INU STATUS";
+            // 
+            // EgiInuAllNGObtn
+            // 
+            this.EgiInuAllNGObtn.Location = new System.Drawing.Point(24, 392);
+            this.EgiInuAllNGObtn.Name = "EgiInuAllNGObtn";
+            this.EgiInuAllNGObtn.Size = new System.Drawing.Size(75, 23);
+            this.EgiInuAllNGObtn.TabIndex = 37;
+            this.EgiInuAllNGObtn.Text = "All NGO";
+            this.EgiInuAllNGObtn.UseVisualStyleBackColor = true;
+            this.EgiInuAllNGObtn.Click += new System.EventHandler(this.EgiInuAllNGObtn_Click);
+            // 
+            // EgiInuAllGObtn
+            // 
+            this.EgiInuAllGObtn.Location = new System.Drawing.Point(24, 368);
+            this.EgiInuAllGObtn.Name = "EgiInuAllGObtn";
+            this.EgiInuAllGObtn.Size = new System.Drawing.Size(75, 23);
+            this.EgiInuAllGObtn.TabIndex = 36;
+            this.EgiInuAllGObtn.Text = "All GO";
+            this.EgiInuAllGObtn.UseVisualStyleBackColor = true;
+            this.EgiInuAllGObtn.Click += new System.EventHandler(this.EgiInuAllGObtn_Click);
+            // 
+            // EgiInuSensRefcb
+            // 
+            this.EgiInuSensRefcb.AutoSize = true;
+            this.EgiInuSensRefcb.Checked = true;
+            this.EgiInuSensRefcb.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.EgiInuSensRefcb.Location = new System.Drawing.Point(64, 32);
+            this.EgiInuSensRefcb.Name = "EgiInuSensRefcb";
+            this.EgiInuSensRefcb.Size = new System.Drawing.Size(42, 17);
+            this.EgiInuSensRefcb.TabIndex = 21;
+            this.EgiInuSensRefcb.Text = "GO";
+            this.EgiInuSensRefcb.UseVisualStyleBackColor = true;
+            this.EgiInuSensRefcb.CheckedChanged += new System.EventHandler(this.EgiInuSensRefcb_CheckedChanged);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(12, 100);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(51, 13);
+            this.label19.TabIndex = 20;
+            this.label19.Text = "T ACCEL";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(15, 143);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(48, 13);
+            this.label22.TabIndex = 12;
+            this.label22.Text = "V GYRO";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(12, 78);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(51, 13);
+            this.label23.TabIndex = 19;
+            this.label23.Text = "S ACCEL";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(3, 33);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(60, 13);
+            this.label24.TabIndex = 17;
+            this.label24.Text = "SENS REF";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(11, 56);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(52, 13);
+            this.label30.TabIndex = 18;
+            this.label30.Text = "R ACCEL";
+            // 
+            // EgiInuWgyrocb
+            // 
+            this.EgiInuWgyrocb.AutoSize = true;
+            this.EgiInuWgyrocb.Checked = true;
+            this.EgiInuWgyrocb.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.EgiInuWgyrocb.Location = new System.Drawing.Point(64, 164);
+            this.EgiInuWgyrocb.Name = "EgiInuWgyrocb";
+            this.EgiInuWgyrocb.Size = new System.Drawing.Size(42, 17);
+            this.EgiInuWgyrocb.TabIndex = 27;
+            this.EgiInuWgyrocb.Text = "GO";
+            this.EgiInuWgyrocb.UseVisualStyleBackColor = true;
+            this.EgiInuWgyrocb.CheckedChanged += new System.EventHandler(this.EgiInuWgyrocb_CheckedChanged);
+            // 
+            // EgiInuVgyrocb
+            // 
+            this.EgiInuVgyrocb.AutoSize = true;
+            this.EgiInuVgyrocb.Checked = true;
+            this.EgiInuVgyrocb.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.EgiInuVgyrocb.Location = new System.Drawing.Point(64, 142);
+            this.EgiInuVgyrocb.Name = "EgiInuVgyrocb";
+            this.EgiInuVgyrocb.Size = new System.Drawing.Size(42, 17);
+            this.EgiInuVgyrocb.TabIndex = 26;
+            this.EgiInuVgyrocb.Text = "GO";
+            this.EgiInuVgyrocb.UseVisualStyleBackColor = true;
+            this.EgiInuVgyrocb.CheckedChanged += new System.EventHandler(this.EgiInuVgyrocb_CheckedChanged);
+            // 
+            // EgiInuUgyrocb
+            // 
+            this.EgiInuUgyrocb.AutoSize = true;
+            this.EgiInuUgyrocb.Checked = true;
+            this.EgiInuUgyrocb.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.EgiInuUgyrocb.Location = new System.Drawing.Point(64, 120);
+            this.EgiInuUgyrocb.Name = "EgiInuUgyrocb";
+            this.EgiInuUgyrocb.Size = new System.Drawing.Size(42, 17);
+            this.EgiInuUgyrocb.TabIndex = 25;
+            this.EgiInuUgyrocb.Text = "GO";
+            this.EgiInuUgyrocb.UseVisualStyleBackColor = true;
+            this.EgiInuUgyrocb.CheckedChanged += new System.EventHandler(this.EgiInuUgyrocb_CheckedChanged);
+            // 
+            // EgiInuTaccelcb
+            // 
+            this.EgiInuTaccelcb.AutoSize = true;
+            this.EgiInuTaccelcb.Checked = true;
+            this.EgiInuTaccelcb.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.EgiInuTaccelcb.Location = new System.Drawing.Point(64, 98);
+            this.EgiInuTaccelcb.Name = "EgiInuTaccelcb";
+            this.EgiInuTaccelcb.Size = new System.Drawing.Size(42, 17);
+            this.EgiInuTaccelcb.TabIndex = 24;
+            this.EgiInuTaccelcb.Text = "GO";
+            this.EgiInuTaccelcb.UseVisualStyleBackColor = true;
+            this.EgiInuTaccelcb.CheckedChanged += new System.EventHandler(this.EgiInuTaccelcb_CheckedChanged);
+            // 
+            // EgiInuSaccelcb
+            // 
+            this.EgiInuSaccelcb.AutoSize = true;
+            this.EgiInuSaccelcb.Checked = true;
+            this.EgiInuSaccelcb.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.EgiInuSaccelcb.Location = new System.Drawing.Point(64, 76);
+            this.EgiInuSaccelcb.Name = "EgiInuSaccelcb";
+            this.EgiInuSaccelcb.Size = new System.Drawing.Size(42, 17);
+            this.EgiInuSaccelcb.TabIndex = 23;
+            this.EgiInuSaccelcb.Text = "GO";
+            this.EgiInuSaccelcb.UseVisualStyleBackColor = true;
+            this.EgiInuSaccelcb.CheckedChanged += new System.EventHandler(this.EgiInuSaccelcb_CheckedChanged);
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(11, 166);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(52, 13);
+            this.label34.TabIndex = 4;
+            this.label34.Text = "W GYRO";
+            // 
+            // EgiInuRaccelcb
+            // 
+            this.EgiInuRaccelcb.AutoSize = true;
+            this.EgiInuRaccelcb.Checked = true;
+            this.EgiInuRaccelcb.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.EgiInuRaccelcb.Location = new System.Drawing.Point(64, 54);
+            this.EgiInuRaccelcb.Name = "EgiInuRaccelcb";
+            this.EgiInuRaccelcb.Size = new System.Drawing.Size(42, 17);
+            this.EgiInuRaccelcb.TabIndex = 22;
+            this.EgiInuRaccelcb.Text = "GO";
+            this.EgiInuRaccelcb.UseVisualStyleBackColor = true;
+            this.EgiInuRaccelcb.CheckedChanged += new System.EventHandler(this.EgiInuRaccelcb_CheckedChanged);
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(14, 122);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(49, 13);
+            this.label35.TabIndex = 3;
+            this.label35.Text = "U GYRO";
+            // 
             // Controller
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(436, 468);
+            this.ClientSize = new System.Drawing.Size(475, 468);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.EGIgb);
             this.Controls.Add(this.TACANgb);
             this.Name = "Controller";
@@ -763,6 +981,8 @@
             this.TACANgb.PerformLayout();
             this.EGIgb.ResumeLayout(false);
             this.EGIgb.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -825,5 +1045,22 @@
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.CheckBox EgiCaiccb;
         private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button EgiInuAllNGObtn;
+        private System.Windows.Forms.Button EgiInuAllGObtn;
+        private System.Windows.Forms.CheckBox EgiInuSensRefcb;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.CheckBox EgiInuWgyrocb;
+        private System.Windows.Forms.CheckBox EgiInuVgyrocb;
+        private System.Windows.Forms.CheckBox EgiInuUgyrocb;
+        private System.Windows.Forms.CheckBox EgiInuTaccelcb;
+        private System.Windows.Forms.CheckBox EgiInuSaccelcb;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.CheckBox EgiInuRaccelcb;
+        private System.Windows.Forms.Label label35;
     }
 }

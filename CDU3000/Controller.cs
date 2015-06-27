@@ -13,12 +13,13 @@ namespace CDU3000
 {
     public partial class Controller : Form
     {
-        private bool _TCNvalChanged = false;
-        private bool _EGIvalChanged = false;
+        
+        
 
         
         //TACAN backing fields
         #region MyRegion
+        private bool _TCNvalChanged = false;
         private string _nvram = "GO";
         private string _micro = "GO";
         private string _audio = "GO";
@@ -38,6 +39,7 @@ namespace CDU3000
 
         //EGI backing fields
         #region MyRegion
+        private bool _EGIvalChanged = false;
         private string _EGIsub = "GO";
         private string _EGIcaic = "GO";
         private string _EGIinu = "GO";
@@ -48,8 +50,21 @@ namespace CDU3000
         private string _EGIpwr = "GO";
         private string _EGIproc = "GO";
         private string _EGIgps = "GO";
+
+        //EGI INU backing fields
+        private bool _EgiInuValChanged ;
+        private string _EgiInuSensRef = "GO";
+        private string _EgiInuRaccel = "GO";
+        private string _EgiInuSaccel = "GO";
+        private string _EgiInuTaccel = "GO";
+        private string _EgiInuUgyro = "GO";
+        private string _EgiInuVgyro = "GO";
+        private string _EgiInuWgyro = "GO";
         
         #endregion
+
+
+
 
         //EGI
         #region Accessors
@@ -312,6 +327,202 @@ namespace CDU3000
         }
 
         #endregion
+
+        //EGI INU
+
+        #region Accessors
+
+        //holds value that represents if the value has changed since it was last visited
+        public bool EgiInuValueChanged
+        {
+            get
+            {
+                return _EgiInuValChanged;
+            }
+
+            set
+            {
+                _EgiInuValChanged = false;
+            }
+        }
+
+        public string EgiInuSensRef
+        {
+            get
+            {
+                return _EgiInuSensRef;
+            }
+        }
+
+        public string EgiInuRaccel
+        {
+            get
+            {
+                return _EgiInuRaccel;
+            }
+        }
+
+        public string EgiInuSaccel
+        {
+            get
+            {
+                return _EgiInuSaccel;
+            }
+        }
+
+        public string EgiInuTaccel
+        {
+            get
+            {
+                return _EgiInuTaccel;
+            }
+        }
+
+        public string EgiInuUgyro
+        {
+            get
+            {
+                return _EgiInuUgyro;
+            }
+        }
+
+        public string EgiInuVgyro
+        {
+            get
+            {
+                return _EgiInuVgyro;
+            }
+        }
+
+        public string EgiInuWgyro
+        {
+            get
+            {
+                return _EgiInuWgyro;
+            }
+        }
+
+        
+
+        #endregion
+
+        #region Checkboxes
+        private void EgiInuSensRefcb_CheckedChanged(object sender, EventArgs e)
+        {
+            if (EgiInuSensRefcb.Checked)
+            {
+                _EgiInuSensRef = "GO";
+            }
+            else
+            {
+                _EgiInuSensRef = "NGO";
+                _EgiInuValChanged = true;
+            }
+            
+        }
+
+        private void EgiInuRaccelcb_CheckedChanged(object sender, EventArgs e)
+        {
+            if (EgiInuRaccelcb.Checked)
+            {
+                _EgiInuRaccel = "GO";
+            }
+            else
+            {
+                _EgiInuRaccel = "NGO";
+                _EgiInuValChanged = true;
+            }
+        }
+
+        private void EgiInuSaccelcb_CheckedChanged(object sender, EventArgs e)
+        {
+            if (EgiInuSaccelcb.Checked)
+            {
+                _EgiInuSaccel = "GO";
+            }
+            else
+            {
+                _EgiInuSaccel = "NGO";
+                _EgiInuValChanged = true;
+            }
+        }
+
+        private void EgiInuTaccelcb_CheckedChanged(object sender, EventArgs e)
+        {
+            if (EgiInuTaccelcb.Checked)
+            {
+                _EgiInuTaccel = "GO";
+            }
+            else
+            {
+                _EgiInuTaccel = "NGO";
+                _EgiInuValChanged = true;
+            }
+        }
+
+        private void EgiInuUgyrocb_CheckedChanged(object sender, EventArgs e)
+        {
+            if (EgiInuUgyrocb.Checked)
+            {
+                _EgiInuUgyro = "GO";
+            }
+            else
+            {
+                _EgiInuUgyro = "NGO";
+                _EgiInuValChanged = true;
+            }
+        }
+
+        private void EgiInuVgyrocb_CheckedChanged(object sender, EventArgs e)
+        {
+            if (EgiInuVgyrocb.Checked)
+            {
+                _EgiInuVgyro = "GO";
+            }
+            else
+            {
+                _EgiInuVgyro = "NGO";
+                _EgiInuValChanged = true;
+            }
+        }
+
+        private void EgiInuWgyrocb_CheckedChanged(object sender, EventArgs e)
+        {
+            if (EgiInuWgyrocb.Checked)
+            {
+                _EgiInuWgyro = "GO";
+            }
+            else
+            {
+                _EgiInuWgyro = "NGO";
+                _EgiInuValChanged = true;
+            }
+        }
+
+        private void EgiInuAllGObtn_Click(object sender, EventArgs e)
+        {
+            EgiInuSensRefcb.Checked = true;
+            EgiInuRaccelcb.Checked = true;
+            EgiInuSaccelcb.Checked = true;
+            EgiInuTaccelcb.Checked = true;
+            EgiInuUgyrocb.Checked = true;
+            EgiInuVgyrocb.Checked = true;
+            EgiInuWgyrocb.Checked = true;
+
+        }
+
+        private void EgiInuAllNGObtn_Click(object sender, EventArgs e)
+        {
+            EgiInuSensRefcb.Checked = false;
+            EgiInuRaccelcb.Checked = false;
+            EgiInuSaccelcb.Checked = false;
+            EgiInuTaccelcb.Checked = false;
+            EgiInuUgyrocb.Checked = false;
+            EgiInuVgyrocb.Checked = false;
+            EgiInuWgyrocb.Checked = false;
+        }
+        #endregion
+
 
         //TACAN
 
@@ -711,6 +922,8 @@ namespace CDU3000
             InitializeComponent ( );
 
         }
+
+        
 
         
 

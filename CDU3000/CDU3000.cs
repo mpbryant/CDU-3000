@@ -96,6 +96,9 @@ namespace CDU3000
 
         //EGI specific fields
         private string _egiStatus;
+
+        //EGI INU specific fields
+        private string _egiInuStatus;
         
 
         
@@ -128,6 +131,7 @@ namespace CDU3000
 
         private string overallComStatus;
         private string com1Status;
+        
 
         #endregion
 
@@ -5240,6 +5244,8 @@ namespace CDU3000
         {
             CDU7000Page = true;
 
+            CheckStatus ( );
+
             #region MyRegion
             l1text = "ON";
             l2text = myCont.EGIsub ;
@@ -5263,18 +5269,10 @@ namespace CDU3000
             TextBox status = new TextBox ( );
 
 
-            #region Displays the status of the EGI in the upper right corner
-            if (myCont.EGIsub == "GO" & myCont.EGIcaic == "GO" & myCont.EGIinu == "GO" & myCont.EGIio == "GO" & myCont.EGIpwr == "GO" & myCont.EGIproc == "GO" & myCont.EGIgps == "GO" )
-            {
-                _egiStatus  = "GO";
-            }
-            else
-            {
-                _egiStatus  = "NGO";
-            }
+            
 
             TB (status, title.Location.X + title.Width, row0, _egiStatus, Color.White); 
-            #endregion
+            
 
 
             TextBox l1t = new TextBox ( );
@@ -5354,7 +5352,7 @@ namespace CDU3000
             TB (l5l, col1, row10, "<", Color.White);
 
             TextBox l5 = new TextBox ( );
-            TB (l5, l5l.Location.X+l5l.Width , row10, myCont.EGIinu , Color.White);
+            TB (l5, l5l.Location.X + l5l.Width, row10, _egiInuStatus, Color.White);
 
             //TextBox tun = new TextBox ( );
             //TB (tun, col6, row9, "TUN");
@@ -5469,6 +5467,141 @@ namespace CDU3000
 
             myCont.EGIvalueChanged = false;
             #endregion
+        }
+
+        #endregion
+
+        #region EGI INU STATUS page
+
+        private void EGIINUstatusPage()
+        {
+            CDU7000Page = true;
+
+            CheckStatus ( );
+
+            #region MyRegion
+            l1text = "";
+            l2text = "";
+            l3text = "";
+            l4text = "";
+            l5text = "";
+            l6text = "";
+            r1text = "";
+            r2text = "";
+            r3text = "";
+            r4text = "";
+            r5text = "";
+            r6text = "RETURN";
+
+            currentPageTitle = "EGI INU STATUS"; //page title and number used for navigating
+            currentPageNumber = 1;
+
+            TextBox title = new TextBox ( );//displayed top center of screen
+            TB (title, col7, row0, currentPageTitle);
+
+            TextBox page = new TextBox ( );
+            TB (page, title.Location.X+title.Width , row0, _egiInuStatus, Color.White);
+
+            //TextBox l1t = new TextBox ( );
+            //TB (l1t, col2, row1, "SENS REF");
+
+            TextBox l1 = new TextBox ( );
+            TB (l1, col1, row2, l1text  , Color.White);
+
+            TextBox l2t = new TextBox ( );
+            TB (l2t, col2, row3, "SENS REF");
+
+            TextBox l2 = new TextBox ( );
+            TB (l2, col1, row4, myCont.EgiInuSensRef , Color.White);
+
+            TextBox l3t = new TextBox ( );
+            TB (l3t, col2, row5, "R ACCEL");
+
+            TextBox l3 = new TextBox ( );
+            TB (l3, col1, row6, myCont.EgiInuRaccel, Color.White);
+
+            TextBox l4t = new TextBox ( );
+            TB (l4t, col2, row7, "S ACCEL");
+
+            TextBox l4 = new TextBox ( );
+            TB (l4, col1, row8, myCont.EgiInuSaccel , Color.White);
+
+            TextBox l5t = new TextBox ( );
+            TB (l5t, col2, row9, "T ACCEL");
+
+            TextBox l5 = new TextBox ( );
+            TB (l5, col1, row10, myCont.EgiInuTaccel , Color.White);
+
+            //TextBox l6t = new TextBox();
+            //TB(l6t, col2, row11, "IDENT");
+
+            TextBox l6 = new TextBox ( );
+            TB (l6, col1, row12, l6text, Color.White);
+
+            //TextBox r1t = new TextBox();
+            //TB(r1t, col14+20, row1, "IDENT");
+            //TypeLeft(r1t);
+
+            TextBox r1 = new TextBox ( );
+            TB (r1, col15, row2, r1text, Color.White);
+
+            //TextBox r2t = new TextBox();
+            //TB(r2t, col14+20, row3, "IDENT");
+            //TypeLeft(r2t);
+
+            TextBox r2 = new TextBox ( );
+            TB (r2, col15, row4, r2text, Color.White);
+
+            TextBox r3t = new TextBox ( );
+            TB (r3t, col14 + 20, row5, "U GYRO");
+            TypeLeft (r3t);
+
+            TextBox r3 = new TextBox ( );
+            TB (r3, col15, row6, myCont.EgiInuUgyro , Color.White);
+
+            TextBox r4t = new TextBox ( );
+            TB (r4t, col14 + 20, row7, "V GYRO");
+            TypeLeft (r4t);
+
+            TextBox r4 = new TextBox ( );
+            TB (r4, col15, row8, myCont.EgiInuVgyro, Color.White);
+
+            TextBox r5t = new TextBox ( );
+            TB (r5t, col14 + 20, row9, "W GYRO");
+            TypeLeft (r5t);
+
+            TextBox r5 = new TextBox ( );
+            TB (r5, col15, row10, myCont.EgiInuWgyro, Color.White);
+
+            //TextBox r6t = new TextBox();
+            //TB(r6t, col14+20, row11, "IDENT");
+            //TypeLeft(r6t);
+
+            TextBox r6 = new TextBox ( );
+            TB (r6, col15, row12, r6text, Color.White);
+
+            TextBox divider = new TextBox ( );
+            TB (divider, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+
+
+            #region Add Arrows if Needed
+            if (r6text != "")
+            {
+                TextBox r6r = new TextBox ( );
+                TB (r6r, col16, row12, ">", Color.White);
+            }
+            #endregion
+
+            TextBox l6b = new TextBox ( );
+            TB (l6b, col1, row13, "[");
+
+
+            TextBox r6b = new TextBox ( );
+            TB (r6b, col16, row13, "]");
+            #endregion
+
+            myCont.EgiInuValueChanged = false;
         }
 
         #endregion
@@ -14245,7 +14378,7 @@ namespace CDU3000
                     myName.ForeColor = Color.White;
                 }
                 else                    
-                    if (myName.Text == "NGO" & (myCont.TCNvalueChanged==true || myCont.EGIvalueChanged==true))
+                    if (myName.Text == "NGO" & (myCont.TCNvalueChanged==true || myCont.EGIvalueChanged==true || myCont.EgiInuValueChanged==true))
                         {
                             myName.ForeColor = Color.Yellow;
                         }                                     
@@ -14816,6 +14949,17 @@ namespace CDU3000
                         EGIstatusPage ( );
                         return;
                     }
+            }
+
+            #endregion
+
+            #region page selection from EGI INU STATUS page
+
+            if (currentPageTitle == "EGI STATUS" & pushedButton == l5Btn)
+            {
+                StartFresh ( );
+                EGIINUstatusPage ( );
+                return;
             }
 
             #endregion
@@ -15620,6 +15764,12 @@ namespace CDU3000
                         break;
                     }
 
+                case "EGI INU STATUS":
+                    {
+                        EGIstatusPage ( );
+                        break;
+                    }
+
                 case "EGI STATUS":
                     {
                         NAVstatusPage ( );
@@ -16078,6 +16228,7 @@ namespace CDU3000
 
         private void CheckStatus( )
         {
+            #region TACAN
             if (myCont.TacanNVRAM == "GO" & myCont.TacanMicro == "GO" & myCont.Tacan1553 == "GO" & myCont.TacanAudio == "GO" & myCont.TacanDpdat == "GO" & myCont.TacanDpram == "GO" & myCont.TacanPwr == "GO" & myCont.TacanRam == "GO" & myCont.TacanRcv == "GO" & myCont.TacanRom == "GO" & myCont.TacanRt == "GO" & myCont.TacanSub == "GO" & myCont.TacanSynth == "GO" & myCont.TacanTrm == "GO" & myCont.TacanTun == "GO")
             {
                 _tcnStatus = "GO";
@@ -16085,18 +16236,33 @@ namespace CDU3000
             else
             {
                 _tcnStatus = "NGO";
+            } 
+            #endregion
+
+            if (myCont.EgiInuSensRef == "GO" & myCont.EgiInuRaccel == "GO" & myCont.EgiInuSaccel == "GO" & myCont.EgiInuTaccel == "GO" & myCont.EgiInuUgyro == "GO" & myCont.EgiInuWgyro == "GO" & myCont.EgiInuVgyro == "GO")
+            {
+                _egiInuStatus = "GO";
+            }
+            else
+            {
+                _egiInuStatus = "NGO";
             }
 
-            if (myCont.EGIsub == "GO" & myCont.EGIcaic == "GO" & myCont.EGIinu == "GO" & myCont.EGIio == "GO" & myCont.EGIpwr == "GO" & myCont.EGIproc == "GO" & myCont.EGIgps == "GO")
+            #region EGI
+            if (myCont.EGIsub == "GO" & myCont.EGIcaic == "GO" & _egiInuStatus == "GO" & myCont.EGIio == "GO" & myCont.EGIpwr == "GO" & myCont.EGIproc == "GO" & myCont.EGIgps == "GO" & myCont.EGIieTempc=="GO" & myCont.EGI1553=="GO" & myCont.EGItrm=="GO")
             {
                 _egiStatus = "GO";
             }
             else
             {
                 _egiStatus = "NGO";
-            }
+            } 
+            #endregion
+
+            
 
 
+            #region NAV STATUS
             if (_egiStatus == "GO" & _tcnStatus == "GO")
             {
                 _navStatus = "GO";
@@ -16104,7 +16270,8 @@ namespace CDU3000
             else
             {
                 _navStatus = "NGO";
-            }
+            } 
+            #endregion
         }
 
 
