@@ -101,9 +101,19 @@
             this.label34 = new System.Windows.Forms.Label();
             this.EgiInuRaccelcb = new System.Windows.Forms.CheckBox();
             this.label35 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.EgiGpsAllNGObtn = new System.Windows.Forms.Button();
+            this.EgiGpsAllGObtn = new System.Windows.Forms.Button();
+            this.EgiGpsBatteryGOcb = new System.Windows.Forms.CheckBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.EgiGpsEgrGOcb = new System.Windows.Forms.CheckBox();
+            this.EgiGpsRpuGOcb = new System.Windows.Forms.CheckBox();
             this.TACANgb.SuspendLayout();
             this.EGIgb.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // TACANgb
@@ -967,11 +977,115 @@
             this.label35.TabIndex = 3;
             this.label35.Text = "U GYRO";
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.EgiGpsAllNGObtn);
+            this.groupBox2.Controls.Add(this.EgiGpsAllGObtn);
+            this.groupBox2.Controls.Add(this.EgiGpsBatteryGOcb);
+            this.groupBox2.Controls.Add(this.label33);
+            this.groupBox2.Controls.Add(this.label36);
+            this.groupBox2.Controls.Add(this.label37);
+            this.groupBox2.Controls.Add(this.EgiGpsEgrGOcb);
+            this.groupBox2.Controls.Add(this.EgiGpsRpuGOcb);
+            this.groupBox2.Location = new System.Drawing.Point(436, 16);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(128, 424);
+            this.groupBox2.TabIndex = 3;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "EGI GPS STATUS";
+            // 
+            // EgiGpsAllNGObtn
+            // 
+            this.EgiGpsAllNGObtn.Location = new System.Drawing.Point(24, 392);
+            this.EgiGpsAllNGObtn.Name = "EgiGpsAllNGObtn";
+            this.EgiGpsAllNGObtn.Size = new System.Drawing.Size(75, 23);
+            this.EgiGpsAllNGObtn.TabIndex = 37;
+            this.EgiGpsAllNGObtn.Text = "All NGO";
+            this.EgiGpsAllNGObtn.UseVisualStyleBackColor = true;
+            this.EgiGpsAllNGObtn.Click += new System.EventHandler(this.EgiGpsAllNGObtn_Click);
+            // 
+            // EgiGpsAllGObtn
+            // 
+            this.EgiGpsAllGObtn.Location = new System.Drawing.Point(24, 368);
+            this.EgiGpsAllGObtn.Name = "EgiGpsAllGObtn";
+            this.EgiGpsAllGObtn.Size = new System.Drawing.Size(75, 23);
+            this.EgiGpsAllGObtn.TabIndex = 36;
+            this.EgiGpsAllGObtn.Text = "All GO";
+            this.EgiGpsAllGObtn.UseVisualStyleBackColor = true;
+            this.EgiGpsAllGObtn.Click += new System.EventHandler(this.EgiGpsAllGObtn_Click);
+            // 
+            // EgiGpsBatteryGOcb
+            // 
+            this.EgiGpsBatteryGOcb.AutoSize = true;
+            this.EgiGpsBatteryGOcb.Checked = true;
+            this.EgiGpsBatteryGOcb.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.EgiGpsBatteryGOcb.Location = new System.Drawing.Point(64, 32);
+            this.EgiGpsBatteryGOcb.Name = "EgiGpsBatteryGOcb";
+            this.EgiGpsBatteryGOcb.Size = new System.Drawing.Size(42, 17);
+            this.EgiGpsBatteryGOcb.TabIndex = 21;
+            this.EgiGpsBatteryGOcb.Text = "GO";
+            this.EgiGpsBatteryGOcb.UseVisualStyleBackColor = true;
+            this.EgiGpsBatteryGOcb.CheckedChanged += new System.EventHandler(this.EgiGpsBatteryGOcb_CheckedChanged);
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(30, 78);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(30, 13);
+            this.label33.TabIndex = 19;
+            this.label33.Text = "EGR";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(3, 33);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(57, 13);
+            this.label36.TabIndex = 17;
+            this.label36.Text = "BATTERY";
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(30, 56);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(30, 13);
+            this.label37.TabIndex = 18;
+            this.label37.Text = "RPU";
+            // 
+            // EgiGpsEgrGOcb
+            // 
+            this.EgiGpsEgrGOcb.AutoSize = true;
+            this.EgiGpsEgrGOcb.Checked = true;
+            this.EgiGpsEgrGOcb.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.EgiGpsEgrGOcb.Location = new System.Drawing.Point(64, 76);
+            this.EgiGpsEgrGOcb.Name = "EgiGpsEgrGOcb";
+            this.EgiGpsEgrGOcb.Size = new System.Drawing.Size(42, 17);
+            this.EgiGpsEgrGOcb.TabIndex = 23;
+            this.EgiGpsEgrGOcb.Text = "GO";
+            this.EgiGpsEgrGOcb.UseVisualStyleBackColor = true;
+            this.EgiGpsEgrGOcb.CheckedChanged += new System.EventHandler(this.EgiGpsEgrGOcb_CheckedChanged);
+            // 
+            // EgiGpsRpuGOcb
+            // 
+            this.EgiGpsRpuGOcb.AutoSize = true;
+            this.EgiGpsRpuGOcb.Checked = true;
+            this.EgiGpsRpuGOcb.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.EgiGpsRpuGOcb.Location = new System.Drawing.Point(64, 54);
+            this.EgiGpsRpuGOcb.Name = "EgiGpsRpuGOcb";
+            this.EgiGpsRpuGOcb.Size = new System.Drawing.Size(42, 17);
+            this.EgiGpsRpuGOcb.TabIndex = 22;
+            this.EgiGpsRpuGOcb.Text = "GO";
+            this.EgiGpsRpuGOcb.UseVisualStyleBackColor = true;
+            this.EgiGpsRpuGOcb.CheckedChanged += new System.EventHandler(this.EgiGpsRpuGOcb_CheckedChanged);
+            // 
             // Controller
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(475, 468);
+            this.ClientSize = new System.Drawing.Size(633, 468);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.EGIgb);
             this.Controls.Add(this.TACANgb);
@@ -983,6 +1097,8 @@
             this.EGIgb.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1062,5 +1178,14 @@
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.CheckBox EgiInuRaccelcb;
         private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button EgiGpsAllNGObtn;
+        private System.Windows.Forms.Button EgiGpsAllGObtn;
+        private System.Windows.Forms.CheckBox EgiGpsBatteryGOcb;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.CheckBox EgiGpsEgrGOcb;
+        private System.Windows.Forms.CheckBox EgiGpsRpuGOcb;
     }
 }

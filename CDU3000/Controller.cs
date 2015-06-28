@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
@@ -13,10 +6,10 @@ namespace CDU3000
 {
     public partial class Controller : Form
     {
-        
-        
 
-        
+
+
+
         //TACAN backing fields
         #region MyRegion
         private bool _TCNvalChanged = false;
@@ -34,7 +27,7 @@ namespace CDU3000
         private string _rcv = "GO";
         private string _synth = "GO";
         private string _dpdat = "GO";
-        private string _dpram = "GO"; 
+        private string _dpram = "GO";
         #endregion
 
         //EGI backing fields
@@ -52,7 +45,7 @@ namespace CDU3000
         private string _EGIgps = "GO";
 
         //EGI INU backing fields
-        private bool _EgiInuValChanged ;
+        private bool _EgiInuValChanged;
         private string _EgiInuSensRef = "GO";
         private string _EgiInuRaccel = "GO";
         private string _EgiInuSaccel = "GO";
@@ -60,7 +53,13 @@ namespace CDU3000
         private string _EgiInuUgyro = "GO";
         private string _EgiInuVgyro = "GO";
         private string _EgiInuWgyro = "GO";
-        
+
+        //EGI GPS backing fields
+        private bool _EgiGpsValChanged;
+        private string _EgiGpsBattery = "GO";
+        private string _EgiGpsRpu = "GO";
+        private string _EgiGpsEgr = "GO";
+
         #endregion
 
 
@@ -87,7 +86,7 @@ namespace CDU3000
         {
             get
             {
-                return _EGIsub ;
+                return _EGIsub;
             }
         }
 
@@ -95,7 +94,7 @@ namespace CDU3000
         {
             get
             {
-                return _EGIcaic ;
+                return _EGIcaic;
             }
         }
 
@@ -103,7 +102,7 @@ namespace CDU3000
         {
             get
             {
-                return _EGIinu ;
+                return _EGIinu;
             }
         }
 
@@ -111,7 +110,7 @@ namespace CDU3000
         {
             get
             {
-                return _EGItrm ;
+                return _EGItrm;
             }
         }
 
@@ -119,7 +118,7 @@ namespace CDU3000
         {
             get
             {
-                return _EGI1553 ;
+                return _EGI1553;
             }
         }
 
@@ -127,7 +126,7 @@ namespace CDU3000
         {
             get
             {
-                return _EGIieTempc ;
+                return _EGIieTempc;
             }
         }
 
@@ -135,7 +134,7 @@ namespace CDU3000
         {
             get
             {
-                return _EGIio ;
+                return _EGIio;
             }
         }
 
@@ -143,7 +142,7 @@ namespace CDU3000
         {
             get
             {
-                return _EGIpwr ;
+                return _EGIpwr;
             }
         }
 
@@ -151,7 +150,7 @@ namespace CDU3000
         {
             get
             {
-                return _EGIproc ;
+                return _EGIproc;
             }
         }
 
@@ -159,7 +158,7 @@ namespace CDU3000
         {
             get
             {
-                return _EGIgps ;
+                return _EGIgps;
             }
         }
 
@@ -171,7 +170,7 @@ namespace CDU3000
         {
             if (EgiSubcb.Checked)
             {
-                _EGIsub  = "GO";
+                _EGIsub = "GO";
             }
             else
             {
@@ -197,7 +196,7 @@ namespace CDU3000
         {
             if (EgiInucb.Checked)
             {
-                _EGIinu  = "GO";
+                _EGIinu = "GO";
             }
             else
             {
@@ -236,7 +235,7 @@ namespace CDU3000
         {
             if (EgiIeTempccb.Checked)
             {
-                _EGIieTempc  = "GO";
+                _EGIieTempc = "GO";
             }
             else
             {
@@ -309,7 +308,7 @@ namespace CDU3000
             EgiPwrcb.Checked = false;
             EgiProccb.Checked = false;
             EgiGpscb.Checked = false;
-            
+
         }
 
         private void EgiAllGobtn_Click(object sender, EventArgs e)
@@ -402,7 +401,7 @@ namespace CDU3000
             }
         }
 
-        
+
 
         #endregion
 
@@ -418,7 +417,7 @@ namespace CDU3000
                 _EgiInuSensRef = "NGO";
                 _EgiInuValChanged = true;
             }
-            
+
         }
 
         private void EgiInuRaccelcb_CheckedChanged(object sender, EventArgs e)
@@ -521,6 +520,107 @@ namespace CDU3000
             EgiInuVgyrocb.Checked = false;
             EgiInuWgyrocb.Checked = false;
         }
+        #endregion
+
+        //EGI GPS
+
+        #region Accessors
+
+        public bool EgiGpsValueChanged
+        {
+            get
+            {
+                return _EgiGpsValChanged;
+            }
+
+            set
+            {
+                _EgiGpsValChanged = false;
+            }
+        }
+
+        public string EgiGpsBattery
+        {
+            get
+            {
+                return _EgiGpsBattery;
+            }
+        }
+
+        public string EgiGpsRpu
+        {
+            get
+            {
+                return _EgiGpsRpu;
+            }
+        }
+
+        public string EgiGpsEgr
+        {
+            get
+            {
+                return _EgiGpsEgr;
+            }
+        }
+
+
+        #endregion
+
+        #region Checkboxes
+
+        private void EgiGpsBatteryGOcb_CheckedChanged(object sender, EventArgs e)
+        {
+            if (EgiGpsBatteryGOcb.Checked)
+            {
+                _EgiGpsBattery = "GO";
+            }
+            else
+            {
+                _EgiGpsBattery = "NGO";
+                _EgiGpsValChanged = true;
+            }
+        }
+
+        private void EgiGpsRpuGOcb_CheckedChanged(object sender, EventArgs e)
+        {
+            if (EgiGpsRpuGOcb.Checked)
+            {
+                _EgiGpsRpu = "GO";
+            }
+            else
+            {
+                _EgiGpsRpu = "NGO";
+                _EgiGpsValChanged = true;
+            }
+        }
+
+        private void EgiGpsEgrGOcb_CheckedChanged(object sender, EventArgs e)
+        {
+            if (EgiGpsEgrGOcb.Checked)
+            {
+                _EgiGpsEgr = "GO";
+            }
+            else
+            {
+                _EgiGpsEgr = "NGO";
+                _EgiGpsValChanged = true;
+            }
+        }
+
+        private void EgiGpsAllGObtn_Click(object sender, EventArgs e)
+        {
+            EgiGpsEgrGOcb.Checked = true;
+            EgiGpsRpuGOcb.Checked = true;
+            EgiGpsBatteryGOcb.Checked = true;            
+        }
+
+        private void EgiGpsAllNGObtn_Click(object sender, EventArgs e)
+        {
+            EgiGpsEgrGOcb.Checked = false;
+            EgiGpsRpuGOcb.Checked = false;
+            EgiGpsBatteryGOcb.Checked = false;
+        }
+
         #endregion
 
 
@@ -914,7 +1014,7 @@ namespace CDU3000
             synthGo.Checked = true;
             dpdatGo.Checked = true;
             dpramGo.Checked = true;
-        } 
+        }
         #endregion
 
         public Controller( )
@@ -925,8 +1025,12 @@ namespace CDU3000
 
         
 
-        
 
-        
+
+
+
+
+
+
     }
 }
