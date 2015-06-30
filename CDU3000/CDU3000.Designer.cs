@@ -147,6 +147,8 @@
             this.DeleteBtnTimer = new System.Windows.Forms.Timer(this.components);
             this.label5 = new System.Windows.Forms.Label();
             this.DimBrtTimer = new System.Windows.Forms.Timer(this.components);
+            this.ScratchMessageTimer = new System.Windows.Forms.Timer(this.components);
+            this.UTCupdateTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // closeBtn
@@ -1778,6 +1780,16 @@
             this.DimBrtTimer.Interval = 250;
             this.DimBrtTimer.Tick += new System.EventHandler(this.DimBrtTimer_Tick);
             // 
+            // ScratchMessageTimer
+            // 
+            this.ScratchMessageTimer.Interval = 1000;
+            this.ScratchMessageTimer.Tick += new System.EventHandler(this.ScratchMessageTimer_Tick);
+            // 
+            // UTCupdateTimer
+            // 
+            this.UTCupdateTimer.Interval = 1000;
+            this.UTCupdateTimer.Tick += new System.EventHandler(this.UTCupdateTimer_Tick);
+            // 
             // CDU3000
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1997,6 +2009,8 @@
         private System.Windows.Forms.Timer DeleteBtnTimer;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Timer DimBrtTimer;
+        private System.Windows.Forms.Timer ScratchMessageTimer;
+        private System.Windows.Forms.Timer UTCupdateTimer;
     }
 }
 

@@ -82,7 +82,7 @@ namespace CDU3000
         private string emptyDigit = ('\uE000').ToString ( );
         private string emptyLatLong = ('\uE000').ToString ( ) + ('\uE000').ToString ( ) + ('\uE000').ToString ( ) + ('\u00B0').ToString ( ) + ('\uE000').ToString ( ) + ('\uE000').ToString ( ) + "." + ('\uE000').ToString ( ) + ('\uE000').ToString ( ) + "  " + ('\uE000').ToString ( ) + ('\uE000').ToString ( ) + ('\uE000').ToString ( ) + ('\uE000').ToString ( ) + ('\u00B0').ToString ( ) + ('\uE000').ToString ( ) + ('\uE000').ToString ( ) + "." + ('\uE000').ToString ( ) + ('\uE000').ToString ( );
 
-        private double alpha = .20;
+        private double alpha = .20;//dimmer form alpha
         DimmerForm DM = new DimmerForm ( );
 
         //creates a new controller form
@@ -91,11 +91,21 @@ namespace CDU3000
         //NAV fields
         private string _navStatus;
 
+        //START INIT fields
+        private string actInactToggle = ">";
+
         //TACAN specific fields
         private string _tcnStatus;
 
         //EGI specific fields
         private string _egiStatus;
+        private string _egiPowerState = "ON";
+        private DateTime egiDateTime = DateTime.UtcNow;
+        private DateTime egiDate = DateTime.Now;
+        private string formattedTime = "12 : 00 : 00";
+        private string formattedDate = "01 JAN 15";
+
+
 
         //EGI INU specific fields
         private string _egiInuStatus;
@@ -103,12 +113,20 @@ namespace CDU3000
         //EGI GPS specific fields
         private string _egiGpsStatus;
 
+        //EGI MAINTENANCE specific
+        private string initialX;
+        private string initialY;
+        private string initialZ;
+        private string updatedX;
+        private string updatedY;
+        private string updatedZ;
 
-
+        //IFF specific fields
+        private string _IFFPowerState;
 
 
         #region VU1 fields
-
+        private string _vu1PowerState;
         string _VU1freq = "V136.000";
         string _VU1preset = "P2";
         string _VU1channel = "0";
@@ -120,7 +138,7 @@ namespace CDU3000
         #endregion
 
         #region VU2 fields
-
+        private string _vu2PowerState;
         string VU2freq = "V136.000";
         string VU2preset = "P2";
         string VU2channel = "0";
@@ -134,6 +152,13 @@ namespace CDU3000
 
         private string overallComStatus;
         private string com1Status;
+
+        #region Messaging
+        private string scratchMessage;//used for overriding the scratchpad during CDU message transmission
+        private string scratchBackup;//temporary storage of the scratchpad data
+
+        #endregion
+
 
 
         #endregion
@@ -717,21 +742,73 @@ namespace CDU3000
 
         #region EGI Maintenance page
 
-        private void EgiMaintenancePage()
+        private void EgiMaintenancePage( )
         {
             CDU7000Page = true;
 
             #region MyRegion
+
+            //
+            initialX = emptyDigit + emptyDigit + emptyDigit + emptyDigit;
+            initialY = emptyDigit + emptyDigit + emptyDigit + emptyDigit;
+            initialZ = emptyDigit + emptyDigit + emptyDigit + emptyDigit;
+            string dashes = " - - - ";
+
             l1text = "";
-            l2text = emptyDigit+emptyDigit+emptyDigit+emptyDigit ;
-            l3text = emptyDigit + emptyDigit + emptyDigit + emptyDigit;
-            l4text = emptyDigit + emptyDigit + emptyDigit + emptyDigit;
+
+            if (_egiPowerState == "ON")
+            {
+                #region Updates the textboxes when ENTER is clicked
+                if (updatedX == null || updatedX == initialX)
+                {
+                    l2text = initialX;
+                    r2text = "90 IN";
+                }
+                else
+                {
+                    l2text = initialX;
+                    r2text = updatedX + " IN";
+                }
+
+
+                if (updatedY == null || updatedY == initialY)
+                {
+                    l3text = initialY;
+                    r3text = "213 IN";
+                }
+                else
+                {
+                    l3text = initialY;
+                    r3text = updatedY + " IN";
+                }
+
+
+                if (updatedZ == null || updatedZ == initialZ)
+                {
+                    l4text = initialZ;
+                    r4text = "76 IN";
+                }
+                else
+                {
+                    l4text = initialZ;
+                    r4text = updatedZ + " IN";
+                }
+                #endregion
+            }
+            else
+            {
+                l2text = initialX;
+                l3text = initialY;
+                l4text = initialZ;
+                r2text = dashes;
+                r3text = dashes;
+                r4text = dashes;
+            }
+
             l5text = "> ENTER";
             l6text = "";
             r1text = "";
-            r2text = "90 IN";
-            r3text = "213 IN";
-            r4text = "761 IN";
+
             r5text = "CANCEL";
             r6text = "RETURN";
 
@@ -2040,17 +2117,31 @@ namespace CDU3000
         private void StartInitPage( )
         {
             CDU7000Page = true;
+            string latlon1;
+            string latlon2 = LatLonFormat ("N51°28.600W000°27.800");
 
             #region MyRegion
-            l1text = "N51°28.600  W000°27.800";
+            if (_egiPowerState == "ON")
+            {
+                latlon1 = LatLonFormat("N51°28.600W000°27.800");
+                l1text = latlon1;
+                l3text = formattedTime;
+                r3text = formattedDate;
+            }
+            else
+            {
+                l1text = " - - - ";
+                l3text = "13:26:35";
+                r3text = "26MAY15";
+            }
             l2text = "";
-            l3text = "13:26:35";
-            l4text = "> N51°28.600  W000°27.800";
+
+            l4text = actInactToggle;
             l5text = "< EGI CTRL";
             l6text = "";
             r1text = "";
             r2text = "";
-            r3text = "26MAY15";
+
             r4text = "";
             r5text = "POWER";
             r6text = "RETURN";
@@ -2086,7 +2177,10 @@ namespace CDU3000
             //TB(l4t, col2, row7, "IDENT");
 
             TextBox l4 = new TextBox ( );
-            TB (l4, col1, row8, l4text, Color.White);
+            TB (l4, col1-10, row8, l4text, Color.White);
+
+            TextBox l4r = new TextBox ( );
+            TB (l4r, l4.Location.X + l4.Width, row8, latlon2 , Color.White);
 
             //TextBox l5t = new TextBox();
             //TB(l5t, col2, row9, "IDENT");
@@ -13469,7 +13563,7 @@ namespace CDU3000
             TB (l3b, col2, row7, "UTC");
 
             TextBox l4 = new TextBox ( );
-            l4text = "12:00";
+            l4text = formattedTime;
             TB (l4, col1, row8, l4text, Color.White);
 
             TextBox l4b = new TextBox ( );
@@ -13492,7 +13586,7 @@ namespace CDU3000
             TB (r3b, col13, row7, " DATE");
 
             TextBox r4 = new TextBox ( );
-            r4text = "12MAY15";
+            r4text = formattedDate;
             TB (r4, col15, row8, r4text, Color.White);
 
             TextBox r6 = new TextBox ( );
@@ -14609,7 +14703,7 @@ namespace CDU3000
                     myName.ForeColor = Color.White;
                 }
                 else
-                    if (myName.Text == "NGO" & (myCont.TCNvalueChanged == true || myCont.EGIvalueChanged == true || myCont.EgiInuValueChanged == true || myCont.EgiGpsValueChanged==true))
+                    if (myName.Text == "NGO" & (myCont.TCNvalueChanged == true || myCont.EGIvalueChanged == true || myCont.EgiInuValueChanged == true || myCont.EgiGpsValueChanged == true))
                     {
                         myName.ForeColor = Color.Yellow;
                     }
@@ -14711,6 +14805,12 @@ namespace CDU3000
 
         private void PageSelection(String e) //used to select the proper Page from the input string
         {
+            if (e == "")//added for validity check when a button that has no text is pushed
+            {
+                scratchMessage = "KEY NOT ACTIVE";
+                CheckValidity ( );
+            }
+
             string myTxt = null;
             string trimmedString = TrimSelection (e);   //holds the trimmed version of the passed string argument
 
@@ -15202,6 +15302,30 @@ namespace CDU3000
 
             #endregion
 
+            #region page selections from START INIT page
+
+            if (currentPageTitle == "START INIT")
+            {
+                if (pushedButton == l4Btn)
+                {
+                    if (actInactToggle == ">")
+                    {
+                        actInactToggle = "*";
+                    }
+                    else
+                    {
+                        actInactToggle = ">";
+                    }
+
+                    StartFresh ( );
+                    StartInitPage ( );
+
+                }
+                return;
+            }
+
+            #endregion
+
 
 
             #endregion Select Cases
@@ -15476,6 +15600,18 @@ namespace CDU3000
                     switch (trimmedString)
                     {
 
+                        //Cancel
+                        case "CANCEL":
+                            if (currentPageTitle == "INU LEVER ARMS")
+                            {
+                                l2text = initialX;
+                                l3text = initialY;
+                                l4text = initialZ;
+                                StartFresh ( );
+                                EgiMaintenancePage ( );
+                            }
+                            break;
+
                         //Clear NVM pages
                         case "CLEAR":
                             StartFresh ( );
@@ -15530,6 +15666,16 @@ namespace CDU3000
 
                         //EGI MAINTENANCE page
                         case "EGI MAINT":
+                            StartFresh ( );
+                            EgiMaintenancePage ( );
+                            break;
+
+                        //ENTER
+                        case "ENTER":
+
+                            updatedX = l2text;
+                            updatedY = l3text;
+                            updatedZ = l4text;
                             StartFresh ( );
                             EgiMaintenancePage ( );
                             break;
@@ -15749,7 +15895,7 @@ namespace CDU3000
 
         private string TrimSelection(string e)    //takes input string and reduces it to text only
         {
-            char[] charsToTrim = { '<', ' ' };  //defines the dhars to trim
+            char[] charsToTrim = { '<', ' ', '>' };  //defines the dhars to trim
             e = e.Trim (charsToTrim);    //stores the new string
             return e;
         }
@@ -15815,24 +15961,40 @@ namespace CDU3000
                 case "l1"://determines the case
                     mySide = "left";
                     myRow = row2;//represents the row that the button is on
+                    if (!CheckValidity ( ))
+                    {
+                        return;
+                    }
                     l1text = scratchpad;//assigns scratchpad information to the button variable
                     break;
 
                 case "l2":
                     mySide = "left";
                     myRow = row4;
+                    if (!CheckValidity ( ))
+                    {
+                        return;
+                    }
                     l2text = scratchpad;
                     break;
 
                 case "l3":
                     mySide = "left";
                     myRow = row6;
+                    if (!CheckValidity ( ))
+                    {
+                        return;
+                    }
                     l3text = scratchpad;
                     break;
 
                 case "l4":
                     mySide = "left";
                     myRow = row8;
+                    if (!CheckValidity ( ))
+                    {
+                        return;
+                    }
                     l4text = scratchpad;
                     break;
 
@@ -15845,6 +16007,10 @@ namespace CDU3000
                 case "l6":
                     mySide = "left";
                     myRow = row12;
+                    if (!CheckValidity ( ))
+                    {
+                        return;
+                    }
                     l6text = scratchpad;
                     break;
 
@@ -15852,24 +16018,40 @@ namespace CDU3000
                 case "r1":
                     mySide = "right";
                     myRow = row2;
+                    if (!CheckValidity ( ))
+                    {
+                        return;
+                    }
                     r1text = scratchpad;
                     break;
 
                 case "r2":
                     mySide = "right";
                     myRow = row4;
+                    if (!CheckValidity ( ))
+                    {
+                        return;
+                    }
                     r2text = scratchpad;
                     break;
 
                 case "r3":
                     mySide = "right";
                     myRow = row6;
+                    if (!CheckValidity ( ))
+                    {
+                        return;
+                    }
                     r3text = scratchpad;
                     break;
 
                 case "r4":
                     mySide = "right";
                     myRow = row8;
+                    if (!CheckValidity ( ))
+                    {
+                        return;
+                    }
                     r4text = scratchpad;
                     break;
 
@@ -16542,6 +16724,98 @@ namespace CDU3000
             #endregion
         }
 
+        private bool CheckValidity( )
+        {
+            switch (currentPageTitle)
+            {
+                case "INU LEVER ARMS":
+                    if (pushedButton == l2Btn || pushedButton == l3Btn || pushedButton == l4Btn)
+                    {
+                        if (IsDigitOnly (scratchpad))
+                        {
+                            if (Islength4 (scratchpad))
+                            {
+                                return true;
+                            }
+                            else
+                            {
+                                scratchMessage = "INVALID ENTRY";
+                            }
+                        }
+                        else
+                        {
+                            scratchMessage = "INVALID ENTRY";
+                        }
+                    }
+                    else
+                    {
+                        if (pushedButton == r2Btn || pushedButton == r3Btn || pushedButton == r4Btn)
+                        {
+                            scratchMessage = "KEY NOT ACTIVE";
+                        }
+                    }
+                    break;
+
+            }
+
+            //used for all possible cases
+
+            ShowScratchMessage ( );
+            ScratchMessageTimer.Start ( );
+            return false;
+        }
+
+        public void UTCupdateTimer_Tick(object sender, EventArgs e)
+        {
+            egiDateTime = DateTime.UtcNow;
+            egiDate = DateTime.Now;
+            formattedTime = egiDateTime.ToString ("HH : mm : ss");
+            formattedDate = egiDate.ToString ("dd MMM yy").ToUpper ( );
+
+            if (currentPageTitle == "START INIT")
+            {
+                StartFresh ( );
+                StartInitPage ( );
+            }
+
+            if (currentPageTitle == "status")
+            {
+                StartFresh ( );
+                StatusPage ( );
+            }
+
+        }
+
+        private string LatLonFormat(string e)
+        {
+            string j=null;
+            char k;
+            string l = " ";
+
+            for (int i = 0; i<e.Length;i++ )
+            {
+                k = e[i];
+                j += k;
+
+                if (i == 2 || i == 5 || i == 13 || i == 16)
+                {
+
+                }
+                else
+                {
+                    j += l;
+
+                    if (i == 9)
+                    {
+                        j =j+l+l;
+                    }
+                }
+            }
+            return j;
+        }
+
+
+
 
         #region Move Form without border
 
@@ -16593,18 +16867,53 @@ namespace CDU3000
         #endregion
 
 
+        #region Validation
 
+        bool IsDigitOnly(string str)
+        {
+            foreach (char c in str)
+            {
+                if (c < '0' || c > '9')
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
 
+        bool Islength4(string str)
+        {
+            if (str.Length > 4)
+            {
+                return false;
+            }
+            return true;
+        }
 
+        private void ScratchMessageTimer_Tick(object sender, EventArgs e)
+        {
+            foreach (Control c in Controls)
+            {
+                if (c.GetType ( ) == typeof (TextBox))
+                {
+                    if (c.Location.Y == row13 + 3 & c.Location.X == col1 + 7)
+                    {
+                        c.Dispose ( );
 
+                    }
+                }
+            }
+            ScratchMessageTimer.Stop ( );
+        }
 
+        public void ShowScratchMessage( )
+        {
+            TextBox scMessage = new TextBox ( );
+            TB (scMessage, col1 + 7, row13 + 3, scratchMessage, Color.White);
+            scMessage.BringToFront ( );
+        }
 
-
-
-
-
-
-
+        #endregion
 
 
         #endregion
@@ -16619,6 +16928,12 @@ namespace CDU3000
             DM.Owner = this;//causes the dimmer form to be above the mainform but not over other forms
 
             myCont.Show ( );
+            myCont.Hide ( );//TEMPORARILY HID FORM DURING DEVELOPMENT
+
+            if (UTCupdateTimer.Enabled == false)
+            {
+                UTCupdateTimer.Start ( );
+            }
         }
 
         private void InitialPageLoad(object sender, EventArgs e) //loads the initial page seen on the CDU
@@ -16628,11 +16943,7 @@ namespace CDU3000
                 CheckStatus ( );//checks the status of all items
                 StatusPage ( );//load the status page
                 initialLoad = false;//change the initialLoad state to false
-
-
-
             }
-
 
         }
 
@@ -16647,6 +16958,7 @@ namespace CDU3000
 
         private void closeBtn_Click(object sender, EventArgs e)
         {
+            UTCupdateTimer.Dispose ( );
             this.Close ( );
             ActiveForm.Close ( );
         }
@@ -16733,6 +17045,10 @@ namespace CDU3000
         }
 
         #endregion Dimming Methods
+
+
+
+
 
 
 
