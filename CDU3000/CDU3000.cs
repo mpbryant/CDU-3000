@@ -22,11 +22,14 @@ namespace CDU3000
         //Button text
         string l0text = null;
         string l1text = null;
+        string l1centerText = null;
         string l2text = null;
         string l3text = null;
         string l4text = null;
         string l5text = null;
+        string l5centerText = null;
         string l6text = null;
+        string l6centerText = null;
 
         string r1text = null;
         string r2text = null;
@@ -95,6 +98,7 @@ namespace CDU3000
         private string actInactToggle = ">";
 
         //TACAN specific fields
+        private string _tacanPowerState;
         private string _tcnStatus;
 
         //EGI specific fields
@@ -102,15 +106,21 @@ namespace CDU3000
         private string _egiPowerState = "ON";
         private DateTime egiDateTime = DateTime.UtcNow;
         private DateTime egiDate = DateTime.Now;
-        private string formattedTime = "12 : 00 : 00";
-        private string formattedDate = "01 JAN 15";
+        private string formattedTime = "12 : 00 : 00";  //leave initialized
+        private string formattedDate = "01 JAN 15"; //leave initialized
 
 
 
         //EGI INU specific fields
         private string _egiInuStatus;
+        private string _EgiAlignmentStatus = "> COMMAND";
+        private string _InitiateAlign = "> INITIATE";
+        private string _AlignCEP = "1.2";
+        private string _AlignMode = "GC ALIGN";
+        private string _AlignTime = "00:03.6";
 
         //EGI GPS specific fields
+        private string _egiGpsPowerState;
         private string _egiGpsStatus;
 
         //EGI MAINTENANCE specific
@@ -123,6 +133,13 @@ namespace CDU3000
 
         //IFF specific fields
         private string _IFFPowerState;
+        private string _IFFstatus = "GO";
+
+        //SURVEILLANCE specific fields
+        private string _survStatus = "GO";
+
+        //TCAS specific fields
+        private string _TCASstatus = "GO";
 
 
         #region VU1 fields
@@ -740,6 +757,135 @@ namespace CDU3000
 
         #endregion
 
+        #region EGI CONTROL page
+
+        private void EGIcontrolPage( )
+        {
+            CDU7000Page = true;
+
+            #region MyRegion
+            l1text = _EgiAlignmentStatus;
+            l2text = "GC";
+            l3text = _InitiateAlign;
+            l4text = "";
+            l5text = "";
+            l6text = "< RETURN";
+            r1text = _AlignMode;
+            r2text = _AlignCEP;
+            r3text = _AlignTime;
+            r4text = "";
+            r5text = "";
+            r6text = "";
+
+            currentPageTitle = "EGI CONTROL"; //page title and number used for navigating
+            currentPageNumber = 1;
+
+            TextBox title = new TextBox ( );//displayed top center of screen
+            TB (title, col7, row0, currentPageTitle);
+
+
+            TextBox l1t = new TextBox ( );
+            TB (l1t, col2, row1, "INIT GPS");
+
+            TextBox l1 = new TextBox ( );
+            TB (l1, col1, row2, l1text, Color.White);
+
+            TextBox l2t = new TextBox ( );
+            TB (l2t, col2, row3, "ALN TYPE");
+
+            TextBox l2 = new TextBox ( );
+            TB (l2, col1, row4, l2text, Color.Green);
+
+            TextBox l2s = new TextBox ( );
+            TB (l2s, l2.Location.X + l2.Width, row4, "/", Color.White);
+
+            TextBox l2air = new TextBox ( );
+            TB (l2air, l2s.Location.X + l2s.Width, row4, "AIR", Color.White);
+
+            TextBox l3t = new TextBox ( );
+            TB (l3t, col2, row5, "ALN INIT");
+
+            TextBox l3 = new TextBox ( );
+            TB (l3, col1, row6, l3text, Color.White);
+
+            //TextBox l4t = new TextBox();
+            //TB(l4t, col2, row7, "IDENT");
+
+            TextBox l4 = new TextBox ( );
+            TB (l4, col1, row8, l4text, Color.White);
+
+            //TextBox l5t = new TextBox();
+            //TB(l5t, col2, row9, "IDENT");
+
+            TextBox l5 = new TextBox ( );
+            TB (l5, col1, row10, l5text, Color.White);
+
+            //TextBox l6t = new TextBox();
+            //TB(l6t, col2, row11, "IDENT");
+
+            TextBox l6 = new TextBox ( );
+            TB (l6, col1, row12, l6text, Color.White);
+
+            TextBox r1t = new TextBox ( );
+            TB (r1t, col14 + 20, row1, "MODE");
+            TypeLeft (r1t);
+
+            TextBox r1 = new TextBox ( );
+            TB (r1, col15, row2, r1text, Color.White);
+
+            TextBox r2t = new TextBox ( );
+            TB (r2t, col14 + 20, row3, "ALN CEP");
+            TypeLeft (r2t);
+
+            TextBox r2 = new TextBox ( );
+            TB (r2, col15, row4, r2text, Color.White);
+
+            TextBox r3t = new TextBox ( );
+            TB (r3t, col14 + 20, row5, "ALN TIME");
+            TypeLeft (r3t);
+
+            TextBox r3 = new TextBox ( );
+            TB (r3, col15, row6, r3text, Color.White);
+
+            //TextBox r4t = new TextBox();
+            //TB(r4t, col14+20, row7, "IDENT");
+            //TypeLeft(r4t);
+
+            TextBox r4 = new TextBox ( );
+            TB (r4, col15, row8, r4text, Color.White);
+
+            //TextBox r5t = new TextBox();
+            //TB(r5t, col14+20, row9, "PILOT", Color.White);
+            //TypeLeft(r5t);
+
+            TextBox r5 = new TextBox ( );
+            TB (r5, col15, row10, r5text, Color.White);
+
+            //TextBox r6t = new TextBox();
+            //TB(r6t, col14+20, row11, "IDENT");
+            //TypeLeft(r6t);
+
+            TextBox r6 = new TextBox ( );
+            TB (r6, col15, row12, r6text, Color.White);
+
+            TextBox divider = new TextBox ( );
+            TB (divider, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+
+
+
+
+            TextBox l6b = new TextBox ( );
+            TB (l6b, col1, row13, "[");
+
+
+            TextBox r6b = new TextBox ( );
+            TB (r6b, col16, row13, "]");
+            #endregion
+        }
+
+        #endregion
+
         #region EGI Maintenance page
 
         private void EgiMaintenancePage( )
@@ -918,6 +1064,174 @@ namespace CDU3000
             {
                 TextBox r5r = new TextBox ( );
                 TB (r5r, col16, row10, "<", Color.White);
+            }
+
+
+            if (r6text != "")
+            {
+                TextBox r6r = new TextBox ( );
+                TB (r6r, col16, row12, ">", Color.White);
+            }
+            #endregion
+
+            TextBox l6b = new TextBox ( );
+            TB (l6b, col1, row13, "[");
+
+
+            TextBox r6b = new TextBox ( );
+            TB (r6b, col16, row13, "]");
+            #endregion
+        }
+
+        #endregion
+
+        #region EGI SA/AS
+
+        private void EGIsaAsPage( )
+        {
+            CDU7000Page = true;
+
+            #region MyRegion
+            l1text = "0";
+            l2text = "Y-ONLY";
+            l3text = "NO KEYS";
+            l4text = "";
+            l5text = "";
+            l6text = "";
+            r1text = "";
+            r2text = "";
+            r3text = "";
+            r4text = "";
+            r5text = "";
+            r6text = "RETURN";
+
+            currentPageTitle = "EGI SA/AS"; //page title and number used for navigating
+            currentPageNumber = 1;
+
+            TextBox title = new TextBox ( );//displayed top center of screen
+            TB (title, col7, row0, currentPageTitle);
+
+            //TextBox page = new TextBox ( );
+            //TB (page, col14, row0, currentPageNumber + "/1");
+
+            TextBox l1t = new TextBox ( );
+            TB (l1t, col2, row1, "KEY DAYS");
+
+            TextBox l1 = new TextBox ( );
+            TB (l1, col2 + 20, row2, l1text, Color.White);
+
+            TextBox l2t = new TextBox ( );
+            TB (l2t, col2, row3, "EGI MODE");
+
+            TextBox l2 = new TextBox ( );
+            TB (l2, col1, row4, l2text, Color.Green);
+
+            TextBox l2s = new TextBox ( );
+            TB (l2s, l2.Location.X + l2.Width, row4, "/", Color.White);
+
+            TextBox l2mix = new TextBox ( );
+            TB (l2mix, l2s.Location.X + l2s.Width, row4, "MIX", Color.White);
+
+            TextBox l3t = new TextBox ( );
+            TB (l3t, col2, row5, "KEY STATUS");
+
+            TextBox l3 = new TextBox ( );
+            TB (l3, col1, row6, l3text, Color.White);
+
+            //TextBox l4t = new TextBox();
+            //TB(l4t, col2, row7, "IDENT");
+
+            TextBox l4 = new TextBox ( );
+            TB (l4, col1, row8, l4text, Color.White);
+
+            //TextBox l5t = new TextBox();
+            //TB(l5t, col2, row9, "IDENT");
+
+            TextBox l5 = new TextBox ( );
+            TB (l5, col1, row10, l5text, Color.White);
+
+            //TextBox l6t = new TextBox();
+            //TB(l6t, col2, row11, "IDENT");
+
+            TextBox l6 = new TextBox ( );
+            TB (l6, col1, row12, l6text, Color.White);
+
+            //TextBox r1t = new TextBox();
+            //TB(r1t, col14+20, row1, "IDENT");
+            //TypeLeft(r1t);
+
+            TextBox r1 = new TextBox ( );
+            TB (r1, col15, row2, r1text, Color.White);
+
+            //TextBox r2t = new TextBox();
+            //TB(r2t, col14+20, row3, "IDENT");
+            //TypeLeft(r2t);
+
+            TextBox r2 = new TextBox ( );
+            TB (r2, col15, row4, r2text, Color.White);
+
+            //TextBox r3t = new TextBox();
+            //TB(r3t, col14+20, row5, "IDENT");
+            //TypeLeft(r3t);
+
+            TextBox r3 = new TextBox ( );
+            TB (r3, col15, row6, r3text, Color.White);
+
+            //TextBox r4t = new TextBox();
+            //TB(r4t, col14+20, row7, "IDENT");
+            //TypeLeft(r4t);
+
+            TextBox r4 = new TextBox ( );
+            TB (r4, col15, row8, r4text, Color.White);
+
+            //TextBox r5t = new TextBox();
+            //TB(r5t, col14+20, row9, "PILOT", Color.White);
+            //TypeLeft(r5t);
+
+            TextBox r5 = new TextBox ( );
+            TB (r5, col15, row10, r5text, Color.White);
+
+            //TextBox r6t = new TextBox();
+            //TB(r6t, col14+20, row11, "IDENT");
+            //TypeLeft(r6t);
+
+            TextBox r6 = new TextBox ( );
+            TB (r6, col15, row12, r6text, Color.White);
+
+            TextBox divider = new TextBox ( );
+            TB (divider, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+
+
+            #region Add Arrows if Needed
+            if (r1text != "")
+            {
+                TextBox r1r = new TextBox ( );
+                TB (r1r, col16, row2, ">", Color.White);
+            }
+
+            if (r2text != "")
+            {
+                TextBox r2r = new TextBox ( );
+                TB (r2r, col16, row4, ">", Color.White);
+            }
+
+            if (r3text != "")
+            {
+                TextBox r3r = new TextBox ( );
+                TB (r3r, col16, row6, ">", Color.White);
+            }
+
+            if (r4text != "")
+            {
+                TextBox r4r = new TextBox ( );
+                TB (r4r, col16, row8, ">", Color.White);
+            }
+
+            if (r5text != "")
+            {
+                TextBox r5r = new TextBox ( );
+                TB (r5r, col16, row10, ">", Color.White);
             }
 
 
@@ -2123,7 +2437,7 @@ namespace CDU3000
             #region MyRegion
             if (_egiPowerState == "ON")
             {
-                latlon1 = LatLonFormat("N51°28.600W000°27.800");
+                latlon1 = LatLonFormat ("N51°28.600W000°27.800");
                 l1text = latlon1;
                 l3text = formattedTime;
                 r3text = formattedDate;
@@ -2177,10 +2491,10 @@ namespace CDU3000
             //TB(l4t, col2, row7, "IDENT");
 
             TextBox l4 = new TextBox ( );
-            TB (l4, col1-10, row8, l4text, Color.White);
+            TB (l4, col1 - 10, row8, l4text, Color.White);
 
             TextBox l4r = new TextBox ( );
-            TB (l4r, l4.Location.X + l4.Width, row8, latlon2 , Color.White);
+            TB (l4r, l4.Location.X + l4.Width, row8, latlon2, Color.White);
 
             //TextBox l5t = new TextBox();
             //TB(l5t, col2, row9, "IDENT");
@@ -9257,6 +9571,167 @@ namespace CDU3000
 
         //Surveillance Pages
 
+        #region Surveillance Status Page
+
+        private void SurvStatusPage( )
+        {
+            CDU7000Page = true;
+
+            #region MyRegion
+            l1text = "<";
+            l2text = "";
+            l3text = "";
+            l4text = "";
+            l5text = "";
+            l6text = "< FAULT HIST";
+            r1text = _TCASstatus;
+            r2text = "";
+            r3text = "";
+            r4text = "";
+            r5text = "";
+            r6text = "RETURN";
+
+            currentPageTitle = "SURV STATUS"; //page title and number used for navigating
+            currentPageNumber = 1;
+
+            TextBox title = new TextBox ( );//displayed top center of screen
+            TB (title, col7, row0, currentPageTitle);
+
+            TextBox status = new TextBox ( );
+            TB (status, title.Location.X + title.Width, row0, _survStatus, Color.White);
+
+            TextBox l1t = new TextBox ( );
+            TB (l1t, col2, row1, "IFF");
+
+            TextBox l1 = new TextBox ( );
+            TB (l1, col1, row2, l1text, Color.White);
+
+            TextBox l1r = new TextBox ( );
+            TB (l1r, col2, row2, _IFFstatus, Color.White);
+
+
+
+            //TextBox l3t = new TextBox();
+            //TB(l3t, col2, row5, "IDENT");
+
+            TextBox l3 = new TextBox ( );
+            TB (l3, col1, row6, l3text, Color.White);
+
+            //TextBox l4t = new TextBox();
+            //TB(l4t, col2, row7, "IDENT");
+
+            TextBox l4 = new TextBox ( );
+            TB (l4, col1, row8, l4text, Color.White);
+
+            //TextBox l5t = new TextBox();
+            //TB(l5t, col2, row9, "IDENT");
+
+            TextBox l5 = new TextBox ( );
+            TB (l5, col1, row10, l5text, Color.White);
+
+            //TextBox l6t = new TextBox();
+            //TB(l6t, col2, row11, "IDENT");
+
+            TextBox l6 = new TextBox ( );
+            TB (l6, col1, row12, l6text, Color.White);
+
+            TextBox r1t = new TextBox ( );
+            TB (r1t, col14 + 20, row1, "TCAS");
+            TypeLeft (r1t);
+
+            TextBox r1 = new TextBox ( );
+            TB (r1, col15, row2, r1text, Color.White);
+
+            //TextBox r2t = new TextBox();
+            //TB(r2t, col14+20, row3, "IDENT");
+            //TypeLeft(r2t);
+
+            TextBox r2 = new TextBox ( );
+            TB (r2, col15, row4, r2text, Color.White);
+
+            //TextBox r3t = new TextBox();
+            //TB(r3t, col14+20, row5, "IDENT");
+            //TypeLeft(r3t);
+
+            TextBox r3 = new TextBox ( );
+            TB (r3, col15, row6, r3text, Color.White);
+
+            //TextBox r4t = new TextBox();
+            //TB(r4t, col14+20, row7, "IDENT");
+            //TypeLeft(r4t);
+
+            TextBox r4 = new TextBox ( );
+            TB (r4, col15, row8, r4text, Color.White);
+
+            //TextBox r5t = new TextBox();
+            //TB(r5t, col14+20, row9, "PILOT", Color.White);
+            //TypeLeft(r5t);
+
+            TextBox r5 = new TextBox ( );
+            TB (r5, col15, row10, r5text, Color.White);
+
+            //TextBox r6t = new TextBox();
+            //TB(r6t, col14+20, row11, "IDENT");
+            //TypeLeft(r6t);
+
+            TextBox r6 = new TextBox ( );
+            TB (r6, col15, row12, r6text, Color.White);
+
+            TextBox divider = new TextBox ( );
+            TB (divider, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+
+
+            #region Add Arrows if Needed
+            if (r1text != "")
+            {
+                TextBox r1r = new TextBox ( );
+                TB (r1r, col16, row2, ">", Color.White);
+            }
+
+            if (r2text != "")
+            {
+                TextBox r2r = new TextBox ( );
+                TB (r2r, col16, row4, ">", Color.White);
+            }
+
+            if (r3text != "")
+            {
+                TextBox r3r = new TextBox ( );
+                TB (r3r, col16, row6, ">", Color.White);
+            }
+
+            if (r4text != "")
+            {
+                TextBox r4r = new TextBox ( );
+                TB (r4r, col16, row8, ">", Color.White);
+            }
+
+            if (r5text != "")
+            {
+                TextBox r5r = new TextBox ( );
+                TB (r5r, col16, row10, ">", Color.White);
+            }
+
+
+            if (r6text != "")
+            {
+                TextBox r6r = new TextBox ( );
+                TB (r6r, col16, row12, ">", Color.White);
+            }
+            #endregion
+
+            TextBox l6b = new TextBox ( );
+            TB (l6b, col1, row13, "[");
+
+
+            TextBox r6b = new TextBox ( );
+            TB (r6b, col16, row13, "]");
+            #endregion
+        }
+
+        #endregion
+
         #region IFF Pages
 
         private void IFFcontrolPage1( )
@@ -9272,6 +9747,175 @@ namespace CDU3000
         private void IFFcontrolPage3( )
         {
             CDU7000Page = true;
+        }
+
+        private void IFFstatusPage1( )
+        {
+            CDU7000Page = true;
+
+            #region MyRegion
+            l1text = "ON";
+            l1centerText = "NGO-A";
+            l2text = "GO";
+            l3text = "GO";
+            l4text = "GO";
+            l5text = "GO";
+            l5centerText = formattedTime;
+            l6text = "GO";
+            l6centerText = "GO";
+            r1text = "- - -";
+            r2text = "34268723";
+            r3text = "GO";
+            r4text = "NGO";
+            r5text = "GO";
+            r6text = "RETURN";
+
+            currentPageTitle = "IFF STATUS"; //page title and number used for navigating
+            currentPageNumber = 1;
+
+            TextBox title = new TextBox ( );//displayed top center of screen
+            TB (title, col7, row0, currentPageTitle);
+
+            TextBox status = new TextBox ( );
+            TB (status, title.Location.X + title.Width, row0, _IFFstatus);
+
+            TextBox page = new TextBox ( );
+            TB (page, status.Location.X + status.Width + 20, row0, currentPageNumber + "/2");
+
+            TextBox l1t = new TextBox ( );
+            TB (l1t, col2, row1, "ALERT");
+
+            TextBox l1 = new TextBox ( );
+            TB (l1, col1, row2, l1text, Color.Green);
+
+            TextBox l1slash1 = new TextBox ( );
+            TB (l1slash1, l1.Location.X + l1.Width, row2, "/", Color.White);
+
+            TextBox r = new TextBox ( );
+            TB (r, l1slash1.Location.X + l1slash1.Width, row2, "OFF", Color.White);
+
+            TextBox l1ct = new TextBox ( );
+            TB (l1ct, col7, row1, "1553 BUS");
+            CenterMe (l1ct);
+
+            TextBox l1center = new TextBox ( );
+            TB (l1center, col7, row2, l1centerText, Color.White);
+            CenterMe (l1center);
+
+            TextBox l2t = new TextBox ( );
+            TB (l2t, col2, row3, "ANT");
+
+            TextBox l2 = new TextBox ( );
+            TB (l2, col1, row4, l2text, Color.White);
+
+            TextBox l3t = new TextBox ( );
+            TB (l3t, col2, row5, "MODE 1");
+
+            TextBox l3 = new TextBox ( );
+            TB (l3, col1, row6, l3text, Color.White);
+
+            TextBox l4t = new TextBox ( );
+            TB (l4t, col2, row7, "MODE 2");
+
+            TextBox l4 = new TextBox ( );
+            TB (l4, col1, row8, l4text, Color.White);
+
+            TextBox l5t = new TextBox ( );
+            TB (l5t, col2, row9, "MODE 3A");
+
+            TextBox l5 = new TextBox ( );
+            TB (l5, col1, row10, l5text, Color.White);
+
+            TextBox l5ct = new TextBox ( );
+            TB (l5ct, col7, row9, "TOD");
+            CenterMe (l5ct);
+
+            TextBox l5center = new TextBox ( );
+            TB (l5center, col7, row10, l5centerText, Color.White);
+            CenterMe (l5center);
+
+            TextBox l6t = new TextBox ( );
+            TB (l6t, col2, row11, "MODE 5");
+
+
+            TextBox l6 = new TextBox ( );
+            TB (l6, col1, row12, l6text, Color.White);
+
+            TextBox l6ct = new TextBox ( );
+            TB (l6ct, col7, row11, "TOD STAT");
+            CenterMe (l6ct);
+
+            TextBox l6center = new TextBox ( );
+            TB (l6center, col7, row12, l6centerText, Color.White);
+            CenterMe (l6center);
+
+
+            TextBox r1t = new TextBox ( );
+            TB (r1t, col14 + 20, row1, "TEST");
+            TypeLeft (r1t);
+
+            TextBox r1 = new TextBox ( );
+            TB (r1, col15, row2, r1text, Color.White);
+
+            TextBox r2t = new TextBox ( );
+            TB (r2t, col14 + 20, row3, "XP SW VSN");
+            TypeLeft (r2t);
+
+            TextBox r2 = new TextBox ( );
+            TB (r2, col15, row4, r2text, Color.White);
+
+            TextBox r3t = new TextBox ( );
+            TB (r3t, col14 + 20, row5, "MODE C");
+            TypeLeft (r3t);
+
+            TextBox r3 = new TextBox ( );
+            TB (r3, col15, row6, r3text, Color.White);
+
+            TextBox r4t = new TextBox ( );
+            TB (r4t, col14 + 20, row7, "MODE 4");
+            TypeLeft (r4t);
+
+            TextBox r4 = new TextBox ( );
+            TB (r4, col15, row8, r4text, Color.White);
+
+            TextBox r5t = new TextBox ( );
+            TB (r5t, col14 + 20, row9, "MODE S", Color.White);
+            TypeLeft (r5t);
+
+            TextBox r5 = new TextBox ( );
+            TB (r5, col15, row10, r5text, Color.White);
+
+            //TextBox r6t = new TextBox();
+            //TB(r6t, col14+20, row11, "IDENT");
+            //TypeLeft(r6t);
+
+            TextBox r6 = new TextBox ( );
+            TB (r6, col15, row12, r6text, Color.White);
+
+            #region Add Arrows if Needed
+            if (r1text != "")
+            {
+                TextBox r1r = new TextBox ( );
+                TB (r1r, col16, row2, "<", Color.White);
+            }
+
+
+
+
+            if (r6text != "")
+            {
+                TextBox r6r = new TextBox ( );
+                TB (r6r, col16, row12, ">", Color.White);
+            }
+            #endregion
+
+            TextBox l6b = new TextBox ( );
+            TB (l6b, col1, row13, "[");
+
+
+            TextBox r6b = new TextBox ( );
+            TB (r6b, col16, row13, "]");
+            #endregion
         }
 
         #endregion
@@ -14816,7 +15460,7 @@ namespace CDU3000
 
             #region Color toggle of Yes/No, Comp/Uncomp, Inhibit, etc (maximum two choices only)
 
-            if (trimmedString == "H2" || trimmedString == "OFF" || trimmedString == "PLAIN" || trimmedString == "DATA" || (trimmedString == "TR" & currentPageTitle != "TACAN CONTROL") || trimmedString == "ORIGIN" || trimmedString == "ON" || trimmedString == "UNCOMP" || trimmedString == "YES" || trimmedString == "NO" || trimmedString == "INHIBIT")//**Toggle colors
+            if (trimmedString == "Y-ONLY" || trimmedString == "GC" || trimmedString == "H2" || trimmedString == "OFF" || trimmedString == "PLAIN" || trimmedString == "DATA" || (trimmedString == "TR" & currentPageTitle != "TACAN CONTROL") || trimmedString == "ORIGIN" || trimmedString == "ON" || trimmedString == "UNCOMP" || trimmedString == "YES" || trimmedString == "NO" || trimmedString == "INHIBIT")//**Toggle colors
             {
                 try
                 {
@@ -15321,7 +15965,29 @@ namespace CDU3000
                     StartInitPage ( );
 
                 }
+                else
+                {
+                    if (pushedButton == l5Btn)
+                    {
+                        StartFresh ( );
+                        EGIcontrolPage ( );
+                    }
+                }
                 return;
+            }
+
+            #endregion
+
+            #region page selections from SURV STATUS page
+
+            if (currentPageTitle == "SURV STATUS")
+            {
+                if (pushedButton == l1Btn)
+                {
+                    StartFresh ( );
+                    IFFstatusPage1 ( );
+                    return;
+                }
             }
 
             #endregion
@@ -15670,6 +16336,12 @@ namespace CDU3000
                             EgiMaintenancePage ( );
                             break;
 
+                        //EGI SA/AS page
+                        case "EGI SA/AS":
+                            StartFresh ( );
+                            EGIsaAsPage ( );
+                            break;
+
                         //ENTER
                         case "ENTER":
 
@@ -15824,6 +16496,12 @@ namespace CDU3000
                             StartInitPage ( );
                             break;
 
+                        //SURV page
+                        case "SURV":
+                            StartFresh ( );
+                            SurvStatusPage ( );
+                            break;
+
                         //TACAN Control Page
                         case "TACAN":
                             StartFresh ( );
@@ -15951,7 +16629,7 @@ namespace CDU3000
 
         }
 
-        private void TransferScratch( )//transfers the scratchpad information into a line
+        private void TransferScratch( )     //transfers the scratchpad information into a line
         {
             int myRow = 0;//declare which row to put data in
             string mySide = "";//stores the button side
@@ -16192,6 +16870,12 @@ namespace CDU3000
                         break;
                     }
 
+                case "EGI CONTROL":
+                    {
+                        StartInitPage ( );
+                        break;
+                    }
+
                 case "EGI GPS STATUS":
                     {
                         EGIstatusPage ( );
@@ -16204,9 +16888,21 @@ namespace CDU3000
                         break;
                     }
 
+                case "EGI SA/AS":
+                    {
+                        MissionPage ( );
+                        break;
+                    }
+
                 case "EGI STATUS":
                     {
                         NAVstatusPage ( );
+                        break;
+                    }
+
+                case "IFF STATUS":
+                    {
+                        SurvStatusPage ( );
                         break;
                     }
 
@@ -16241,6 +16937,12 @@ namespace CDU3000
                     }
 
                 case "SYSTEM STATUS":
+                    {
+                        MissionPage ( );
+                        break;
+                    }
+
+                case "SURV STATUS":
                     {
                         MissionPage ( );
                         break;
@@ -16669,7 +17371,7 @@ namespace CDU3000
         private void CheckStatus( )
         {
             #region TACAN
-            if (myCont.TacanNVRAM == "GO" & myCont.TacanMicro == "GO" & myCont.Tacan1553 == "GO" & myCont.TacanAudio == "GO" & myCont.TacanDpdat == "GO" & myCont.TacanDpram == "GO" & myCont.TacanPwr == "GO" & myCont.TacanRam == "GO" & myCont.TacanRcv == "GO" & myCont.TacanRom == "GO" & myCont.TacanRt == "GO" & myCont.TacanSub == "GO" & myCont.TacanSynth == "GO" & myCont.TacanTrm == "GO" & myCont.TacanTun == "GO")
+            if (myCont.TacanPower == "ON" & myCont.TacanNVRAM == "GO" & myCont.TacanMicro == "GO" & myCont.Tacan1553 == "GO" & myCont.TacanAudio == "GO" & myCont.TacanDpdat == "GO" & myCont.TacanDpram == "GO" & myCont.TacanPwr == "GO" & myCont.TacanRam == "GO" & myCont.TacanRcv == "GO" & myCont.TacanRom == "GO" & myCont.TacanRt == "GO" & myCont.TacanSub == "GO" & myCont.TacanSynth == "GO" & myCont.TacanTrm == "GO" & myCont.TacanTun == "GO")
             {
                 _tcnStatus = "GO";
             }
@@ -16680,7 +17382,7 @@ namespace CDU3000
             #endregion
 
             #region EGI INU
-            if (myCont.EgiInuSensRef == "GO" & myCont.EgiInuRaccel == "GO" & myCont.EgiInuSaccel == "GO" & myCont.EgiInuTaccel == "GO" & myCont.EgiInuUgyro == "GO" & myCont.EgiInuWgyro == "GO" & myCont.EgiInuVgyro == "GO")
+            if (myCont.EgiInuPower == "ON" & myCont.EgiInuSensRef == "GO" & myCont.EgiInuRaccel == "GO" & myCont.EgiInuSaccel == "GO" & myCont.EgiInuTaccel == "GO" & myCont.EgiInuUgyro == "GO" & myCont.EgiInuWgyro == "GO" & myCont.EgiInuVgyro == "GO")
             {
                 _egiInuStatus = "GO";
             }
@@ -16691,7 +17393,7 @@ namespace CDU3000
             #endregion
 
             #region EGI GPS
-            if (myCont.EgiGpsRpu == "GO" & myCont.EgiGpsEgr == "GO" & myCont.EgiGpsBattery == "GO")
+            if (myCont.EgiInuPower == "ON" & myCont.EgiGpsRpu == "GO" & myCont.EgiGpsEgr == "GO" & myCont.EgiGpsBattery == "GO")
             {
                 _egiGpsStatus = "GO";
             }
@@ -16722,7 +17424,20 @@ namespace CDU3000
                 _navStatus = "NGO";
             }
             #endregion
-        }
+
+            #region SURV STATUS
+
+            if (_IFFstatus == "GO" & _TCASstatus == "GO")
+            {
+                _survStatus = "GO";
+            }
+            else
+            {
+                _survStatus = "NGO";
+            }
+
+            #endregion
+        }   //determines GO/NGO status prior to displaying the page
 
         private bool CheckValidity( )
         {
@@ -16763,7 +17478,7 @@ namespace CDU3000
             ShowScratchMessage ( );
             ScratchMessageTimer.Start ( );
             return false;
-        }
+        }   //validates the input to textboxes
 
         public void UTCupdateTimer_Tick(object sender, EventArgs e)
         {
@@ -16784,15 +17499,15 @@ namespace CDU3000
                 StatusPage ( );
             }
 
-        }
+        }   //updates the clock and refreshes the page
 
         private string LatLonFormat(string e)
         {
-            string j=null;
+            string j = null;
             char k;
             string l = " ";
 
-            for (int i = 0; i<e.Length;i++ )
+            for (int i = 0; i < e.Length; i++)
             {
                 k = e[i];
                 j += k;
@@ -16807,12 +17522,12 @@ namespace CDU3000
 
                     if (i == 9)
                     {
-                        j =j+l+l;
+                        j = j + l + l;
                     }
                 }
             }
             return j;
-        }
+        }   //adds proper spacing to lat/lon string
 
 
 
@@ -16928,7 +17643,7 @@ namespace CDU3000
             DM.Owner = this;//causes the dimmer form to be above the mainform but not over other forms
 
             myCont.Show ( );
-            myCont.Hide ( );//TEMPORARILY HID FORM DURING DEVELOPMENT
+            //myCont.Hide ( );//TEMPORARILY HID FORM DURING DEVELOPMENT
 
             if (UTCupdateTimer.Enabled == false)
             {

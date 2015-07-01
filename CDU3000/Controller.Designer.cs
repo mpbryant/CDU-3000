@@ -110,10 +110,32 @@
             this.label37 = new System.Windows.Forms.Label();
             this.EgiGpsEgrGOcb = new System.Windows.Forms.CheckBox();
             this.EgiGpsRpuGOcb = new System.Windows.Forms.CheckBox();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.navTabPage = new System.Windows.Forms.TabPage();
+            this.powerTabPage = new System.Windows.Forms.TabPage();
+            this.powerGb = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.egiInuPowerCB = new System.Windows.Forms.CheckBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.label40 = new System.Windows.Forms.Label();
+            this.label41 = new System.Windows.Forms.Label();
+            this.vu2PowerCB = new System.Windows.Forms.CheckBox();
+            this.vu1PowerCB = new System.Windows.Forms.CheckBox();
+            this.iffPowerCB = new System.Windows.Forms.CheckBox();
+            this.tcnPowerCB = new System.Windows.Forms.CheckBox();
+            this.CrpaPowerCB = new System.Windows.Forms.CheckBox();
+            this.label49 = new System.Windows.Forms.Label();
+            this.label50 = new System.Windows.Forms.Label();
             this.TACANgb.SuspendLayout();
             this.EGIgb.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.navTabPage.SuspendLayout();
+            this.powerTabPage.SuspendLayout();
+            this.powerGb.SuspendLayout();
             this.SuspendLayout();
             // 
             // TACANgb
@@ -150,7 +172,7 @@
             this.TACANgb.Controls.Add(this.microGo);
             this.TACANgb.Controls.Add(this.label6);
             this.TACANgb.Controls.Add(this.label1);
-            this.TACANgb.Location = new System.Drawing.Point(32, 16);
+            this.TACANgb.Location = new System.Drawing.Point(15, 16);
             this.TACANgb.Name = "TACANgb";
             this.TACANgb.Size = new System.Drawing.Size(128, 424);
             this.TACANgb.TabIndex = 0;
@@ -531,7 +553,7 @@
             this.EGIgb.Controls.Add(this.label28);
             this.EGIgb.Controls.Add(this.EgiCaiccb);
             this.EGIgb.Controls.Add(this.label29);
-            this.EGIgb.Location = new System.Drawing.Point(168, 16);
+            this.EGIgb.Location = new System.Drawing.Point(151, 16);
             this.EGIgb.Name = "EGIgb";
             this.EGIgb.Size = new System.Drawing.Size(128, 424);
             this.EGIgb.TabIndex = 1;
@@ -796,7 +818,7 @@
             this.groupBox1.Controls.Add(this.label34);
             this.groupBox1.Controls.Add(this.EgiInuRaccelcb);
             this.groupBox1.Controls.Add(this.label35);
-            this.groupBox1.Location = new System.Drawing.Point(302, 16);
+            this.groupBox1.Location = new System.Drawing.Point(285, 16);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(128, 424);
             this.groupBox1.TabIndex = 2;
@@ -987,7 +1009,7 @@
             this.groupBox2.Controls.Add(this.label37);
             this.groupBox2.Controls.Add(this.EgiGpsEgrGOcb);
             this.groupBox2.Controls.Add(this.EgiGpsRpuGOcb);
-            this.groupBox2.Location = new System.Drawing.Point(436, 16);
+            this.groupBox2.Location = new System.Drawing.Point(419, 16);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(128, 424);
             this.groupBox2.TabIndex = 3;
@@ -1080,15 +1102,220 @@
             this.EgiGpsRpuGOcb.UseVisualStyleBackColor = true;
             this.EgiGpsRpuGOcb.CheckedChanged += new System.EventHandler(this.EgiGpsRpuGOcb_CheckedChanged);
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.navTabPage);
+            this.tabControl1.Controls.Add(this.powerTabPage);
+            this.tabControl1.Location = new System.Drawing.Point(12, 12);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(570, 483);
+            this.tabControl1.TabIndex = 4;
+            // 
+            // navTabPage
+            // 
+            this.navTabPage.Controls.Add(this.EGIgb);
+            this.navTabPage.Controls.Add(this.groupBox2);
+            this.navTabPage.Controls.Add(this.TACANgb);
+            this.navTabPage.Controls.Add(this.groupBox1);
+            this.navTabPage.Location = new System.Drawing.Point(4, 22);
+            this.navTabPage.Name = "navTabPage";
+            this.navTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.navTabPage.Size = new System.Drawing.Size(562, 457);
+            this.navTabPage.TabIndex = 0;
+            this.navTabPage.Text = "Navigation";
+            this.navTabPage.UseVisualStyleBackColor = true;
+            // 
+            // powerTabPage
+            // 
+            this.powerTabPage.Controls.Add(this.powerGb);
+            this.powerTabPage.Location = new System.Drawing.Point(4, 22);
+            this.powerTabPage.Name = "powerTabPage";
+            this.powerTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.powerTabPage.Size = new System.Drawing.Size(562, 457);
+            this.powerTabPage.TabIndex = 1;
+            this.powerTabPage.Text = "Power";
+            this.powerTabPage.UseVisualStyleBackColor = true;
+            // 
+            // powerGb
+            // 
+            this.powerGb.Controls.Add(this.button1);
+            this.powerGb.Controls.Add(this.button2);
+            this.powerGb.Controls.Add(this.egiInuPowerCB);
+            this.powerGb.Controls.Add(this.label31);
+            this.powerGb.Controls.Add(this.label38);
+            this.powerGb.Controls.Add(this.label40);
+            this.powerGb.Controls.Add(this.label41);
+            this.powerGb.Controls.Add(this.vu2PowerCB);
+            this.powerGb.Controls.Add(this.vu1PowerCB);
+            this.powerGb.Controls.Add(this.iffPowerCB);
+            this.powerGb.Controls.Add(this.tcnPowerCB);
+            this.powerGb.Controls.Add(this.CrpaPowerCB);
+            this.powerGb.Controls.Add(this.label49);
+            this.powerGb.Controls.Add(this.label50);
+            this.powerGb.Location = new System.Drawing.Point(16, 18);
+            this.powerGb.Name = "powerGb";
+            this.powerGb.Size = new System.Drawing.Size(128, 424);
+            this.powerGb.TabIndex = 1;
+            this.powerGb.TabStop = false;
+            this.powerGb.Text = "POWER";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(24, 392);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 37;
+            this.button1.Text = "All OFF";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(24, 368);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 36;
+            this.button2.Text = "All ON";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // egiInuPowerCB
+            // 
+            this.egiInuPowerCB.AutoSize = true;
+            this.egiInuPowerCB.Checked = true;
+            this.egiInuPowerCB.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.egiInuPowerCB.Location = new System.Drawing.Point(64, 32);
+            this.egiInuPowerCB.Name = "egiInuPowerCB";
+            this.egiInuPowerCB.Size = new System.Drawing.Size(42, 17);
+            this.egiInuPowerCB.TabIndex = 21;
+            this.egiInuPowerCB.Text = "ON";
+            this.egiInuPowerCB.UseVisualStyleBackColor = true;
+            this.egiInuPowerCB.CheckedChanged += new System.EventHandler(this.egiInuPowerCB_CheckedChanged);
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(40, 100);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(22, 13);
+            this.label31.TabIndex = 20;
+            this.label31.Text = "IFF";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(19, 78);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(43, 13);
+            this.label38.TabIndex = 19;
+            this.label38.Text = "TACAN";
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(34, 144);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(28, 13);
+            this.label40.TabIndex = 17;
+            this.label40.Text = "VU2";
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Location = new System.Drawing.Point(26, 56);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(36, 13);
+            this.label41.TabIndex = 18;
+            this.label41.Text = "CRPA";
+            // 
+            // vu2PowerCB
+            // 
+            this.vu2PowerCB.AutoSize = true;
+            this.vu2PowerCB.Checked = true;
+            this.vu2PowerCB.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.vu2PowerCB.Location = new System.Drawing.Point(64, 142);
+            this.vu2PowerCB.Name = "vu2PowerCB";
+            this.vu2PowerCB.Size = new System.Drawing.Size(42, 17);
+            this.vu2PowerCB.TabIndex = 26;
+            this.vu2PowerCB.Text = "ON";
+            this.vu2PowerCB.UseVisualStyleBackColor = true;
+            this.vu2PowerCB.CheckedChanged += new System.EventHandler(this.vu2PowerCB_CheckedChanged);
+            // 
+            // vu1PowerCB
+            // 
+            this.vu1PowerCB.AutoSize = true;
+            this.vu1PowerCB.Checked = true;
+            this.vu1PowerCB.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.vu1PowerCB.Location = new System.Drawing.Point(64, 120);
+            this.vu1PowerCB.Name = "vu1PowerCB";
+            this.vu1PowerCB.Size = new System.Drawing.Size(42, 17);
+            this.vu1PowerCB.TabIndex = 25;
+            this.vu1PowerCB.Text = "ON";
+            this.vu1PowerCB.UseVisualStyleBackColor = true;
+            this.vu1PowerCB.CheckedChanged += new System.EventHandler(this.vu1PowerCB_CheckedChanged);
+            // 
+            // iffPowerCB
+            // 
+            this.iffPowerCB.AutoSize = true;
+            this.iffPowerCB.Checked = true;
+            this.iffPowerCB.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.iffPowerCB.Location = new System.Drawing.Point(64, 98);
+            this.iffPowerCB.Name = "iffPowerCB";
+            this.iffPowerCB.Size = new System.Drawing.Size(42, 17);
+            this.iffPowerCB.TabIndex = 24;
+            this.iffPowerCB.Text = "ON";
+            this.iffPowerCB.UseVisualStyleBackColor = true;
+            this.iffPowerCB.CheckedChanged += new System.EventHandler(this.iffPowerCB_CheckedChanged);
+            // 
+            // tcnPowerCB
+            // 
+            this.tcnPowerCB.AutoSize = true;
+            this.tcnPowerCB.Checked = true;
+            this.tcnPowerCB.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tcnPowerCB.Location = new System.Drawing.Point(64, 76);
+            this.tcnPowerCB.Name = "tcnPowerCB";
+            this.tcnPowerCB.Size = new System.Drawing.Size(42, 17);
+            this.tcnPowerCB.TabIndex = 23;
+            this.tcnPowerCB.Text = "ON";
+            this.tcnPowerCB.UseVisualStyleBackColor = true;
+            this.tcnPowerCB.CheckedChanged += new System.EventHandler(this.tcnPowerCB_CheckedChanged);
+            // 
+            // CrpaPowerCB
+            // 
+            this.CrpaPowerCB.AutoSize = true;
+            this.CrpaPowerCB.Checked = true;
+            this.CrpaPowerCB.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CrpaPowerCB.Location = new System.Drawing.Point(64, 54);
+            this.CrpaPowerCB.Name = "CrpaPowerCB";
+            this.CrpaPowerCB.Size = new System.Drawing.Size(42, 17);
+            this.CrpaPowerCB.TabIndex = 22;
+            this.CrpaPowerCB.Text = "ON";
+            this.CrpaPowerCB.UseVisualStyleBackColor = true;
+            this.CrpaPowerCB.CheckedChanged += new System.EventHandler(this.Crpa_CheckedChanged);
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.Location = new System.Drawing.Point(34, 122);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(28, 13);
+            this.label49.TabIndex = 3;
+            this.label49.Text = "VU1";
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Location = new System.Drawing.Point(15, 34);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(47, 13);
+            this.label50.TabIndex = 2;
+            this.label50.Text = "EGI INU";
+            // 
             // Controller
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(633, 468);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.EGIgb);
-            this.Controls.Add(this.TACANgb);
+            this.ClientSize = new System.Drawing.Size(593, 507);
+            this.Controls.Add(this.tabControl1);
             this.Name = "Controller";
             this.Text = "Controller";
             this.TACANgb.ResumeLayout(false);
@@ -1099,6 +1326,11 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.navTabPage.ResumeLayout(false);
+            this.powerTabPage.ResumeLayout(false);
+            this.powerGb.ResumeLayout(false);
+            this.powerGb.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1187,5 +1419,23 @@
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.CheckBox EgiGpsEgrGOcb;
         private System.Windows.Forms.CheckBox EgiGpsRpuGOcb;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage navTabPage;
+        private System.Windows.Forms.TabPage powerTabPage;
+        private System.Windows.Forms.GroupBox powerGb;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.CheckBox egiInuPowerCB;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.CheckBox vu2PowerCB;
+        private System.Windows.Forms.CheckBox vu1PowerCB;
+        private System.Windows.Forms.CheckBox iffPowerCB;
+        private System.Windows.Forms.CheckBox tcnPowerCB;
+        private System.Windows.Forms.CheckBox CrpaPowerCB;
+        private System.Windows.Forms.Label label49;
+        private System.Windows.Forms.Label label50;
     }
 }

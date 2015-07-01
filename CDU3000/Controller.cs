@@ -7,7 +7,15 @@ namespace CDU3000
     public partial class Controller : Form
     {
 
-
+        //POWER backing fields
+        #region
+        private string _egiInuPower = "ON";
+        private string _CrpaPower = "ON";
+        private string _tacanPower = "ON";
+        private string _iffPower="ON";
+        private string _vu1Power="ON";
+        private string _vu2Power="ON";
+        #endregion
 
 
         //TACAN backing fields
@@ -32,6 +40,7 @@ namespace CDU3000
 
         //EGI backing fields
         #region MyRegion
+        //EGI STATUS backing fields
         private bool _EGIvalChanged = false;
         private string _EGIsub = "GO";
         private string _EGIcaic = "GO";
@@ -408,93 +417,142 @@ namespace CDU3000
         #region Checkboxes
         private void EgiInuSensRefcb_CheckedChanged(object sender, EventArgs e)
         {
-            if (EgiInuSensRefcb.Checked)
+            if (_egiInuPower == "ON")
             {
-                _EgiInuSensRef = "GO";
+                if (EgiInuSensRefcb.Checked)
+                {
+                    _EgiInuSensRef = "GO";
+                }
+                else
+                {
+                    _EgiInuSensRef = "NGO";
+                    _EgiInuValChanged = true;
+                }
             }
             else
             {
-                _EgiInuSensRef = "NGO";
-                _EgiInuValChanged = true;
+                _EgiInuSensRef = "- - -";
             }
 
         }
 
         private void EgiInuRaccelcb_CheckedChanged(object sender, EventArgs e)
         {
-            if (EgiInuRaccelcb.Checked)
+            if (_egiInuPower == "ON")
             {
-                _EgiInuRaccel = "GO";
+                if (EgiInuRaccelcb.Checked)
+                {
+                    _EgiInuRaccel = "GO";
+                }
+                else
+                {
+                    _EgiInuRaccel = "NGO";
+                    _EgiInuValChanged = true;
+                }
             }
             else
             {
-                _EgiInuRaccel = "NGO";
-                _EgiInuValChanged = true;
+                _EgiInuRaccel = "- - -";
             }
         }
 
         private void EgiInuSaccelcb_CheckedChanged(object sender, EventArgs e)
         {
-            if (EgiInuSaccelcb.Checked)
+            if (_egiInuPower == "ON")
             {
-                _EgiInuSaccel = "GO";
+                if (EgiInuSaccelcb.Checked)
+                {
+                    _EgiInuSaccel = "GO";
+                }
+                else
+                {
+                    _EgiInuSaccel = "NGO";
+                    _EgiInuValChanged = true;
+                } 
             }
             else
             {
-                _EgiInuSaccel = "NGO";
-                _EgiInuValChanged = true;
+                _EgiInuSaccel = "- - -";            
             }
         }
 
         private void EgiInuTaccelcb_CheckedChanged(object sender, EventArgs e)
         {
-            if (EgiInuTaccelcb.Checked)
+            if (_egiInuPower == "ON")
             {
-                _EgiInuTaccel = "GO";
+                if (EgiInuTaccelcb.Checked)
+                {
+                    _EgiInuTaccel = "GO";
+                }
+                else
+                {
+                    _EgiInuTaccel = "NGO";
+                    _EgiInuValChanged = true;
+                }
             }
             else
             {
-                _EgiInuTaccel = "NGO";
-                _EgiInuValChanged = true;
+                _EgiInuTaccel = "- - -";
             }
         }
 
         private void EgiInuUgyrocb_CheckedChanged(object sender, EventArgs e)
         {
-            if (EgiInuUgyrocb.Checked)
+            if (_egiInuPower == "ON")
             {
-                _EgiInuUgyro = "GO";
+                if (EgiInuUgyrocb.Checked)
+                {
+                    _EgiInuUgyro = "GO";
+                }
+                else
+                {
+                    _EgiInuUgyro = "NGO";
+                    _EgiInuValChanged = true;
+                }
             }
             else
             {
-                _EgiInuUgyro = "NGO";
-                _EgiInuValChanged = true;
+                _EgiInuUgyro = "- - -";
             }
         }
 
         private void EgiInuVgyrocb_CheckedChanged(object sender, EventArgs e)
         {
-            if (EgiInuVgyrocb.Checked)
+            if (_egiInuPower == "ON")
             {
-                _EgiInuVgyro = "GO";
+                if (EgiInuVgyrocb.Checked)
+                {
+                    _EgiInuVgyro = "GO";
+                }
+                else
+                {
+                    _EgiInuVgyro = "NGO";
+                    _EgiInuValChanged = true;
+                }
             }
             else
             {
-                _EgiInuVgyro = "NGO";
-                _EgiInuValChanged = true;
+                _EgiInuVgyro = "- - -";
             }
         }
 
         private void EgiInuWgyrocb_CheckedChanged(object sender, EventArgs e)
         {
-            if (EgiInuWgyrocb.Checked)
+            if (_egiInuPower == "ON")
             {
-                _EgiInuWgyro = "GO";
+                if (EgiInuWgyrocb.Checked)
+                {
+                    _EgiInuWgyro = "GO";
+                }
+                else
+                {
+                    _EgiInuWgyro = "NGO";
+                    _EgiInuValChanged = true;
+                }
             }
             else
             {
-                _EgiInuWgyro = "NGO";
-                _EgiInuValChanged = true;
+                _EgiInuWgyro = "- - -";
             }
         }
 
@@ -570,40 +628,61 @@ namespace CDU3000
 
         private void EgiGpsBatteryGOcb_CheckedChanged(object sender, EventArgs e)
         {
-            if (EgiGpsBatteryGOcb.Checked)
+            if (_egiInuPower == "ON")
             {
-                _EgiGpsBattery = "GO";
+                if (EgiGpsBatteryGOcb.Checked)
+                {
+                    _EgiGpsBattery = "GO";
+                }
+                else
+                {
+                    _EgiGpsBattery = "NGO";
+                    _EgiGpsValChanged = true;
+                }
             }
             else
             {
-                _EgiGpsBattery = "NGO";
-                _EgiGpsValChanged = true;
+                _EgiGpsBattery = "- - -";
             }
         }
 
         private void EgiGpsRpuGOcb_CheckedChanged(object sender, EventArgs e)
         {
-            if (EgiGpsRpuGOcb.Checked)
+            if (_egiInuPower == "ON")
             {
-                _EgiGpsRpu = "GO";
+                if (EgiGpsRpuGOcb.Checked)
+                {
+                    _EgiGpsRpu = "GO";
+                }
+                else
+                {
+                    _EgiGpsRpu = "NGO";
+                    _EgiGpsValChanged = true;
+                }
             }
             else
             {
-                _EgiGpsRpu = "NGO";
-                _EgiGpsValChanged = true;
+                _EgiGpsRpu = "- - -";
             }
         }
 
         private void EgiGpsEgrGOcb_CheckedChanged(object sender, EventArgs e)
         {
-            if (EgiGpsEgrGOcb.Checked)
+            if (_egiInuPower == "ON")
             {
-                _EgiGpsEgr = "GO";
+                if (EgiGpsEgrGOcb.Checked)
+                {
+                    _EgiGpsEgr = "GO";
+                }
+                else
+                {
+                    _EgiGpsEgr = "NGO";
+                    _EgiGpsValChanged = true;
+                }
             }
             else
             {
-                _EgiGpsEgr = "NGO";
-                _EgiGpsValChanged = true;
+                _EgiGpsEgr = "- - -";
             }
         }
 
@@ -619,6 +698,159 @@ namespace CDU3000
             EgiGpsEgrGOcb.Checked = false;
             EgiGpsRpuGOcb.Checked = false;
             EgiGpsBatteryGOcb.Checked = false;
+        }
+
+        #endregion
+
+        //POWER
+
+        #region Accessors
+
+        public string EgiInuPower
+        {
+            get
+            {
+                return _egiInuPower;
+            }
+        }
+
+        public string CRPAPower
+        {
+            get
+            {
+                return _CrpaPower; ;
+            }
+        }
+
+        public string TacanPower
+        {
+            get
+            {
+                return _tacanPower;
+            }
+        }
+
+        public string IffPower
+        {
+            get
+            {
+                return _iffPower;
+            }
+        }
+
+        public string VU1Power
+        {
+            get
+            {
+                return _vu1Power;
+            }
+        }
+
+        public string VU2Power
+        {
+            get
+            {
+                return _vu2Power;
+            }
+        }
+
+        #endregion
+
+        #region Checkboxes
+
+        private void egiInuPowerCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (egiInuPowerCB.Checked == true)
+            {
+                _egiInuPower = "ON";
+                EgiInuAllGObtn_Click (null, null);
+                EgiAllGobtn_Click (null, null);
+                EgiGpsAllGObtn_Click (null, null);
+                
+
+            }
+            else
+            {
+                _egiInuPower = "OFF";
+
+                EgiInuAllNGObtn_Click (null, null);
+                EgiAllNGObtn_Click (null, null);
+                EgiGpsAllNGObtn_Click (null, null);
+
+               
+                _EGIsub = "- - -";
+                _EGIcaic = "- - -";
+                _EGIinu = "- - -";
+                _EGI1553  = "NGO-T";
+                _EGItrm   = "- - -";
+                _EGIieTempc = "- - -";
+                _EGIio = "- - -";
+                _EGIpwr = "- - -";
+                _EGIproc = "- - -";
+                _EGIgps = "- - -";
+                _EgiInuSensRef = "- - -";
+                _EgiInuRaccel = "- - -";
+                _EgiInuSaccel = "- - -";
+                _EgiInuTaccel = "- - -";
+                _EgiInuUgyro = "- - -";
+                _EgiInuVgyro = "- - -";
+                _EgiInuWgyro = "- - -";
+
+
+            }
+        }
+
+        private void Crpa_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CrpaPowerCB.Checked == true)
+            {
+                _CrpaPower = "ON";
+            }
+            else
+            {
+                _CrpaPower = "OFF";
+            }
+        }
+
+        private void tcnPowerCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (tcnPowerCB.Checked == true)
+            {
+                _tacanPower = "ON";
+            }
+            else
+            {
+                _tacanPower = "OFF";
+            }
+        }
+
+        private void iffPowerCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (iffPowerCB.Checked == true)
+            {
+                _iffPower = "ON";
+            }
+            else
+            {
+                _iffPower = "OFF";
+            }
+        }
+
+        private void vu1PowerCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (vu1PowerCB.Checked == true)
+            {
+                _vu1Power = "ON";
+            }
+            else
+            {
+                _vu1Power = "OFF";
+            }
+        }
+
+        private void vu2PowerCB_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
 
         #endregion
@@ -1020,8 +1252,9 @@ namespace CDU3000
         public Controller( )
         {
             InitializeComponent ( );
-
         }
+
+        
 
         
 
