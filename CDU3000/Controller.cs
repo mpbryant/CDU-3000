@@ -718,7 +718,7 @@ namespace CDU3000
         {
             get
             {
-                return _CrpaPower; ;
+                return _CrpaPower; 
             }
         }
 
@@ -851,6 +851,20 @@ namespace CDU3000
         private void vu2PowerCB_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        #endregion
+
+        //REVISONARY PANEL
+
+        #region ACCESSORS
+
+        public bool  IFFselected
+        {
+            get
+            {
+                return IFFselectBtn.Checked;
+            }
         }
 
         #endregion

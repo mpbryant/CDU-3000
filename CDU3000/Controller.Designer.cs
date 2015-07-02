@@ -128,6 +128,11 @@
             this.CrpaPowerCB = new System.Windows.Forms.CheckBox();
             this.label49 = new System.Windows.Forms.Label();
             this.label50 = new System.Windows.Forms.Label();
+            this.revTabPage = new System.Windows.Forms.TabPage();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.IFFselectBtn = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.TACANgb.SuspendLayout();
             this.EGIgb.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -136,6 +141,8 @@
             this.navTabPage.SuspendLayout();
             this.powerTabPage.SuspendLayout();
             this.powerGb.SuspendLayout();
+            this.revTabPage.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // TACANgb
@@ -1106,6 +1113,7 @@
             // 
             this.tabControl1.Controls.Add(this.navTabPage);
             this.tabControl1.Controls.Add(this.powerTabPage);
+            this.tabControl1.Controls.Add(this.revTabPage);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -1134,7 +1142,7 @@
             this.powerTabPage.Padding = new System.Windows.Forms.Padding(3);
             this.powerTabPage.Size = new System.Drawing.Size(562, 457);
             this.powerTabPage.TabIndex = 1;
-            this.powerTabPage.Text = "Power";
+            this.powerTabPage.Text = "Mission Power Switches";
             this.powerTabPage.UseVisualStyleBackColor = true;
             // 
             // powerGb
@@ -1310,6 +1318,61 @@
             this.label50.TabIndex = 2;
             this.label50.Text = "EGI INU";
             // 
+            // revTabPage
+            // 
+            this.revTabPage.Controls.Add(this.groupBox3);
+            this.revTabPage.Location = new System.Drawing.Point(4, 22);
+            this.revTabPage.Name = "revTabPage";
+            this.revTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.revTabPage.Size = new System.Drawing.Size(562, 457);
+            this.revTabPage.TabIndex = 2;
+            this.revTabPage.Text = "Revisionary Panel";
+            this.revTabPage.UseVisualStyleBackColor = true;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.radioButton3);
+            this.groupBox3.Controls.Add(this.radioButton2);
+            this.groupBox3.Controls.Add(this.IFFselectBtn);
+            this.groupBox3.Location = new System.Drawing.Point(217, 16);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(128, 79);
+            this.groupBox3.TabIndex = 2;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "IFF/ATC";
+            // 
+            // IFFselectBtn
+            // 
+            this.IFFselectBtn.AutoSize = true;
+            this.IFFselectBtn.Checked = true;
+            this.IFFselectBtn.Location = new System.Drawing.Point(19, 16);
+            this.IFFselectBtn.Name = "IFFselectBtn";
+            this.IFFselectBtn.Size = new System.Drawing.Size(40, 17);
+            this.IFFselectBtn.TabIndex = 0;
+            this.IFFselectBtn.TabStop = true;
+            this.IFFselectBtn.Text = "IFF";
+            this.IFFselectBtn.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(19, 33);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(46, 17);
+            this.radioButton2.TabIndex = 1;
+            this.radioButton2.Text = "ATC";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(19, 50);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(76, 17);
+            this.radioButton3.TabIndex = 2;
+            this.radioButton3.Text = "STANDBY";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
             // Controller
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1331,6 +1394,9 @@
             this.powerTabPage.ResumeLayout(false);
             this.powerGb.ResumeLayout(false);
             this.powerGb.PerformLayout();
+            this.revTabPage.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1437,5 +1503,10 @@
         private System.Windows.Forms.CheckBox CrpaPowerCB;
         private System.Windows.Forms.Label label49;
         private System.Windows.Forms.Label label50;
+        private System.Windows.Forms.TabPage revTabPage;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton IFFselectBtn;
     }
 }

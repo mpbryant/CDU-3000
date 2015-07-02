@@ -1883,6 +1883,7 @@
             this.Name = "CDU3000";
             this.Text = "CDU-3000";
             this.Activated += new System.EventHandler(this.InitialPageLoad);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CDU3000_FormClosing);
             this.LocationChanged += new System.EventHandler(this.CDU3000_LocationChanged);
             this.StyleChanged += new System.EventHandler(this.CDU3000_StyleChanged);
             this.ResumeLayout(false);
