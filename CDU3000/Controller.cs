@@ -12,9 +12,9 @@ namespace CDU3000
         private string _egiInuPower = "ON";
         private string _CrpaPower = "ON";
         private string _tacanPower = "ON";
-        private string _iffPower="ON";
-        private string _vu1Power="ON";
-        private string _vu2Power="ON";
+        private string _iffPower = "ON";
+        private string _vu1Power = "ON";
+        private string _vu2Power = "ON";
         #endregion
 
 
@@ -69,6 +69,22 @@ namespace CDU3000
         private string _EgiGpsRpu = "GO";
         private string _EgiGpsEgr = "GO";
 
+        #endregion
+
+        //HF1 backing fields
+        #region MyRegion
+        private bool _HF1valueChanged;
+        private string _HF11553 = "GO";
+        private string _HF1ampl = "GO";
+        private string _HF1hitemp = "GO";
+        private string _HF1cplr = "GO";
+        private string _HF1eqpt = "GO";
+        private string _HF1rcvOvrld = "GO";
+        private string _HF1rt = "GO";
+        private string _HF1vswr = "GO";
+        private string _HF1tune = "GO";
+        private string _HF1ovrvlt = "GO";
+        private string _HF1fiber = "GO";
         #endregion
 
 
@@ -468,11 +484,11 @@ namespace CDU3000
                 {
                     _EgiInuSaccel = "NGO";
                     _EgiInuValChanged = true;
-                } 
+                }
             }
             else
             {
-                _EgiInuSaccel = "- - -";            
+                _EgiInuSaccel = "- - -";
             }
         }
 
@@ -690,7 +706,7 @@ namespace CDU3000
         {
             EgiGpsEgrGOcb.Checked = true;
             EgiGpsRpuGOcb.Checked = true;
-            EgiGpsBatteryGOcb.Checked = true;            
+            EgiGpsBatteryGOcb.Checked = true;
         }
 
         private void EgiGpsAllNGObtn_Click(object sender, EventArgs e)
@@ -700,6 +716,290 @@ namespace CDU3000
             EgiGpsBatteryGOcb.Checked = false;
         }
 
+        #endregion
+
+        //HF1
+
+        #region Accessors
+        public bool HF1ValueChanged
+        {
+            get
+            {
+                return _HF1valueChanged; ;
+            }
+
+            set
+            {
+                _HF1valueChanged = false;
+            }
+        }
+
+        public string HF11553
+        {
+            get
+            {
+                return _HF11553;
+            }
+        }
+
+        public string HF1Ampl
+        {
+            get
+            {
+                return _HF1ampl;
+            }
+        }
+
+        public string HF1HiTemp
+        {
+            get
+            {
+                return _HF1hitemp;
+            }
+        }
+
+        public string HF1Cplr
+        {
+            get
+            {
+                return _HF1cplr;
+            }
+        }
+
+        public string HF1Eqpt
+        {
+            get
+            {
+                return _HF1eqpt;
+            }
+        }
+
+        public string HF1RcvOvrld
+        {
+            get
+            {
+                return _HF1rcvOvrld;
+            }
+        }
+
+        public string HF1RT
+        {
+            get
+            {
+                return _HF1rt;
+            }
+        }
+
+        public string HF1VSWR
+        {
+            get
+            {
+                return _HF1vswr;
+            }
+        }
+
+        public string HF1Tune
+        {
+            get
+            {
+                return _HF1tune;
+            }
+        }
+
+        public string HF1OverVlt
+        {
+            get
+            {
+                return _HF1ovrvlt;
+            }
+        }
+
+        public string HF1Fiber
+        {
+            get
+            {
+                return _HF1fiber ;
+            }
+        }
+
+
+        #endregion
+
+        #region Checkboxes
+        private void HF1amplCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (HF1amplCB.Checked)
+            {
+                _HF1ampl = "GO";
+            }
+            else
+            {
+                _HF1ampl = "NGO";
+                _HF1valueChanged = true;
+            }
+        }
+
+        private void HF1hitempCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (HF1hitempCB.Checked)
+            {
+                _HF1hitemp = "GO";
+            }
+            else
+            {
+                _HF1hitemp = "NGO";
+                _HF1valueChanged = true;
+            }
+        }
+
+        private void HF1cplrCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (HF1cplrCB.Checked)
+            {
+                _HF1cplr = "GO";
+            }
+            else
+            {
+                _HF1cplr = "NGO";
+                _HF1valueChanged = true;
+            }
+        }
+
+        private void HF1eqptCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (HF1eqptCB.Checked)
+            {
+                _HF1eqpt = "GO";
+            }
+            else
+            {
+                _HF1eqpt = "NGO";
+                _HF1valueChanged = true;
+            }
+        }
+
+        private void HF11553CB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (HF11553CB.Checked)
+            {
+                _HF11553 = "GO";
+            }
+            else
+            {
+                _HF11553 = "NGO";
+                _HF1valueChanged = true;
+            }
+        }
+
+        private void HF1rcvOvrldCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (HF1rcvOvrldCB.Checked)
+            {
+                _HF1rcvOvrld = "GO";
+            }
+            else
+            {
+                _HF1rcvOvrld = "NGO";
+                _HF1valueChanged = true;
+            }
+        }
+
+        private void HF1rtCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (HF1rtCB.Checked)
+            {
+                _HF1rt = "GO";
+            }
+            else
+            {
+                _HF1rt = "NGO";
+                _HF1valueChanged = true;
+            }
+        }
+
+        private void HF1vswrCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (HF1vswrCB.Checked)
+            {
+                _HF1vswr = "GO";
+            }
+            else
+            {
+                _HF1vswr = "NGO";
+                _HF1valueChanged = true;
+            }
+        }
+
+        private void HF1tuneCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (HF1tuneCB.Checked)
+            {
+                _HF1tune = "GO";
+            }
+            else
+            {
+                _HF1tune = "NGO";
+                _HF1valueChanged = true;
+            }
+        }
+
+        private void HF1overvltCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (HF1overvltCB.Checked)
+            {
+                _HF1ovrvlt = "GO";
+            }
+            else
+            {
+                _HF1ovrvlt = "NGO";
+                _HF1valueChanged = true;
+            }
+        }
+
+        private void HF1fiberCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (HF1fiberCB.Checked)
+            {
+                _HF1fiber = "GO";
+            }
+            else
+            {
+                _HF1fiber = "NGO";
+                _HF1valueChanged = true;
+            }
+        }
+
+        private void HF1allGoBtn_Click(object sender, EventArgs e)
+        {
+            HF11553CB.Checked = true;
+            HF1amplCB.Checked = true;
+            HF1hitempCB.Checked = true;
+            HF1cplrCB.Checked = true;
+            HF1eqptCB.Checked = true;
+            HF1rcvOvrldCB.Checked = true;
+            HF1rtCB.Checked = true;
+            HF1vswrCB.Checked = true;
+            HF1tuneCB.Checked = true;
+            HF1overvltCB.Checked = true;
+            HF1fiberCB.Checked = true;
+            _HF1valueChanged = true;
+        }
+
+        private void HF1AllNgoBtn_Click(object sender, EventArgs e)
+        {
+            HF11553CB.Checked = false;
+            HF1amplCB.Checked = false;
+            HF1hitempCB.Checked = false;
+            HF1cplrCB.Checked = false;
+            HF1eqptCB.Checked = false;
+            HF1rcvOvrldCB.Checked = false;
+            HF1rtCB.Checked = false;
+            HF1vswrCB.Checked = false;
+            HF1tuneCB.Checked = false;
+            HF1overvltCB.Checked = false;
+            HF1fiberCB.Checked = false;
+            _HF1valueChanged = true;
+        }
         #endregion
 
         //POWER
@@ -718,7 +1018,7 @@ namespace CDU3000
         {
             get
             {
-                return _CrpaPower; 
+                return _CrpaPower;
             }
         }
 
@@ -766,7 +1066,7 @@ namespace CDU3000
                 EgiInuAllGObtn_Click (null, null);
                 EgiAllGobtn_Click (null, null);
                 EgiGpsAllGObtn_Click (null, null);
-                
+
 
             }
             else
@@ -777,12 +1077,12 @@ namespace CDU3000
                 EgiAllNGObtn_Click (null, null);
                 EgiGpsAllNGObtn_Click (null, null);
 
-               
+
                 _EGIsub = "- - -";
                 _EGIcaic = "- - -";
                 _EGIinu = "- - -";
-                _EGI1553  = "NGO-T";
-                _EGItrm   = "- - -";
+                _EGI1553 = "NGO-T";
+                _EGItrm = "- - -";
                 _EGIieTempc = "- - -";
                 _EGIio = "- - -";
                 _EGIpwr = "- - -";
@@ -859,7 +1159,7 @@ namespace CDU3000
 
         #region ACCESSORS
 
-        public bool  IFFselected
+        public bool IFFselected
         {
             get
             {
@@ -1268,9 +1568,13 @@ namespace CDU3000
             InitializeComponent ( );
         }
 
-        
 
-        
+
+
+
+
+
+
 
 
 

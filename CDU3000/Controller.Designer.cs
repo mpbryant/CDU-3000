@@ -130,9 +130,35 @@
             this.label50 = new System.Windows.Forms.Label();
             this.revTabPage = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.IFFselectBtn = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.IFFselectBtn = new System.Windows.Forms.RadioButton();
+            this.CommsTab = new System.Windows.Forms.TabPage();
+            this.HfGB = new System.Windows.Forms.GroupBox();
+            this.HF1AllNgoBtn = new System.Windows.Forms.Button();
+            this.HF1allGoBtn = new System.Windows.Forms.Button();
+            this.HF1amplCB = new System.Windows.Forms.CheckBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label42 = new System.Windows.Forms.Label();
+            this.HF1fiberCB = new System.Windows.Forms.CheckBox();
+            this.label44 = new System.Windows.Forms.Label();
+            this.HF1overvltCB = new System.Windows.Forms.CheckBox();
+            this.label45 = new System.Windows.Forms.Label();
+            this.HF1tuneCB = new System.Windows.Forms.CheckBox();
+            this.HF1vswrCB = new System.Windows.Forms.CheckBox();
+            this.HF1rtCB = new System.Windows.Forms.CheckBox();
+            this.label48 = new System.Windows.Forms.Label();
+            this.HF1rcvOvrldCB = new System.Windows.Forms.CheckBox();
+            this.label51 = new System.Windows.Forms.Label();
+            this.HF11553CB = new System.Windows.Forms.CheckBox();
+            this.label52 = new System.Windows.Forms.Label();
+            this.HF1eqptCB = new System.Windows.Forms.CheckBox();
+            this.label53 = new System.Windows.Forms.Label();
+            this.HF1cplrCB = new System.Windows.Forms.CheckBox();
+            this.label54 = new System.Windows.Forms.Label();
+            this.HF1hitempCB = new System.Windows.Forms.CheckBox();
+            this.label55 = new System.Windows.Forms.Label();
+            this.label56 = new System.Windows.Forms.Label();
             this.TACANgb.SuspendLayout();
             this.EGIgb.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -143,6 +169,8 @@
             this.powerGb.SuspendLayout();
             this.revTabPage.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.CommsTab.SuspendLayout();
+            this.HfGB.SuspendLayout();
             this.SuspendLayout();
             // 
             // TACANgb
@@ -1114,6 +1142,7 @@
             this.tabControl1.Controls.Add(this.navTabPage);
             this.tabControl1.Controls.Add(this.powerTabPage);
             this.tabControl1.Controls.Add(this.revTabPage);
+            this.tabControl1.Controls.Add(this.CommsTab);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -1341,6 +1370,26 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "IFF/ATC";
             // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(19, 50);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(76, 17);
+            this.radioButton3.TabIndex = 2;
+            this.radioButton3.Text = "STANDBY";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(19, 33);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(46, 17);
+            this.radioButton2.TabIndex = 1;
+            this.radioButton2.Text = "ATC";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
             // IFFselectBtn
             // 
             this.IFFselectBtn.AutoSize = true;
@@ -1353,25 +1402,312 @@
             this.IFFselectBtn.Text = "IFF";
             this.IFFselectBtn.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // CommsTab
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(19, 33);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(46, 17);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.Text = "ATC";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.CommsTab.Controls.Add(this.HfGB);
+            this.CommsTab.Location = new System.Drawing.Point(4, 22);
+            this.CommsTab.Name = "CommsTab";
+            this.CommsTab.Padding = new System.Windows.Forms.Padding(3);
+            this.CommsTab.Size = new System.Drawing.Size(562, 457);
+            this.CommsTab.TabIndex = 3;
+            this.CommsTab.Text = "Communications";
+            this.CommsTab.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // HfGB
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(19, 50);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(76, 17);
-            this.radioButton3.TabIndex = 2;
-            this.radioButton3.Text = "STANDBY";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.HfGB.Controls.Add(this.HF1AllNgoBtn);
+            this.HfGB.Controls.Add(this.HF1allGoBtn);
+            this.HfGB.Controls.Add(this.HF1amplCB);
+            this.HfGB.Controls.Add(this.label32);
+            this.HfGB.Controls.Add(this.label42);
+            this.HfGB.Controls.Add(this.HF1fiberCB);
+            this.HfGB.Controls.Add(this.label44);
+            this.HfGB.Controls.Add(this.HF1overvltCB);
+            this.HfGB.Controls.Add(this.label45);
+            this.HfGB.Controls.Add(this.HF1tuneCB);
+            this.HfGB.Controls.Add(this.HF1vswrCB);
+            this.HfGB.Controls.Add(this.HF1rtCB);
+            this.HfGB.Controls.Add(this.label48);
+            this.HfGB.Controls.Add(this.HF1rcvOvrldCB);
+            this.HfGB.Controls.Add(this.label51);
+            this.HfGB.Controls.Add(this.HF11553CB);
+            this.HfGB.Controls.Add(this.label52);
+            this.HfGB.Controls.Add(this.HF1eqptCB);
+            this.HfGB.Controls.Add(this.label53);
+            this.HfGB.Controls.Add(this.HF1cplrCB);
+            this.HfGB.Controls.Add(this.label54);
+            this.HfGB.Controls.Add(this.HF1hitempCB);
+            this.HfGB.Controls.Add(this.label55);
+            this.HfGB.Controls.Add(this.label56);
+            this.HfGB.Location = new System.Drawing.Point(6, 15);
+            this.HfGB.Name = "HfGB";
+            this.HfGB.Size = new System.Drawing.Size(128, 424);
+            this.HfGB.TabIndex = 1;
+            this.HfGB.TabStop = false;
+            this.HfGB.Text = "HF1 STATUS";
+            // 
+            // HF1AllNgoBtn
+            // 
+            this.HF1AllNgoBtn.Location = new System.Drawing.Point(24, 392);
+            this.HF1AllNgoBtn.Name = "HF1AllNgoBtn";
+            this.HF1AllNgoBtn.Size = new System.Drawing.Size(75, 23);
+            this.HF1AllNgoBtn.TabIndex = 37;
+            this.HF1AllNgoBtn.Text = "All NGO";
+            this.HF1AllNgoBtn.UseVisualStyleBackColor = true;
+            this.HF1AllNgoBtn.Click += new System.EventHandler(this.HF1AllNgoBtn_Click);
+            // 
+            // HF1allGoBtn
+            // 
+            this.HF1allGoBtn.Location = new System.Drawing.Point(24, 368);
+            this.HF1allGoBtn.Name = "HF1allGoBtn";
+            this.HF1allGoBtn.Size = new System.Drawing.Size(75, 23);
+            this.HF1allGoBtn.TabIndex = 36;
+            this.HF1allGoBtn.Text = "All GO";
+            this.HF1allGoBtn.UseVisualStyleBackColor = true;
+            this.HF1allGoBtn.Click += new System.EventHandler(this.HF1allGoBtn_Click);
+            // 
+            // HF1amplCB
+            // 
+            this.HF1amplCB.AutoSize = true;
+            this.HF1amplCB.Checked = true;
+            this.HF1amplCB.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.HF1amplCB.Location = new System.Drawing.Point(76, 32);
+            this.HF1amplCB.Name = "HF1amplCB";
+            this.HF1amplCB.Size = new System.Drawing.Size(42, 17);
+            this.HF1amplCB.TabIndex = 21;
+            this.HF1amplCB.Text = "GO";
+            this.HF1amplCB.UseVisualStyleBackColor = true;
+            this.HF1amplCB.CheckedChanged += new System.EventHandler(this.HF1amplCB_CheckedChanged);
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(6, 100);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(36, 13);
+            this.label32.TabIndex = 20;
+            this.label32.Text = "EQPT";
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Location = new System.Drawing.Point(6, 78);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(35, 13);
+            this.label42.TabIndex = 19;
+            this.label42.Text = "CPLR";
+            // 
+            // HF1fiberCB
+            // 
+            this.HF1fiberCB.AutoSize = true;
+            this.HF1fiberCB.Checked = true;
+            this.HF1fiberCB.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.HF1fiberCB.Location = new System.Drawing.Point(76, 252);
+            this.HF1fiberCB.Name = "HF1fiberCB";
+            this.HF1fiberCB.Size = new System.Drawing.Size(42, 17);
+            this.HF1fiberCB.TabIndex = 31;
+            this.HF1fiberCB.Text = "GO";
+            this.HF1fiberCB.UseVisualStyleBackColor = true;
+            this.HF1fiberCB.CheckedChanged += new System.EventHandler(this.HF1fiberCB_CheckedChanged);
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Location = new System.Drawing.Point(6, 144);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(69, 13);
+            this.label44.TabIndex = 17;
+            this.label44.Text = "RCV-OVRLD";
+            // 
+            // HF1overvltCB
+            // 
+            this.HF1overvltCB.AutoSize = true;
+            this.HF1overvltCB.Checked = true;
+            this.HF1overvltCB.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.HF1overvltCB.Location = new System.Drawing.Point(76, 230);
+            this.HF1overvltCB.Name = "HF1overvltCB";
+            this.HF1overvltCB.Size = new System.Drawing.Size(42, 17);
+            this.HF1overvltCB.TabIndex = 30;
+            this.HF1overvltCB.Text = "GO";
+            this.HF1overvltCB.UseVisualStyleBackColor = true;
+            this.HF1overvltCB.CheckedChanged += new System.EventHandler(this.HF1overvltCB_CheckedChanged);
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Location = new System.Drawing.Point(6, 56);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(48, 13);
+            this.label45.TabIndex = 18;
+            this.label45.Text = "HITEMP";
+            this.label45.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // HF1tuneCB
+            // 
+            this.HF1tuneCB.AutoSize = true;
+            this.HF1tuneCB.Checked = true;
+            this.HF1tuneCB.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.HF1tuneCB.Location = new System.Drawing.Point(76, 208);
+            this.HF1tuneCB.Name = "HF1tuneCB";
+            this.HF1tuneCB.Size = new System.Drawing.Size(42, 17);
+            this.HF1tuneCB.TabIndex = 29;
+            this.HF1tuneCB.Text = "GO";
+            this.HF1tuneCB.UseVisualStyleBackColor = true;
+            this.HF1tuneCB.CheckedChanged += new System.EventHandler(this.HF1tuneCB_CheckedChanged);
+            // 
+            // HF1vswrCB
+            // 
+            this.HF1vswrCB.AutoSize = true;
+            this.HF1vswrCB.Checked = true;
+            this.HF1vswrCB.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.HF1vswrCB.Location = new System.Drawing.Point(76, 186);
+            this.HF1vswrCB.Name = "HF1vswrCB";
+            this.HF1vswrCB.Size = new System.Drawing.Size(42, 17);
+            this.HF1vswrCB.TabIndex = 28;
+            this.HF1vswrCB.Text = "GO";
+            this.HF1vswrCB.UseVisualStyleBackColor = true;
+            this.HF1vswrCB.CheckedChanged += new System.EventHandler(this.HF1vswrCB_CheckedChanged);
+            // 
+            // HF1rtCB
+            // 
+            this.HF1rtCB.AutoSize = true;
+            this.HF1rtCB.Checked = true;
+            this.HF1rtCB.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.HF1rtCB.Location = new System.Drawing.Point(76, 164);
+            this.HF1rtCB.Name = "HF1rtCB";
+            this.HF1rtCB.Size = new System.Drawing.Size(42, 17);
+            this.HF1rtCB.TabIndex = 27;
+            this.HF1rtCB.Text = "GO";
+            this.HF1rtCB.UseVisualStyleBackColor = true;
+            this.HF1rtCB.CheckedChanged += new System.EventHandler(this.HF1rtCB_CheckedChanged);
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Location = new System.Drawing.Point(6, 254);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(38, 13);
+            this.label48.TabIndex = 8;
+            this.label48.Text = "FIBER";
+            // 
+            // HF1rcvOvrldCB
+            // 
+            this.HF1rcvOvrldCB.AutoSize = true;
+            this.HF1rcvOvrldCB.Checked = true;
+            this.HF1rcvOvrldCB.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.HF1rcvOvrldCB.Location = new System.Drawing.Point(76, 142);
+            this.HF1rcvOvrldCB.Name = "HF1rcvOvrldCB";
+            this.HF1rcvOvrldCB.Size = new System.Drawing.Size(42, 17);
+            this.HF1rcvOvrldCB.TabIndex = 26;
+            this.HF1rcvOvrldCB.Text = "GO";
+            this.HF1rcvOvrldCB.UseVisualStyleBackColor = true;
+            this.HF1rcvOvrldCB.CheckedChanged += new System.EventHandler(this.HF1rcvOvrldCB_CheckedChanged);
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.Location = new System.Drawing.Point(6, 232);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(50, 13);
+            this.label51.TabIndex = 7;
+            this.label51.Text = "OVRVLT";
+            // 
+            // HF11553CB
+            // 
+            this.HF11553CB.AutoSize = true;
+            this.HF11553CB.Checked = true;
+            this.HF11553CB.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.HF11553CB.Location = new System.Drawing.Point(76, 120);
+            this.HF11553CB.Name = "HF11553CB";
+            this.HF11553CB.Size = new System.Drawing.Size(42, 17);
+            this.HF11553CB.TabIndex = 25;
+            this.HF11553CB.Text = "GO";
+            this.HF11553CB.UseVisualStyleBackColor = true;
+            this.HF11553CB.CheckedChanged += new System.EventHandler(this.HF11553CB_CheckedChanged);
+            // 
+            // label52
+            // 
+            this.label52.AutoSize = true;
+            this.label52.Location = new System.Drawing.Point(6, 210);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(37, 13);
+            this.label52.TabIndex = 6;
+            this.label52.Text = "TUNE";
+            // 
+            // HF1eqptCB
+            // 
+            this.HF1eqptCB.AutoSize = true;
+            this.HF1eqptCB.Checked = true;
+            this.HF1eqptCB.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.HF1eqptCB.Location = new System.Drawing.Point(76, 98);
+            this.HF1eqptCB.Name = "HF1eqptCB";
+            this.HF1eqptCB.Size = new System.Drawing.Size(42, 17);
+            this.HF1eqptCB.TabIndex = 24;
+            this.HF1eqptCB.Text = "GO";
+            this.HF1eqptCB.UseVisualStyleBackColor = true;
+            this.HF1eqptCB.CheckedChanged += new System.EventHandler(this.HF1eqptCB_CheckedChanged);
+            // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.Location = new System.Drawing.Point(6, 188);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(40, 13);
+            this.label53.TabIndex = 5;
+            this.label53.Text = "VSWR";
+            // 
+            // HF1cplrCB
+            // 
+            this.HF1cplrCB.AutoSize = true;
+            this.HF1cplrCB.Checked = true;
+            this.HF1cplrCB.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.HF1cplrCB.Location = new System.Drawing.Point(76, 76);
+            this.HF1cplrCB.Name = "HF1cplrCB";
+            this.HF1cplrCB.Size = new System.Drawing.Size(42, 17);
+            this.HF1cplrCB.TabIndex = 23;
+            this.HF1cplrCB.Text = "GO";
+            this.HF1cplrCB.UseVisualStyleBackColor = true;
+            this.HF1cplrCB.CheckedChanged += new System.EventHandler(this.HF1cplrCB_CheckedChanged);
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Location = new System.Drawing.Point(6, 166);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(22, 13);
+            this.label54.TabIndex = 4;
+            this.label54.Text = "RT";
+            // 
+            // HF1hitempCB
+            // 
+            this.HF1hitempCB.AutoSize = true;
+            this.HF1hitempCB.Checked = true;
+            this.HF1hitempCB.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.HF1hitempCB.Location = new System.Drawing.Point(76, 54);
+            this.HF1hitempCB.Name = "HF1hitempCB";
+            this.HF1hitempCB.Size = new System.Drawing.Size(42, 17);
+            this.HF1hitempCB.TabIndex = 22;
+            this.HF1hitempCB.Text = "GO";
+            this.HF1hitempCB.UseVisualStyleBackColor = true;
+            this.HF1hitempCB.CheckedChanged += new System.EventHandler(this.HF1hitempCB_CheckedChanged);
+            // 
+            // label55
+            // 
+            this.label55.AutoSize = true;
+            this.label55.Location = new System.Drawing.Point(6, 122);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(31, 13);
+            this.label55.TabIndex = 3;
+            this.label55.Text = "1553";
+            // 
+            // label56
+            // 
+            this.label56.AutoSize = true;
+            this.label56.Location = new System.Drawing.Point(6, 34);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(36, 13);
+            this.label56.TabIndex = 2;
+            this.label56.Text = "AMPL";
             // 
             // Controller
             // 
@@ -1397,6 +1733,9 @@
             this.revTabPage.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.CommsTab.ResumeLayout(false);
+            this.HfGB.ResumeLayout(false);
+            this.HfGB.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1508,5 +1847,31 @@
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton IFFselectBtn;
+        private System.Windows.Forms.TabPage CommsTab;
+        private System.Windows.Forms.GroupBox HfGB;
+        private System.Windows.Forms.Button HF1AllNgoBtn;
+        private System.Windows.Forms.Button HF1allGoBtn;
+        private System.Windows.Forms.CheckBox HF1amplCB;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.CheckBox HF1fiberCB;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.CheckBox HF1overvltCB;
+        private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.CheckBox HF1tuneCB;
+        private System.Windows.Forms.CheckBox HF1vswrCB;
+        private System.Windows.Forms.CheckBox HF1rtCB;
+        private System.Windows.Forms.Label label48;
+        private System.Windows.Forms.CheckBox HF1rcvOvrldCB;
+        private System.Windows.Forms.Label label51;
+        private System.Windows.Forms.CheckBox HF11553CB;
+        private System.Windows.Forms.Label label52;
+        private System.Windows.Forms.CheckBox HF1eqptCB;
+        private System.Windows.Forms.Label label53;
+        private System.Windows.Forms.CheckBox HF1cplrCB;
+        private System.Windows.Forms.Label label54;
+        private System.Windows.Forms.CheckBox HF1hitempCB;
+        private System.Windows.Forms.Label label55;
+        private System.Windows.Forms.Label label56;
     }
 }
