@@ -164,7 +164,18 @@ namespace CDU3000
 
         //HF specific fields
         private string _HF1status = "GO";
-
+        private string hfMode = "STBY";//stores the mode of operation, used to determine what to display on the form
+        private string hfSubMode = "MAN";//stores the submode of operation, used to determine what to display on the form
+        Color l1color = Color.Green;
+        Color l1ccolor = Color.White;
+        Color l1ecolor = Color.White;
+        Color l1gcolor = Color.White;
+        private string l3Var="NONE";
+        private string r2Var = "STBY FUNC";
+        private string r3Var = "- - ";
+        private string r3TitleVar;
+        private Color l3color = Color.White;
+        private Color l3ccolor = Color.Green;
 
         #region VU1 fields
         private string _vu1PowerState;
@@ -197,6 +208,10 @@ namespace CDU3000
         #region Messaging
         private string scratchMessage;//used for overriding the scratchpad during CDU message transmission
         private string scratchBackup;//temporary storage of the scratchpad data
+        
+        
+        
+        
 
         #endregion
 
@@ -2874,6 +2889,76 @@ namespace CDU3000
 
             CheckStatus ( );
 
+            switch (hfMode)
+            {
+                case "STBY":
+                    l1color = Color.Green;
+                    l1ccolor = Color.White;
+                    l1ecolor = Color.White;
+                    l1gcolor = Color.White;
+                    l3color = Color.White;
+                    r3TitleVar = "";
+                    r3Var = "";
+                    r2Var = "STBY FUNC";
+                    l3Var = "NONE";
+                    break;
+
+                case "BAS":
+                    l1color = Color.White;
+                    l1ccolor = Color.Green;
+                    l1ecolor = Color.White;
+                    l1gcolor = Color.White;
+                    r3TitleVar = "CHANNELS";
+                    r3Var = "- - ";
+                    r2Var = "";
+                    l3Var = "MAN";
+                    break;
+
+                case "ALE":
+                    l1color = Color.White;
+                    l1ccolor = Color.White;
+                    l1ecolor = Color.Green;
+                    l1gcolor = Color.White;
+                    l3color = Color.White;
+                    r3TitleVar = "SCANLIST";
+                    r3Var = "- - ";
+                    r2Var = "ALE FCTN";
+                    l3Var = "MAN";
+                    break;
+
+                case "SEL":
+                    l1color = Color.White;
+                    l1ccolor = Color.White;
+                    l1ecolor = Color.White;
+                    l1gcolor = Color.Green;
+                    r3TitleVar = "CHANNELS";
+                    r3Var = "- - ";
+                    r2Var = "";
+                    l3Var = "MAN";
+                    break;
+            }
+
+            if (hfMode=="BAS" || hfMode=="SEL")
+            {
+                switch (hfSubMode)
+                {
+                    case "MAN":
+                        l3color = Color.Green;
+                        l3ccolor = Color.White;
+                        r3TitleVar = "";
+                        r3Var = "";
+                        break;
+
+                    case "PRST":
+                        l3ccolor = Color.Green;
+                        l3color = Color.White;
+                        r3TitleVar = "CHANNELS";
+                        r3Var = "- - ";
+                        break;
+                } 
+            }
+
+
             #region MyRegion
             l1tText = "MODE";
             l2tText = "";
@@ -2883,20 +2968,20 @@ namespace CDU3000
             l6tText = "SILENT";
             r1tText = "";
             r2tText = "";
-            r3tText = "";
+            r3tText = r3TitleVar;
             r4tText = "A / C ID";
             r5tText = "";
             r6tText = "";
 
             l1text = "STBY";
-            l2text = "";
-            l3text = "NONE";
+            l2text = "" ;
+            l3text = l3Var;
             l4text = "";
             l5text = "";
             l6text = "ON";
             r1text = "";
-            r2text = "STBY FUNC";
-            r3text = "";
+            r2text = r2Var;
+            r3text = r3Var;
             r4text = "- - - - - - - ";
             r5text = "";
             r6text = "RETURN";
@@ -2914,26 +2999,27 @@ namespace CDU3000
             TB (l1t, col2, row1, l1tText);
 
             TextBox l1 = new TextBox ( );
-            TB (l1, col1, row2, l1text, Color.Green);
+            TB (l1, col1, row2, l1text, l1color );
 
             TextBox l1b = new TextBox ( );
             TB (l1b, l1.Location.X+l1.Width , row2, "/", Color.White);
 
             TextBox l1c = new TextBox ( );
-            TB (l1c, l1b.Location.X + l1b.Width, row2, "BAS", Color.White);
+            TB (l1c, l1b.Location.X + l1b.Width, row2, "BAS", l1ccolor );
 
             TextBox l1d = new TextBox ( );
             TB (l1d, l1c.Location.X + l1c.Width, row2, "/", Color.White);
 
             TextBox l1e = new TextBox ( );
-            TB (l1e, l1d.Location.X + l1d.Width, row2, "ALE", Color.White);
+            TB (l1e, l1d.Location.X + l1d.Width, row2, "ALE", l1ecolor );
 
             TextBox l1f = new TextBox ( );
             TB (l1f, l1e.Location.X + l1e.Width, row2, "/", Color.White);
 
             TextBox l1g = new TextBox ( );
-            TB (l1g, l1f.Location.X + l1f.Width, row2, "SEL", Color.White);
+            TB (l1g, l1f.Location.X + l1f.Width, row2, "SEL", l1gcolor );
 
+            
             //TextBox l2t = new TextBox();
             //TB(l2t, col2, row3, l2tText);
 
@@ -2944,7 +3030,28 @@ namespace CDU3000
             TB (l3t, col2, row5, l3tText);
 
             TextBox l3 = new TextBox ( );
-            TB (l3, col1, row6, l3text, Color.White);
+            TB (l3, col1, row6, l3text, l3color );
+
+            if (hfMode=="BAS" || hfMode=="ALE" || hfMode=="SEL")
+            {
+                TextBox l3b = new TextBox ( );
+                TB (l3b, l3.Location.X + l3.Width, row6, "/", Color.White);
+
+                TextBox l3c = new TextBox ( );
+                TB (l3c, l3b.Location.X + l3b.Width, row6, "PRST", l3ccolor );
+
+                if (hfMode == "ALE")
+                {
+                    l3c.ForeColor = Color.White;
+                    TextBox l3d = new TextBox ( );
+                    TB (l3d, l3c.Location.X + l3c.Width, row6, "/", Color.White);
+
+                    TextBox l3e = new TextBox ( );
+                    TB (l3e, l3d.Location.X + l3d.Width, row6, "SCAN", Color.Green);
+                }
+            }
+
+            
 
             //TextBox l4t = new TextBox();
             //TB(l4t, col2, row7, l4tText);
@@ -2984,9 +3091,9 @@ namespace CDU3000
             TextBox r2 = new TextBox ( );
             TB (r2, col15, row4, r2text, Color.White);
 
-            //TextBox r3t = new TextBox();
-            //TB(r3t, col14+20, row5, r3tText);
-            //TypeLeft(r3t);
+            TextBox r3t = new TextBox ( );
+            TB (r3t, col14 + 20, row5, r3tText);
+            TypeLeft (r3t);
 
             TextBox r3 = new TextBox ( );
             TB (r3, col15, row6, r3text, Color.White);
@@ -3427,6 +3534,155 @@ namespace CDU3000
         private void HFcontrolPage3( )
         {
             CDU7000Page = true;
+
+            CheckStatus ( );
+
+            #region MyRegion
+            l1tText = "LBT";
+            l2tText = "MODEM";
+            l3tText = "";
+            l4tText = "RATE";
+            l5tText = "RCV SNR";
+            l6tText = "";
+            r1tText = "SEL ADRS";
+            r2tText = "MODEM MODE";
+            r3tText = "";
+            r4tText = "";
+            r5tText = "";
+            r6tText = "";
+
+            l1text = "ON";
+            l2text = "> 1";
+            l3text = "";
+            l4text = "1200 RX";
+            l5text = "-10";
+            l6text = "";
+            r1text = "AJKS";
+            r2text = "PROGFSK";
+            r3text = "";
+            r4text = "TX 2400";
+            r5text = "";
+            r6text = "RETURN";
+
+            currentPageTitle = "HF1 CONTROL"; //page title and number used for navigating
+            currentPageNumber = 3;
+
+            TextBox title = new TextBox ( );//displayed top center of screen
+            TB (title, col7, row0, currentPageTitle);
+
+            TextBox page = new TextBox ( );
+            TB (page, col14, row0, currentPageNumber + "/3");
+
+            TextBox l1t = new TextBox ( );
+            TB (l1t, col2, row1, l1tText);
+
+            TextBox l1 = new TextBox ( );
+            TB (l1, col1, row2, l1text, Color.Green);
+
+            TextBox l1b = new TextBox ( );
+            TB (l1b, l1.Location.X+l1.Width , row2, "/", Color.White);
+
+            TextBox l1c = new TextBox ( );
+            TB (l1c, l1b.Location.X + l1b.Width, row2, "OFF", Color.White);
+
+            TextBox l2t = new TextBox ( );
+            TB (l2t, col2, row3, l2tText);
+
+            TextBox l2 = new TextBox ( );
+            TB (l2, col1, row4, l2text, Color.White);
+
+            //TextBox l3t = new TextBox();
+            //TB(l3t, col2, row5, l3tText);
+
+            TextBox l3 = new TextBox ( );
+            TB (l3, col1, row6, l3text, Color.White);
+
+            TextBox l4t = new TextBox ( );
+            TB (l4t, col2, row7, l4tText);
+            CenterMe (l4t);
+
+            TextBox l4 = new TextBox ( );
+            TB (l4, col1, row8, l4text, Color.White);
+
+            TextBox l5t = new TextBox ( );
+            TB (l5t, col2, row9, l5tText);
+
+            TextBox l5 = new TextBox ( );
+            TB (l5, col1, row10, l5text, Color.White);
+
+            //TextBox l6t = new TextBox();
+            //TB(l6t, col2, row11, l6tText);
+
+            TextBox l6 = new TextBox ( );
+            TB (l6, col1, row12, l6text, Color.White);
+
+            TextBox r1t = new TextBox ( );
+            TB (r1t, col14 + 20, row1, r1tText);
+            TypeLeft (r1t);
+
+            TextBox r1 = new TextBox ( );
+            TB (r1, col15, row2, r1text, Color.White);
+
+            TextBox r2t = new TextBox ( );
+            TB (r2t, col14 + 20, row3, r2tText);
+            TypeLeft (r2t);
+
+            TextBox r2 = new TextBox ( );
+            TB (r2, col15, row4, r2text, Color.White);
+
+            //TextBox r3t = new TextBox();
+            //TB(r3t, col14+20, row5, r3tText);
+            //TypeLeft(r3t);
+
+            TextBox r3 = new TextBox ( );
+            TB (r3, col15, row6, r3text, Color.White);
+
+            //TextBox r4t = new TextBox();
+            //TB(r4t, col14+20, row7, r4tText);
+            //TypeLeft(r4t);
+
+            TextBox r4 = new TextBox ( );
+            TB (r4, col15, row8, r4text, Color.White);
+
+            //TextBox r5t = new TextBox();
+            //TB(r5t, col14+20, row9, r5tText);
+            //TypeLeft(r5t);
+
+            TextBox r5 = new TextBox ( );
+            TB (r5, col15, row10, r5text, Color.White);
+
+            //TextBox r6t = new TextBox();
+            //TB(r6t, col14+20, row11, r6tText);
+            //TypeLeft(r6t);
+
+            TextBox r6 = new TextBox ( );
+            TB (r6, col15, row12, r6text, Color.White);
+
+            TextBox divider = new TextBox ( );
+            TB (divider, col1, row11, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+
+
+            #region Add Arrows if Needed
+            if (r1text != "")
+            {
+                TextBox r1r = new TextBox ( );
+                TB (r1r, col16, row2, "<", Color.White);
+            }
+            if (r6text != "")
+            {
+                TextBox r6r = new TextBox ( );
+                TB (r6r, col16, row12, ">", Color.White);
+            }
+            #endregion
+
+            TextBox l6b = new TextBox ( );
+            TB (l6b, col1, row13, "[");
+
+
+            TextBox r6b = new TextBox ( );
+            TB (r6b, col16, row13, "]");
+            #endregion
         }
 
         private void HFpresetChannelsPage( )
@@ -17259,11 +17515,11 @@ namespace CDU3000
 
             if (trimmedString == "OFF" & pushedButton == r4Btn & currentPageTitle == "IFF" & currentPageNumber == 1)
             {
-                //skip the following under this condition
+                //skip the above under this condition
             }
             else
             {
-                if (trimmedString == "OCT" || trimmedString == "EHS" || trimmedString == "MAN" || trimmedString == "A" || (trimmedString == "STBY" & currentPageTitle != "HF1 CONTROL") || trimmedString == "Y-ONLY" || trimmedString == "GC" || trimmedString == "H2" || trimmedString == "OFF" || trimmedString == "PLAIN" || trimmedString == "DATA" || (trimmedString == "TR" & currentPageTitle != "TACAN CONTROL") || trimmedString == "ORIGIN" || trimmedString == "ON" || trimmedString == "UNCOMP" || trimmedString == "YES" || trimmedString == "NO" || trimmedString == "INHIBIT")//**Toggle colors
+                if (trimmedString == "OCT" || trimmedString == "EHS" || (trimmedString == "MAN" & hfMode!="ALE")|| trimmedString == "A" || (trimmedString == "STBY" & currentPageTitle != "HF1 CONTROL") || trimmedString == "Y-ONLY" || trimmedString == "GC" || trimmedString == "H2" || trimmedString == "OFF" || trimmedString == "PLAIN" || trimmedString == "DATA" || (trimmedString == "TR" & currentPageTitle != "TACAN CONTROL") || trimmedString == "ORIGIN" || trimmedString == "ON" || trimmedString == "UNCOMP" || trimmedString == "YES" || trimmedString == "NO" || trimmedString == "INHIBIT")//**Toggle colors
                 {
                     try
                     {
@@ -17302,6 +17558,19 @@ namespace CDU3000
                                                     switchColor2 = Color.Green;
                                                 }
 
+                                                if (currentPageTitle == "HF1 CONTROL" & trimmedString == "MAN")
+                                                {
+                                                    if (c.ForeColor == Color.Green)
+                                                    {
+                                                        hfSubMode = c.Text;                                                       
+                                                    }else
+                                                        if (x.ForeColor == Color.Green)
+                                                        {
+                                                            hfSubMode = x.Text;                                                   
+                                                        }
+                                                }
+                                                StartFresh ( );
+                                                HFcontrolPage1 ( );
                                                 return;
                                             }
                                         }
@@ -17327,7 +17596,7 @@ namespace CDU3000
 
             #region Color toggle of multiple choices (more than two choices only)
 
-            if (trimmedString == "NORM" || trimmedString=="CW" || trimmedString == "DIV" || (trimmedString == "OFF" & pushedButton == r4Btn & currentPageTitle == "IFF") || trimmedString == "1.2K" || trimmedString == "HIGH" || trimmedString == "UHF" || trimmedString == "0" || trimmedString == "NOR" || (trimmedString == "TR" & currentPageTitle == "TACAN CONTROL") || (currentPageTitle=="HF1 CONTROL" & trimmedString=="STBY"))//**Toggle colors
+            if ((hfMode=="ALE" & trimmedString=="MAN") || trimmedString == "NORM" || trimmedString=="CW" || trimmedString == "DIV" || (trimmedString == "OFF" & pushedButton == r4Btn & currentPageTitle == "IFF") || trimmedString == "1.2K" || trimmedString == "HIGH" || trimmedString == "UHF" || trimmedString == "0" || trimmedString == "NOR" || (trimmedString == "TR" & currentPageTitle == "TACAN CONTROL") || (currentPageTitle=="HF1 CONTROL" & trimmedString=="STBY"))//**Toggle colors
             {
                 try
                 {
@@ -17346,6 +17615,40 @@ namespace CDU3000
                                     //tricky, find the next textbox that does not contain a slash
                                     foreach (Control y in this.Controls)
                                     {
+                                        if (trimmedString == "MAN")
+                                        {
+                                            #region MAN,PRST,SCAN
+
+                                            if (myTxt == "MAN")
+                                            {
+                                                if (y.Text == "PRST")
+                                                {
+                                                    y.ForeColor = Color.Green;
+                                                    return;
+                                                }
+                                            }
+                                            else
+                                                if (myTxt == "PRST")
+                                                {
+                                                    if (y.Text == "SCAN")
+                                                    {
+                                                        y.ForeColor = Color.Green;
+                                                        return;
+                                                    }
+                                                }
+                                                else
+                                                    if (myTxt == "SCAN")
+                                                    {
+                                                        if (y.Text == "MAN")
+                                                        {
+                                                            y.ForeColor = Color.Green;
+                                                            return;
+                                                        }
+                                                    }
+
+                                            #endregion
+                                        }
+                                        else
                                         if (trimmedString == "CW")
                                         {
                                             #region USB,LSB,ISB,AME,CW
@@ -17407,6 +17710,9 @@ namespace CDU3000
                                                 if (y.Text == "BAS")
                                                 {
                                                     y.ForeColor = Color.Green;
+                                                    hfMode = y.Text;//stores the mode the HF radio is in
+                                                    StartFresh ( );
+                                                    HFcontrolPage1 ( );
                                                     return;
                                                 }
                                             }
@@ -17416,6 +17722,9 @@ namespace CDU3000
                                                     if (y.Text == "ALE")
                                                     {
                                                         y.ForeColor = Color.Green;
+                                                        hfMode = y.Text;//stores the mode the HF radio is in
+                                                        StartFresh ( );
+                                                        HFcontrolPage1 ( );
                                                         return;
                                                     }
                                                 }
@@ -17425,6 +17734,9 @@ namespace CDU3000
                                                         if (y.Text == "SEL")
                                                         {
                                                             y.ForeColor = Color.Green;
+                                                            hfMode = y.Text;//stores the mode the HF radio is in
+                                                            StartFresh ( );
+                                                            HFcontrolPage1 ( );
                                                             return;
                                                         }
                                                     }
@@ -17434,10 +17746,14 @@ namespace CDU3000
                                                             if (y.Text == "STBY")
                                                             {
                                                                 y.ForeColor = Color.Green;
+                                                                hfMode = y.Text;//stores the mode the HF radio is in
+                                                                StartFresh ( );
+                                                                HFcontrolPage1 ( );
                                                                 return;
                                                             }
                                                         }
-
+                                            
+                                            
                                             #endregion
                                         }
                                         else
