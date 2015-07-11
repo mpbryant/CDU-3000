@@ -156,7 +156,7 @@ namespace CDU3000
         #endregion
 
         //GNSS1 specific fields
-        private string gnss1Status = "GO";
+        private string gnss1Status = "NGO";
 
         //IFF specific fields
         #region MyRegion
@@ -181,7 +181,7 @@ namespace CDU3000
         private string vu2Warning = "!";
         private string hf1Warning = "!";
 
-        
+
 
         //VU1 specific fields
         #region VU1 fields
@@ -229,6 +229,8 @@ namespace CDU3000
         private string scratchMessage;//used for overriding the scratchpad during CDU message transmission
         private string scratchBackup;//temporary storage of the scratchpad data
 
+        #endregion
+
         //HF specific fields
         #region MyRegion
         private string _HF1status = "GO";
@@ -246,20 +248,12 @@ namespace CDU3000
         private Color l3ccolor = Color.Green;
         private Color l3ecolor = Color.Green;
         private string hfAircraftID = "- - - - - - - ";
-        private string hfTime = "0000 : 00";
+        private string hfTime = "0000 : 00";        
         private string hfDate = "01 / 01 / 96";
         private string gpsSync = "";
+        private string manualTime = "0000 : 00";
+        private string manualDate = "01 / 01 / 96";
         #endregion
-
-
-
-
-
-
-
-        #endregion
-
-
 
         #endregion
 
@@ -897,15 +891,24 @@ namespace CDU3000
 
             CheckStatus ( );
 
-            UTCupdateTimer.Start ( );
-                
-
-            if (pushedButton == l1Btn || gpsSync=="GPS")
+            
+            if (gnss1Status == "GO")
             {
-                hfTime = DateTime.UtcNow.ToString("HHmm : ss");
-                hfDate = DateTime.UtcNow.ToString("dd / MM / yy");
-                gpsSync = "GPS";
+                UTCupdateTimer.Start ( );
+                if (pushedButton == l1Btn || gpsSync == "GPS")
+                {
+                    hfTime = DateTime.UtcNow.ToString ("HHmm : ss");
+                    hfDate = DateTime.UtcNow.ToString ("dd / MM / yy");
+                    gpsSync = "GPS";
+                }
             }
+            else
+                if (pushedButton == l1Btn)
+                {
+                    UTCupdateTimer.Stop ( );
+                    scratchMessage = "GPS NOT AVAILABLE";
+                    CheckValidity ( );
+                }
 
             #region MyRegion
             l1tText = "";
@@ -19940,6 +19943,14 @@ namespace CDU3000
 
             #endregion
 
+            //#region page selection from HF STANDBY FCTN page
+            //if (currentPageTitle == "HF1 STANDBY FCTN" & pushedButton == l2Btn)
+            //{
+            //    StartFresh ( );
+
+            //}
+            //#endregion
+
             #region page selections from START INIT page
 
             if (currentPageTitle == "START INIT" & trimmedString != "RETURN")
@@ -20614,6 +20625,27 @@ namespace CDU3000
 
         #region Background methods  //backgroundworkers that handle needed tasks not seen by the user
 
+        private void FormatManualTime()
+        {
+            string s1 = manualTime.Remove (4);
+
+            string s2 = manualTime.Remove (0, 4);
+
+            hfTime = s1 + " : " + s2;
+
+        }
+
+        private void FormatManualDate()
+        {
+            string trimmed = manualDate;
+            char[] trimThis = { '/','.' };
+            trimmed = manualDate.Trim (trimThis);
+
+            manualDate=trimmed.Insert (2, " / ");
+            manualDate = manualDate.Insert (7, " / ");
+            hfDate = manualDate;
+
+        }
 
         private string TrimSelection(string e)    //takes input string and reduces it to text only
         {
@@ -20697,7 +20729,15 @@ namespace CDU3000
                     {
                         return;
                     }
-                    l2text = scratchpad;
+                    if (currentPageTitle != "HF1 STANDBY FCTN")
+                    {
+                        l2text = scratchpad;
+                    }
+                    else
+                    {
+                        manualTime  = scratchpad;
+                        FormatManualTime ( );
+                    }
                     break;
 
                 case "l3":
@@ -20707,7 +20747,15 @@ namespace CDU3000
                     {
                         return;
                     }
-                    l3text = scratchpad;
+                    if (currentPageTitle != "HF1 STANDBY FCTN")
+                    {
+                        l3text = scratchpad;
+                    }
+                    else
+                    {
+                        manualDate  = scratchpad;
+                        FormatManualDate  ( );
+                    }
                     break;
 
                 case "l4":
@@ -21615,6 +21663,8 @@ namespace CDU3000
             #endregion
         }
 
+        
+
         private bool CheckValidity( )
         {
             switch (currentPageTitle)
@@ -21622,7 +21672,7 @@ namespace CDU3000
                 case "HF1 CONTROL":
                     if (pushedButton == r4Btn)
                     {
-                        if (scratchpad.Length <= 7 & scratchpad.Length != 0 & scratchpad.Contains (".") == false & scratchpad.Contains ("+") == false & scratchpad.Contains ("-") == false & scratchpad.Contains ("/") == false & scratchpad.Contains (" ") == false)
+                        if (scratchpad.Length <= 7 & scratchpad.Length != 0 & ContainsCharacters()==false)
                         {
                             return true;
                         }
@@ -21630,6 +21680,39 @@ namespace CDU3000
                         {
                             scratchMessage = "INVALID ENTRY";
                         }
+                    }
+                    break;
+
+                case "HF1 STANDBY FCTN":
+                    try
+                    {
+                        if (pushedButton==l2Btn )
+                        {
+                            if (scratchpad.Length == 6 & ContainsLetters ( ) == false & ContainsCharacters ( ) == false)
+                            {
+                                return true;
+                            }
+                            else
+                            {
+                                scratchMessage = "INVALID ENTRY";
+                            } 
+                        }else
+                            if (pushedButton == l3Btn)
+                            {
+                                if (scratchpad.Length <= 8 & ContainsLetters ( ) == false)
+                                {
+                                    return true;
+                                }
+                                else
+                                {
+                                    scratchMessage = "INVALID ENTRY";
+                                } 
+                            }
+                    }
+                    catch (Exception)
+                    {
+                        
+                        
                     }
                     break;
 
@@ -21816,6 +21899,48 @@ namespace CDU3000
             return true;
         }
 
+        private bool ContainsLetters( )
+        {
+            string[] letter = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
+
+            foreach (string value in letter)
+            {
+                if (scratchpad.Contains (value))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private bool ContainsNumbers( )
+        {
+            string[] number = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0" };
+
+            foreach (string value in number)
+            {
+                if (scratchpad.Contains (value))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private bool ContainsCharacters( )
+        {
+            string[] character = { ".", "/", "+", "-", " " };
+
+            foreach (string value in character)
+            {
+                if (scratchpad.Contains (value))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         private void ScratchMessageTimer_Tick(object sender, EventArgs e)
         {
             foreach (Control c in Controls)
@@ -21884,9 +22009,13 @@ namespace CDU3000
 
         private void closeBtn_Click(object sender, EventArgs e)
         {
+            DeleteBtnTimer.Stop ( );
             DeleteBtnTimer.Dispose ( );
+            DimBrtTimer.Stop ( );
             DimBrtTimer.Dispose ( );
+            ScratchMessageTimer.Stop ( );
             ScratchMessageTimer.Dispose ( );
+            UTCupdateTimer.Stop ( );
             UTCupdateTimer.Dispose ( );
             this.Close ( );
             ActiveForm.Close ( );
@@ -21894,9 +22023,13 @@ namespace CDU3000
 
         private void CDU3000_FormClosing(object sender, FormClosingEventArgs e)
         {
+            DeleteBtnTimer.Stop ( );
             DeleteBtnTimer.Dispose ( );
+            DimBrtTimer.Stop ( );
             DimBrtTimer.Dispose ( );
+            ScratchMessageTimer.Stop ( );
             ScratchMessageTimer.Dispose ( );
+            UTCupdateTimer.Stop ( );
             UTCupdateTimer.Dispose ( );
 
         }
