@@ -87,8 +87,363 @@ namespace CDU3000
         private string _HF1fiber = "GO";
         #endregion
 
+        //VU1 backing fields
+        #region
+        private bool _VU1valChanged;
+        private string _VU1trans = "GO";
+        private string _VU1PwrSply = "GO";
+        private string _VU1modem = "GO";
+        private string _VU1RT = "GO";
+        private string _VU11553 = "GO";
+        private string _VU1comsec = "GO";
+        #endregion
+
+        //VU2 backing fields
+        #region
+        private string _VU2trans = "GO";
+        private bool _VU2valChanged;
+        private string _VU2PwrSply = "GO";
+        private string _VU2modem = "GO";
+        private string _VU2RT = "GO";
+        private string _VU21553 = "GO";
+        private string _VU2comsec = "GO";
+        #endregion
 
 
+
+
+        //VU1
+        #region Accessors
+
+        public bool VU1ValueChanged
+        {
+            get
+            {
+                return _VU1valChanged ; ;
+            }
+
+            set
+            {
+                _VU1valChanged = false;
+            }
+        }
+
+        public string VU1Transmitter
+        {
+            get
+            {
+                return _VU1trans;
+            }
+        }
+
+        public string VU1PowerSupply
+        {
+            get
+            {
+                return _VU1PwrSply;
+            }
+        }
+
+        public string VU1Modem
+        {
+            get
+            {
+                return _VU1modem;
+            }
+        }
+
+        public string VU1RT
+        {
+            get
+            {
+                return _VU1RT;
+            }
+        }
+
+        public string VU11553
+        {
+            get
+            {
+                return _VU11553;
+            }
+        }
+
+        public string VU1Comsec
+        {
+            get
+            {
+                return _VU1comsec;
+            }
+        }
+
+        #endregion
+
+        #region Checkboxes
+
+        private void vu1transCb_CheckedChanged(object sender, EventArgs e)
+        {
+            if (vu1transCb.Checked)
+            {
+                _VU1trans = "GO";
+            }
+            else
+            {
+                _VU1trans = "NGO";
+                _VU1valChanged = true;
+            }
+        }
+
+        private void vu1PwrSplycb_CheckedChanged(object sender, EventArgs e)
+        {
+            if (vu1PwrSplycb.Checked)
+            {
+                _VU1PwrSply = "GO";
+            }
+            else
+            {
+                _VU1PwrSply = "NGO";
+                _VU1valChanged = true;
+            }
+        }
+
+        private void vu1modemCb_CheckedChanged(object sender, EventArgs e)
+        {
+            if (vu1modemCb.Checked)
+            {
+                _VU1modem = "GO";
+            }
+            else
+            {
+                _VU1modem = "NGO";
+                _VU1valChanged = true;
+            }
+        }
+
+        private void vu1RTcb_CheckedChanged(object sender, EventArgs e)
+        {
+            if (vu1RTcb.Checked)
+            {
+                _VU1RT = "GO";
+            }
+            else
+            {
+                _VU1RT = "NGO";
+                _VU1valChanged = true;
+            }
+        }
+
+        private void vu11553Cb_CheckedChanged(object sender, EventArgs e)
+        {
+            if (vu11553Cb.Checked)
+            {
+                _VU11553 = "GO";
+            }
+            else
+            {
+                _VU11553 = "NGO";
+                _VU1valChanged = true;
+            }
+        }
+
+        private void vu1comsecCb_CheckedChanged(object sender, EventArgs e)
+        {
+            if (vu1comsecCb.Checked)
+            {
+                _VU1comsec = "GO";
+            }
+            else
+            {
+                _VU1comsec = "NGO";
+                _VU1valChanged = true;
+            }
+        }
+
+        private void vu1ALLGOcb_Click(object sender, EventArgs e)
+        {
+            vu1transCb.Checked = true;
+            vu1PwrSplycb.Checked = true;
+            vu1modemCb.Checked = true;
+            vu1RTcb.Checked = true;
+            vu11553Cb.Checked = true;
+            vu1comsecCb.Checked = true;
+        }
+
+        private void vu1ALLNGOcb_Click(object sender, EventArgs e)
+        {
+            vu1transCb.Checked = false;
+            vu1PwrSplycb.Checked = false;
+            vu1modemCb.Checked = false;
+            vu1RTcb.Checked = false;
+            vu11553Cb.Checked = false;
+            vu1comsecCb.Checked = false;
+        }
+        #endregion
+
+        //VU2
+        #region Accessors
+
+        public bool VU2ValueChanged
+        {
+            get
+            {
+                return _VU2valChanged; ;
+            }
+
+            set
+            {
+                _VU2valChanged = false;
+            }
+        }
+
+        public string VU2Transmitter
+        {
+            get
+            {
+                return _VU2trans;
+            }
+        }
+
+        public string VU2PowerSupply
+        {
+            get
+            {
+                return _VU2PwrSply;
+            }
+        }
+
+        public string VU2Modem
+        {
+            get
+            {
+                return _VU2modem;
+            }
+        }
+
+        public string VU2RT
+        {
+            get
+            {
+                return _VU2RT;
+            }
+        }
+
+        public string VU21553
+        {
+            get
+            {
+                return _VU21553;
+            }
+        }
+
+        public string VU2Comsec
+        {
+            get
+            {
+                return _VU2comsec;
+            }
+        }
+
+        #endregion
+
+        #region Checkboxes
+        private void vu2TransCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (vu2TransCB.Checked)
+            {
+                _VU2trans = "GO";
+            }
+            else
+            {
+                _VU2trans = "NGO";
+                _VU2valChanged = true;
+            }
+        }
+
+        private void vu2PwrSplyCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (vu2PwrSplyCB.Checked)
+            {
+                _VU2PwrSply = "GO";
+            }
+            else
+            {
+                _VU2PwrSply = "NGO";
+                _VU2valChanged = true;
+            }
+        }
+
+        private void vu2ModemCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (vu2ModemCB.Checked)
+            {
+                _VU2modem = "GO";
+            }
+            else
+            {
+                _VU2modem = "NGO";
+                _VU2valChanged = true;
+            }
+        }
+
+        private void vu2RtCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (vu2RtCB.Checked)
+            {
+                _VU2RT = "GO";
+            }
+            else
+            {
+                _VU2RT = "NGO";
+                _VU2valChanged = true;
+            }
+        }
+
+        private void vu21553CB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (vu21553CB.Checked)
+            {
+                _VU21553 = "GO";
+            }
+            else
+            {
+                _VU21553 = "NGO";
+                _VU2valChanged = true;
+            }
+        }
+
+        private void vu2ComsecCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (vu2ComsecCB.Checked)
+            {
+                _VU2comsec = "GO";
+            }
+            else
+            {
+                _VU2comsec = "NGO";
+                _VU2valChanged = true;
+            }
+        }
+
+        private void vu2ALLGObtn_Click(object sender, EventArgs e)
+        {
+            vu2TransCB.Checked = true;
+            vu2PwrSplyCB.Checked = true;
+            vu2ModemCB.Checked = true;
+            vu2RtCB.Checked = true;
+            vu21553CB.Checked = true;
+            vu2ComsecCB.Checked = true;
+        }
+
+        private void vu2ALLNGObtn_Click(object sender, EventArgs e)
+        {
+            vu2TransCB.Checked = false;
+            vu2PwrSplyCB.Checked = false;
+            vu2ModemCB.Checked = false;
+            vu2RtCB.Checked = false;
+            vu21553CB.Checked = false;
+            vu2ComsecCB.Checked = false;
+        }
+        #endregion
 
         //EGI
         #region Accessors
@@ -818,7 +1173,7 @@ namespace CDU3000
         {
             get
             {
-                return _HF1fiber ;
+                return _HF1fiber;
             }
         }
 
@@ -1567,6 +1922,14 @@ namespace CDU3000
         {
             InitializeComponent ( );
         }
+
+        
+
+
+
+
+
+
 
 
 

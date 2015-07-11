@@ -19,6 +19,7 @@ namespace CDU3000
 
         #region Fields
 
+        #region MyRegion
         //Button text
         string l0text = null;
         string l1text = null;
@@ -97,48 +98,68 @@ namespace CDU3000
 
         //creates a new controller form
         Controller myCont = new Controller ( );
+        #endregion
 
         //NAV fields
         private string _navStatus;
+
+        //POWER page fields
+        #region MyRegion
+        private string CDUIFFpower = "OFF";
+        private string CDUVU1power = "OFF";
+        private string CDUVU2power = "OFF";
+        #endregion
 
         //START INIT fields
         private string actInactToggle = ">";
 
         //TACAN specific fields
+        #region MyRegion
         private string _tacanPowerState;
         private string _tcnStatus;
+        #endregion
 
         //EGI specific fields
+        #region MyRegion
         private string _egiStatus;
         private string _egiPowerState = "ON";
         private DateTime egiDateTime = DateTime.UtcNow;
         private DateTime egiDate = DateTime.Now;
         private string formattedTime = "12 : 00 : 00";  //leave initialized
-        private string formattedDate = "01 JAN 15"; //leave initialized
-
-
+        private string formattedDate = "01 JAN 15"; //leave initialized 
+        #endregion
 
         //EGI INU specific fields
+        #region MyRegion
         private string _egiInuStatus;
         private string _EgiAlignmentStatus = "> COMMAND";
         private string _InitiateAlign = "> INITIATE";
         private string _AlignCEP = "1.2";
         private string _AlignMode = "GC ALIGN";
         private string _AlignTime = "00:03.6";
+        #endregion
 
         //EGI GPS specific fields
+        #region MyRegion
         private string _egiGpsPowerState;
         private string _egiGpsStatus;
+        #endregion
 
         //EGI MAINTENANCE specific
+        #region MyRegion
         private string initialX;
         private string initialY;
         private string initialZ;
         private string updatedX;
         private string updatedY;
         private string updatedZ;
+        #endregion
+
+        //GNSS1 specific fields
+        private string gnss1Status = "GO";
 
         //IFF specific fields
+        #region MyRegion
         private string _IFFPowerState;
         private string _IFFstatus = "GO";
         private string mode1code = "1234";
@@ -146,6 +167,7 @@ namespace CDU3000
         private string mode3code = "1234";
         private string m5pin = "01234";
         private string ntlOrg = "0101";
+        #endregion
 
         //SURVEILLANCE specific fields
         private string _survStatus = "GO";
@@ -155,14 +177,60 @@ namespace CDU3000
 
         //COM specific fields
         private string _comStatus = "GO";
+        private string vu1Warning = "!";
+        private string vu2Warning = "!";
+        private string hf1Warning = "!";
 
-        //ATC1 specific fields
+        
+
+        //VU1 specific fields
+        #region VU1 fields
         private string _VU1status = "GO";
+        private string _vu1PowerState;
+        string _VU1freq = "V136.000";
+        string _VU1preset = "P2";
+        string _VU1channel = "0";
+        string _VU1mode = "TR";
+        string _VU1squelch = "1";
+        string _VU1power = "HIGH";
+        string _VU1guard = "OFF";
 
-        //ATC2 specific fields
+
+
+        #endregion
+
+        //VU2 specific fields
+        #region VU2 fields
         private string _VU2status = "GO";
+        private string _vu2PowerState;
+        string VU2freq = "V136.000";
+        string VU2preset = "P2";
+        string VU2channel = "0";
+        string VU2mode = "TR";
+        string VU2squelch = "1";
+        string VU2power = "HIGH";
+        string VU2guard = "OFF";
+        string _VU21553 = "GO";
+        string _VU2transmitter = "GO";
+        string _VU2modem = "GO";
+        string _VU2pwrSupply = "GO";
+        string _VU2rt = "GO";
+        string _VU2comsec = "GO";
+
+
+        #endregion
+
+        //Combined level status specific fields
+        private string overallComStatus;
+        private string com1Status;
+
+        //Messaging specific fields
+        #region Messaging
+        private string scratchMessage;//used for overriding the scratchpad during CDU message transmission
+        private string scratchBackup;//temporary storage of the scratchpad data
 
         //HF specific fields
+        #region MyRegion
         private string _HF1status = "GO";
         private string hfMode = "STBY";//stores the mode of operation, used to determine what to display on the form
         private string hfSubMode = "MAN";//stores the submode of operation, used to determine what to display on the form
@@ -177,38 +245,12 @@ namespace CDU3000
         private Color l3color = Color.White;
         private Color l3ccolor = Color.Green;
         private Color l3ecolor = Color.Green;
-
-        #region VU1 fields
-        private string _vu1PowerState;
-        string _VU1freq = "V136.000";
-        string _VU1preset = "P2";
-        string _VU1channel = "0";
-        string _VU1mode = "TR";
-        string _VU1squelch = "1";
-        string _VU1power = "HIGH";
-        string _VU1guard = "OFF";
-
+        private string hfAircraftID = "- - - - - - - ";
+        private string hfTime = "0000 : 00";
+        private string hfDate = "01 / 01 / 96";
+        private string gpsSync = "";
         #endregion
 
-        #region VU2 fields
-        private string _vu2PowerState;
-        string VU2freq = "V136.000";
-        string VU2preset = "P2";
-        string VU2channel = "0";
-        string VU2mode = "TR";
-        string VU2squelch = "1";
-        string VU2power = "HIGH";
-        string VU2guard = "OFF";
-
-
-        #endregion
-
-        private string overallComStatus;
-        private string com1Status;
-
-        #region Messaging
-        private string scratchMessage;//used for overriding the scratchpad during CDU message transmission
-        private string scratchBackup;//temporary storage of the scratchpad data
 
 
 
@@ -406,6 +448,9 @@ namespace CDU3000
         private void COMpage( )
         {
             CDU7000Page = true;
+
+            CheckStatus ( );
+
             currentPageTitle = "comm";
             currentPageNumber = 1;
 
@@ -413,7 +458,7 @@ namespace CDU3000
             TB (title, col7, row0, "COMM");
 
             TextBox l0 = new TextBox ( );
-            l0text = "!";
+            l0text = vu1Warning;
             TB (l0, col1, row1, l0text, Color.Orange);
 
             TextBox l0right = new TextBox ( );
@@ -427,6 +472,9 @@ namespace CDU3000
             TextBox l1right = new TextBox ( );
             TB (l1right, col2, row2, "20  TOWERS  C17", Color.White);
 
+            TextBox vu2Warn = new TextBox ( );
+            TB (vu2Warn, col1, row3, vu2Warning, Color.Orange);
+
             TextBox lb = new TextBox ( );
             TB (lb, col2, row3, "V/U2");
 
@@ -438,10 +486,10 @@ namespace CDU3000
             TB (l2r, col2, row4, "0                      P2", Color.White);
 
             TextBox l2b = new TextBox ( );
-            TB (l2b, col1, row5, "!", Color.Orange);
+            TB (l2b, col1, row5, hf1Warning, Color.Orange);
 
             TextBox l2bright = new TextBox ( );
-            TB (l2bright, col2, row5, "HF1 -BASIC-");
+            TB (l2bright, col2, row5, "HF1 -" + hfMode + "-");
 
             TextBox l3 = new TextBox ( );
             TB (l3, col1, row6, "<", Color.White);
@@ -489,6 +537,11 @@ namespace CDU3000
 
             CheckStatus ( );
 
+            if (hfMode == "SEL" & hfSubMode == "SCAN")
+            {
+                hfSubMode = "MAN";
+            }
+
             switch (hfMode)
             {
                 case "STBY":
@@ -527,6 +580,7 @@ namespace CDU3000
                     break;
 
                 case "SEL":
+
                     l1color = Color.White;
                     l1ccolor = Color.White;
                     l1ecolor = Color.White;
@@ -600,7 +654,7 @@ namespace CDU3000
             r1text = "";
             r2text = r2Var;
             r3text = r3Var;
-            r4text = "- - - - - - - ";
+            r4text = hfAircraftID;
             r5text = "";
             r6text = "RETURN";
 
@@ -690,6 +744,7 @@ namespace CDU3000
                     TextBox l3e = new TextBox ( );
                     TB (l3e, l3d.Location.X + l3d.Width, row6, "SCAN", l3ecolor);
                 }
+
             }
 
             //if (hfMode == "ALE")
@@ -842,10 +897,20 @@ namespace CDU3000
 
             CheckStatus ( );
 
+            UTCupdateTimer.Start ( );
+                
+
+            if (pushedButton == l1Btn || gpsSync=="GPS")
+            {
+                hfTime = DateTime.UtcNow.ToString("HHmm : ss");
+                hfDate = DateTime.UtcNow.ToString("dd / MM / yy");
+                gpsSync = "GPS";
+            }
+
             #region MyRegion
             l1tText = "";
             l2tText = "TIME";
-            l3tText = "DATE             GPS";
+            l3tText = "DATE";
             l4tText = "";
             l5tText = "";
             l6tText = "";
@@ -857,8 +922,8 @@ namespace CDU3000
             r6tText = "";
 
             l1text = "> GPS SYNC";
-            l2text = "> 1625 : 02";
-            l3text = "> 23 / 06 / 99";
+            l2text = "> " + hfTime;
+            l3text = "> " + hfDate;
             l4text = "> DATA LOAD";
             l5text = "";
             l6text = "";
@@ -892,6 +957,9 @@ namespace CDU3000
 
             TextBox l3t = new TextBox ( );
             TB (l3t, col2, row5, l3tText);
+
+            TextBox gpsSynced = new TextBox ( );
+            TB (gpsSynced, col7, row5, gpsSync);
 
             TextBox l3 = new TextBox ( );
             TB (l3, col1, row6, l3text, Color.White);
@@ -1524,6 +1592,173 @@ namespace CDU3000
         private void ALEscanListsPage( )
         {
             CDU7000Page = true;
+
+            CheckStatus ( );
+
+            #region MyRegion
+            l1tText = "SCANLS";
+            l2tText = "SECLST";
+            l3tText = "THRLST";
+            l4tText = "FOULST";
+            l5tText = "FIFLST";
+            l6tText = "";
+            r1tText = "";
+            r2tText = "";
+            r3tText = "";
+            r4tText = "";
+            r5tText = "";
+            r6tText = "";
+
+            l1text = "< 01";
+            l2text = "< 02";
+            l3text = "< 03";
+            l4text = "< 04";
+            l5text = "< 05";
+            l6text = "";
+            r1text = "";
+            r2text = "";
+            r3text = "";
+            r4text = "";
+            r5text = "";
+            r6text = "RETURN";
+
+            currentPageTitle = "HF1 ALE SCAN LISTS"; //page title and number used for navigating
+            currentPageNumber = 1;
+
+            TextBox title = new TextBox ( );//displayed top center of screen
+            TB (title, col7, row0, currentPageTitle);
+
+            TextBox page = new TextBox ( );
+            TB (page, col14, row0, currentPageNumber + "/4");
+
+            TextBox l1t = new TextBox ( );
+            TB (l1t, col5, row2, l1tText, Color.White);
+
+            TextBox l1 = new TextBox ( );
+            TB (l1, col1, row2, l1text, Color.White);
+
+            TextBox l2t = new TextBox ( );
+            TB (l2t, col5, row4, l2tText, Color.White);
+
+            TextBox l2 = new TextBox ( );
+            TB (l2, col1, row4, l2text, Color.White);
+
+            TextBox l3t = new TextBox ( );
+            TB (l3t, col5, row6, l3tText, Color.White);
+
+            TextBox l3 = new TextBox ( );
+            TB (l3, col1, row6, l3text, Color.White);
+
+            TextBox l4t = new TextBox ( );
+            TB (l4t, col5, row8, l4tText, Color.White);
+
+            TextBox l4 = new TextBox ( );
+            TB (l4, col1, row8, l4text, Color.White);
+
+            TextBox l5t = new TextBox ( );
+            TB (l5t, col5, row10, l5tText, Color.White);
+
+            TextBox l5 = new TextBox ( );
+            TB (l5, col1, row10, l5text, Color.White);
+
+            //TextBox l6t = new TextBox();
+            //TB(l6t, col2, row11, l6tText);
+
+            TextBox l6 = new TextBox ( );
+            TB (l6, col1, row12, l6text, Color.White);
+
+            //TextBox r1t = new TextBox();
+            //TB(r1t, col14+20, row1, r1tText);
+            //TypeLeft(r1t);
+
+            TextBox r1 = new TextBox ( );
+            TB (r1, col15, row2, r1text, Color.White);
+
+            //TextBox r2t = new TextBox();
+            //TB(r2t, col14+20, row3, r2tText);
+            //TypeLeft(r2t);
+
+            TextBox r2 = new TextBox ( );
+            TB (r2, col15, row4, r2text, Color.White);
+
+            //TextBox r3t = new TextBox();
+            //TB(r3t, col14+20, row5, r3tText);
+            //TypeLeft(r3t);
+
+            TextBox r3 = new TextBox ( );
+            TB (r3, col15, row6, r3text, Color.White);
+
+            //TextBox r4t = new TextBox();
+            //TB(r4t, col14+20, row7, r4tText);
+            //TypeLeft(r4t);
+
+            TextBox r4 = new TextBox ( );
+            TB (r4, col15, row8, r4text, Color.White);
+
+            //TextBox r5t = new TextBox();
+            //TB(r5t, col14+20, row9, r5tText);
+            //TypeLeft(r5t);
+
+            TextBox r5 = new TextBox ( );
+            TB (r5, col15, row10, r5text, Color.White);
+
+            //TextBox r6t = new TextBox();
+            //TB(r6t, col14+20, row11, r6tText);
+            //TypeLeft(r6t);
+
+            TextBox r6 = new TextBox ( );
+            TB (r6, col15, row12, r6text, Color.White);
+
+
+
+
+
+            #region Add Arrows if Needed
+            if (r1text != "")
+            {
+                TextBox r1r = new TextBox ( );
+                TB (r1r, col16, row2, "<", Color.White);
+            }
+
+            if (r2text != "")
+            {
+                TextBox r2r = new TextBox ( );
+                TB (r2r, col16, row4, "<", Color.White);
+            }
+
+            if (r3text != "")
+            {
+                TextBox r3r = new TextBox ( );
+                TB (r3r, col16, row6, "<", Color.White);
+            }
+
+            if (r4text != "")
+            {
+                TextBox r4r = new TextBox ( );
+                TB (r4r, col16, row8, "<", Color.White);
+            }
+
+            if (r5text != "")
+            {
+                TextBox r5r = new TextBox ( );
+                TB (r5r, col16, row10, "<", Color.White);
+            }
+
+
+            if (r6text != "")
+            {
+                TextBox r6r = new TextBox ( );
+                TB (r6r, col16, row12, ">", Color.White);
+            }
+            #endregion
+
+            TextBox l6b = new TextBox ( );
+            TB (l6b, col1, row13, "[");
+
+
+            TextBox r6b = new TextBox ( );
+            TB (r6b, col16, row13, "]");
+            #endregion
         }
 
         private void HFALEfunctionPage1( )
@@ -1913,11 +2148,6 @@ namespace CDU3000
             TextBox r6b = new TextBox ( );
             TB (r6b, col16, row13, "]");
             #endregion
-        }
-
-        private void HFstandbyFunctionsPage( )
-        {
-            CDU7000Page = true;
         }
 
         private void HFALEaddressPage( )
@@ -9053,18 +9283,20 @@ namespace CDU3000
         {
             CDU7000Page = true;
 
+            CheckStatus ( );
+
             #region MyRegion
             l1text = "ON";
             l2text = ">";
-            l3text = "GO";
-            l4text = "GO";
+            l3text = myCont.VU1Transmitter;
+            l4text = myCont.VU1PowerSupply;
             l5text = "123-4567-890";
             l6text = "< FAULT HIST";
             r1text = "- - - <";
             r2text = "- - <";
-            r3text = "NGO";
-            r4text = "GO";
-            r5text = "GO";
+            r3text = myCont.VU1Modem;
+            r4text = myCont.VU1RT;
+            r5text = myCont.VU1Comsec;
             r6text = "RETURN";
 
             currentPageTitle = "V/U1 STATUS"; //page title and number used for navigating
@@ -9093,7 +9325,7 @@ namespace CDU3000
             CenterMe (center);
 
             TextBox bus = new TextBox ( );
-            TB (bus, col7, row2, "NGO-A", Color.White);
+            TB (bus, col7, row2, myCont.VU11553, Color.White);
             CenterMe (bus);
 
             TextBox l2t = new TextBox ( );
@@ -9200,6 +9432,8 @@ namespace CDU3000
             TextBox r6b = new TextBox ( );
             TB (r6b, col16, row13, "]");
             #endregion
+
+            myCont.VU1ValueChanged = false;
         }
 
         private void VU2StatusPage( )
@@ -9209,15 +9443,15 @@ namespace CDU3000
             #region MyRegion
             l1text = "ON";
             l2text = ">";
-            l3text = "GO";
-            l4text = "GO";
+            l3text = myCont.VU2Transmitter;
+            l4text = myCont.VU2PowerSupply;
             l5text = "123-4567-890";
             l6text = "< FAULT HIST";
             r1text = "- - - <";
             r2text = "- - <";
-            r3text = "GO";
-            r4text = "GO";
-            r5text = "GO";
+            r3text = myCont.VU2Modem;
+            r4text = myCont.VU2RT;
+            r5text = myCont.VU2Comsec;
             r6text = "RETURN";
 
             currentPageTitle = "V/U2 STATUS"; //page title and number used for navigating
@@ -9227,7 +9461,7 @@ namespace CDU3000
             TB (title, col7, row0, currentPageTitle);
 
             TextBox page = new TextBox ( );
-            TB (page, col12, row0, com1Status, Color.White);
+            TB (page, col12, row0, _VU2status, Color.White);
 
             TextBox l1t = new TextBox ( );
             TB (l1t, col2, row1, "ALERT");
@@ -9246,7 +9480,7 @@ namespace CDU3000
             CenterMe (center);
 
             TextBox bus = new TextBox ( );
-            TB (bus, col7, row2, "GO", Color.White);
+            TB (bus, col7, row2, myCont.VU21553, Color.White);
             CenterMe (bus);
 
             TextBox l2t = new TextBox ( );
@@ -9352,6 +9586,9 @@ namespace CDU3000
 
             TextBox r6b = new TextBox ( );
             TB (r6b, col16, row13, "]");
+
+            myCont.VU2ValueChanged = false;
+
             #endregion
         }
 
@@ -11312,6 +11549,46 @@ namespace CDU3000
             r5text = "";
             r6text = "RETURN";
 
+            Color color1;
+            Color color2;
+            Color color3;
+            Color color4;
+            Color color5;
+            Color color6;
+
+            if (CDUIFFpower == "OFF")
+            {
+                color1 = Color.White;
+                color2 = Color.Green;
+            }
+            else
+            {
+                color1 = Color.Green;
+                color2 = Color.White;
+            }
+
+            if (CDUVU1power == "OFF")
+            {
+                color3 = Color.White;
+                color4 = Color.Green;
+            }
+            else
+            {
+                color3 = Color.Green;
+                color4 = Color.White;
+            }
+
+            if (CDUVU2power == "OFF")
+            {
+                color5 = Color.White;
+                color6 = Color.Green;
+            }
+            else
+            {
+                color5 = Color.Green;
+                color6 = Color.White;
+            }
+
             currentPageTitle = "POWER"; //page title and number used for navigating
             currentPageNumber = 1;
 
@@ -11325,13 +11602,13 @@ namespace CDU3000
             TB (l1t, col2, row1, "IFF");
 
             TextBox l1 = new TextBox ( );
-            TB (l1, col1, row2, l1text, Color.White);
+            TB (l1, col1, row2, l1text, color1);
 
             TextBox l1slash = new TextBox ( );
             TB (l1slash, l1.Location.X + l1.Width, row2, "/", Color.White);
 
             TextBox l1off = new TextBox ( );
-            TB (l1off, l1slash.Location.X + l1slash.Width, row2, "OFF", Color.Green);
+            TB (l1off, l1slash.Location.X + l1slash.Width, row2, "OFF", color2);
 
             //TextBox l2t = new TextBox();
             //TB(l2t, col2, row3, "LOCATION");
@@ -11368,10 +11645,10 @@ namespace CDU3000
             TypeLeft (r1t);
 
             TextBox r1 = new TextBox ( );
-            TB (r1, col15, row2, r1text, Color.Green);
+            TB (r1, col15, row2, r1text, color4);
 
             TextBox r1on = new TextBox ( );
-            TB (r1on, col11 + 10, row2, "ON", Color.White);
+            TB (r1on, col11 + 10, row2, "ON", color3);
 
             TextBox r1slash = new TextBox ( );
             TB (r1slash, r1on.Location.X + r1on.Width, row2, "/", Color.White);
@@ -11381,10 +11658,10 @@ namespace CDU3000
             TypeLeft (r2t);
 
             TextBox r2 = new TextBox ( );
-            TB (r2, col15, row4, r2text, Color.Green);
+            TB (r2, col15, row4, r2text, color6);
 
             TextBox r2on = new TextBox ( );
-            TB (r2on, col11 + 10, row4, "ON", Color.White);
+            TB (r2on, col11 + 10, row4, "ON", color5);
 
             TextBox r2slash = new TextBox ( );
             TB (r2slash, r2on.Location.X + r2on.Width, row4, "/", Color.White);
@@ -18567,7 +18844,7 @@ namespace CDU3000
                     myName.ForeColor = Color.White;
                 }
                 else
-                    if (myName.Text == "NGO" & (myCont.TCNvalueChanged == true || myCont.EGIvalueChanged == true || myCont.EgiInuValueChanged == true || myCont.EgiGpsValueChanged == true || myCont.HF1ValueChanged == true))
+                    if (myName.Text == "NGO" & (myCont.VU1ValueChanged == true || myCont.VU2ValueChanged == true || myCont.TCNvalueChanged == true || myCont.EGIvalueChanged == true || myCont.EgiInuValueChanged == true || myCont.EgiGpsValueChanged == true || myCont.HF1ValueChanged == true))
                     {
                         myName.ForeColor = Color.Yellow;
                     }
@@ -18680,7 +18957,7 @@ namespace CDU3000
 
             #region Color toggle of Yes/No, Comp/Uncomp, Inhibit, etc (maximum two choices only)
 
-            if (trimmedString == "OFF" & pushedButton == r4Btn & currentPageTitle == "IFF" & currentPageNumber == 1)
+            if ((trimmedString == "OFF" & pushedButton == r4Btn & currentPageTitle == "IFF" & currentPageNumber == 1) || (pushedButton == r4Btn & currentPageTitle == "HF1 CONTROL"))
             {
                 //skip the above under this condition
             }
@@ -18726,6 +19003,24 @@ namespace CDU3000
                                                     c.ForeColor = Color.White;
                                                     switchColor1 = Color.White;
 
+                                                    if (currentPageTitle == "POWER")
+                                                    {
+                                                        if (trimmedString == "ON")//toggles IFF power
+                                                        {
+                                                            CDUIFFpower = "OFF";
+                                                        }
+                                                        else
+                                                            if (pushedButton == r1Btn)
+                                                            {
+                                                                CDUVU1power = "ON";
+                                                            }
+                                                            else
+                                                                if (pushedButton == r2Btn)
+                                                                {
+                                                                    CDUVU2power = "ON";
+                                                                }
+                                                    }
+
                                                     if (currentPageTitle == "HF1 CONTROL" & trimmedString == "MAN")
                                                     {
                                                         if (c.ForeColor == Color.Green)
@@ -18747,6 +19042,26 @@ namespace CDU3000
                                                 {
                                                     c.ForeColor = Color.Green;
                                                     switchColor1 = Color.Green;
+
+                                                    if (currentPageTitle == "POWER")
+                                                    {
+                                                        if (trimmedString == "ON")//toggles IFF power
+                                                        {
+                                                            CDUIFFpower = "ON";
+                                                        }
+                                                        else
+                                                            if (pushedButton == r1Btn)
+                                                            {
+                                                                CDUVU1power = "OFF";
+                                                            }
+                                                            else
+                                                                if (pushedButton == r2Btn)
+                                                                {
+                                                                    CDUVU2power = "OFF";
+                                                                }
+                                                    }
+
+
 
                                                     if (currentPageTitle == "HF1 CONTROL" & trimmedString == "MAN")
                                                     {
@@ -19627,7 +19942,7 @@ namespace CDU3000
 
             #region page selections from START INIT page
 
-            if (currentPageTitle == "START INIT")
+            if (currentPageTitle == "START INIT" & trimmedString != "RETURN")
             {
                 if (pushedButton == l4Btn)
                 {
@@ -19645,13 +19960,19 @@ namespace CDU3000
 
                 }
                 else
-                {
+
                     if (pushedButton == l5Btn)
                     {
                         StartFresh ( );
                         EGIcontrolPage ( );
                     }
-                }
+                    else
+                        if (pushedButton == r5Btn)
+                        {
+                            StartFresh ( );
+                            PowerPage ( );
+                        }
+
                 return;
             }
 
@@ -19947,10 +20268,15 @@ namespace CDU3000
 
                         //- -
                         case "- -":
-                            if (currentPageTitle == "HF1 CONTROL" & (hfMode == "BAS" || hfMode == "SEL") & hfSubMode == "PRST")
+                            if (currentPageTitle == "HF1 CONTROL" & hfSubMode == "PRST")
                             {
                                 StartFresh ( );
                                 HFpresetChannelsPage1 ( );
+                            }
+                            else if (currentPageTitle == "HF1 CONTROL" & hfSubMode == "SCAN")
+                            {
+                                StartFresh ( );
+                                ALEscanListsPage ( );
                             }
                             break;
 
@@ -20063,6 +20389,12 @@ namespace CDU3000
                                     VU2Fill ( );
                                 }
                             #endregion
+                            break;
+
+                        //GPS SYNC
+                        case "GPS SYNC":
+                            StartFresh ( );
+                            HFstandbyFunctionPage ( );
                             break;
 
                         //HF CONTROL page1
@@ -20443,6 +20775,10 @@ namespace CDU3000
                         return;
                     }
                     r4text = scratchpad;
+                    if (currentPageTitle == "HF1 CONTROL")
+                    {
+                        hfAircraftID = scratchpad;
+                    }
                     break;
 
                 case "r5":
@@ -20468,20 +20804,23 @@ namespace CDU3000
 
                         if (c.GetType ( ) == typeof (TextBox))
                         {
-                            if (c.Location.Y == myRow & c.Location.X < col3 & mySide == "left")
-                            {
-                                c.Text = scratchpad;
-                                Size size = TextRenderer.MeasureText (c.Text, c.Font);
-                                c.Size = size;
-
-                            }
+                            if (c.Location.X == col16)
+                            { }
                             else
-                                if (c.Location.Y == myRow & ((c.Location.X + c.Width) > col14) & mySide == "right")
+                                if (c.Location.Y == myRow & c.Location.X < col3 & mySide == "left")
                                 {
                                     c.Text = scratchpad;
                                     Size size = TextRenderer.MeasureText (c.Text, c.Font);
                                     c.Size = size;
+
                                 }
+                                else
+                                    if (c.Location.Y == myRow & ((c.Location.X + c.Width) > col14) & mySide == "right")
+                                    {
+                                        c.Text = scratchpad;
+                                        Size size = TextRenderer.MeasureText (c.Text, c.Font);
+                                        c.Size = size;
+                                    }
 
                         }
 
@@ -20613,6 +20952,12 @@ namespace CDU3000
                     }
 
                 case "HF1 ALE FCTN":
+                    {
+                        HFcontrolPage1 ( );
+                        break;
+                    }
+
+                case "HF1 ALE SCAN LISTS":
                     {
                         HFcontrolPage1 ( );
                         break;
@@ -21134,7 +21479,7 @@ namespace CDU3000
 
         }
 
-        private void CheckStatus( )
+        private void CheckStatus( )//determines GO/NGO status prior to displaying the page
         {
             #region TACAN
             if (myCont.TacanPower == "ON" & myCont.TacanNVRAM == "GO" & myCont.TacanMicro == "GO" & myCont.Tacan1553 == "GO" & myCont.TacanAudio == "GO" & myCont.TacanDpdat == "GO" & myCont.TacanDpram == "GO" & myCont.TacanPwr == "GO" & myCont.TacanRam == "GO" & myCont.TacanRcv == "GO" & myCont.TacanRom == "GO" & myCont.TacanRt == "GO" & myCont.TacanSub == "GO" & myCont.TacanSynth == "GO" & myCont.TacanTrm == "GO" & myCont.TacanTun == "GO")
@@ -21144,6 +21489,28 @@ namespace CDU3000
             else
             {
                 _tcnStatus = "NGO";
+            }
+            #endregion
+
+            #region VU1
+            if (myCont.VU11553 == "GO" & myCont.VU1Comsec == "GO" & myCont.VU1Modem == "GO" & myCont.VU1PowerSupply == "GO" & myCont.VU1RT == "GO" & myCont.VU1Transmitter == "GO")
+            {
+                _VU1status = "GO";
+            }
+            else
+            {
+                _VU1status = "NGO";
+            }
+            #endregion
+
+            #region VU2
+            if (myCont.VU21553 == "GO" & myCont.VU2Comsec == "GO" & myCont.VU2Modem == "GO" & myCont.VU2PowerSupply == "GO" & myCont.VU2RT == "GO" & myCont.VU2Transmitter == "GO")
+            {
+                _VU2status = "GO";
+            }
+            else
+            {
+                _VU2status = "NGO";
             }
             #endregion
 
@@ -21208,10 +21575,12 @@ namespace CDU3000
             if (myCont.HF11553 == "GO" & myCont.HF1Ampl == "GO" & myCont.HF1Cplr == "GO" & myCont.HF1Eqpt == "GO" & myCont.HF1Fiber == "GO" & myCont.HF1HiTemp == "GO" & myCont.HF1OverVlt == "GO" & myCont.HF1RcvOvrld == "GO" & myCont.HF1RT == "GO" & myCont.HF1Tune == "GO" & myCont.HF1VSWR == "GO")
             {
                 _HF1status = "GO";
+                hf1Warning = "";
             }
             else
             {
                 _HF1status = "NGO";
+                hf1Warning = "!";
             }
 
             if (_VU1status == "GO" & _VU2status == "GO" & _HF1status == "GO")
@@ -21222,13 +21591,48 @@ namespace CDU3000
             {
                 _comStatus = "NGO";
             }
+
+            if (_VU1status == "GO" & CDUVU1power == "ON")
+            {
+                vu1Warning = "";
+            }
+            else
+            {
+                vu1Warning = "!";
+            }
+
+            if (_VU2status == "GO" & CDUVU2power == "ON")
+            {
+                vu2Warning = "";
+            }
+            else
+            {
+                vu2Warning = "!";
+            }
+
+
+
             #endregion
-        }   //determines GO/NGO status prior to displaying the page
+        }
 
         private bool CheckValidity( )
         {
             switch (currentPageTitle)
             {
+                case "HF1 CONTROL":
+                    if (pushedButton == r4Btn)
+                    {
+                        if (scratchpad.Length <= 7 & scratchpad.Length != 0 & scratchpad.Contains (".") == false & scratchpad.Contains ("+") == false & scratchpad.Contains ("-") == false & scratchpad.Contains ("/") == false & scratchpad.Contains (" ") == false)
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            scratchMessage = "INVALID ENTRY";
+                        }
+                    }
+                    break;
+
                 case "INU LEVER ARMS":
                     if (pushedButton == l2Btn || pushedButton == l3Btn || pushedButton == l4Btn)
                     {
@@ -21281,6 +21685,12 @@ namespace CDU3000
             egiDate = DateTime.Now;
             formattedTime = egiDateTime.ToString ("HH : mm : ss");
             formattedDate = egiDate.ToString ("dd MMM yy").ToUpper ( );
+
+            if (currentPageTitle == "HF1 STANDBY FCTN")
+            {
+                StartFresh ( );
+                HFstandbyFunctionPage ( );
+            }
 
             if (currentPageTitle == "START INIT")
             {

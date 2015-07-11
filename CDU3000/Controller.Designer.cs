@@ -134,6 +134,36 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.IFFselectBtn = new System.Windows.Forms.RadioButton();
             this.CommsTab = new System.Windows.Forms.TabPage();
+            this.VU2bg = new System.Windows.Forms.GroupBox();
+            this.vu2ALLNGObtn = new System.Windows.Forms.Button();
+            this.vu2ALLGObtn = new System.Windows.Forms.Button();
+            this.vu2TransCB = new System.Windows.Forms.CheckBox();
+            this.label57 = new System.Windows.Forms.Label();
+            this.label58 = new System.Windows.Forms.Label();
+            this.label59 = new System.Windows.Forms.Label();
+            this.label60 = new System.Windows.Forms.Label();
+            this.vu2ComsecCB = new System.Windows.Forms.CheckBox();
+            this.vu21553CB = new System.Windows.Forms.CheckBox();
+            this.vu2RtCB = new System.Windows.Forms.CheckBox();
+            this.vu2ModemCB = new System.Windows.Forms.CheckBox();
+            this.vu2PwrSplyCB = new System.Windows.Forms.CheckBox();
+            this.label61 = new System.Windows.Forms.Label();
+            this.label64 = new System.Windows.Forms.Label();
+            this.vu1GB = new System.Windows.Forms.GroupBox();
+            this.vu1ALLNGOcb = new System.Windows.Forms.Button();
+            this.vu1ALLGOcb = new System.Windows.Forms.Button();
+            this.vu1transCb = new System.Windows.Forms.CheckBox();
+            this.label39 = new System.Windows.Forms.Label();
+            this.label43 = new System.Windows.Forms.Label();
+            this.label46 = new System.Windows.Forms.Label();
+            this.label47 = new System.Windows.Forms.Label();
+            this.vu1comsecCb = new System.Windows.Forms.CheckBox();
+            this.vu11553Cb = new System.Windows.Forms.CheckBox();
+            this.vu1RTcb = new System.Windows.Forms.CheckBox();
+            this.vu1modemCb = new System.Windows.Forms.CheckBox();
+            this.vu1PwrSplycb = new System.Windows.Forms.CheckBox();
+            this.label62 = new System.Windows.Forms.Label();
+            this.label63 = new System.Windows.Forms.Label();
             this.HfGB = new System.Windows.Forms.GroupBox();
             this.HF1AllNgoBtn = new System.Windows.Forms.Button();
             this.HF1allGoBtn = new System.Windows.Forms.Button();
@@ -170,6 +200,8 @@
             this.revTabPage.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.CommsTab.SuspendLayout();
+            this.VU2bg.SuspendLayout();
+            this.vu1GB.SuspendLayout();
             this.HfGB.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -1195,7 +1227,7 @@
             this.powerGb.Size = new System.Drawing.Size(128, 424);
             this.powerGb.TabIndex = 1;
             this.powerGb.TabStop = false;
-            this.powerGb.Text = "POWER";
+            this.powerGb.Text = "MISSION POWER SWITCHES";
             // 
             // button1
             // 
@@ -1220,7 +1252,7 @@
             this.egiInuPowerCB.AutoSize = true;
             this.egiInuPowerCB.Checked = true;
             this.egiInuPowerCB.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.egiInuPowerCB.Location = new System.Drawing.Point(64, 32);
+            this.egiInuPowerCB.Location = new System.Drawing.Point(64, 39);
             this.egiInuPowerCB.Name = "egiInuPowerCB";
             this.egiInuPowerCB.Size = new System.Drawing.Size(42, 17);
             this.egiInuPowerCB.TabIndex = 21;
@@ -1231,7 +1263,7 @@
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(40, 100);
+            this.label31.Location = new System.Drawing.Point(40, 107);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(22, 13);
             this.label31.TabIndex = 20;
@@ -1240,7 +1272,7 @@
             // label38
             // 
             this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(19, 78);
+            this.label38.Location = new System.Drawing.Point(19, 85);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(43, 13);
             this.label38.TabIndex = 19;
@@ -1249,7 +1281,7 @@
             // label40
             // 
             this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(34, 144);
+            this.label40.Location = new System.Drawing.Point(34, 151);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(28, 13);
             this.label40.TabIndex = 17;
@@ -1258,7 +1290,7 @@
             // label41
             // 
             this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(26, 56);
+            this.label41.Location = new System.Drawing.Point(26, 63);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(36, 13);
             this.label41.TabIndex = 18;
@@ -1269,7 +1301,7 @@
             this.vu2PowerCB.AutoSize = true;
             this.vu2PowerCB.Checked = true;
             this.vu2PowerCB.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.vu2PowerCB.Location = new System.Drawing.Point(64, 142);
+            this.vu2PowerCB.Location = new System.Drawing.Point(64, 149);
             this.vu2PowerCB.Name = "vu2PowerCB";
             this.vu2PowerCB.Size = new System.Drawing.Size(42, 17);
             this.vu2PowerCB.TabIndex = 26;
@@ -1282,7 +1314,7 @@
             this.vu1PowerCB.AutoSize = true;
             this.vu1PowerCB.Checked = true;
             this.vu1PowerCB.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.vu1PowerCB.Location = new System.Drawing.Point(64, 120);
+            this.vu1PowerCB.Location = new System.Drawing.Point(64, 127);
             this.vu1PowerCB.Name = "vu1PowerCB";
             this.vu1PowerCB.Size = new System.Drawing.Size(42, 17);
             this.vu1PowerCB.TabIndex = 25;
@@ -1295,7 +1327,7 @@
             this.iffPowerCB.AutoSize = true;
             this.iffPowerCB.Checked = true;
             this.iffPowerCB.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.iffPowerCB.Location = new System.Drawing.Point(64, 98);
+            this.iffPowerCB.Location = new System.Drawing.Point(64, 105);
             this.iffPowerCB.Name = "iffPowerCB";
             this.iffPowerCB.Size = new System.Drawing.Size(42, 17);
             this.iffPowerCB.TabIndex = 24;
@@ -1308,7 +1340,7 @@
             this.tcnPowerCB.AutoSize = true;
             this.tcnPowerCB.Checked = true;
             this.tcnPowerCB.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.tcnPowerCB.Location = new System.Drawing.Point(64, 76);
+            this.tcnPowerCB.Location = new System.Drawing.Point(64, 83);
             this.tcnPowerCB.Name = "tcnPowerCB";
             this.tcnPowerCB.Size = new System.Drawing.Size(42, 17);
             this.tcnPowerCB.TabIndex = 23;
@@ -1321,7 +1353,7 @@
             this.CrpaPowerCB.AutoSize = true;
             this.CrpaPowerCB.Checked = true;
             this.CrpaPowerCB.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CrpaPowerCB.Location = new System.Drawing.Point(64, 54);
+            this.CrpaPowerCB.Location = new System.Drawing.Point(64, 61);
             this.CrpaPowerCB.Name = "CrpaPowerCB";
             this.CrpaPowerCB.Size = new System.Drawing.Size(42, 17);
             this.CrpaPowerCB.TabIndex = 22;
@@ -1332,7 +1364,7 @@
             // label49
             // 
             this.label49.AutoSize = true;
-            this.label49.Location = new System.Drawing.Point(34, 122);
+            this.label49.Location = new System.Drawing.Point(34, 129);
             this.label49.Name = "label49";
             this.label49.Size = new System.Drawing.Size(28, 13);
             this.label49.TabIndex = 3;
@@ -1341,7 +1373,7 @@
             // label50
             // 
             this.label50.AutoSize = true;
-            this.label50.Location = new System.Drawing.Point(15, 34);
+            this.label50.Location = new System.Drawing.Point(15, 41);
             this.label50.Name = "label50";
             this.label50.Size = new System.Drawing.Size(47, 13);
             this.label50.TabIndex = 2;
@@ -1404,6 +1436,8 @@
             // 
             // CommsTab
             // 
+            this.CommsTab.Controls.Add(this.VU2bg);
+            this.CommsTab.Controls.Add(this.vu1GB);
             this.CommsTab.Controls.Add(this.HfGB);
             this.CommsTab.Location = new System.Drawing.Point(4, 22);
             this.CommsTab.Name = "CommsTab";
@@ -1412,6 +1446,358 @@
             this.CommsTab.TabIndex = 3;
             this.CommsTab.Text = "Communications";
             this.CommsTab.UseVisualStyleBackColor = true;
+            // 
+            // VU2bg
+            // 
+            this.VU2bg.Controls.Add(this.vu2ALLNGObtn);
+            this.VU2bg.Controls.Add(this.vu2ALLGObtn);
+            this.VU2bg.Controls.Add(this.vu2TransCB);
+            this.VU2bg.Controls.Add(this.label57);
+            this.VU2bg.Controls.Add(this.label58);
+            this.VU2bg.Controls.Add(this.label59);
+            this.VU2bg.Controls.Add(this.label60);
+            this.VU2bg.Controls.Add(this.vu2ComsecCB);
+            this.VU2bg.Controls.Add(this.vu21553CB);
+            this.VU2bg.Controls.Add(this.vu2RtCB);
+            this.VU2bg.Controls.Add(this.vu2ModemCB);
+            this.VU2bg.Controls.Add(this.vu2PwrSplyCB);
+            this.VU2bg.Controls.Add(this.label61);
+            this.VU2bg.Controls.Add(this.label64);
+            this.VU2bg.Location = new System.Drawing.Point(274, 15);
+            this.VU2bg.Name = "VU2bg";
+            this.VU2bg.Size = new System.Drawing.Size(128, 424);
+            this.VU2bg.TabIndex = 39;
+            this.VU2bg.TabStop = false;
+            this.VU2bg.Text = "VU2 STATUS";
+            // 
+            // vu2ALLNGObtn
+            // 
+            this.vu2ALLNGObtn.Location = new System.Drawing.Point(24, 392);
+            this.vu2ALLNGObtn.Name = "vu2ALLNGObtn";
+            this.vu2ALLNGObtn.Size = new System.Drawing.Size(75, 23);
+            this.vu2ALLNGObtn.TabIndex = 37;
+            this.vu2ALLNGObtn.Text = "All NGO";
+            this.vu2ALLNGObtn.UseVisualStyleBackColor = true;
+            this.vu2ALLNGObtn.Click += new System.EventHandler(this.vu2ALLNGObtn_Click);
+            // 
+            // vu2ALLGObtn
+            // 
+            this.vu2ALLGObtn.Location = new System.Drawing.Point(24, 368);
+            this.vu2ALLGObtn.Name = "vu2ALLGObtn";
+            this.vu2ALLGObtn.Size = new System.Drawing.Size(75, 23);
+            this.vu2ALLGObtn.TabIndex = 36;
+            this.vu2ALLGObtn.Text = "All GO";
+            this.vu2ALLGObtn.UseVisualStyleBackColor = true;
+            this.vu2ALLGObtn.Click += new System.EventHandler(this.vu2ALLGObtn_Click);
+            // 
+            // vu2TransCB
+            // 
+            this.vu2TransCB.AutoSize = true;
+            this.vu2TransCB.Checked = true;
+            this.vu2TransCB.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.vu2TransCB.Location = new System.Drawing.Point(77, 32);
+            this.vu2TransCB.Name = "vu2TransCB";
+            this.vu2TransCB.Size = new System.Drawing.Size(42, 17);
+            this.vu2TransCB.TabIndex = 21;
+            this.vu2TransCB.Text = "GO";
+            this.vu2TransCB.UseVisualStyleBackColor = true;
+            this.vu2TransCB.CheckedChanged += new System.EventHandler(this.vu2TransCB_CheckedChanged);
+            // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.Location = new System.Drawing.Point(6, 100);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(27, 13);
+            this.label57.TabIndex = 20;
+            this.label57.Text = "R/T";
+            // 
+            // label58
+            // 
+            this.label58.AutoSize = true;
+            this.label58.Location = new System.Drawing.Point(6, 78);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(48, 13);
+            this.label58.TabIndex = 19;
+            this.label58.Text = "MODEM";
+            // 
+            // label59
+            // 
+            this.label59.AutoSize = true;
+            this.label59.Location = new System.Drawing.Point(6, 144);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(52, 13);
+            this.label59.TabIndex = 17;
+            this.label59.Text = "COMSEC";
+            // 
+            // label60
+            // 
+            this.label60.AutoSize = true;
+            this.label60.Location = new System.Drawing.Point(6, 56);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(63, 13);
+            this.label60.TabIndex = 18;
+            this.label60.Text = "PWR SPLY";
+            this.label60.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // vu2ComsecCB
+            // 
+            this.vu2ComsecCB.AutoSize = true;
+            this.vu2ComsecCB.Checked = true;
+            this.vu2ComsecCB.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.vu2ComsecCB.Location = new System.Drawing.Point(77, 142);
+            this.vu2ComsecCB.Name = "vu2ComsecCB";
+            this.vu2ComsecCB.Size = new System.Drawing.Size(42, 17);
+            this.vu2ComsecCB.TabIndex = 26;
+            this.vu2ComsecCB.Text = "GO";
+            this.vu2ComsecCB.UseVisualStyleBackColor = true;
+            this.vu2ComsecCB.CheckedChanged += new System.EventHandler(this.vu2ComsecCB_CheckedChanged);
+            // 
+            // vu21553CB
+            // 
+            this.vu21553CB.AutoSize = true;
+            this.vu21553CB.Checked = true;
+            this.vu21553CB.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.vu21553CB.Location = new System.Drawing.Point(77, 120);
+            this.vu21553CB.Name = "vu21553CB";
+            this.vu21553CB.Size = new System.Drawing.Size(42, 17);
+            this.vu21553CB.TabIndex = 25;
+            this.vu21553CB.Text = "GO";
+            this.vu21553CB.UseVisualStyleBackColor = true;
+            this.vu21553CB.CheckedChanged += new System.EventHandler(this.vu21553CB_CheckedChanged);
+            // 
+            // vu2RtCB
+            // 
+            this.vu2RtCB.AutoSize = true;
+            this.vu2RtCB.Checked = true;
+            this.vu2RtCB.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.vu2RtCB.Location = new System.Drawing.Point(77, 98);
+            this.vu2RtCB.Name = "vu2RtCB";
+            this.vu2RtCB.Size = new System.Drawing.Size(42, 17);
+            this.vu2RtCB.TabIndex = 24;
+            this.vu2RtCB.Text = "GO";
+            this.vu2RtCB.UseVisualStyleBackColor = true;
+            this.vu2RtCB.CheckedChanged += new System.EventHandler(this.vu2RtCB_CheckedChanged);
+            // 
+            // vu2ModemCB
+            // 
+            this.vu2ModemCB.AutoSize = true;
+            this.vu2ModemCB.Checked = true;
+            this.vu2ModemCB.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.vu2ModemCB.Location = new System.Drawing.Point(77, 76);
+            this.vu2ModemCB.Name = "vu2ModemCB";
+            this.vu2ModemCB.Size = new System.Drawing.Size(42, 17);
+            this.vu2ModemCB.TabIndex = 23;
+            this.vu2ModemCB.Text = "GO";
+            this.vu2ModemCB.UseVisualStyleBackColor = true;
+            this.vu2ModemCB.CheckedChanged += new System.EventHandler(this.vu2ModemCB_CheckedChanged);
+            // 
+            // vu2PwrSplyCB
+            // 
+            this.vu2PwrSplyCB.AutoSize = true;
+            this.vu2PwrSplyCB.Checked = true;
+            this.vu2PwrSplyCB.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.vu2PwrSplyCB.Location = new System.Drawing.Point(77, 54);
+            this.vu2PwrSplyCB.Name = "vu2PwrSplyCB";
+            this.vu2PwrSplyCB.Size = new System.Drawing.Size(42, 17);
+            this.vu2PwrSplyCB.TabIndex = 22;
+            this.vu2PwrSplyCB.Text = "GO";
+            this.vu2PwrSplyCB.UseVisualStyleBackColor = true;
+            this.vu2PwrSplyCB.CheckedChanged += new System.EventHandler(this.vu2PwrSplyCB_CheckedChanged);
+            // 
+            // label61
+            // 
+            this.label61.AutoSize = true;
+            this.label61.Location = new System.Drawing.Point(6, 122);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(31, 13);
+            this.label61.TabIndex = 3;
+            this.label61.Text = "1553";
+            // 
+            // label64
+            // 
+            this.label64.AutoSize = true;
+            this.label64.Location = new System.Drawing.Point(6, 34);
+            this.label64.Name = "label64";
+            this.label64.Size = new System.Drawing.Size(44, 13);
+            this.label64.TabIndex = 2;
+            this.label64.Text = "TRANS";
+            // 
+            // vu1GB
+            // 
+            this.vu1GB.Controls.Add(this.vu1ALLNGOcb);
+            this.vu1GB.Controls.Add(this.vu1ALLGOcb);
+            this.vu1GB.Controls.Add(this.vu1transCb);
+            this.vu1GB.Controls.Add(this.label39);
+            this.vu1GB.Controls.Add(this.label43);
+            this.vu1GB.Controls.Add(this.label46);
+            this.vu1GB.Controls.Add(this.label47);
+            this.vu1GB.Controls.Add(this.vu1comsecCb);
+            this.vu1GB.Controls.Add(this.vu11553Cb);
+            this.vu1GB.Controls.Add(this.vu1RTcb);
+            this.vu1GB.Controls.Add(this.vu1modemCb);
+            this.vu1GB.Controls.Add(this.vu1PwrSplycb);
+            this.vu1GB.Controls.Add(this.label62);
+            this.vu1GB.Controls.Add(this.label63);
+            this.vu1GB.Location = new System.Drawing.Point(140, 15);
+            this.vu1GB.Name = "vu1GB";
+            this.vu1GB.Size = new System.Drawing.Size(128, 424);
+            this.vu1GB.TabIndex = 38;
+            this.vu1GB.TabStop = false;
+            this.vu1GB.Text = "VU1 STATUS";
+            // 
+            // vu1ALLNGOcb
+            // 
+            this.vu1ALLNGOcb.Location = new System.Drawing.Point(24, 392);
+            this.vu1ALLNGOcb.Name = "vu1ALLNGOcb";
+            this.vu1ALLNGOcb.Size = new System.Drawing.Size(75, 23);
+            this.vu1ALLNGOcb.TabIndex = 37;
+            this.vu1ALLNGOcb.Text = "All NGO";
+            this.vu1ALLNGOcb.UseVisualStyleBackColor = true;
+            this.vu1ALLNGOcb.Click += new System.EventHandler(this.vu1ALLNGOcb_Click);
+            // 
+            // vu1ALLGOcb
+            // 
+            this.vu1ALLGOcb.Location = new System.Drawing.Point(24, 368);
+            this.vu1ALLGOcb.Name = "vu1ALLGOcb";
+            this.vu1ALLGOcb.Size = new System.Drawing.Size(75, 23);
+            this.vu1ALLGOcb.TabIndex = 36;
+            this.vu1ALLGOcb.Text = "All GO";
+            this.vu1ALLGOcb.UseVisualStyleBackColor = true;
+            this.vu1ALLGOcb.Click += new System.EventHandler(this.vu1ALLGOcb_Click);
+            // 
+            // vu1transCb
+            // 
+            this.vu1transCb.AutoSize = true;
+            this.vu1transCb.Checked = true;
+            this.vu1transCb.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.vu1transCb.Location = new System.Drawing.Point(77, 32);
+            this.vu1transCb.Name = "vu1transCb";
+            this.vu1transCb.Size = new System.Drawing.Size(42, 17);
+            this.vu1transCb.TabIndex = 21;
+            this.vu1transCb.Text = "GO";
+            this.vu1transCb.UseVisualStyleBackColor = true;
+            this.vu1transCb.CheckedChanged += new System.EventHandler(this.vu1transCb_CheckedChanged);
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(6, 100);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(27, 13);
+            this.label39.TabIndex = 20;
+            this.label39.Text = "R/T";
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Location = new System.Drawing.Point(6, 78);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(48, 13);
+            this.label43.TabIndex = 19;
+            this.label43.Text = "MODEM";
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Location = new System.Drawing.Point(6, 144);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(52, 13);
+            this.label46.TabIndex = 17;
+            this.label46.Text = "COMSEC";
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Location = new System.Drawing.Point(6, 56);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(63, 13);
+            this.label47.TabIndex = 18;
+            this.label47.Text = "PWR SPLY";
+            this.label47.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // vu1comsecCb
+            // 
+            this.vu1comsecCb.AutoSize = true;
+            this.vu1comsecCb.Checked = true;
+            this.vu1comsecCb.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.vu1comsecCb.Location = new System.Drawing.Point(77, 142);
+            this.vu1comsecCb.Name = "vu1comsecCb";
+            this.vu1comsecCb.Size = new System.Drawing.Size(42, 17);
+            this.vu1comsecCb.TabIndex = 26;
+            this.vu1comsecCb.Text = "GO";
+            this.vu1comsecCb.UseVisualStyleBackColor = true;
+            this.vu1comsecCb.CheckedChanged += new System.EventHandler(this.vu1comsecCb_CheckedChanged);
+            // 
+            // vu11553Cb
+            // 
+            this.vu11553Cb.AutoSize = true;
+            this.vu11553Cb.Checked = true;
+            this.vu11553Cb.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.vu11553Cb.Location = new System.Drawing.Point(77, 120);
+            this.vu11553Cb.Name = "vu11553Cb";
+            this.vu11553Cb.Size = new System.Drawing.Size(42, 17);
+            this.vu11553Cb.TabIndex = 25;
+            this.vu11553Cb.Text = "GO";
+            this.vu11553Cb.UseVisualStyleBackColor = true;
+            this.vu11553Cb.CheckedChanged += new System.EventHandler(this.vu11553Cb_CheckedChanged);
+            // 
+            // vu1RTcb
+            // 
+            this.vu1RTcb.AutoSize = true;
+            this.vu1RTcb.Checked = true;
+            this.vu1RTcb.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.vu1RTcb.Location = new System.Drawing.Point(77, 98);
+            this.vu1RTcb.Name = "vu1RTcb";
+            this.vu1RTcb.Size = new System.Drawing.Size(42, 17);
+            this.vu1RTcb.TabIndex = 24;
+            this.vu1RTcb.Text = "GO";
+            this.vu1RTcb.UseVisualStyleBackColor = true;
+            this.vu1RTcb.CheckedChanged += new System.EventHandler(this.vu1RTcb_CheckedChanged);
+            // 
+            // vu1modemCb
+            // 
+            this.vu1modemCb.AutoSize = true;
+            this.vu1modemCb.Checked = true;
+            this.vu1modemCb.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.vu1modemCb.Location = new System.Drawing.Point(77, 76);
+            this.vu1modemCb.Name = "vu1modemCb";
+            this.vu1modemCb.Size = new System.Drawing.Size(42, 17);
+            this.vu1modemCb.TabIndex = 23;
+            this.vu1modemCb.Text = "GO";
+            this.vu1modemCb.UseVisualStyleBackColor = true;
+            this.vu1modemCb.CheckedChanged += new System.EventHandler(this.vu1modemCb_CheckedChanged);
+            // 
+            // vu1PwrSplycb
+            // 
+            this.vu1PwrSplycb.AutoSize = true;
+            this.vu1PwrSplycb.Checked = true;
+            this.vu1PwrSplycb.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.vu1PwrSplycb.Location = new System.Drawing.Point(77, 54);
+            this.vu1PwrSplycb.Name = "vu1PwrSplycb";
+            this.vu1PwrSplycb.Size = new System.Drawing.Size(42, 17);
+            this.vu1PwrSplycb.TabIndex = 22;
+            this.vu1PwrSplycb.Text = "GO";
+            this.vu1PwrSplycb.UseVisualStyleBackColor = true;
+            this.vu1PwrSplycb.CheckedChanged += new System.EventHandler(this.vu1PwrSplycb_CheckedChanged);
+            // 
+            // label62
+            // 
+            this.label62.AutoSize = true;
+            this.label62.Location = new System.Drawing.Point(6, 122);
+            this.label62.Name = "label62";
+            this.label62.Size = new System.Drawing.Size(31, 13);
+            this.label62.TabIndex = 3;
+            this.label62.Text = "1553";
+            // 
+            // label63
+            // 
+            this.label63.AutoSize = true;
+            this.label63.Location = new System.Drawing.Point(6, 34);
+            this.label63.Name = "label63";
+            this.label63.Size = new System.Drawing.Size(44, 13);
+            this.label63.TabIndex = 2;
+            this.label63.Text = "TRANS";
             // 
             // HfGB
             // 
@@ -1734,6 +2120,10 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.CommsTab.ResumeLayout(false);
+            this.VU2bg.ResumeLayout(false);
+            this.VU2bg.PerformLayout();
+            this.vu1GB.ResumeLayout(false);
+            this.vu1GB.PerformLayout();
             this.HfGB.ResumeLayout(false);
             this.HfGB.PerformLayout();
             this.ResumeLayout(false);
@@ -1873,5 +2263,35 @@
         private System.Windows.Forms.CheckBox HF1hitempCB;
         private System.Windows.Forms.Label label55;
         private System.Windows.Forms.Label label56;
+        private System.Windows.Forms.GroupBox vu1GB;
+        private System.Windows.Forms.Button vu1ALLNGOcb;
+        private System.Windows.Forms.Button vu1ALLGOcb;
+        private System.Windows.Forms.CheckBox vu1transCb;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.Label label46;
+        private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.CheckBox vu1comsecCb;
+        private System.Windows.Forms.CheckBox vu11553Cb;
+        private System.Windows.Forms.CheckBox vu1RTcb;
+        private System.Windows.Forms.CheckBox vu1modemCb;
+        private System.Windows.Forms.CheckBox vu1PwrSplycb;
+        private System.Windows.Forms.Label label62;
+        private System.Windows.Forms.Label label63;
+        private System.Windows.Forms.GroupBox VU2bg;
+        private System.Windows.Forms.Button vu2ALLNGObtn;
+        private System.Windows.Forms.Button vu2ALLGObtn;
+        private System.Windows.Forms.CheckBox vu2TransCB;
+        private System.Windows.Forms.Label label57;
+        private System.Windows.Forms.Label label58;
+        private System.Windows.Forms.Label label59;
+        private System.Windows.Forms.Label label60;
+        private System.Windows.Forms.CheckBox vu2ComsecCB;
+        private System.Windows.Forms.CheckBox vu21553CB;
+        private System.Windows.Forms.CheckBox vu2RtCB;
+        private System.Windows.Forms.CheckBox vu2ModemCB;
+        private System.Windows.Forms.CheckBox vu2PwrSplyCB;
+        private System.Windows.Forms.Label label61;
+        private System.Windows.Forms.Label label64;
     }
 }
