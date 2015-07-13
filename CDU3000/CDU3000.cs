@@ -243,16 +243,36 @@ namespace CDU3000
         private string l3Var = "NONE";
         private string r2Var = "STBY FUNC";
         private string r3Var = "- - ";
+        private string newChanVar = "";
         private string r3TitleVar;
         private Color l3color = Color.White;
         private Color l3ccolor = Color.Green;
         private Color l3ecolor = Color.Green;
         private string hfAircraftID = "- - - - - - - ";
-        private string hfTime = "0000 : 00";        
+        private string hfTime = "0000 : 00";
         private string hfDate = "01 / 01 / 96";
         private string gpsSync = "";
         private string manualTime = "0000 : 00";
         private string manualDate = "01 / 01 / 96";
+
+        //Preset Channels
+        private string pre1Chan = "< 01";
+        private string pre2Chan = "< 02";
+        private string pre3Chan = "< 03";
+        private string pre4Chan = "< 04";
+        private string pre5Chan = "< 05";
+
+        private string pre1Name = "ONENAM";
+        private string pre2Name = "BBCBBC";
+        private string pre3Name = "STILHO";
+        private string pre4Name = "ALPHA1";
+        private string pre5Name = "BRAVO2";
+
+        private string pre1Freq = "12.0000";
+        private string pre2Freq = "26.9624";
+        private string pre3Freq = "18.1212";
+        private string pre4Freq = "24.0202";
+        private string pre5Freq = "22.7324";
         #endregion
 
         #endregion
@@ -808,8 +828,13 @@ namespace CDU3000
             TB (r3t, col14 + 20, row5, r3tText);
             TypeLeft (r3t);
 
+            if (newChanVar != "")
+            {
+                r3Var = newChanVar;
+            }
+
             TextBox r3 = new TextBox ( );
-            TB (r3, col15, row6, r3text, Color.White);
+            TB (r3, col15, row6, r3Var , Color.White);
 
             TextBox r4t = new TextBox ( );
             TB (r4t, col14 + 20, row7, r4tText);
@@ -891,7 +916,7 @@ namespace CDU3000
 
             CheckStatus ( );
 
-            
+
             if (gnss1Status == "GO")
             {
                 UTCupdateTimer.Start ( );
@@ -1427,11 +1452,11 @@ namespace CDU3000
             CheckStatus ( );
 
             #region MyRegion
-            l1tText = "ONENAM";
-            l2tText = "BBCBBC";
-            l3tText = "STILHO";
-            l4tText = "ALPHA1";
-            l5tText = "BRAVO2";
+            l1tText = pre1Name;
+            l2tText = pre2Name;
+            l3tText = pre3Name;
+            l4tText = pre4Name;
+            l5tText = pre5Name;
             l6tText = "";
             r1tText = "";
             r2tText = "";
@@ -1440,17 +1465,17 @@ namespace CDU3000
             r5tText = "";
             r6tText = "";
 
-            l1text = "< 01";
-            l2text = "< 02";
-            l3text = "< 03";
-            l4text = "< 04";
-            l5text = "< 05";
+            l1text = pre1Chan;
+            l2text = pre2Chan ;
+            l3text = pre3Chan ;
+            l4text = pre4Chan ;
+            l5text = pre5Chan ;
             l6text = "";
-            r1text = "12.0000";
-            r2text = "26.9624";
-            r3text = "18.1212";
-            r4text = "24.0202";
-            r5text = "22.7324";
+            r1text = pre1Freq ;
+            r2text = pre2Freq;
+            r3text = pre3Freq;
+            r4text = pre4Freq;
+            r5text = pre5Freq;
             r6text = "RETURN";
 
             currentPageTitle = "HF1 PRESET CHANNELS"; //page title and number used for navigating
@@ -19925,6 +19950,16 @@ namespace CDU3000
 
             #endregion
 
+            #region page selection from HF Control page 1 and r3Btn
+            if (currentPageTitle == "HF1 CONTROL" & currentPageNumber == 1 & pushedButton == l3Btn )
+            {
+                StartFresh();
+                HFpresetChannelsPage1 ( );
+                return;
+
+            }
+            #endregion
+
             #region page selection from HF ALE ADDRESS page
 
             if (currentPageTitle == "HF1 ALE ADDRESS" & pushedButton == r1Btn)
@@ -19943,13 +19978,13 @@ namespace CDU3000
 
             #endregion
 
-            //#region page selection from HF STANDBY FCTN page
-            //if (currentPageTitle == "HF1 STANDBY FCTN" & pushedButton == l2Btn)
-            //{
-            //    StartFresh ( );
-
-            //}
-            //#endregion
+            #region Page selection for Preset ChannelsPages
+            if (currentPageTitle == "HF1 PRESET CHANNELS" & pushedButton!=r6Btn )
+            {
+                PresetController ( );
+                return;
+            }
+            #endregion
 
             #region page selections from START INIT page
 
@@ -20625,7 +20660,7 @@ namespace CDU3000
 
         #region Background methods  //backgroundworkers that handle needed tasks not seen by the user
 
-        private void FormatManualTime()
+        private void FormatManualTime( )
         {
             string s1 = manualTime.Remove (4);
 
@@ -20635,13 +20670,13 @@ namespace CDU3000
 
         }
 
-        private void FormatManualDate()
+        private void FormatManualDate( )
         {
             string trimmed = manualDate;
-            char[] trimThis = { '/','.' };
+            char[] trimThis = { '/', '.' };
             trimmed = manualDate.Trim (trimThis);
 
-            manualDate=trimmed.Insert (2, " / ");
+            manualDate = trimmed.Insert (2, " / ");
             manualDate = manualDate.Insert (7, " / ");
             hfDate = manualDate;
 
@@ -20735,7 +20770,7 @@ namespace CDU3000
                     }
                     else
                     {
-                        manualTime  = scratchpad;
+                        manualTime = scratchpad;
                         FormatManualTime ( );
                     }
                     break;
@@ -20753,8 +20788,8 @@ namespace CDU3000
                     }
                     else
                     {
-                        manualDate  = scratchpad;
-                        FormatManualDate  ( );
+                        manualDate = scratchpad;
+                        FormatManualDate ( );
                     }
                     break;
 
@@ -20951,6 +20986,97 @@ namespace CDU3000
 
             return value;
 
+        }
+
+        private void PresetController()//used to update preset pages
+        {
+
+            //return to HF Control Page
+            if ((pushedButton == l1Btn & l1text.Contains ("*")) || (pushedButton == l2Btn & l2text.Contains ("*")) || (pushedButton == l3Btn & l3text.Contains ("*")) || (pushedButton == l4Btn & l4text.Contains ("*")) || (pushedButton == l5Btn & l5text.Contains ("*")))
+            {
+                StartFresh ( );
+                HFcontrolPage1 ( );
+                return;
+            }
+            else
+            {
+                char[] toTrim = { '<' };
+                if (pushedButton == l1Btn)
+                {
+                    if (l1text.Contains ("<"))
+                    {
+                        l1text = l1text.TrimStart (toTrim);
+                        pre1Chan = "*" + l1text;
+                        newChanVar = l1text;
+                    }
+                }
+                if (pushedButton == l2Btn)
+                {
+                    if (l2text.Contains ("<"))
+                    {
+                        l2text = l2text.TrimStart (toTrim);
+                        pre2Chan = "*" + l2text;
+                    }
+                }
+                if (pushedButton == l3Btn)
+                {
+                    if (l3text.Contains ("<"))
+                    {
+                        l3text = l3text.TrimStart (toTrim);
+                        pre3Chan = "*" + l3text;
+                    }
+                }
+                if (pushedButton == l4Btn)
+                {
+                    if (l4text.Contains ("<"))
+                    {
+                        l4text = l4text.TrimStart (toTrim);
+                        pre4Chan = "*" + l4text;
+                    }
+                }
+                if (pushedButton == l5Btn)
+                {
+                    if (l5text.Contains ("<"))
+                    {
+                        l5text = l5text.TrimStart (toTrim);
+                        pre5Chan = "*" + l5text;
+                    }
+                }
+
+                //reset the others
+                char[] toCut = { '*' };
+
+                if (l1text.Contains ("*") & pushedButton != l1Btn)
+                {
+                    l1text = l1text.TrimStart (toCut);
+                    pre1Chan = "<" + l1text;
+                }
+                if (l2text.Contains ("*") & pushedButton != l2Btn)
+                {
+                    l2text = l2text.TrimStart (toCut);
+                    pre2Chan = "<" + l2text;
+                }
+                if (l3text.Contains ("*") & pushedButton != l3Btn)
+                {
+                    l3text = l3text.TrimStart (toCut);
+                    pre3Chan = "<" + l3text;
+                }
+                if (l4text.Contains ("*") & pushedButton != l4Btn)
+                {
+                    l4text = l4text.TrimStart (toCut);
+                    pre4Chan = "<" + l4text;
+                }
+                if (l5text.Contains ("*") & pushedButton != l5Btn)
+                {
+                    l5text = l5text.TrimStart (toCut);
+                    pre5Chan = "<" + l5text;
+                } 
+            }
+
+
+
+            StartFresh ( );
+            HFpresetChannelsPage1 ( );
         }
 
         private void ReturnList(string e)   //handles all RETURN buttons
@@ -21663,7 +21789,7 @@ namespace CDU3000
             #endregion
         }
 
-        
+
 
         private bool CheckValidity( )
         {
@@ -21672,7 +21798,7 @@ namespace CDU3000
                 case "HF1 CONTROL":
                     if (pushedButton == r4Btn)
                     {
-                        if (scratchpad.Length <= 7 & scratchpad.Length != 0 & ContainsCharacters()==false)
+                        if (scratchpad.Length <= 7 & scratchpad.Length != 0 & ContainsCharacters ( ) == false)
                         {
                             return true;
                         }
@@ -21686,7 +21812,7 @@ namespace CDU3000
                 case "HF1 STANDBY FCTN":
                     try
                     {
-                        if (pushedButton==l2Btn )
+                        if (pushedButton == l2Btn)
                         {
                             if (scratchpad.Length == 6 & ContainsLetters ( ) == false & ContainsCharacters ( ) == false)
                             {
@@ -21695,8 +21821,9 @@ namespace CDU3000
                             else
                             {
                                 scratchMessage = "INVALID ENTRY";
-                            } 
-                        }else
+                            }
+                        }
+                        else
                             if (pushedButton == l3Btn)
                             {
                                 if (scratchpad.Length <= 8 & ContainsLetters ( ) == false)
@@ -21706,13 +21833,13 @@ namespace CDU3000
                                 else
                                 {
                                     scratchMessage = "INVALID ENTRY";
-                                } 
+                                }
                             }
                     }
                     catch (Exception)
                     {
-                        
-                        
+
+
                     }
                     break;
 
