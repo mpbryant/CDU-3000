@@ -243,7 +243,8 @@ namespace CDU3000
         private string l3Var = "NONE";
         private string r2Var = "STBY FUNC";
         private string r3Var = "- - ";
-        private string newChanVar = "";
+        private string basSelChanVar = "";
+        private string aleChanVar = "";
         private string r3TitleVar;
         private Color l3color = Color.White;
         private Color l3ccolor = Color.Green;
@@ -273,6 +274,24 @@ namespace CDU3000
         private string pre3Freq = "18.1212";
         private string pre4Freq = "24.0202";
         private string pre5Freq = "22.7324";
+
+        private string ALEpre1Name = "FIRST";
+        private string ALEpre2Name = "CLDXYZ";
+        private string ALEpre3Name = "HTWOOH";
+        private string ALEpre4Name = "SECOND";
+        private string ALEpre5Name = "ABCDEF";
+        private string ALEpre1Chan = "< 01";
+        private string ALEpre2Chan = "< 02";
+        private string ALEpre3Chan = "< 03";
+        private string ALEpre4Chan = "< 04";
+        private string ALEpre5Chan = "< 05";
+        private string ALEpre1Freq = "12.0000";
+        private string ALEpre2Freq = "26.0202";
+        private string ALEpre3Freq = "2.0011";
+        private string ALEpre4Freq = "14.0000";
+        private string ALEpre5Freq = "26.0022";
+        private string AleChanVar;
+
         #endregion
 
         #endregion
@@ -556,6 +575,8 @@ namespace CDU3000
                 hfSubMode = "MAN";
             }
 
+
+
             switch (hfMode)
             {
                 case "STBY":
@@ -576,7 +597,7 @@ namespace CDU3000
                     l1ecolor = Color.White;
                     l1gcolor = Color.White;
                     r3TitleVar = "CHANNELS";
-                    r3Var = "- - ";
+                    r3Var = "";
                     r2Var = "";
                     l3Var = "MAN";
                     break;
@@ -588,7 +609,7 @@ namespace CDU3000
                     l1gcolor = Color.White;
                     l3color = Color.White;
                     r3TitleVar = "SCANLIST";
-                    r3Var = "- - ";
+                    r3Var = "";
                     r2Var = "ALE FCTN";
                     l3Var = "MAN";
                     break;
@@ -600,7 +621,7 @@ namespace CDU3000
                     l1ecolor = Color.White;
                     l1gcolor = Color.Green;
                     r3TitleVar = "CHANNELS";
-                    r3Var = "- - ";
+                    r3Var = "";
                     r2Var = "";
                     l3Var = "MAN";
                     break;
@@ -621,7 +642,7 @@ namespace CDU3000
                         l3ccolor = Color.Green;
                         l3color = Color.White;
                         r3TitleVar = "CHANNELS";
-                        r3Var = "- - ";
+                        r3Var = basSelChanVar;
                         break;
                 }
             }
@@ -828,13 +849,55 @@ namespace CDU3000
             TB (r3t, col14 + 20, row5, r3tText);
             TypeLeft (r3t);
 
-            if (newChanVar != "")
+            //add preset number if selected
+            if (hfMode == "BAS" & hfSubMode == "PRST" & basSelChanVar == "")
             {
-                r3Var = newChanVar;
+                if (r3Var == "")
+                {
+                    r3Var = "- - ";
+                    r3text = r3Var;
+                }
             }
+            else
+                if (hfMode == "ALE" & hfSubMode == "PRST" & aleChanVar  == "")
+                {
+                    if (r3Var == "")
+                    {
+                        r3Var = "- - ";
+                        r3text = r3Var;
+                    }
+                }
+                else
+                    if (hfMode == "SEL" & hfSubMode == "PRST" & basSelChanVar == "")
+                    {
+                        if (r3Var == "")
+                        {
+                            r3Var = "- - ";
+                            r3text = r3Var;
+                        }
+                    }
+                    else
+                        if (hfMode == "BAS" & hfSubMode == "PRST" & basSelChanVar != "")
+                        {
+                            r3Var = basSelChanVar;
+                            r3text = r3Var;
+                        }
+                        else
+                            if (hfMode == "ALE" & hfSubMode == "PRST" & aleChanVar != "")
+                            {
+                                r3Var = aleChanVar;
+                                r3text = r3Var;
+                            }
+                            else
+                                if (hfMode == "SEL" & hfSubMode == "PRST" & basSelChanVar != "")
+                                {
+                                    r3Var = basSelChanVar;
+                                    r3text = r3Var;
+                                }
+
 
             TextBox r3 = new TextBox ( );
-            TB (r3, col15, row6, r3Var , Color.White);
+            TB (r3, col15, row6, r3Var, Color.White);
 
             TextBox r4t = new TextBox ( );
             TB (r4t, col14 + 20, row7, r4tText);
@@ -1466,12 +1529,12 @@ namespace CDU3000
             r6tText = "";
 
             l1text = pre1Chan;
-            l2text = pre2Chan ;
-            l3text = pre3Chan ;
-            l4text = pre4Chan ;
-            l5text = pre5Chan ;
+            l2text = pre2Chan;
+            l3text = pre3Chan;
+            l4text = pre4Chan;
+            l5text = pre5Chan;
             l6text = "";
-            r1text = pre1Freq ;
+            r1text = pre1Freq;
             r2text = pre2Freq;
             r3text = pre3Freq;
             r4text = pre4Freq;
@@ -2526,7 +2589,174 @@ namespace CDU3000
 
         private void HFALEpresetChannelsPage1( )
         {
+            CDU7000Page = true;
 
+            CheckStatus ( );
+
+            #region MyRegion
+            l1tText = ALEpre1Name;
+            l2tText = ALEpre2Name;
+            l3tText = ALEpre3Name;
+            l4tText = ALEpre4Name;
+            l5tText = ALEpre5Name;
+            l6tText = "";
+            r1tText = "";
+            r2tText = "";
+            r3tText = "";
+            r4tText = "";
+            r5tText = "";
+            r6tText = "";
+
+            l1text = ALEpre1Chan;
+            l2text = ALEpre2Chan;
+            l3text = ALEpre3Chan;
+            l4text = ALEpre4Chan;
+            l5text = ALEpre5Chan;
+            l6text = "";
+            r1text = ALEpre1Freq;
+            r2text = ALEpre2Freq;
+            r3text = ALEpre3Freq;
+            r4text = ALEpre4Freq;
+            r5text = ALEpre5Freq;
+            r6text = "RETURN";
+
+            currentPageTitle = "HF1 ALE PRESET CHAN"; //page title and number used for navigating
+            currentPageNumber = 1;
+
+            TextBox title = new TextBox ( );//displayed top center of screen
+            TB (title, col7, row0, currentPageTitle);
+
+            TextBox page = new TextBox ( );
+            TB (page, col14, row0, currentPageNumber + "/7");
+
+            TextBox l1t = new TextBox ( );
+            TB (l1t, col5, row2, l1tText, Color.White);
+
+            TextBox l1 = new TextBox ( );
+            TB (l1, col1, row2, l1text, Color.White);
+
+            TextBox l2t = new TextBox ( );
+            TB (l2t, col5, row4, l2tText, Color.White);
+
+            TextBox l2 = new TextBox ( );
+            TB (l2, col1, row4, l2text, Color.White);
+
+            TextBox l3t = new TextBox ( );
+            TB (l3t, col5, row6, l3tText, Color.White);
+
+            TextBox l3 = new TextBox ( );
+            TB (l3, col1, row6, l3text, Color.White);
+
+            TextBox l4t = new TextBox ( );
+            TB (l4t, col5, row8, l4tText, Color.White);
+
+            TextBox l4 = new TextBox ( );
+            TB (l4, col1, row8, l4text, Color.White);
+
+            TextBox l5t = new TextBox ( );
+            TB (l5t, col5, row10, l5tText, Color.White);
+
+            TextBox l5 = new TextBox ( );
+            TB (l5, col1, row10, l5text, Color.White);
+
+            //TextBox l6t = new TextBox();
+            //TB(l6t, col2, row11, l6tText);
+
+            TextBox l6 = new TextBox ( );
+            TB (l6, col1, row12, l6text, Color.White);
+
+            //TextBox r1t = new TextBox();
+            //TB(r1t, col14+20, row1, r1tText);
+            //TypeLeft(r1t);
+
+            TextBox r1 = new TextBox ( );
+            TB (r1, col15, row2, r1text, Color.White);
+
+            //TextBox r2t = new TextBox();
+            //TB(r2t, col14+20, row3, r2tText);
+            //TypeLeft(r2t);
+
+            TextBox r2 = new TextBox ( );
+            TB (r2, col15, row4, r2text, Color.White);
+
+            //TextBox r3t = new TextBox();
+            //TB(r3t, col14+20, row5, r3tText);
+            //TypeLeft(r3t);
+
+            TextBox r3 = new TextBox ( );
+            TB (r3, col15, row6, r3text, Color.White);
+
+            //TextBox r4t = new TextBox();
+            //TB(r4t, col14+20, row7, r4tText);
+            //TypeLeft(r4t);
+
+            TextBox r4 = new TextBox ( );
+            TB (r4, col15, row8, r4text, Color.White);
+
+            //TextBox r5t = new TextBox();
+            //TB(r5t, col14+20, row9, r5tText);
+            //TypeLeft(r5t);
+
+            TextBox r5 = new TextBox ( );
+            TB (r5, col15, row10, r5text, Color.White);
+
+            //TextBox r6t = new TextBox();
+            //TB(r6t, col14+20, row11, r6tText);
+            //TypeLeft(r6t);
+
+            TextBox r6 = new TextBox ( );
+            TB (r6, col15, row12, r6text, Color.White);
+
+
+
+
+
+            #region Add Arrows if Needed
+            if (r1text != "")
+            {
+                TextBox r1r = new TextBox ( );
+                TB (r1r, col16, row2, "<", Color.White);
+            }
+
+            if (r2text != "")
+            {
+                TextBox r2r = new TextBox ( );
+                TB (r2r, col16, row4, "<", Color.White);
+            }
+
+            if (r3text != "")
+            {
+                TextBox r3r = new TextBox ( );
+                TB (r3r, col16, row6, "<", Color.White);
+            }
+
+            if (r4text != "")
+            {
+                TextBox r4r = new TextBox ( );
+                TB (r4r, col16, row8, "<", Color.White);
+            }
+
+            if (r5text != "")
+            {
+                TextBox r5r = new TextBox ( );
+                TB (r5r, col16, row10, "<", Color.White);
+            }
+
+
+            if (r6text != "")
+            {
+                TextBox r6r = new TextBox ( );
+                TB (r6r, col16, row12, ">", Color.White);
+            }
+            #endregion
+
+            TextBox l6b = new TextBox ( );
+            TB (l6b, col1, row13, "[");
+
+
+            TextBox r6b = new TextBox ( );
+            TB (r6b, col16, row13, "]");
+            #endregion
         }
 
         private void HFALEgroupAddressPage( )
@@ -19950,16 +20180,6 @@ namespace CDU3000
 
             #endregion
 
-            #region page selection from HF Control page 1 and r3Btn
-            if (currentPageTitle == "HF1 CONTROL" & currentPageNumber == 1 & pushedButton == l3Btn )
-            {
-                StartFresh();
-                HFpresetChannelsPage1 ( );
-                return;
-
-            }
-            #endregion
-
             #region page selection from HF ALE ADDRESS page
 
             if (currentPageTitle == "HF1 ALE ADDRESS" & pushedButton == r1Btn)
@@ -19978,11 +20198,37 @@ namespace CDU3000
 
             #endregion
 
-            #region Page selection for Preset ChannelsPages
-            if (currentPageTitle == "HF1 PRESET CHANNELS" & pushedButton!=r6Btn )
+            #region page selection from HF ALE PRESET page
+            if (currentPageTitle == "HF1 ALE PRESET CHAN" & pushedButton != r6Btn)
             {
                 PresetController ( );
                 return;
+            }
+            #endregion
+
+            #region Page selection for HF Preset Channels Page
+            if (currentPageTitle == "HF1 PRESET CHANNELS" & pushedButton != r6Btn)
+            {
+                PresetController ( );
+                return;
+            }
+            #endregion
+
+            #region page selection for HF CONTROL page 1
+            if (currentPageTitle == "HF1 CONTROL" & currentPageNumber == 1 & pushedButton == r3Btn)
+            {
+                if (hfSubMode=="PRST" & hfMode!="ALE")
+                {
+                    StartFresh ( );
+                    HFpresetChannelsPage1 ( );
+                    return; 
+                }else
+                    if (hfSubMode == "PRST" & hfMode == "ALE")
+                    {
+                        StartFresh ( );
+                        HFALEpresetChannelsPage1  ( );
+                        return;
+                    }
             }
             #endregion
 
@@ -20988,9 +21234,249 @@ namespace CDU3000
 
         }
 
-        private void PresetController()//used to update preset pages
+        private void PresetController( )//used to update preset pages
         {
+            //updates call sign
+            if (scratchpad != "" & scratchpad!=null )
+            {
+                if (currentPageTitle == "HF1 PRESET CHANNELS")
+                {
+                    if (!CheckValidity ( ))
+                    {
+                        return;
+                    }
 
+                    if (pushedButton == l1Btn)
+                    {
+                        pre1Name = scratchpad;
+                    }
+                    else
+                        if (pushedButton == l2Btn)
+                        {
+                            pre2Name = scratchpad;
+                        }
+                        else
+                            if (pushedButton == l3Btn)
+                            {
+                                pre3Name = scratchpad;
+                            }
+                            else
+                                if (pushedButton == l4Btn)
+                                {
+                                    pre4Name = scratchpad;
+                                }
+                                else
+                                    if (pushedButton == l5Btn)
+                                    {
+                                        pre5Name = scratchpad;
+                                    }
+                                    else//update the frequencies
+                                        if (pushedButton == r1Btn)
+                                        {
+                                            pre1Freq = scratchpad.Insert (scratchpad.Length - 4, ".");
+                                        }
+                                        else
+                                            if (pushedButton == r2Btn)
+                                            {
+                                                pre2Freq = scratchpad.Insert (scratchpad.Length - 4, ".");
+                                            }
+                                            else
+                                                if (pushedButton == r3Btn)
+                                                {
+                                                    pre3Freq = scratchpad.Insert (scratchpad.Length - 4, ".");
+                                                }
+                                                else
+                                                    if (pushedButton == r4Btn)
+                                                    {
+                                                        pre4Freq = scratchpad.Insert (scratchpad.Length - 4, ".");
+                                                    }
+                                                    else
+                                                        if (pushedButton == r5Btn)
+                                                        {
+                                                            pre5Freq = scratchpad.Insert (scratchpad.Length - 4, ".");
+                                                        }
+
+
+                    scratchpad = "";
+                    sPad.Text = scratchpad;
+                    StartFresh ( );
+                    HFpresetChannelsPage1 ( );
+                    return;
+                }
+                
+                    
+
+            }
+            if (currentPageTitle == "HF1 PRESET CHANNELS")
+            {
+                //return to HF Control Page
+                if ((pushedButton == l1Btn & l1text.Contains ("*")) || (pushedButton == l2Btn & l2text.Contains ("*")) || (pushedButton == l3Btn & l3text.Contains ("*")) || (pushedButton == l4Btn & l4text.Contains ("*")) || (pushedButton == l5Btn & l5text.Contains ("*")))
+                {
+                    StartFresh ( );
+                    HFcontrolPage1 ( );
+                    return;
+                }
+                else
+                {
+                    char[] toTrim = { '<' };
+                    if (pushedButton == l1Btn)
+                    {
+                        if (l1text.Contains ("<"))
+                        {
+                            l1text = l1text.TrimStart (toTrim);
+                            pre1Chan = "*" + l1text;
+                            basSelChanVar = l1text;
+                        }
+                    }
+                    if (pushedButton == l2Btn)
+                    {
+                        if (l2text.Contains ("<"))
+                        {
+                            l2text = l2text.TrimStart (toTrim);
+                            pre2Chan = "*" + l2text;
+                            basSelChanVar = l2text;
+                        }
+                    }
+                    if (pushedButton == l3Btn)
+                    {
+                        if (l3text.Contains ("<"))
+                        {
+                            l3text = l3text.TrimStart (toTrim);
+                            pre3Chan = "*" + l3text;
+                            basSelChanVar = l3text;
+                        }
+                    }
+                    if (pushedButton == l4Btn)
+                    {
+                        if (l4text.Contains ("<"))
+                        {
+                            l4text = l4text.TrimStart (toTrim);
+                            pre4Chan = "*" + l4text;
+                            basSelChanVar = l4text;
+                        }
+                    }
+                    if (pushedButton == l5Btn)
+                    {
+                        if (l5text.Contains ("<"))
+                        {
+                            l5text = l5text.TrimStart (toTrim);
+                            pre5Chan = "*" + l5text;
+                            basSelChanVar = l5text;
+                        }
+                    }
+
+                    //reset the others
+                    char[] toCut = { '*' };
+
+                    if (l1text.Contains ("*") & pushedButton != l1Btn)
+                    {
+                        l1text = l1text.TrimStart (toCut);
+                        pre1Chan = "<" + l1text;
+                    }
+                    if (l2text.Contains ("*") & pushedButton != l2Btn)
+                    {
+                        l2text = l2text.TrimStart (toCut);
+                        pre2Chan = "<" + l2text;
+                    }
+                    if (l3text.Contains ("*") & pushedButton != l3Btn)
+                    {
+                        l3text = l3text.TrimStart (toCut);
+                        pre3Chan = "<" + l3text;
+                    }
+                    if (l4text.Contains ("*") & pushedButton != l4Btn)
+                    {
+                        l4text = l4text.TrimStart (toCut);
+                        pre4Chan = "<" + l4text;
+                    }
+                    if (l5text.Contains ("*") & pushedButton != l5Btn)
+                    {
+                        l5text = l5text.TrimStart (toCut);
+                        pre5Chan = "<" + l5text;
+                    }
+                }
+
+
+
+                StartFresh ( );
+                HFpresetChannelsPage1 ( );
+            }
+
+            if (currentPageTitle=="HF1 ALE PRESET CHAN")
+            {
+                ALEpresetController ( ); 
+            }
+            
+        }
+
+        private void ALEpresetController( )
+        {
+            if (scratchpad != null & scratchpad != "")
+            {
+                if (currentPageTitle == "HF1 ALE PRESET CHAN")
+                {
+                    if (!CheckValidity ( ))
+                    {
+                        return;
+                    }
+
+                    if (pushedButton == l1Btn)
+                    {
+                        ALEpre1Name = scratchpad;
+                    }
+                    else
+                        if (pushedButton == l2Btn)
+                        {
+                            ALEpre2Name = scratchpad;
+                        }
+                        else
+                            if (pushedButton == l3Btn)
+                            {
+                                ALEpre3Name = scratchpad;
+                            }
+                            else
+                                if (pushedButton == l4Btn)
+                                {
+                                    ALEpre4Name = scratchpad;
+                                }
+                                else
+                                    if (pushedButton == l5Btn)
+                                    {
+                                        ALEpre5Name = scratchpad;
+                                    }
+                                    else//update the frequencies
+                                        if (pushedButton == r1Btn)
+                                        {
+                                            ALEpre1Freq = scratchpad.Insert (scratchpad.Length - 4, ".");
+                                        }
+                                        else
+                                            if (pushedButton == r2Btn)
+                                            {
+                                                ALEpre2Freq = scratchpad.Insert (scratchpad.Length - 4, ".");
+                                            }
+                                            else
+                                                if (pushedButton == r3Btn)
+                                                {
+                                                    ALEpre3Freq = scratchpad.Insert (scratchpad.Length - 4, ".");
+                                                }
+                                                else
+                                                    if (pushedButton == r4Btn)
+                                                    {
+                                                        ALEpre4Freq = scratchpad.Insert (scratchpad.Length - 4, ".");
+                                                    }
+                                                    else
+                                                        if (pushedButton == r5Btn)
+                                                        {
+                                                            ALEpre5Freq = scratchpad.Insert (scratchpad.Length - 4, ".");
+                                                        }
+
+
+                    scratchpad = "";
+                    sPad.Text = scratchpad;
+                    StartFresh ( );
+                    HFALEpresetChannelsPage1 ( );
+                    return;
+                }
+            }
             //return to HF Control Page
             if ((pushedButton == l1Btn & l1text.Contains ("*")) || (pushedButton == l2Btn & l2text.Contains ("*")) || (pushedButton == l3Btn & l3text.Contains ("*")) || (pushedButton == l4Btn & l4text.Contains ("*")) || (pushedButton == l5Btn & l5text.Contains ("*")))
             {
@@ -21006,8 +21492,8 @@ namespace CDU3000
                     if (l1text.Contains ("<"))
                     {
                         l1text = l1text.TrimStart (toTrim);
-                        pre1Chan = "*" + l1text;
-                        newChanVar = l1text;
+                        ALEpre1Chan = "*" + l1text;
+                        aleChanVar = l1text;
                     }
                 }
                 if (pushedButton == l2Btn)
@@ -21015,7 +21501,8 @@ namespace CDU3000
                     if (l2text.Contains ("<"))
                     {
                         l2text = l2text.TrimStart (toTrim);
-                        pre2Chan = "*" + l2text;
+                        ALEpre2Chan = "*" + l2text;
+                        aleChanVar = l2text;
                     }
                 }
                 if (pushedButton == l3Btn)
@@ -21023,7 +21510,8 @@ namespace CDU3000
                     if (l3text.Contains ("<"))
                     {
                         l3text = l3text.TrimStart (toTrim);
-                        pre3Chan = "*" + l3text;
+                        ALEpre3Chan = "*" + l3text;
+                        aleChanVar = l3text;
                     }
                 }
                 if (pushedButton == l4Btn)
@@ -21031,7 +21519,8 @@ namespace CDU3000
                     if (l4text.Contains ("<"))
                     {
                         l4text = l4text.TrimStart (toTrim);
-                        pre4Chan = "*" + l4text;
+                        ALEpre4Chan = "*" + l4text;
+                        aleChanVar = l4text;
                     }
                 }
                 if (pushedButton == l5Btn)
@@ -21039,7 +21528,8 @@ namespace CDU3000
                     if (l5text.Contains ("<"))
                     {
                         l5text = l5text.TrimStart (toTrim);
-                        pre5Chan = "*" + l5text;
+                        ALEpre5Chan = "*" + l5text;
+                        aleChanVar = l5text;
                     }
                 }
 
@@ -21049,34 +21539,34 @@ namespace CDU3000
                 if (l1text.Contains ("*") & pushedButton != l1Btn)
                 {
                     l1text = l1text.TrimStart (toCut);
-                    pre1Chan = "<" + l1text;
+                    ALEpre1Chan = "<" + l1text;
                 }
                 if (l2text.Contains ("*") & pushedButton != l2Btn)
                 {
                     l2text = l2text.TrimStart (toCut);
-                    pre2Chan = "<" + l2text;
+                    ALEpre2Chan = "<" + l2text;
                 }
                 if (l3text.Contains ("*") & pushedButton != l3Btn)
                 {
                     l3text = l3text.TrimStart (toCut);
-                    pre3Chan = "<" + l3text;
+                    ALEpre3Chan = "<" + l3text;
                 }
                 if (l4text.Contains ("*") & pushedButton != l4Btn)
                 {
                     l4text = l4text.TrimStart (toCut);
-                    pre4Chan = "<" + l4text;
+                    ALEpre4Chan = "<" + l4text;
                 }
                 if (l5text.Contains ("*") & pushedButton != l5Btn)
                 {
                     l5text = l5text.TrimStart (toCut);
-                    pre5Chan = "<" + l5text;
-                } 
+                    ALEpre5Chan = "<" + l5text;
+                }
             }
 
 
 
             StartFresh ( );
-            HFpresetChannelsPage1 ( );
+            HFALEpresetChannelsPage1 ( );
         }
 
         private void ReturnList(string e)   //handles all RETURN buttons
@@ -21126,6 +21616,12 @@ namespace CDU3000
                     }
 
                 case "HF1 ALE FCTN":
+                    {
+                        HFcontrolPage1 ( );
+                        break;
+                    }
+
+                case "HF1 ALE PRESET CHAN":
                     {
                         HFcontrolPage1 ( );
                         break;
@@ -21793,8 +22289,66 @@ namespace CDU3000
 
         private bool CheckValidity( )
         {
+            Button[] rightBtns = { r1Btn, r2Btn, r3Btn, r4Btn, r5Btn };
+            Button[] myBtn = { l1Btn, l2Btn, l3Btn, l4Btn, l5Btn };
+                            
+            
+
             switch (currentPageTitle)
             {
+                case "HF1 ALE PRESET CHAN":
+                    try
+                    {
+                        foreach (Button btn in myBtn)
+                        {
+                            if (pushedButton == btn)
+                            {
+                                if (scratchpad.Length <= 6 )//& ContainsCharacters ( ) == false & ContainsNumbers ( ) == false
+                                {
+                                    return true;
+                                }
+                                else
+                                {
+                                    scratchMessage = "INVALID ENTRY";
+                                    break;
+                                }
+                            }
+                        }
+
+                        foreach (Button btn in rightBtns)
+                        {
+                            if (pushedButton == btn)
+                            {
+
+                                if ((scratchpad.Length == 5 || scratchpad.Length == 6) & ContainsCharacters ( ) == false & ContainsLetters ( ) == false)
+                                {
+                                    int x = Convert.ToInt32 (scratchpad);
+                                    if ((20000 <= x) == true & (x <= 299999) == true)
+                                    {
+                                        return true;
+                                    }
+                                    else
+                                    {
+                                        scratchMessage = "INVALID ENTRY";
+                                        break;
+                                    }
+
+                                }
+                                else
+                                {
+                                    scratchMessage = "INVALID ENTRY";
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        
+                       
+                    }
+                    break;
+
                 case "HF1 CONTROL":
                     if (pushedButton == r4Btn)
                     {
@@ -21806,6 +22360,58 @@ namespace CDU3000
                         {
                             scratchMessage = "INVALID ENTRY";
                         }
+                    }
+                    break;
+
+                case "HF1 PRESET CHANNELS":
+                    try
+                    {
+                        foreach (Button btn in myBtn)
+                        {
+                            if (pushedButton == btn)
+                            {
+                                if (scratchpad.Length <= 6 & ContainsCharacters ( ) == false & ContainsNumbers ( ) == false)
+                                {
+                                    return true;
+                                }
+                                else
+                                {
+                                    scratchMessage = "INVALID ENTRY";
+                                    break;
+                                }
+                            }
+                        }
+                        foreach (Button btn in rightBtns)
+                        {
+                            if (pushedButton == btn)
+                            {
+
+                                if ((scratchpad.Length == 5 || scratchpad.Length == 6) & ContainsCharacters ( ) == false & ContainsLetters ( ) == false)
+                                {
+                                    int x = Convert.ToInt32 (scratchpad);
+                                    if ((20000 <= x) == true & (x <= 299999) == true)
+                                    {
+                                        return true;
+                                    }
+                                    else
+                                    {
+                                        scratchMessage = "INVALID ENTRY";
+                                        break;
+                                    }
+
+                                }
+                                else
+                                {
+                                    scratchMessage = "INVALID ENTRY";
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        
+                        
                     }
                     break;
 
@@ -22246,7 +22852,7 @@ namespace CDU3000
 
 
 
-
+        
 
 
 
