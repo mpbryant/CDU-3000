@@ -34,6 +34,10 @@
   <PropertyGroup>
     <ApplicationIcon>Avenge logo.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="IntelliLock.Licensing">
       <HintPath>F:\Eziriz\IntelliLock\SDK\Bin\IntelliLock.Licensing.dll</HintPath>

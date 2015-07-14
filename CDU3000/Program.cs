@@ -16,7 +16,7 @@ namespace CDU3000
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AboutBox1());
+            //Application.Run(new AboutBox1());         Remarked out to speed up development
             Application.Run(new Readme());
             
         }

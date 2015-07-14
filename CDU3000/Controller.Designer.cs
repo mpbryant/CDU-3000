@@ -2103,6 +2103,7 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "Controller";
             this.Text = "Controller";
+            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.TACANgb.ResumeLayout(false);
             this.TACANgb.PerformLayout();
             this.EGIgb.ResumeLayout(false);
