@@ -543,7 +543,20 @@ namespace CDU3000
             TB(l3, col1, row6, "<", Color.White);
 
             TextBox l3r = new TextBox();
-            TB(l3r, col2, row6, currentHFchan + "    " + currentHFchanName, Color.White);
+
+
+            if (hfMode == "ALE")
+            {
+                TB(l3r, col2, row6, currentALEchan  + "    " + currentALEname , Color.White);
+                r3text = currentALEfreq ;
+            }
+            else
+            {
+                TB(l3r, col2, row6, currentHFchan + "    " + currentHFchanName, Color.White);
+                r3text = currentHFfreq;
+            }
+
+
             l3r.TextAlign = HorizontalAlignment.Left;
 
 
@@ -556,7 +569,6 @@ namespace CDU3000
             TB(r2, col17, row4, r2text, Color.White);
 
             TextBox r3 = new TextBox();
-            r3text = currentHFfreq;
             TB(r3, col17, row6, r3text, Color.White);
 
             TextBox r6 = new TextBox();
@@ -20119,7 +20131,24 @@ namespace CDU3000
                             CheckBASandSEL();
                             CheckALE();
                             return;
-                        } 
+                        } else
+                            if (pushedButton == r3Btn & scratchpad!=null)
+                            {
+                                if (CheckFreqFormat("HF"))
+                                {
+                                    UpdateFreqswithR3push();
+                                    scratchpad = "";
+                                    sPad.Text = "";
+                                    StartFresh();
+                                    COMpage();
+                                    return;
+                                }
+                                else
+                                {
+                                    DisplayErrorMessage("INVALID ENTRY");
+                                    return;
+                                }
+                            }
                         
                     }
             }
@@ -20986,51 +21015,30 @@ namespace CDU3000
 
         private void CheckALE()
         {
-            if (pushedButton == l3Btn & (scratchpad == "" || scratchpad == null))//scratchpad != "0" & ContainsLetters() == false
+            if (hfMode=="ALE")
             {
-                StartFresh();
-                HFcontrolPage1();
-                return;
-            }
-            else
-                if (pushedButton == l3Btn & scratchpad == "0")
+                if (pushedButton == l3Btn & (scratchpad == "" || scratchpad == null))//scratchpad != "0" & ContainsLetters() == false
                 {
-                    currentALEchan  = ALERecallChan ;
-                    currentALEname  = ALERecallName ;
-                    currentALEfreq  = ALERecallFreq ;
-                    scratchpad = "";
-                    sPad.Text = "";
                     StartFresh();
-                    COMpage();
+                    HFcontrolPage1();
                     return;
                 }
                 else
-                    if (pushedButton == l3Btn & ContainsLetters() == true)
+                    if (pushedButton == l3Btn & scratchpad == "0")
                     {
-                        if (SearchCallSign(scratchpad))/////////////
-                        {
-                            sPad.Text = "";
-                            scratchpad = "";
-                            StartFresh();
-                            COMpage();
-                            return;
-                        }
-                        else
-                        {
-                            StartFresh();
-                            COMpage();
-                            scratchMessage = "INVALID ENTRY";
-                            ShowScratchMessage();
-                            ScratchMessageTimer.Start();
-                            return;
-                        }
-
-
+                        currentALEchan = ALERecallChan;
+                        currentALEname = ALERecallName;
+                        currentALEfreq = ALERecallFreq;
+                        scratchpad = "";
+                        sPad.Text = "";
+                        StartFresh();
+                        COMpage();
+                        return;
                     }
                     else
-                        if (pushedButton == l3Btn & ContainsLetters() == false & ContainsNumbers() == true)
+                        if (pushedButton == l3Btn & ContainsLetters() == true)
                         {
-                            if (SearchChannelNumbers(scratchpad))////////////////
+                            if (SearchCallSign(scratchpad))/////////////
                             {
                                 sPad.Text = "";
                                 scratchpad = "";
@@ -21050,12 +21058,38 @@ namespace CDU3000
 
 
                         }
+                        else
+                            if (pushedButton == l3Btn & ContainsLetters() == false & ContainsNumbers() == true)
+                            {
+                                if (SearchChannelNumbers(scratchpad))////////////////
+                                {
+                                    sPad.Text = "";
+                                    scratchpad = "";
+                                    StartFresh();
+                                    COMpage();
+                                    return;
+                                }
+                                else
+                                {
+                                    StartFresh();
+                                    COMpage();
+                                    scratchMessage = "INVALID ENTRY";
+                                    ShowScratchMessage();
+                                    ScratchMessageTimer.Start();
+                                    return;
+                                }
+
+
+                            } 
+            }
         }
 
         private void CheckBASandSEL()
         {
-            
-            
+
+
+            if (hfMode!="ALE")
+            {
                 if (pushedButton == l3Btn & (scratchpad == "" || scratchpad == null))//scratchpad != "0" & ContainsLetters() == false
                 {
                     StartFresh();
@@ -21120,6 +21154,7 @@ namespace CDU3000
 
 
                             } 
+            } 
             
         }
 
@@ -21456,6 +21491,10 @@ namespace CDU3000
 
         }
 
+
+
+
+
         private void PresetController()//used to update preset pages
         {
             //updates call sign
@@ -21744,9 +21783,9 @@ namespace CDU3000
                         l1text = l1text.TrimStart(toTrim);
                         ALEpre1Chan = "* " + l1text;
                         aleChanVar = l1text;
-                        currentHFchanName = ALEpre1Name;
-                        currentHFchan = l1text;
-                        currentHFfreq = ALEpre1Freq;
+                        currentALEname  = ALEpre1Name;
+                        currentALEchan  = l1text;
+                        currentALEfreq  = ALEpre1Freq;
                     }
                 }
                 if (pushedButton == l2Btn)
@@ -21756,9 +21795,9 @@ namespace CDU3000
                         l2text = l2text.TrimStart(toTrim);
                         ALEpre2Chan = "* " + l2text;
                         aleChanVar = l2text;
-                        currentHFchanName = ALEpre2Name;
-                        currentHFchan = l2text;
-                        currentHFfreq = ALEpre2Freq;
+                        currentALEname = ALEpre2Name;
+                        currentALEchan = l2text;
+                        currentALEfreq = ALEpre2Freq;
                     }
                 }
                 if (pushedButton == l3Btn)
@@ -21768,9 +21807,9 @@ namespace CDU3000
                         l3text = l3text.TrimStart(toTrim);
                         ALEpre3Chan = "* " + l3text;
                         aleChanVar = l3text;
-                        currentHFchanName = ALEpre3Name;
-                        currentHFchan = l3text;
-                        currentHFfreq = ALEpre3Freq;
+                        currentALEname = ALEpre3Name;
+                        currentALEchan = l3text;
+                        currentALEfreq = ALEpre3Freq;
                     }
                 }
                 if (pushedButton == l4Btn)
@@ -21780,9 +21819,9 @@ namespace CDU3000
                         l4text = l4text.TrimStart(toTrim);
                         ALEpre4Chan = "* " + l4text;
                         aleChanVar = l4text;
-                        currentHFchanName = ALEpre4Name;
-                        currentHFchan = l4text;
-                        currentHFfreq = ALEpre4Freq;
+                        currentALEname = ALEpre4Name;
+                        currentALEchan = l4text;
+                        currentALEfreq = ALEpre4Freq;
                     }
                 }
                 if (pushedButton == l5Btn)
@@ -21792,9 +21831,9 @@ namespace CDU3000
                         l5text = l5text.TrimStart(toTrim);
                         ALEpre5Chan = "* " + l5text;
                         aleChanVar = l5text;
-                        currentHFchanName = ALEpre5Name;
-                        currentHFchan = l5text;
-                        currentHFfreq = ALEpre5Freq;
+                        currentALEname = ALEpre5Name;
+                        currentALEchan = l5text;
+                        currentALEfreq = ALEpre5Freq;
                     }
                 }
 
@@ -21833,6 +21872,990 @@ namespace CDU3000
             StartFresh();
             HFALEpresetChannelsPage1();
         }
+        
+        private bool SearchCallSign(string e)
+        {
+            switch (currentPageTitle)
+            {
+                case "comm":
+                    #region HF section
+                    if (pushedButton == l3Btn & hfMode !="ALE")
+                    {
+                        if (scratchpad == pre1Name)
+                        {
+                            UpdateFreqs("pre1Name");
+                            return true;
+                        }
+                        else
+                            if (scratchpad == pre2Name)
+                            {
+                                UpdateFreqs("pre2Name");
+                                return true;
+                            }
+                            else
+                                if (scratchpad == pre3Name)
+                                {
+                                    UpdateFreqs("pre3Name");
+                                    return true;
+                                }
+                                else
+                                    if (scratchpad == pre4Name)
+                                    {
+                                        UpdateFreqs("pre4Name");
+                                        return true;
+                                    }
+                                    else
+                                        if (scratchpad == pre5Name)
+                                        {
+                                            UpdateFreqs("pre5Name");
+                                            return true;
+                                        }
+                                        else
+                                        {
+
+                                            return false;
+                                        }
+
+                    }
+                    #endregion
+                    else
+                        if (pushedButton == l3Btn & hfMode == "ALE")
+                        {
+                            if (scratchpad == ALEpre1Name)
+                            {
+                                UpdateALEfreqs("ALEpre1Name");
+                                return true;
+                            }
+                            else
+                                if (scratchpad == ALEpre2Name)
+                                {
+                                    UpdateALEfreqs("ALEpre2Name");
+                                    return true;
+                                }
+                                else
+                                    if (scratchpad == ALEpre3Name)
+                                    {
+                                        UpdateALEfreqs("ALEpre3Name");
+                                        return true;
+                                    }
+                                    else
+                                        if (scratchpad == ALEpre4Name)
+                                        {
+                                            UpdateALEfreqs("ALEpre4Name");
+                                            return true;
+                                        }
+                                        else
+                                            if (scratchpad == ALEpre5Name)
+                                            {
+                                                UpdateALEfreqs("ALEpre5Name");
+                                                return true;
+                                            }
+                                            else
+                                            {
+
+                                                return false;
+                                            }
+
+                        }
+
+                    break;
+
+            }
+            return false;
+        }
+
+        private void UpdateALEfreqs(string e)
+        {
+            Char[] myChar = { '<', ' ', '*' };
+
+            ALERecallChan  = currentALEchan ;
+            ALERecallFreq  = currentALEfreq ;
+            ALERecallName  = currentALEname ;
+
+            switch (e)
+            {
+                case "ALEpre1Name":
+                    currentALEchan = ALEpre1Chan.Trim(myChar);
+                    currentALEfreq = ALEpre1Freq.Trim(myChar);
+                    currentALEname = ALEpre1Name.Trim(myChar);
+                    break;
+
+                case "ALEpre2Name":
+                    currentALEchan = ALEpre2Chan.Trim(myChar);
+                    currentALEfreq = ALEpre2Freq.Trim(myChar);
+                    currentALEname = ALEpre2Name.Trim(myChar);
+                    break;
+
+                case "ALEpre3Name":
+                    currentALEchan = ALEpre3Chan.Trim(myChar);
+                    currentALEfreq = ALEpre3Freq.Trim(myChar);
+                    currentALEname = ALEpre3Name.Trim(myChar);
+                    break;
+
+                case "ALEpre4Name":
+                    currentALEchan = ALEpre4Chan.Trim(myChar);
+                    currentALEfreq = ALEpre4Freq.Trim(myChar);
+                    currentALEname = ALEpre4Name.Trim(myChar);
+                    break;
+
+                case "ALEpre5Name":
+                    currentALEchan = ALEpre5Chan.Trim(myChar);
+                    currentALEfreq = ALEpre5Freq.Trim(myChar);
+                    currentALEname = ALEpre5Name.Trim(myChar);
+                    break;
+            }
+        }
+
+        private bool SearchChannelNumbers(string e)
+        {
+            Char[] myChar = { '<', ' ', '*' };
+
+            switch (currentPageTitle)
+            {
+
+                case "comm":
+                    #region HF section
+                    if (hfMode!="ALE")
+                    {
+                        if (pushedButton == l3Btn)
+                        {
+                            if (scratchpad == pre1Chan.Trim(myChar))
+                            {
+                                UpdateFreqs("pre1Name");
+                                return true;
+                            }
+                            else
+                                if (scratchpad == pre2Chan.Trim(myChar))
+                                {
+                                    UpdateFreqs("pre2Name");
+                                    return true;
+                                }
+                                else
+                                    if (scratchpad == pre3Chan.Trim(myChar))
+                                    {
+                                        UpdateFreqs("pre3Name");
+                                        return true;
+                                    }
+                                    else
+                                        if (scratchpad == pre4Chan.Trim(myChar))
+                                        {
+                                            UpdateFreqs("pre4Name");
+                                            return true;
+                                        }
+                                        else
+                                            if (scratchpad == pre5Chan.Trim(myChar))
+                                            {
+                                                UpdateFreqs("pre5Name");
+                                                return true;
+                                            }
+                                            else
+                                            {
+
+                                                return false;
+                                            }
+
+                        } 
+                    }
+                    #endregion
+                    else
+                        if (hfMode == "ALE")
+                        {
+                            if (pushedButton == l3Btn)
+                            {
+                                if (scratchpad == ALEpre1Chan.Trim(myChar))
+                                {
+                                    UpdateFreqs("pre1Name");
+                                    return true;
+                                }
+                                else
+                                    if (scratchpad == ALEpre2Chan.Trim(myChar))
+                                    {
+                                        UpdateFreqs("pre2Name");
+                                        return true;
+                                    }
+                                    else
+                                        if (scratchpad == ALEpre3Chan.Trim(myChar))
+                                        {
+                                            UpdateFreqs("pre3Name");
+                                            return true;
+                                        }
+                                        else
+                                            if (scratchpad == ALEpre4Chan.Trim(myChar))
+                                            {
+                                                UpdateFreqs("pre4Name");
+                                                return true;
+                                            }
+                                            else
+                                                if (scratchpad == ALEpre5Chan.Trim(myChar))
+                                                {
+                                                    UpdateFreqs("pre5Name");
+                                                    return true;
+                                                }
+                                                else
+                                                {
+
+                                                    return false;
+                                                }
+
+                            }
+                        }
+
+                    break;
+
+            }
+            return false;
+        }
+
+        private void UpdateFreqswithR3push()
+        {
+            if (hfMode == "ALE")
+            {
+                currentALEfreq = scratchpad.Insert(scratchpad.Length - 4, ".");
+
+                if (currentALEchan == ALEpre1Chan.Trim('<',' ','*'))
+                {
+                    ALEpre1Freq = currentALEfreq;
+                }else
+                    if (currentALEchan == ALEpre2Chan.Trim('<', ' ', '*'))
+                    {
+                        ALEpre2Freq = currentALEfreq;
+                    }
+                    else
+                        if (currentALEchan == ALEpre3Chan.Trim('<', ' ', '*'))
+                        {
+                            ALEpre3Freq = currentALEfreq;
+                        }
+                        else
+                            if (currentALEchan == ALEpre4Chan.Trim('<', ' ', '*'))
+                            {
+                                ALEpre4Freq = currentALEfreq;
+                            }
+                            else
+                                if (currentALEchan == ALEpre5Chan.Trim('<', ' ', '*'))
+                                {
+                                    ALEpre5Freq = currentALEfreq;
+                                }
+            }
+
+            if (hfMode != "ALE")
+            {
+                currentHFfreq = scratchpad.Insert(scratchpad.Length - 4, ".");
+
+                if (currentHFchan  == pre1Chan.Trim('<', ' ', '*'))
+                {
+                    pre1Freq = currentHFfreq ;
+                }else
+                    if (currentHFchan == pre2Chan.Trim('<', ' ', '*'))
+                    {
+                        pre2Freq = currentHFfreq;
+                    }
+                    else
+                        if (currentHFchan == pre3Chan.Trim('<', ' ', '*'))
+                        {
+                            pre3Freq = currentHFfreq;
+                        }
+                        else
+                            if (currentHFchan == pre4Chan.Trim('<', ' ', '*'))
+                            {
+                                pre4Freq = currentHFfreq;
+                            }
+                            else
+                                if (currentHFchan == pre5Chan.Trim('<', ' ', '*'))
+                                {
+                                    pre5Freq = currentHFfreq;
+                                }
+            }
+        }
+
+        private bool CheckFreqFormat(string e)
+        {
+            switch (e)
+            {
+                case "HF":
+                    if (ContainsCharacters() == false & ContainsLetters() == false & (scratchpad.Length <= 6) == true & (scratchpad.Length >= 5) == true)
+                    {
+                        try
+                        {
+                            int x = Convert.ToInt32(scratchpad);
+                            if ((x <= 299999) == true & (x >= 20000) == true)
+                            {
+                                return true;
+                            }
+                        }
+                        catch
+                        {
+                            
+                        }
+                        
+                    }
+                    break;
+            }
+            
+            return false;
+        }
+
+
+
+        private void CheckPresets()
+        {
+            if (currentPageTitle == "V/U1 CONTROL")
+            {
+                //determine which preset page to go to
+                if (scratchpad == null)
+                {
+                    #region MyRegion
+                    if (_VU1freq.Contains("F"))
+                    {
+                        StartFresh();
+                        VU1vhfFMpresetsPage1();
+
+                    }
+                    else
+                        if (_VU1freq.Contains("V"))
+                        {
+                            StartFresh();
+                            VU1vhfAMpresetsPage1();
+
+                        }
+                        else
+                            if (_VU1freq.Contains("U"))
+                            {
+                                StartFresh();
+                                VU1uhfPresetsPage1();
+
+                            }
+                            else
+                                if (_VU1freq.Contains("S"))
+                                {
+                                    StartFresh();
+                                    VU1satcomPresetsPage1();
+
+                                }
+                                else
+                                    if (_VU1freq.Contains("E"))
+                                    {
+                                        StartFresh();
+                                        VU1hopsetsPage1();
+
+                                    }
+                    #endregion
+                }
+                else
+                    #region Looks for scratchpad inputs
+                    if (scratchpad == "F")
+                    {
+                        StartFresh();
+                        VU1vhfFMpresetsPage1();
+                    }
+                    else
+                        if (scratchpad == "V")
+                        {
+                            StartFresh();
+                            VU1vhfAMpresetsPage1();
+
+                        }
+                        else
+                            if (scratchpad == "U")
+                            {
+                                StartFresh();
+                                VU1uhfPresetsPage1();
+
+                            }
+                            else
+                                if (scratchpad == "S")
+                                {
+                                    StartFresh();
+                                    VU1satcomPresetsPage1();
+                                }
+                                else
+                                    if (scratchpad == "E")
+                                    {
+                                        StartFresh();
+                                        VU1hopsetsPage1();
+
+                                    }
+                    #endregion
+
+                //resets the scratchpad and sPad
+                scratchpad = null;
+                sPad.Text = scratchpad;
+
+            }
+            else
+                if (currentPageTitle == "V/U2 CONTROL")
+                {
+                    //determine which preset page to go to
+                    if (scratchpad == null)
+                    {
+                        #region MyRegion
+                        if (VU2freq.Contains("F"))
+                        {
+                            StartFresh();
+                            VU2vhfFMpresetsPage1();
+
+                        }
+                        else
+                            if (VU2freq.Contains("V"))
+                            {
+                                StartFresh();
+                                VU2vhfAMpresetsPage1();
+
+                            }
+                            else
+                                if (VU2freq.Contains("U"))
+                                {
+                                    StartFresh();
+                                    VU2uhfPresetsPage1();
+
+                                }
+                                else
+                                    if (VU2freq.Contains("S"))
+                                    {
+                                        StartFresh();
+                                        VU2satcomPresetsPage1();
+
+                                    }
+                                    else
+                                        if (VU2freq.Contains("E"))
+                                        {
+                                            StartFresh();
+                                            VU2hopsetsPage1();
+
+                                        }
+                        #endregion
+                    }
+                    else
+                        #region Looks for scratchpad inputs
+                        if (scratchpad == "F")
+                        {
+                            StartFresh();
+                            VU2vhfFMpresetsPage1();
+                        }
+                        else
+                            if (scratchpad == "V")
+                            {
+                                StartFresh();
+                                VU2vhfAMpresetsPage1();
+
+                            }
+                            else
+                                if (scratchpad == "U")
+                                {
+                                    StartFresh();
+                                    VU2uhfPresetsPage1();
+
+                                }
+                                else
+                                    if (scratchpad == "S")
+                                    {
+                                        StartFresh();
+                                        VU2satcomPresetsPage1();
+                                    }
+                                    else
+                                        if (scratchpad == "E")
+                                        {
+                                            StartFresh();
+                                            VU2hopsetsPage1();
+
+                                        }
+                        #endregion
+
+                    //resets the scratchpad and sPad
+                    scratchpad = null;
+                    sPad.Text = scratchpad;
+
+                }
+
+        }
+
+        private void CheckStatus()//determines GO/NGO status prior to displaying the page
+        {
+            #region TACAN
+            if (myCont.TacanPower == "ON" & myCont.TacanNVRAM == "GO" & myCont.TacanMicro == "GO" & myCont.Tacan1553 == "GO" & myCont.TacanAudio == "GO" & myCont.TacanDpdat == "GO" & myCont.TacanDpram == "GO" & myCont.TacanPwr == "GO" & myCont.TacanRam == "GO" & myCont.TacanRcv == "GO" & myCont.TacanRom == "GO" & myCont.TacanRt == "GO" & myCont.TacanSub == "GO" & myCont.TacanSynth == "GO" & myCont.TacanTrm == "GO" & myCont.TacanTun == "GO")
+            {
+                _tcnStatus = "GO";
+            }
+            else
+            {
+                _tcnStatus = "NGO";
+            }
+            #endregion
+
+            #region VU1
+            if (myCont.VU11553 == "GO" & myCont.VU1Comsec == "GO" & myCont.VU1Modem == "GO" & myCont.VU1PowerSupply == "GO" & myCont.VU1RT == "GO" & myCont.VU1Transmitter == "GO")
+            {
+                _VU1status = "GO";
+            }
+            else
+            {
+                _VU1status = "NGO";
+            }
+            #endregion
+
+            #region VU2
+            if (myCont.VU21553 == "GO" & myCont.VU2Comsec == "GO" & myCont.VU2Modem == "GO" & myCont.VU2PowerSupply == "GO" & myCont.VU2RT == "GO" & myCont.VU2Transmitter == "GO")
+            {
+                _VU2status = "GO";
+            }
+            else
+            {
+                _VU2status = "NGO";
+            }
+            #endregion
+
+            #region EGI INU
+            if (myCont.EgiInuPower == "ON" & myCont.EgiInuSensRef == "GO" & myCont.EgiInuRaccel == "GO" & myCont.EgiInuSaccel == "GO" & myCont.EgiInuTaccel == "GO" & myCont.EgiInuUgyro == "GO" & myCont.EgiInuWgyro == "GO" & myCont.EgiInuVgyro == "GO")
+            {
+                _egiInuStatus = "GO";
+            }
+            else
+            {
+                _egiInuStatus = "NGO";
+            }
+            #endregion
+
+            #region EGI GPS
+            if (myCont.EgiInuPower == "ON" & myCont.EgiGpsRpu == "GO" & myCont.EgiGpsEgr == "GO" & myCont.EgiGpsBattery == "GO")
+            {
+                _egiGpsStatus = "GO";
+            }
+            else
+            {
+                _egiGpsStatus = "NGO";
+            }
+            #endregion
+
+            #region EGI
+            if (myCont.EGIsub == "GO" & myCont.EGIcaic == "GO" & _egiInuStatus == "GO" & myCont.EGIio == "GO" & myCont.EGIpwr == "GO" & myCont.EGIproc == "GO" & _egiGpsStatus == "GO" & myCont.EGIieTempc == "GO" & myCont.EGI1553 == "GO" & myCont.EGItrm == "GO")
+            {
+                _egiStatus = "GO";
+            }
+            else
+            {
+                _egiStatus = "NGO";
+            }
+            #endregion
+
+            #region NAV STATUS
+            if (_egiStatus == "GO" & _tcnStatus == "GO")
+            {
+                _navStatus = "GO";
+            }
+            else
+            {
+                _navStatus = "NGO";
+            }
+            #endregion
+
+            #region SURV STATUS
+
+            if (_IFFstatus == "GO" & _TCASstatus == "GO")
+            {
+                _survStatus = "GO";
+            }
+            else
+            {
+                _survStatus = "NGO";
+            }
+
+            #endregion
+
+            #region COM STATUS
+            if (myCont.HF11553 == "GO" & myCont.HF1Ampl == "GO" & myCont.HF1Cplr == "GO" & myCont.HF1Eqpt == "GO" & myCont.HF1Fiber == "GO" & myCont.HF1HiTemp == "GO" & myCont.HF1OverVlt == "GO" & myCont.HF1RcvOvrld == "GO" & myCont.HF1RT == "GO" & myCont.HF1Tune == "GO" & myCont.HF1VSWR == "GO")
+            {
+                _HF1status = "GO";
+                hf1Warning = "";
+            }
+            else
+            {
+                _HF1status = "NGO";
+                hf1Warning = "!";
+            }
+
+            if (_VU1status == "GO" & _VU2status == "GO" & _HF1status == "GO")
+            {
+                _comStatus = "GO";
+            }
+            else
+            {
+                _comStatus = "NGO";
+            }
+
+            if (_VU1status == "GO" & CDUVU1power == "ON")
+            {
+                vu1Warning = "";
+            }
+            else
+            {
+                vu1Warning = "!";
+            }
+
+            if (_VU2status == "GO" & CDUVU2power == "ON")
+            {
+                vu2Warning = "";
+            }
+            else
+            {
+                vu2Warning = "!";
+            }
+
+
+
+            #endregion
+        }
+
+        private void UpdateFreqs(string e)
+        {
+            Char[] myChar = { '<', ' ', '*' };
+
+            if (hfMode != "ALE")
+            {
+                hfRecallChan = currentHFchan;
+                hfRecallFreq = currentHFfreq;
+                hfRecallName = currentHFchanName;
+
+                switch (e)
+                {
+                    case "pre1Name":
+                        currentHFchan = pre1Chan.Trim(myChar);
+                        currentHFfreq = pre1Freq.Trim(myChar);
+                        currentHFchanName = pre1Name.Trim(myChar);
+                        break;
+
+                    case "pre2Name":
+                        currentHFchan = pre2Chan.Trim(myChar);
+                        currentHFfreq = pre2Freq.Trim(myChar);
+                        currentHFchanName = pre2Name.Trim(myChar);
+                        break;
+
+                    case "pre3Name":
+                        currentHFchan = pre3Chan.Trim(myChar);
+                        currentHFfreq = pre3Freq.Trim(myChar);
+                        currentHFchanName = pre3Name.Trim(myChar);
+                        break;
+
+                    case "pre4Name":
+                        currentHFchan = pre4Chan.Trim(myChar);
+                        currentHFfreq = pre4Freq.Trim(myChar);
+                        currentHFchanName = pre4Name.Trim(myChar);
+                        break;
+
+                    case "pre5Name":
+                        currentHFchan = pre5Chan.Trim(myChar);
+                        currentHFfreq = pre5Freq.Trim(myChar);
+                        currentHFchanName = pre5Name.Trim(myChar);
+                        break;
+                }
+            }
+            else
+            {
+                ALERecallChan  = currentALEchan ;
+                ALERecallFreq  = currentALEfreq ;
+                ALERecallName  = currentALEname ;
+
+                switch (e)
+                {
+                    case "pre1Name":
+                        currentALEchan = ALEpre1Chan.Trim(myChar);
+                        currentALEfreq = ALEpre1Freq.Trim(myChar);
+                        currentALEname = ALEpre1Name.Trim(myChar);
+                        break;
+
+                    case "pre2Name":
+                        currentALEchan = ALEpre2Chan.Trim(myChar);
+                        currentALEfreq = ALEpre2Freq.Trim(myChar);
+                        currentALEname = ALEpre2Name.Trim(myChar);
+                        break;
+
+                    case "pre3Name":
+                        currentALEchan = ALEpre3Chan.Trim(myChar);
+                        currentALEfreq = ALEpre3Freq.Trim(myChar);
+                        currentALEname = ALEpre3Name.Trim(myChar);
+                        break;
+
+                    case "pre4Name":
+                        currentALEchan = ALEpre4Chan.Trim(myChar);
+                        currentALEfreq = ALEpre4Freq.Trim(myChar);
+                        currentALEname = ALEpre4Name.Trim(myChar);
+                        break;
+
+                    case "pre5Name":
+                        currentALEchan = ALEpre5Chan.Trim(myChar);
+                        currentALEfreq = ALEpre5Freq.Trim(myChar);
+                        currentALEname = ALEpre5Name.Trim(myChar);
+                        break;
+                }
+            }
+        }
+
+        private bool CheckValidity()
+        {
+            Button[] rightBtns = { r1Btn, r2Btn, r3Btn, r4Btn, r5Btn };
+            Button[] myBtn = { l1Btn, l2Btn, l3Btn, l4Btn, l5Btn };
+
+
+
+            switch (currentPageTitle)
+            {
+                case "HF1 ALE PRESET CHAN":
+                    try
+                    {
+                        foreach (Button btn in myBtn)
+                        {
+                            if (pushedButton == btn)
+                            {
+                                if (scratchpad.Length <= 6)//& ContainsCharacters ( ) == false & ContainsNumbers ( ) == false
+                                {
+                                    return true;
+                                }
+                                else
+                                {
+                                    scratchMessage = "INVALID ENTRY";
+                                    break;
+                                }
+                            }
+                        }
+
+                        foreach (Button btn in rightBtns)
+                        {
+                            if (pushedButton == btn)
+                            {
+
+                                if ((scratchpad.Length == 5 || scratchpad.Length == 6) & ContainsCharacters() == false & ContainsLetters() == false)
+                                {
+                                    int x = Convert.ToInt32(scratchpad);
+                                    if ((20000 <= x) == true & (x <= 299999) == true)
+                                    {
+                                        return true;
+                                    }
+                                    else
+                                    {
+                                        scratchMessage = "INVALID ENTRY";
+                                        break;
+                                    }
+
+                                }
+                                else
+                                {
+                                    scratchMessage = "INVALID ENTRY";
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception)
+                    {
+
+
+                    }
+                    break;
+
+                case "HF1 CONTROL":
+                    if (pushedButton == r4Btn)
+                    {
+                        if (scratchpad.Length <= 7 & scratchpad.Length != 0 & ContainsCharacters() == false)
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            scratchMessage = "INVALID ENTRY";
+                        }
+                    }
+                    break;
+
+                case "HF1 PRESET CHANNELS":
+                    try
+                    {
+                        foreach (Button btn in myBtn)
+                        {
+                            if (pushedButton == btn)
+                            {
+                                if (scratchpad.Length <= 6 & ContainsCharacters() == false)
+                                {
+                                    return true;
+                                }
+                                else
+                                {
+                                    scratchMessage = "INVALID ENTRY";
+                                    break;
+                                }
+                            }
+                        }
+                        foreach (Button btn in rightBtns)
+                        {
+                            if (pushedButton == btn)
+                            {
+
+                                if ((scratchpad.Length == 5 || scratchpad.Length == 6) & ContainsCharacters() == false & ContainsLetters() == false)
+                                {
+                                    int x = Convert.ToInt32(scratchpad);
+                                    if ((20000 <= x) == true & (x <= 299999) == true)
+                                    {
+                                        return true;
+                                    }
+                                    else
+                                    {
+                                        scratchMessage = "INVALID ENTRY";
+                                        break;
+                                    }
+
+                                }
+                                else
+                                {
+                                    scratchMessage = "INVALID ENTRY";
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception)
+                    {
+
+
+                    }
+                    break;
+
+                case "HF1 STANDBY FCTN":
+                    try
+                    {
+                        if (pushedButton == l2Btn)
+                        {
+                            if (scratchpad.Length == 6 & ContainsLetters() == false & ContainsCharacters() == false)
+                            {
+                                return true;
+                            }
+                            else
+                            {
+                                scratchMessage = "INVALID ENTRY";
+                            }
+                        }
+                        else
+                            if (pushedButton == l3Btn)
+                            {
+                                if (scratchpad.Length <= 8 & ContainsLetters() == false)
+                                {
+                                    return true;
+                                }
+                                else
+                                {
+                                    scratchMessage = "INVALID ENTRY";
+                                }
+                            }
+                    }
+                    catch (Exception)
+                    {
+
+
+                    }
+                    break;
+
+                case "INU LEVER ARMS":
+                    if (pushedButton == l2Btn || pushedButton == l3Btn || pushedButton == l4Btn)
+                    {
+                        if (IsDigitOnly(scratchpad))
+                        {
+                            if (Islength4(scratchpad))
+                            {
+                                return true;
+                            }
+                            else
+                            {
+                                scratchMessage = "INVALID ENTRY";
+                            }
+                        }
+                        else
+                        {
+                            scratchMessage = "INVALID ENTRY";
+                        }
+                    }
+                    else
+                    {
+                        if (pushedButton == r2Btn || pushedButton == r3Btn || pushedButton == r4Btn)
+                        {
+                            scratchMessage = "KEY NOT ACTIVE";
+                        }
+                    }
+                    break;
+
+                case "mission":
+                    {
+                        if (pushedButton == r4Btn & !myCont.IFFselected)
+                        {
+                            scratchMessage = "IFF DISABLED";
+                        }
+                        break;
+                    }
+
+            }
+
+            //used for all possible cases
+
+            ShowScratchMessage();
+            ScratchMessageTimer.Start();
+            return false;
+        }   //validates the input to textboxes
+
+        public void UTCupdateTimer_Tick(object sender, EventArgs e)
+        {
+            egiDateTime = DateTime.UtcNow;
+            egiDate = DateTime.Now;
+            formattedTime = egiDateTime.ToString("HH : mm : ss");
+            formattedDate = egiDate.ToString("dd MMM yy").ToUpper();
+
+            if (currentPageTitle == "HF1 STANDBY FCTN")
+            {
+                StartFresh();
+                HFstandbyFunctionPage();
+            }
+
+            if (currentPageTitle == "START INIT")
+            {
+                StartFresh();
+                StartInitPage();
+            }
+
+            if (currentPageTitle == "status")
+            {
+                StartFresh();
+                StatusPage();
+            }
+
+            if (currentPageTitle == "IFF STATUS" & currentPageNumber == 1)
+            {
+                StartFresh();
+                IFFstatusPage1();
+            }
+
+        }   //updates the clock and refreshes the page
+
+        private string LatLonFormat(string e)
+        {
+            string j = null;
+            char k;
+            string l = " ";
+
+            for (int i = 0; i < e.Length; i++)
+            {
+                k = e[i];
+                j += k;
+
+                if (i == 2 || i == 5 || i == 13 || i == 16)
+                {
+
+                }
+                else
+                {
+                    j += l;
+
+                    if (i == 9)
+                    {
+                        j = j + l + l;
+                    }
+                }
+            }
+            return j;
+        }   //adds proper spacing to lat/lon string
 
         private void ReturnList(string e)   //handles all RETURN buttons
         {
@@ -22242,813 +23265,12 @@ namespace CDU3000
             }
         }
 
-        private bool SearchCallSign(string e)
+        private void DisplayErrorMessage(string e)
         {
-            switch (currentPageTitle)
-            {
-                case "comm":
-                    #region HF section
-                    if (pushedButton == l3Btn & hfMode !="ALE")
-                    {
-                        if (scratchpad == pre1Name)
-                        {
-                            UpdateFreqs("pre1Name");
-                            return true;
-                        }
-                        else
-                            if (scratchpad == pre2Name)
-                            {
-                                UpdateFreqs("pre2Name");
-                                return true;
-                            }
-                            else
-                                if (scratchpad == pre3Name)
-                                {
-                                    UpdateFreqs("pre3Name");
-                                    return true;
-                                }
-                                else
-                                    if (scratchpad == pre4Name)
-                                    {
-                                        UpdateFreqs("pre4Name");
-                                        return true;
-                                    }
-                                    else
-                                        if (scratchpad == pre5Name)
-                                        {
-                                            UpdateFreqs("pre5Name");
-                                            return true;
-                                        }
-                                        else
-                                        {
-
-                                            return false;
-                                        }
-
-                    }
-                    #endregion
-                    else
-                        if (pushedButton == l3Btn & hfMode == "ALE")
-                        {
-                            if (scratchpad == ALEpre1Name)
-                            {
-                                UpdateALEfreqs("ALEpre1Name");
-                                return true;
-                            }
-                            else
-                                if (scratchpad == ALEpre2Name)
-                                {
-                                    UpdateALEfreqs("ALEpre2Name");
-                                    return true;
-                                }
-                                else
-                                    if (scratchpad == ALEpre3Name)
-                                    {
-                                        UpdateALEfreqs("ALEpre3Name");
-                                        return true;
-                                    }
-                                    else
-                                        if (scratchpad == ALEpre4Name)
-                                        {
-                                            UpdateALEfreqs("ALEpre4Name");
-                                            return true;
-                                        }
-                                        else
-                                            if (scratchpad == ALEpre5Name)
-                                            {
-                                                UpdateALEfreqs("ALEpre5Name");
-                                                return true;
-                                            }
-                                            else
-                                            {
-
-                                                return false;
-                                            }
-
-                        }
-
-                    break;
-
-            }
-            return false;
-        }
-
-        private void UpdateALEfreqs(string e)
-        {
-            Char[] myChar = { '<', ' ', '*' };
-
-            ALERecallChan  = currentALEchan ;
-            ALERecallFreq  = currentALEfreq ;
-            ALERecallName  = currentALEname ;
-
-            switch (e)
-            {
-                case "ALEpre1Name":
-                    currentALEchan = ALEpre1Chan.Trim(myChar);
-                    currentALEfreq = ALEpre1Freq.Trim(myChar);
-                    currentALEname = ALEpre1Name.Trim(myChar);
-                    break;
-
-                case "ALEpre2Name":
-                    currentALEchan = ALEpre2Chan.Trim(myChar);
-                    currentALEfreq = ALEpre2Freq.Trim(myChar);
-                    currentALEname = ALEpre2Name.Trim(myChar);
-                    break;
-
-                case "ALEpre3Name":
-                    currentALEchan = ALEpre3Chan.Trim(myChar);
-                    currentALEfreq = ALEpre3Freq.Trim(myChar);
-                    currentALEname = ALEpre3Name.Trim(myChar);
-                    break;
-
-                case "ALEpre4Name":
-                    currentALEchan = ALEpre4Chan.Trim(myChar);
-                    currentALEfreq = ALEpre4Freq.Trim(myChar);
-                    currentALEname = ALEpre4Name.Trim(myChar);
-                    break;
-
-                case "ALEpre5Name":
-                    currentALEchan = ALEpre5Chan.Trim(myChar);
-                    currentALEfreq = ALEpre5Freq.Trim(myChar);
-                    currentALEname = ALEpre5Name.Trim(myChar);
-                    break;
-            }
-        }
-
-        private bool SearchChannelNumbers(string e)
-        {
-            Char[] myChar = { '<', ' ', '*' };
-
-            switch (currentPageTitle)
-            {
-
-                case "comm":
-                    #region HF section
-                    if (pushedButton == l3Btn)
-                    {
-                        if (scratchpad == pre1Chan.Trim(myChar))
-                        {
-                            UpdateFreqs("pre1Name");
-                            return true;
-                        }
-                        else
-                            if (scratchpad == pre2Chan.Trim(myChar))
-                            {
-                                UpdateFreqs("pre2Name");
-                                return true;
-                            }
-                            else
-                                if (scratchpad == pre3Chan.Trim(myChar))
-                                {
-                                    UpdateFreqs("pre3Name");
-                                    return true;
-                                }
-                                else
-                                    if (scratchpad == pre4Chan.Trim(myChar))
-                                    {
-                                        UpdateFreqs("pre4Name");
-                                        return true;
-                                    }
-                                    else
-                                        if (scratchpad == pre5Chan.Trim(myChar))
-                                        {
-                                            UpdateFreqs("pre5Name");
-                                            return true;
-                                        }
-                                        else
-                                        {
-
-                                            return false;
-                                        }
-
-                    }
-                    #endregion
-
-                    break;
-
-            }
-            return false;
-        }
-
-        private void CheckPresets()
-        {
-            if (currentPageTitle == "V/U1 CONTROL")
-            {
-                //determine which preset page to go to
-                if (scratchpad == null)
-                {
-                    #region MyRegion
-                    if (_VU1freq.Contains("F"))
-                    {
-                        StartFresh();
-                        VU1vhfFMpresetsPage1();
-
-                    }
-                    else
-                        if (_VU1freq.Contains("V"))
-                        {
-                            StartFresh();
-                            VU1vhfAMpresetsPage1();
-
-                        }
-                        else
-                            if (_VU1freq.Contains("U"))
-                            {
-                                StartFresh();
-                                VU1uhfPresetsPage1();
-
-                            }
-                            else
-                                if (_VU1freq.Contains("S"))
-                                {
-                                    StartFresh();
-                                    VU1satcomPresetsPage1();
-
-                                }
-                                else
-                                    if (_VU1freq.Contains("E"))
-                                    {
-                                        StartFresh();
-                                        VU1hopsetsPage1();
-
-                                    }
-                    #endregion
-                }
-                else
-                    #region Looks for scratchpad inputs
-                    if (scratchpad == "F")
-                    {
-                        StartFresh();
-                        VU1vhfFMpresetsPage1();
-                    }
-                    else
-                        if (scratchpad == "V")
-                        {
-                            StartFresh();
-                            VU1vhfAMpresetsPage1();
-
-                        }
-                        else
-                            if (scratchpad == "U")
-                            {
-                                StartFresh();
-                                VU1uhfPresetsPage1();
-
-                            }
-                            else
-                                if (scratchpad == "S")
-                                {
-                                    StartFresh();
-                                    VU1satcomPresetsPage1();
-                                }
-                                else
-                                    if (scratchpad == "E")
-                                    {
-                                        StartFresh();
-                                        VU1hopsetsPage1();
-
-                                    }
-                    #endregion
-
-                //resets the scratchpad and sPad
-                scratchpad = null;
-                sPad.Text = scratchpad;
-
-            }
-            else
-                if (currentPageTitle == "V/U2 CONTROL")
-                {
-                    //determine which preset page to go to
-                    if (scratchpad == null)
-                    {
-                        #region MyRegion
-                        if (VU2freq.Contains("F"))
-                        {
-                            StartFresh();
-                            VU2vhfFMpresetsPage1();
-
-                        }
-                        else
-                            if (VU2freq.Contains("V"))
-                            {
-                                StartFresh();
-                                VU2vhfAMpresetsPage1();
-
-                            }
-                            else
-                                if (VU2freq.Contains("U"))
-                                {
-                                    StartFresh();
-                                    VU2uhfPresetsPage1();
-
-                                }
-                                else
-                                    if (VU2freq.Contains("S"))
-                                    {
-                                        StartFresh();
-                                        VU2satcomPresetsPage1();
-
-                                    }
-                                    else
-                                        if (VU2freq.Contains("E"))
-                                        {
-                                            StartFresh();
-                                            VU2hopsetsPage1();
-
-                                        }
-                        #endregion
-                    }
-                    else
-                        #region Looks for scratchpad inputs
-                        if (scratchpad == "F")
-                        {
-                            StartFresh();
-                            VU2vhfFMpresetsPage1();
-                        }
-                        else
-                            if (scratchpad == "V")
-                            {
-                                StartFresh();
-                                VU2vhfAMpresetsPage1();
-
-                            }
-                            else
-                                if (scratchpad == "U")
-                                {
-                                    StartFresh();
-                                    VU2uhfPresetsPage1();
-
-                                }
-                                else
-                                    if (scratchpad == "S")
-                                    {
-                                        StartFresh();
-                                        VU2satcomPresetsPage1();
-                                    }
-                                    else
-                                        if (scratchpad == "E")
-                                        {
-                                            StartFresh();
-                                            VU2hopsetsPage1();
-
-                                        }
-                        #endregion
-
-                    //resets the scratchpad and sPad
-                    scratchpad = null;
-                    sPad.Text = scratchpad;
-
-                }
-
-        }
-
-        private void CheckStatus()//determines GO/NGO status prior to displaying the page
-        {
-            #region TACAN
-            if (myCont.TacanPower == "ON" & myCont.TacanNVRAM == "GO" & myCont.TacanMicro == "GO" & myCont.Tacan1553 == "GO" & myCont.TacanAudio == "GO" & myCont.TacanDpdat == "GO" & myCont.TacanDpram == "GO" & myCont.TacanPwr == "GO" & myCont.TacanRam == "GO" & myCont.TacanRcv == "GO" & myCont.TacanRom == "GO" & myCont.TacanRt == "GO" & myCont.TacanSub == "GO" & myCont.TacanSynth == "GO" & myCont.TacanTrm == "GO" & myCont.TacanTun == "GO")
-            {
-                _tcnStatus = "GO";
-            }
-            else
-            {
-                _tcnStatus = "NGO";
-            }
-            #endregion
-
-            #region VU1
-            if (myCont.VU11553 == "GO" & myCont.VU1Comsec == "GO" & myCont.VU1Modem == "GO" & myCont.VU1PowerSupply == "GO" & myCont.VU1RT == "GO" & myCont.VU1Transmitter == "GO")
-            {
-                _VU1status = "GO";
-            }
-            else
-            {
-                _VU1status = "NGO";
-            }
-            #endregion
-
-            #region VU2
-            if (myCont.VU21553 == "GO" & myCont.VU2Comsec == "GO" & myCont.VU2Modem == "GO" & myCont.VU2PowerSupply == "GO" & myCont.VU2RT == "GO" & myCont.VU2Transmitter == "GO")
-            {
-                _VU2status = "GO";
-            }
-            else
-            {
-                _VU2status = "NGO";
-            }
-            #endregion
-
-            #region EGI INU
-            if (myCont.EgiInuPower == "ON" & myCont.EgiInuSensRef == "GO" & myCont.EgiInuRaccel == "GO" & myCont.EgiInuSaccel == "GO" & myCont.EgiInuTaccel == "GO" & myCont.EgiInuUgyro == "GO" & myCont.EgiInuWgyro == "GO" & myCont.EgiInuVgyro == "GO")
-            {
-                _egiInuStatus = "GO";
-            }
-            else
-            {
-                _egiInuStatus = "NGO";
-            }
-            #endregion
-
-            #region EGI GPS
-            if (myCont.EgiInuPower == "ON" & myCont.EgiGpsRpu == "GO" & myCont.EgiGpsEgr == "GO" & myCont.EgiGpsBattery == "GO")
-            {
-                _egiGpsStatus = "GO";
-            }
-            else
-            {
-                _egiGpsStatus = "NGO";
-            }
-            #endregion
-
-            #region EGI
-            if (myCont.EGIsub == "GO" & myCont.EGIcaic == "GO" & _egiInuStatus == "GO" & myCont.EGIio == "GO" & myCont.EGIpwr == "GO" & myCont.EGIproc == "GO" & _egiGpsStatus == "GO" & myCont.EGIieTempc == "GO" & myCont.EGI1553 == "GO" & myCont.EGItrm == "GO")
-            {
-                _egiStatus = "GO";
-            }
-            else
-            {
-                _egiStatus = "NGO";
-            }
-            #endregion
-
-            #region NAV STATUS
-            if (_egiStatus == "GO" & _tcnStatus == "GO")
-            {
-                _navStatus = "GO";
-            }
-            else
-            {
-                _navStatus = "NGO";
-            }
-            #endregion
-
-            #region SURV STATUS
-
-            if (_IFFstatus == "GO" & _TCASstatus == "GO")
-            {
-                _survStatus = "GO";
-            }
-            else
-            {
-                _survStatus = "NGO";
-            }
-
-            #endregion
-
-            #region COM STATUS
-            if (myCont.HF11553 == "GO" & myCont.HF1Ampl == "GO" & myCont.HF1Cplr == "GO" & myCont.HF1Eqpt == "GO" & myCont.HF1Fiber == "GO" & myCont.HF1HiTemp == "GO" & myCont.HF1OverVlt == "GO" & myCont.HF1RcvOvrld == "GO" & myCont.HF1RT == "GO" & myCont.HF1Tune == "GO" & myCont.HF1VSWR == "GO")
-            {
-                _HF1status = "GO";
-                hf1Warning = "";
-            }
-            else
-            {
-                _HF1status = "NGO";
-                hf1Warning = "!";
-            }
-
-            if (_VU1status == "GO" & _VU2status == "GO" & _HF1status == "GO")
-            {
-                _comStatus = "GO";
-            }
-            else
-            {
-                _comStatus = "NGO";
-            }
-
-            if (_VU1status == "GO" & CDUVU1power == "ON")
-            {
-                vu1Warning = "";
-            }
-            else
-            {
-                vu1Warning = "!";
-            }
-
-            if (_VU2status == "GO" & CDUVU2power == "ON")
-            {
-                vu2Warning = "";
-            }
-            else
-            {
-                vu2Warning = "!";
-            }
-
-
-
-            #endregion
-        }
-
-        private void UpdateFreqs(string e)
-        {
-            Char[] myChar = { '<', ' ', '*' };
-
-            hfRecallChan = currentHFchan;
-            hfRecallFreq = currentHFfreq;
-            hfRecallName = currentHFchanName;
-
-            switch (e)
-            {
-                case "pre1Name":
-                    currentHFchan = pre1Chan.Trim(myChar);
-                    currentHFfreq = pre1Freq.Trim(myChar);
-                    currentHFchanName = pre1Name.Trim(myChar);
-                    break;
-
-                case "pre2Name":
-                    currentHFchan = pre2Chan.Trim(myChar);
-                    currentHFfreq = pre2Freq.Trim(myChar);
-                    currentHFchanName = pre2Name.Trim(myChar);
-                    break;
-
-                case "pre3Name":
-                    currentHFchan = pre3Chan.Trim(myChar);
-                    currentHFfreq = pre3Freq.Trim(myChar);
-                    currentHFchanName = pre3Name.Trim(myChar);
-                    break;
-
-                case "pre4Name":
-                    currentHFchan = pre4Chan.Trim(myChar);
-                    currentHFfreq = pre4Freq.Trim(myChar);
-                    currentHFchanName = pre4Name.Trim(myChar);
-                    break;
-
-                case "pre5Name":
-                    currentHFchan = pre5Chan.Trim(myChar);
-                    currentHFfreq = pre5Freq.Trim(myChar);
-                    currentHFchanName = pre5Name.Trim(myChar);
-                    break;
-            }
-        }
-
-        private bool CheckValidity()
-        {
-            Button[] rightBtns = { r1Btn, r2Btn, r3Btn, r4Btn, r5Btn };
-            Button[] myBtn = { l1Btn, l2Btn, l3Btn, l4Btn, l5Btn };
-
-
-
-            switch (currentPageTitle)
-            {
-                case "HF1 ALE PRESET CHAN":
-                    try
-                    {
-                        foreach (Button btn in myBtn)
-                        {
-                            if (pushedButton == btn)
-                            {
-                                if (scratchpad.Length <= 6)//& ContainsCharacters ( ) == false & ContainsNumbers ( ) == false
-                                {
-                                    return true;
-                                }
-                                else
-                                {
-                                    scratchMessage = "INVALID ENTRY";
-                                    break;
-                                }
-                            }
-                        }
-
-                        foreach (Button btn in rightBtns)
-                        {
-                            if (pushedButton == btn)
-                            {
-
-                                if ((scratchpad.Length == 5 || scratchpad.Length == 6) & ContainsCharacters() == false & ContainsLetters() == false)
-                                {
-                                    int x = Convert.ToInt32(scratchpad);
-                                    if ((20000 <= x) == true & (x <= 299999) == true)
-                                    {
-                                        return true;
-                                    }
-                                    else
-                                    {
-                                        scratchMessage = "INVALID ENTRY";
-                                        break;
-                                    }
-
-                                }
-                                else
-                                {
-                                    scratchMessage = "INVALID ENTRY";
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                    catch (Exception)
-                    {
-
-
-                    }
-                    break;
-
-                case "HF1 CONTROL":
-                    if (pushedButton == r4Btn)
-                    {
-                        if (scratchpad.Length <= 7 & scratchpad.Length != 0 & ContainsCharacters() == false)
-                        {
-                            return true;
-                        }
-                        else
-                        {
-                            scratchMessage = "INVALID ENTRY";
-                        }
-                    }
-                    break;
-
-                case "HF1 PRESET CHANNELS":
-                    try
-                    {
-                        foreach (Button btn in myBtn)
-                        {
-                            if (pushedButton == btn)
-                            {
-                                if (scratchpad.Length <= 6 & ContainsCharacters() == false)
-                                {
-                                    return true;
-                                }
-                                else
-                                {
-                                    scratchMessage = "INVALID ENTRY";
-                                    break;
-                                }
-                            }
-                        }
-                        foreach (Button btn in rightBtns)
-                        {
-                            if (pushedButton == btn)
-                            {
-
-                                if ((scratchpad.Length == 5 || scratchpad.Length == 6) & ContainsCharacters() == false & ContainsLetters() == false)
-                                {
-                                    int x = Convert.ToInt32(scratchpad);
-                                    if ((20000 <= x) == true & (x <= 299999) == true)
-                                    {
-                                        return true;
-                                    }
-                                    else
-                                    {
-                                        scratchMessage = "INVALID ENTRY";
-                                        break;
-                                    }
-
-                                }
-                                else
-                                {
-                                    scratchMessage = "INVALID ENTRY";
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                    catch (Exception)
-                    {
-
-
-                    }
-                    break;
-
-                case "HF1 STANDBY FCTN":
-                    try
-                    {
-                        if (pushedButton == l2Btn)
-                        {
-                            if (scratchpad.Length == 6 & ContainsLetters() == false & ContainsCharacters() == false)
-                            {
-                                return true;
-                            }
-                            else
-                            {
-                                scratchMessage = "INVALID ENTRY";
-                            }
-                        }
-                        else
-                            if (pushedButton == l3Btn)
-                            {
-                                if (scratchpad.Length <= 8 & ContainsLetters() == false)
-                                {
-                                    return true;
-                                }
-                                else
-                                {
-                                    scratchMessage = "INVALID ENTRY";
-                                }
-                            }
-                    }
-                    catch (Exception)
-                    {
-
-
-                    }
-                    break;
-
-                case "INU LEVER ARMS":
-                    if (pushedButton == l2Btn || pushedButton == l3Btn || pushedButton == l4Btn)
-                    {
-                        if (IsDigitOnly(scratchpad))
-                        {
-                            if (Islength4(scratchpad))
-                            {
-                                return true;
-                            }
-                            else
-                            {
-                                scratchMessage = "INVALID ENTRY";
-                            }
-                        }
-                        else
-                        {
-                            scratchMessage = "INVALID ENTRY";
-                        }
-                    }
-                    else
-                    {
-                        if (pushedButton == r2Btn || pushedButton == r3Btn || pushedButton == r4Btn)
-                        {
-                            scratchMessage = "KEY NOT ACTIVE";
-                        }
-                    }
-                    break;
-
-                case "mission":
-                    {
-                        if (pushedButton == r4Btn & !myCont.IFFselected)
-                        {
-                            scratchMessage = "IFF DISABLED";
-                        }
-                        break;
-                    }
-
-            }
-
-            //used for all possible cases
-
+            scratchMessage = e;
             ShowScratchMessage();
             ScratchMessageTimer.Start();
-            return false;
-        }   //validates the input to textboxes
-
-        public void UTCupdateTimer_Tick(object sender, EventArgs e)
-        {
-            egiDateTime = DateTime.UtcNow;
-            egiDate = DateTime.Now;
-            formattedTime = egiDateTime.ToString("HH : mm : ss");
-            formattedDate = egiDate.ToString("dd MMM yy").ToUpper();
-
-            if (currentPageTitle == "HF1 STANDBY FCTN")
-            {
-                StartFresh();
-                HFstandbyFunctionPage();
-            }
-
-            if (currentPageTitle == "START INIT")
-            {
-                StartFresh();
-                StartInitPage();
-            }
-
-            if (currentPageTitle == "status")
-            {
-                StartFresh();
-                StatusPage();
-            }
-
-            if (currentPageTitle == "IFF STATUS" & currentPageNumber == 1)
-            {
-                StartFresh();
-                IFFstatusPage1();
-            }
-
-        }   //updates the clock and refreshes the page
-
-        private string LatLonFormat(string e)
-        {
-            string j = null;
-            char k;
-            string l = " ";
-
-            for (int i = 0; i < e.Length; i++)
-            {
-                k = e[i];
-                j += k;
-
-                if (i == 2 || i == 5 || i == 13 || i == 16)
-                {
-
-                }
-                else
-                {
-                    j += l;
-
-                    if (i == 9)
-                    {
-                        j = j + l + l;
-                    }
-                }
-            }
-            return j;
-        }   //adds proper spacing to lat/lon string
-
+        }
 
 
 
@@ -23181,6 +23403,7 @@ namespace CDU3000
                 {
                     if (c.Location.Y == row13 + 3 & c.Location.X == col1 + 7)
                     {
+                        
                         c.Dispose();
 
                     }
