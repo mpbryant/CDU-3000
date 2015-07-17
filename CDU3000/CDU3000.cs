@@ -326,6 +326,7 @@ namespace CDU3000
         private string recallVU1UHFchan = "01";
         private string recallVU1UHFname = "AIRSPT";
         private string recallVU1UHFfreq = "260.675";
+      
 
         private string VU1UHFpre1Name = "AIRSPT";
         private string VU1UHFpre2Name = "REDNET";
@@ -350,12 +351,12 @@ namespace CDU3000
         private string VU1UHFpre3Comsec = "P4";
         private string VU1UHFpre4Comsec = "C3";
         private string VU1UHFpre5Comsec = "P1";
-        private string recallVU1Comsec;
-        
-        private string recallVU2UHFchan;
-        private string recallVU2UHFname;
-        private string recallVU2UHFfreq;
-        private string recallVU2Comsec;
+        private string recallVU1Comsec = "C1";
+
+        private string recallVU2UHFchan = "01";
+        private string recallVU2UHFname = "AIRSPT";
+        private string recallVU2UHFfreq = "260.675";
+        private string recallVU2Comsec = "C1";
 
         private string VU2UHFpre1Name = "AIRSPT";
         private string VU2UHFpre2Name = "REDNET";
@@ -381,6 +382,8 @@ namespace CDU3000
         private string VU2UHFpre4Comsec = "C3";
         private string VU2UHFpre5Comsec = "P1";
         
+
+
         #endregion
 
         #endregion
@@ -611,7 +614,7 @@ namespace CDU3000
             TB(l2r, col2, row4, currentVU2chan + "   " + currentVU2name, Color.White);
 
             TextBox comsecVar2 = new TextBox();
-            TB(comsecVar2, col8, row4, currentVU2ComsecVar , Color.White);
+            TB(comsecVar2, col8, row4, currentVU2ComsecVar, Color.White);
 
             TextBox l2b = new TextBox();
             TB(l2b, col1, row5, hf1Warning, Color.Orange);
@@ -648,7 +651,7 @@ namespace CDU3000
             TB(r1, col17, row2, r1text, Color.White);
 
             TextBox r2 = new TextBox();
-            r2text = BandSelection(currentVU2freq ) + currentVU2freq ;
+            r2text = BandSelection(currentVU2freq) + currentVU2freq;
             TB(r2, col17, row4, r2text, Color.White);
 
             TextBox r3 = new TextBox();
@@ -5810,7 +5813,7 @@ namespace CDU3000
             #region MyRegion
 
 
-            if (VU1UHFpre1Chan.Trim('<', ' ') == currentVU1UHFchan)
+            if (VU1UHFpre1Chan.Trim('<', ' ') == currentVU1chan)
             {
                 VU1UHFpre1Chan = VU1UHFpre1Chan.Replace('<', '*');
                 VU1UHFpre2Chan = VU1UHFpre2Chan.Replace('*', '<');
@@ -5818,7 +5821,7 @@ namespace CDU3000
                 VU1UHFpre4Chan = VU1UHFpre4Chan.Replace('*', '<');
                 VU1UHFpre5Chan = VU1UHFpre5Chan.Replace('*', '<');
             }
-            if (VU1UHFpre2Chan.Trim('<', ' ') == currentVU1UHFchan)
+            if (VU1UHFpre2Chan.Trim('<', ' ') == currentVU1chan)
             {
                 VU1UHFpre2Chan = VU1UHFpre2Chan.Replace('<', '*');
                 VU1UHFpre1Chan = VU1UHFpre1Chan.Replace('*', '<');
@@ -5826,7 +5829,7 @@ namespace CDU3000
                 VU1UHFpre4Chan = VU1UHFpre4Chan.Replace('*', '<');
                 VU1UHFpre5Chan = VU1UHFpre5Chan.Replace('*', '<');
             }
-            if (VU1UHFpre3Chan.Trim('<', ' ') == currentVU1UHFchan)
+            if (VU1UHFpre3Chan.Trim('<', ' ') == currentVU1chan)
             {
                 VU1UHFpre3Chan = VU1UHFpre3Chan.Replace('<', '*');
                 VU1UHFpre2Chan = VU1UHFpre2Chan.Replace('*', '<');
@@ -5834,7 +5837,7 @@ namespace CDU3000
                 VU1UHFpre4Chan = VU1UHFpre4Chan.Replace('*', '<');
                 VU1UHFpre5Chan = VU1UHFpre5Chan.Replace('*', '<');
             }
-            if (VU1UHFpre4Chan.Trim('<', ' ') == currentVU1UHFchan)
+            if (VU1UHFpre4Chan.Trim('<', ' ') == currentVU1chan)
             {
                 VU1UHFpre4Chan = VU1UHFpre4Chan.Replace('<', '*');
                 VU1UHFpre3Chan = VU1UHFpre3Chan.Replace('*', '<');
@@ -5842,7 +5845,7 @@ namespace CDU3000
                 VU1UHFpre1Chan = VU1UHFpre1Chan.Replace('*', '<');
                 VU1UHFpre5Chan = VU1UHFpre5Chan.Replace('*', '<');
             }
-            if (VU1UHFpre5Chan.Trim('<', ' ') == currentVU1UHFchan)
+            if (VU1UHFpre5Chan.Trim('<', ' ') == currentVU1chan)
             {
                 VU1UHFpre5Chan = VU1UHFpre5Chan.Replace('<', '*');
                 VU1UHFpre4Chan = VU1UHFpre4Chan.Replace('*', '<');
@@ -6545,13 +6548,13 @@ namespace CDU3000
             CDU7000Page = true;
 
             #region MyRegion
-            l1text = "< " + currentVU2chan ;
+            l1text = "< " + currentVU2chan;
             l2text = "TR";
             l3text = "0";
             l4text = "HIGH";
             l5text = "";
             l6text = "< COMSEC";
-            r1text = BandSelection(currentVU2freq ) + currentVU2freq ;
+            r1text = BandSelection(currentVU2freq) + currentVU2freq;
             r2text = "UHF";
             r3text = "";
             r4text = "";
@@ -6569,8 +6572,8 @@ namespace CDU3000
             TextBox page = new TextBox();
             TB(page, col14, row0, currentPageNumber + "/2");
 
-            //TextBox l1t = new TextBox();
-            //TB(l1t, col2, row1, "IDENT");
+            TextBox l1t = new TextBox();
+            TB(l1t, col4, row2, currentVU2name, Color.White);
 
             TextBox l1 = new TextBox();
             TB(l1, col1, row2, l1text, Color.White);
@@ -6661,7 +6664,7 @@ namespace CDU3000
             //TB(r1t, col2, row1, "IDENT");
 
             TextBox comsec = new TextBox();
-            TB(comsec, col9, row2, currentVU2ComsecVar , Color.White);
+            TB(comsec, col9, row2, currentVU2ComsecVar, Color.White);
 
             TextBox r1 = new TextBox();
             TB(r1, col15, row2, r1text, Color.White);
@@ -9013,18 +9016,67 @@ namespace CDU3000
             CDU7000Page = true;
 
             #region MyRegion
-            l1text = "< 1";
-            l2text = "< 2";
-            l3text = "< 3";
-            l4text = "< 4";
-            l5text = "< 5";
+
+
+            if (VU2UHFpre1Chan.Trim('<', ' ') == currentVU2chan)
+            {
+                VU2UHFpre1Chan = VU2UHFpre1Chan.Replace('<', '*');
+                VU2UHFpre2Chan = VU2UHFpre2Chan.Replace('*', '<');
+                VU2UHFpre3Chan = VU2UHFpre3Chan.Replace('*', '<');
+                VU2UHFpre4Chan = VU2UHFpre4Chan.Replace('*', '<');
+                VU2UHFpre5Chan = VU2UHFpre5Chan.Replace('*', '<');
+            }
+            if (VU2UHFpre2Chan.Trim('<', ' ') == currentVU2chan)
+            {
+                VU2UHFpre2Chan = VU2UHFpre2Chan.Replace('<', '*');
+                VU2UHFpre1Chan = VU2UHFpre1Chan.Replace('*', '<');
+                VU2UHFpre3Chan = VU2UHFpre3Chan.Replace('*', '<');
+                VU2UHFpre4Chan = VU2UHFpre4Chan.Replace('*', '<');
+                VU2UHFpre5Chan = VU2UHFpre5Chan.Replace('*', '<');
+            }
+            if (VU2UHFpre3Chan.Trim('<', ' ') == currentVU2chan)
+            {
+                VU2UHFpre3Chan = VU2UHFpre3Chan.Replace('<', '*');
+                VU2UHFpre2Chan = VU2UHFpre2Chan.Replace('*', '<');
+                VU2UHFpre1Chan = VU2UHFpre1Chan.Replace('*', '<');
+                VU2UHFpre4Chan = VU2UHFpre4Chan.Replace('*', '<');
+                VU2UHFpre5Chan = VU2UHFpre5Chan.Replace('*', '<');
+            }
+            if (VU2UHFpre4Chan.Trim('<', ' ') == currentVU2chan)
+            {
+                VU2UHFpre4Chan = VU2UHFpre4Chan.Replace('<', '*');
+                VU2UHFpre3Chan = VU2UHFpre3Chan.Replace('*', '<');
+                VU2UHFpre2Chan = VU2UHFpre2Chan.Replace('*', '<');
+                VU2UHFpre1Chan = VU2UHFpre1Chan.Replace('*', '<');
+                VU2UHFpre5Chan = VU2UHFpre5Chan.Replace('*', '<');
+            }
+            if (VU2UHFpre5Chan.Trim('<', ' ') == currentVU2chan)
+            {
+                VU2UHFpre5Chan = VU2UHFpre5Chan.Replace('<', '*');
+                VU2UHFpre4Chan = VU2UHFpre4Chan.Replace('*', '<');
+                VU2UHFpre3Chan = VU2UHFpre3Chan.Replace('*', '<');
+                VU2UHFpre2Chan = VU2UHFpre2Chan.Replace('*', '<');
+                VU2UHFpre1Chan = VU2UHFpre1Chan.Replace('*', '<');
+
+            }
+
+
+
+
+
+            l1text = VU2UHFpre1Chan;
+            l2text = VU2UHFpre2Chan;
+            l3text = VU2UHFpre3Chan;
+            l4text = VU2UHFpre4Chan;
+            l5text = VU2UHFpre5Chan;
             l6text = "";
-            r1text = "";
-            r2text = "";
-            r3text = "";
-            r4text = "";
-            r5text = "";
+            r1text = VU2UHFpre1Freq;
+            r2text = VU2UHFpre2Freq;
+            r3text = VU2UHFpre3Freq;
+            r4text = VU2UHFpre4Freq;
+            r5text = VU2UHFpre5Freq;
             r6text = "RETURN";
+
 
             currentPageTitle = "V/U2 UHF"; //page title and number used for navigating
             currentPageNumber = 1;
@@ -9036,61 +9088,61 @@ namespace CDU3000
             TB(page, col14, row0, currentPageNumber + "/4");
 
             TextBox l1callsign = new TextBox();
-            TB(l1callsign, col4, row2, "AIRSPT", Color.White);
+            TB(l1callsign, col4, row2, VU2UHFpre1Name, Color.White);
 
             TextBox l1comsec = new TextBox();
-            TB(l1comsec, col9, row2, "C1", Color.White);
+            TB(l1comsec, col9, row2, VU2UHFpre1Comsec, Color.White);
 
             TextBox l1freq = new TextBox();
-            TB(l1freq, col15, row2, "260.675", Color.White);
+            TB(l1freq, col15, row2, VU2UHFpre1Freq, Color.White);
 
             TextBox l1 = new TextBox();
             TB(l1, col1, row2, l1text, Color.White);
 
             TextBox l2callsign = new TextBox();
-            TB(l2callsign, col4, row4, "REDNET", Color.White);
+            TB(l2callsign, col4, row4, VU2UHFpre2Name, Color.White);
 
             TextBox l2comsec = new TextBox();
             TB(l2comsec, col9, row4, "C2", Color.White);
 
             TextBox l2freq = new TextBox();
-            TB(l2freq, col15, row4, "241.950", Color.White);
+            TB(l2freq, col15, row4, VU2UHFpre2Freq, Color.White);
 
             TextBox l2 = new TextBox();
             TB(l2, col1, row4, l2text, Color.White);
 
             TextBox l3callsign = new TextBox();
-            TB(l3callsign, col4, row6, "TOWER", Color.White);
+            TB(l3callsign, col4, row6, VU2UHFpre3Name, Color.White);
 
             TextBox l3comsec = new TextBox();
             TB(l3comsec, col9, row6, "P4", Color.White);
 
             TextBox l3freq = new TextBox();
-            TB(l3freq, col15, row6, "258.100", Color.White);
+            TB(l3freq, col15, row6, VU2UHFpre3Freq, Color.White);
 
             TextBox l3 = new TextBox();
             TB(l3, col1, row6, l3text, Color.White);
 
             TextBox l4callsign = new TextBox();
-            TB(l4callsign, col4, row8, "PACMAN", Color.White);
+            TB(l4callsign, col4, row8, VU2UHFpre4Name, Color.White);
 
             TextBox l4comsec = new TextBox();
             TB(l4comsec, col9, row8, "C3", Color.White);
 
             TextBox l4freq = new TextBox();
-            TB(l4freq, col15, row8, "342.025", Color.White);
+            TB(l4freq, col15, row8, VU2UHFpre4Freq, Color.White);
 
             TextBox l4 = new TextBox();
             TB(l4, col1, row8, l4text, Color.White);
 
             TextBox l5callsign = new TextBox();
-            TB(l5callsign, col4, row10, "GRNLDR", Color.White);
+            TB(l5callsign, col4, row10, VU2UHFpre5Name, Color.White);
 
             TextBox l5comsec = new TextBox();
             TB(l5comsec, col9, row10, "P1", Color.White);
 
             TextBox l5freq = new TextBox();
-            TB(l5freq, col15, row10, "330.475", Color.White);
+            TB(l5freq, col15, row10, VU2UHFpre5Freq, Color.White);
 
             TextBox l5 = new TextBox();
             TB(l5, col1, row10, l5text, Color.White);
@@ -9101,38 +9153,7 @@ namespace CDU3000
             TextBox l6 = new TextBox();
             TB(l6, col1, row12, l6text, Color.White);
 
-            //TextBox r1t = new TextBox();
-            //TB(r1t, col2, row1, "IDENT");
 
-            TextBox r1 = new TextBox();
-            TB(r1, col15, row2, r1text, Color.White);
-
-            //TextBox r2t = new TextBox();
-            //TB(r2t, col2, row1, "IDENT");
-
-            TextBox r2 = new TextBox();
-            TB(r2, col15, row4, r2text, Color.White);
-
-            //TextBox r3t = new TextBox();
-            //TB(r3t, col2, row1, "IDENT");
-
-            TextBox r3 = new TextBox();
-            TB(r3, col15, row6, r3text, Color.White);
-
-            //TextBox r4t = new TextBox();
-            //TB(r4t, col2, row1, "IDENT");
-
-            TextBox r4 = new TextBox();
-            TB(r4, col15, row8, r4text, Color.White);
-
-            //TextBox r5t = new TextBox();
-            //TB(r5t, col15, row9, "PILOT", Color.White);
-
-            TextBox r5 = new TextBox();
-            TB(r5, col15, row10, r5text, Color.White);
-
-            //TextBox r6t = new TextBox();
-            //TB(r6t, col2, row1, "IDENT");
 
             TextBox r6 = new TextBox();
             TB(r6, col15, row12, r6text, Color.White);
@@ -20237,7 +20258,7 @@ namespace CDU3000
                             {
                                 if (CheckFreqFormat("HF"))
                                 {
-                                    UpdateFreqswithR3push();
+                                    UpdateFreqswithRightBtnPush();
                                     scratchpad = "";
                                     sPad.Text = "";
                                     StartFresh();
@@ -20250,7 +20271,35 @@ namespace CDU3000
                                     return;
                                 }
                             }
-
+                            else
+                            {
+                                if ((pushedButton == r2Btn || pushedButton == r1Btn) & scratchpad != null)
+                                {
+                                    if (CheckFreqFormat("UHF"))
+                                    {
+                                        UpdateFreqswithRightBtnPush();
+                                        scratchpad = "";
+                                        sPad.Text = "";
+                                        StartFresh();
+                                        COMpage();
+                                        return;
+                                    }
+                                    else if (CheckFreqFormat("COMSEC"))
+                                    {
+                                        UpdateComsec();
+                                        scratchpad = "";
+                                        sPad.Text = "";
+                                        StartFresh();
+                                        COMpage();
+                                        return;
+                                    }
+                                    else
+                                    {
+                                        DisplayErrorMessage("INVALID ENTRY");
+                                        return;
+                                    }
+                                }
+                            }
                     }
             }
             else
@@ -20311,6 +20360,14 @@ namespace CDU3000
 
             #region Page selection for VU1 Preset Channels Page
             if (currentPageTitle == "V/U1 UHF" & pushedButton != r6Btn)
+            {
+                PresetController();
+                return;
+            }
+            #endregion
+
+            #region Page selection for VU1 Preset Channels Page
+            if (currentPageTitle == "V/U2 UHF" & pushedButton != r6Btn)
             {
                 PresetController();
                 return;
@@ -21122,6 +21179,76 @@ namespace CDU3000
 
         }
 
+        private void UpdateComsec()
+        {
+            if (pushedButton == r2Btn)//VU2
+            {
+                if (BandSelection(currentVU2freq) == "U")//verifies the band is UHF
+                {
+                    currentVU2ComsecVar = scratchpad;
+
+                    if (currentVU2chan == VU2UHFpre1Chan.Trim('<', ' ', '*'))
+                    {
+                        VU2UHFpre1Comsec = currentVU2ComsecVar;
+                    }
+                    else
+                        if (currentVU2chan == VU2UHFpre2Chan.Trim('<', ' ', '*'))
+                        {
+                            VU2UHFpre2Comsec = currentVU2ComsecVar;
+                        }
+                        else
+                            if (currentVU2chan == VU2UHFpre3Chan.Trim('<', ' ', '*'))
+                            {
+                                VU2UHFpre3Comsec = currentVU2ComsecVar;
+                            }
+                            else
+                                if (currentVU2chan == VU2UHFpre4Chan.Trim('<', ' ', '*'))
+                                {
+                                    VU2UHFpre4Comsec = currentVU2ComsecVar;
+                                }
+                                else
+                                    if (currentVU2chan == VU2UHFpre5Chan.Trim('<', ' ', '*'))
+                                    {
+                                        VU2UHFpre5Comsec = currentVU2ComsecVar;
+                                    }
+                }
+
+            }
+            else
+                if (pushedButton == r1Btn)//VU1
+                {
+                    if (BandSelection(currentVU1freq) == "U")//verifies the band is UHF
+                    {
+                        currentVU1ComsecVar = scratchpad;
+
+                        if (currentVU1chan == VU1UHFpre1Chan.Trim('<', ' ', '*'))
+                        {
+                            VU1UHFpre1Comsec = currentVU1ComsecVar;
+                        }
+                        else
+                            if (currentVU1chan == VU1UHFpre2Chan.Trim('<', ' ', '*'))
+                            {
+                                VU1UHFpre2Comsec = currentVU1ComsecVar;
+                            }
+                            else
+                                if (currentVU1chan == VU1UHFpre3Chan.Trim('<', ' ', '*'))
+                                {
+                                    VU1UHFpre3Comsec = currentVU1ComsecVar;
+                                }
+                                else
+                                    if (currentVU1chan == VU1UHFpre4Chan.Trim('<', ' ', '*'))
+                                    {
+                                        VU1UHFpre4Comsec = currentVU1ComsecVar;
+                                    }
+                                    else
+                                        if (currentVU1chan == VU1UHFpre5Chan.Trim('<', ' ', '*'))
+                                        {
+                                            VU1UHFpre5Comsec = currentVU1ComsecVar;
+                                        }
+                    }
+                }
+        }
+
         private void CheckALE()
         {
             if (hfMode == "ALE")
@@ -21772,15 +21899,24 @@ namespace CDU3000
 
         private string BandSelection(string e)
         {
-            e = e.Remove(3, 1);
-            int x = Convert.ToInt32(e);
-
-            if (x <= 399995 & x >= 225000)
+            try
             {
-                return "U";
-            }
+                e = e.Remove(3, 1);
+                int x = Convert.ToInt32(e);
 
-            return "";
+                if (x <= 399995 & x >= 225000)
+                {
+                    return "U";
+                }
+
+                return "";
+            }
+            catch (Exception)
+            {
+                return "";
+
+            }
+            
         }
 
         private void UpdateVU1(string e)
@@ -22056,7 +22192,8 @@ namespace CDU3000
 
 
                         //begin VU2 section
-                    }else
+                    }
+                    else
                         if (currentPageTitle == "V/U2 UHF")
                         {
                             if (!CheckValidity())
@@ -22286,6 +22423,16 @@ namespace CDU3000
             if (currentPageTitle == "HF1 ALE PRESET CHAN")
             {
                 ALEpresetController();
+            }
+
+            if (currentPageTitle == "V/U1 UHF")
+            {
+                VU1PresetController();
+            }
+
+            if (currentPageTitle == "V/U2 UHF")
+            {
+                VU2PresetController();
             }
 
         }
@@ -22876,73 +23023,146 @@ namespace CDU3000
             return false;
         }
 
-        private void UpdateFreqswithR3push()
+        private void UpdateFreqswithRightBtnPush()
         {
-            if (hfMode == "ALE")
+            if (pushedButton == r3Btn)//HF 
             {
-                currentALEfreq = scratchpad.Insert(scratchpad.Length - 4, ".");
-
-                if (currentALEchan == ALEpre1Chan.Trim('<', ' ', '*'))
+                if (hfMode == "ALE")
                 {
-                    ALEpre1Freq = currentALEfreq;
-                }
-                else
-                    if (currentALEchan == ALEpre2Chan.Trim('<', ' ', '*'))
+                    currentALEfreq = scratchpad.Insert(scratchpad.Length - 4, ".");
+
+                    if (currentALEchan == ALEpre1Chan.Trim('<', ' ', '*'))
                     {
-                        ALEpre2Freq = currentALEfreq;
+                        ALEpre1Freq = currentALEfreq;
                     }
                     else
-                        if (currentALEchan == ALEpre3Chan.Trim('<', ' ', '*'))
+                        if (currentALEchan == ALEpre2Chan.Trim('<', ' ', '*'))
                         {
-                            ALEpre3Freq = currentALEfreq;
+                            ALEpre2Freq = currentALEfreq;
                         }
                         else
-                            if (currentALEchan == ALEpre4Chan.Trim('<', ' ', '*'))
+                            if (currentALEchan == ALEpre3Chan.Trim('<', ' ', '*'))
                             {
-                                ALEpre4Freq = currentALEfreq;
+                                ALEpre3Freq = currentALEfreq;
                             }
                             else
-                                if (currentALEchan == ALEpre5Chan.Trim('<', ' ', '*'))
+                                if (currentALEchan == ALEpre4Chan.Trim('<', ' ', '*'))
                                 {
-                                    ALEpre5Freq = currentALEfreq;
+                                    ALEpre4Freq = currentALEfreq;
                                 }
-            }
-
-            if (hfMode != "ALE")
-            {
-                currentHFfreq = scratchpad.Insert(scratchpad.Length - 4, ".");
-
-                if (currentHFchan == HFpre1Chan.Trim('<', ' ', '*'))
-                {
-                    HFpre1Freq = currentHFfreq;
+                                else
+                                    if (currentALEchan == ALEpre5Chan.Trim('<', ' ', '*'))
+                                    {
+                                        ALEpre5Freq = currentALEfreq;
+                                    }
                 }
-                else
-                    if (currentHFchan == HFpre2Chan.Trim('<', ' ', '*'))
+
+                if (hfMode != "ALE")
+                {
+                    currentHFfreq = scratchpad.Insert(scratchpad.Length - 4, ".");
+
+                    if (currentHFchan == HFpre1Chan.Trim('<', ' ', '*'))
                     {
-                        HFpre2Freq = currentHFfreq;
+                        HFpre1Freq = currentHFfreq;
                     }
                     else
-                        if (currentHFchan == HFpre3Chan.Trim('<', ' ', '*'))
+                        if (currentHFchan == HFpre2Chan.Trim('<', ' ', '*'))
                         {
-                            HFpre3Freq = currentHFfreq;
+                            HFpre2Freq = currentHFfreq;
                         }
                         else
-                            if (currentHFchan == HFpre4Chan.Trim('<', ' ', '*'))
+                            if (currentHFchan == HFpre3Chan.Trim('<', ' ', '*'))
                             {
-                                HFpre4Freq = currentHFfreq;
+                                HFpre3Freq = currentHFfreq;
                             }
                             else
-                                if (currentHFchan == HFpre5Chan.Trim('<', ' ', '*'))
+                                if (currentHFchan == HFpre4Chan.Trim('<', ' ', '*'))
                                 {
-                                    HFpre5Freq = currentHFfreq;
+                                    HFpre4Freq = currentHFfreq;
                                 }
-            }
+                                else
+                                    if (currentHFchan == HFpre5Chan.Trim('<', ' ', '*'))
+                                    {
+                                        HFpre5Freq = currentHFfreq;
+                                    }
+                }
+            }// end HF
+            else
+                if (pushedButton == r2Btn)//VU2
+                {
+                    if (BandSelection(currentVU2freq) == "U")//verifies the band is UHF
+                    {
+                        currentVU2freq = scratchpad.Insert(scratchpad.Length - 3, ".");
+
+                        if (currentVU2chan == VU2UHFpre1Chan.Trim('<', ' ', '*'))
+                        {
+                            VU2UHFpre1Freq = currentVU2freq;
+                        }
+                        else
+                            if (currentVU2chan == VU2UHFpre2Chan.Trim('<', ' ', '*'))
+                            {
+                                VU2UHFpre2Freq = currentVU2freq;
+                            }
+                            else
+                                if (currentVU2chan == VU2UHFpre3Chan.Trim('<', ' ', '*'))
+                                {
+                                    VU2UHFpre3Freq = currentVU2freq;
+                                }
+                                else
+                                    if (currentVU2chan == VU2UHFpre4Chan.Trim('<', ' ', '*'))
+                                    {
+                                        VU2UHFpre4Freq = currentVU2freq;
+                                    }
+                                    else
+                                        if (currentVU2chan == VU2UHFpre5Chan.Trim('<', ' ', '*'))
+                                        {
+                                            VU2UHFpre5Freq = currentVU2freq;
+                                        }
+                    }
+
+                }
+                else
+                    if (pushedButton == r1Btn)//VU1
+                    {
+                        if (BandSelection(currentVU1freq) == "U")//verifies the band is UHF
+                        {
+                            currentVU1freq = scratchpad.Insert(scratchpad.Length - 3, ".");
+
+                            if (currentVU1chan == VU1UHFpre1Chan.Trim('<', ' ', '*'))
+                            {
+                                VU1UHFpre1Freq = currentVU1freq;
+                            }
+                            else
+                                if (currentVU1chan == VU1UHFpre2Chan.Trim('<', ' ', '*'))
+                                {
+                                    VU1UHFpre2Freq = currentVU1freq;
+                                }
+                                else
+                                    if (currentVU1chan == VU1UHFpre3Chan.Trim('<', ' ', '*'))
+                                    {
+                                        VU1UHFpre3Freq = currentVU1freq;
+                                    }
+                                    else
+                                        if (currentVU1chan == VU1UHFpre4Chan.Trim('<', ' ', '*'))
+                                        {
+                                            VU1UHFpre4Freq = currentVU1freq;
+                                        }
+                                        else
+                                            if (currentVU1chan == VU1UHFpre5Chan.Trim('<', ' ', '*'))
+                                            {
+                                                VU1UHFpre5Freq = currentVU1freq;
+                                            }
+                        }
+                    }
         }
 
         private bool CheckFreqFormat(string e)
         {
+
+
             switch (e)
             {
+
                 case "HF":
                     if (ContainsCharacters() == false & ContainsLetters() == false & (scratchpad.Length <= 6) == true & (scratchpad.Length >= 5) == true)
                     {
@@ -22961,6 +23181,41 @@ namespace CDU3000
 
                     }
                     break;
+
+                case "COMSEC":
+                    if (ContainsLetters() == true & ContainsNumbers() == true & (scratchpad.Length == 2 || scratchpad.Length == 3))
+                    {
+                        string x = scratchpad.Substring(0, 1);
+                        if (x == "C" || x == "P")
+                        {
+                            string y = scratchpad.Substring(1);
+                            int z = Convert.ToInt32(y);
+                            if (z >= 1 & z <= 19)
+                            {
+                                return true;
+                            }
+                        }
+                    }
+                    break;
+
+                case "UHF":
+                    if (ContainsCharacters() == false & ContainsLetters() == false & scratchpad.Length == 6)
+                    {
+                        try
+                        {
+                            int x = Convert.ToInt32(scratchpad);
+                            if ((x >= 225000) == true & (x <= 399995) == true)
+                            {
+                                return true;
+                            }
+                        }
+                        catch (Exception)
+                        {
+
+
+                        }
+                    }
+                    break;
             }
 
             return false;
@@ -22973,7 +23228,7 @@ namespace CDU3000
             if (currentPageTitle == "V/U1 CONTROL")
             {
                 //determine which preset page to go to
-                if (scratchpad == null)
+                if (scratchpad == null || scratchpad == "")
                 {
                     #region MyRegion
                     if (BandSelection(currentVU1UHFfreq) == "F")
@@ -23060,35 +23315,35 @@ namespace CDU3000
                     if (scratchpad == null)
                     {
                         #region MyRegion
-                        if (VU2freq.Contains("F"))
+                        if (BandSelection(currentVU2freq) == "F")
                         {
                             StartFresh();
                             VU2vhfFMpresetsPage1();
 
                         }
                         else
-                            if (VU2freq.Contains("V"))
+                            if (BandSelection(currentVU2freq) == "V")
                             {
                                 StartFresh();
                                 VU2vhfAMpresetsPage1();
 
                             }
                             else
-                                if (VU2freq.Contains("U"))
+                                if (BandSelection(currentVU2freq) == "U")
                                 {
                                     StartFresh();
                                     VU2uhfPresetsPage1();
 
                                 }
                                 else
-                                    if (VU2freq.Contains("S"))
+                                    if (BandSelection(currentVU2freq) == "S")
                                     {
                                         StartFresh();
                                         VU2satcomPresetsPage1();
 
                                     }
                                     else
-                                        if (VU2freq.Contains("E"))
+                                        if (BandSelection(currentVU2freq) == "E")
                                         {
                                             StartFresh();
                                             VU2hopsetsPage1();
@@ -24457,10 +24712,272 @@ namespace CDU3000
         #endregion Dimming Methods
 
 
+        private void VU1PresetController()
+        {
+            if (currentPageTitle == "V/U1 UHF")
+            {
+                //return to HF Control Page
+                if ((pushedButton == l1Btn & l1text.Contains("*")) || (pushedButton == l2Btn & l2text.Contains("*")) || (pushedButton == l3Btn & l3text.Contains("*")) || (pushedButton == l4Btn & l4text.Contains("*")) || (pushedButton == l5Btn & l5text.Contains("*")))
+                {
+                    if (pushedButton == l1Btn)
+                    {
+                        currentVU1name = VU1UHFpre1Name;
+                        currentVU1chan = VU1UHFpre1Chan.Trim('<', ' ', '*');
+                        currentVU1freq = VU1UHFpre1Freq;
+                        currentVU1ComsecVar = VU1UHFpre1Comsec;
+                    }
+
+                    StartFresh();
+                    VU1controlPage1();
+                    return;
+                }
+                else
+                {
+
+                    //add to allow preset recall 
+                    recallVU1UHFfreq = currentVU1UHFfreq;
+                    recallVU1UHFname = currentVU1UHFname;
+                    recallVU1UHFchan = currentVU1UHFchan;
+                    recallVU1Comsec = currentVU1ComsecVar;
+
+                    char[] toTrim = { '<', ' ' };
+                    if (pushedButton == l1Btn || currentVU1chan == l1text)
+                    {
+                        if (l1text.Contains("<"))
+                        {
+                            l1text = l1text.TrimStart(toTrim);
+                            VU1UHFpre1Chan = "* " + l1text;
+                            //basSelChanVar = l1text;
+                            currentVU1name = VU1UHFpre1Name;
+                            currentVU1chan = l1text;
+                            currentVU1freq = VU1UHFpre1Freq;
+                            currentVU1ComsecVar = VU1UHFpre1Comsec;
+                        }
+                    }
+                    if (pushedButton == l2Btn || currentVU1chan == l2text)
+                    {
+                        if (l2text.Contains("<"))
+                        {
+                            l2text = l2text.TrimStart(toTrim);
+                            VU1UHFpre2Chan = "* " + l2text;
+                            //basSelChanVar = l2text;
+                            currentVU1name = VU1UHFpre2Name;
+                            currentVU1chan = l2text;
+                            currentVU1freq = VU1UHFpre2Freq;
+                            currentVU1ComsecVar = VU1UHFpre2Comsec;
+                        }
+                    }
+                    if (pushedButton == l3Btn)
+                    {
+                        if (l3text.Contains("<"))
+                        {
+                            l3text = l3text.TrimStart(toTrim);
+                            VU1UHFpre3Chan = "* " + l3text;
+                            //basSelChanVar = l3text;
+                            currentVU1name = VU1UHFpre3Name;
+                            currentVU1chan = l3text;
+                            currentVU1freq = VU1UHFpre3Freq;
+                            currentVU1ComsecVar = VU1UHFpre3Comsec;
+                        }
+                    }
+                    if (pushedButton == l4Btn)
+                    {
+                        if (l4text.Contains("<"))
+                        {
+                            l4text = l4text.TrimStart(toTrim);
+                            VU1UHFpre4Chan = "* " + l4text;
+                            //basSelChanVar = l4text;
+                            currentVU1name = VU1UHFpre4Name;
+                            currentVU1chan = l4text;
+                            currentVU1freq = VU1UHFpre4Freq;
+                            currentVU1ComsecVar = VU1UHFpre4Comsec;
+                        }
+                    }
+                    if (pushedButton == l5Btn)
+                    {
+                        if (l5text.Contains("<"))
+                        {
+                            l5text = l5text.TrimStart(toTrim);
+                            VU1UHFpre5Chan = "* " + l5text;
+                            //basSelChanVar = l5text;
+                            currentVU1name = VU1UHFpre5Name;
+                            currentVU1chan = l5text;
+                            currentVU1freq = VU1UHFpre5Freq;
+                            currentVU1ComsecVar = VU1UHFpre5Comsec;
+                        }
+                    }
+
+                    //reset the others
+                    char[] toCut = { '*' };
+
+                    if (l1text.Contains("*") & pushedButton != l1Btn)
+                    {
+                        l1text = l1text.TrimStart(toCut);
+                        VU1UHFpre1Chan = "<" + l1text;
+                    }
+                    if (l2text.Contains("*") & pushedButton != l2Btn)
+                    {
+                        l2text = l2text.TrimStart(toCut);
+                        VU1UHFpre2Chan = "<" + l2text;
+                    }
+                    if (l3text.Contains("*") & pushedButton != l3Btn)
+                    {
+                        l3text = l3text.TrimStart(toCut);
+                        VU1UHFpre3Chan = "<" + l3text;
+                    }
+                    if (l4text.Contains("*") & pushedButton != l4Btn)
+                    {
+                        l4text = l4text.TrimStart(toCut);
+                        VU1UHFpre4Chan = "<" + l4text;
+                    }
+                    if (l5text.Contains("*") & pushedButton != l5Btn)
+                    {
+                        l5text = l5text.TrimStart(toCut);
+                        VU1UHFpre5Chan = "<" + l5text;
+                    }
+                }
 
 
 
+                StartFresh();
+                VU1uhfPresetsPage1();
+            }
 
+
+        }
+
+
+        private void VU2PresetController()
+        {
+            if (currentPageTitle == "V/U2 UHF")
+            {
+                //return to HF Control Page
+                if ((pushedButton == l1Btn & l1text.Contains("*")) || (pushedButton == l2Btn & l2text.Contains("*")) || (pushedButton == l3Btn & l3text.Contains("*")) || (pushedButton == l4Btn & l4text.Contains("*")) || (pushedButton == l5Btn & l5text.Contains("*")))
+                {
+                    if (pushedButton == l1Btn)
+                    {
+                        currentVU2name = VU2UHFpre1Name;
+                        currentVU2chan = VU2UHFpre1Chan.Trim('<', ' ', '*');
+                        currentVU2freq = VU2UHFpre1Freq;
+                        currentVU2ComsecVar = VU2UHFpre1Comsec;
+                    }
+
+                    StartFresh();
+                    VU2controlPage1();
+                    return;
+                }
+                else
+                {
+
+                    //add to allow preset recall 
+                    recallVU2UHFfreq = currentVU2freq;
+                    recallVU2UHFname = currentVU2name;
+                    recallVU2UHFchan = currentVU2chan;
+                    recallVU2Comsec = currentVU2ComsecVar;
+
+                    char[] toTrim = { '<', ' ' };
+                    if (pushedButton == l1Btn || currentVU2chan == l1text)
+                    {
+                        if (l1text.Contains("<"))
+                        {
+                            l1text = l1text.TrimStart(toTrim);
+                            VU2UHFpre1Chan = "* " + l1text;
+                            //basSelChanVar = l1text;
+                            currentVU2name = VU2UHFpre1Name;
+                            currentVU2chan = l1text;
+                            currentVU2freq = VU2UHFpre1Freq;
+                            currentVU2ComsecVar = VU2UHFpre1Comsec;
+                        }
+                    }
+                    if (pushedButton == l2Btn || currentVU2chan == l2text)
+                    {
+                        if (l2text.Contains("<"))
+                        {
+                            l2text = l2text.TrimStart(toTrim);
+                            VU2UHFpre2Chan = "* " + l2text;
+                            //basSelChanVar = l2text;
+                            currentVU2name = VU2UHFpre2Name;
+                            currentVU2chan = l2text;
+                            currentVU2freq = VU2UHFpre2Freq;
+                            currentVU2ComsecVar = VU2UHFpre2Comsec;
+                        }
+                    }
+                    if (pushedButton == l3Btn)
+                    {
+                        if (l3text.Contains("<"))
+                        {
+                            l3text = l3text.TrimStart(toTrim);
+                            VU2UHFpre3Chan = "* " + l3text;
+                            //basSelChanVar = l3text;
+                            currentVU2name = VU2UHFpre3Name;
+                            currentVU2chan = l3text;
+                            currentVU2freq = VU2UHFpre3Freq;
+                            currentVU2ComsecVar = VU2UHFpre3Comsec;
+                        }
+                    }
+                    if (pushedButton == l4Btn)
+                    {
+                        if (l4text.Contains("<"))
+                        {
+                            l4text = l4text.TrimStart(toTrim);
+                            VU2UHFpre4Chan = "* " + l4text;
+                            //basSelChanVar = l4text;
+                            currentVU2name = VU2UHFpre4Name;
+                            currentVU2chan = l4text;
+                            currentVU2freq = VU2UHFpre4Freq;
+                            currentVU2ComsecVar = VU2UHFpre4Comsec;
+                        }
+                    }
+                    if (pushedButton == l5Btn)
+                    {
+                        if (l5text.Contains("<"))
+                        {
+                            l5text = l5text.TrimStart(toTrim);
+                            VU2UHFpre5Chan = "* " + l5text;
+                            //basSelChanVar = l5text;
+                            currentVU2name = VU2UHFpre5Name;
+                            currentVU2chan = l5text;
+                            currentVU2freq = VU2UHFpre5Freq;
+                            currentVU2ComsecVar = VU2UHFpre5Comsec;
+                        }
+                    }
+
+                    //reset the others
+                    char[] toCut = { '*' };
+
+                    if (l1text.Contains("*") & pushedButton != l1Btn)
+                    {
+                        l1text = l1text.TrimStart(toCut);
+                        VU2UHFpre1Chan = "<" + l1text;
+                    }
+                    if (l2text.Contains("*") & pushedButton != l2Btn)
+                    {
+                        l2text = l2text.TrimStart(toCut);
+                        VU2UHFpre2Chan = "<" + l2text;
+                    }
+                    if (l3text.Contains("*") & pushedButton != l3Btn)
+                    {
+                        l3text = l3text.TrimStart(toCut);
+                        VU2UHFpre3Chan = "<" + l3text;
+                    }
+                    if (l4text.Contains("*") & pushedButton != l4Btn)
+                    {
+                        l4text = l4text.TrimStart(toCut);
+                        VU2UHFpre4Chan = "<" + l4text;
+                    }
+                    if (l5text.Contains("*") & pushedButton != l5Btn)
+                    {
+                        l5text = l5text.TrimStart(toCut);
+                        VU2UHFpre5Chan = "<" + l5text;
+                    }
+                }
+
+
+
+                StartFresh();
+                VU2uhfPresetsPage1();
+            }
+        }
 
 
 
