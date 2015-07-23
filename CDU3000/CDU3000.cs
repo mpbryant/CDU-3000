@@ -219,6 +219,18 @@ namespace CDU3000
         string _VU1squelch = "1";
         string _VU1power = "HIGH";
         string _VU1guard = "OFF";
+        string VU1sidetone = "15";
+
+        string VU1pre1COMSEC = "< 1";
+        string VU1pre2COMSEC = "< 2";
+        string VU1pre3COMSEC = "< 3";
+        string VU1pre4COMSEC = "< 4";
+        string VU1pre5COMSEC = "< 5";
+        string VU1pre6COMSEC = "6 >";
+        string VU1pre7COMSEC = "7 >";
+        string VU1pre8COMSEC = "8 >";
+        string VU1pre9COMSEC = "9 >";
+        string VU1pre10COMSEC = "10 >";
 
         private string SatcomPre1Name = "AIRSPT";
         private string SatcomPre1Chan = "< 01";
@@ -322,6 +334,18 @@ namespace CDU3000
         string _VU2pwrSupply = "GO";
         string _VU2rt = "GO";
         string _VU2comsec = "GO";
+        string VU2sidetone = "15";
+
+        private string VU2pre1COMSEC;
+        private string VU2pre2COMSEC;
+        private string VU2pre3COMSEC;
+        private string VU2pre4COMSEC;
+        private string VU2pre5COMSEC;
+        private string VU2pre6COMSEC;
+        private string VU2pre7COMSEC;
+        private string VU2pre8COMSEC;
+        private string VU2pre9COMSEC;
+        private string VU2pre10COMSEC;
 
         private string VU2AMpre1Chan;
         private string VU2AMpre2Chan;
@@ -534,6 +558,7 @@ namespace CDU3000
         private string recallVU1FMname;
         private string recallVU1FMfreq;
         private string vu1Band;
+
 
 
 
@@ -3721,7 +3746,7 @@ namespace CDU3000
 
             #region MyRegion
             l1text = "NOR";
-            l2text = "[15]";
+            l2text = "[" + VU1sidetone + "]";
             l3text = "";
             l4text = "< MAINTENANCE";
             l5text = "";
@@ -4073,17 +4098,19 @@ namespace CDU3000
             CDU7000Page = true;
 
             #region MyRegion
-            l1text = "< 1";
-            l2text = "< 2";
-            l3text = "< 3";
-            l4text = "< 4";
-            l5text = "< 5";
+
+
+            l1text = VU1pre1COMSEC;
+            l2text = VU1pre2COMSEC;
+            l3text = VU1pre3COMSEC;
+            l4text = VU1pre4COMSEC;
+            l5text = VU1pre5COMSEC;
             l6text = "";
-            r1text = "6";
-            r2text = "7";
-            r3text = "8";
-            r4text = "9";
-            r5text = "10";
+            r1text = VU1pre6COMSEC;
+            r2text = VU1pre7COMSEC;
+            r3text = VU1pre8COMSEC;
+            r4text = VU1pre9COMSEC;
+            r5text = VU1pre10COMSEC;
             r6text = "RETURN";
 
             currentPageTitle = "V/U1 COMSEC VAR"; //page title and number used for navigating
@@ -4136,35 +4163,40 @@ namespace CDU3000
             TypeLeft(r1t);
 
             TextBox r1 = new TextBox();
-            TB(r1, col15, row2, r1text, Color.White);
+            TB(r1, col16 + 15, row2, r1text, Color.White);
+            TypeLeft(r1);
 
             TextBox r2t = new TextBox();
             TB(r2t, col14, row4, "FASCIN", Color.White);
             TypeLeft(r2t);
 
             TextBox r2 = new TextBox();
-            TB(r2, col15, row4, r2text, Color.White);
+            TB(r2, col16 + 15, row4, r2text, Color.White);
+            TypeLeft(r2);
 
             TextBox r3t = new TextBox();
             TB(r3t, col14, row6, "VINSON", Color.White);
             TypeLeft(r3t);
 
             TextBox r3 = new TextBox();
-            TB(r3, col15, row6, r3text, Color.White);
+            TB(r3, col16 + 15, row6, r3text, Color.White);
+            TypeLeft(r3);
 
             TextBox r4t = new TextBox();
             TB(r4t, col14, row8, "VINSON", Color.White);
             TypeLeft(r4t);
 
             TextBox r4 = new TextBox();
-            TB(r4, col15, row8, r4text, Color.White);
+            TB(r4, col16 + 15, row8, r4text, Color.White);
+            TypeLeft(r4);
 
             TextBox r5t = new TextBox();
             TB(r5t, col14, row10, "ANDVT", Color.White);
             TypeLeft(r5t);
 
             TextBox r5 = new TextBox();
-            TB(r5, col15, row10, r5text, Color.White);
+            TB(r5, col16 + 15, row10, r5text, Color.White);
+            TypeLeft(r5);
 
             //TextBox r6t = new TextBox();
             //TB(r6t, col2, row1, "IDENT");
@@ -4178,35 +4210,35 @@ namespace CDU3000
 
 
             #region Add Arrows if Needed
-            if (r1text != "")
-            {
-                TextBox r1r = new TextBox();
-                TB(r1r, col16, row2, ">", Color.White);
-            }
+            //if (r1text != "")
+            //{
+            //    TextBox r1r = new TextBox();
+            //    TB(r1r, col16, row2, ">", Color.White);
+            //}
 
-            if (r2text != "")
-            {
-                TextBox r2r = new TextBox();
-                TB(r2r, col16, row4, ">", Color.White);
-            }
+            //if (r2text != "")
+            //{
+            //    TextBox r2r = new TextBox();
+            //    TB(r2r, col16, row4, ">", Color.White);
+            //}
 
-            if (r3text != "")
-            {
-                TextBox r3r = new TextBox();
-                TB(r3r, col16, row6, ">", Color.White);
-            }
+            //if (r3text != "")
+            //{
+            //    TextBox r3r = new TextBox();
+            //    TB(r3r, col16, row6, ">", Color.White);
+            //}
 
-            if (r4text != "")
-            {
-                TextBox r4r = new TextBox();
-                TB(r4r, col16, row8, ">", Color.White);
-            }
+            //if (r4text != "")
+            //{
+            //    TextBox r4r = new TextBox();
+            //    TB(r4r, col16, row8, ">", Color.White);
+            //}
 
-            if (r5text != "")
-            {
-                TextBox r5r = new TextBox();
-                TB(r5r, col16, row10, ">", Color.White);
-            }
+            //if (r5text != "")
+            //{
+            //    TextBox r5r = new TextBox();
+            //    TB(r5r, col16, row10, ">", Color.White);
+            //}
 
 
             if (r6text != "")
@@ -6184,11 +6216,11 @@ namespace CDU3000
             l4text = VU1FMpre4Chan;
             l5text = VU1FMpre5Chan;
             l6text = "";
-            r1text = "";
-            r2text = "";
-            r3text = "";
-            r4text = "";
-            r5text = "";
+            r1text = VU1FMpre1Freq;
+            r2text = VU1FMpre2Freq;
+            r3text = VU1FMpre3Freq;
+            r4text = VU1FMpre4Freq;
+            r5text = VU1FMpre5Freq;
             r6text = "RETURN";
 
             currentPageTitle = "V/U1 VHF-FM"; //page title and number used for navigating
@@ -6374,11 +6406,11 @@ namespace CDU3000
             l4text = VU1AMpre4Chan;
             l5text = VU1AMpre5Chan;
             l6text = "";
-            r1text = "";
-            r2text = "";
-            r3text = "";
-            r4text = "";
-            r5text = "";
+            r1text = VU1AMpre1Freq;
+            r2text = VU1AMpre2Freq;
+            r3text = VU1AMpre3Freq;
+            r4text = VU1AMpre4Freq;
+            r5text = VU1AMpre5Freq;
             r6text = "RETURN";
 
             currentPageTitle = "V/U1 VHF-AM"; //page title and number used for navigating
@@ -6531,10 +6563,10 @@ namespace CDU3000
             l4text = "[" + VU1SatcomPre2SATchan + "]";
             l5text = "";
             l6text = "";
-            r1text = "";
-            r2text = "";
-            r3text = "";
-            r4text = "";
+            r1text = VU1SatcomPre1Uplink;
+            r2text = VU1SatcomPre1Downlink;
+            r3text = VU1SatcomPre2Uplink;
+            r4text = VU1SatcomPre2Downlink;
             r5text = "";
             r6text = "RETURN";
 
@@ -6723,11 +6755,11 @@ namespace CDU3000
             l4text = VU1HOPpre4Chan;
             l5text = VU1HOPpre5Chan;
             l6text = "";
-            r1text = "";
-            r2text = "";
-            r3text = "";
-            r4text = "";
-            r5text = "";
+            r1text = VU1HOPpre1Freq;
+            r2text = VU1HOPpre2Freq;
+            r3text = VU1HOPpre3Freq;
+            r4text = VU1HOPpre4Freq;
+            r5text = VU1HOPpre5Freq;
             r6text = "RETURN";
 
             currentPageTitle = "V/U1 HOPSETS"; //page title and number used for navigating
@@ -7090,7 +7122,7 @@ namespace CDU3000
 
             #region MyRegion
             l1text = "NOR";
-            l2text = "[15]";
+            l2text = "[" + VU2sidetone + "]";
             l3text = "";
             l4text = "< MAINTENANCE";
             l5text = "";
@@ -18642,6 +18674,8 @@ namespace CDU3000
 
         private void nextBtn_Click(object sender, EventArgs e)
         {
+            NextPrevPresetSelect();
+
             #region Defaults pages
 
             if (currentPageTitle == "DEFAULTS" & currentPageNumber == 1)
@@ -18933,6 +18967,8 @@ namespace CDU3000
 
         private void prevBtn_Click(object sender, EventArgs e)
         {
+            NextPrevPresetSelect();
+
             #region Defaults pages
 
             if (currentPageTitle == "DEFAULTS" & currentPageNumber == 3)
@@ -19895,7 +19931,7 @@ namespace CDU3000
 
             #region Color toggle of multiple choices (more than two choices only)
 
-            if ((hfMode == "ALE" & trimmedString == "MAN") || (trimmedString == "2" & currentPageTitle != "V/U1 VHF-FM") || trimmedString == "NORM" || trimmedString == "CW" || trimmedString == "DIV" || (trimmedString == "OFF" & pushedButton == r4Btn & currentPageTitle == "IFF") || trimmedString == "1.2K" || trimmedString == "HIGH" || trimmedString == "UHF" || trimmedString == "0" || trimmedString == "NOR" || (trimmedString == "TR" & currentPageTitle == "TACAN CONTROL") || (currentPageTitle == "HF1 CONTROL" & trimmedString == "STBY"))//**Toggle colors
+            if ((hfMode == "ALE" & trimmedString == "MAN") || (trimmedString == "2" & currentPageTitle != "V/U1 VHF-FM" & currentPageTitle!="V/U1 COMSEC VAR") || trimmedString == "NORM" || trimmedString == "CW" || trimmedString == "DIV" || (trimmedString == "OFF" & pushedButton == r4Btn & currentPageTitle == "IFF") || trimmedString == "1.2K" || trimmedString == "HIGH" || trimmedString == "UHF" || trimmedString == "0" || trimmedString == "NOR" || (trimmedString == "TR" & currentPageTitle == "TACAN CONTROL") || (currentPageTitle == "HF1 CONTROL" & trimmedString == "STBY"))//**Toggle colors
             {
                 try
                 {
@@ -20659,7 +20695,7 @@ namespace CDU3000
             #endregion Non-Fixed Button Selection
 
             #region Handles call from VU1 & VU2 CONTROL pages
-            if (currentPageTitle == "V/U1 CONTROL")
+            if (currentPageTitle == "V/U1 CONTROL" & currentPageNumber == 1)
             {
                 if (pushedButton == l1Btn)
                 {
@@ -20694,7 +20730,38 @@ namespace CDU3000
                 }
             }
 
-            if (currentPageTitle == "V/U2 CONTROL")
+            if (currentPageTitle == "V/U1 CONTROL" & currentPageNumber == 2)
+            {
+                if (pushedButton == l2Btn)
+                {
+                    try
+                    {
+                        int x = Convert.ToInt32(scratchpad);
+                        if (x >= 0 & x <= 31)
+                        {
+                            VU1sidetone = scratchpad;
+                            scratchpad = "";
+                            sPad.Text = scratchpad;
+                            StartFresh();
+                            VU1controlPage2();
+                            return;
+                        }
+                        else
+                        {
+                            DisplayErrorMessage("INVALID ENTRY");
+                            return;
+                        }
+                    }
+                    catch (Exception)
+                    {
+
+                        DisplayErrorMessage("INVALID ENTRY");
+                        return;
+                    }
+                }
+            }
+
+            if (currentPageTitle == "V/U2 CONTROL" & currentPageNumber == 1)
             {
                 if (pushedButton == l1Btn)
                 {
@@ -20728,6 +20795,37 @@ namespace CDU3000
                     }
                 }
             }
+
+            if (currentPageTitle == "V/U2 CONTROL" & currentPageNumber == 2)
+            {
+                if (pushedButton == l2Btn)
+                {
+                    try
+                    {
+                        int x = Convert.ToInt32(scratchpad);
+                        if (x >= 0 & x <= 31)
+                        {
+                            VU2sidetone = scratchpad;
+                            scratchpad = "";
+                            sPad.Text = scratchpad;
+                            StartFresh();
+                            VU2controlPage2();
+                            return;
+                        }
+                        else
+                        {
+                            DisplayErrorMessage("INVALID ENTRY");
+                            return;
+                        }
+                    }
+                    catch (Exception)
+                    {
+
+                        DisplayErrorMessage("INVALID ENTRY");
+                        return;
+                    }
+                }
+            }
             #endregion
 
             #region Handles page selection calls from VU 1&2 Comsec Control pages
@@ -20746,6 +20844,23 @@ namespace CDU3000
                     return;
                 }
 
+            #endregion
+
+            #region Page selection calls from VU1 COMSEC VAR page
+            if ((currentPageTitle == "V/U1 COMSEC VAR" || currentPageTitle == "V/U2 COMSEC VAR") & pushedButton!=r6Btn )
+            {
+                ComsecVarSelect(currentPageTitle);
+                StartFresh();
+                if (currentPageTitle.Contains("V/U1"))
+                {
+                    VU1comsecVarPage1();
+                }
+                else
+                {
+                    VU2comsecVarPage1();
+                }
+                return;
+            }
             #endregion
 
             #region Page selection for VU1 Preset Channels Page
@@ -21566,6 +21681,183 @@ namespace CDU3000
             }
 
             UpdateDisplay(); //updates the display after writing the page
+
+        }
+
+        private void ComsecVarSelect(string currentPageTitle)
+        {
+            string l1var = "";
+            string l2var = "";
+            string l3var = "";
+            string l4var = "";
+            string l5var = "";
+            string l6var = "";
+            string l7var = "";
+            string l8var = "";
+            string l9var = "";
+            string l10var = "";
+
+
+
+            if (pushedButton == l1Btn)
+            {
+                l1var = "* 1";
+                l2var = "< 2";
+                l3var = "< 3";
+                l4var = "< 4";
+                l5var = "< 5";
+                l6var = "6 >";
+                l7var = "7 >";
+                l8var = "8 >";
+                l9var = "9 >";
+                l10var = "10 >";
+            }
+            else if (pushedButton == l2Btn)
+            {
+                l1var = "< 1";
+                l2var = "* 2";
+                l3var = "< 3";
+                l4var = "< 4";
+                l5var = "< 5";
+                l6var = "6 >";
+                l7var = "7 >";
+                l8var = "8 >";
+                l9var = "9 >";
+                l10var = "10 >";
+            }
+            else if (pushedButton == l3Btn)
+            {
+                l1var = "< 1";
+                l2var = "< 2";
+                l3var = "* 3";
+                l4var = "< 4";
+                l5var = "< 5";
+                l6var = "6 >";
+                l7var = "7 >";
+                l8var = "8 >";
+                l9var = "9 >";
+                l10var = "10 >";
+            }
+            else if (pushedButton == l4Btn)
+            {
+                l1var = "< 1";
+                l2var = "< 2";
+                l3var = "< 3";
+                l4var = "* 4";
+                l5var = "< 5";
+                l6var = "6 >";
+                l7var = "7 >";
+                l8var = "8 >";
+                l9var = "9 >";
+                l10var = "10 >";
+            }
+            else if (pushedButton == l5Btn)
+            {
+                l1var = "< 1";
+                l2var = "< 2";
+                l3var = "< 3";
+                l4var = "< 4";
+                l5var = "* 5";
+                l6var = "6 >";
+                l7var = "7 >";
+                l8var = "8 >";
+                l9var = "9 >";
+                l10var = "10 >";
+            }
+            else if (pushedButton == r1Btn)
+            {
+                l1var = "< 1";
+                l2var = "< 2";
+                l3var = "< 3";
+                l4var = "< 4";
+                l5var = "< 5";
+                l6var = "6 *";
+                l7var = "7 >";
+                l8var = "8 >";
+                l9var = "9 >";
+                l10var = "10 >";
+            }
+            else if (pushedButton == r2Btn)
+            {
+                l1var = "< 1";
+                l2var = "< 2";
+                l3var = "< 3";
+                l4var = "< 4";
+                l5var = "< 5";
+                l6var = "6 >";
+                l7var = "7 *";
+                l8var = "8 >";
+                l9var = "9 >";
+                l10var = "10 >";
+            }
+            else if (pushedButton == r3Btn)
+            {
+                l1var = "< 1";
+                l2var = "< 2";
+                l3var = "< 3";
+                l4var = "< 4";
+                l5var = "< 5";
+                l6var = "6 >";
+                l7var = "7 >";
+                l8var = "8 *";
+                l9var = "9 >";
+                l10var = "10 >";
+            }
+            else if (pushedButton == r4Btn)
+            {
+                l1var = "< 1";
+                l2var = "< 2";
+                l3var = "< 3";
+                l4var = "< 4";
+                l5var = "< 5";
+                l6var = "6 >";
+                l7var = "7 >";
+                l8var = "8 >";
+                l9var = "9 *";
+                l10var = "10 >";
+            }
+            else if (pushedButton == r5Btn)
+            {
+                l1var = "< 1";
+                l2var = "< 2";
+                l3var = "< 3";
+                l4var = "< 4";
+                l5var = "< 5";
+                l6var = "6 >";
+                l7var = "7 >";
+                l8var = "8 >";
+                l9var = "9 >";
+                l10var = "10 *";
+            }
+
+
+            if (currentPageTitle.Contains("V/U1"))
+            {
+                VU1pre1COMSEC = l1var;
+                VU1pre2COMSEC = l2var;
+                VU1pre3COMSEC = l3var;
+                VU1pre4COMSEC = l4var;
+                VU1pre5COMSEC = l5var;
+                VU1pre6COMSEC = l6var;
+                VU1pre7COMSEC = l7var;
+                VU1pre8COMSEC = l8var;
+                VU1pre9COMSEC = l9var;
+                VU1pre10COMSEC = l10var;
+
+            }
+            else if (currentPageTitle.Contains("V/U2"))
+            {
+                VU2pre1COMSEC = l1var;
+                VU2pre2COMSEC = l2var;
+                VU2pre3COMSEC = l3var;
+                VU2pre4COMSEC = l4var;
+                VU2pre5COMSEC = l5var;
+                VU2pre6COMSEC = l6var;
+                VU2pre7COMSEC = l7var;
+                VU2pre8COMSEC = l8var;
+                VU2pre9COMSEC = l9var;
+                VU2pre10COMSEC = l10var;
+            }
 
         }
 
@@ -22470,7 +22762,123 @@ namespace CDU3000
 
         }
 
+        private string BandSelection(string e, string VUnumber)
+        {
 
+            try
+            {
+                e = e.Remove(e.Length - 4, 1);
+                int x = Convert.ToInt32(e);
+
+                if (VUnumber == "VU1")
+                {
+                    if (x <= 399995 & x >= 225000)
+                    {
+                        if (VU1band == activeBand.UHF)
+                        {
+                            return "U";
+                        }
+
+                        if (VU1band == activeBand.SATCOM)
+                        {
+                            return "S";
+                        }
+                    }
+
+                    if (((x <= 87995 & x >= 30000) || (x <= 173995 & x >= 130000)) & VU1band == activeBand.FM)
+                    {
+                        return "F";
+                    }
+
+                    if ((x <= 155995 & x >= 108000) & VU1band == activeBand.AM)
+                    {
+                        return "V";
+                    }
+
+                    if (((x <= 87975 & x >= 30000) & (VU1band == activeBand.HOPSETS)) || (x >= 0 & x <= 999))
+                    {
+                        return "E";
+                    }
+                }
+
+
+                return "";
+            }
+            catch (Exception)
+            {
+                return "";
+
+            }
+
+        }
+
+        private void NextPrevPresetSelect()
+        {
+            if (currentPageTitle == "V/U1 VHF-FM" || currentPageTitle == "V/U1 VHF-AM" || currentPageTitle == "V/U1 UHF" || currentPageTitle == "V/U1 SATCOM" || currentPageTitle == "V/U1 HOPSETS")
+            {
+                switch (scratchpad)
+                {
+                    case "F":
+                        StartFresh();
+                        VU1vhfFMpresetsPage1();
+                        break;
+
+                    case "V":
+                        StartFresh();
+                        VU1vhfAMpresetsPage1();
+                        break;
+
+                    case "U":
+                        StartFresh();
+                        VU1uhfPresetsPage1();
+                        break;
+
+                    case "S":
+                        StartFresh();
+                        VU1satcomPresetsPage1();
+                        break;
+
+                    case "E":
+                        StartFresh();
+                        VU1hopsetsPage1();
+                        break;
+                }
+            }
+
+            if (currentPageTitle == "V/U2 VHF-FM" || currentPageTitle == "V/U2 VHF-AM" || currentPageTitle == "V/U2 UHF" || currentPageTitle == "V/U2 SATCOM" || currentPageTitle == "V/U2 HOPSETS")
+            {
+                switch (scratchpad)
+                {
+                    case "F":
+                        StartFresh();
+                        VU2vhfFMpresetsPage1();
+                        break;
+
+                    case "V":
+                        StartFresh();
+                        VU2vhfAMpresetsPage1();
+                        break;
+
+                    case "U":
+                        StartFresh();
+                        VU2uhfPresetsPage1();
+                        break;
+
+                    case "S":
+                        StartFresh();
+                        VU2satcomPresetsPage1();
+                        break;
+
+                    case "E":
+                        StartFresh();
+                        VU2hopsetsPage1();
+                        break;
+                }
+            }
+
+            scratchpad = "";
+            sPad.Text = scratchpad;
+        }
 
         private void UpdateVU1(string e)
         {
@@ -23047,16 +23455,16 @@ namespace CDU3000
                                                         if (pushedButton == r2Btn)
                                                         {
                                                             if (scratchpad.Length > 3 || scratchpad.Contains("F"))
-                                                                    {
-                                                                        if (!scratchpad.Contains("F"))
-                                                                        {
-                                                                            VU1HOPpre2Freq = scratchpad.Insert(scratchpad.Length - 3, ".");
-                                                                        }
-                                                                        else
-                                                                        {
-                                                                            VU1HOPpre2Freq = scratchpad;
-                                                                        }
-                                                                    }
+                                                            {
+                                                                if (!scratchpad.Contains("F"))
+                                                                {
+                                                                    VU1HOPpre2Freq = scratchpad.Insert(scratchpad.Length - 3, ".");
+                                                                }
+                                                                else
+                                                                {
+                                                                    VU1HOPpre2Freq = scratchpad;
+                                                                }
+                                                            }
                                                             else
                                                             {
                                                                 VU1HOPpre2Comsec = scratchpad;
@@ -23082,7 +23490,7 @@ namespace CDU3000
                                                                 }
                                                             }
                                                             else
-                                                                if (pushedButton == r4Btn )
+                                                                if (pushedButton == r4Btn)
                                                                 {
                                                                     if (scratchpad.Length > 3 || scratchpad.Contains("F"))
                                                                     {
@@ -24936,1753 +25344,6 @@ namespace CDU3000
             return false;
         }
 
-
-
-        private void CheckPresets()
-        {
-            if (currentPageTitle == "V/U1 CONTROL")
-            {
-                //determine which preset page to go to
-                if (scratchpad == null || scratchpad == "")
-                {
-                    #region MyRegion
-                    if (VU1band == activeBand.FM)//BandSelection(currentVU1freq) == "F"
-                    {
-                        StartFresh();
-                        VU1vhfFMpresetsPage1();
-
-                    }
-                    else
-                        if (BandSelection(currentVU1freq, "VU1") == "V")
-                        {
-                            StartFresh();
-                            VU1vhfAMpresetsPage1();
-
-                        }
-                        else
-                            if (VU1band == activeBand.UHF)//BandSelection(currentVU1freq) == "U"
-                            {
-                                StartFresh();
-                                VU1uhfPresetsPage1();
-
-                            }
-                            else
-                                if (BandSelection(currentVU1freq, "VU1") == "S")
-                                {
-                                    StartFresh();
-                                    VU1satcomPresetsPage1();
-
-                                }
-                                else
-                                    if (BandSelection(currentVU1freq, "VU1") == "E")
-                                    {
-                                        StartFresh();
-                                        VU1hopsetsPage1();
-
-                                    }
-                    #endregion
-                }
-                else
-                    #region Looks for scratchpad inputs
-                    if (scratchpad == "F")
-                    {
-                        StartFresh();
-                        VU1vhfFMpresetsPage1();
-                    }
-                    else
-                        if (scratchpad == "V")
-                        {
-                            StartFresh();
-                            VU1vhfAMpresetsPage1();
-
-                        }
-                        else
-                            if (scratchpad == "U")
-                            {
-                                StartFresh();
-                                VU1uhfPresetsPage1();
-
-                            }
-                            else
-                                if (scratchpad == "S")
-                                {
-                                    StartFresh();
-                                    VU1satcomPresetsPage1();
-                                }
-                                else
-                                    if (scratchpad == "E")
-                                    {
-                                        StartFresh();
-                                        VU1hopsetsPage1();
-
-                                    }
-                    #endregion
-
-                //resets the scratchpad and sPad
-                scratchpad = null;
-                sPad.Text = scratchpad;
-
-            }
-            else
-                if (currentPageTitle == "V/U2 CONTROL")
-                {
-                    //determine which preset page to go to
-                    if (scratchpad == null || scratchpad == "")
-                    {
-                        #region MyRegion
-                        if (BandSelection(currentVU2freq, "VU2") == "F")
-                        {
-                            StartFresh();
-                            VU2vhfFMpresetsPage1();
-
-                        }
-                        else
-                            if (BandSelection(currentVU2freq, "VU2") == "V")
-                            {
-                                StartFresh();
-                                VU2vhfAMpresetsPage1();
-
-                            }
-                            else
-                                if (BandSelection(currentVU2freq, "VU2") == "U")
-                                {
-                                    StartFresh();
-                                    VU2uhfPresetsPage1();
-
-                                }
-                                else
-                                    if (BandSelection(currentVU2freq, "VU2") == "S")
-                                    {
-                                        StartFresh();
-                                        VU2satcomPresetsPage1();
-
-                                    }
-                                    else
-                                        if (BandSelection(currentVU2freq, "VU2") == "E")
-                                        {
-                                            StartFresh();
-                                            VU2hopsetsPage1();
-
-                                        }
-                        #endregion
-                    }
-                    else
-                        #region Looks for scratchpad inputs
-                        if (scratchpad == "F")
-                        {
-                            StartFresh();
-                            VU2vhfFMpresetsPage1();
-                        }
-                        else
-                            if (scratchpad == "V")
-                            {
-                                StartFresh();
-                                VU2vhfAMpresetsPage1();
-
-                            }
-                            else
-                                if (scratchpad == "U")
-                                {
-                                    StartFresh();
-                                    VU2uhfPresetsPage1();
-
-                                }
-                                else
-                                    if (scratchpad == "S")
-                                    {
-                                        StartFresh();
-                                        VU2satcomPresetsPage1();
-                                    }
-                                    else
-                                        if (scratchpad == "E")
-                                        {
-                                            StartFresh();
-                                            VU2hopsetsPage1();
-
-                                        }
-                        #endregion
-
-                    //resets the scratchpad and sPad
-                    scratchpad = null;
-                    sPad.Text = scratchpad;
-
-                }
-
-        }
-
-        private void CheckStatus()//determines GO/NGO status prior to displaying the page
-        {
-            #region TACAN
-            if (myCont.TacanPower == "ON" & myCont.TacanNVRAM == "GO" & myCont.TacanMicro == "GO" & myCont.Tacan1553 == "GO" & myCont.TacanAudio == "GO" & myCont.TacanDpdat == "GO" & myCont.TacanDpram == "GO" & myCont.TacanPwr == "GO" & myCont.TacanRam == "GO" & myCont.TacanRcv == "GO" & myCont.TacanRom == "GO" & myCont.TacanRt == "GO" & myCont.TacanSub == "GO" & myCont.TacanSynth == "GO" & myCont.TacanTrm == "GO" & myCont.TacanTun == "GO")
-            {
-                _tcnStatus = "GO";
-            }
-            else
-            {
-                _tcnStatus = "NGO";
-            }
-            #endregion
-
-            #region VU1
-            if (myCont.VU11553 == "GO" & myCont.VU1Comsec == "GO" & myCont.VU1Modem == "GO" & myCont.VU1PowerSupply == "GO" & myCont.VU1RT == "GO" & myCont.VU1Transmitter == "GO")
-            {
-                _VU1status = "GO";
-            }
-            else
-            {
-                _VU1status = "NGO";
-            }
-            #endregion
-
-            #region VU2
-            if (myCont.VU21553 == "GO" & myCont.VU2Comsec == "GO" & myCont.VU2Modem == "GO" & myCont.VU2PowerSupply == "GO" & myCont.VU2RT == "GO" & myCont.VU2Transmitter == "GO")
-            {
-                _VU2status = "GO";
-            }
-            else
-            {
-                _VU2status = "NGO";
-            }
-            #endregion
-
-            #region EGI INU
-            if (myCont.EgiInuPower == "ON" & myCont.EgiInuSensRef == "GO" & myCont.EgiInuRaccel == "GO" & myCont.EgiInuSaccel == "GO" & myCont.EgiInuTaccel == "GO" & myCont.EgiInuUgyro == "GO" & myCont.EgiInuWgyro == "GO" & myCont.EgiInuVgyro == "GO")
-            {
-                _egiInuStatus = "GO";
-            }
-            else
-            {
-                _egiInuStatus = "NGO";
-            }
-            #endregion
-
-            #region EGI GPS
-            if (myCont.EgiInuPower == "ON" & myCont.EgiGpsRpu == "GO" & myCont.EgiGpsEgr == "GO" & myCont.EgiGpsBattery == "GO")
-            {
-                _egiGpsStatus = "GO";
-            }
-            else
-            {
-                _egiGpsStatus = "NGO";
-            }
-            #endregion
-
-            #region EGI
-            if (myCont.EGIsub == "GO" & myCont.EGIcaic == "GO" & _egiInuStatus == "GO" & myCont.EGIio == "GO" & myCont.EGIpwr == "GO" & myCont.EGIproc == "GO" & _egiGpsStatus == "GO" & myCont.EGIieTempc == "GO" & myCont.EGI1553 == "GO" & myCont.EGItrm == "GO")
-            {
-                _egiStatus = "GO";
-            }
-            else
-            {
-                _egiStatus = "NGO";
-            }
-            #endregion
-
-            #region NAV STATUS
-            if (_egiStatus == "GO" & _tcnStatus == "GO")
-            {
-                _navStatus = "GO";
-            }
-            else
-            {
-                _navStatus = "NGO";
-            }
-            #endregion
-
-            #region SURV STATUS
-
-            if (_IFFstatus == "GO" & _TCASstatus == "GO")
-            {
-                _survStatus = "GO";
-            }
-            else
-            {
-                _survStatus = "NGO";
-            }
-
-            #endregion
-
-            #region COM STATUS
-            if (myCont.HF11553 == "GO" & myCont.HF1Ampl == "GO" & myCont.HF1Cplr == "GO" & myCont.HF1Eqpt == "GO" & myCont.HF1Fiber == "GO" & myCont.HF1HiTemp == "GO" & myCont.HF1OverVlt == "GO" & myCont.HF1RcvOvrld == "GO" & myCont.HF1RT == "GO" & myCont.HF1Tune == "GO" & myCont.HF1VSWR == "GO")
-            {
-                _HF1status = "GO";
-                hf1Warning = "";
-            }
-            else
-            {
-                _HF1status = "NGO";
-                hf1Warning = "!";
-            }
-
-            if (_VU1status == "GO" & _VU2status == "GO" & _HF1status == "GO")
-            {
-                _comStatus = "GO";
-            }
-            else
-            {
-                _comStatus = "NGO";
-            }
-
-            if (_VU1status == "GO" & CDUVU1power == "ON")
-            {
-                vu1Warning = "";
-            }
-            else
-            {
-                vu1Warning = "!";
-            }
-
-            if (_VU2status == "GO" & CDUVU2power == "ON")
-            {
-                vu2Warning = "";
-            }
-            else
-            {
-                vu2Warning = "!";
-            }
-
-
-
-            #endregion
-        }
-
-        private void UpdateFreqs(string e)
-        {
-            Char[] myChar = { '<', ' ', '*' };
-
-            if (hfMode != "ALE")
-            {
-                hfRecallChan = currentHFchan;
-                hfRecallFreq = currentHFfreq;
-                hfRecallName = currentHFchanName;
-
-                switch (e)
-                {
-                    case "pre1Name":
-                        currentHFchan = HFpre1Chan.Trim(myChar);
-                        currentHFfreq = HFpre1Freq.Trim(myChar);
-                        currentHFchanName = HFpre1Name.Trim(myChar);
-                        break;
-
-                    case "pre2Name":
-                        currentHFchan = HFpre2Chan.Trim(myChar);
-                        currentHFfreq = HFpre2Freq.Trim(myChar);
-                        currentHFchanName = HFpre2Name.Trim(myChar);
-                        break;
-
-                    case "pre3Name":
-                        currentHFchan = HFpre3Chan.Trim(myChar);
-                        currentHFfreq = HFpre3Freq.Trim(myChar);
-                        currentHFchanName = HFpre3Name.Trim(myChar);
-                        break;
-
-                    case "pre4Name":
-                        currentHFchan = HFpre4Chan.Trim(myChar);
-                        currentHFfreq = HFpre4Freq.Trim(myChar);
-                        currentHFchanName = HFpre4Name.Trim(myChar);
-                        break;
-
-                    case "pre5Name":
-                        currentHFchan = HFpre5Chan.Trim(myChar);
-                        currentHFfreq = HFpre5Freq.Trim(myChar);
-                        currentHFchanName = HFpre5Name.Trim(myChar);
-                        break;
-                }
-            }
-            else
-            {
-                ALERecallChan = currentALEchan;
-                ALERecallFreq = currentALEfreq;
-                ALERecallName = currentALEname;
-
-                switch (e)
-                {
-                    case "pre1Name":
-                        currentALEchan = ALEpre1Chan.Trim(myChar);
-                        currentALEfreq = ALEpre1Freq.Trim(myChar);
-                        currentALEname = ALEpre1Name.Trim(myChar);
-                        break;
-
-                    case "pre2Name":
-                        currentALEchan = ALEpre2Chan.Trim(myChar);
-                        currentALEfreq = ALEpre2Freq.Trim(myChar);
-                        currentALEname = ALEpre2Name.Trim(myChar);
-                        break;
-
-                    case "pre3Name":
-                        currentALEchan = ALEpre3Chan.Trim(myChar);
-                        currentALEfreq = ALEpre3Freq.Trim(myChar);
-                        currentALEname = ALEpre3Name.Trim(myChar);
-                        break;
-
-                    case "pre4Name":
-                        currentALEchan = ALEpre4Chan.Trim(myChar);
-                        currentALEfreq = ALEpre4Freq.Trim(myChar);
-                        currentALEname = ALEpre4Name.Trim(myChar);
-                        break;
-
-                    case "pre5Name":
-                        currentALEchan = ALEpre5Chan.Trim(myChar);
-                        currentALEfreq = ALEpre5Freq.Trim(myChar);
-                        currentALEname = ALEpre5Name.Trim(myChar);
-                        break;
-                }
-            }
-        }
-
-        private bool CheckValidity()
-        {
-            Button[] rightBtns = { r1Btn, r2Btn, r3Btn, r4Btn, r5Btn };
-            Button[] leftBtn = { l1Btn, l2Btn, l3Btn, l4Btn, l5Btn };
-
-
-
-            switch (currentPageTitle)
-            {
-                case "HF1 ALE PRESET CHAN":
-                    try
-                    {
-                        foreach (Button btn in leftBtn)
-                        {
-                            if (pushedButton == btn)
-                            {
-                                if (scratchpad.Length <= 6)//& ContainsCharacters ( ) == false & ContainsNumbers ( ) == false
-                                {
-                                    return true;
-                                }
-                                else
-                                {
-                                    scratchMessage = "INVALID ENTRY";
-                                    break;
-                                }
-                            }
-                        }
-
-                        foreach (Button btn in rightBtns)
-                        {
-                            if (pushedButton == btn)
-                            {
-
-                                if ((scratchpad.Length == 5 || scratchpad.Length == 6) & ContainsCharacters() == false & ContainsLetters() == false)
-                                {
-                                    int x = Convert.ToInt32(scratchpad);
-                                    if ((20000 <= x) == true & (x <= 299999) == true)
-                                    {
-                                        return true;
-                                    }
-                                    else
-                                    {
-                                        scratchMessage = "INVALID ENTRY";
-                                        break;
-                                    }
-
-                                }
-                                else
-                                {
-                                    scratchMessage = "INVALID ENTRY";
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                    catch (Exception)
-                    {
-
-
-                    }
-                    break;
-
-                case "HF1 CONTROL":
-                    if (pushedButton == r4Btn)
-                    {
-                        if (scratchpad.Length <= 7 & scratchpad.Length != 0 & ContainsCharacters() == false)
-                        {
-                            return true;
-                        }
-                        else
-                        {
-                            scratchMessage = "INVALID ENTRY";
-                        }
-                    }
-                    break;
-
-                case "HF1 PRESET CHANNELS":
-                    try
-                    {
-                        foreach (Button btn in leftBtn)
-                        {
-                            if (pushedButton == btn)
-                            {
-                                if (scratchpad.Length <= 6 & ContainsCharacters() == false)
-                                {
-                                    return true;
-                                }
-                                else
-                                {
-                                    scratchMessage = "INVALID ENTRY";
-                                    break;
-                                }
-                            }
-                        }
-                        foreach (Button btn in rightBtns)
-                        {
-                            if (pushedButton == btn)
-                            {
-
-                                if ((scratchpad.Length == 5 || scratchpad.Length == 6) & ContainsCharacters() == false & ContainsLetters() == false)
-                                {
-                                    int x = Convert.ToInt32(scratchpad);
-                                    if ((20000 <= x) == true & (x <= 299999) == true)
-                                    {
-                                        return true;
-                                    }
-                                    else
-                                    {
-                                        scratchMessage = "INVALID ENTRY";
-                                        break;
-                                    }
-
-                                }
-                                else
-                                {
-                                    scratchMessage = "INVALID ENTRY";
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                    catch (Exception)
-                    {
-
-
-                    }
-                    break;
-
-                case "HF2 PRESET CHANNELS":
-                    try
-                    {
-                        foreach (Button btn in leftBtn)
-                        {
-                            if (pushedButton == btn)
-                            {
-                                if (scratchpad.Length <= 6 & ContainsCharacters() == false)
-                                {
-                                    return true;
-                                }
-                                else
-                                {
-                                    scratchMessage = "INVALID ENTRY";
-                                    break;
-                                }
-                            }
-                        }
-                        foreach (Button btn in rightBtns)
-                        {
-                            if (pushedButton == btn)
-                            {
-
-                                if ((scratchpad.Length == 5 || scratchpad.Length == 6) & ContainsCharacters() == false & ContainsLetters() == false)
-                                {
-                                    int x = Convert.ToInt32(scratchpad);
-                                    if ((20000 <= x) == true & (x <= 299999) == true)
-                                    {
-                                        return true;
-                                    }
-                                    else
-                                    {
-                                        scratchMessage = "INVALID ENTRY";
-                                        break;
-                                    }
-
-                                }
-                                else
-                                {
-                                    scratchMessage = "INVALID ENTRY";
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                    catch (Exception)
-                    {
-
-
-                    }
-                    break;
-
-                case "HF1 STANDBY FCTN":
-                    try
-                    {
-                        if (pushedButton == l2Btn)
-                        {
-                            if (scratchpad.Length == 6 & ContainsLetters() == false & ContainsCharacters() == false)
-                            {
-                                return true;
-                            }
-                            else
-                            {
-                                scratchMessage = "INVALID ENTRY";
-                            }
-                        }
-                        else
-                            if (pushedButton == l3Btn)
-                            {
-                                if (scratchpad.Length <= 8 & ContainsLetters() == false)
-                                {
-                                    return true;
-                                }
-                                else
-                                {
-                                    scratchMessage = "INVALID ENTRY";
-                                }
-                            }
-                    }
-                    catch (Exception)
-                    {
-
-
-                    }
-                    break;
-
-                case "INU LEVER ARMS":
-                    if (pushedButton == l2Btn || pushedButton == l3Btn || pushedButton == l4Btn)
-                    {
-                        if (IsDigitOnly(scratchpad))
-                        {
-                            if (Islength4(scratchpad))
-                            {
-                                return true;
-                            }
-                            else
-                            {
-                                scratchMessage = "INVALID ENTRY";
-                            }
-                        }
-                        else
-                        {
-                            scratchMessage = "INVALID ENTRY";
-                        }
-                    }
-                    else
-                    {
-                        if (pushedButton == r2Btn || pushedButton == r3Btn || pushedButton == r4Btn)
-                        {
-                            scratchMessage = "KEY NOT ACTIVE";
-                        }
-                    }
-                    break;
-
-                case "mission":
-                    {
-                        if (pushedButton == r4Btn & !myCont.IFFselected)
-                        {
-                            scratchMessage = "IFF DISABLED";
-                        }
-                        break;
-                    }
-
-                case "V/U1 UHF":
-                    {
-                        try
-                        {
-                            foreach (Button btn in leftBtn)
-                            {
-                                if (pushedButton == btn)
-                                {
-                                    if (scratchpad.Length <= 6 & ContainsCharacters() == false)
-                                    {
-                                        return true;
-                                    }
-                                    else
-                                    {
-                                        scratchMessage = "INVALID ENTRY";
-                                        break;
-                                    }
-                                }
-                            }
-                            foreach (Button btn in rightBtns)
-                            {
-                                if (pushedButton == btn)
-                                {
-
-                                    if ((scratchpad.Length == 6) & ContainsCharacters() == false & ContainsLetters() == false)
-                                    {
-                                        int x = Convert.ToInt32(scratchpad);
-                                        if ((225000 <= x) == true & (x <= 399995) == true)
-                                        {
-                                            return true;
-                                        }
-
-                                        else
-                                        {
-                                            scratchMessage = "INVALID ENTRY";
-                                            break;
-                                        }
-
-                                    }
-                                    else
-                                        if ((scratchpad.Length == 2 || scratchpad.Length == 3) & (scratchpad.Contains("P") || scratchpad.Contains("C")))
-                                        {
-                                            return true;
-                                        }
-                                        else
-                                        {
-                                            scratchMessage = "INVALID ENTRY";
-                                            break;
-                                        }
-                                }
-                            }
-                        }
-                        catch (Exception)
-                        {
-
-
-                        }
-                    }
-                    break;
-
-                case "V/U1 VHF-FM":
-                    {
-                        try
-                        {
-                            foreach (Button btn in leftBtn)
-                            {
-                                if (pushedButton == btn)
-                                {
-                                    if (scratchpad.Length <= 6 & ContainsCharacters() == false)
-                                    {
-                                        return true;
-                                    }
-                                    else
-                                    {
-                                        scratchMessage = "INVALID ENTRY";
-                                        break;
-                                    }
-                                }
-                            }
-                            foreach (Button btn in rightBtns)
-                            {
-                                if (pushedButton == btn)
-                                {
-
-                                    if ((scratchpad.Length == 6 || scratchpad.Length == 5) & ContainsCharacters() == false & ContainsLetters() == false)
-                                    {
-                                        int x = Convert.ToInt32(scratchpad);
-                                        if (((173995 >= x) == true & (x >= 130000) == true) || ((30000 <= x) == true & (x <= 87995)))
-                                        {
-                                            return true;
-                                        }
-
-                                        else
-                                        {
-                                            scratchMessage = "INVALID ENTRY";
-                                            break;
-                                        }
-
-                                    }
-                                    else
-                                        if ((scratchpad.Length == 2 || scratchpad.Length == 3) & (scratchpad.Contains("P") || scratchpad.Contains("C")))
-                                        {
-                                            return true;
-                                        }
-                                        else
-                                        {
-                                            scratchMessage = "INVALID ENTRY";
-                                            break;
-                                        }
-                                }
-                            }
-                        }
-                        catch (Exception)
-                        {
-
-
-                        }
-                    }
-                    break;
-
-                case "V/U1 VHF-AM":
-                    {
-                        try
-                        {
-                            foreach (Button btn in leftBtn)
-                            {
-                                if (pushedButton == btn)
-                                {
-                                    if (scratchpad.Length <= 6 & ContainsCharacters() == false)
-                                    {
-                                        return true;
-                                    }
-                                    else
-                                    {
-                                        scratchMessage = "INVALID ENTRY";
-                                        break;
-                                    }
-                                }
-                            }
-                            foreach (Button btn in rightBtns)
-                            {
-                                if (pushedButton == btn)
-                                {
-
-                                    if ((scratchpad.Length == 6) & ContainsCharacters() == false & ContainsLetters() == false)
-                                    {
-                                        int x = Convert.ToInt32(scratchpad);
-                                        if (((155995 >= x) == true & (x >= 108000) == true))
-                                        {
-                                            return true;
-                                        }
-
-                                        else
-                                        {
-                                            scratchMessage = "INVALID ENTRY";
-                                            break;
-                                        }
-
-                                    }
-                                    else
-                                        if ((scratchpad.Length == 2 || scratchpad.Length == 3) & (scratchpad.Contains("P") || scratchpad.Contains("C")))
-                                        {
-                                            return true;
-                                        }
-                                        else
-                                        {
-                                            scratchMessage = "INVALID ENTRY";
-                                            break;
-                                        }
-                                }
-                            }
-                        }
-                        catch (Exception)
-                        {
-
-
-                        }
-                    }
-                    break;
-
-                case "V/U1 HOPSETS":
-                    {
-                        try
-                        {
-                            foreach (Button btn in leftBtn)
-                            {
-                                if (pushedButton == btn)
-                                {
-                                    if (scratchpad.Length <= 6 & ContainsCharacters() == false)
-                                    {
-                                        return true;
-                                    }
-                                    else
-                                    {
-                                        scratchMessage = "INVALID ENTRY";
-                                        break;
-                                    }
-                                }
-                            }
-                            foreach (Button btn in rightBtns)
-                            {
-                                if (pushedButton == btn)
-                                {
-
-                                    if (ContainsCharacters() == false & ContainsLetters() == false & scratchpad.Length == 5)
-                                    {
-
-                                        int x = Convert.ToInt32(scratchpad);
-                                        if (((87995 >= x) == true & (x >= 30000) == true))
-                                        {
-                                            return true;
-                                        }
-
-                                        else
-                                        {
-                                            scratchMessage = "INVALID ENTRY";
-                                            break;
-                                        }
-
-                                    }
-                                    else if (scratchpad.Contains("F") & scratchpad.Length >= 2 & scratchpad.Length <= 4)
-                                    {
-                                        string e = scratchpad.Trim('F');
-                                        int i = Convert.ToInt32(e);
-                                        if (((0 <= i) == true & (i <= 999) == true))
-                                        {
-                                            return true;
-                                        }
-
-                                        else
-                                        {
-                                            scratchMessage = "INVALID ENTRY";
-                                            break;
-                                        }
-                                    }
-                                    else
-                                        if ((scratchpad.Length == 2 || scratchpad.Length == 3) & (scratchpad.Contains("P") || scratchpad.Contains("C")))
-                                        {
-                                            return true;
-                                        }
-                                        else
-                                        {
-                                            scratchMessage = "INVALID ENTRY";
-                                            break;
-                                        }
-                                }
-                            }
-                        }
-                        catch (Exception)
-                        {
-
-
-                        }
-                    }
-                    break;
-
-                case "V/U1 SATCOM":
-                    {
-                        try
-                        {
-                            foreach (Button btn in leftBtn)
-                            {
-                                if (pushedButton == btn)
-                                {
-                                    if (scratchpad.Length <= 6 & ContainsCharacters() == false)
-                                    {
-                                        return true;
-                                    }
-                                    else
-                                    {
-                                        scratchMessage = "INVALID ENTRY";
-                                        break;
-                                    }
-                                }
-                            }
-                            foreach (Button btn in rightBtns)
-                            {
-                                if (pushedButton == btn)
-                                {
-
-                                    if ((scratchpad.Length == 6 || scratchpad.Length == 5) & ContainsCharacters() == false & ContainsLetters() == false)
-                                    {
-                                        int x = Convert.ToInt32(scratchpad);
-                                        if ((399995 >= x) == true & (x >= 225000) == true)
-                                        {
-                                            return true;
-                                        }
-
-                                        else
-                                        {
-                                            scratchMessage = "INVALID ENTRY";
-                                            break;
-                                        }
-
-                                    }
-                                    else
-                                        if ((scratchpad.Length == 2 || scratchpad.Length == 3) & (scratchpad.Contains("P") || scratchpad.Contains("C")))
-                                        {
-                                            return true;
-                                        }
-                                        else
-                                        {
-                                            scratchMessage = "INVALID ENTRY";
-                                            break;
-                                        }
-                                }
-                            }
-                        }
-                        catch (Exception)
-                        {
-
-
-                        }
-                    }
-                    break;
-
-            }
-
-            //used for all possible cases
-
-            ShowScratchMessage();
-            ScratchMessageTimer.Start();
-            return false;
-        }   //validates the input to textboxes
-
-        public void UTCupdateTimer_Tick(object sender, EventArgs e)
-        {
-            egiDateTime = DateTime.UtcNow;
-            egiDate = DateTime.Now;
-            formattedTime = egiDateTime.ToString("HH : mm : ss");
-            formattedDate = egiDate.ToString("dd MMM yy").ToUpper();
-
-            if (currentPageTitle == "HF1 STANDBY FCTN")
-            {
-                StartFresh();
-                HFstandbyFunctionPage();
-            }
-
-            if (currentPageTitle == "START INIT")
-            {
-                StartFresh();
-                StartInitPage();
-            }
-
-            if (currentPageTitle == "status")
-            {
-                StartFresh();
-                StatusPage();
-            }
-
-            if (currentPageTitle == "IFF STATUS" & currentPageNumber == 1)
-            {
-                StartFresh();
-                IFFstatusPage1();
-            }
-
-        }   //updates the clock and refreshes the page
-
-        private string LatLonFormat(string e)
-        {
-            string j = null;
-            char k;
-            string l = " ";
-
-            for (int i = 0; i < e.Length; i++)
-            {
-                k = e[i];
-                j += k;
-
-                if (i == 2 || i == 5 || i == 13 || i == 16)
-                {
-
-                }
-                else
-                {
-                    j += l;
-
-                    if (i == 9)
-                    {
-                        j = j + l + l;
-                    }
-                }
-            }
-            return j;
-        }   //adds proper spacing to lat/lon string
-
-        private void ReturnList(string e)   //handles all RETURN buttons
-        {
-            switch (e)
-            {
-                case "comm":
-                    {
-                        MissionPage();
-                        break;
-                    }
-
-                case "COM STATUS":
-                    {
-                        MissionStatusPage1();
-                        break;
-                    }
-
-                case "EGI CONTROL":
-                    {
-                        StartInitPage();
-                        break;
-                    }
-
-                case "EGI GPS STATUS":
-                    {
-                        EGIstatusPage();
-                        break;
-                    }
-
-                case "EGI INU STATUS":
-                    {
-                        EGIstatusPage();
-                        break;
-                    }
-
-                case "EGI SA/AS":
-                    {
-                        MissionPage();
-                        break;
-                    }
-
-                case "HF1 ALE ADDRESS":
-                    {
-                        HFALEfunctionPage1();
-                        break;
-                    }
-
-                case "HF1 ALE FCTN":
-                    {
-                        HFcontrolPage1();
-                        break;
-                    }
-
-                case "HF1 ALE PRESET CHAN":
-                    {
-                        HFcontrolPage1();
-                        break;
-                    }
-
-                case "HF1 ALE SCAN LISTS":
-                    {
-                        HFcontrolPage1();
-                        break;
-                    }
-
-                case "HF1 CONTROL":
-                    {
-                        COMpage();
-                        break;
-                    }
-
-                case "HF1 GROUP ADDRESS":
-                    {
-                        HFALEaddressPage();
-                        break;
-                    }
-
-                case "HF1 NET ADDRESS":
-                    {
-                        HFALEaddressPage();
-                        break;
-                    }
-
-                case "HF1 PRESET CHANNELS":
-                    {
-                        HFcontrolPage1();
-                        break;
-                    }
-
-                case "HF1 STANDBY FCTN":
-                    {
-                        HFcontrolPage1();
-                        break;
-                    }
-
-                case "EGI STATUS":
-                    {
-                        NAVstatusPage();
-                        break;
-                    }
-
-                case "HF1 STATUS":
-                    {
-                        ComStatusPage1();
-                        break;
-                    }
-
-                case "IFF":
-                    {
-                        MissionPage();
-                        break;
-                    }
-
-                case "IFF STATUS":
-                    {
-                        SurvStatusPage();
-                        break;
-                    }
-
-                case "INU LEVER ARMS":
-                    {
-                        NAVstatusPage();
-                        break;
-                    }
-
-                case "MARK POINTS":
-                    {
-                        IdxPage1();
-                        break;
-                    }
-
-                case "NAV STATUS":
-                    {
-                        MissionStatusPage1();
-                        break;
-                    }
-
-                case "POWER":
-                    {
-                        StartInitPage();
-                        break;
-                    }
-
-                case "START INIT":
-                    {
-                        MissionPage();
-                        break;
-                    }
-
-                case "SYSTEM STATUS":
-                    {
-                        MissionPage();
-                        break;
-                    }
-
-                case "SURV STATUS":
-                    {
-                        MissionPage();
-                        break;
-                    }
-
-                case "TACAN CONTROL":
-                    {
-                        MissionPage();
-                        break;
-                    }
-
-                case "TACAN STATUS":
-                    {
-                        NAVstatusPage();
-                        break;
-                    }
-
-                case "V/U1 CLEAR NVM":
-                    {
-                        VU1maintenancePage();
-                        break;
-                    }
-
-                case "V/U1 COMSEC FILL":
-                    {
-                        VU1Fill();
-                        break;
-                    }
-
-                case "V/U1 COMSEC STATES":
-                    {
-                        VU1Fill();
-                        break;
-                    }
-
-                case "V/U1 CONTROL":
-                    {
-                        COMpage();
-                        break;
-                    }
-
-                case "V/U1 FILL":
-                    {
-                        VU1maintenancePage();
-                        break;
-                    }
-
-                case "V/U1 LOCKOUTS":
-                    {
-                        VU1controlPage2();
-                        break;
-                    }
-
-                case "V/U1 LOOPBACK TEST":
-                    {
-                        VU1maintenancePage();
-                        break;
-                    }
-
-                case "V/U1 MAINTENANCE":
-                    {
-                        VU1controlPage2();
-                        break;
-                    }
-
-                case "V/U1 SINCGARS":
-                    {
-                        VU1controlPage2();
-                        break;
-                    }
-
-                case "V/U1 SINCGARS FILL":
-                    {
-                        VU1Fill();
-                        break;
-                    }
-
-                case "V/U1 TRANSEC FILL":
-                    {
-                        VU1Fill();
-                        break;
-                    }
-
-                case "V/U2 CLEAR NVM":
-                    {
-                        VU2maintenancePage();
-                        break;
-                    }
-
-                case "V/U2 COMSEC FILL":
-                    {
-                        VU2Fill();
-                        break;
-                    }
-
-                case "V/U2 COMSEC STATES":
-                    {
-                        VU2Fill();
-                        break;
-                    }
-
-                case "V/U2 CONTROL":
-                    {
-                        COMpage();
-                        break;
-                    }
-
-                case "V/U2 FILL":
-                    {
-                        VU2maintenancePage();
-                        break;
-                    }
-
-                case "V/U2 LOCKOUTS":
-                    {
-                        VU2controlPage2();
-                        break;
-                    }
-
-                case "V/U2 LOOPBACK TEST":
-                    {
-                        VU2maintenancePage();
-                        break;
-                    }
-
-                case "V/U2 MAINTENANCE":
-                    {
-                        VU2controlPage2();
-                        break;
-                    }
-
-                case "V/U2 SINCGARS":
-                    {
-                        VU2controlPage2();
-                        break;
-                    }
-
-                case "V/U2 SINCGARS FILL":
-                    {
-                        VU2Fill();
-                        break;
-                    }
-
-                case "V/U2 TRANSEC FILL":
-                    {
-                        VU2Fill();
-                        break;
-                    }
-
-                case "V/U1 COMSEC CONTROL":
-                    {
-                        VU1controlPage1();
-                        break;
-                    }
-
-                case "V/U2 COMSEC CONTROL":
-                    {
-                        VU2controlPage1();
-                        break;
-                    }
-
-                case "V/U1 COMSEC VAR":
-                    {
-                        VU1comsecControlPage();
-                        break;
-                    }
-
-                case "V/U2 COMSEC VAR":
-                    {
-                        VU2comsecControlPage();
-                        break;
-                    }
-
-                case "V/U1 HOPSETS":
-                    {
-                        VU1controlPage1();
-                        break;
-                    }
-
-                case "V/U2 HOPSETS":
-                    {
-                        VU2controlPage1();
-                        break;
-                    }
-
-                case "V/U1 SATCOM":
-                    {
-                        VU1controlPage1();
-                        break;
-                    }
-
-                case "V/U2 SATCOM":
-                    {
-                        VU2controlPage1();
-                        break;
-                    }
-
-                case "V/U1 STATUS":
-                    {
-                        ComStatusPage1();
-                        break;
-                    }
-
-                case "V/U2 STATUS":
-                    {
-                        ComStatusPage1();
-                        break;
-                    }
-
-                case "V/U1 VHF-AM":
-                    {
-                        VU1controlPage1();
-                        break;
-                    }
-
-                case "V/U2 VHF-AM":
-                    {
-                        VU2controlPage1();
-                        break;
-                    }
-
-                case "V/U1 VHF-FM":
-                    {
-                        VU1controlPage1();
-                        break;
-                    }
-
-                case "V/U2 VHF-FM":
-                    {
-                        VU2controlPage1();
-                        break;
-                    }
-
-                case "V/U1 UHF":
-                    {
-                        VU1controlPage1();
-                        break;
-                    }
-
-                case "V/U2 UHF":
-                    {
-                        VU2controlPage1();
-                        break;
-                    }
-
-                case "ZEROIZE":
-                    {
-                        MissionPage();
-                        break;
-                    }
-            }
-        }
-
-        private void DisplayErrorMessage(string e)
-        {
-            scratchMessage = e;
-            ShowScratchMessage();
-            ScratchMessageTimer.Start();
-        }
-
-
-
-        #region Move Form without border
-
-        public void ShowFormBtns()
-        {
-            closeBtn.Visible = true;
-            moveBtn.Visible = true;
-        }
-
-        public void HideFormBtns()
-        {
-            closeBtn.Visible = false;
-            moveBtn.Visible = false;
-        }
-
-        private void moveBtn_MouseDown(object sender, MouseEventArgs e)
-        {
-            drag = true;
-            mousex = Cursor.Position.X - this.Left;
-            mousey = Cursor.Position.Y - this.Top;
-
-        }
-
-        private void moveBtn_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (drag)
-            {
-                this.Top = Cursor.Position.Y - mousey;
-                this.Left = Cursor.Position.X - mousex;
-            }
-        }
-
-        private void moveBtn_MouseUp(object sender, MouseEventArgs e)
-        {
-            drag = false;
-        }
-
-        #endregion
-
-
-        #region Development Tools
-
-        //used to update the textboxes on the face of the unit afterscratchpad paste
-        private void UpdateDisplay()
-        {
-
-        }
-
-        #endregion
-
-
-        #region Validation
-
-        bool IsDigitOnly(string str)
-        {
-            foreach (char c in str)
-            {
-                if (c < '0' || c > '9')
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        bool Islength4(string str)
-        {
-            if (str.Length > 4)
-            {
-                return false;
-            }
-            return true;
-        }
-
-        private bool ContainsLetters()
-        {
-            string[] letter = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
-
-            foreach (string value in letter)
-            {
-                if (scratchpad != null)
-                {
-                    if (scratchpad.Contains(value))
-                    {
-                        return true;
-                    }
-                }
-            }
-            return false;
-        }
-
-        private bool ContainsNumbers()
-        {
-            string[] number = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0" };
-
-            if (scratchpad != null)
-            {
-                foreach (string value in number)
-                {
-                    if (scratchpad.Contains(value))
-                    {
-                        return true;
-                    }
-                }
-            }
-            return false;
-        }
-
-        private bool ContainsCharacters()
-        {
-            string[] character = { ".", "/", "+", "-", " " };
-
-            foreach (string value in character)
-            {
-                if (scratchpad.Contains(value))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        private void ScratchMessageTimer_Tick(object sender, EventArgs e)
-        {
-            foreach (Control c in Controls)
-            {
-                if (c.GetType() == typeof(TextBox))
-                {
-                    if (c.Location.Y == row13 + 3 & c.Location.X == col1 + 7)
-                    {
-
-                        c.Dispose();
-
-                    }
-                }
-            }
-            ScratchMessageTimer.Stop();
-        }
-
-        public void ShowScratchMessage()
-        {
-            TextBox scMessage = new TextBox();
-            TB(scMessage, col1 + 7, row13 + 3, scratchMessage, Color.White);
-            scMessage.BringToFront();
-        }
-
-        #endregion
-
-
-        #endregion
-
-
-        #region Form Load and Display First Page
-
-        public CDU3000()
-        {
-            InitializeComponent();
-            DM.Show();//displays the dimmer form over the main form
-            DM.Owner = this;//causes the dimmer form to be above the mainform but not over other forms
-
-            myCont.Show();
-            //myCont.Hide ( );//TEMPORARILY HID FORM DURING DEVELOPMENT
-
-            if (UTCupdateTimer.Enabled == false)
-            {
-                UTCupdateTimer.Start();
-            }
-        }
-
-        private void InitialPageLoad(object sender, EventArgs e) //loads the initial page seen on the CDU
-        {
-            if (initialLoad == true)//if this is the initial load of the program
-            {
-                CheckStatus();//checks the status of all items
-                StatusPage();//load the status page
-                initialLoad = false;//change the initialLoad state to false
-            }
-
-        }
-
-
-
-
-
-        #endregion
-
-
-        #region Form Close Items
-
-        private void closeBtn_Click(object sender, EventArgs e)
-        {
-            DeleteBtnTimer.Stop();
-            DeleteBtnTimer.Dispose();
-            DimBrtTimer.Stop();
-            DimBrtTimer.Dispose();
-            ScratchMessageTimer.Stop();
-            ScratchMessageTimer.Dispose();
-            UTCupdateTimer.Stop();
-            UTCupdateTimer.Dispose();
-            this.Close();
-            ActiveForm.Close();
-        }
-
-        private void CDU3000_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            DeleteBtnTimer.Stop();
-            DeleteBtnTimer.Dispose();
-            DimBrtTimer.Stop();
-            DimBrtTimer.Dispose();
-            ScratchMessageTimer.Stop();
-            ScratchMessageTimer.Dispose();
-            UTCupdateTimer.Stop();
-            UTCupdateTimer.Dispose();
-
-        }
-
-        #endregion
-
-
-
-
-
-        #region Dimming methods
-
-        private void CDU3000_LocationChanged(object sender, EventArgs e)
-        {
-            CheckForBorder();//refactored into this
-        }
-
-        private void btnDim_MouseDown(object sender, MouseEventArgs e)
-        {
-            pushedButton = (Button)sender;
-            btnPressed = "btnDim";
-
-            DimBrtTimer.Start();
-        }
-
-        private void btnDim_MouseUp(object sender, MouseEventArgs e)
-        {
-            DimBrtTimer.Stop();
-        }
-
-        private void btnBrt_MouseDown(object sender, MouseEventArgs e)
-        {
-            pushedButton = (Button)sender;
-            btnPressed = "btnDim";
-
-            DimBrtTimer.Start();
-        }
-
-        private void btnBrt_MouseUp(object sender, MouseEventArgs e)
-        {
-            DimBrtTimer.Stop();
-        }
-
-        private void DimBrtTimer_Tick(object sender, EventArgs e)
-        {
-            if (pushedButton == btnDim)
-            {
-                if (alpha <= .80)
-                {
-                    alpha = alpha + .05;
-                }
-                DM.Opacity = alpha;
-            }
-            else
-                if (pushedButton == btnBrt)
-                {
-                    if (alpha >= .05)
-                    {
-                        alpha = alpha - .05;
-                    }
-                    DM.Opacity = alpha;
-                }
-        }
-
-        private void CDU3000_StyleChanged(object sender, EventArgs e)
-        {
-            CheckForBorder();//refactored into this
-        }
-
-        private void CheckForBorder()
-        {
-            if (this.FormBorderStyle == FormBorderStyle.None)
-            {
-                //positions the dimmer form (DM) when the main form moves and the border is not visible
-                DM.DimmerLocX = this.Location.X + 134;
-                DM.DimmerLocY = this.Location.Y + 52;
-            }
-            else
-            {
-                //positions the dimmer form (DM) when the main form moves
-                DM.DimmerLocX = this.Location.X + 145;
-                DM.DimmerLocY = this.Location.Y + 88;
-            }
-        }
-
-        #endregion Dimming Methods
-
-
         private void VU1PresetController()
         {
             if (currentPageTitle == "V/U1 UHF")
@@ -27422,7 +26083,6 @@ namespace CDU3000
 
         }
 
-
         private void VU2PresetController()
         {
             if (currentPageTitle == "V/U2 UHF")
@@ -27555,102 +26215,1867 @@ namespace CDU3000
             }
         }
 
+        private void CheckPresets()
+        {
+            if (currentPageTitle == "V/U1 CONTROL")
+            {
+                //determine which preset page to go to
+                if (scratchpad == null || scratchpad == "")
+                {
+                    #region MyRegion
+                    if (VU1band == activeBand.FM)//BandSelection(currentVU1freq) == "F"
+                    {
+                        StartFresh();
+                        VU1vhfFMpresetsPage1();
+
+                    }
+                    else
+                        if (BandSelection(currentVU1freq, "VU1") == "V")
+                        {
+                            StartFresh();
+                            VU1vhfAMpresetsPage1();
+
+                        }
+                        else
+                            if (VU1band == activeBand.UHF)//BandSelection(currentVU1freq) == "U"
+                            {
+                                StartFresh();
+                                VU1uhfPresetsPage1();
+
+                            }
+                            else
+                                if (BandSelection(currentVU1freq, "VU1") == "S")
+                                {
+                                    StartFresh();
+                                    VU1satcomPresetsPage1();
+
+                                }
+                                else
+                                    if (BandSelection(currentVU1freq, "VU1") == "E")
+                                    {
+                                        StartFresh();
+                                        VU1hopsetsPage1();
+
+                                    }
+                    #endregion
+                }
+                else
+                    #region Looks for scratchpad inputs
+                    if (scratchpad == "F")
+                    {
+                        StartFresh();
+                        VU1vhfFMpresetsPage1();
+                    }
+                    else
+                        if (scratchpad == "V")
+                        {
+                            StartFresh();
+                            VU1vhfAMpresetsPage1();
+
+                        }
+                        else
+                            if (scratchpad == "U")
+                            {
+                                StartFresh();
+                                VU1uhfPresetsPage1();
+
+                            }
+                            else
+                                if (scratchpad == "S")
+                                {
+                                    StartFresh();
+                                    VU1satcomPresetsPage1();
+                                }
+                                else
+                                    if (scratchpad == "E")
+                                    {
+                                        StartFresh();
+                                        VU1hopsetsPage1();
+
+                                    }
+                    #endregion
+
+                //resets the scratchpad and sPad
+                scratchpad = null;
+                sPad.Text = scratchpad;
+
+            }
+            else
+                if (currentPageTitle == "V/U2 CONTROL")
+                {
+                    //determine which preset page to go to
+                    if (scratchpad == null || scratchpad == "")
+                    {
+                        #region MyRegion
+                        if (BandSelection(currentVU2freq, "VU2") == "F")
+                        {
+                            StartFresh();
+                            VU2vhfFMpresetsPage1();
+
+                        }
+                        else
+                            if (BandSelection(currentVU2freq, "VU2") == "V")
+                            {
+                                StartFresh();
+                                VU2vhfAMpresetsPage1();
+
+                            }
+                            else
+                                if (BandSelection(currentVU2freq, "VU2") == "U")
+                                {
+                                    StartFresh();
+                                    VU2uhfPresetsPage1();
+
+                                }
+                                else
+                                    if (BandSelection(currentVU2freq, "VU2") == "S")
+                                    {
+                                        StartFresh();
+                                        VU2satcomPresetsPage1();
+
+                                    }
+                                    else
+                                        if (BandSelection(currentVU2freq, "VU2") == "E")
+                                        {
+                                            StartFresh();
+                                            VU2hopsetsPage1();
+
+                                        }
+                        #endregion
+                    }
+                    else
+                        #region Looks for scratchpad inputs
+                        if (scratchpad == "F")
+                        {
+                            StartFresh();
+                            VU2vhfFMpresetsPage1();
+                        }
+                        else
+                            if (scratchpad == "V")
+                            {
+                                StartFresh();
+                                VU2vhfAMpresetsPage1();
+
+                            }
+                            else
+                                if (scratchpad == "U")
+                                {
+                                    StartFresh();
+                                    VU2uhfPresetsPage1();
+
+                                }
+                                else
+                                    if (scratchpad == "S")
+                                    {
+                                        StartFresh();
+                                        VU2satcomPresetsPage1();
+                                    }
+                                    else
+                                        if (scratchpad == "E")
+                                        {
+                                            StartFresh();
+                                            VU2hopsetsPage1();
+
+                                        }
+                        #endregion
+
+                    //resets the scratchpad and sPad
+                    scratchpad = null;
+                    sPad.Text = scratchpad;
+
+                }
+
+        }
+
+        private void CheckStatus()//determines GO/NGO status prior to displaying the page
+        {
+            #region TACAN
+            if (myCont.TacanPower == "ON" & myCont.TacanNVRAM == "GO" & myCont.TacanMicro == "GO" & myCont.Tacan1553 == "GO" & myCont.TacanAudio == "GO" & myCont.TacanDpdat == "GO" & myCont.TacanDpram == "GO" & myCont.TacanPwr == "GO" & myCont.TacanRam == "GO" & myCont.TacanRcv == "GO" & myCont.TacanRom == "GO" & myCont.TacanRt == "GO" & myCont.TacanSub == "GO" & myCont.TacanSynth == "GO" & myCont.TacanTrm == "GO" & myCont.TacanTun == "GO")
+            {
+                _tcnStatus = "GO";
+            }
+            else
+            {
+                _tcnStatus = "NGO";
+            }
+            #endregion
+
+            #region VU1
+            if (myCont.VU11553 == "GO" & myCont.VU1Comsec == "GO" & myCont.VU1Modem == "GO" & myCont.VU1PowerSupply == "GO" & myCont.VU1RT == "GO" & myCont.VU1Transmitter == "GO")
+            {
+                _VU1status = "GO";
+            }
+            else
+            {
+                _VU1status = "NGO";
+            }
+            #endregion
+
+            #region VU2
+            if (myCont.VU21553 == "GO" & myCont.VU2Comsec == "GO" & myCont.VU2Modem == "GO" & myCont.VU2PowerSupply == "GO" & myCont.VU2RT == "GO" & myCont.VU2Transmitter == "GO")
+            {
+                _VU2status = "GO";
+            }
+            else
+            {
+                _VU2status = "NGO";
+            }
+            #endregion
+
+            #region EGI INU
+            if (myCont.EgiInuPower == "ON" & myCont.EgiInuSensRef == "GO" & myCont.EgiInuRaccel == "GO" & myCont.EgiInuSaccel == "GO" & myCont.EgiInuTaccel == "GO" & myCont.EgiInuUgyro == "GO" & myCont.EgiInuWgyro == "GO" & myCont.EgiInuVgyro == "GO")
+            {
+                _egiInuStatus = "GO";
+            }
+            else
+            {
+                _egiInuStatus = "NGO";
+            }
+            #endregion
+
+            #region EGI GPS
+            if (myCont.EgiInuPower == "ON" & myCont.EgiGpsRpu == "GO" & myCont.EgiGpsEgr == "GO" & myCont.EgiGpsBattery == "GO")
+            {
+                _egiGpsStatus = "GO";
+            }
+            else
+            {
+                _egiGpsStatus = "NGO";
+            }
+            #endregion
+
+            #region EGI
+            if (myCont.EGIsub == "GO" & myCont.EGIcaic == "GO" & _egiInuStatus == "GO" & myCont.EGIio == "GO" & myCont.EGIpwr == "GO" & myCont.EGIproc == "GO" & _egiGpsStatus == "GO" & myCont.EGIieTempc == "GO" & myCont.EGI1553 == "GO" & myCont.EGItrm == "GO")
+            {
+                _egiStatus = "GO";
+            }
+            else
+            {
+                _egiStatus = "NGO";
+            }
+            #endregion
+
+            #region NAV STATUS
+            if (_egiStatus == "GO" & _tcnStatus == "GO")
+            {
+                _navStatus = "GO";
+            }
+            else
+            {
+                _navStatus = "NGO";
+            }
+            #endregion
+
+            #region SURV STATUS
+
+            if (_IFFstatus == "GO" & _TCASstatus == "GO")
+            {
+                _survStatus = "GO";
+            }
+            else
+            {
+                _survStatus = "NGO";
+            }
+
+            #endregion
+
+            #region COM STATUS
+            if (myCont.HF11553 == "GO" & myCont.HF1Ampl == "GO" & myCont.HF1Cplr == "GO" & myCont.HF1Eqpt == "GO" & myCont.HF1Fiber == "GO" & myCont.HF1HiTemp == "GO" & myCont.HF1OverVlt == "GO" & myCont.HF1RcvOvrld == "GO" & myCont.HF1RT == "GO" & myCont.HF1Tune == "GO" & myCont.HF1VSWR == "GO")
+            {
+                _HF1status = "GO";
+                hf1Warning = "";
+            }
+            else
+            {
+                _HF1status = "NGO";
+                hf1Warning = "!";
+            }
+
+            if (_VU1status == "GO" & _VU2status == "GO" & _HF1status == "GO")
+            {
+                _comStatus = "GO";
+            }
+            else
+            {
+                _comStatus = "NGO";
+            }
+
+            if (_VU1status == "GO" & CDUVU1power == "ON")
+            {
+                vu1Warning = "";
+            }
+            else
+            {
+                vu1Warning = "!";
+            }
+
+            if (_VU2status == "GO" & CDUVU2power == "ON")
+            {
+                vu2Warning = "";
+            }
+            else
+            {
+                vu2Warning = "!";
+            }
+
+
+
+            #endregion
+        }
+
+        private void UpdateFreqs(string e)
+        {
+            Char[] myChar = { '<', ' ', '*' };
+
+            if (hfMode != "ALE")
+            {
+                hfRecallChan = currentHFchan;
+                hfRecallFreq = currentHFfreq;
+                hfRecallName = currentHFchanName;
+
+                switch (e)
+                {
+                    case "pre1Name":
+                        currentHFchan = HFpre1Chan.Trim(myChar);
+                        currentHFfreq = HFpre1Freq.Trim(myChar);
+                        currentHFchanName = HFpre1Name.Trim(myChar);
+                        break;
+
+                    case "pre2Name":
+                        currentHFchan = HFpre2Chan.Trim(myChar);
+                        currentHFfreq = HFpre2Freq.Trim(myChar);
+                        currentHFchanName = HFpre2Name.Trim(myChar);
+                        break;
+
+                    case "pre3Name":
+                        currentHFchan = HFpre3Chan.Trim(myChar);
+                        currentHFfreq = HFpre3Freq.Trim(myChar);
+                        currentHFchanName = HFpre3Name.Trim(myChar);
+                        break;
+
+                    case "pre4Name":
+                        currentHFchan = HFpre4Chan.Trim(myChar);
+                        currentHFfreq = HFpre4Freq.Trim(myChar);
+                        currentHFchanName = HFpre4Name.Trim(myChar);
+                        break;
+
+                    case "pre5Name":
+                        currentHFchan = HFpre5Chan.Trim(myChar);
+                        currentHFfreq = HFpre5Freq.Trim(myChar);
+                        currentHFchanName = HFpre5Name.Trim(myChar);
+                        break;
+                }
+            }
+            else
+            {
+                ALERecallChan = currentALEchan;
+                ALERecallFreq = currentALEfreq;
+                ALERecallName = currentALEname;
+
+                switch (e)
+                {
+                    case "pre1Name":
+                        currentALEchan = ALEpre1Chan.Trim(myChar);
+                        currentALEfreq = ALEpre1Freq.Trim(myChar);
+                        currentALEname = ALEpre1Name.Trim(myChar);
+                        break;
+
+                    case "pre2Name":
+                        currentALEchan = ALEpre2Chan.Trim(myChar);
+                        currentALEfreq = ALEpre2Freq.Trim(myChar);
+                        currentALEname = ALEpre2Name.Trim(myChar);
+                        break;
+
+                    case "pre3Name":
+                        currentALEchan = ALEpre3Chan.Trim(myChar);
+                        currentALEfreq = ALEpre3Freq.Trim(myChar);
+                        currentALEname = ALEpre3Name.Trim(myChar);
+                        break;
+
+                    case "pre4Name":
+                        currentALEchan = ALEpre4Chan.Trim(myChar);
+                        currentALEfreq = ALEpre4Freq.Trim(myChar);
+                        currentALEname = ALEpre4Name.Trim(myChar);
+                        break;
+
+                    case "pre5Name":
+                        currentALEchan = ALEpre5Chan.Trim(myChar);
+                        currentALEfreq = ALEpre5Freq.Trim(myChar);
+                        currentALEname = ALEpre5Name.Trim(myChar);
+                        break;
+                }
+            }
+        }
+
+        private bool CheckValidity()
+        {
+            Button[] rightBtns = { r1Btn, r2Btn, r3Btn, r4Btn, r5Btn };
+            Button[] leftBtn = { l1Btn, l2Btn, l3Btn, l4Btn, l5Btn };
+
+
+
+            switch (currentPageTitle)
+            {
+                case "HF1 ALE PRESET CHAN":
+                    #region MyRegion
+                    try
+                    {
+                        foreach (Button btn in leftBtn)
+                        {
+                            if (pushedButton == btn)
+                            {
+                                if (scratchpad.Length <= 6)//& ContainsCharacters ( ) == false & ContainsNumbers ( ) == false
+                                {
+                                    return true;
+                                }
+                                else
+                                {
+                                    scratchMessage = "INVALID ENTRY";
+                                    break;
+                                }
+                            }
+                        }
+
+                        foreach (Button btn in rightBtns)
+                        {
+                            if (pushedButton == btn)
+                            {
+
+                                if ((scratchpad.Length == 5 || scratchpad.Length == 6) & ContainsCharacters() == false & ContainsLetters() == false)
+                                {
+                                    int x = Convert.ToInt32(scratchpad);
+                                    if ((20000 <= x) == true & (x <= 299999) == true)
+                                    {
+                                        return true;
+                                    }
+                                    else
+                                    {
+                                        scratchMessage = "INVALID ENTRY";
+                                        break;
+                                    }
+
+                                }
+                                else
+                                {
+                                    scratchMessage = "INVALID ENTRY";
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception)
+                    {
+
+
+                    }
+                    break;
+                    #endregion
+
+                case "HF1 CONTROL":
+                    #region MyRegion
+                    if (pushedButton == r4Btn)
+                    {
+                        if (scratchpad.Length <= 7 & scratchpad.Length != 0 & ContainsCharacters() == false)
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            scratchMessage = "INVALID ENTRY";
+                        }
+                    }
+                    break;
+                    #endregion
+
+                case "HF1 PRESET CHANNELS":
+                    #region MyRegion
+                    try
+                    {
+                        foreach (Button btn in leftBtn)
+                        {
+                            if (pushedButton == btn)
+                            {
+                                if (scratchpad.Length <= 6 & ContainsCharacters() == false)
+                                {
+                                    return true;
+                                }
+                                else
+                                {
+                                    scratchMessage = "INVALID ENTRY";
+                                    break;
+                                }
+                            }
+                        }
+                        foreach (Button btn in rightBtns)
+                        {
+                            if (pushedButton == btn)
+                            {
+
+                                if ((scratchpad.Length == 5 || scratchpad.Length == 6) & ContainsCharacters() == false & ContainsLetters() == false)
+                                {
+                                    int x = Convert.ToInt32(scratchpad);
+                                    if ((20000 <= x) == true & (x <= 299999) == true)
+                                    {
+                                        return true;
+                                    }
+                                    else
+                                    {
+                                        scratchMessage = "INVALID ENTRY";
+                                        break;
+                                    }
+
+                                }
+                                else
+                                {
+                                    scratchMessage = "INVALID ENTRY";
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception)
+                    {
+
+
+                    }
+                    break;
+                    #endregion
+
+                case "HF2 PRESET CHANNELS":
+                    #region MyRegion
+                    try
+                    {
+                        foreach (Button btn in leftBtn)
+                        {
+                            if (pushedButton == btn)
+                            {
+                                if (scratchpad.Length <= 6 & ContainsCharacters() == false)
+                                {
+                                    return true;
+                                }
+                                else
+                                {
+                                    scratchMessage = "INVALID ENTRY";
+                                    break;
+                                }
+                            }
+                        }
+                        foreach (Button btn in rightBtns)
+                        {
+                            if (pushedButton == btn)
+                            {
+
+                                if ((scratchpad.Length == 5 || scratchpad.Length == 6) & ContainsCharacters() == false & ContainsLetters() == false)
+                                {
+                                    int x = Convert.ToInt32(scratchpad);
+                                    if ((20000 <= x) == true & (x <= 299999) == true)
+                                    {
+                                        return true;
+                                    }
+                                    else
+                                    {
+                                        scratchMessage = "INVALID ENTRY";
+                                        break;
+                                    }
+
+                                }
+                                else
+                                {
+                                    scratchMessage = "INVALID ENTRY";
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception)
+                    {
+
+
+                    }
+                    break;
+                    #endregion
+
+                case "HF1 STANDBY FCTN":
+                    #region MyRegion
+                    try
+                    {
+                        if (pushedButton == l2Btn)
+                        {
+                            if (scratchpad.Length == 6 & ContainsLetters() == false & ContainsCharacters() == false)
+                            {
+                                return true;
+                            }
+                            else
+                            {
+                                scratchMessage = "INVALID ENTRY";
+                            }
+                        }
+                        else
+                            if (pushedButton == l3Btn)
+                            {
+                                if (scratchpad.Length <= 8 & ContainsLetters() == false)
+                                {
+                                    return true;
+                                }
+                                else
+                                {
+                                    scratchMessage = "INVALID ENTRY";
+                                }
+                            }
+                    }
+                    catch (Exception)
+                    {
+
+
+                    }
+                    break;
+                    #endregion
+
+                case "INU LEVER ARMS":
+                    #region MyRegion
+                    if (pushedButton == l2Btn || pushedButton == l3Btn || pushedButton == l4Btn)
+                    {
+                        if (IsDigitOnly(scratchpad))
+                        {
+                            if (Islength4(scratchpad))
+                            {
+                                return true;
+                            }
+                            else
+                            {
+                                scratchMessage = "INVALID ENTRY";
+                            }
+                        }
+                        else
+                        {
+                            scratchMessage = "INVALID ENTRY";
+                        }
+                    }
+                    else
+                    {
+                        if (pushedButton == r2Btn || pushedButton == r3Btn || pushedButton == r4Btn)
+                        {
+                            scratchMessage = "KEY NOT ACTIVE";
+                        }
+                    }
+                    break;
+                    #endregion
+
+                case "mission":
+                    #region MyRegion
+                    {
+                        if (pushedButton == r4Btn & !myCont.IFFselected)
+                        {
+                            scratchMessage = "IFF DISABLED";
+                        }
+                        break;
+                    }
+                    #endregion
+
+                case "V/U1 UHF":
+                    #region MyRegion
+                    {
+
+                        try
+                        {
+                            foreach (Button btn in leftBtn)
+                            {
+                                if (pushedButton == btn)
+                                {
+                                    if (scratchpad.Length <= 6 & ContainsCharacters() == false)
+                                    {
+                                        return true;
+                                    }
+                                    else
+                                    {
+                                        scratchMessage = "INVALID ENTRY";
+                                        break;
+                                    }
+                                }
+                            }
+                            foreach (Button btn in rightBtns)
+                            {
+                                if (pushedButton == btn)
+                                {
+
+                                    if ((scratchpad.Length == 6) & ContainsCharacters() == false & ContainsLetters() == false)
+                                    {
+                                        int x = Convert.ToInt32(scratchpad);
+                                        if ((225000 <= x) == true & (x <= 399995) == true)
+                                        {
+                                            if (scratchpad.Substring(scratchpad.Length - 1, 1) == "5" || scratchpad.Substring(scratchpad.Length - 1, 1) == "0")
+                                            {
+                                                return true;
+                                            }
+                                            else
+                                            {
+                                                scratchMessage = "INVALID ENTRY";
+                                                break;
+                                            }
+                                        }
+
+                                        else
+                                        {
+                                            scratchMessage = "INVALID ENTRY";
+                                            break;
+                                        }
+
+                                    }
+                                    else
+                                        if ((scratchpad.Length == 2 || scratchpad.Length == 3) & (scratchpad.Contains("P") || scratchpad.Contains("C")))
+                                        {
+                                            return true;
+                                        }
+                                        else
+                                        {
+                                            scratchMessage = "INVALID ENTRY";
+                                            break;
+                                        }
+                                }
+                            }
+                        }
+                        catch (Exception)
+                        {
+
+
+                        }
+                    }
+                    break;
+                    #endregion
+
+                case "V/U1 VHF-FM":
+                    #region MyRegion
+                    {
+                        try
+                        {
+                            foreach (Button btn in leftBtn)
+                            {
+                                if (pushedButton == btn)
+                                {
+                                    if (scratchpad.Length <= 6 & ContainsCharacters() == false)
+                                    {
+                                        return true;
+                                    }
+                                    else
+                                    {
+                                        scratchMessage = "INVALID ENTRY";
+                                        break;
+                                    }
+                                }
+                            }
+                            foreach (Button btn in rightBtns)
+                            {
+                                if (pushedButton == btn)
+                                {
+
+                                    if ((scratchpad.Length == 6 || scratchpad.Length == 5) & ContainsCharacters() == false & ContainsLetters() == false)
+                                    {
+                                        int x = Convert.ToInt32(scratchpad);
+                                        if (((173995 >= x) == true & (x >= 130000) == true) || ((30000 <= x) == true & (x <= 87995)))
+                                        {
+                                            if (scratchpad.Substring(scratchpad.Length - 1, 1) == "5" || scratchpad.Substring(scratchpad.Length - 1, 1) == "0")
+                                            {
+                                                return true;
+                                            }
+                                            else
+                                            {
+                                                scratchMessage = "INVALID ENTRY";
+                                                break;
+                                            }
+                                        }
+
+                                        else
+                                        {
+                                            scratchMessage = "INVALID ENTRY";
+                                            break;
+                                        }
+
+                                    }
+                                    else
+                                        if ((scratchpad.Length == 2 || scratchpad.Length == 3) & (scratchpad.Contains("P") || scratchpad.Contains("C")))
+                                        {
+                                            return true;
+                                        }
+                                        else
+                                        {
+                                            scratchMessage = "INVALID ENTRY";
+                                            break;
+                                        }
+                                }
+                            }
+                        }
+                        catch (Exception)
+                        {
+
+
+                        }
+                    }
+                    break;
+                    #endregion
+
+                case "V/U1 VHF-AM":
+                    #region MyRegion
+                    {
+                        try
+                        {
+                            foreach (Button btn in leftBtn)
+                            {
+                                if (pushedButton == btn)
+                                {
+                                    if (scratchpad.Length <= 6 & ContainsCharacters() == false)
+                                    {
+                                        return true;
+                                    }
+                                    else
+                                    {
+                                        scratchMessage = "INVALID ENTRY";
+                                        break;
+                                    }
+                                }
+                            }
+                            foreach (Button btn in rightBtns)
+                            {
+                                if (pushedButton == btn)
+                                {
+
+                                    if ((scratchpad.Length == 6) & ContainsCharacters() == false & ContainsLetters() == false)
+                                    {
+                                        int x = Convert.ToInt32(scratchpad);
+                                        if (((155995 >= x) == true & (x >= 108000) == true))
+                                        {
+                                            if (scratchpad.Substring(scratchpad.Length - 1, 1) == "5" || scratchpad.Substring(scratchpad.Length - 1, 1) == "0")
+                                            {
+                                                return true;
+                                            }
+                                            else
+                                            {
+                                                scratchMessage = "INVALID ENTRY";
+                                                break;
+                                            }
+                                        }
+
+                                        else
+                                        {
+                                            scratchMessage = "INVALID ENTRY";
+                                            break;
+                                        }
+
+                                    }
+                                    else
+                                        if ((scratchpad.Length == 2 || scratchpad.Length == 3) & (scratchpad.Contains("P") || scratchpad.Contains("C")))
+                                        {
+                                            return true;
+                                        }
+                                        else
+                                        {
+                                            scratchMessage = "INVALID ENTRY";
+                                            break;
+                                        }
+                                }
+                            }
+                        }
+                        catch (Exception)
+                        {
+
+
+                        }
+                    }
+                    break;
+                    #endregion
+
+                case "V/U1 HOPSETS":
+                    #region MyRegion
+                    {
+                        try
+                        {
+                            foreach (Button btn in leftBtn)
+                            {
+                                if (pushedButton == btn)
+                                {
+                                    if (scratchpad.Length <= 6 & ContainsCharacters() == false)
+                                    {
+                                        return true;
+                                    }
+                                    else
+                                    {
+                                        scratchMessage = "INVALID ENTRY";
+                                        break;
+                                    }
+                                }
+                            }
+                            foreach (Button btn in rightBtns)
+                            {
+                                if (pushedButton == btn)
+                                {
+
+                                    if (ContainsCharacters() == false & ContainsLetters() == false & scratchpad.Length == 5)
+                                    {
+
+                                        int x = Convert.ToInt32(scratchpad);
+                                        if (((87995 >= x) == true & (x >= 30000) == true))
+                                        {
+                                            if (scratchpad.Substring(scratchpad.Length - 1, 1) == "5" || scratchpad.Substring(scratchpad.Length - 1, 1) == "0")
+                                            {
+                                                return true;
+                                            }
+                                            else
+                                            {
+                                                scratchMessage = "INVALID ENTRY";
+                                                break;
+                                            }
+                                        }
+
+                                        else
+                                        {
+                                            scratchMessage = "INVALID ENTRY";
+                                            break;
+                                        }
+
+                                    }
+                                    else if (scratchpad.Contains("F") & scratchpad.Length >= 2 & scratchpad.Length <= 4)
+                                    {
+                                        string e = scratchpad.Trim('F');
+                                        int i = Convert.ToInt32(e);
+                                        if (((0 <= i) == true & (i <= 999) == true))
+                                        {
+                                            return true;
+                                        }
+
+                                        else
+                                        {
+                                            scratchMessage = "INVALID ENTRY";
+                                            break;
+                                        }
+                                    }
+                                    else
+                                        if ((scratchpad.Length == 2 || scratchpad.Length == 3) & (scratchpad.Contains("P") || scratchpad.Contains("C")))
+                                        {
+                                            return true;
+                                        }
+                                        else
+                                        {
+                                            scratchMessage = "INVALID ENTRY";
+                                            break;
+                                        }
+                                }
+                            }
+                        }
+                        catch (Exception)
+                        {
+
+
+                        }
+                    }
+                    break;
+                    #endregion
+
+                case "V/U1 SATCOM":
+                    #region MyRegion
+                    {
+                        try
+                        {
+                            foreach (Button btn in leftBtn)
+                            {
+                                if (pushedButton == btn)
+                                {
+                                    if (scratchpad.Length <= 6 & ContainsCharacters() == false)
+                                    {
+                                        return true;
+                                    }
+                                    else
+                                    {
+                                        scratchMessage = "INVALID ENTRY";
+                                        break;
+                                    }
+                                }
+                            }
+                            foreach (Button btn in rightBtns)
+                            {
+                                if (pushedButton == btn)
+                                {
+
+                                    if ((scratchpad.Length == 6 || scratchpad.Length == 5) & ContainsCharacters() == false & ContainsLetters() == false)
+                                    {
+                                        int x = Convert.ToInt32(scratchpad);
+                                        if ((399995 >= x) == true & (x >= 225000) == true)
+                                        {
+                                            if (scratchpad.Substring(scratchpad.Length - 1, 1) == "5" || scratchpad.Substring(scratchpad.Length - 1, 1) == "0")
+                                            {
+                                                return true;
+                                            }
+                                            else
+                                            {
+                                                scratchMessage = "INVALID ENTRY";
+                                                break;
+                                            }
+                                        }
+
+                                        else
+                                        {
+                                            scratchMessage = "INVALID ENTRY";
+                                            break;
+                                        }
+
+                                    }
+                                    else
+                                        if ((scratchpad.Length == 2 || scratchpad.Length == 3) & (scratchpad.Contains("P") || scratchpad.Contains("C")))
+                                        {
+                                            return true;
+                                        }
+                                        else
+                                        {
+                                            scratchMessage = "INVALID ENTRY";
+                                            break;
+                                        }
+                                }
+                            }
+                        }
+                        catch (Exception)
+                        {
+
+
+                        }
+                    }
+                    break;
+                    #endregion
+
+            }
+
+            //used for all possible cases
+
+            ShowScratchMessage();
+            ScratchMessageTimer.Start();
+            return false;
+        }   //validates the input to textboxes
+
+        public void UTCupdateTimer_Tick(object sender, EventArgs e)
+        {
+            egiDateTime = DateTime.UtcNow;
+            egiDate = DateTime.Now;
+            formattedTime = egiDateTime.ToString("HH : mm : ss");
+            formattedDate = egiDate.ToString("dd MMM yy").ToUpper();
+
+            if (currentPageTitle == "HF1 STANDBY FCTN")
+            {
+                StartFresh();
+                HFstandbyFunctionPage();
+            }
+
+            if (currentPageTitle == "START INIT")
+            {
+                StartFresh();
+                StartInitPage();
+            }
+
+            if (currentPageTitle == "status")
+            {
+                StartFresh();
+                StatusPage();
+            }
+
+            if (currentPageTitle == "IFF STATUS" & currentPageNumber == 1)
+            {
+                StartFresh();
+                IFFstatusPage1();
+            }
+
+        }   //updates the clock and refreshes the page
+
+        private string LatLonFormat(string e)
+        {
+            string j = null;
+            char k;
+            string l = " ";
+
+            for (int i = 0; i < e.Length; i++)
+            {
+                k = e[i];
+                j += k;
+
+                if (i == 2 || i == 5 || i == 13 || i == 16)
+                {
+
+                }
+                else
+                {
+                    j += l;
+
+                    if (i == 9)
+                    {
+                        j = j + l + l;
+                    }
+                }
+            }
+            return j;
+        }   //adds proper spacing to lat/lon string
+
+        private void ReturnList(string e)   //handles all RETURN buttons
+        {
+            switch (e)
+            {
+                case "comm":
+                    {
+                        MissionPage();
+                        break;
+                    }
+
+                case "COM STATUS":
+                    {
+                        MissionStatusPage1();
+                        break;
+                    }
+
+                case "EGI CONTROL":
+                    {
+                        StartInitPage();
+                        break;
+                    }
+
+                case "EGI GPS STATUS":
+                    {
+                        EGIstatusPage();
+                        break;
+                    }
+
+                case "EGI INU STATUS":
+                    {
+                        EGIstatusPage();
+                        break;
+                    }
+
+                case "EGI SA/AS":
+                    {
+                        MissionPage();
+                        break;
+                    }
+
+                case "HF1 ALE ADDRESS":
+                    {
+                        HFALEfunctionPage1();
+                        break;
+                    }
+
+                case "HF1 ALE FCTN":
+                    {
+                        HFcontrolPage1();
+                        break;
+                    }
+
+                case "HF1 ALE PRESET CHAN":
+                    {
+                        HFcontrolPage1();
+                        break;
+                    }
+
+                case "HF1 ALE SCAN LISTS":
+                    {
+                        HFcontrolPage1();
+                        break;
+                    }
+
+                case "HF1 CONTROL":
+                    {
+                        COMpage();
+                        break;
+                    }
+
+                case "HF1 GROUP ADDRESS":
+                    {
+                        HFALEaddressPage();
+                        break;
+                    }
+
+                case "HF1 NET ADDRESS":
+                    {
+                        HFALEaddressPage();
+                        break;
+                    }
+
+                case "HF1 PRESET CHANNELS":
+                    {
+                        HFcontrolPage1();
+                        break;
+                    }
+
+                case "HF1 STANDBY FCTN":
+                    {
+                        HFcontrolPage1();
+                        break;
+                    }
+
+                case "EGI STATUS":
+                    {
+                        NAVstatusPage();
+                        break;
+                    }
+
+                case "HF1 STATUS":
+                    {
+                        ComStatusPage1();
+                        break;
+                    }
+
+                case "IFF":
+                    {
+                        MissionPage();
+                        break;
+                    }
+
+                case "IFF STATUS":
+                    {
+                        SurvStatusPage();
+                        break;
+                    }
+
+                case "INU LEVER ARMS":
+                    {
+                        NAVstatusPage();
+                        break;
+                    }
+
+                case "MARK POINTS":
+                    {
+                        IdxPage1();
+                        break;
+                    }
+
+                case "NAV STATUS":
+                    {
+                        MissionStatusPage1();
+                        break;
+                    }
+
+                case "POWER":
+                    {
+                        StartInitPage();
+                        break;
+                    }
+
+                case "START INIT":
+                    {
+                        MissionPage();
+                        break;
+                    }
+
+                case "SYSTEM STATUS":
+                    {
+                        MissionPage();
+                        break;
+                    }
+
+                case "SURV STATUS":
+                    {
+                        MissionPage();
+                        break;
+                    }
+
+                case "TACAN CONTROL":
+                    {
+                        MissionPage();
+                        break;
+                    }
+
+                case "TACAN STATUS":
+                    {
+                        NAVstatusPage();
+                        break;
+                    }
+
+                case "V/U1 CLEAR NVM":
+                    {
+                        VU1maintenancePage();
+                        break;
+                    }
+
+                case "V/U1 COMSEC FILL":
+                    {
+                        VU1Fill();
+                        break;
+                    }
+
+                case "V/U1 COMSEC STATES":
+                    {
+                        VU1Fill();
+                        break;
+                    }
+
+                case "V/U1 CONTROL":
+                    {
+                        COMpage();
+                        break;
+                    }
+
+                case "V/U1 FILL":
+                    {
+                        VU1maintenancePage();
+                        break;
+                    }
+
+                case "V/U1 LOCKOUTS":
+                    {
+                        VU1controlPage2();
+                        break;
+                    }
+
+                case "V/U1 LOOPBACK TEST":
+                    {
+                        VU1maintenancePage();
+                        break;
+                    }
+
+                case "V/U1 MAINTENANCE":
+                    {
+                        VU1controlPage2();
+                        break;
+                    }
+
+                case "V/U1 SINCGARS":
+                    {
+                        VU1controlPage2();
+                        break;
+                    }
+
+                case "V/U1 SINCGARS FILL":
+                    {
+                        VU1Fill();
+                        break;
+                    }
+
+                case "V/U1 TRANSEC FILL":
+                    {
+                        VU1Fill();
+                        break;
+                    }
+
+                case "V/U2 CLEAR NVM":
+                    {
+                        VU2maintenancePage();
+                        break;
+                    }
+
+                case "V/U2 COMSEC FILL":
+                    {
+                        VU2Fill();
+                        break;
+                    }
+
+                case "V/U2 COMSEC STATES":
+                    {
+                        VU2Fill();
+                        break;
+                    }
+
+                case "V/U2 CONTROL":
+                    {
+                        COMpage();
+                        break;
+                    }
+
+                case "V/U2 FILL":
+                    {
+                        VU2maintenancePage();
+                        break;
+                    }
+
+                case "V/U2 LOCKOUTS":
+                    {
+                        VU2controlPage2();
+                        break;
+                    }
+
+                case "V/U2 LOOPBACK TEST":
+                    {
+                        VU2maintenancePage();
+                        break;
+                    }
+
+                case "V/U2 MAINTENANCE":
+                    {
+                        VU2controlPage2();
+                        break;
+                    }
+
+                case "V/U2 SINCGARS":
+                    {
+                        VU2controlPage2();
+                        break;
+                    }
+
+                case "V/U2 SINCGARS FILL":
+                    {
+                        VU2Fill();
+                        break;
+                    }
+
+                case "V/U2 TRANSEC FILL":
+                    {
+                        VU2Fill();
+                        break;
+                    }
+
+                case "V/U1 COMSEC CONTROL":
+                    {
+                        VU1controlPage1();
+                        break;
+                    }
+
+                case "V/U2 COMSEC CONTROL":
+                    {
+                        VU2controlPage1();
+                        break;
+                    }
+
+                case "V/U1 COMSEC VAR":
+                    {
+                        VU1comsecControlPage();
+                        break;
+                    }
+
+                case "V/U2 COMSEC VAR":
+                    {
+                        VU2comsecControlPage();
+                        break;
+                    }
+
+                case "V/U1 HOPSETS":
+                    {
+                        VU1controlPage1();
+                        break;
+                    }
+
+                case "V/U2 HOPSETS":
+                    {
+                        VU2controlPage1();
+                        break;
+                    }
+
+                case "V/U1 SATCOM":
+                    {
+                        VU1controlPage1();
+                        break;
+                    }
+
+                case "V/U2 SATCOM":
+                    {
+                        VU2controlPage1();
+                        break;
+                    }
+
+                case "V/U1 STATUS":
+                    {
+                        ComStatusPage1();
+                        break;
+                    }
+
+                case "V/U2 STATUS":
+                    {
+                        ComStatusPage1();
+                        break;
+                    }
+
+                case "V/U1 VHF-AM":
+                    {
+                        VU1controlPage1();
+                        break;
+                    }
+
+                case "V/U2 VHF-AM":
+                    {
+                        VU2controlPage1();
+                        break;
+                    }
+
+                case "V/U1 VHF-FM":
+                    {
+                        VU1controlPage1();
+                        break;
+                    }
+
+                case "V/U2 VHF-FM":
+                    {
+                        VU2controlPage1();
+                        break;
+                    }
+
+                case "V/U1 UHF":
+                    {
+                        VU1controlPage1();
+                        break;
+                    }
+
+                case "V/U2 UHF":
+                    {
+                        VU2controlPage1();
+                        break;
+                    }
+
+                case "ZEROIZE":
+                    {
+                        MissionPage();
+                        break;
+                    }
+            }
+        }
+
+        private void DisplayErrorMessage(string e)
+        {
+            scratchMessage = e;
+            ShowScratchMessage();
+            ScratchMessageTimer.Start();
+        }
+
+
+
+        #region Move Form without border
+
+        public void ShowFormBtns()
+        {
+            closeBtn.Visible = true;
+            moveBtn.Visible = true;
+        }
+
+        public void HideFormBtns()
+        {
+            closeBtn.Visible = false;
+            moveBtn.Visible = false;
+        }
+
+        private void moveBtn_MouseDown(object sender, MouseEventArgs e)
+        {
+            drag = true;
+            mousex = Cursor.Position.X - this.Left;
+            mousey = Cursor.Position.Y - this.Top;
+
+        }
+
+        private void moveBtn_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (drag)
+            {
+                this.Top = Cursor.Position.Y - mousey;
+                this.Left = Cursor.Position.X - mousex;
+            }
+        }
+
+        private void moveBtn_MouseUp(object sender, MouseEventArgs e)
+        {
+            drag = false;
+        }
+
+        #endregion
+
+
+        #region Development Tools
+
+        //used to update the textboxes on the face of the unit afterscratchpad paste
+        private void UpdateDisplay()
+        {
+
+        }
+
+        #endregion
+
+
+        #region Validation
+
+        bool IsDigitOnly(string str)
+        {
+            foreach (char c in str)
+            {
+                if (c < '0' || c > '9')
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        bool Islength4(string str)
+        {
+            if (str.Length > 4)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        private bool ContainsLetters()
+        {
+            string[] letter = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
+
+            foreach (string value in letter)
+            {
+                if (scratchpad != null)
+                {
+                    if (scratchpad.Contains(value))
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        private bool ContainsNumbers()
+        {
+            string[] number = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0" };
+
+            if (scratchpad != null)
+            {
+                foreach (string value in number)
+                {
+                    if (scratchpad.Contains(value))
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        private bool ContainsCharacters()
+        {
+            string[] character = { ".", "/", "+", "-", " " };
+
+            foreach (string value in character)
+            {
+                if (scratchpad.Contains(value))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private void ScratchMessageTimer_Tick(object sender, EventArgs e)
+        {
+            foreach (Control c in Controls)
+            {
+                if (c.GetType() == typeof(TextBox))
+                {
+                    if (c.Location.Y == row13 + 3 & c.Location.X == col1 + 7)
+                    {
+
+                        c.Dispose();
+
+                    }
+                }
+            }
+            ScratchMessageTimer.Stop();
+        }
+
+        public void ShowScratchMessage()
+        {
+            TextBox scMessage = new TextBox();
+            TB(scMessage, col1 + 7, row13 + 3, scratchMessage, Color.White);
+            scMessage.BringToFront();
+        }
+
+        #endregion
+
+
+        #endregion
+
+
+        #region Form Load and Display First Page
+
+        public CDU3000()
+        {
+            InitializeComponent();
+            DM.Show();//displays the dimmer form over the main form
+            DM.Owner = this;//causes the dimmer form to be above the mainform but not over other forms
+
+            myCont.Show();
+            //myCont.Hide ( );//TEMPORARILY HID FORM DURING DEVELOPMENT
+
+            if (UTCupdateTimer.Enabled == false)
+            {
+                UTCupdateTimer.Start();
+            }
+        }
+
+        private void InitialPageLoad(object sender, EventArgs e) //loads the initial page seen on the CDU
+        {
+            if (initialLoad == true)//if this is the initial load of the program
+            {
+                CheckStatus();//checks the status of all items
+                StatusPage();//load the status page
+                initialLoad = false;//change the initialLoad state to false
+            }
+
+        }
+
+
+
+
+
+        #endregion
+
+
+
+        #region Form Close Items
+
+        private void closeBtn_Click(object sender, EventArgs e)
+        {
+            DeleteBtnTimer.Stop();
+            DeleteBtnTimer.Dispose();
+            DimBrtTimer.Stop();
+            DimBrtTimer.Dispose();
+            ScratchMessageTimer.Stop();
+            ScratchMessageTimer.Dispose();
+            UTCupdateTimer.Stop();
+            UTCupdateTimer.Dispose();
+            this.Close();
+            ActiveForm.Close();
+        }
+
+        private void CDU3000_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DeleteBtnTimer.Stop();
+            DeleteBtnTimer.Dispose();
+            DimBrtTimer.Stop();
+            DimBrtTimer.Dispose();
+            ScratchMessageTimer.Stop();
+            ScratchMessageTimer.Dispose();
+            UTCupdateTimer.Stop();
+            UTCupdateTimer.Dispose();
+
+        }
+
+        #endregion
+
+
+
+        #region Dimming methods
+
+        private void CDU3000_LocationChanged(object sender, EventArgs e)
+        {
+            CheckForBorder();//refactored into this
+        }
+
+        private void btnDim_MouseDown(object sender, MouseEventArgs e)
+        {
+            pushedButton = (Button)sender;
+            btnPressed = "btnDim";
+
+            DimBrtTimer.Start();
+        }
+
+        private void btnDim_MouseUp(object sender, MouseEventArgs e)
+        {
+            DimBrtTimer.Stop();
+        }
+
+        private void btnBrt_MouseDown(object sender, MouseEventArgs e)
+        {
+            pushedButton = (Button)sender;
+            btnPressed = "btnDim";
+
+            DimBrtTimer.Start();
+        }
+
+        private void btnBrt_MouseUp(object sender, MouseEventArgs e)
+        {
+            DimBrtTimer.Stop();
+        }
+
+        private void DimBrtTimer_Tick(object sender, EventArgs e)
+        {
+            if (pushedButton == btnDim)
+            {
+                if (alpha <= .80)
+                {
+                    alpha = alpha + .05;
+                }
+                DM.Opacity = alpha;
+            }
+            else
+                if (pushedButton == btnBrt)
+                {
+                    if (alpha >= .05)
+                    {
+                        alpha = alpha - .05;
+                    }
+                    DM.Opacity = alpha;
+                }
+        }
+
+        private void CDU3000_StyleChanged(object sender, EventArgs e)
+        {
+            CheckForBorder();//refactored into this
+        }
+
+        private void CheckForBorder()
+        {
+            if (this.FormBorderStyle == FormBorderStyle.None)
+            {
+                //positions the dimmer form (DM) when the main form moves and the border is not visible
+                DM.DimmerLocX = this.Location.X + 134;
+                DM.DimmerLocY = this.Location.Y + 52;
+            }
+            else
+            {
+                //positions the dimmer form (DM) when the main form moves
+                DM.DimmerLocX = this.Location.X + 145;
+                DM.DimmerLocY = this.Location.Y + 88;
+            }
+        }
+
+        #endregion Dimming Methods
+
+
+
+
 
 
         private void DevelopmentArea()
         {
-            if (VU1UHFpre1Chan.Trim('<', ' ') == currentVU1chan)
-            {
-                VU1UHFpre1Chan = VU1UHFpre1Chan.Replace('<', '*');
-                VU1UHFpre2Chan = VU1UHFpre2Chan.Replace('*', '<');
-                VU1UHFpre3Chan = VU1UHFpre3Chan.Replace('*', '<');
-                VU1UHFpre4Chan = VU1UHFpre4Chan.Replace('*', '<');
-                VU1UHFpre5Chan = VU1UHFpre5Chan.Replace('*', '<');
-            }
-            if (VU1UHFpre2Chan.Trim('<', ' ') == currentVU1chan)
-            {
-                VU1UHFpre2Chan = VU1UHFpre2Chan.Replace('<', '*');
-                VU1UHFpre1Chan = VU1UHFpre1Chan.Replace('*', '<');
-                VU1UHFpre3Chan = VU1UHFpre3Chan.Replace('*', '<');
-                VU1UHFpre4Chan = VU1UHFpre4Chan.Replace('*', '<');
-                VU1UHFpre5Chan = VU1UHFpre5Chan.Replace('*', '<');
-            }
-            if (VU1UHFpre3Chan.Trim('<', ' ') == currentVU1chan)
-            {
-                VU1UHFpre3Chan = VU1UHFpre3Chan.Replace('<', '*');
-                VU1UHFpre2Chan = VU1UHFpre2Chan.Replace('*', '<');
-                VU1UHFpre1Chan = VU1UHFpre1Chan.Replace('*', '<');
-                VU1UHFpre4Chan = VU1UHFpre4Chan.Replace('*', '<');
-                VU1UHFpre5Chan = VU1UHFpre5Chan.Replace('*', '<');
-            }
-            if (VU1UHFpre4Chan.Trim('<', ' ') == currentVU1chan)
-            {
-                VU1UHFpre4Chan = VU1UHFpre4Chan.Replace('<', '*');
-                VU1UHFpre3Chan = VU1UHFpre3Chan.Replace('*', '<');
-                VU1UHFpre2Chan = VU1UHFpre2Chan.Replace('*', '<');
-                VU1UHFpre1Chan = VU1UHFpre1Chan.Replace('*', '<');
-                VU1UHFpre5Chan = VU1UHFpre5Chan.Replace('*', '<');
-            }
-            if (VU1UHFpre5Chan.Trim('<', ' ') == currentVU1chan)
-            {
-                VU1UHFpre5Chan = VU1UHFpre5Chan.Replace('<', '*');
-                VU1UHFpre4Chan = VU1UHFpre4Chan.Replace('*', '<');
-                VU1UHFpre3Chan = VU1UHFpre3Chan.Replace('*', '<');
-                VU1UHFpre2Chan = VU1UHFpre2Chan.Replace('*', '<');
-                VU1UHFpre1Chan = VU1UHFpre1Chan.Replace('*', '<');
+            //if (VU1pre1COMSEC.Trim('<', ' ') == currentVU1chan)
+            //{
+            //    VU1pre1COMSEC = VU1pre1COMSEC.Replace('<', '*');
+            //    VU1pre2COMSEC = VU1pre2COMSEC.Replace('*', '<');
+            //    VU1pre3COMSEC = VU1pre3COMSEC.Replace('*', '<');
+            //    VU1pre4COMSEC = VU1pre4COMSEC.Replace('*', '<');
+            //    VU1pre5COMSEC = VU1pre5COMSEC.Replace('*', '<');
+            //}
+            //if (VU1pre2COMSEC.Trim('<', ' ') == currentVU1chan)
+            //{
+            //    VU1pre2COMSEC = VU1pre2COMSEC.Replace('<', '*');
+            //    VU1pre1COMSEC = VU1pre1COMSEC.Replace('*', '<');
+            //    VU1pre3COMSEC = VU1pre3COMSEC.Replace('*', '<');
+            //    VU1pre4COMSEC = VU1pre4COMSEC.Replace('*', '<');
+            //    VU1pre5COMSEC = VU1pre5COMSEC.Replace('*', '<');
+            //}
+            //if (VU1pre3COMSEC.Trim('<', ' ') == currentVU1chan)
+            //{
+            //    VU1pre3COMSEC = VU1pre3COMSEC.Replace('<', '*');
+            //    VU1pre2COMSEC = VU1pre2COMSEC.Replace('*', '<');
+            //    VU1pre1COMSEC = VU1pre1COMSEC.Replace('*', '<');
+            //    VU1pre4COMSEC = VU1pre4COMSEC.Replace('*', '<');
+            //    VU1pre5COMSEC = VU1pre5COMSEC.Replace('*', '<');
+            //}
+            //if (VU1pre4COMSEC.Trim('<', ' ') == currentVU1chan)
+            //{
+            //    VU1pre4COMSEC = VU1pre4COMSEC.Replace('<', '*');
+            //    VU1pre3COMSEC = VU1pre3COMSEC.Replace('*', '<');
+            //    VU1pre2COMSEC = VU1pre2COMSEC.Replace('*', '<');
+            //    VU1pre1COMSEC = VU1pre1COMSEC.Replace('*', '<');
+            //    VU1pre5COMSEC = VU1pre5COMSEC.Replace('*', '<');
+            //}
+            //if (VU1pre5COMSEC.Trim('<', ' ') == currentVU1chan)
+            //{
+            //    VU1pre5COMSEC = VU1pre5COMSEC.Replace('<', '*');
+            //    VU1pre4COMSEC = VU1pre4COMSEC.Replace('*', '<');
+            //    VU1pre3COMSEC = VU1pre3COMSEC.Replace('*', '<');
+            //    VU1pre2COMSEC = VU1pre2COMSEC.Replace('*', '<');
+            //    VU1pre1COMSEC = VU1pre1COMSEC.Replace('*', '<');
 
-            }
+            //}
         }
 
-        private string BandSelection(string e, string VUnumber)
-        {
-
-            try
-            {
-                e = e.Remove(e.Length - 4, 1);
-                int x = Convert.ToInt32(e);
-
-                if (VUnumber == "VU1")
-                {
-                    if (x <= 399995 & x >= 225000)
-                    {
-                        if (VU1band == activeBand.UHF)
-                        {
-                            return "U";
-                        }
-
-                        if (VU1band == activeBand.SATCOM)
-                        {
-                            return "S";
-                        }
-                    }
-
-                    if (((x <= 87995 & x >= 30000) || (x <= 173995 & x >= 130000)) & VU1band == activeBand.FM)
-                    {
-                        return "F";
-                    }
-
-                    if ((x <= 155995 & x >= 108000) & VU1band == activeBand.AM)
-                    {
-                        return "V";
-                    }
-
-                    if (((x <= 87975 & x >= 30000) & (VU1band == activeBand.HOPSETS)) || (x >= 0 & x <= 999))
-                    {
-                        return "E";
-                    }
-                }
 
 
-                return "";
-            }
-            catch (Exception)
-            {
-                return "";
 
-            }
-
-        }
 
 
     }
