@@ -25451,10 +25451,144 @@ namespace CDU3000
                                         VU2UHFpre5Comsec = currentVU2ComsecVar;
                                     }
                 }
+                else if (BandSelection(currentVU2freq, "VU2") == "V")//verifies the band is AM
+                {
+                    currentVU2ComsecVar = scratchpad;
+
+                    if (currentVU2chan == VU2AMpre1Chan.Trim('<', ' ', '*'))
+                    {
+                        VU2AMpre1Comsec = currentVU2ComsecVar;
+                    }
+                    else
+                        if (currentVU2chan == VU2AMpre2Chan.Trim('<', ' ', '*'))
+                        {
+                            VU2AMpre2Comsec = currentVU2ComsecVar;
+                        }
+                        else
+                            if (currentVU2chan == VU2AMpre3Chan.Trim('<', ' ', '*'))
+                            {
+                                VU2AMpre3Comsec = currentVU2ComsecVar;
+                            }
+                            else
+                                if (currentVU2chan == VU2AMpre4Chan.Trim('<', ' ', '*'))
+                                {
+                                    VU2AMpre4Comsec = currentVU2ComsecVar;
+                                }
+                                else
+                                    if (currentVU2chan == VU2AMpre5Chan.Trim('<', ' ', '*'))
+                                    {
+                                        VU2AMpre5Comsec = currentVU2ComsecVar;
+                                    }
+                }
+                else if (BandSelection(currentVU2freq, "VU2") == "F")//verifies the band is FM
+                {
+                    currentVU2ComsecVar = scratchpad;
+
+                    if (currentVU2chan == VU2FMpre1Chan.Trim('<', ' ', '*'))
+                    {
+                        VU2FMpre1Comsec = currentVU2ComsecVar;
+                    }
+                    else
+                        if (currentVU2chan == VU2FMpre2Chan.Trim('<', ' ', '*'))
+                        {
+                            VU2FMpre2Comsec = currentVU2ComsecVar;
+                        }
+                        else
+                            if (currentVU2chan == VU2FMpre3Chan.Trim('<', ' ', '*'))
+                            {
+                                VU2FMpre3Comsec = currentVU2ComsecVar;
+                            }
+                            else
+                                if (currentVU2chan == VU2FMpre4Chan.Trim('<', ' ', '*'))
+                                {
+                                    VU2FMpre4Comsec = currentVU2ComsecVar;
+                                }
+                                else
+                                    if (currentVU2chan == VU2FMpre5Chan.Trim('<', ' ', '*'))
+                                    {
+                                        VU2FMpre5Comsec = currentVU2ComsecVar;
+                                    }
+                }
+                else if (BandSelection(currentVU2freq, "VU2") == "S")//verifies the band is SATCOM
+                {
+                    currentVU2ComsecVar = scratchpad;
+
+                    if (currentVU2chan == VU2SatcomPre1Chan.Trim('<', ' ', '*'))
+                    {
+                        VU2SatcomPre1Comsec = currentVU2ComsecVar;
+                    }
+                    else
+                        if (currentVU2chan == VU2SatcomPre2Chan.Trim('<', ' ', '*'))
+                        {
+                            VU2SatcomPre2Comsec = currentVU2ComsecVar;
+                        }
+
+                }
+                else if (BandSelection(currentVU2freq, "VU2") == "E")//verifies the band is HOPSET
+                {
+                    if (ContainsLetters() == false)
+                    {
+                        currentVU2ComsecVar = scratchpad;
+
+                        if (currentVU2chan == VU2HOPpre1Chan.Trim('<', ' ', '*'))
+                        {
+                            VU2HOPpre1Comsec = currentVU2ComsecVar;
+                        }
+                        else
+                            if (currentVU2chan == VU2HOPpre2Chan.Trim('<', ' ', '*'))
+                            {
+                                VU2HOPpre2Comsec = currentVU2ComsecVar;
+                            }
+                            else
+                                if (currentVU2chan == VU2HOPpre3Chan.Trim('<', ' ', '*'))
+                                {
+                                    VU2HOPpre3Comsec = currentVU2ComsecVar;
+                                }
+                                else
+                                    if (currentVU2chan == VU2HOPpre4Chan.Trim('<', ' ', '*'))
+                                    {
+                                        VU2HOPpre4Comsec = currentVU2ComsecVar;
+                                    }
+                                    else
+                                        if (currentVU2chan == VU2HOPpre5Chan.Trim('<', ' ', '*'))
+                                        {
+                                            VU2HOPpre5Comsec = currentVU2ComsecVar;
+                                        }
+                    }
+                    else if (ContainsLetters() == true)
+                    {
+                        currentVU2ComsecVar = scratchpad;
+
+                        if (currentVU2chan == VU2HOPpre1Chan.Trim('<', ' ', '*'))
+                        {
+                            VU2HOPpre1Comsec = currentVU2ComsecVar;
+                        }
+                        else
+                            if (currentVU2chan == VU2HOPpre2Chan.Trim('<', ' ', '*'))
+                            {
+                                VU2HOPpre2Comsec = currentVU2ComsecVar;
+                            }
+                            else
+                                if (currentVU2chan == VU2HOPpre3Chan.Trim('<', ' ', '*'))
+                                {
+                                    VU2HOPpre3Comsec = currentVU2ComsecVar;
+                                }
+                                else
+                                    if (currentVU2chan == VU2HOPpre4Chan.Trim('<', ' ', '*'))
+                                    {
+                                        VU2HOPpre4Comsec = currentVU2ComsecVar;
+                                    }
+                                    else
+                                        if (currentVU2chan == VU2HOPpre5Chan.Trim('<', ' ', '*'))
+                                        {
+                                            VU2HOPpre5Comsec = currentVU2ComsecVar;
+                                        }
+                    }
+                }
 
             }
             else
-                if (pushedButton == r1Btn)//VU1
+                if (pushedButton == r1Btn || currentPageTitle == "V/U1 CONTROL")//VU1
                 {
                     if (BandSelection(currentVU1freq, "VU1") == "U")//verifies the band is UHF
                     {
@@ -25485,6 +25619,141 @@ namespace CDU3000
                                             VU1UHFpre5Comsec = currentVU1ComsecVar;
                                         }
                     }
+                    else if (BandSelection(currentVU1freq, "VU1") == "V")//verifies the band is AM
+                    {
+                        currentVU1ComsecVar = scratchpad;
+
+                        if (currentVU1chan == VU1AMpre1Chan.Trim('<', ' ', '*'))
+                        {
+                            VU1AMpre1Comsec = currentVU1ComsecVar;
+                        }
+                        else
+                            if (currentVU1chan == VU1AMpre2Chan.Trim('<', ' ', '*'))
+                            {
+                                VU1AMpre2Comsec = currentVU1ComsecVar;
+                            }
+                            else
+                                if (currentVU1chan == VU1AMpre3Chan.Trim('<', ' ', '*'))
+                                {
+                                    VU1AMpre3Comsec = currentVU1ComsecVar;
+                                }
+                                else
+                                    if (currentVU1chan == VU1AMpre4Chan.Trim('<', ' ', '*'))
+                                    {
+                                        VU1AMpre4Comsec = currentVU1ComsecVar;
+                                    }
+                                    else
+                                        if (currentVU1chan == VU1AMpre5Chan.Trim('<', ' ', '*'))
+                                        {
+                                            VU1AMpre5Comsec = currentVU1ComsecVar;
+                                        }
+                    }
+                    else if (BandSelection(currentVU1freq, "VU1") == "F")//verifies the band is FM
+                    {
+                        currentVU1ComsecVar = scratchpad;
+
+                        if (currentVU1chan == VU1FMpre1Chan.Trim('<', ' ', '*'))
+                        {
+                            VU1FMpre1Comsec = currentVU1ComsecVar;
+                        }
+                        else
+                            if (currentVU1chan == VU1FMpre2Chan.Trim('<', ' ', '*'))
+                            {
+                                VU1FMpre2Comsec = currentVU1ComsecVar;
+                            }
+                            else
+                                if (currentVU1chan == VU1FMpre3Chan.Trim('<', ' ', '*'))
+                                {
+                                    VU1FMpre3Comsec = currentVU1ComsecVar;
+                                }
+                                else
+                                    if (currentVU1chan == VU1FMpre4Chan.Trim('<', ' ', '*'))
+                                    {
+                                        VU1FMpre4Comsec = currentVU1ComsecVar;
+                                    }
+                                    else
+                                        if (currentVU1chan == VU1FMpre5Chan.Trim('<', ' ', '*'))
+                                        {
+                                            VU1FMpre5Comsec = currentVU1ComsecVar;
+                                        }
+                    }
+                    else if (BandSelection(currentVU1freq, "VU1") == "S")//verifies the band is SATCOM
+                    {
+                        currentVU1ComsecVar = scratchpad;
+
+                        if (currentVU1chan == VU1SatcomPre1Chan.Trim('<', ' ', '*'))
+                        {
+                            VU1SatcomPre1Uplink = currentVU1ComsecVar;
+                        }
+                        else
+                            if (currentVU1chan == VU1SatcomPre2Chan.Trim('<', ' ', '*'))
+                            {
+                                VU1SatcomPre2Uplink = currentVU1ComsecVar;
+                            }
+
+                    }
+                    else if (BandSelection(currentVU1freq, "VU1") == "E")//verifies the band is HOPSET
+                    {
+                        if (ContainsLetters() == false)
+                        {
+                            currentVU1ComsecVar = scratchpad;
+
+                            if (currentVU1chan == VU1HOPpre1Chan.Trim('<', ' ', '*'))
+                            {
+                                VU1HOPpre1Comsec = currentVU1ComsecVar;
+                            }
+                            else
+                                if (currentVU1chan == VU1HOPpre2Chan.Trim('<', ' ', '*'))
+                                {
+                                    VU1HOPpre2Comsec = currentVU1ComsecVar;
+                                }
+                                else
+                                    if (currentVU1chan == VU1HOPpre3Chan.Trim('<', ' ', '*'))
+                                    {
+                                        VU1HOPpre3Comsec = currentVU1ComsecVar;
+                                    }
+                                    else
+                                        if (currentVU1chan == VU1HOPpre4Chan.Trim('<', ' ', '*'))
+                                        {
+                                            VU1HOPpre4Comsec = currentVU1ComsecVar;
+                                        }
+                                        else
+                                            if (currentVU1chan == VU1HOPpre5Chan.Trim('<', ' ', '*'))
+                                            {
+                                                VU1HOPpre5Comsec = currentVU1ComsecVar;
+                                            }
+                        }
+                        else if (ContainsLetters() == true)
+                        {
+                            currentVU1ComsecVar = scratchpad;
+
+                            if (currentVU1chan == VU1HOPpre1Chan.Trim('<', ' ', '*'))
+                            {
+                                VU1HOPpre1Comsec = currentVU1ComsecVar;
+                            }
+                            else
+                                if (currentVU1chan == VU1HOPpre2Chan.Trim('<', ' ', '*'))
+                                {
+                                    VU1HOPpre2Comsec = currentVU1ComsecVar;
+                                }
+                                else
+                                    if (currentVU1chan == VU1HOPpre3Chan.Trim('<', ' ', '*'))
+                                    {
+                                        VU1HOPpre3Comsec = currentVU1ComsecVar;
+                                    }
+                                    else
+                                        if (currentVU1chan == VU1HOPpre4Chan.Trim('<', ' ', '*'))
+                                        {
+                                            VU1HOPpre4Comsec = currentVU1ComsecVar;
+                                        }
+                                        else
+                                            if (currentVU1chan == VU1HOPpre5Chan.Trim('<', ' ', '*'))
+                                            {
+                                                VU1HOPpre5Comsec = currentVU1ComsecVar;
+                                            }
+                        }
+                    }
+
                 }
         }
 
