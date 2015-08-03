@@ -220,6 +220,7 @@ namespace CDU3000
         string _VU1power = "HIGH";
         string _VU1guard = "OFF";
         string VU1sidetone = "15";
+        string VU1ComsecControlKey = "< 1   VINSON";
 
         string VU1pre1COMSEC = "< 1";
         string VU1pre2COMSEC = "< 2";
@@ -319,45 +320,97 @@ namespace CDU3000
 
         //VU2 specific fields
         #region VU2 fields
+
         private string _VU2status = "GO";
         private string _vu2PowerState;
-        string VU2freq = "V136.000";
-        string VU2preset = "P2";
-        string VU2channel = "0";
-        string VU2mode = "TR";
-        string VU2squelch = "1";
-        string VU2power = "HIGH";
-        string VU2guard = "OFF";
-        string _VU21553 = "GO";
-        string _VU2transmitter = "GO";
-        string _VU2modem = "GO";
-        string _VU2pwrSupply = "GO";
-        string _VU2rt = "GO";
-        string _VU2comsec = "GO";
+        string _VU2freq = "V136.000";
+        string _VU2preset = "P2";
+        string _VU2channel = "0";
+        string _VU2mode = "TR";
+        string _VU2squelch = "1";
+        string _VU2power = "HIGH";
+        string _VU2guard = "OFF";
         string VU2sidetone = "15";
+        string VU2ComsecControlKey = "< 1   VINSON";
 
-        private string VU2pre1COMSEC;
-        private string VU2pre2COMSEC;
-        private string VU2pre3COMSEC;
-        private string VU2pre4COMSEC;
-        private string VU2pre5COMSEC;
-        private string VU2pre6COMSEC;
-        private string VU2pre7COMSEC;
-        private string VU2pre8COMSEC;
-        private string VU2pre9COMSEC;
-        private string VU2pre10COMSEC;
+        string VU2pre1COMSEC = "< 1";
+        string VU2pre2COMSEC = "< 2";
+        string VU2pre3COMSEC = "< 3";
+        string VU2pre4COMSEC = "< 4";
+        string VU2pre5COMSEC = "< 5";
+        string VU2pre6COMSEC = "6 >";
+        string VU2pre7COMSEC = "7 >";
+        string VU2pre8COMSEC = "8 >";
+        string VU2pre9COMSEC = "9 >";
+        string VU2pre10COMSEC = "10 >";
 
-        private string VU2AMpre1Chan;
-        private string VU2AMpre2Chan;
-        private string VU2AMpre3Chan;
-        private string VU2AMpre4Chan;
-        private string VU2AMpre5Chan;
 
-        private string VU2HOPpre1Chan;
-        private string VU2HOPpre2Chan;
-        private string VU2HOPpre3Chan;
-        private string VU2HOPpre4Chan;
-        private string VU2HOPpre5Chan;
+        private string VU2SatcomPre1Name = "AIRSPT";
+        private string VU2SatcomPre1Chan = "< 01";
+        private string VU2SatcomPre1Comsec = "P2";
+        private string VU2SatcomPre1Uplink = "317.145";
+        private string VU2SatcomPre1Downlink = "245.045";
+        private string VU2SatcomPre1SATchan = "215";
+
+
+        private string VU2SatcomPre2Name = "TOWER";
+        private string VU2SatcomPre2Chan = "< 02";
+        private string VU2SatcomPre2Uplink = "244.000";
+        private string VU2SatcomPre2Downlink = "245.045";
+        private string VU2SatcomPre2SATchan = "215";
+        private string VU2SatcomPre2Comsec = "C12";
+        private string recallVU2Satcomfreq;
+        private string recallVU2Satcomname;
+        private string recallVU2Satcomchan;
+
+        private string VU2AMpre1Chan = "< 01";
+        private string VU2AMpre2Chan = "< 02";
+        private string VU2AMpre3Chan = "< 03";
+        private string VU2AMpre4Chan = "< 04";
+        private string VU2AMpre5Chan = "< 05";
+        private string VU2AMpre1Name = "AIRSPT";
+        private string VU2AMpre2Name = "REDNET";
+        private string VU2AMpre3Name = "TOWER";
+        private string VU2AMpre4Name = "PACMAN";
+        private string VU2AMpre5Name = "GRNLDR";
+        private string VU2AMpre1Freq = "110.675";
+        private string VU2AMpre2Freq = "141.950";
+        private string VU2AMpre3Freq = "128.100";
+        private string VU2AMpre4Freq = "109.025";
+        private string VU2AMpre5Freq = "140.475";
+        private string VU2AMpre1Comsec = "C1";
+        private string VU2AMpre2Comsec = "C2";
+        private string VU2AMpre3Comsec = "P4";
+        private string VU2AMpre4Comsec = "C3";
+        private string VU2AMpre5Comsec = "P1";
+
+
+        private string VU2HOPpre1Chan = "< CS";
+        private string VU2HOPpre2Chan = "< CU";
+        private string VU2HOPpre3Chan = "< 01";
+        private string VU2HOPpre4Chan = "< 02";
+        private string VU2HOPpre5Chan = "< 03";
+        private string VU2HOPpre1Name = "COLD";
+        private string VU2HOPpre2Name = "CUE";
+        private string VU2HOPpre3Name = "STLWTR";
+        private string VU2HOPpre4Name = "TOWER1";
+        private string VU2HOPpre5Name = "BRIDGE";
+        private string VU2HOPpre1Freq = "50.075";
+        private string VU2HOPpre2Freq = "42.225";
+        private string VU2HOPpre3Freq = "F412";
+        private string VU2HOPpre4Freq = "F113";
+        private string VU2HOPpre5Freq = "F611";
+        private string VU2HOPpre1Comsec = "P6";
+        private string VU2HOPpre2Comsec = "P6";
+        private string VU2HOPpre3Comsec = "C1";
+        private string VU2HOPpre4Comsec = "P6";
+        private string VU2HOPpre5Comsec = "C3";
+        private string recallVU2HOPchan;
+        private string recallVU2HOPfreq;
+        private string recallVU2HOPname;
+        private string recallVU2AMchan;
+        private string recallVU2AMfreq;
+        private string recallVU2AMname;
 
         private string VU2FMpre1Name = "AIRSPT";
         private string VU2FMpre1Freq = "60.675";
@@ -379,6 +432,11 @@ namespace CDU3000
         private string VU2FMpre5Name = "GRNLDR";
         private string VU2FMpre5Freq = "40.475";
         private string VU2FMpre5Comsec = "P1";
+        private string recallVU2FMchan;
+        private string recallVU2FMname;
+        private string recallVU2FMfreq;
+
+
 
 
         #endregion
@@ -558,6 +616,21 @@ namespace CDU3000
         private string recallVU1FMname;
         private string recallVU1FMfreq;
         private string vu1Band;
+        private string comsecVar1 = "VINSON";
+        private string comsecVar2 = "ANDVT";
+        private string comsecVar3 = "1-KG84";
+        private string comsecVar4 = "3-KG84";
+        private string comsecVar5 = "VINSON";
+        private string comsecVar6 = "FASCIN";
+        private string comsecVar7 = "FASCIN";
+        private string comsecVar8 = "VINSON";
+        private string comsecVar9 = "VINSON";
+        private string comsecVar10 = "ANDVT";
+        private string VU1comsecVar = "VINSON";
+        private string VU2comsecVar = "VINSON";
+        private string currentVU1SelectedComsecVar = "* 1";
+        private string currentVU2SelectedComsecVar = "* 1";
+
 
 
 
@@ -3909,10 +3982,10 @@ namespace CDU3000
             CDU7000Page = true;
 
             #region MyRegion
-            l1text = "< 12 VINSON";
+            l1text = VU1ComsecControlKey;
             l2text = "PLAIN";
             l3text = "DATA";
-            l4text = "VINSON";
+            l4text = VU1comsecVar;
             l5text = "1.2K";
             l6text = "";
             r1text = "GET KEYS <";
@@ -4123,31 +4196,31 @@ namespace CDU3000
             TB(page, col14, row0, currentPageNumber + "/2");
 
             TextBox l1t = new TextBox();
-            TB(l1t, col3, row2, "VINSON", Color.White);
+            TB(l1t, col3, row2, comsecVar1, Color.White);
 
             TextBox l1 = new TextBox();
             TB(l1, col1, row2, l1text, Color.White);
 
             TextBox l2t = new TextBox();
-            TB(l2t, col3, row4, "ANDVT", Color.White);
+            TB(l2t, col3, row4, comsecVar2, Color.White);
 
             TextBox l2 = new TextBox();
             TB(l2, col1, row4, l2text, Color.White);
 
             TextBox l3t = new TextBox();
-            TB(l3t, col3, row6, "1-KG84", Color.White);
+            TB(l3t, col3, row6, comsecVar3, Color.White);
 
             TextBox l3 = new TextBox();
             TB(l3, col1, row6, l3text, Color.White);
 
             TextBox l4t = new TextBox();
-            TB(l4t, col3, row8, "3-KG84", Color.White);
+            TB(l4t, col3, row8, comsecVar4, Color.White);
 
             TextBox l4 = new TextBox();
             TB(l4, col1, row8, l4text, Color.White);
 
             TextBox l5t = new TextBox();
-            TB(l5t, col3, row10, "VINSON", Color.White);
+            TB(l5t, col3, row10, comsecVar5, Color.White);
 
             TextBox l5 = new TextBox();
             TB(l5, col1, row10, l5text, Color.White);
@@ -4159,7 +4232,7 @@ namespace CDU3000
             TB(l6, col1, row12, l6text, Color.White);
 
             TextBox r1t = new TextBox();
-            TB(r1t, col14, row2, "FASCIN", Color.White);
+            TB(r1t, col14, row2, comsecVar6, Color.White);
             TypeLeft(r1t);
 
             TextBox r1 = new TextBox();
@@ -4167,7 +4240,7 @@ namespace CDU3000
             TypeLeft(r1);
 
             TextBox r2t = new TextBox();
-            TB(r2t, col14, row4, "FASCIN", Color.White);
+            TB(r2t, col14, row4, comsecVar7, Color.White);
             TypeLeft(r2t);
 
             TextBox r2 = new TextBox();
@@ -4175,7 +4248,7 @@ namespace CDU3000
             TypeLeft(r2);
 
             TextBox r3t = new TextBox();
-            TB(r3t, col14, row6, "VINSON", Color.White);
+            TB(r3t, col14, row6, comsecVar8, Color.White);
             TypeLeft(r3t);
 
             TextBox r3 = new TextBox();
@@ -4183,7 +4256,7 @@ namespace CDU3000
             TypeLeft(r3);
 
             TextBox r4t = new TextBox();
-            TB(r4t, col14, row8, "VINSON", Color.White);
+            TB(r4t, col14, row8, comsecVar9, Color.White);
             TypeLeft(r4t);
 
             TextBox r4 = new TextBox();
@@ -4191,7 +4264,7 @@ namespace CDU3000
             TypeLeft(r4);
 
             TextBox r5t = new TextBox();
-            TB(r5t, col14, row10, "ANDVT", Color.White);
+            TB(r5t, col14, row10, comsecVar10, Color.White);
             TypeLeft(r5t);
 
             TextBox r5 = new TextBox();
@@ -7285,10 +7358,10 @@ namespace CDU3000
             CDU7000Page = true;
 
             #region MyRegion
-            l1text = "< 12 VINSON";
+            l1text = VU2ComsecControlKey;
             l2text = "PLAIN";
             l3text = "DATA";
-            l4text = "VINSON";
+            l4text = VU2comsecVar;
             l5text = "1.2K";
             l6text = "";
             r1text = "GET KEYS <";
@@ -7474,17 +7547,19 @@ namespace CDU3000
             CDU7000Page = true;
 
             #region MyRegion
-            l1text = "< 1";
-            l2text = "< 2";
-            l3text = "< 3";
-            l4text = "< 4";
-            l5text = "< 5";
+
+
+            l1text = VU2pre1COMSEC;
+            l2text = VU2pre2COMSEC;
+            l3text = VU2pre3COMSEC;
+            l4text = VU2pre4COMSEC;
+            l5text = VU2pre5COMSEC;
             l6text = "";
-            r1text = "6";
-            r2text = "7";
-            r3text = "8";
-            r4text = "9";
-            r5text = "10";
+            r1text = VU2pre6COMSEC;
+            r2text = VU2pre7COMSEC;
+            r3text = VU2pre8COMSEC;
+            r4text = VU2pre9COMSEC;
+            r5text = VU2pre10COMSEC;
             r6text = "RETURN";
 
             currentPageTitle = "V/U2 COMSEC VAR"; //page title and number used for navigating
@@ -7497,31 +7572,31 @@ namespace CDU3000
             TB(page, col14, row0, currentPageNumber + "/2");
 
             TextBox l1t = new TextBox();
-            TB(l1t, col3, row2, "VINSON", Color.White);
+            TB(l1t, col3, row2, comsecVar1, Color.White);
 
             TextBox l1 = new TextBox();
             TB(l1, col1, row2, l1text, Color.White);
 
             TextBox l2t = new TextBox();
-            TB(l2t, col3, row4, "ANDVT", Color.White);
+            TB(l2t, col3, row4, comsecVar2, Color.White);
 
             TextBox l2 = new TextBox();
             TB(l2, col1, row4, l2text, Color.White);
 
             TextBox l3t = new TextBox();
-            TB(l3t, col3, row6, "1-KG84", Color.White);
+            TB(l3t, col3, row6, comsecVar3, Color.White);
 
             TextBox l3 = new TextBox();
             TB(l3, col1, row6, l3text, Color.White);
 
             TextBox l4t = new TextBox();
-            TB(l4t, col3, row8, "3-KG84", Color.White);
+            TB(l4t, col3, row8, comsecVar4, Color.White);
 
             TextBox l4 = new TextBox();
             TB(l4, col1, row8, l4text, Color.White);
 
             TextBox l5t = new TextBox();
-            TB(l5t, col3, row10, "VINSON", Color.White);
+            TB(l5t, col3, row10, comsecVar5, Color.White);
 
             TextBox l5 = new TextBox();
             TB(l5, col1, row10, l5text, Color.White);
@@ -7533,39 +7608,44 @@ namespace CDU3000
             TB(l6, col1, row12, l6text, Color.White);
 
             TextBox r1t = new TextBox();
-            TB(r1t, col14, row2, "FASCIN", Color.White);
+            TB(r1t, col14, row2, comsecVar6, Color.White);
             TypeLeft(r1t);
 
             TextBox r1 = new TextBox();
-            TB(r1, col15, row2, r1text, Color.White);
+            TB(r1, col16 + 15, row2, r1text, Color.White);
+            TypeLeft(r1);
 
             TextBox r2t = new TextBox();
-            TB(r2t, col14, row4, "FASCIN", Color.White);
+            TB(r2t, col14, row4, comsecVar7, Color.White);
             TypeLeft(r2t);
 
             TextBox r2 = new TextBox();
-            TB(r2, col15, row4, r2text, Color.White);
+            TB(r2, col16 + 15, row4, r2text, Color.White);
+            TypeLeft(r2);
 
             TextBox r3t = new TextBox();
-            TB(r3t, col14, row6, "VINSON", Color.White);
+            TB(r3t, col14, row6, comsecVar8, Color.White);
             TypeLeft(r3t);
 
             TextBox r3 = new TextBox();
-            TB(r3, col15, row6, r3text, Color.White);
+            TB(r3, col16 + 15, row6, r3text, Color.White);
+            TypeLeft(r3);
 
             TextBox r4t = new TextBox();
-            TB(r4t, col14, row8, "VINSON", Color.White);
+            TB(r4t, col14, row8, comsecVar9, Color.White);
             TypeLeft(r4t);
 
             TextBox r4 = new TextBox();
-            TB(r4, col15, row8, r4text, Color.White);
+            TB(r4, col16 + 15, row8, r4text, Color.White);
+            TypeLeft(r4);
 
             TextBox r5t = new TextBox();
-            TB(r5t, col14, row10, "ANDVT", Color.White);
+            TB(r5t, col14, row10, comsecVar10, Color.White);
             TypeLeft(r5t);
 
             TextBox r5 = new TextBox();
-            TB(r5, col15, row10, r5text, Color.White);
+            TB(r5, col16 + 15, row10, r5text, Color.White);
+            TypeLeft(r5);
 
             //TextBox r6t = new TextBox();
             //TB(r6t, col2, row1, "IDENT");
@@ -7579,35 +7659,35 @@ namespace CDU3000
 
 
             #region Add Arrows if Needed
-            if (r1text != "")
-            {
-                TextBox r1r = new TextBox();
-                TB(r1r, col16, row2, ">", Color.White);
-            }
+            //if (r1text != "")
+            //{
+            //    TextBox r1r = new TextBox();
+            //    TB(r1r, col16, row2, ">", Color.White);
+            //}
 
-            if (r2text != "")
-            {
-                TextBox r2r = new TextBox();
-                TB(r2r, col16, row4, ">", Color.White);
-            }
+            //if (r2text != "")
+            //{
+            //    TextBox r2r = new TextBox();
+            //    TB(r2r, col16, row4, ">", Color.White);
+            //}
 
-            if (r3text != "")
-            {
-                TextBox r3r = new TextBox();
-                TB(r3r, col16, row6, ">", Color.White);
-            }
+            //if (r3text != "")
+            //{
+            //    TextBox r3r = new TextBox();
+            //    TB(r3r, col16, row6, ">", Color.White);
+            //}
 
-            if (r4text != "")
-            {
-                TextBox r4r = new TextBox();
-                TB(r4r, col16, row8, ">", Color.White);
-            }
+            //if (r4text != "")
+            //{
+            //    TextBox r4r = new TextBox();
+            //    TB(r4r, col16, row8, ">", Color.White);
+            //}
 
-            if (r5text != "")
-            {
-                TextBox r5r = new TextBox();
-                TB(r5r, col16, row10, ">", Color.White);
-            }
+            //if (r5text != "")
+            //{
+            //    TextBox r5r = new TextBox();
+            //    TB(r5r, col16, row10, ">", Color.White);
+            //}
 
 
             if (r6text != "")
@@ -9375,6 +9455,7 @@ namespace CDU3000
                 VU2UHFpre3Chan = VU2UHFpre3Chan.Replace('*', '<');
                 VU2UHFpre4Chan = VU2UHFpre4Chan.Replace('*', '<');
                 VU2UHFpre5Chan = VU2UHFpre5Chan.Replace('*', '<');
+                VU2band = activeBand.UHF;
             }
             if (VU2UHFpre2Chan.Trim('<', ' ') == currentVU2chan)
             {
@@ -9383,6 +9464,7 @@ namespace CDU3000
                 VU2UHFpre3Chan = VU2UHFpre3Chan.Replace('*', '<');
                 VU2UHFpre4Chan = VU2UHFpre4Chan.Replace('*', '<');
                 VU2UHFpre5Chan = VU2UHFpre5Chan.Replace('*', '<');
+                VU2band = activeBand.UHF;
             }
             if (VU2UHFpre3Chan.Trim('<', ' ') == currentVU2chan)
             {
@@ -9391,6 +9473,7 @@ namespace CDU3000
                 VU2UHFpre1Chan = VU2UHFpre1Chan.Replace('*', '<');
                 VU2UHFpre4Chan = VU2UHFpre4Chan.Replace('*', '<');
                 VU2UHFpre5Chan = VU2UHFpre5Chan.Replace('*', '<');
+                VU2band = activeBand.UHF;
             }
             if (VU2UHFpre4Chan.Trim('<', ' ') == currentVU2chan)
             {
@@ -9399,6 +9482,7 @@ namespace CDU3000
                 VU2UHFpre2Chan = VU2UHFpre2Chan.Replace('*', '<');
                 VU2UHFpre1Chan = VU2UHFpre1Chan.Replace('*', '<');
                 VU2UHFpre5Chan = VU2UHFpre5Chan.Replace('*', '<');
+                VU2band = activeBand.UHF;
             }
             if (VU2UHFpre5Chan.Trim('<', ' ') == currentVU2chan)
             {
@@ -9407,6 +9491,7 @@ namespace CDU3000
                 VU2UHFpre3Chan = VU2UHFpre3Chan.Replace('*', '<');
                 VU2UHFpre2Chan = VU2UHFpre2Chan.Replace('*', '<');
                 VU2UHFpre1Chan = VU2UHFpre1Chan.Replace('*', '<');
+                VU2band = activeBand.UHF;
 
             }
 
@@ -9453,7 +9538,7 @@ namespace CDU3000
             TB(l2callsign, col4, row4, VU2UHFpre2Name, Color.White);
 
             TextBox l2comsec = new TextBox();
-            TB(l2comsec, col9, row4, "C2", Color.White);
+            TB(l2comsec, col9, row4, VU2UHFpre2Comsec, Color.White);
 
             TextBox l2freq = new TextBox();
             TB(l2freq, col15, row4, VU2UHFpre2Freq, Color.White);
@@ -9465,7 +9550,7 @@ namespace CDU3000
             TB(l3callsign, col4, row6, VU2UHFpre3Name, Color.White);
 
             TextBox l3comsec = new TextBox();
-            TB(l3comsec, col9, row6, "P4", Color.White);
+            TB(l3comsec, col9, row6, VU2UHFpre3Comsec, Color.White);
 
             TextBox l3freq = new TextBox();
             TB(l3freq, col15, row6, VU2UHFpre3Freq, Color.White);
@@ -9477,7 +9562,7 @@ namespace CDU3000
             TB(l4callsign, col4, row8, VU2UHFpre4Name, Color.White);
 
             TextBox l4comsec = new TextBox();
-            TB(l4comsec, col9, row8, "C3", Color.White);
+            TB(l4comsec, col9, row8, VU2UHFpre4Comsec, Color.White);
 
             TextBox l4freq = new TextBox();
             TB(l4freq, col15, row8, VU2UHFpre4Freq, Color.White);
@@ -9489,7 +9574,7 @@ namespace CDU3000
             TB(l5callsign, col4, row10, VU2UHFpre5Name, Color.White);
 
             TextBox l5comsec = new TextBox();
-            TB(l5comsec, col9, row10, "P1", Color.White);
+            TB(l5comsec, col9, row10, VU2UHFpre5Comsec, Color.White);
 
             TextBox l5freq = new TextBox();
             TB(l5freq, col15, row10, VU2UHFpre5Freq, Color.White);
@@ -9526,17 +9611,65 @@ namespace CDU3000
             CDU7000Page = true;
 
             #region MyRegion
-            l1text = "< 1";
-            l2text = "< 2";
-            l3text = "< 3";
-            l4text = "< 4";
-            l5text = "< 5";
+
+            if (VU2FMpre1Chan.Trim('<', ' ') == currentVU2chan)
+            {
+                VU2FMpre1Chan = VU2FMpre1Chan.Replace('<', '*');
+                VU2FMpre2Chan = VU2FMpre2Chan.Replace('*', '<');
+                VU2FMpre3Chan = VU2FMpre3Chan.Replace('*', '<');
+                VU2FMpre4Chan = VU2FMpre4Chan.Replace('*', '<');
+                VU2FMpre5Chan = VU2FMpre5Chan.Replace('*', '<');
+                VU2band = activeBand.FM;
+            }
+            if (VU2FMpre2Chan.Trim('<', ' ') == currentVU2chan)
+            {
+                VU2FMpre2Chan = VU2FMpre2Chan.Replace('<', '*');
+                VU2FMpre1Chan = VU2FMpre1Chan.Replace('*', '<');
+                VU2FMpre3Chan = VU2FMpre3Chan.Replace('*', '<');
+                VU2FMpre4Chan = VU2FMpre4Chan.Replace('*', '<');
+                VU2FMpre5Chan = VU2FMpre5Chan.Replace('*', '<');
+                VU2band = activeBand.FM;
+            }
+            if (VU2FMpre3Chan.Trim('<', ' ') == currentVU2chan)
+            {
+                VU2FMpre3Chan = VU2FMpre3Chan.Replace('<', '*');
+                VU2FMpre2Chan = VU2FMpre2Chan.Replace('*', '<');
+                VU2FMpre1Chan = VU2FMpre1Chan.Replace('*', '<');
+                VU2FMpre4Chan = VU2FMpre4Chan.Replace('*', '<');
+                VU2FMpre5Chan = VU2FMpre5Chan.Replace('*', '<');
+                VU2band = activeBand.FM;
+            }
+            if (VU2FMpre4Chan.Trim('<', ' ') == currentVU2chan)
+            {
+                VU2FMpre4Chan = VU2FMpre4Chan.Replace('<', '*');
+                VU2FMpre3Chan = VU2FMpre3Chan.Replace('*', '<');
+                VU2FMpre2Chan = VU2FMpre2Chan.Replace('*', '<');
+                VU2FMpre1Chan = VU2FMpre1Chan.Replace('*', '<');
+                VU2FMpre5Chan = VU2FMpre5Chan.Replace('*', '<');
+                VU2band = activeBand.FM;
+            }
+            if (VU2FMpre5Chan.Trim('<', ' ') == currentVU2chan)
+            {
+                VU2FMpre5Chan = VU2FMpre5Chan.Replace('<', '*');
+                VU2FMpre4Chan = VU2FMpre4Chan.Replace('*', '<');
+                VU2FMpre3Chan = VU2FMpre3Chan.Replace('*', '<');
+                VU2FMpre2Chan = VU2FMpre2Chan.Replace('*', '<');
+                VU2FMpre1Chan = VU2FMpre1Chan.Replace('*', '<');
+                VU2band = activeBand.FM;
+
+            }
+
+            l1text = VU2FMpre1Chan;
+            l2text = VU2FMpre2Chan;
+            l3text = VU2FMpre3Chan;
+            l4text = VU2FMpre4Chan;
+            l5text = VU2FMpre5Chan;
             l6text = "";
-            r1text = "";
-            r2text = "";
-            r3text = "";
-            r4text = "";
-            r5text = "";
+            r1text = VU2FMpre1Freq;
+            r2text = VU2FMpre2Freq;
+            r3text = VU2FMpre3Freq;
+            r4text = VU2FMpre4Freq;
+            r5text = VU2FMpre5Freq;
             r6text = "RETURN";
 
             currentPageTitle = "V/U2 VHF-FM"; //page title and number used for navigating
@@ -9549,61 +9682,61 @@ namespace CDU3000
             TB(page, col14, row0, currentPageNumber + "/4");
 
             TextBox l1callsign = new TextBox();
-            TB(l1callsign, col4, row2, "AIRSPT", Color.White);
+            TB(l1callsign, col4, row2, VU2FMpre1Name, Color.White);
 
             TextBox l1comsec = new TextBox();
-            TB(l1comsec, col9, row2, "C1", Color.White);
+            TB(l1comsec, col9, row2, VU2FMpre1Comsec, Color.White);
 
             TextBox l1freq = new TextBox();
-            TB(l1freq, col15, row2, "60.675", Color.White);
+            TB(l1freq, col15, row2, VU2FMpre1Freq, Color.White);
 
             TextBox l1 = new TextBox();
             TB(l1, col1, row2, l1text, Color.White);
 
             TextBox l2callsign = new TextBox();
-            TB(l2callsign, col4, row4, "REDNET", Color.White);
+            TB(l2callsign, col4, row4, VU2FMpre2Name, Color.White);
 
             TextBox l2comsec = new TextBox();
-            TB(l2comsec, col9, row4, "C2", Color.White);
+            TB(l2comsec, col9, row4, VU2FMpre2Comsec, Color.White);
 
             TextBox l2freq = new TextBox();
-            TB(l2freq, col15, row4, "41.950", Color.White);
+            TB(l2freq, col15, row4, VU2FMpre2Freq, Color.White);
 
             TextBox l2 = new TextBox();
             TB(l2, col1, row4, l2text, Color.White);
 
             TextBox l3callsign = new TextBox();
-            TB(l3callsign, col4, row6, "TOWER", Color.White);
+            TB(l3callsign, col4, row6, VU2FMpre3Name, Color.White);
 
             TextBox l3comsec = new TextBox();
-            TB(l3comsec, col9, row6, "P4", Color.White);
+            TB(l3comsec, col9, row6, VU2FMpre3Comsec, Color.White);
 
             TextBox l3freq = new TextBox();
-            TB(l3freq, col15, row6, "130.100", Color.White);
+            TB(l3freq, col15, row6, VU2FMpre3Freq, Color.White);
 
             TextBox l3 = new TextBox();
             TB(l3, col1, row6, l3text, Color.White);
 
             TextBox l4callsign = new TextBox();
-            TB(l4callsign, col4, row8, "PACMAN", Color.White);
+            TB(l4callsign, col4, row8, VU2FMpre4Name, Color.White);
 
             TextBox l4comsec = new TextBox();
-            TB(l4comsec, col9, row8, "C3", Color.White);
+            TB(l4comsec, col9, row8, VU2FMpre4Comsec, Color.White);
 
             TextBox l4freq = new TextBox();
-            TB(l4freq, col15, row8, "42.025", Color.White);
+            TB(l4freq, col15, row8, VU2FMpre4Freq, Color.White);
 
             TextBox l4 = new TextBox();
             TB(l4, col1, row8, l4text, Color.White);
 
             TextBox l5callsign = new TextBox();
-            TB(l5callsign, col4, row10, "GRNLDR", Color.White);
+            TB(l5callsign, col4, row10, VU2FMpre5Name, Color.White);
 
             TextBox l5comsec = new TextBox();
-            TB(l5comsec, col9, row10, "P1", Color.White);
+            TB(l5comsec, col9, row10, VU2FMpre5Comsec, Color.White);
 
             TextBox l5freq = new TextBox();
-            TB(l5freq, col15, row10, "40.475", Color.White);
+            TB(l5freq, col15, row10, VU2FMpre5Freq, Color.White);
 
             TextBox l5 = new TextBox();
             TB(l5, col1, row10, l5text, Color.White);
@@ -9668,17 +9801,65 @@ namespace CDU3000
             CDU7000Page = true;
 
             #region MyRegion
-            l1text = "< 1";
-            l2text = "< 2";
-            l3text = "< 3";
-            l4text = "< 4";
-            l5text = "< 5";
+
+            if (VU2AMpre1Chan.Trim('<', ' ') == currentVU2chan)
+            {
+                VU2AMpre1Chan = VU2AMpre1Chan.Replace('<', '*');
+                VU2AMpre2Chan = VU2AMpre2Chan.Replace('*', '<');
+                VU2AMpre3Chan = VU2AMpre3Chan.Replace('*', '<');
+                VU2AMpre4Chan = VU2AMpre4Chan.Replace('*', '<');
+                VU2AMpre5Chan = VU2AMpre5Chan.Replace('*', '<');
+                VU2band = activeBand.AM;
+            }
+            if (VU2AMpre2Chan.Trim('<', ' ') == currentVU2chan)
+            {
+                VU2AMpre2Chan = VU2AMpre2Chan.Replace('<', '*');
+                VU2AMpre1Chan = VU2AMpre1Chan.Replace('*', '<');
+                VU2AMpre3Chan = VU2AMpre3Chan.Replace('*', '<');
+                VU2AMpre4Chan = VU2AMpre4Chan.Replace('*', '<');
+                VU2AMpre5Chan = VU2AMpre5Chan.Replace('*', '<');
+                VU2band = activeBand.AM;
+            }
+            if (VU2AMpre3Chan.Trim('<', ' ') == currentVU2chan)
+            {
+                VU2AMpre3Chan = VU2AMpre3Chan.Replace('<', '*');
+                VU2AMpre2Chan = VU2AMpre2Chan.Replace('*', '<');
+                VU2AMpre1Chan = VU2AMpre1Chan.Replace('*', '<');
+                VU2AMpre4Chan = VU2AMpre4Chan.Replace('*', '<');
+                VU2AMpre5Chan = VU2AMpre5Chan.Replace('*', '<');
+                VU2band = activeBand.AM;
+            }
+            if (VU2AMpre4Chan.Trim('<', ' ') == currentVU2chan)
+            {
+                VU2AMpre4Chan = VU2AMpre4Chan.Replace('<', '*');
+                VU2AMpre3Chan = VU2AMpre3Chan.Replace('*', '<');
+                VU2AMpre2Chan = VU2AMpre2Chan.Replace('*', '<');
+                VU2AMpre1Chan = VU2AMpre1Chan.Replace('*', '<');
+                VU2AMpre5Chan = VU2AMpre5Chan.Replace('*', '<');
+                VU2band = activeBand.AM;
+            }
+            if (VU2AMpre5Chan.Trim('<', ' ') == currentVU2chan)
+            {
+                VU2AMpre5Chan = VU2AMpre5Chan.Replace('<', '*');
+                VU2AMpre4Chan = VU2AMpre4Chan.Replace('*', '<');
+                VU2AMpre3Chan = VU2AMpre3Chan.Replace('*', '<');
+                VU2AMpre2Chan = VU2AMpre2Chan.Replace('*', '<');
+                VU2AMpre1Chan = VU2AMpre1Chan.Replace('*', '<');
+                VU2band = activeBand.AM;
+
+            }
+
+            l1text = VU2AMpre1Chan;
+            l2text = VU2AMpre2Chan;
+            l3text = VU2AMpre3Chan;
+            l4text = VU2AMpre4Chan;
+            l5text = VU2AMpre5Chan;
             l6text = "";
-            r1text = "";
-            r2text = "";
-            r3text = "";
-            r4text = "";
-            r5text = "";
+            r1text = VU2AMpre1Freq;
+            r2text = VU2AMpre2Freq;
+            r3text = VU2AMpre3Freq;
+            r4text = VU2AMpre4Freq;
+            r5text = VU2AMpre5Freq;
             r6text = "RETURN";
 
             currentPageTitle = "V/U2 VHF-AM"; //page title and number used for navigating
@@ -9691,61 +9872,61 @@ namespace CDU3000
             TB(page, col14, row0, currentPageNumber + "/4");
 
             TextBox l1callsign = new TextBox();
-            TB(l1callsign, col4, row2, "AIRSPT", Color.White);
+            TB(l1callsign, col4, row2, VU2AMpre1Name, Color.White);
 
             TextBox l1comsec = new TextBox();
-            TB(l1comsec, col9, row2, "C1", Color.White);
+            TB(l1comsec, col9, row2, VU2AMpre1Comsec, Color.White);
 
             TextBox l1freq = new TextBox();
-            TB(l1freq, col15, row2, "110.675", Color.White);
+            TB(l1freq, col15, row2, VU2AMpre1Freq, Color.White);
 
             TextBox l1 = new TextBox();
             TB(l1, col1, row2, l1text, Color.White);
 
             TextBox l2callsign = new TextBox();
-            TB(l2callsign, col4, row4, "REDNET", Color.White);
+            TB(l2callsign, col4, row4, VU2AMpre2Name, Color.White);
 
             TextBox l2comsec = new TextBox();
-            TB(l2comsec, col9, row4, "C2", Color.White);
+            TB(l2comsec, col9, row4, VU2AMpre2Comsec, Color.White);
 
             TextBox l2freq = new TextBox();
-            TB(l2freq, col15, row4, "141.950", Color.White);
+            TB(l2freq, col15, row4, VU2AMpre2Freq, Color.White);
 
             TextBox l2 = new TextBox();
             TB(l2, col1, row4, l2text, Color.White);
 
             TextBox l3callsign = new TextBox();
-            TB(l3callsign, col4, row6, "TOWER", Color.White);
+            TB(l3callsign, col4, row6, VU2AMpre3Name, Color.White);
 
             TextBox l3comsec = new TextBox();
-            TB(l3comsec, col9, row6, "P4", Color.White);
+            TB(l3comsec, col9, row6, VU2AMpre3Comsec, Color.White);
 
             TextBox l3freq = new TextBox();
-            TB(l3freq, col15, row6, "128.100", Color.White);
+            TB(l3freq, col15, row6, VU2AMpre3Freq, Color.White);
 
             TextBox l3 = new TextBox();
             TB(l3, col1, row6, l3text, Color.White);
 
             TextBox l4callsign = new TextBox();
-            TB(l4callsign, col4, row8, "PACMAN", Color.White);
+            TB(l4callsign, col4, row8, VU2AMpre4Name, Color.White);
 
             TextBox l4comsec = new TextBox();
-            TB(l4comsec, col9, row8, "C3", Color.White);
+            TB(l4comsec, col9, row8, VU2AMpre4Comsec, Color.White);
 
             TextBox l4freq = new TextBox();
-            TB(l4freq, col15, row8, "109.025", Color.White);
+            TB(l4freq, col15, row8, VU2AMpre4Freq, Color.White);
 
             TextBox l4 = new TextBox();
             TB(l4, col1, row8, l4text, Color.White);
 
             TextBox l5callsign = new TextBox();
-            TB(l5callsign, col4, row10, "GRNLDR", Color.White);
+            TB(l5callsign, col4, row10, VU2AMpre5Name, Color.White);
 
             TextBox l5comsec = new TextBox();
-            TB(l5comsec, col9, row10, "P1", Color.White);
+            TB(l5comsec, col9, row10, VU2AMpre5Comsec, Color.White);
 
             TextBox l5freq = new TextBox();
-            TB(l5freq, col15, row10, "140.475", Color.White);
+            TB(l5freq, col15, row10, VU2AMpre5Freq, Color.White);
 
             TextBox l5 = new TextBox();
             TB(l5, col1, row10, l5text, Color.White);
@@ -9810,16 +9991,31 @@ namespace CDU3000
             CDU7000Page = true;
 
             #region MyRegion
-            l1text = "< 1";
-            l2text = "[215]";
-            l3text = "< 2";
-            l4text = "[215]";
-            l5text = "< 5";
+
+            if (VU2SatcomPre1Chan.Trim('<', ' ') == currentVU2chan)
+            {
+                VU2SatcomPre1Chan = VU2SatcomPre1Chan.Replace('<', '*');
+                VU2SatcomPre2Chan = VU2SatcomPre2Chan.Replace('*', '<');
+                VU2band = activeBand.SATCOM;
+            }
+            if (VU2SatcomPre2Chan.Trim('<', ' ') == currentVU2chan)
+            {
+                VU2SatcomPre2Chan = VU2SatcomPre2Chan.Replace('<', '*');
+                VU2SatcomPre1Chan = VU2SatcomPre1Chan.Replace('*', '<');
+                VU2band = activeBand.SATCOM;
+            }
+
+
+            l1text = VU2SatcomPre1Chan;
+            l2text = "[" + VU2SatcomPre1SATchan + "]";
+            l3text = VU2SatcomPre2Chan;
+            l4text = "[" + VU2SatcomPre2SATchan + "]";
+            l5text = "";
             l6text = "";
-            r1text = "";
-            r2text = "";
-            r3text = "";
-            r4text = "";
+            r1text = VU2SatcomPre1Uplink;
+            r2text = VU2SatcomPre1Downlink;
+            r3text = VU2SatcomPre2Uplink;
+            r4text = VU2SatcomPre2Downlink;
             r5text = "";
             r6text = "RETURN";
 
@@ -9838,13 +10034,13 @@ namespace CDU3000
             TypeLeft(l1t);
 
             TextBox l1callsign = new TextBox();
-            TB(l1callsign, col4, row2, "AIRSPT", Color.White);
+            TB(l1callsign, col4, row2, VU2SatcomPre1Name, Color.White);
 
             TextBox l1comsec = new TextBox();
-            TB(l1comsec, col9, row2, "P2", Color.White);
+            TB(l1comsec, col9, row2, VU2SatcomPre1Comsec, Color.White);
 
             TextBox l1freq = new TextBox();
-            TB(l1freq, col15, row2, "317.145", Color.White);
+            TB(l1freq, col15, row2, VU2SatcomPre1Uplink, Color.White);
 
             TextBox l1 = new TextBox();
             TB(l1, col1, row2, l1text, Color.White);
@@ -9853,19 +10049,19 @@ namespace CDU3000
             TB(l2t, col2, row3, "CHANNEL");
 
             TextBox l2freq = new TextBox();
-            TB(l2freq, col15, row4, "245.045", Color.White);
+            TB(l2freq, col15, row4, VU2SatcomPre1Downlink, Color.White);
 
             TextBox l2 = new TextBox();
             TB(l2, col1, row4, l2text, Color.White);
 
             TextBox l3callsign = new TextBox();
-            TB(l3callsign, col4, row6, "TOWER", Color.White);
+            TB(l3callsign, col4, row6, VU2SatcomPre2Name, Color.White);
 
             TextBox l3comsec = new TextBox();
-            TB(l3comsec, col9, row6, "C12", Color.White);
+            TB(l3comsec, col9, row6, VU2SatcomPre2Comsec, Color.White);
 
             TextBox l3freq = new TextBox();
-            TB(l3freq, col15, row6, "244.000", Color.White);
+            TB(l3freq, col15, row6, VU2SatcomPre2Uplink, Color.White);
 
             TextBox l3 = new TextBox();
             TB(l3, col1, row6, l3text, Color.White);
@@ -9874,7 +10070,7 @@ namespace CDU3000
             TB(l4t, col2, row7, "CHANNEL");
 
             TextBox l4freq = new TextBox();
-            TB(l4freq, col15, row8, "245.045", Color.White);
+            TB(l4freq, col15, row8, VU2SatcomPre2Downlink, Color.White);
 
             TextBox l4 = new TextBox();
             TB(l4, col1, row8, l4text, Color.White);
@@ -9954,17 +10150,65 @@ namespace CDU3000
             CDU7000Page = true;
 
             #region MyRegion
-            l1text = "< 1";
-            l2text = "< 2";
-            l3text = "< 3";
-            l4text = "< 4";
-            l5text = "< 5";
+
+            if (VU2HOPpre1Chan.Trim('<', ' ') == currentVU2chan)
+            {
+                VU2HOPpre1Chan = VU2HOPpre1Chan.Replace('<', '*');
+                VU2HOPpre2Chan = VU2HOPpre2Chan.Replace('*', '<');
+                VU2HOPpre3Chan = VU2HOPpre3Chan.Replace('*', '<');
+                VU2HOPpre4Chan = VU2HOPpre4Chan.Replace('*', '<');
+                VU2HOPpre5Chan = VU2HOPpre5Chan.Replace('*', '<');
+                VU2band = activeBand.HOPSETS;
+            }
+            if (VU2HOPpre2Chan.Trim('<', ' ') == currentVU2chan)
+            {
+                VU2HOPpre2Chan = VU2HOPpre2Chan.Replace('<', '*');
+                VU2HOPpre1Chan = VU2HOPpre1Chan.Replace('*', '<');
+                VU2HOPpre3Chan = VU2HOPpre3Chan.Replace('*', '<');
+                VU2HOPpre4Chan = VU2HOPpre4Chan.Replace('*', '<');
+                VU2HOPpre5Chan = VU2HOPpre5Chan.Replace('*', '<');
+                VU2band = activeBand.HOPSETS;
+            }
+            if (VU2HOPpre3Chan.Trim('<', ' ') == currentVU2chan)
+            {
+                VU2HOPpre3Chan = VU2HOPpre3Chan.Replace('<', '*');
+                VU2HOPpre2Chan = VU2HOPpre2Chan.Replace('*', '<');
+                VU2HOPpre1Chan = VU2HOPpre1Chan.Replace('*', '<');
+                VU2HOPpre4Chan = VU2HOPpre4Chan.Replace('*', '<');
+                VU2HOPpre5Chan = VU2HOPpre5Chan.Replace('*', '<');
+                VU2band = activeBand.HOPSETS;
+            }
+            if (VU2HOPpre4Chan.Trim('<', ' ') == currentVU2chan)
+            {
+                VU2HOPpre4Chan = VU2HOPpre4Chan.Replace('<', '*');
+                VU2HOPpre3Chan = VU2HOPpre3Chan.Replace('*', '<');
+                VU2HOPpre2Chan = VU2HOPpre2Chan.Replace('*', '<');
+                VU2HOPpre1Chan = VU2HOPpre1Chan.Replace('*', '<');
+                VU2HOPpre5Chan = VU2HOPpre5Chan.Replace('*', '<');
+                VU2band = activeBand.HOPSETS;
+            }
+            if (VU2HOPpre5Chan.Trim('<', ' ') == currentVU2chan)
+            {
+                VU2HOPpre5Chan = VU2HOPpre5Chan.Replace('<', '*');
+                VU2HOPpre4Chan = VU2HOPpre4Chan.Replace('*', '<');
+                VU2HOPpre3Chan = VU2HOPpre3Chan.Replace('*', '<');
+                VU2HOPpre2Chan = VU2HOPpre2Chan.Replace('*', '<');
+                VU2HOPpre1Chan = VU2HOPpre1Chan.Replace('*', '<');
+                VU2band = activeBand.HOPSETS;
+
+            }
+
+            l1text = VU2HOPpre1Chan;
+            l2text = VU2HOPpre2Chan;
+            l3text = VU2HOPpre3Chan;
+            l4text = VU2HOPpre4Chan;
+            l5text = VU2HOPpre5Chan;
             l6text = "";
-            r1text = "";
-            r2text = "";
-            r3text = "";
-            r4text = "";
-            r5text = "";
+            r1text = VU2HOPpre1Freq;
+            r2text = VU2HOPpre2Freq;
+            r3text = VU2HOPpre3Freq;
+            r4text = VU2HOPpre4Freq;
+            r5text = VU2HOPpre5Freq;
             r6text = "RETURN";
 
             currentPageTitle = "V/U2 HOPSETS"; //page title and number used for navigating
@@ -9977,61 +10221,61 @@ namespace CDU3000
             TB(page, col14, row0, currentPageNumber + "/2");
 
             TextBox l1callsign = new TextBox();
-            TB(l1callsign, col4, row2, "AIRSPT", Color.White);
+            TB(l1callsign, col4, row2, VU2HOPpre1Name, Color.White);
 
             TextBox l1comsec = new TextBox();
-            TB(l1comsec, col9, row2, "C1", Color.White);
+            TB(l1comsec, col9, row2, VU2HOPpre1Comsec, Color.White);
 
             TextBox l1freq = new TextBox();
-            TB(l1freq, col15, row2, "60.675", Color.White);
+            TB(l1freq, col15, row2, VU2HOPpre1Freq, Color.White);
 
             TextBox l1 = new TextBox();
             TB(l1, col1, row2, l1text, Color.White);
 
             TextBox l2callsign = new TextBox();
-            TB(l2callsign, col4, row4, "REDNET", Color.White);
+            TB(l2callsign, col4, row4, VU2HOPpre2Name, Color.White);
 
             TextBox l2comsec = new TextBox();
-            TB(l2comsec, col9, row4, "C2", Color.White);
+            TB(l2comsec, col9, row4, VU2HOPpre2Comsec, Color.White);
 
             TextBox l2freq = new TextBox();
-            TB(l2freq, col15, row4, "41.950", Color.White);
+            TB(l2freq, col15, row4, VU2HOPpre2Freq, Color.White);
 
             TextBox l2 = new TextBox();
             TB(l2, col1, row4, l2text, Color.White);
 
             TextBox l3callsign = new TextBox();
-            TB(l3callsign, col4, row6, "TOWER", Color.White);
+            TB(l3callsign, col4, row6, VU2HOPpre3Name, Color.White);
 
             TextBox l3comsec = new TextBox();
-            TB(l3comsec, col9, row6, "P4", Color.White);
+            TB(l3comsec, col9, row6, VU2HOPpre3Comsec, Color.White);
 
             TextBox l3freq = new TextBox();
-            TB(l3freq, col15, row6, "130.100", Color.White);
+            TB(l3freq, col15, row6, VU2HOPpre3Freq, Color.White);
 
             TextBox l3 = new TextBox();
             TB(l3, col1, row6, l3text, Color.White);
 
             TextBox l4callsign = new TextBox();
-            TB(l4callsign, col4, row8, "PACMAN", Color.White);
+            TB(l4callsign, col4, row8, VU2HOPpre4Name, Color.White);
 
             TextBox l4comsec = new TextBox();
-            TB(l4comsec, col9, row8, "C3", Color.White);
+            TB(l4comsec, col9, row8, VU2HOPpre4Comsec, Color.White);
 
             TextBox l4freq = new TextBox();
-            TB(l4freq, col15, row8, "42.025", Color.White);
+            TB(l4freq, col15, row8, VU2HOPpre4Freq, Color.White);
 
             TextBox l4 = new TextBox();
             TB(l4, col1, row8, l4text, Color.White);
 
             TextBox l5callsign = new TextBox();
-            TB(l5callsign, col4, row10, "GRNLDR", Color.White);
+            TB(l5callsign, col4, row10, VU2HOPpre5Name, Color.White);
 
             TextBox l5comsec = new TextBox();
-            TB(l5comsec, col9, row10, "P1", Color.White);
+            TB(l5comsec, col9, row10, VU2HOPpre5Comsec, Color.White);
 
             TextBox l5freq = new TextBox();
-            TB(l5freq, col15, row10, "40.475", Color.White);
+            TB(l5freq, col15, row10, VU2HOPpre5Freq, Color.White);
 
             TextBox l5 = new TextBox();
             TB(l5, col1, row10, l5text, Color.White);
@@ -10090,6 +10334,3204 @@ namespace CDU3000
             TB(r6b, col16, row13, "]");
             #endregion
         }
+
+        //private void VU2controlPage1()
+        //{
+        //    CDU7000Page = true;
+
+        //    #region MyRegion
+        //    l1text = "< " + currentVU2chan;
+        //    l2text = "TR";
+        //    l3text = "0";
+        //    l4text = "HIGH";
+        //    l5text = "";
+        //    l6text = "< COMSEC";
+        //    r1text = BandSelection(currentVU2freq, "VU2") + currentVU2freq;
+        //    r2text = "UHF";
+        //    r3text = "";
+        //    r4text = "";
+        //    r5text = "PRESETS";
+        //    r6text = "RETURN";
+
+
+
+        //    currentPageTitle = "V/U2 CONTROL"; //page title and number used for navigating
+        //    currentPageNumber = 1;
+
+        //    TextBox title = new TextBox();//displayed top center of screen
+        //    TB(title, col7, row0, currentPageTitle);
+
+        //    TextBox page = new TextBox();
+        //    TB(page, col14, row0, currentPageNumber + "/2");
+
+        //    TextBox l1t = new TextBox();
+        //    TB(l1t, col4, row2, currentVU2name, Color.White);
+
+        //    TextBox l1 = new TextBox();
+        //    TB(l1, col1, row2, l1text, Color.White);
+
+        //    TextBox l2t = new TextBox();
+        //    TB(l2t, col2, row3, "MODE");
+
+        //    TextBox l2 = new TextBox();
+        //    TB(l2, col1, row4, l2text, Color.Green);
+
+        //    TextBox l2slash = new TextBox();
+        //    TB(l2slash, l2.Location.X + l2.Width, row4, "/", Color.White);
+
+        //    TextBox trg = new TextBox();
+        //    TB(trg, l2slash.Location.X + l2slash.Width, row4, "TR+G", Color.White);
+
+        //    TextBox l3t = new TextBox();
+        //    TB(l3t, col2, row5, "SQUELCH");
+
+        //    TextBox l3 = new TextBox();
+        //    TB(l3, col1, row6, l3text, Color.White);
+
+        //    TextBox l3slash1 = new TextBox();
+        //    TB(l3slash1, l3.Location.X + l3.Width, row6, "/", Color.White);
+
+        //    TextBox l31 = new TextBox();
+        //    TB(l31, l3slash1.Location.X + l3slash1.Width, row6, "1", Color.Green);
+
+        //    TextBox l3slash2 = new TextBox();
+        //    TB(l3slash2, l31.Location.X + l31.Width, row6, "/", Color.White);
+
+        //    TextBox l32 = new TextBox();
+        //    TB(l32, l3slash2.Location.X + l3slash2.Width, row6, "2", Color.White);
+
+        //    TextBox l3slash3 = new TextBox();
+        //    TB(l3slash3, l32.Location.X + l32.Width, row6, "/", Color.White);
+
+        //    TextBox l33 = new TextBox();
+        //    TB(l33, l3slash3.Location.X + l3slash3.Width, row6, "3", Color.White);
+
+        //    TextBox l3slash4 = new TextBox();
+        //    TB(l3slash4, l33.Location.X + l33.Width, row6, "/", Color.White);
+
+        //    TextBox l34 = new TextBox();
+        //    TB(l34, l3slash4.Location.X + l3slash4.Width, row6, "4", Color.White);
+
+        //    TextBox l3slash5 = new TextBox();
+        //    TB(l3slash5, l34.Location.X + l34.Width, row6, "/", Color.White);
+
+        //    TextBox l35 = new TextBox();
+        //    TB(l35, l3slash5.Location.X + l3slash5.Width, row6, "5", Color.White);
+
+
+
+        //    TextBox l4t = new TextBox();
+        //    TB(l4t, col2, row7, "POWER");
+
+        //    TextBox l4 = new TextBox();
+        //    TB(l4, col1, row8, l4text, Color.Green);
+
+        //    TextBox l4slash1 = new TextBox();
+        //    TB(l4slash1, l4.Location.X + l4.Width, row8, "/", Color.White);
+
+        //    TextBox med = new TextBox();
+        //    TB(med, l4slash1.Location.X + l4slash1.Width, row8, "MED", Color.White);
+
+        //    TextBox l4slash2 = new TextBox();
+        //    TB(l4slash2, med.Location.X + med.Width, row8, "/", Color.White);
+
+        //    TextBox low = new TextBox();
+        //    TB(low, l4slash2.Location.X + l4slash2.Width, row8, "LOW", Color.White);
+
+
+
+        //    //TextBox l5t = new TextBox();
+        //    //TB(l5t, col2, row1, "IDENT");
+
+        //    TextBox l5 = new TextBox();
+        //    TB(l5, col1, row10, l5text, Color.White);
+
+        //    //TextBox l6t = new TextBox();
+        //    //TB(l6t, col2, row1, "IDENT");
+
+        //    TextBox l6 = new TextBox();
+        //    TB(l6, col1, row12, l6text, Color.White);
+
+        //    //TextBox r1t = new TextBox();
+        //    //TB(r1t, col2, row1, "IDENT");
+
+        //    TextBox comsec = new TextBox();
+        //    TB(comsec, col9, row2, currentVU2ComsecVar, Color.White);
+
+        //    TextBox r1 = new TextBox();
+        //    TB(r1, col15, row2, r1text, Color.White);
+
+        //    TextBox r2t = new TextBox();
+        //    TB(r2t, col12, row3, "GUARD");
+
+        //    TextBox r2 = new TextBox();
+        //    TB(r2, col15, row4, r2text, Color.White);
+
+        //    TextBox off = new TextBox();
+        //    TB(off, col8, row4, "OFF", Color.Green);
+
+        //    TextBox r2slash1 = new TextBox();
+        //    TB(r2slash1, off.Location.X + off.Width, row4, "/", Color.White);
+
+        //    TextBox vhf = new TextBox();
+        //    TB(vhf, r2slash1.Location.X + r2slash1.Width, row4, "VHF", Color.White);
+
+        //    TextBox r2slash2 = new TextBox();
+        //    TB(r2slash2, vhf.Location.X + vhf.Width, row4, "/", Color.White);
+
+
+
+        //    //TextBox r3t = new TextBox();
+        //    //TB(r3t, col2, row1, "IDENT");
+
+        //    TextBox r3 = new TextBox();
+        //    TB(r3, col15, row6, r3text, Color.White);
+
+        //    //TextBox r4t = new TextBox();
+        //    //TB(r4t, col2, row1, "IDENT");
+
+        //    TextBox r4 = new TextBox();
+        //    TB(r4, col15, row8, r4text, Color.White);
+
+        //    //TextBox r5t = new TextBox();
+        //    //TB(r5t, col15, row9, "PILOT", Color.White);
+
+        //    TextBox r5 = new TextBox();
+        //    TB(r5, col15, row10, r5text, Color.White);
+
+        //    //TextBox r6t = new TextBox();
+        //    //TB(r6t, col2, row1, "IDENT");
+
+        //    TextBox r6 = new TextBox();
+        //    TB(r6, col15, row12, r6text, Color.White);
+
+        //    //TextBox divider = new TextBox();
+        //    //TB(divider, col1, row9, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+
+
+        //    #region Add Arrows if Needed
+        //    //if (r1text != "")
+        //    //{
+        //    //    TextBox r1r = new TextBox();
+        //    //    TB(r1r, col16, row2, ">", Color.White);
+        //    //}
+
+        //    //if (r2text != "")
+        //    //{
+        //    //    TextBox r2r = new TextBox();
+        //    //    TB(r2r, col16, row4, ">", Color.White);
+        //    //}
+
+        //    if (r3text != "")
+        //    {
+        //        TextBox r3r = new TextBox();
+        //        TB(r3r, col16, row6, ">", Color.White);
+        //    }
+
+        //    if (r4text != "")
+        //    {
+        //        TextBox r4r = new TextBox();
+        //        TB(r4r, col16, row8, ">", Color.White);
+        //    }
+
+        //    if (r5text != "")
+        //    {
+        //        TextBox r5r = new TextBox();
+        //        TB(r5r, col16, row10, ">", Color.White);
+        //    }
+
+
+        //    if (r6text != "")
+        //    {
+        //        TextBox r6r = new TextBox();
+        //        TB(r6r, col16, row12, ">", Color.White);
+        //    }
+        //    #endregion
+
+        //    TextBox l6b = new TextBox();
+        //    TB(l6b, col1, row13, "[");
+
+
+        //    TextBox r6b = new TextBox();
+        //    TB(r6b, col16, row13, "]");
+        //    #endregion
+        //}
+
+        //private void VU2controlPage2()
+        //{
+        //    CDU7000Page = true;
+
+        //    #region MyRegion
+        //    l1text = "NOR";
+        //    l2text = "[" + VU2sidetone + "]";
+        //    l3text = "";
+        //    l4text = "< MAINTENANCE";
+        //    l5text = "";
+        //    l6text = "";
+        //    r1text = "";
+        //    r2text = "";
+        //    r3text = "SINCGARS";
+        //    r4text = "";
+        //    r5text = "";
+        //    r6text = "RETURN";
+
+        //    currentPageTitle = "V/U2 CONTROL"; //page title and number used for navigating
+        //    currentPageNumber = 2;
+
+        //    TextBox title = new TextBox();//displayed top center of screen
+        //    TB(title, col7, row0, currentPageTitle);
+
+        //    TextBox page = new TextBox();
+        //    TB(page, col14, row0, currentPageNumber + "/2");
+
+        //    TextBox l1t = new TextBox();
+        //    TB(l1t, col2, row1, "CHAN MODE");
+
+        //    TextBox l1 = new TextBox();
+        //    TB(l1, col1, row2, l1text, Color.Green);
+
+        //    TextBox l1slash1 = new TextBox();
+        //    TB(l1slash1, l1.Location.X + l1.Width, row2, "/", Color.White);
+
+        //    TextBox nar = new TextBox();
+        //    TB(nar, l1slash1.Location.X + l1slash1.Width, row2, "NAR", Color.White);
+
+        //    TextBox l1slash2 = new TextBox();
+        //    TB(l1slash2, nar.Location.X + nar.Width, row2, "/", Color.White);
+
+        //    TextBox atc = new TextBox();
+        //    TB(atc, l1slash2.Location.X + l1slash2.Width, row2, "ATC", Color.White);
+
+        //    TextBox l2t = new TextBox();
+        //    TB(l2t, col2, row3, "SIDETONE");
+
+        //    TextBox l2 = new TextBox();
+        //    TB(l2, col1, row4, l2text, Color.White);
+
+        //    //TextBox l3t = new TextBox();
+        //    //TB(l3t, col2, row1, "IDENT");
+
+        //    TextBox l3 = new TextBox();
+        //    TB(l3, col1, row6, l3text, Color.White);
+
+        //    //TextBox l4t = new TextBox();
+        //    //TB(l4t, col2, row1, "IDENT");
+
+        //    TextBox l4 = new TextBox();
+        //    TB(l4, col1, row8, l4text, Color.White);
+
+        //    //TextBox l5t = new TextBox();
+        //    //TB(l5t, col2, row1, "IDENT");
+
+        //    TextBox l5 = new TextBox();
+        //    TB(l5, col1, row10, l5text, Color.White);
+
+        //    //TextBox l6t = new TextBox();
+        //    //TB(l6t, col2, row1, "IDENT");
+
+        //    TextBox l6 = new TextBox();
+        //    TB(l6, col1, row12, l6text, Color.White);
+
+        //    //TextBox r1t = new TextBox();
+        //    //TB(r1t, col2, row1, "IDENT");
+
+        //    TextBox r1 = new TextBox();
+        //    TB(r1, col15, row2, r1text, Color.White);
+
+        //    //TextBox r2t = new TextBox();
+        //    //TB(r2t, col2, row1, "IDENT");
+
+        //    TextBox r2 = new TextBox();
+        //    TB(r2, col15, row4, r2text, Color.White);
+
+        //    //TextBox r3t = new TextBox();
+        //    //TB(r3t, col2, row1, "IDENT");
+
+        //    TextBox r3 = new TextBox();
+        //    TB(r3, col15, row6, r3text, Color.White);
+
+        //    //TextBox r4t = new TextBox();
+        //    //TB(r4t, col2, row1, "IDENT");
+
+        //    TextBox r4 = new TextBox();
+        //    TB(r4, col15, row8, r4text, Color.White);
+
+        //    //TextBox r5t = new TextBox();
+        //    //TB(r5t, col15, row9, "PILOT", Color.White);
+
+        //    TextBox r5 = new TextBox();
+        //    TB(r5, col15, row10, r5text, Color.White);
+
+        //    //TextBox r6t = new TextBox();
+        //    //TB(r6t, col2, row1, "IDENT");
+
+        //    TextBox r6 = new TextBox();
+        //    TB(r6, col15, row12, r6text, Color.White);
+
+        //    //TextBox divider = new TextBox ( );
+        //    //TB (divider, col1, row9, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+
+
+        //    #region Add Arrows if Needed
+        //    if (r1text != "")
+        //    {
+        //        TextBox r1r = new TextBox();
+        //        TB(r1r, col16, row2, ">", Color.White);
+        //    }
+
+        //    if (r2text != "")
+        //    {
+        //        TextBox r2r = new TextBox();
+        //        TB(r2r, col16, row4, ">", Color.White);
+        //    }
+
+        //    if (r3text != "")
+        //    {
+        //        TextBox r3r = new TextBox();
+        //        TB(r3r, col16, row6, ">", Color.White);
+        //    }
+
+        //    if (r4text != "")
+        //    {
+        //        TextBox r4r = new TextBox();
+        //        TB(r4r, col16, row8, ">", Color.White);
+        //    }
+
+        //    if (r5text != "")
+        //    {
+        //        TextBox r5r = new TextBox();
+        //        TB(r5r, col16, row10, ">", Color.White);
+        //    }
+
+
+        //    if (r6text != "")
+        //    {
+        //        TextBox r6r = new TextBox();
+        //        TB(r6r, col16, row12, ">", Color.White);
+        //    }
+        //    #endregion
+
+        //    TextBox l6b = new TextBox();
+        //    TB(l6b, col1, row13, "[");
+
+
+        //    TextBox r6b = new TextBox();
+        //    TB(r6b, col16, row13, "]");
+        //    #endregion
+        //}
+
+        //private void VU2comsecControlPage()
+        //{
+        //    CDU7000Page = true;
+
+        //    #region MyRegion
+        //    l1text = "< 12 VINSON";
+        //    l2text = "PLAIN";
+        //    l3text = "DATA";
+        //    l4text = "VINSON";
+        //    l5text = "1.2K";
+        //    l6text = "";
+        //    r1text = "GET KEYS <";
+        //    r2text = "";
+        //    r3text = "";
+        //    r4text = "";
+        //    r5text = "";
+        //    r6text = "RETURN";
+
+        //    currentPageTitle = "V/U2 COMSEC CONTROL"; //page title and number used for navigating
+        //    currentPageNumber = 1;
+
+        //    TextBox title = new TextBox();//displayed top center of screen
+        //    TB(title, col7, row0, currentPageTitle);
+
+        //    //TextBox page = new TextBox ( );
+        //    //TB (page, col14, row0, currentPageNumber + "/1");
+
+        //    TextBox l1t = new TextBox();
+        //    TB(l1t, col2, row1, "KEY");
+
+        //    TextBox l1 = new TextBox();
+        //    TB(l1, col1, row2, l1text, Color.White);
+
+        //    TextBox l2t = new TextBox();
+        //    TB(l2t, col2, row3, "COMSEC MODE");
+
+        //    TextBox l2 = new TextBox();
+        //    TB(l2, col1, row4, l2text, Color.Green);
+
+        //    TextBox l2slash = new TextBox();
+        //    TB(l2slash, l2.Location.X + l2.Width, row4, "/", Color.White);
+
+        //    TextBox cipher = new TextBox();
+        //    TB(cipher, l2slash.Location.X + l2slash.Width, row4, "CIPHER", Color.White);
+
+        //    //TextBox l3t = new TextBox();
+        //    //TB(l3t, col2, row1, "IDENT");
+
+        //    TextBox l3 = new TextBox();
+        //    TB(l3, col1, row6, l3text, Color.Green);
+
+        //    TextBox l3slash = new TextBox();
+        //    TB(l3slash, l3.Location.X + l3.Width, row6, "/", Color.White);
+
+        //    TextBox voice = new TextBox();
+        //    TB(voice, l3slash.Location.X + l3slash.Width, row6, "VOICE", Color.White);
+
+        //    TextBox l4t = new TextBox();
+        //    TB(l4t, col2, row7, "KEY TYPE");
+
+        //    TextBox l4 = new TextBox();
+        //    TB(l4, col1, row8, l4text, Color.White);
+
+        //    TextBox l5t = new TextBox();
+        //    TB(l5t, col2, row9, "BAUD");
+
+        //    TextBox l5 = new TextBox();
+        //    TB(l5, col1, row10, l5text, Color.White);
+
+        //    TextBox l5slash1 = new TextBox();
+        //    TB(l5slash1, l5.Location.X + l5.Width, row10, "/", Color.White);
+
+        //    TextBox k24 = new TextBox();
+        //    TB(k24, l5slash1.Location.X + l5slash1.Width, row10, "2.4K", Color.White);
+
+        //    TextBox l5slash2 = new TextBox();
+        //    TB(l5slash2, k24.Location.X + k24.Width, row10, "/", Color.White);
+
+        //    TextBox k96 = new TextBox();
+        //    TB(k96, l5slash2.Location.X + l5slash2.Width, row10, "9.6K", Color.White);
+
+        //    TextBox l5slash3 = new TextBox();
+        //    TB(l5slash3, k96.Location.X + k96.Width, row10, "/", Color.White);
+
+        //    TextBox k12 = new TextBox();
+        //    TB(k12, l5slash3.Location.X + l5slash3.Width, row10, "12K", Color.White);
+
+        //    TextBox l5slash4 = new TextBox();
+        //    TB(l5slash4, k12.Location.X + k12.Width, row10, "/", Color.White);
+
+        //    TextBox k16 = new TextBox();
+        //    TB(k16, l5slash4.Location.X + l5slash4.Width, row10, "16K", Color.Green);
+
+        //    //TextBox l6t = new TextBox();
+        //    //TB(l6t, col2, row1, "IDENT");
+
+        //    TextBox l6 = new TextBox();
+        //    TB(l6, col1, row12, l6text, Color.White);
+
+        //    //TextBox r1t = new TextBox();
+        //    //TB(r1t, col2, row1, "IDENT");
+
+        //    TextBox r1 = new TextBox();
+        //    TB(r1, col15, row2, r1text, Color.White);
+        //    r1.Location = new Point(r1.Location.X + 24, r1.Location.Y);
+
+        //    //TextBox r2t = new TextBox();
+        //    //TB(r2t, col2, row1, "IDENT");
+
+        //    TextBox r2 = new TextBox();
+        //    TB(r2, col15, row4, r2text, Color.White);
+
+        //    //TextBox r3t = new TextBox();
+        //    //TB(r3t, col2, row1, "IDENT");
+
+        //    TextBox r3 = new TextBox();
+        //    TB(r3, col15, row6, r3text, Color.White);
+
+        //    //TextBox r4t = new TextBox();
+        //    //TB(r4t, col2, row1, "IDENT");
+
+        //    TextBox r4 = new TextBox();
+        //    TB(r4, col15, row8, r4text, Color.White);
+
+        //    //TextBox r5t = new TextBox();
+        //    //TB(r5t, col15, row9, "PILOT", Color.White);
+
+        //    TextBox r5 = new TextBox();
+        //    TB(r5, col15, row10, r5text, Color.White);
+
+        //    //TextBox r6t = new TextBox();
+        //    //TB(r6t, col2, row1, "IDENT");
+
+        //    TextBox r6 = new TextBox();
+        //    TB(r6, col15, row12, r6text, Color.White);
+
+        //    //TextBox divider = new TextBox ( );
+        //    //TB (divider, col1, row9, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+
+
+        //    #region Add Arrows if Needed
+        //    //if (r1text != "")
+        //    //{
+        //    //    TextBox r1r = new TextBox ( );
+        //    //    TB (r1r, col16, row2, "<", Color.White);
+        //    //}
+
+        //    if (r2text != "")
+        //    {
+        //        TextBox r2r = new TextBox();
+        //        TB(r2r, col16, row4, ">", Color.White);
+        //    }
+
+        //    if (r3text != "")
+        //    {
+        //        TextBox r3r = new TextBox();
+        //        TB(r3r, col16, row6, ">", Color.White);
+        //    }
+
+        //    if (r4text != "")
+        //    {
+        //        TextBox r4r = new TextBox();
+        //        TB(r4r, col16, row8, ">", Color.White);
+        //    }
+
+        //    if (r5text != "")
+        //    {
+        //        TextBox r5r = new TextBox();
+        //        TB(r5r, col16, row10, ">", Color.White);
+        //    }
+
+
+        //    if (r6text != "")
+        //    {
+        //        TextBox r6r = new TextBox();
+        //        TB(r6r, col16, row12, ">", Color.White);
+        //    }
+        //    #endregion
+
+        //    TextBox l6b = new TextBox();
+        //    TB(l6b, col1, row13, "[");
+
+
+        //    TextBox r6b = new TextBox();
+        //    TB(r6b, col16, row13, "]");
+        //    #endregion
+        //}
+
+        //private void VU2comsecVarPage1()
+        //{
+        //    CDU7000Page = true;
+
+        //    #region MyRegion
+        //    l1text = "< 1";
+        //    l2text = "< 2";
+        //    l3text = "< 3";
+        //    l4text = "< 4";
+        //    l5text = "< 5";
+        //    l6text = "";
+        //    r1text = "6";
+        //    r2text = "7";
+        //    r3text = "8";
+        //    r4text = "9";
+        //    r5text = "10";
+        //    r6text = "RETURN";
+
+        //    currentPageTitle = "V/U2 COMSEC VAR"; //page title and number used for navigating
+        //    currentPageNumber = 1;
+
+        //    TextBox title = new TextBox();//displayed top center of screen
+        //    TB(title, col7, row0, currentPageTitle);
+
+        //    TextBox page = new TextBox();
+        //    TB(page, col14, row0, currentPageNumber + "/2");
+
+        //    TextBox l1t = new TextBox();
+        //    TB(l1t, col3, row2, "VINSON", Color.White);
+
+        //    TextBox l1 = new TextBox();
+        //    TB(l1, col1, row2, l1text, Color.White);
+
+        //    TextBox l2t = new TextBox();
+        //    TB(l2t, col3, row4, "ANDVT", Color.White);
+
+        //    TextBox l2 = new TextBox();
+        //    TB(l2, col1, row4, l2text, Color.White);
+
+        //    TextBox l3t = new TextBox();
+        //    TB(l3t, col3, row6, "1-KG84", Color.White);
+
+        //    TextBox l3 = new TextBox();
+        //    TB(l3, col1, row6, l3text, Color.White);
+
+        //    TextBox l4t = new TextBox();
+        //    TB(l4t, col3, row8, "3-KG84", Color.White);
+
+        //    TextBox l4 = new TextBox();
+        //    TB(l4, col1, row8, l4text, Color.White);
+
+        //    TextBox l5t = new TextBox();
+        //    TB(l5t, col3, row10, "VINSON", Color.White);
+
+        //    TextBox l5 = new TextBox();
+        //    TB(l5, col1, row10, l5text, Color.White);
+
+        //    //TextBox l6t = new TextBox();
+        //    //TB(l6t, col2, row1, "IDENT");
+
+        //    TextBox l6 = new TextBox();
+        //    TB(l6, col1, row12, l6text, Color.White);
+
+        //    TextBox r1t = new TextBox();
+        //    TB(r1t, col14, row2, "FASCIN", Color.White);
+        //    TypeLeft(r1t);
+
+        //    TextBox r1 = new TextBox();
+        //    TB(r1, col15, row2, r1text, Color.White);
+
+        //    TextBox r2t = new TextBox();
+        //    TB(r2t, col14, row4, "FASCIN", Color.White);
+        //    TypeLeft(r2t);
+
+        //    TextBox r2 = new TextBox();
+        //    TB(r2, col15, row4, r2text, Color.White);
+
+        //    TextBox r3t = new TextBox();
+        //    TB(r3t, col14, row6, "VINSON", Color.White);
+        //    TypeLeft(r3t);
+
+        //    TextBox r3 = new TextBox();
+        //    TB(r3, col15, row6, r3text, Color.White);
+
+        //    TextBox r4t = new TextBox();
+        //    TB(r4t, col14, row8, "VINSON", Color.White);
+        //    TypeLeft(r4t);
+
+        //    TextBox r4 = new TextBox();
+        //    TB(r4, col15, row8, r4text, Color.White);
+
+        //    TextBox r5t = new TextBox();
+        //    TB(r5t, col14, row10, "ANDVT", Color.White);
+        //    TypeLeft(r5t);
+
+        //    TextBox r5 = new TextBox();
+        //    TB(r5, col15, row10, r5text, Color.White);
+
+        //    //TextBox r6t = new TextBox();
+        //    //TB(r6t, col2, row1, "IDENT");
+
+        //    TextBox r6 = new TextBox();
+        //    TB(r6, col15, row12, r6text, Color.White);
+
+        //    //TextBox divider = new TextBox ( );
+        //    //TB (divider, col1, row9, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+
+
+        //    #region Add Arrows if Needed
+        //    if (r1text != "")
+        //    {
+        //        TextBox r1r = new TextBox();
+        //        TB(r1r, col16, row2, ">", Color.White);
+        //    }
+
+        //    if (r2text != "")
+        //    {
+        //        TextBox r2r = new TextBox();
+        //        TB(r2r, col16, row4, ">", Color.White);
+        //    }
+
+        //    if (r3text != "")
+        //    {
+        //        TextBox r3r = new TextBox();
+        //        TB(r3r, col16, row6, ">", Color.White);
+        //    }
+
+        //    if (r4text != "")
+        //    {
+        //        TextBox r4r = new TextBox();
+        //        TB(r4r, col16, row8, ">", Color.White);
+        //    }
+
+        //    if (r5text != "")
+        //    {
+        //        TextBox r5r = new TextBox();
+        //        TB(r5r, col16, row10, ">", Color.White);
+        //    }
+
+
+        //    if (r6text != "")
+        //    {
+        //        TextBox r6r = new TextBox();
+        //        TB(r6r, col16, row12, ">", Color.White);
+        //    }
+        //    #endregion
+
+        //    TextBox l6b = new TextBox();
+        //    TB(l6b, col1, row13, "[");
+
+
+        //    TextBox r6b = new TextBox();
+        //    TB(r6b, col16, row13, "]");
+        //    #endregion
+        //}
+
+        //private void VU2comsecVarPage2()
+        //{
+        //    CDU7000Page = true;
+        //}
+
+        //private void VU2sincgarsControlPage()
+        //{
+        //    CDU7000Page = true;
+
+        //    #region MyRegion
+        //    l1text = ": RECV HOP";
+        //    l2text = "NO FILL";
+        //    l3text = ": [1]";
+        //    l4text = "";
+        //    l5text = "[01/15:29]";
+        //    l6text = "< LOCKOUTS";
+        //    r1text = "ERF";
+        //    r2text = "OFF";
+        //    r3text = "H2";
+        //    r4text = "LATE ENTRY";
+        //    r5text = "GPS TIME";
+        //    r6text = "RETURN";
+
+        //    currentPageTitle = "V/U2 SINCGARS"; //page title and number used for navigating
+        //    currentPageNumber = 1;
+
+        //    TextBox title = new TextBox();//displayed top center of screen
+        //    TB(title, col7, row0, currentPageTitle);
+
+        //    //TextBox page = new TextBox ( );
+        //    //TB (page, col14, row0, currentPageNumber + "/1");
+
+        //    TextBox l1t = new TextBox();
+        //    TB(l1t, col2, row1, "RECV / SEND MODE");
+
+        //    TextBox l1 = new TextBox();
+        //    TB(l1, col1, row2, l1text, Color.White);
+
+        //    TextBox l2t = new TextBox();
+        //    TB(l2t, col2, row3, "CHANNEL STATUS");
+
+        //    TextBox l2 = new TextBox();
+        //    TB(l2, col1, row4, l2text, Color.White);
+
+        //    TextBox l3t = new TextBox();
+        //    TB(l3t, col2, row5, "CHANNEL");
+
+        //    TextBox l3 = new TextBox();
+        //    TB(l3, col1, row6, l3text, Color.White);
+
+        //    TextBox l4t = new TextBox();
+        //    TB(l4t, col2, row7, "CS COLD");
+
+        //    TextBox l4 = new TextBox();
+        //    TB(l4, col1, row8, l4text, Color.White);
+
+        //    TextBox l5t = new TextBox();
+        //    TB(l5t, col2, row9, "TOD");
+
+        //    TextBox l5 = new TextBox();
+        //    TB(l5, col1, row10, l5text, Color.White);
+
+        //    //TextBox l6t = new TextBox();
+        //    //TB(l6t, col2, row11, "IDENT");
+
+        //    TextBox l6 = new TextBox();
+        //    TB(l6, col1, row12, l6text, Color.White);
+
+        //    //TextBox r1t = new TextBox();
+        //    //TB(r1t, col14+20, row1, "IDENT");
+        //    //TypeLeft(r1t);
+
+        //    TextBox r1 = new TextBox();
+        //    TB(r1, col15, row2, r1text, Color.White);
+
+        //    TextBox r2t = new TextBox();
+        //    TB(r2t, col14 + 20, row3, "MASTER");
+        //    TypeLeft(r2t);
+
+        //    TextBox r2on = new TextBox();
+        //    TB(r2on, col11 + 10, row4, "ON", Color.White);
+
+        //    TextBox r2slash = new TextBox();
+        //    TB(r2slash, r2on.Location.X + r2on.Width, row4, "/", Color.White);
+
+        //    TextBox r2 = new TextBox();
+        //    TB(r2, col15, row4, r2text, Color.Green);
+
+        //    TextBox r3t = new TextBox();
+        //    TB(r3t, col14 + 20, row5, "FH MODE");
+        //    TypeLeft(r3t);
+
+        //    TextBox r3h1 = new TextBox();
+        //    TB(r3h1, col12, row6, "H1", Color.Green);
+
+        //    TextBox r3slash = new TextBox();
+        //    TB(r3slash, r3h1.Location.X + r3h1.Width, row6, "/", Color.White);
+
+        //    TextBox r3 = new TextBox();
+        //    TB(r3, col15, row6, r3text, Color.White);
+
+        //    TextBox r4t = new TextBox();
+        //    TB(r4t, col14 + 20, row7, "P1      F   50.075");
+        //    TypeLeft(r4t);
+
+        //    TextBox r4 = new TextBox();
+        //    TB(r4, col15, row8, r4text, Color.White);
+
+        //    //TextBox r5t = new TextBox();
+        //    //TB(r5t, col14+20, row9, "PILOT", Color.White);
+        //    //TypeLeft(r5t);
+
+        //    TextBox r5 = new TextBox();
+        //    TB(r5, col15, row10, r5text, Color.White);
+
+        //    //TextBox r6t = new TextBox();
+        //    //TB(r6t, col14+20, row11, "IDENT");
+        //    //TypeLeft(r6t);
+
+        //    TextBox r6 = new TextBox();
+        //    TB(r6, col15, row12, r6text, Color.White);
+
+        //    //TextBox divider = new TextBox ( );
+        //    //TB (divider, col1, row9, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+
+
+        //    #region Add Arrows if Needed
+        //    if (r1text != "")
+        //    {
+        //        TextBox r1r = new TextBox();
+        //        TB(r1r, col16, row2, "<", Color.White);
+        //    }
+
+        //    //if (r2text != "")
+        //    //{
+        //    //    TextBox r2r = new TextBox ( );
+        //    //    TB (r2r, col16, row4, ">", Color.White);
+        //    //}
+
+        //    //if (r3text != "")
+        //    //{
+        //    //    TextBox r3r = new TextBox ( );
+        //    //    TB (r3r, col16, row6, ">", Color.White);
+        //    //}
+
+        //    if (r4text != "")
+        //    {
+        //        TextBox r4r = new TextBox();
+        //        TB(r4r, col16, row8, "<", Color.White);
+        //    }
+
+        //    if (r5text != "")
+        //    {
+        //        TextBox r5r = new TextBox();
+        //        TB(r5r, col16, row10, "<", Color.White);
+        //    }
+
+
+        //    if (r6text != "")
+        //    {
+        //        TextBox r6r = new TextBox();
+        //        TB(r6r, col16, row12, ">", Color.White);
+        //    }
+        //    #endregion
+
+        //    TextBox l6b = new TextBox();
+        //    TB(l6b, col1, row13, "[");
+
+
+        //    TextBox r6b = new TextBox();
+        //    TB(r6b, col16, row13, "]");
+        //    #endregion
+        //}
+
+        //private void VU2lockoutsPage()
+        //{
+        //    CDU7000Page = true;
+
+        //    #region MyRegion
+        //    l1text = "L1";
+        //    l2text = "L217";
+        //    l3text = "L3";
+        //    l4text = "L488";
+        //    l5text = "L562";
+        //    l6text = "L6 - -";
+        //    r1text = "L7 - -";
+        //    r2text = "L8 - -";
+        //    r3text = "";
+        //    r4text = "";
+        //    r5text = "";
+        //    r6text = "RETURN";
+
+        //    currentPageTitle = "V/U2 LOCKOUTS"; //page title and number used for navigating
+        //    currentPageNumber = 1;
+
+        //    TextBox title = new TextBox();//displayed top center of screen
+        //    TB(title, col7, row0, currentPageTitle);
+
+        //    //TextBox page = new TextBox ( );
+        //    //TB (page, col14, row0, currentPageNumber + "/1");
+
+        //    //TextBox l1t = new TextBox();
+        //    //TB(l1t, col2, row1, "IDENT");
+
+        //    TextBox l1 = new TextBox();
+        //    TB(l1, col1, row2, l1text, Color.White);
+
+        //    //TextBox l2t = new TextBox();
+        //    //TB(l2t, col2, row3, "LOCATION");
+
+        //    TextBox l2 = new TextBox();
+        //    TB(l2, col1, row4, l2text, Color.White);
+
+        //    //TextBox l3t = new TextBox();
+        //    //TB(l3t, col2, row5, "IDENT");
+
+        //    TextBox l3 = new TextBox();
+        //    TB(l3, col1, row6, l3text, Color.White);
+
+        //    //TextBox l4t = new TextBox();
+        //    //TB(l4t, col2, row7, "IDENT");
+
+        //    TextBox l4 = new TextBox();
+        //    TB(l4, col1, row8, l4text, Color.White);
+
+        //    //TextBox l5t = new TextBox();
+        //    //TB(l5t, col2, row9, "IDENT");
+
+        //    TextBox l5 = new TextBox();
+        //    TB(l5, col1, row10, l5text, Color.White);
+
+        //    //TextBox l6t = new TextBox();
+        //    //TB(l6t, col2, row11, "IDENT");
+
+        //    TextBox l6 = new TextBox();
+        //    TB(l6, col1, row12, l6text, Color.White);
+
+        //    //TextBox r1t = new TextBox();
+        //    //TB(r1t, col14+20, row1, "IDENT");
+        //    //TypeLeft(r1t);
+
+        //    TextBox r1 = new TextBox();
+        //    TB(r1, col15, row2, r1text, Color.White);
+
+        //    //TextBox r2t = new TextBox();
+        //    //TB(r2t, col14+20, row3, "IDENT");
+        //    //TypeLeft(r2t);
+
+        //    TextBox r2 = new TextBox();
+        //    TB(r2, col15, row4, r2text, Color.White);
+
+        //    //TextBox r3t = new TextBox();
+        //    //TB(r3t, col14+20, row5, "IDENT");
+        //    //TypeLeft(r3t);
+
+        //    TextBox r3 = new TextBox();
+        //    TB(r3, col15, row6, r3text, Color.White);
+
+        //    //TextBox r4t = new TextBox();
+        //    //TB(r4t, col14+20, row7, "IDENT");
+        //    //TypeLeft(r4t);
+
+        //    TextBox r4 = new TextBox();
+        //    TB(r4, col15, row8, r4text, Color.White);
+
+        //    //TextBox r5t = new TextBox();
+        //    //TB(r5t, col14+20, row9, "PILOT", Color.White);
+        //    //TypeLeft(r5t);
+
+        //    TextBox r5 = new TextBox();
+        //    TB(r5, col15, row10, r5text, Color.White);
+
+        //    //TextBox r6t = new TextBox();
+        //    //TB(r6t, col14+20, row11, "IDENT");
+        //    //TypeLeft(r6t);
+
+        //    TextBox r6 = new TextBox();
+        //    TB(r6, col15, row12, r6text, Color.White);
+
+        //    //TextBox divider = new TextBox ( );
+        //    //TB (divider, col1, row9, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+
+
+        //    #region Add Arrows if Needed
+        //    //if (r1text != "")
+        //    //{
+        //    //    TextBox r1r = new TextBox ( );
+        //    //    TB (r1r, col16, row2, ">", Color.White);
+        //    //}
+
+        //    //if (r2text != "")
+        //    //{
+        //    //    TextBox r2r = new TextBox ( );
+        //    //    TB (r2r, col16, row4, ">", Color.White);
+        //    //}
+
+        //    //if (r3text != "")
+        //    //{
+        //    //    TextBox r3r = new TextBox ( );
+        //    //    TB (r3r, col16, row6, ">", Color.White);
+        //    //}
+
+        //    //if (r4text != "")
+        //    //{
+        //    //    TextBox r4r = new TextBox ( );
+        //    //    TB (r4r, col16, row8, ">", Color.White);
+        //    //}
+
+        //    //if (r5text != "")
+        //    //{
+        //    //    TextBox r5r = new TextBox ( );
+        //    //    TB (r5r, col16, row10, ">", Color.White);
+        //    //}
+
+
+        //    if (r6text != "")
+        //    {
+        //        TextBox r6r = new TextBox();
+        //        TB(r6r, col16, row12, ">", Color.White);
+        //    }
+        //    #endregion
+
+        //    TextBox l6b = new TextBox();
+        //    TB(l6b, col1, row13, "[");
+
+
+        //    TextBox r6b = new TextBox();
+        //    TB(r6b, col16, row13, "]");
+        //    #endregion
+        //}
+
+        //#region VU2 MX Pages
+
+        //private void VU2maintenancePage()
+        //{
+        //    CDU7000Page = true;
+
+        //    #region MyRegion
+        //    l1text = "< LOOPBACK";
+        //    l2text = "";
+        //    l3text = "";
+        //    l4text = "";
+        //    l5text = "";
+        //    l6text = "";
+        //    r1text = "CLEAR";
+        //    r2text = "FILL";
+        //    r3text = "";
+        //    r4text = "";
+        //    r5text = "";
+        //    r6text = "RETURN";
+
+        //    currentPageTitle = "V/U2 MAINTENANCE"; //page title and number used for navigating
+        //    currentPageNumber = 1;
+
+        //    TextBox title = new TextBox();//displayed top center of screen
+        //    TB(title, col7, row0, currentPageTitle);
+
+        //    //TextBox page = new TextBox ( );
+        //    //TB (page, col14, row0, currentPageNumber + "/1");
+
+        //    //TextBox l1t = new TextBox();
+        //    //TB(l1t, col2, row1, "IDENT");
+
+        //    TextBox l1 = new TextBox();
+        //    TB(l1, col1, row2, l1text, Color.White);
+
+        //    //TextBox l2t = new TextBox();
+        //    //TB(l2t, col2, row3, "LOCATION");
+
+        //    TextBox l2 = new TextBox();
+        //    TB(l2, col1, row4, l2text, Color.White);
+
+        //    //TextBox l3t = new TextBox();
+        //    //TB(l3t, col2, row5, "IDENT");
+
+        //    TextBox l3 = new TextBox();
+        //    TB(l3, col1, row6, l3text, Color.White);
+
+        //    //TextBox l4t = new TextBox();
+        //    //TB(l4t, col2, row7, "IDENT");
+
+        //    TextBox l4 = new TextBox();
+        //    TB(l4, col1, row8, l4text, Color.White);
+
+        //    //TextBox l5t = new TextBox();
+        //    //TB(l5t, col2, row9, "IDENT");
+
+        //    TextBox l5 = new TextBox();
+        //    TB(l5, col1, row10, l5text, Color.White);
+
+        //    //TextBox l6t = new TextBox();
+        //    //TB(l6t, col2, row11, "IDENT");
+
+        //    TextBox l6 = new TextBox();
+        //    TB(l6, col1, row12, l6text, Color.White);
+
+        //    //TextBox r1t = new TextBox();
+        //    //TB(r1t, col14+20, row1, "IDENT");
+        //    //TypeLeft(r1t);
+
+        //    TextBox r1 = new TextBox();
+        //    TB(r1, col15, row2, r1text, Color.White);
+
+        //    //TextBox r2t = new TextBox();
+        //    //TB(r2t, col14+20, row3, "IDENT");
+        //    //TypeLeft(r2t);
+
+        //    TextBox r2 = new TextBox();
+        //    TB(r2, col15, row4, r2text, Color.White);
+
+        //    //TextBox r3t = new TextBox();
+        //    //TB(r3t, col14+20, row5, "IDENT");
+        //    //TypeLeft(r3t);
+
+        //    TextBox r3 = new TextBox();
+        //    TB(r3, col15, row6, r3text, Color.White);
+
+        //    //TextBox r4t = new TextBox();
+        //    //TB(r4t, col14+20, row7, "IDENT");
+        //    //TypeLeft(r4t);
+
+        //    TextBox r4 = new TextBox();
+        //    TB(r4, col15, row8, r4text, Color.White);
+
+        //    //TextBox r5t = new TextBox();
+        //    //TB(r5t, col14+20, row9, "PILOT", Color.White);
+        //    //TypeLeft(r5t);
+
+        //    TextBox r5 = new TextBox();
+        //    TB(r5, col15, row10, r5text, Color.White);
+
+        //    //TextBox r6t = new TextBox();
+        //    //TB(r6t, col14+20, row11, "IDENT");
+        //    //TypeLeft(r6t);
+
+        //    TextBox r6 = new TextBox();
+        //    TB(r6, col15, row12, r6text, Color.White);
+
+        //    //TextBox divider = new TextBox ( );
+        //    //TB (divider, col1, row9, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+
+
+        //    #region Add Arrows if Needed
+        //    if (r1text != "")
+        //    {
+        //        TextBox r1r = new TextBox();
+        //        TB(r1r, col16, row2, ">", Color.White);
+        //    }
+
+        //    if (r2text != "")
+        //    {
+        //        TextBox r2r = new TextBox();
+        //        TB(r2r, col16, row4, ">", Color.White);
+        //    }
+
+        //    if (r3text != "")
+        //    {
+        //        TextBox r3r = new TextBox();
+        //        TB(r3r, col16, row6, ">", Color.White);
+        //    }
+
+        //    if (r4text != "")
+        //    {
+        //        TextBox r4r = new TextBox();
+        //        TB(r4r, col16, row8, ">", Color.White);
+        //    }
+
+        //    if (r5text != "")
+        //    {
+        //        TextBox r5r = new TextBox();
+        //        TB(r5r, col16, row10, ">", Color.White);
+        //    }
+
+
+        //    if (r6text != "")
+        //    {
+        //        TextBox r6r = new TextBox();
+        //        TB(r6r, col16, row12, ">", Color.White);
+        //    }
+        //    #endregion
+
+        //    TextBox l6b = new TextBox();
+        //    TB(l6b, col1, row13, "[");
+
+
+        //    TextBox r6b = new TextBox();
+        //    TB(r6b, col16, row13, "]");
+        //    #endregion
+        //}
+
+        //private void VU2ClearNVM()
+        //{
+        //    CDU7000Page = true;
+
+        //    #region MyRegion
+        //    l1text = "> CLEAR ALL";
+        //    l2text = "> CLEAR BIT FAULTS";
+        //    l3text = "> CLEAR PRESETS";
+        //    l4text = "";
+        //    l5text = "";
+        //    l6text = "";
+        //    r1text = "";
+        //    r2text = "";
+        //    r3text = "";
+        //    r4text = "";
+        //    r5text = "";
+        //    r6text = "RETURN";
+
+        //    currentPageTitle = "V/U2 CLEAR NVM"; //page title and number used for navigating
+        //    currentPageNumber = 1;
+
+        //    TextBox title = new TextBox();//displayed top center of screen
+        //    TB(title, col7, row0, currentPageTitle);
+
+        //    //TextBox page = new TextBox ( );
+        //    //TB (page, col14, row0, currentPageNumber + "/1");
+
+        //    //TextBox l1t = new TextBox();
+        //    //TB(l1t, col2, row1, "IDENT");
+
+        //    TextBox l1 = new TextBox();
+        //    TB(l1, col1, row2, l1text, Color.White);
+
+        //    //TextBox l2t = new TextBox();
+        //    //TB(l2t, col2, row3, "LOCATION");
+
+        //    TextBox l2 = new TextBox();
+        //    TB(l2, col1, row4, l2text, Color.White);
+
+        //    //TextBox l3t = new TextBox();
+        //    //TB(l3t, col2, row5, "IDENT");
+
+        //    TextBox l3 = new TextBox();
+        //    TB(l3, col1, row6, l3text, Color.White);
+
+        //    //TextBox l4t = new TextBox();
+        //    //TB(l4t, col2, row7, "IDENT");
+
+        //    TextBox l4 = new TextBox();
+        //    TB(l4, col1, row8, l4text, Color.White);
+
+        //    //TextBox l5t = new TextBox();
+        //    //TB(l5t, col2, row9, "IDENT");
+
+        //    TextBox l5 = new TextBox();
+        //    TB(l5, col1, row10, l5text, Color.White);
+
+        //    //TextBox l6t = new TextBox();
+        //    //TB(l6t, col2, row11, "IDENT");
+
+        //    TextBox l6 = new TextBox();
+        //    TB(l6, col1, row12, l6text, Color.White);
+
+        //    //TextBox r1t = new TextBox();
+        //    //TB(r1t, col14+20, row1, "IDENT");
+        //    //TypeLeft(r1t);
+
+        //    TextBox r1 = new TextBox();
+        //    TB(r1, col15, row2, r1text, Color.White);
+
+        //    //TextBox r2t = new TextBox();
+        //    //TB(r2t, col14+20, row3, "IDENT");
+        //    //TypeLeft(r2t);
+
+        //    TextBox r2 = new TextBox();
+        //    TB(r2, col15, row4, r2text, Color.White);
+
+        //    //TextBox r3t = new TextBox();
+        //    //TB(r3t, col14+20, row5, "IDENT");
+        //    //TypeLeft(r3t);
+
+        //    TextBox r3 = new TextBox();
+        //    TB(r3, col15, row6, r3text, Color.White);
+
+        //    //TextBox r4t = new TextBox();
+        //    //TB(r4t, col14+20, row7, "IDENT");
+        //    //TypeLeft(r4t);
+
+        //    TextBox r4 = new TextBox();
+        //    TB(r4, col15, row8, r4text, Color.White);
+
+        //    //TextBox r5t = new TextBox();
+        //    //TB(r5t, col14+20, row9, "PILOT", Color.White);
+        //    //TypeLeft(r5t);
+
+        //    TextBox r5 = new TextBox();
+        //    TB(r5, col15, row10, r5text, Color.White);
+
+        //    //TextBox r6t = new TextBox();
+        //    //TB(r6t, col14+20, row11, "IDENT");
+        //    //TypeLeft(r6t);
+
+        //    TextBox r6 = new TextBox();
+        //    TB(r6, col15, row12, r6text, Color.White);
+
+        //    //TextBox divider = new TextBox ( );
+        //    //TB (divider, col1, row9, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+
+
+        //    #region Add Arrows if Needed
+        //    if (r1text != "")
+        //    {
+        //        TextBox r1r = new TextBox();
+        //        TB(r1r, col16, row2, ">", Color.White);
+        //    }
+
+        //    if (r2text != "")
+        //    {
+        //        TextBox r2r = new TextBox();
+        //        TB(r2r, col16, row4, ">", Color.White);
+        //    }
+
+        //    if (r3text != "")
+        //    {
+        //        TextBox r3r = new TextBox();
+        //        TB(r3r, col16, row6, ">", Color.White);
+        //    }
+
+        //    if (r4text != "")
+        //    {
+        //        TextBox r4r = new TextBox();
+        //        TB(r4r, col16, row8, ">", Color.White);
+        //    }
+
+        //    if (r5text != "")
+        //    {
+        //        TextBox r5r = new TextBox();
+        //        TB(r5r, col16, row10, ">", Color.White);
+        //    }
+
+
+        //    if (r6text != "")
+        //    {
+        //        TextBox r6r = new TextBox();
+        //        TB(r6r, col16, row12, ">", Color.White);
+        //    }
+        //    #endregion
+
+        //    TextBox l6b = new TextBox();
+        //    TB(l6b, col1, row13, "[");
+
+
+        //    TextBox r6b = new TextBox();
+        //    TB(r6b, col16, row13, "]");
+        //    #endregion
+        //}
+
+        //private void VU2Fill()
+        //{
+        //    CDU7000Page = true;
+
+        //    #region MyRegion
+        //    l1text = "< COMSEC";
+        //    l2text = "";
+        //    l3text = "< TRANSEC";
+        //    l4text = "< SINCGARS";
+        //    l5text = "";
+        //    l6text = "";
+        //    r1text = "LOAD ALL";
+        //    r2text = "";
+        //    r3text = "";
+        //    r4text = "";
+        //    r5text = "";
+        //    r6text = "RETURN";
+
+        //    currentPageTitle = "V/U2 FILL"; //page title and number used for navigating
+        //    currentPageNumber = 1;
+
+        //    TextBox title = new TextBox();//displayed top center of screen
+        //    TB(title, col7, row0, currentPageTitle);
+
+        //    //TextBox page = new TextBox ( );
+        //    //TB (page, col14, row0, currentPageNumber + "/1");
+
+        //    TextBox l1 = new TextBox();
+        //    TB(l1, col1, row2, l1text, Color.White);
+
+        //    //TextBox l2t = new TextBox();
+        //    //TB(l2t, col2, row3, "LOCATION");
+
+        //    TextBox l2 = new TextBox();
+        //    TB(l2, col1, row4, l2text, Color.White);
+
+        //    //TextBox l3t = new TextBox();
+        //    //TB(l3t, col2, row5, "IDENT");
+
+        //    TextBox l3 = new TextBox();
+        //    TB(l3, col1, row6, l3text, Color.White);
+
+        //    //TextBox l4t = new TextBox();
+        //    //TB(l4t, col2, row7, "IDENT");
+
+        //    TextBox l4 = new TextBox();
+        //    TB(l4, col1, row8, l4text, Color.White);
+
+        //    //TextBox l5t = new TextBox();
+        //    //TB(l5t, col2, row9, "IDENT");
+
+        //    TextBox l5 = new TextBox();
+        //    TB(l5, col1, row10, l5text, Color.White);
+
+        //    //TextBox l6t = new TextBox();
+        //    //TB(l6t, col2, row11, "IDENT");
+
+        //    TextBox l6 = new TextBox();
+        //    TB(l6, col1, row12, l6text, Color.White);
+
+        //    //TextBox r1t = new TextBox();
+        //    //TB(r1t, col14+20, row1, "IDENT");
+        //    //TypeLeft(r1t);
+
+
+        //    TextBox r1r = new TextBox();
+        //    TB(r1r, col16, row2, "<", Color.White);
+
+        //    TextBox r1 = new TextBox();
+        //    TB(r1, col15, row2, r1text, Color.White);
+
+        //    //TextBox r2t = new TextBox();
+        //    //TB(r2t, col14+20, row3, "IDENT");
+        //    //TypeLeft(r2t);
+
+        //    TextBox r2 = new TextBox();
+        //    TB(r2, col15, row4, r2text, Color.White);
+
+        //    //TextBox r3t = new TextBox();
+        //    //TB(r3t, col14+20, row5, "IDENT");
+        //    //TypeLeft(r3t);
+
+        //    TextBox r3 = new TextBox();
+        //    TB(r3, col15, row6, r3text, Color.White);
+
+        //    //TextBox r4t = new TextBox();
+        //    //TB(r4t, col14+20, row7, "IDENT");
+        //    //TypeLeft(r4t);
+
+        //    TextBox r4 = new TextBox();
+        //    TB(r4, col15, row8, r4text, Color.White);
+
+        //    //TextBox r5t = new TextBox();
+        //    //TB(r5t, col14+20, row9, "PILOT", Color.White);
+        //    //TypeLeft(r5t);
+
+        //    TextBox r5 = new TextBox();
+        //    TB(r5, col15, row10, r5text, Color.White);
+
+        //    //TextBox r6t = new TextBox();
+        //    //TB(r6t, col14+20, row11, "IDENT");
+        //    //TypeLeft(r6t);
+
+        //    TextBox r6 = new TextBox();
+        //    TB(r6, col15, row12, r6text, Color.White);
+
+        //    //TextBox divider = new TextBox ( );
+        //    //TB (divider, col1, row9, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+
+
+        //    #region Add Arrows if Needed
+        //    if (r6text != "")
+        //    {
+        //        TextBox r6r = new TextBox();
+        //        TB(r6r, col16, row12, ">", Color.White);
+        //    }
+        //    #endregion
+
+        //    TextBox l6b = new TextBox();
+        //    TB(l6b, col1, row13, "[");
+
+
+        //    TextBox r6b = new TextBox();
+        //    TB(r6b, col16, row13, "]");
+        //    #endregion
+        //}
+
+        //private void VU2SincgarsFill()
+        //{
+        //    CDU7000Page = true;
+
+        //    #region MyRegion
+        //    l1text = "> FILL";
+        //    l2text = "> FILL";
+        //    l3text = "";
+        //    l4text = "";
+        //    l5text = "";
+        //    l6text = "";
+        //    r1text = "[ 1]";
+        //    r2text = "[1]";
+        //    r3text = "SET F2";
+        //    r4text = "";
+        //    r5text = "";
+        //    r6text = "RETURN";
+
+        //    currentPageTitle = "V/U2 SINCGARS FILL"; //page title and number used for navigating
+        //    currentPageNumber = 1;
+
+        //    TextBox title = new TextBox();//displayed top center of screen
+        //    TB(title, col7, row0, currentPageTitle);
+
+        //    //TextBox page = new TextBox ( );
+        //    //TB (page, col14, row0, currentPageNumber + "/1");
+
+        //    //TextBox l1t = new TextBox();
+        //    //TB(l1t, col2, row1, "IDENT");
+
+        //    TextBox l1 = new TextBox();
+        //    TB(l1, col1, row2, l1text, Color.White);
+
+        //    TextBox l1center = new TextBox();
+        //    TB(l1center, col5, row2, "HOP=256", Color.White);
+
+        //    //TextBox l2t = new TextBox();
+        //    //TB(l2t, col2, row3, "LOCATION");
+
+        //    TextBox l2 = new TextBox();
+        //    TB(l2, col1, row4, l2text, Color.White);
+
+        //    TextBox l2center = new TextBox();
+        //    TB(l2center, col5, row4, "LOCK=202", Color.White);
+
+        //    //TextBox l3t = new TextBox();
+        //    //TB(l3t, col2, row5, "IDENT");
+
+        //    TextBox l3 = new TextBox();
+        //    TB(l3, col1, row6, l3text, Color.White);
+
+        //    //TextBox l4t = new TextBox();
+        //    //TB(l4t, col2, row7, "IDENT");
+
+        //    TextBox l4 = new TextBox();
+        //    TB(l4, col1, row8, l4text, Color.White);
+
+        //    //TextBox l5t = new TextBox();
+        //    //TB(l5t, col2, row9, "IDENT");
+
+        //    TextBox l5 = new TextBox();
+        //    TB(l5, col1, row10, l5text, Color.White);
+
+        //    //TextBox l6t = new TextBox();
+        //    //TB(l6t, col2, row11, "IDENT");
+
+        //    TextBox l6 = new TextBox();
+        //    TB(l6, col1, row12, l6text, Color.White);
+
+        //    TextBox r1t = new TextBox();
+        //    TB(r1t, col14 + 20, row1, "CHANNEL");
+        //    TypeLeft(r1t);
+
+        //    TextBox r1 = new TextBox();
+        //    TB(r1, col15, row2, r1text, Color.White);
+
+        //    TextBox r2t = new TextBox();
+        //    TB(r2t, col14 + 20, row3, "CHANNEL");
+        //    TypeLeft(r2t);
+
+        //    TextBox r2 = new TextBox();
+        //    TB(r2, col15, row4, r2text, Color.White);
+
+        //    //TextBox r3t = new TextBox();
+        //    //TB(r3t, col14+20, row5, "IDENT");
+        //    //TypeLeft(r3t);
+
+        //    TextBox r3 = new TextBox();
+        //    TB(r3, col15, row6, r3text, Color.White);
+
+        //    //TextBox r4t = new TextBox();
+        //    //TB(r4t, col14+20, row7, "IDENT");
+        //    //TypeLeft(r4t);
+
+        //    TextBox r4 = new TextBox();
+        //    TB(r4, col15, row8, r4text, Color.White);
+
+        //    //TextBox r5t = new TextBox();
+        //    //TB(r5t, col14+20, row9, "PILOT", Color.White);
+        //    //TypeLeft(r5t);
+
+        //    TextBox r5 = new TextBox();
+        //    TB(r5, col15, row10, r5text, Color.White);
+
+        //    //TextBox r6t = new TextBox();
+        //    //TB(r6t, col14+20, row11, "IDENT");
+        //    //TypeLeft(r6t);
+
+        //    TextBox r6 = new TextBox();
+        //    TB(r6, col15, row12, r6text, Color.White);
+
+
+        //    #region Add Arrows if Needed
+        //    if (r1text != "")
+        //    {
+        //        TextBox r1r = new TextBox();
+        //        TB(r1r, col16, row2, ":", Color.White);
+        //    }
+
+        //    if (r2text != "")
+        //    {
+        //        TextBox r2r = new TextBox();
+        //        TB(r2r, col16, row4, ":", Color.White);
+        //    }
+
+        //    if (r3text != "")
+        //    {
+        //        TextBox r3r = new TextBox();
+        //        TB(r3r, col16, row6, "<", Color.White);
+        //    }
+
+        //    if (r4text != "")
+        //    {
+        //        TextBox r4r = new TextBox();
+        //        TB(r4r, col16, row8, ">", Color.White);
+        //    }
+
+        //    if (r5text != "")
+        //    {
+        //        TextBox r5r = new TextBox();
+        //        TB(r5r, col16, row10, ">", Color.White);
+        //    }
+
+
+        //    if (r6text != "")
+        //    {
+        //        TextBox r6r = new TextBox();
+        //        TB(r6r, col16, row12, ">", Color.White);
+        //    }
+        //    #endregion
+
+        //    TextBox l6b = new TextBox();
+        //    TB(l6b, col1, row13, "[");
+
+
+        //    TextBox r6b = new TextBox();
+        //    TB(r6b, col16, row13, "]");
+        //    #endregion
+        //}
+
+        //private void VU2TransecFill()
+        //{
+        //    CDU7000Page = true;
+
+        //    #region MyRegion
+        //    l1text = "[08]";
+        //    l2text = "> LOAD";
+        //    l3text = "";
+        //    l4text = "";
+        //    l5text = "";
+        //    l6text = "";
+        //    r1text = "";
+        //    r2text = "SET F2";
+        //    r3text = "";
+        //    r4text = "";
+        //    r5text = "";
+        //    r6text = "RETURN";
+
+        //    currentPageTitle = "V/U2 TRANSEC FILL"; //page title and number used for navigating
+        //    currentPageNumber = 1;
+
+        //    TextBox title = new TextBox();//displayed top center of screen
+        //    TB(title, col7, row0, currentPageTitle);
+
+        //    TextBox l1t = new TextBox();
+        //    TB(l1t, col2, row1, "KEY");
+
+        //    TextBox l1 = new TextBox();
+        //    TB(l1, col1, row2, l1text, Color.White);
+
+        //    //TextBox l2t = new TextBox();
+        //    //TB(l2t, col2, row3, "LOCATION");
+
+        //    TextBox l2 = new TextBox();
+        //    TB(l2, col1, row4, l2text, Color.White);
+
+        //    //TextBox l3t = new TextBox();
+        //    //TB(l3t, col2, row5, "IDENT");
+
+        //    TextBox l3center = new TextBox();
+        //    TB(l3center, col1, row6, "1  2  3  4  -  -  -  -", Color.White);
+        //    CenterMe(l3center);
+
+        //    //TextBox l4t = new TextBox();
+        //    //TB(l4t, col2, row7, "IDENT");
+
+        //    TextBox l4 = new TextBox();
+        //    TB(l4, col1, row8, l4text, Color.White);
+
+        //    //TextBox l5t = new TextBox();
+        //    //TB(l5t, col2, row9, "IDENT");
+
+        //    TextBox l5 = new TextBox();
+        //    TB(l5, col1, row10, l5text, Color.White);
+
+        //    //TextBox l6t = new TextBox();
+        //    //TB(l6t, col2, row11, "IDENT");
+
+        //    TextBox l6 = new TextBox();
+        //    TB(l6, col1, row12, l6text, Color.White);
+
+        //    //TextBox r1t = new TextBox();
+        //    //TB(r1t, col14+20, row1, "IDENT");
+        //    //TypeLeft(r1t);
+
+        //    TextBox r1 = new TextBox();
+        //    TB(r1, col15, row2, r1text, Color.White);
+
+        //    //TextBox r2t = new TextBox();
+        //    //TB(r2t, col14+20, row3, "IDENT");
+        //    //TypeLeft(r2t);
+
+        //    TextBox r2 = new TextBox();
+        //    TB(r2, col15, row4, r2text, Color.White);
+
+        //    //TextBox r3t = new TextBox();
+        //    //TB(r3t, col14+20, row5, "IDENT");
+        //    //TypeLeft(r3t);
+
+        //    TextBox r3 = new TextBox();
+        //    TB(r3, col15, row6, r3text, Color.White);
+
+        //    //TextBox r4t = new TextBox();
+        //    //TB(r4t, col14+20, row7, "IDENT");
+        //    //TypeLeft(r4t);
+
+        //    TextBox r4 = new TextBox();
+        //    TB(r4, col15, row8, r4text, Color.White);
+
+        //    //TextBox r5t = new TextBox();
+        //    //TB(r5t, col14+20, row9, "PILOT", Color.White);
+        //    //TypeLeft(r5t);
+
+        //    TextBox r5 = new TextBox();
+        //    TB(r5, col15, row10, r5text, Color.White);
+
+        //    //TextBox r6t = new TextBox();
+        //    //TB(r6t, col14+20, row11, "IDENT");
+        //    //TypeLeft(r6t);
+
+        //    TextBox r6 = new TextBox();
+        //    TB(r6, col15, row12, r6text, Color.White);
+
+
+        //    #region Add Arrows if Needed
+        //    if (r1text != "")
+        //    {
+        //        TextBox r1r = new TextBox();
+        //        TB(r1r, col16, row2, ">", Color.White);
+        //    }
+
+        //    if (r2text != "")
+        //    {
+        //        TextBox r2r = new TextBox();
+        //        TB(r2r, col16, row4, "<", Color.White);
+        //    }
+
+        //    if (r3text != "")
+        //    {
+        //        TextBox r3r = new TextBox();
+        //        TB(r3r, col16, row6, ">", Color.White);
+        //    }
+
+        //    if (r4text != "")
+        //    {
+        //        TextBox r4r = new TextBox();
+        //        TB(r4r, col16, row8, ">", Color.White);
+        //    }
+
+        //    if (r5text != "")
+        //    {
+        //        TextBox r5r = new TextBox();
+        //        TB(r5r, col16, row10, ">", Color.White);
+        //    }
+
+
+        //    if (r6text != "")
+        //    {
+        //        TextBox r6r = new TextBox();
+        //        TB(r6r, col16, row12, ">", Color.White);
+        //    }
+        //    #endregion
+
+        //    TextBox l6b = new TextBox();
+        //    TB(l6b, col1, row13, "[");
+
+
+        //    TextBox r6b = new TextBox();
+        //    TB(r6b, col16, row13, "]");
+        //    #endregion
+        //}
+
+        //private void VU2LoopbackTest()
+        //{
+        //    CDU7000Page = true;
+
+        //    #region MyRegion
+        //    l1text = "> TEST";
+        //    l2text = "";
+        //    l3text = "";
+        //    l4text = "";
+        //    l5text = "";
+        //    l6text = "";
+        //    r1text = "239";
+        //    r2text = "";
+        //    r3text = "";
+        //    r4text = "";
+        //    r5text = "";
+        //    r6text = "RETURN";
+
+        //    currentPageTitle = "V/U2 LOOPBACK TEST"; //page title and number used for navigating
+        //    currentPageNumber = 1;
+
+        //    TextBox title = new TextBox();//displayed top center of screen
+        //    TB(title, col7, row0, currentPageTitle);
+
+        //    //TextBox page = new TextBox ( );
+        //    //TB (page, col14, row0, currentPageNumber + "/1");
+
+        //    //TextBox l1t = new TextBox();
+        //    //TB(l1t, col2, row1, "IDENT");
+
+        //    TextBox l1 = new TextBox();
+        //    TB(l1, col1, row2, l1text, Color.White);
+
+        //    TextBox l1r = new TextBox();
+        //    TB(l1r, col5, row2, "- - - -", Color.White);
+
+        //    TextBox l2center = new TextBox();
+        //    TB(l2center, col1, row4, "RSS=234", Color.White);
+        //    CenterMe(l2center);
+
+        //    //TextBox l3t = new TextBox();
+        //    //TB(l3t, col2, row5, "IDENT");
+
+        //    TextBox l3 = new TextBox();
+        //    TB(l3, col1, row6, l3text, Color.White);
+
+        //    //TextBox l4t = new TextBox();
+        //    //TB(l4t, col2, row7, "IDENT");
+
+        //    TextBox l4 = new TextBox();
+        //    TB(l4, col1, row8, l4text, Color.White);
+
+        //    //TextBox l5t = new TextBox();
+        //    //TB(l5t, col2, row9, "IDENT");
+
+        //    TextBox l5 = new TextBox();
+        //    TB(l5, col1, row10, l5text, Color.White);
+
+        //    //TextBox l6t = new TextBox();
+        //    //TB(l6t, col2, row11, "IDENT");
+
+        //    TextBox l6 = new TextBox();
+        //    TB(l6, col1, row12, l6text, Color.White);
+
+        //    TextBox r1t = new TextBox();
+        //    TB(r1t, col14 + 20, row1, "CHANNEL");
+        //    TypeLeft(r1t);
+
+        //    TextBox r1 = new TextBox();
+        //    TB(r1, col15, row2, r1text, Color.White);
+
+        //    //TextBox r2t = new TextBox();
+        //    //TB(r2t, col14+20, row3, "IDENT");
+        //    //TypeLeft(r2t);
+
+        //    TextBox r2 = new TextBox();
+        //    TB(r2, col15, row4, r2text, Color.White);
+
+        //    //TextBox r3t = new TextBox();
+        //    //TB(r3t, col14+20, row5, "IDENT");
+        //    //TypeLeft(r3t);
+
+        //    TextBox r3 = new TextBox();
+        //    TB(r3, col15, row6, r3text, Color.White);
+
+        //    //TextBox r4t = new TextBox();
+        //    //TB(r4t, col14+20, row7, "IDENT");
+        //    //TypeLeft(r4t);
+
+        //    TextBox r4 = new TextBox();
+        //    TB(r4, col15, row8, r4text, Color.White);
+
+        //    //TextBox r5t = new TextBox();
+        //    //TB(r5t, col14+20, row9, "PILOT", Color.White);
+        //    //TypeLeft(r5t);
+
+        //    TextBox r5 = new TextBox();
+        //    TB(r5, col15, row10, r5text, Color.White);
+
+        //    //TextBox r6t = new TextBox();
+        //    //TB(r6t, col14+20, row11, "IDENT");
+        //    //TypeLeft(r6t);
+
+        //    TextBox r6 = new TextBox();
+        //    TB(r6, col15, row12, r6text, Color.White);
+
+        //    //TextBox divider = new TextBox ( );
+        //    //TB (divider, col1, row9, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+
+
+        //    #region Add Arrows if Needed
+
+
+
+        //    if (r6text != "")
+        //    {
+        //        TextBox r6r = new TextBox();
+        //        TB(r6r, col16, row12, ">", Color.White);
+        //    }
+        //    #endregion
+
+        //    TextBox l6b = new TextBox();
+        //    TB(l6b, col1, row13, "[");
+
+
+        //    TextBox r6b = new TextBox();
+        //    TB(r6b, col16, row13, "]");
+        //    #endregion
+        //}
+
+        //private void VU2ComsecFill()
+        //{
+        //    CDU7000Page = true;
+
+        //    #region MyRegion
+        //    l1text = "[19]";
+        //    l2text = "> LOAD";
+        //    l3text = "> UPDATE=99";
+        //    l4text = "";
+        //    l5text = "";
+        //    l6text = "";
+        //    r1text = "VINSON";
+        //    r2text = "STATES";
+        //    r3text = "SET F1";
+        //    r4text = "";
+        //    r5text = "";
+        //    r6text = "RETURN";
+
+        //    currentPageTitle = "V/U2 COMSEC FILL"; //page title and number used for navigating
+        //    currentPageNumber = 1;
+
+        //    TextBox title = new TextBox();//displayed top center of screen
+        //    TB(title, col7, row0, currentPageTitle);
+
+        //    //TextBox page = new TextBox ( );
+        //    //TB (page, col14, row0, currentPageNumber + "/1");
+
+        //    TextBox l1t = new TextBox();
+        //    TB(l1t, col2, row1, "KEY");
+
+        //    TextBox l1 = new TextBox();
+        //    TB(l1, col1, row2, l1text, Color.White);
+
+        //    //TextBox l2t = new TextBox();
+        //    //TB(l2t, col2, row3, "LOCATION");
+
+        //    TextBox l2 = new TextBox();
+        //    TB(l2, col1, row4, l2text, Color.White);
+
+        //    //TextBox l3t = new TextBox();
+        //    //TB(l3t, col2, row5, "IDENT");
+
+        //    TextBox l3 = new TextBox();
+        //    TB(l3, col1, row6, l3text, Color.White);
+
+        //    //TextBox l4t = new TextBox();
+        //    //TB(l4t, col2, row7, "IDENT");
+
+        //    TextBox l4 = new TextBox();
+        //    TB(l4, col1, row8, l4text, Color.White);
+
+        //    //TextBox l5t = new TextBox();
+        //    //TB(l5t, col2, row9, "IDENT");
+
+        //    TextBox l5 = new TextBox();
+        //    TB(l5, col1, row10, l5text, Color.White);
+
+        //    //TextBox l6t = new TextBox();
+        //    //TB(l6t, col2, row11, "IDENT");
+
+        //    TextBox l6 = new TextBox();
+        //    TB(l6, col1, row12, l6text, Color.White);
+
+        //    //TextBox r1t = new TextBox();
+        //    //TB(r1t, col14+20, row1, "IDENT");
+        //    //TypeLeft(r1t);
+
+        //    TextBox r1r = new TextBox();
+        //    TB(r1r, col16, row2, ":", Color.White);
+
+        //    TextBox r1 = new TextBox();
+        //    TB(r1, col15, row2, r1text, Color.White);
+
+        //    //TextBox r2t = new TextBox();
+        //    //TB(r2t, col14+20, row3, "IDENT");
+        //    //TypeLeft(r2t);
+
+        //    TextBox r2 = new TextBox();
+        //    TB(r2, col15, row4, r2text, Color.White);
+
+        //    //TextBox r3t = new TextBox();
+        //    //TB(r3t, col14+20, row5, "IDENT");
+        //    //TypeLeft(r3t);
+
+        //    TextBox r3r = new TextBox();
+        //    TB(r3r, col16, row6, "<", Color.White);
+
+        //    TextBox r3 = new TextBox();
+        //    TB(r3, col15, row6, r3text, Color.White);
+
+        //    //TextBox r4t = new TextBox();
+        //    //TB(r4t, col14+20, row7, "IDENT");
+        //    //TypeLeft(r4t);
+
+        //    TextBox r4 = new TextBox();
+        //    TB(r4, col15, row8, r4text, Color.White);
+
+        //    //TextBox r5t = new TextBox();
+        //    //TB(r5t, col14+20, row9, "PILOT", Color.White);
+        //    //TypeLeft(r5t);
+
+        //    TextBox r5 = new TextBox();
+        //    TB(r5, col15, row10, r5text, Color.White);
+
+        //    //TextBox r6t = new TextBox();
+        //    //TB(r6t, col14+20, row11, "IDENT");
+        //    //TypeLeft(r6t);
+
+        //    TextBox r6 = new TextBox();
+        //    TB(r6, col15, row12, r6text, Color.White);
+
+        //    //TextBox divider = new TextBox ( );
+        //    //TB (divider, col1, row9, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+
+
+        //    #region Add Arrows if Needed
+        //    if (r2text != "")
+        //    {
+        //        TextBox r2r = new TextBox();
+        //        TB(r2r, col16, row4, ">", Color.White);
+        //    }
+
+        //    if (r4text != "")
+        //    {
+        //        TextBox r4r = new TextBox();
+        //        TB(r4r, col16, row8, ">", Color.White);
+        //    }
+
+        //    if (r5text != "")
+        //    {
+        //        TextBox r5r = new TextBox();
+        //        TB(r5r, col16, row10, ">", Color.White);
+        //    }
+
+
+        //    if (r6text != "")
+        //    {
+        //        TextBox r6r = new TextBox();
+        //        TB(r6r, col16, row12, ">", Color.White);
+        //    }
+        //    #endregion
+
+        //    TextBox l6b = new TextBox();
+        //    TB(l6b, col1, row13, "[");
+
+
+        //    TextBox r6b = new TextBox();
+        //    TB(r6b, col16, row13, "]");
+        //    #endregion
+        //}
+
+        //private void VU2ComsecStatesPage1()
+        //{
+        //    CDU7000Page = true;
+
+        //    #region MyRegion
+        //    l1text = "";
+        //    l2text = "";
+        //    l3text = "";
+        //    l4text = "";
+        //    l5text = "";
+        //    l6text = "";
+        //    r1text = "";
+        //    r2text = "";
+        //    r3text = "";
+        //    r4text = "";
+        //    r5text = "";
+        //    r6text = "RETURN";
+
+        //    currentPageTitle = "V/U2 COMSEC STATES"; //page title and number used for navigating
+        //    currentPageNumber = 1;
+
+        //    TextBox title = new TextBox();//displayed top center of screen
+        //    TB(title, col7, row0, currentPageTitle);
+
+        //    TextBox page = new TextBox();
+        //    TB(page, col14, row0, currentPageNumber + "/2");
+
+        //    TextBox l1 = new TextBox();
+        //    TB(l1, col2, row2, "1", Color.White);
+        //    TypeLeft(l1);
+
+        //    TextBox l2 = new TextBox();
+        //    TB(l2, col2, row3, "2", Color.White);
+        //    TypeLeft(l2);
+
+        //    TextBox l3 = new TextBox();
+        //    TB(l3, col2, row4, "3", Color.White);
+        //    TypeLeft(l3);
+
+        //    TextBox l4 = new TextBox();
+        //    TB(l4, col2, row5, "4", Color.White);
+        //    TypeLeft(l4);
+
+        //    TextBox l5 = new TextBox();
+        //    TB(l5, col2, row6, "5", Color.White);
+        //    TypeLeft(l5);
+
+        //    TextBox l6 = new TextBox();
+        //    TB(l6, col2, row7, "6", Color.White);
+        //    TypeLeft(l6);
+
+        //    TextBox l7 = new TextBox();
+        //    TB(l7, col2, row8, "7", Color.White);
+        //    TypeLeft(l7);
+
+        //    TextBox l8 = new TextBox();
+        //    TB(l8, col2, row9, "8", Color.White);
+        //    TypeLeft(l8);
+
+        //    TextBox l9 = new TextBox();
+        //    TB(l9, col2, row10, "9", Color.White);
+        //    TypeLeft(l9);
+
+        //    TextBox l10 = new TextBox();
+        //    TB(l10, col2, row11, "10", Color.White);
+        //    TypeLeft(l10);
+
+
+
+        //    TextBox l1key = new TextBox();
+        //    TB(l1key, col4, row2, "TEK", Color.White);
+
+
+        //    TextBox l2key = new TextBox();
+        //    TB(l2key, col4, row3, "TEK", Color.White);
+
+
+        //    TextBox l3key = new TextBox();
+        //    TB(l3key, col4, row4, "TEK", Color.White);
+
+
+        //    TextBox l4key = new TextBox();
+        //    TB(l4key, col4, row5, "TEK", Color.White);
+
+
+        //    TextBox l5key = new TextBox();
+        //    TB(l5key, col4, row6, "- - -", Color.White);
+
+
+        //    TextBox l6key = new TextBox();
+        //    TB(l6key, col4, row7, "- - -", Color.White);
+
+
+        //    TextBox l7key = new TextBox();
+        //    TB(l7key, col4, row8, "- - -", Color.White);
+
+
+        //    TextBox l8key = new TextBox();
+        //    TB(l8key, col4, row9, "- - -", Color.White);
+
+
+        //    TextBox l9key = new TextBox();
+        //    TB(l9key, col4, row10, "- - -", Color.White);
+
+
+        //    TextBox l10key = new TextBox();
+        //    TB(l10key, col4, row11, "- - -", Color.White);
+
+
+
+
+        //    TextBox l1num = new TextBox();
+        //    TB(l1num, col7, row2, "76", Color.White);
+
+
+        //    TextBox l2num = new TextBox();
+        //    TB(l2num, col7, row3, "23", Color.White);
+
+
+        //    TextBox l3num = new TextBox();
+        //    TB(l3num, col7, row4, "10", Color.White);
+
+
+        //    TextBox l4num = new TextBox();
+        //    TB(l4num, col7, row5, "03", Color.White);
+
+
+        //    TextBox l5num = new TextBox();
+        //    TB(l5num, col7, row6, "- -", Color.White);
+
+
+        //    TextBox l6num = new TextBox();
+        //    TB(l6num, col7, row7, "- -", Color.White);
+
+
+        //    TextBox l7num = new TextBox();
+        //    TB(l7num, col7, row8, "- -", Color.White);
+
+
+        //    TextBox l8num = new TextBox();
+        //    TB(l8num, col7, row9, "- -", Color.White);
+
+
+        //    TextBox l9num = new TextBox();
+        //    TB(l9num, col7, row10, "- -", Color.White);
+
+
+        //    TextBox l10num = new TextBox();
+        //    TB(l10num, col7, row11, "- -", Color.White);
+
+
+
+
+
+        //    TextBox r6 = new TextBox();
+        //    TB(r6, col15, row12, r6text, Color.White);
+
+        //    //TextBox divider = new TextBox ( );
+        //    //TB (divider, col1, row9, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+
+
+        //    #region Add Arrows if Needed
+        //    if (r6text != "")
+        //    {
+        //        TextBox r6r = new TextBox();
+        //        TB(r6r, col16, row12, ">", Color.White);
+        //    }
+        //    #endregion
+
+        //    TextBox l6b = new TextBox();
+        //    TB(l6b, col1, row13, "[");
+
+
+        //    TextBox r6b = new TextBox();
+        //    TB(r6b, col16, row13, "]");
+        //    #endregion
+        //}
+
+        //private void VU2ComsecStatesPage2()
+        //{
+        //    CDU7000Page = true;
+
+        //    #region MyRegion
+        //    l1text = "";
+        //    l2text = "";
+        //    l3text = "";
+        //    l4text = "";
+        //    l5text = "";
+        //    l6text = "";
+        //    r1text = "";
+        //    r2text = "";
+        //    r3text = "";
+        //    r4text = "";
+        //    r5text = "";
+        //    r6text = "RETURN";
+
+        //    currentPageTitle = "V/U2 COMSEC STATES"; //page title and number used for navigating
+        //    currentPageNumber = 2;
+
+        //    TextBox title = new TextBox();//displayed top center of screen
+        //    TB(title, col7, row0, currentPageTitle);
+
+        //    TextBox page = new TextBox();
+        //    TB(page, col14, row0, currentPageNumber + "/2");
+
+        //    TextBox l1 = new TextBox();
+        //    TB(l1, col2, row2, "1", Color.White);
+        //    TypeLeft(l1);
+
+        //    TextBox l2 = new TextBox();
+        //    TB(l2, col2, row3, "2", Color.White);
+        //    TypeLeft(l2);
+
+        //    TextBox l3 = new TextBox();
+        //    TB(l3, col2, row4, "3", Color.White);
+        //    TypeLeft(l3);
+
+        //    TextBox l4 = new TextBox();
+        //    TB(l4, col2, row5, "4", Color.White);
+        //    TypeLeft(l4);
+
+        //    TextBox l5 = new TextBox();
+        //    TB(l5, col2, row6, "5", Color.White);
+        //    TypeLeft(l5);
+
+        //    TextBox l6 = new TextBox();
+        //    TB(l6, col2, row7, "6", Color.White);
+        //    TypeLeft(l6);
+
+        //    TextBox l7 = new TextBox();
+        //    TB(l7, col2, row8, "7", Color.White);
+        //    TypeLeft(l7);
+
+        //    TextBox l8 = new TextBox();
+        //    TB(l8, col2, row9, "8", Color.White);
+        //    TypeLeft(l8);
+
+        //    TextBox l9 = new TextBox();
+        //    TB(l9, col2, row10, "9", Color.White);
+        //    TypeLeft(l9);
+
+        //    TextBox l10 = new TextBox();
+        //    TB(l10, col2, row11, "10", Color.White);
+        //    TypeLeft(l10);
+
+
+
+        //    TextBox l1key = new TextBox();
+        //    TB(l1key, col4, row2, "- - -", Color.White);
+
+
+        //    TextBox l2key = new TextBox();
+        //    TB(l2key, col4, row3, "- - -", Color.White);
+
+
+        //    TextBox l3key = new TextBox();
+        //    TB(l3key, col4, row4, "- - -", Color.White);
+
+
+        //    TextBox l4key = new TextBox();
+        //    TB(l4key, col4, row5, "- - -", Color.White);
+
+
+        //    TextBox l5key = new TextBox();
+        //    TB(l5key, col4, row6, "- - -", Color.White);
+
+
+        //    TextBox l6key = new TextBox();
+        //    TB(l6key, col4, row7, "- - -", Color.White);
+
+
+        //    TextBox l7key = new TextBox();
+        //    TB(l7key, col4, row8, "- - -", Color.White);
+
+
+        //    TextBox l8key = new TextBox();
+        //    TB(l8key, col4, row9, "- - -", Color.White);
+
+
+        //    TextBox l9key = new TextBox();
+        //    TB(l9key, col4, row10, "- - -", Color.White);
+
+
+        //    TextBox l10key = new TextBox();
+        //    TB(l10key, col4, row11, "- - -", Color.White);
+
+
+
+
+        //    TextBox l1num = new TextBox();
+        //    TB(l1num, col7, row2, "- -", Color.White);
+
+
+        //    TextBox l2num = new TextBox();
+        //    TB(l2num, col7, row3, "- -", Color.White);
+
+
+        //    TextBox l3num = new TextBox();
+        //    TB(l3num, col7, row4, "- -", Color.White);
+
+
+        //    TextBox l4num = new TextBox();
+        //    TB(l4num, col7, row5, "- -", Color.White);
+
+
+        //    TextBox l5num = new TextBox();
+        //    TB(l5num, col7, row6, "- -", Color.White);
+
+
+        //    TextBox l6num = new TextBox();
+        //    TB(l6num, col7, row7, "- -", Color.White);
+
+
+        //    TextBox l7num = new TextBox();
+        //    TB(l7num, col7, row8, "- -", Color.White);
+
+
+        //    TextBox l8num = new TextBox();
+        //    TB(l8num, col7, row9, "- -", Color.White);
+
+
+        //    TextBox l9num = new TextBox();
+        //    TB(l9num, col7, row10, "- -", Color.White);
+
+
+        //    TextBox l10num = new TextBox();
+        //    TB(l10num, col7, row11, "- -", Color.White);
+
+
+
+
+
+        //    TextBox r6 = new TextBox();
+        //    TB(r6, col15, row12, r6text, Color.White);
+
+        //    //TextBox divider = new TextBox ( );
+        //    //TB (divider, col1, row9, "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+
+
+        //    #region Add Arrows if Needed
+        //    if (r6text != "")
+        //    {
+        //        TextBox r6r = new TextBox();
+        //        TB(r6r, col16, row12, ">", Color.White);
+        //    }
+        //    #endregion
+
+        //    TextBox l6b = new TextBox();
+        //    TB(l6b, col1, row13, "[");
+
+
+        //    TextBox r6b = new TextBox();
+        //    TB(r6b, col16, row13, "]");
+        //    #endregion
+        //}
+
+
+        //#endregion
+
+        //private void VU2uhfPresetsPage1()
+        //{
+        //    CDU7000Page = true;
+
+        //    #region MyRegion
+
+
+        //    if (VU2UHFpre1Chan.Trim('<', ' ') == currentVU2chan)
+        //    {
+        //        VU2UHFpre1Chan = VU2UHFpre1Chan.Replace('<', '*');
+        //        VU2UHFpre2Chan = VU2UHFpre2Chan.Replace('*', '<');
+        //        VU2UHFpre3Chan = VU2UHFpre3Chan.Replace('*', '<');
+        //        VU2UHFpre4Chan = VU2UHFpre4Chan.Replace('*', '<');
+        //        VU2UHFpre5Chan = VU2UHFpre5Chan.Replace('*', '<');
+        //    }
+        //    if (VU2UHFpre2Chan.Trim('<', ' ') == currentVU2chan)
+        //    {
+        //        VU2UHFpre2Chan = VU2UHFpre2Chan.Replace('<', '*');
+        //        VU2UHFpre1Chan = VU2UHFpre1Chan.Replace('*', '<');
+        //        VU2UHFpre3Chan = VU2UHFpre3Chan.Replace('*', '<');
+        //        VU2UHFpre4Chan = VU2UHFpre4Chan.Replace('*', '<');
+        //        VU2UHFpre5Chan = VU2UHFpre5Chan.Replace('*', '<');
+        //    }
+        //    if (VU2UHFpre3Chan.Trim('<', ' ') == currentVU2chan)
+        //    {
+        //        VU2UHFpre3Chan = VU2UHFpre3Chan.Replace('<', '*');
+        //        VU2UHFpre2Chan = VU2UHFpre2Chan.Replace('*', '<');
+        //        VU2UHFpre1Chan = VU2UHFpre1Chan.Replace('*', '<');
+        //        VU2UHFpre4Chan = VU2UHFpre4Chan.Replace('*', '<');
+        //        VU2UHFpre5Chan = VU2UHFpre5Chan.Replace('*', '<');
+        //    }
+        //    if (VU2UHFpre4Chan.Trim('<', ' ') == currentVU2chan)
+        //    {
+        //        VU2UHFpre4Chan = VU2UHFpre4Chan.Replace('<', '*');
+        //        VU2UHFpre3Chan = VU2UHFpre3Chan.Replace('*', '<');
+        //        VU2UHFpre2Chan = VU2UHFpre2Chan.Replace('*', '<');
+        //        VU2UHFpre1Chan = VU2UHFpre1Chan.Replace('*', '<');
+        //        VU2UHFpre5Chan = VU2UHFpre5Chan.Replace('*', '<');
+        //    }
+        //    if (VU2UHFpre5Chan.Trim('<', ' ') == currentVU2chan)
+        //    {
+        //        VU2UHFpre5Chan = VU2UHFpre5Chan.Replace('<', '*');
+        //        VU2UHFpre4Chan = VU2UHFpre4Chan.Replace('*', '<');
+        //        VU2UHFpre3Chan = VU2UHFpre3Chan.Replace('*', '<');
+        //        VU2UHFpre2Chan = VU2UHFpre2Chan.Replace('*', '<');
+        //        VU2UHFpre1Chan = VU2UHFpre1Chan.Replace('*', '<');
+
+        //    }
+
+
+
+
+
+        //    l1text = VU2UHFpre1Chan;
+        //    l2text = VU2UHFpre2Chan;
+        //    l3text = VU2UHFpre3Chan;
+        //    l4text = VU2UHFpre4Chan;
+        //    l5text = VU2UHFpre5Chan;
+        //    l6text = "";
+        //    r1text = VU2UHFpre1Freq;
+        //    r2text = VU2UHFpre2Freq;
+        //    r3text = VU2UHFpre3Freq;
+        //    r4text = VU2UHFpre4Freq;
+        //    r5text = VU2UHFpre5Freq;
+        //    r6text = "RETURN";
+
+
+        //    currentPageTitle = "V/U2 UHF"; //page title and number used for navigating
+        //    currentPageNumber = 1;
+
+        //    TextBox title = new TextBox();//displayed top center of screen
+        //    TB(title, col7, row0, currentPageTitle);
+
+        //    TextBox page = new TextBox();
+        //    TB(page, col14, row0, currentPageNumber + "/4");
+
+        //    TextBox l1callsign = new TextBox();
+        //    TB(l1callsign, col4, row2, VU2UHFpre1Name, Color.White);
+
+        //    TextBox l1comsec = new TextBox();
+        //    TB(l1comsec, col9, row2, VU2UHFpre1Comsec, Color.White);
+
+        //    TextBox l1freq = new TextBox();
+        //    TB(l1freq, col15, row2, VU2UHFpre1Freq, Color.White);
+
+        //    TextBox l1 = new TextBox();
+        //    TB(l1, col1, row2, l1text, Color.White);
+
+        //    TextBox l2callsign = new TextBox();
+        //    TB(l2callsign, col4, row4, VU2UHFpre2Name, Color.White);
+
+        //    TextBox l2comsec = new TextBox();
+        //    TB(l2comsec, col9, row4, "C2", Color.White);
+
+        //    TextBox l2freq = new TextBox();
+        //    TB(l2freq, col15, row4, VU2UHFpre2Freq, Color.White);
+
+        //    TextBox l2 = new TextBox();
+        //    TB(l2, col1, row4, l2text, Color.White);
+
+        //    TextBox l3callsign = new TextBox();
+        //    TB(l3callsign, col4, row6, VU2UHFpre3Name, Color.White);
+
+        //    TextBox l3comsec = new TextBox();
+        //    TB(l3comsec, col9, row6, "P4", Color.White);
+
+        //    TextBox l3freq = new TextBox();
+        //    TB(l3freq, col15, row6, VU2UHFpre3Freq, Color.White);
+
+        //    TextBox l3 = new TextBox();
+        //    TB(l3, col1, row6, l3text, Color.White);
+
+        //    TextBox l4callsign = new TextBox();
+        //    TB(l4callsign, col4, row8, VU2UHFpre4Name, Color.White);
+
+        //    TextBox l4comsec = new TextBox();
+        //    TB(l4comsec, col9, row8, "C3", Color.White);
+
+        //    TextBox l4freq = new TextBox();
+        //    TB(l4freq, col15, row8, VU2UHFpre4Freq, Color.White);
+
+        //    TextBox l4 = new TextBox();
+        //    TB(l4, col1, row8, l4text, Color.White);
+
+        //    TextBox l5callsign = new TextBox();
+        //    TB(l5callsign, col4, row10, VU2UHFpre5Name, Color.White);
+
+        //    TextBox l5comsec = new TextBox();
+        //    TB(l5comsec, col9, row10, "P1", Color.White);
+
+        //    TextBox l5freq = new TextBox();
+        //    TB(l5freq, col15, row10, VU2UHFpre5Freq, Color.White);
+
+        //    TextBox l5 = new TextBox();
+        //    TB(l5, col1, row10, l5text, Color.White);
+
+        //    //TextBox l6t = new TextBox();
+        //    //TB(l6t, col2, row1, "IDENT");
+
+        //    TextBox l6 = new TextBox();
+        //    TB(l6, col1, row12, l6text, Color.White);
+
+
+
+        //    TextBox r6 = new TextBox();
+        //    TB(r6, col15, row12, r6text, Color.White);
+
+        //    TextBox r6r = new TextBox();
+        //    TB(r6r, col16, row12, ">", Color.White);
+
+
+        //    TextBox l6b = new TextBox();
+        //    TB(l6b, col1, row13, "[");
+
+
+        //    TextBox r6b = new TextBox();
+        //    TB(r6b, col16, row13, "]");
+        //    #endregion
+        //}
+
+        //private void VU2vhfFMpresetsPage1()
+        //{
+        //    CDU7000Page = true;
+
+        //    #region MyRegion
+        //    l1text = "< 1";
+        //    l2text = "< 2";
+        //    l3text = "< 3";
+        //    l4text = "< 4";
+        //    l5text = "< 5";
+        //    l6text = "";
+        //    r1text = "";
+        //    r2text = "";
+        //    r3text = "";
+        //    r4text = "";
+        //    r5text = "";
+        //    r6text = "RETURN";
+
+        //    currentPageTitle = "V/U2 VHF-FM"; //page title and number used for navigating
+        //    currentPageNumber = 1;
+
+        //    TextBox title = new TextBox();//displayed top center of screen
+        //    TB(title, col7, row0, currentPageTitle);
+
+        //    TextBox page = new TextBox();
+        //    TB(page, col14, row0, currentPageNumber + "/4");
+
+        //    TextBox l1callsign = new TextBox();
+        //    TB(l1callsign, col4, row2, "AIRSPT", Color.White);
+
+        //    TextBox l1comsec = new TextBox();
+        //    TB(l1comsec, col9, row2, "C1", Color.White);
+
+        //    TextBox l1freq = new TextBox();
+        //    TB(l1freq, col15, row2, "60.675", Color.White);
+
+        //    TextBox l1 = new TextBox();
+        //    TB(l1, col1, row2, l1text, Color.White);
+
+        //    TextBox l2callsign = new TextBox();
+        //    TB(l2callsign, col4, row4, "REDNET", Color.White);
+
+        //    TextBox l2comsec = new TextBox();
+        //    TB(l2comsec, col9, row4, "C2", Color.White);
+
+        //    TextBox l2freq = new TextBox();
+        //    TB(l2freq, col15, row4, "41.950", Color.White);
+
+        //    TextBox l2 = new TextBox();
+        //    TB(l2, col1, row4, l2text, Color.White);
+
+        //    TextBox l3callsign = new TextBox();
+        //    TB(l3callsign, col4, row6, "TOWER", Color.White);
+
+        //    TextBox l3comsec = new TextBox();
+        //    TB(l3comsec, col9, row6, "P4", Color.White);
+
+        //    TextBox l3freq = new TextBox();
+        //    TB(l3freq, col15, row6, "130.100", Color.White);
+
+        //    TextBox l3 = new TextBox();
+        //    TB(l3, col1, row6, l3text, Color.White);
+
+        //    TextBox l4callsign = new TextBox();
+        //    TB(l4callsign, col4, row8, "PACMAN", Color.White);
+
+        //    TextBox l4comsec = new TextBox();
+        //    TB(l4comsec, col9, row8, "C3", Color.White);
+
+        //    TextBox l4freq = new TextBox();
+        //    TB(l4freq, col15, row8, "42.025", Color.White);
+
+        //    TextBox l4 = new TextBox();
+        //    TB(l4, col1, row8, l4text, Color.White);
+
+        //    TextBox l5callsign = new TextBox();
+        //    TB(l5callsign, col4, row10, "GRNLDR", Color.White);
+
+        //    TextBox l5comsec = new TextBox();
+        //    TB(l5comsec, col9, row10, "P1", Color.White);
+
+        //    TextBox l5freq = new TextBox();
+        //    TB(l5freq, col15, row10, "40.475", Color.White);
+
+        //    TextBox l5 = new TextBox();
+        //    TB(l5, col1, row10, l5text, Color.White);
+
+        //    //TextBox l6t = new TextBox();
+        //    //TB(l6t, col2, row1, "IDENT");
+
+        //    TextBox l6 = new TextBox();
+        //    TB(l6, col1, row12, l6text, Color.White);
+
+        //    //TextBox r1t = new TextBox();
+        //    //TB(r1t, col2, row1, "IDENT");
+
+        //    TextBox r1 = new TextBox();
+        //    TB(r1, col15, row2, r1text, Color.White);
+
+        //    //TextBox r2t = new TextBox();
+        //    //TB(r2t, col2, row1, "IDENT");
+
+        //    TextBox r2 = new TextBox();
+        //    TB(r2, col15, row4, r2text, Color.White);
+
+        //    //TextBox r3t = new TextBox();
+        //    //TB(r3t, col2, row1, "IDENT");
+
+        //    TextBox r3 = new TextBox();
+        //    TB(r3, col15, row6, r3text, Color.White);
+
+        //    //TextBox r4t = new TextBox();
+        //    //TB(r4t, col2, row1, "IDENT");
+
+        //    TextBox r4 = new TextBox();
+        //    TB(r4, col15, row8, r4text, Color.White);
+
+        //    //TextBox r5t = new TextBox();
+        //    //TB(r5t, col15, row9, "PILOT", Color.White);
+
+        //    TextBox r5 = new TextBox();
+        //    TB(r5, col15, row10, r5text, Color.White);
+
+        //    //TextBox r6t = new TextBox();
+        //    //TB(r6t, col2, row1, "IDENT");
+
+        //    TextBox r6 = new TextBox();
+        //    TB(r6, col15, row12, r6text, Color.White);
+
+        //    TextBox r6r = new TextBox();
+        //    TB(r6r, col16, row12, ">", Color.White);
+
+
+        //    TextBox l6b = new TextBox();
+        //    TB(l6b, col1, row13, "[");
+
+
+        //    TextBox r6b = new TextBox();
+        //    TB(r6b, col16, row13, "]");
+        //    #endregion
+        //}
+
+        //private void VU2vhfAMpresetsPage1()
+        //{
+        //    CDU7000Page = true;
+
+        //    #region MyRegion
+        //    l1text = "< 1";
+        //    l2text = "< 2";
+        //    l3text = "< 3";
+        //    l4text = "< 4";
+        //    l5text = "< 5";
+        //    l6text = "";
+        //    r1text = "";
+        //    r2text = "";
+        //    r3text = "";
+        //    r4text = "";
+        //    r5text = "";
+        //    r6text = "RETURN";
+
+        //    currentPageTitle = "V/U2 VHF-AM"; //page title and number used for navigating
+        //    currentPageNumber = 1;
+
+        //    TextBox title = new TextBox();//displayed top center of screen
+        //    TB(title, col7, row0, currentPageTitle);
+
+        //    TextBox page = new TextBox();
+        //    TB(page, col14, row0, currentPageNumber + "/4");
+
+        //    TextBox l1callsign = new TextBox();
+        //    TB(l1callsign, col4, row2, "AIRSPT", Color.White);
+
+        //    TextBox l1comsec = new TextBox();
+        //    TB(l1comsec, col9, row2, "C1", Color.White);
+
+        //    TextBox l1freq = new TextBox();
+        //    TB(l1freq, col15, row2, "110.675", Color.White);
+
+        //    TextBox l1 = new TextBox();
+        //    TB(l1, col1, row2, l1text, Color.White);
+
+        //    TextBox l2callsign = new TextBox();
+        //    TB(l2callsign, col4, row4, "REDNET", Color.White);
+
+        //    TextBox l2comsec = new TextBox();
+        //    TB(l2comsec, col9, row4, "C2", Color.White);
+
+        //    TextBox l2freq = new TextBox();
+        //    TB(l2freq, col15, row4, "141.950", Color.White);
+
+        //    TextBox l2 = new TextBox();
+        //    TB(l2, col1, row4, l2text, Color.White);
+
+        //    TextBox l3callsign = new TextBox();
+        //    TB(l3callsign, col4, row6, "TOWER", Color.White);
+
+        //    TextBox l3comsec = new TextBox();
+        //    TB(l3comsec, col9, row6, "P4", Color.White);
+
+        //    TextBox l3freq = new TextBox();
+        //    TB(l3freq, col15, row6, "128.100", Color.White);
+
+        //    TextBox l3 = new TextBox();
+        //    TB(l3, col1, row6, l3text, Color.White);
+
+        //    TextBox l4callsign = new TextBox();
+        //    TB(l4callsign, col4, row8, "PACMAN", Color.White);
+
+        //    TextBox l4comsec = new TextBox();
+        //    TB(l4comsec, col9, row8, "C3", Color.White);
+
+        //    TextBox l4freq = new TextBox();
+        //    TB(l4freq, col15, row8, "109.025", Color.White);
+
+        //    TextBox l4 = new TextBox();
+        //    TB(l4, col1, row8, l4text, Color.White);
+
+        //    TextBox l5callsign = new TextBox();
+        //    TB(l5callsign, col4, row10, "GRNLDR", Color.White);
+
+        //    TextBox l5comsec = new TextBox();
+        //    TB(l5comsec, col9, row10, "P1", Color.White);
+
+        //    TextBox l5freq = new TextBox();
+        //    TB(l5freq, col15, row10, "140.475", Color.White);
+
+        //    TextBox l5 = new TextBox();
+        //    TB(l5, col1, row10, l5text, Color.White);
+
+        //    //TextBox l6t = new TextBox();
+        //    //TB(l6t, col2, row1, "IDENT");
+
+        //    TextBox l6 = new TextBox();
+        //    TB(l6, col1, row12, l6text, Color.White);
+
+        //    //TextBox r1t = new TextBox();
+        //    //TB(r1t, col2, row1, "IDENT");
+
+        //    TextBox r1 = new TextBox();
+        //    TB(r1, col15, row2, r1text, Color.White);
+
+        //    //TextBox r2t = new TextBox();
+        //    //TB(r2t, col2, row1, "IDENT");
+
+        //    TextBox r2 = new TextBox();
+        //    TB(r2, col15, row4, r2text, Color.White);
+
+        //    //TextBox r3t = new TextBox();
+        //    //TB(r3t, col2, row1, "IDENT");
+
+        //    TextBox r3 = new TextBox();
+        //    TB(r3, col15, row6, r3text, Color.White);
+
+        //    //TextBox r4t = new TextBox();
+        //    //TB(r4t, col2, row1, "IDENT");
+
+        //    TextBox r4 = new TextBox();
+        //    TB(r4, col15, row8, r4text, Color.White);
+
+        //    //TextBox r5t = new TextBox();
+        //    //TB(r5t, col15, row9, "PILOT", Color.White);
+
+        //    TextBox r5 = new TextBox();
+        //    TB(r5, col15, row10, r5text, Color.White);
+
+        //    //TextBox r6t = new TextBox();
+        //    //TB(r6t, col2, row1, "IDENT");
+
+        //    TextBox r6 = new TextBox();
+        //    TB(r6, col15, row12, r6text, Color.White);
+
+        //    TextBox r6r = new TextBox();
+        //    TB(r6r, col16, row12, ">", Color.White);
+
+
+        //    TextBox l6b = new TextBox();
+        //    TB(l6b, col1, row13, "[");
+
+
+        //    TextBox r6b = new TextBox();
+        //    TB(r6b, col16, row13, "]");
+        //    #endregion
+        //}
+
+        //private void VU2satcomPresetsPage1()
+        //{
+        //    CDU7000Page = true;
+
+        //    #region MyRegion
+        //    l1text = "< 1";
+        //    l2text = "[215]";
+        //    l3text = "< 2";
+        //    l4text = "[215]";
+        //    l5text = "< 5";
+        //    l6text = "";
+        //    r1text = "";
+        //    r2text = "";
+        //    r3text = "";
+        //    r4text = "";
+        //    r5text = "";
+        //    r6text = "RETURN";
+
+        //    currentPageTitle = "V/U2 SATCOM"; //page title and number used for navigating
+        //    currentPageNumber = 1;
+
+        //    TextBox title = new TextBox();//displayed top center of screen
+        //    TB(title, col7, row0, currentPageTitle);
+
+        //    TextBox page = new TextBox();
+        //    TB(page, col14, row0, currentPageNumber + "/10");
+
+
+        //    TextBox l1t = new TextBox();
+        //    TB(l1t, col14 + 25, row1, "UPLINK");
+        //    TypeLeft(l1t);
+
+        //    TextBox l1callsign = new TextBox();
+        //    TB(l1callsign, col4, row2, "AIRSPT", Color.White);
+
+        //    TextBox l1comsec = new TextBox();
+        //    TB(l1comsec, col9, row2, "P2", Color.White);
+
+        //    TextBox l1freq = new TextBox();
+        //    TB(l1freq, col15, row2, "317.145", Color.White);
+
+        //    TextBox l1 = new TextBox();
+        //    TB(l1, col1, row2, l1text, Color.White);
+
+        //    TextBox l2t = new TextBox();
+        //    TB(l2t, col2, row3, "CHANNEL");
+
+        //    TextBox l2freq = new TextBox();
+        //    TB(l2freq, col15, row4, "245.045", Color.White);
+
+        //    TextBox l2 = new TextBox();
+        //    TB(l2, col1, row4, l2text, Color.White);
+
+        //    TextBox l3callsign = new TextBox();
+        //    TB(l3callsign, col4, row6, "TOWER", Color.White);
+
+        //    TextBox l3comsec = new TextBox();
+        //    TB(l3comsec, col9, row6, "C12", Color.White);
+
+        //    TextBox l3freq = new TextBox();
+        //    TB(l3freq, col15, row6, "244.000", Color.White);
+
+        //    TextBox l3 = new TextBox();
+        //    TB(l3, col1, row6, l3text, Color.White);
+
+        //    TextBox l4t = new TextBox();
+        //    TB(l4t, col2, row7, "CHANNEL");
+
+        //    TextBox l4freq = new TextBox();
+        //    TB(l4freq, col15, row8, "245.045", Color.White);
+
+        //    TextBox l4 = new TextBox();
+        //    TB(l4, col1, row8, l4text, Color.White);
+
+        //    //TextBox l5callsign = new TextBox ( );
+        //    //TB (l5callsign, col4, row10, "GRNLDR", Color.White);
+
+        //    //TextBox l5comsec = new TextBox ( );
+        //    //TB (l5comsec, col9, row10, "P1", Color.White);
+
+        //    //TextBox l5freq = new TextBox ( );
+        //    //TB (l5freq, col15, row10, "40.475", Color.White);
+
+        //    //TextBox l5 = new TextBox ( );
+        //    //TB (l5, col1, row10, l5text, Color.White);
+
+        //    ////TextBox l6t = new TextBox();
+        //    ////TB(l6t, col2, row1, "IDENT");
+
+        //    //TextBox l6 = new TextBox ( );
+        //    //TB (l6, col1, row12, l6text, Color.White);
+
+        //    //TextBox r1t = new TextBox();
+        //    //TB(r1t, col2, row1, "IDENT");
+
+        //    TextBox r1 = new TextBox();
+        //    TB(r1, col15, row2, r1text, Color.White);
+
+        //    TextBox r2t = new TextBox();
+        //    TB(r2t, col14 + 25, row3, "DOWNLINK");
+        //    TypeLeft(r2t);
+
+        //    TextBox r2 = new TextBox();
+        //    TB(r2, col15, row4, r2text, Color.White);
+
+        //    TextBox r3t = new TextBox();
+        //    TB(r3t, col14 + 25, row5, "UPLINK");
+        //    TypeLeft(r3t);
+
+        //    TextBox r3 = new TextBox();
+        //    TB(r3, col15, row6, r3text, Color.White);
+
+        //    TextBox r4t = new TextBox();
+        //    TB(r4t, col14 + 25, row7, "DOWNLINK");
+        //    TypeLeft(r4t);
+
+        //    TextBox r4 = new TextBox();
+        //    TB(r4, col15, row8, r4text, Color.White);
+
+        //    //TextBox r5t = new TextBox();
+        //    //TB(r5t, col15, row9, "PILOT", Color.White);
+
+        //    TextBox r5 = new TextBox();
+        //    TB(r5, col15, row10, r5text, Color.White);
+
+        //    //TextBox r6t = new TextBox();
+        //    //TB(r6t, col2, row1, "IDENT");
+
+        //    TextBox r6 = new TextBox();
+        //    TB(r6, col15, row12, r6text, Color.White);
+
+        //    TextBox r6r = new TextBox();
+        //    TB(r6r, col16, row12, ">", Color.White);
+
+
+        //    TextBox l6b = new TextBox();
+        //    TB(l6b, col1, row13, "[");
+
+
+        //    TextBox r6b = new TextBox();
+        //    TB(r6b, col16, row13, "]");
+        //    #endregion
+        //}
+
+        //private void VU2hopsetsPage1()
+        //{
+        //    CDU7000Page = true;
+
+        //    #region MyRegion
+        //    l1text = "< 1";
+        //    l2text = "< 2";
+        //    l3text = "< 3";
+        //    l4text = "< 4";
+        //    l5text = "< 5";
+        //    l6text = "";
+        //    r1text = "";
+        //    r2text = "";
+        //    r3text = "";
+        //    r4text = "";
+        //    r5text = "";
+        //    r6text = "RETURN";
+
+        //    currentPageTitle = "V/U2 HOPSETS"; //page title and number used for navigating
+        //    currentPageNumber = 1;
+
+        //    TextBox title = new TextBox();//displayed top center of screen
+        //    TB(title, col7, row0, currentPageTitle);
+
+        //    TextBox page = new TextBox();
+        //    TB(page, col14, row0, currentPageNumber + "/2");
+
+        //    TextBox l1callsign = new TextBox();
+        //    TB(l1callsign, col4, row2, "AIRSPT", Color.White);
+
+        //    TextBox l1comsec = new TextBox();
+        //    TB(l1comsec, col9, row2, "C1", Color.White);
+
+        //    TextBox l1freq = new TextBox();
+        //    TB(l1freq, col15, row2, "60.675", Color.White);
+
+        //    TextBox l1 = new TextBox();
+        //    TB(l1, col1, row2, l1text, Color.White);
+
+        //    TextBox l2callsign = new TextBox();
+        //    TB(l2callsign, col4, row4, "REDNET", Color.White);
+
+        //    TextBox l2comsec = new TextBox();
+        //    TB(l2comsec, col9, row4, "C2", Color.White);
+
+        //    TextBox l2freq = new TextBox();
+        //    TB(l2freq, col15, row4, "41.950", Color.White);
+
+        //    TextBox l2 = new TextBox();
+        //    TB(l2, col1, row4, l2text, Color.White);
+
+        //    TextBox l3callsign = new TextBox();
+        //    TB(l3callsign, col4, row6, "TOWER", Color.White);
+
+        //    TextBox l3comsec = new TextBox();
+        //    TB(l3comsec, col9, row6, "P4", Color.White);
+
+        //    TextBox l3freq = new TextBox();
+        //    TB(l3freq, col15, row6, "130.100", Color.White);
+
+        //    TextBox l3 = new TextBox();
+        //    TB(l3, col1, row6, l3text, Color.White);
+
+        //    TextBox l4callsign = new TextBox();
+        //    TB(l4callsign, col4, row8, "PACMAN", Color.White);
+
+        //    TextBox l4comsec = new TextBox();
+        //    TB(l4comsec, col9, row8, "C3", Color.White);
+
+        //    TextBox l4freq = new TextBox();
+        //    TB(l4freq, col15, row8, "42.025", Color.White);
+
+        //    TextBox l4 = new TextBox();
+        //    TB(l4, col1, row8, l4text, Color.White);
+
+        //    TextBox l5callsign = new TextBox();
+        //    TB(l5callsign, col4, row10, "GRNLDR", Color.White);
+
+        //    TextBox l5comsec = new TextBox();
+        //    TB(l5comsec, col9, row10, "P1", Color.White);
+
+        //    TextBox l5freq = new TextBox();
+        //    TB(l5freq, col15, row10, "40.475", Color.White);
+
+        //    TextBox l5 = new TextBox();
+        //    TB(l5, col1, row10, l5text, Color.White);
+
+        //    //TextBox l6t = new TextBox();
+        //    //TB(l6t, col2, row1, "IDENT");
+
+        //    TextBox l6 = new TextBox();
+        //    TB(l6, col1, row12, l6text, Color.White);
+
+        //    //TextBox r1t = new TextBox();
+        //    //TB(r1t, col2, row1, "IDENT");
+
+        //    TextBox r1 = new TextBox();
+        //    TB(r1, col15, row2, r1text, Color.White);
+
+        //    //TextBox r2t = new TextBox();
+        //    //TB(r2t, col2, row1, "IDENT");
+
+        //    TextBox r2 = new TextBox();
+        //    TB(r2, col15, row4, r2text, Color.White);
+
+        //    //TextBox r3t = new TextBox();
+        //    //TB(r3t, col2, row1, "IDENT");
+
+        //    TextBox r3 = new TextBox();
+        //    TB(r3, col15, row6, r3text, Color.White);
+
+        //    //TextBox r4t = new TextBox();
+        //    //TB(r4t, col2, row1, "IDENT");
+
+        //    TextBox r4 = new TextBox();
+        //    TB(r4, col15, row8, r4text, Color.White);
+
+        //    //TextBox r5t = new TextBox();
+        //    //TB(r5t, col15, row9, "PILOT", Color.White);
+
+        //    TextBox r5 = new TextBox();
+        //    TB(r5, col15, row10, r5text, Color.White);
+
+        //    //TextBox r6t = new TextBox();
+        //    //TB(r6t, col2, row1, "IDENT");
+
+        //    TextBox r6 = new TextBox();
+        //    TB(r6, col15, row12, r6text, Color.White);
+
+        //    TextBox r6r = new TextBox();
+        //    TB(r6r, col16, row12, ">", Color.White);
+
+
+        //    TextBox l6b = new TextBox();
+        //    TB(l6b, col1, row13, "[");
+
+
+        //    TextBox r6b = new TextBox();
+        //    TB(r6b, col16, row13, "]");
+        //    #endregion
+        //}
 
 
 
@@ -19931,7 +23373,7 @@ namespace CDU3000
 
             #region Color toggle of multiple choices (more than two choices only)
 
-            if ((hfMode == "ALE" & trimmedString == "MAN") || (trimmedString == "2" & currentPageTitle != "V/U1 VHF-FM" & currentPageTitle!="V/U1 COMSEC VAR") || trimmedString == "NORM" || trimmedString == "CW" || trimmedString == "DIV" || (trimmedString == "OFF" & pushedButton == r4Btn & currentPageTitle == "IFF") || trimmedString == "1.2K" || trimmedString == "HIGH" || trimmedString == "UHF" || trimmedString == "0" || trimmedString == "NOR" || (trimmedString == "TR" & currentPageTitle == "TACAN CONTROL") || (currentPageTitle == "HF1 CONTROL" & trimmedString == "STBY"))//**Toggle colors
+            if ((hfMode == "ALE" & trimmedString == "MAN") || (trimmedString == "2" & currentPageTitle != "V/U1 VHF-FM" & currentPageTitle != "V/U1 COMSEC VAR") || trimmedString == "NORM" || trimmedString == "CW" || trimmedString == "DIV" || (trimmedString == "OFF" & pushedButton == r4Btn & currentPageTitle == "IFF") || trimmedString == "1.2K" || trimmedString == "HIGH" || trimmedString == "UHF" || trimmedString == "0" || trimmedString == "NOR" || (trimmedString == "TR" & currentPageTitle == "TACAN CONTROL") || (currentPageTitle == "HF1 CONTROL" & trimmedString == "STBY"))//**Toggle colors
             {
                 try
                 {
@@ -20713,6 +24155,42 @@ namespace CDU3000
                         VU1controlPage1();
                         return;
                     }
+                    else if (CheckFreqFormat("FM"))
+                    {
+                        UpdateFreqswithRightBtnPush();
+                        scratchpad = "";
+                        sPad.Text = "";
+                        StartFresh();
+                        VU1controlPage1();
+                        return;
+                    }
+                    else if (CheckFreqFormat("AM"))
+                    {
+                        UpdateFreqswithRightBtnPush();
+                        scratchpad = "";
+                        sPad.Text = "";
+                        StartFresh();
+                        VU1controlPage1();
+                        return;
+                    }
+                    else if (CheckFreqFormat("SATCOM"))
+                    {
+                        UpdateFreqswithRightBtnPush();
+                        scratchpad = "";
+                        sPad.Text = "";
+                        StartFresh();
+                        VU1controlPage1();
+                        return;
+                    }
+                    else if (CheckFreqFormat("HOPSET"))
+                    {
+                        UpdateFreqswithRightBtnPush();
+                        scratchpad = "";
+                        sPad.Text = "";
+                        StartFresh();
+                        VU1controlPage1();
+                        return;
+                    }
                     else if (CheckFreqFormat("COMSEC"))
                     {
                         UpdateComsec();
@@ -20771,6 +24249,42 @@ namespace CDU3000
                 else if ((pushedButton == r1Btn) & scratchpad != null)
                 {
                     if (CheckFreqFormat("UHF"))
+                    {
+                        UpdateFreqswithRightBtnPush();
+                        scratchpad = "";
+                        sPad.Text = "";
+                        StartFresh();
+                        VU2controlPage1();
+                        return;
+                    }
+                    else if (CheckFreqFormat("FM"))
+                    {
+                        UpdateFreqswithRightBtnPush();
+                        scratchpad = "";
+                        sPad.Text = "";
+                        StartFresh();
+                        VU2controlPage1();
+                        return;
+                    }
+                    else if (CheckFreqFormat("AM"))
+                    {
+                        UpdateFreqswithRightBtnPush();
+                        scratchpad = "";
+                        sPad.Text = "";
+                        StartFresh();
+                        VU2controlPage1();
+                        return;
+                    }
+                    else if (CheckFreqFormat("SATCOM"))
+                    {
+                        UpdateFreqswithRightBtnPush();
+                        scratchpad = "";
+                        sPad.Text = "";
+                        StartFresh();
+                        VU2controlPage1();
+                        return;
+                    }
+                    else if (CheckFreqFormat("HOPSET"))
                     {
                         UpdateFreqswithRightBtnPush();
                         scratchpad = "";
@@ -20847,8 +24361,20 @@ namespace CDU3000
             #endregion
 
             #region Page selection calls from VU1 COMSEC VAR page
-            if ((currentPageTitle == "V/U1 COMSEC VAR" || currentPageTitle == "V/U2 COMSEC VAR") & pushedButton!=r6Btn )
+            if ((currentPageTitle == "V/U1 COMSEC VAR" || currentPageTitle == "V/U2 COMSEC VAR") & pushedButton != r6Btn)
             {
+
+
+                if (currentPageTitle.Contains("V/U1"))
+                {
+                    if ((currentVU1SelectedComsecVar.Contains("10") & pushedButton == r5Btn) || (currentVU1SelectedComsecVar.Contains("9") & pushedButton == r4Btn) || (currentVU1SelectedComsecVar.Contains("8") & pushedButton == r3Btn) || (currentVU1SelectedComsecVar.Contains("7") & pushedButton == r2Btn) || (currentVU1SelectedComsecVar.Contains("6") & pushedButton == r1Btn) || (currentVU1SelectedComsecVar.Contains("5") & pushedButton == l5Btn) || (currentVU1SelectedComsecVar.Contains("4") & pushedButton == l4Btn) || (currentVU1SelectedComsecVar.Contains("3") & pushedButton == l3Btn) || (currentVU1SelectedComsecVar.Contains("2") & pushedButton == l2Btn) || ((currentVU1SelectedComsecVar.Contains("0") == false) & currentVU1SelectedComsecVar.Contains("1") & pushedButton == l1Btn))
+                    {
+                        StartFresh();
+                        VU1comsecControlPage();
+                        return;
+                    }
+                }
+
                 ComsecVarSelect(currentPageTitle);
                 StartFresh();
                 if (currentPageTitle.Contains("V/U1"))
@@ -20871,8 +24397,8 @@ namespace CDU3000
             }
             #endregion
 
-            #region Page selection for VU1 Preset Channels Page
-            if (currentPageTitle == "V/U2 UHF" & pushedButton != r6Btn)
+            #region Page selection for VU2 Preset Channels Page
+            if ((currentPageTitle == "V/U2 UHF" || currentPageTitle == "V/U2 VHF-FM" || currentPageTitle == "V/U2 VHF-AM" || currentPageTitle == "V/U2 SATCOM" || currentPageTitle == "V/U2 HOPSETS") & pushedButton != r6Btn)
             {
                 PresetController();
                 return;
@@ -21686,6 +25212,8 @@ namespace CDU3000
 
         private void ComsecVarSelect(string currentPageTitle)
         {
+
+
             string l1var = "";
             string l2var = "";
             string l3var = "";
@@ -21696,7 +25224,8 @@ namespace CDU3000
             string l8var = "";
             string l9var = "";
             string l10var = "";
-
+            string thisVar = "";
+            string thisComsecVar = "";
 
 
             if (pushedButton == l1Btn)
@@ -21711,6 +25240,8 @@ namespace CDU3000
                 l8var = "8 >";
                 l9var = "9 >";
                 l10var = "10 >";
+                thisVar = l1var;
+                thisComsecVar = comsecVar1;
             }
             else if (pushedButton == l2Btn)
             {
@@ -21724,6 +25255,8 @@ namespace CDU3000
                 l8var = "8 >";
                 l9var = "9 >";
                 l10var = "10 >";
+                thisVar = l2var;
+                thisComsecVar = comsecVar2;
             }
             else if (pushedButton == l3Btn)
             {
@@ -21737,6 +25270,8 @@ namespace CDU3000
                 l8var = "8 >";
                 l9var = "9 >";
                 l10var = "10 >";
+                thisVar = l3var;
+                thisComsecVar = comsecVar3;
             }
             else if (pushedButton == l4Btn)
             {
@@ -21750,6 +25285,8 @@ namespace CDU3000
                 l8var = "8 >";
                 l9var = "9 >";
                 l10var = "10 >";
+                thisVar = l4var;
+                thisComsecVar = comsecVar4;
             }
             else if (pushedButton == l5Btn)
             {
@@ -21763,6 +25300,8 @@ namespace CDU3000
                 l8var = "8 >";
                 l9var = "9 >";
                 l10var = "10 >";
+                thisVar = l5var;
+                thisComsecVar = comsecVar5;
             }
             else if (pushedButton == r1Btn)
             {
@@ -21776,6 +25315,8 @@ namespace CDU3000
                 l8var = "8 >";
                 l9var = "9 >";
                 l10var = "10 >";
+                thisVar = l6var;
+                thisComsecVar = comsecVar6;
             }
             else if (pushedButton == r2Btn)
             {
@@ -21789,6 +25330,8 @@ namespace CDU3000
                 l8var = "8 >";
                 l9var = "9 >";
                 l10var = "10 >";
+                thisVar = l7var;
+                thisComsecVar = comsecVar7;
             }
             else if (pushedButton == r3Btn)
             {
@@ -21802,6 +25345,8 @@ namespace CDU3000
                 l8var = "8 *";
                 l9var = "9 >";
                 l10var = "10 >";
+                thisVar = l8var;
+                thisComsecVar = comsecVar8;
             }
             else if (pushedButton == r4Btn)
             {
@@ -21815,6 +25360,8 @@ namespace CDU3000
                 l8var = "8 >";
                 l9var = "9 *";
                 l10var = "10 >";
+                thisVar = l9var;
+                thisComsecVar = comsecVar9;
             }
             else if (pushedButton == r5Btn)
             {
@@ -21828,7 +25375,11 @@ namespace CDU3000
                 l8var = "8 >";
                 l9var = "9 >";
                 l10var = "10 *";
+                thisVar = l10var;
+                thisComsecVar = comsecVar10;
             }
+
+            string x = "< " + thisVar.Trim('*', ' ');
 
 
             if (currentPageTitle.Contains("V/U1"))
@@ -21843,6 +25394,9 @@ namespace CDU3000
                 VU1pre8COMSEC = l8var;
                 VU1pre9COMSEC = l9var;
                 VU1pre10COMSEC = l10var;
+                VU1ComsecControlKey = x + "      " + thisComsecVar;
+                VU1comsecVar = thisComsecVar;
+                currentVU1SelectedComsecVar = thisVar;
 
             }
             else if (currentPageTitle.Contains("V/U2"))
@@ -21857,6 +25411,9 @@ namespace CDU3000
                 VU2pre8COMSEC = l8var;
                 VU2pre9COMSEC = l9var;
                 VU2pre10COMSEC = l10var;
+                VU2ComsecControlKey = x + "      " + thisComsecVar;
+                VU2comsecVar = thisComsecVar;
+                currentVU2SelectedComsecVar = thisVar;
             }
 
         }
@@ -22262,120 +25819,109 @@ namespace CDU3000
 
         private void CheckVU2()
         {
-            if (currentPageTitle == "comm")
+            if (currentPageTitle == "comm" || currentPageTitle == "V/U2 CONTROL")
             {
                 if (pushedButton == l2Btn & (scratchpad == "" || scratchpad == null))//scratchpad != "0" & ContainsLetters() == false
                 {
                     StartFresh();
-                    VU2controlPage1();
-                    return;
-                }
-                else
-                    if (pushedButton == l2Btn & scratchpad == "0")
+                    if (currentPageTitle == "comm")
                     {
-                        string tempChan = currentVU2chan;
-                        string tempName = currentVU2name;
-                        string tempFreq = currentVU2freq;
-                        string tempComsec = currentVU2ComsecVar;
-
-                        currentVU2chan = recallVU2UHFchan;
-                        currentVU2name = recallVU2UHFname;
-                        currentVU2freq = recallVU2UHFfreq;
-                        currentVU2ComsecVar = recallVU2Comsec;
-
-                        recallVU2UHFchan = tempChan;
-                        recallVU2UHFname = tempName;
-                        recallVU2UHFfreq = tempFreq;
-                        recallVU2Comsec = tempComsec;
-
-
-                        scratchpad = "";
-                        sPad.Text = "";
-                        StartFresh();
-                        COMpage();
-                        return;
+                        VU2controlPage1();
                     }
-                    else
-                        if (pushedButton == l2Btn & ContainsLetters() == true)
-                        {
-                            if (SearchCallSign(scratchpad))/////////////
-                            {
-                                sPad.Text = "";
-                                scratchpad = "";
-                                StartFresh();
-                                COMpage();
-                                return;
-                            }
-                            else
-                            {
-                                StartFresh();
-                                COMpage();
-                                scratchMessage = "INVALID ENTRY";
-                                ShowScratchMessage();
-                                ScratchMessageTimer.Start();
-                                return;
-                            }
-
-
-                        }
-                        else
-                            if (pushedButton == l2Btn & ContainsLetters() == false & ContainsNumbers() == true)
-                            {
-                                if (SearchChannelNumbers(scratchpad))////////////////
-                                {
-                                    sPad.Text = "";
-                                    scratchpad = "";
-                                    StartFresh();
-                                    COMpage();
-                                    return;
-                                }
-                                else
-                                {
-                                    StartFresh();
-                                    COMpage();
-                                    scratchMessage = "INVALID ENTRY";
-                                    ShowScratchMessage();
-                                    ScratchMessageTimer.Start();
-                                    return;
-                                }
-
-
-                            }
-            }
-            else if (currentPageTitle == "V/U2 CONTROL")
-            {
-                if (pushedButton == l1Btn & (scratchpad == "" || scratchpad == null))//scratchpad != "0" & ContainsLetters() == false
-                {
-                    StartFresh();
-                    VU2controlPage1();
-                    scratchMessage = "INVALID ENTRY";
-                    ScratchMessageTimer.Start();
-                    ShowScratchMessage();
+                    else if (currentPageTitle == "V/U2 CONTROL")
+                    {
+                        StartFresh();
+                        VU2controlPage1();
+                        scratchMessage = "INVALID ENTRY";
+                        ScratchMessageTimer.Start();
+                        ShowScratchMessage();
+                    }
                     return;
                 }
                 else
                     if (pushedButton == l1Btn & scratchpad == "0")
                     {
-                        string tempChan = currentVU2chan;
-                        string tempName = currentVU2name;
-                        string tempFreq = currentVU2freq;
-                        string tempComsec = currentVU2ComsecVar;
+                        if (VU2band == activeBand.UHF)
+                        {
+                            string tempChan = currentVU2chan;
+                            string tempName = currentVU2name;
+                            string tempFreq = currentVU2freq;
+                            string tempComsec = currentVU2ComsecVar;
 
-                        currentVU2chan = recallVU2UHFchan;
-                        currentVU2name = recallVU2UHFname;
-                        currentVU2freq = recallVU2UHFfreq;
-                        currentVU2ComsecVar = recallVU2Comsec;
+                            currentVU2chan = recallVU2UHFchan;
+                            currentVU2name = recallVU2UHFname;
+                            currentVU2freq = recallVU2UHFfreq;
+                            currentVU2ComsecVar = recallVU2Comsec;
 
-                        recallVU2UHFchan = tempChan;
-                        recallVU2UHFname = tempName;
-                        recallVU2UHFfreq = tempFreq;
-                        recallVU2Comsec = tempComsec;
+                            recallVU2UHFchan = tempChan;
+                            recallVU2UHFname = tempName;
+                            recallVU2UHFfreq = tempFreq;
+                            recallVU2Comsec = tempComsec;
+                        }
+                        else if (VU2band == activeBand.FM)
+                        {
+                            string tempChan = currentVU2chan;
+                            string tempName = currentVU2name;
+                            string tempFreq = currentVU2freq;
+                            string tempComsec = currentVU2ComsecVar;
+
+                            currentVU2chan = recallVU2FMchan;
+                            currentVU2name = recallVU2FMname;
+                            currentVU2freq = recallVU2FMfreq;
+                            currentVU2ComsecVar = recallVU2Comsec;
+
+                            recallVU2FMchan = tempChan;
+                            recallVU2FMname = tempName;
+                            recallVU2FMfreq = tempFreq;
+                            recallVU2Comsec = tempComsec;
+                        }
+                        else if (VU2band == activeBand.AM)
+                        {
+                            string tempChan = currentVU2chan;
+                            string tempName = currentVU2name;
+                            string tempFreq = currentVU2freq;
+                            string tempComsec = currentVU2ComsecVar;
+
+                            currentVU2chan = recallVU2AMchan;
+                            currentVU2name = recallVU2AMname;
+                            currentVU2freq = recallVU2AMfreq;
+                            currentVU2ComsecVar = recallVU2Comsec;
+
+                            recallVU2AMchan = tempChan;
+                            recallVU2AMname = tempName;
+                            recallVU2AMfreq = tempFreq;
+                            recallVU2Comsec = tempComsec;
+                        }
+                        else if (VU2band == activeBand.HOPSETS)
+                        {
+                            string tempChan = currentVU2chan;
+                            string tempName = currentVU2name;
+                            string tempFreq = currentVU2freq;
+                            string tempComsec = currentVU2ComsecVar;
+
+                            currentVU2chan = recallVU2HOPchan;
+                            currentVU2name = recallVU2HOPname;
+                            currentVU2freq = recallVU2HOPfreq;
+                            currentVU2ComsecVar = recallVU2Comsec;
+
+                            recallVU2HOPchan = tempChan;
+                            recallVU2HOPname = tempName;
+                            recallVU2HOPfreq = tempFreq;
+                            recallVU2Comsec = tempComsec;
+                        }
 
 
                         scratchpad = "";
                         sPad.Text = "";
                         StartFresh();
-                        VU2controlPage1();
+                        if (currentPageTitle == "comm")
+                        {
+                            COMpage();
+                        }
+                        else if (currentPageTitle == "V/U2 CONTROL")
+                        {
+                            VU2controlPage1();
+                        }
                         return;
                     }
                     else
@@ -22386,13 +25932,27 @@ namespace CDU3000
                                 sPad.Text = "";
                                 scratchpad = "";
                                 StartFresh();
-                                VU2controlPage1();
+                                if (currentPageTitle == "comm")
+                                {
+                                    COMpage();
+                                }
+                                else if (currentPageTitle == "V/U2 CONTROL")
+                                {
+                                    VU2controlPage1();
+                                }
                                 return;
                             }
                             else
                             {
                                 StartFresh();
-                                VU2controlPage1();
+                                if (currentPageTitle == "comm")
+                                {
+                                    COMpage();
+                                }
+                                else if (currentPageTitle == "V/U2 CONTROL")
+                                {
+                                    VU2controlPage1();
+                                }
                                 scratchMessage = "INVALID ENTRY";
                                 ShowScratchMessage();
                                 ScratchMessageTimer.Start();
@@ -22409,13 +25969,27 @@ namespace CDU3000
                                     sPad.Text = "";
                                     scratchpad = "";
                                     StartFresh();
-                                    VU2controlPage1();
+                                    if (currentPageTitle == "comm")
+                                    {
+                                        COMpage();
+                                    }
+                                    else if (currentPageTitle == "V/U2 CONTROL")
+                                    {
+                                        VU2controlPage1();
+                                    }
                                     return;
                                 }
                                 else
                                 {
                                     StartFresh();
-                                    VU2controlPage1();
+                                    if (currentPageTitle == "comm")
+                                    {
+                                        COMpage();
+                                    }
+                                    else if (currentPageTitle == "V/U2 CONTROL")
+                                    {
+                                        VU2controlPage1();
+                                    }
                                     scratchMessage = "INVALID ENTRY";
                                     ShowScratchMessage();
                                     ScratchMessageTimer.Start();
@@ -22426,6 +26000,173 @@ namespace CDU3000
                             }
             }
         }
+
+        //private void CheckVU2()
+        //{
+        //    if (currentPageTitle == "comm")
+        //    {
+        //        if (pushedButton == l2Btn & (scratchpad == "" || scratchpad == null))//scratchpad != "0" & ContainsLetters() == false
+        //        {
+        //            StartFresh();
+        //            VU2controlPage1();
+        //            return;
+        //        }
+        //        else
+        //            if (pushedButton == l2Btn & scratchpad == "0")
+        //            {
+        //                string tempChan = currentVU2chan;
+        //                string tempName = currentVU2name;
+        //                string tempFreq = currentVU2freq;
+        //                string tempComsec = currentVU2ComsecVar;
+
+        //                currentVU2chan = recallVU2UHFchan;
+        //                currentVU2name = recallVU2UHFname;
+        //                currentVU2freq = recallVU2UHFfreq;
+        //                currentVU2ComsecVar = recallVU2Comsec;
+
+        //                recallVU2UHFchan = tempChan;
+        //                recallVU2UHFname = tempName;
+        //                recallVU2UHFfreq = tempFreq;
+        //                recallVU2Comsec = tempComsec;
+
+
+        //                scratchpad = "";
+        //                sPad.Text = "";
+        //                StartFresh();
+        //                COMpage();
+        //                return;
+        //            }
+        //            else
+        //                if (pushedButton == l2Btn & ContainsLetters() == true)
+        //                {
+        //                    if (SearchCallSign(scratchpad))/////////////
+        //                    {
+        //                        sPad.Text = "";
+        //                        scratchpad = "";
+        //                        StartFresh();
+        //                        COMpage();
+        //                        return;
+        //                    }
+        //                    else
+        //                    {
+        //                        StartFresh();
+        //                        COMpage();
+        //                        scratchMessage = "INVALID ENTRY";
+        //                        ShowScratchMessage();
+        //                        ScratchMessageTimer.Start();
+        //                        return;
+        //                    }
+
+
+        //                }
+        //                else
+        //                    if (pushedButton == l2Btn & ContainsLetters() == false & ContainsNumbers() == true)
+        //                    {
+        //                        if (SearchChannelNumbers(scratchpad))////////////////
+        //                        {
+        //                            sPad.Text = "";
+        //                            scratchpad = "";
+        //                            StartFresh();
+        //                            COMpage();
+        //                            return;
+        //                        }
+        //                        else
+        //                        {
+        //                            StartFresh();
+        //                            COMpage();
+        //                            scratchMessage = "INVALID ENTRY";
+        //                            ShowScratchMessage();
+        //                            ScratchMessageTimer.Start();
+        //                            return;
+        //                        }
+
+
+        //                    }
+        //    }
+        //    else if (currentPageTitle == "V/U2 CONTROL")
+        //    {
+        //        if (pushedButton == l1Btn & (scratchpad == "" || scratchpad == null))//scratchpad != "0" & ContainsLetters() == false
+        //        {
+        //            StartFresh();
+        //            VU2controlPage1();
+        //            scratchMessage = "INVALID ENTRY";
+        //            ScratchMessageTimer.Start();
+        //            ShowScratchMessage();
+        //            return;
+        //        }
+        //        else
+        //            if (pushedButton == l1Btn & scratchpad == "0")
+        //            {
+        //                string tempChan = currentVU2chan;
+        //                string tempName = currentVU2name;
+        //                string tempFreq = currentVU2freq;
+        //                string tempComsec = currentVU2ComsecVar;
+
+        //                currentVU2chan = recallVU2UHFchan;
+        //                currentVU2name = recallVU2UHFname;
+        //                currentVU2freq = recallVU2UHFfreq;
+        //                currentVU2ComsecVar = recallVU2Comsec;
+
+        //                recallVU2UHFchan = tempChan;
+        //                recallVU2UHFname = tempName;
+        //                recallVU2UHFfreq = tempFreq;
+        //                recallVU2Comsec = tempComsec;
+
+
+        //                scratchpad = "";
+        //                sPad.Text = "";
+        //                StartFresh();
+        //                VU2controlPage1();
+        //                return;
+        //            }
+        //            else
+        //                if (pushedButton == l1Btn & ContainsLetters() == true)
+        //                {
+        //                    if (SearchCallSign(scratchpad))/////////////
+        //                    {
+        //                        sPad.Text = "";
+        //                        scratchpad = "";
+        //                        StartFresh();
+        //                        VU2controlPage1();
+        //                        return;
+        //                    }
+        //                    else
+        //                    {
+        //                        StartFresh();
+        //                        VU2controlPage1();
+        //                        scratchMessage = "INVALID ENTRY";
+        //                        ShowScratchMessage();
+        //                        ScratchMessageTimer.Start();
+        //                        return;
+        //                    }
+
+
+        //                }
+        //                else
+        //                    if (pushedButton == l1Btn & ContainsLetters() == false & ContainsNumbers() == true)
+        //                    {
+        //                        if (SearchChannelNumbers(scratchpad))////////////////
+        //                        {
+        //                            sPad.Text = "";
+        //                            scratchpad = "";
+        //                            StartFresh();
+        //                            VU2controlPage1();
+        //                            return;
+        //                        }
+        //                        else
+        //                        {
+        //                            StartFresh();
+        //                            VU2controlPage1();
+        //                            scratchMessage = "INVALID ENTRY";
+        //                            ShowScratchMessage();
+        //                            ScratchMessageTimer.Start();
+        //                            return;
+        //                        }
+
+
+        //                    }
+        //    }
+        //}
 
         #endregion
 
@@ -22800,6 +26541,36 @@ namespace CDU3000
                         return "E";
                     }
                 }
+                else if (VUnumber == "VU2")
+                {
+                    if (x <= 399995 & x >= 225000)
+                    {
+                        if (VU2band == activeBand.UHF)
+                        {
+                            return "U";
+                        }
+
+                        if (VU2band == activeBand.SATCOM)
+                        {
+                            return "S";
+                        }
+                    }
+
+                    if (((x <= 87995 & x >= 30000) || (x <= 173995 & x >= 130000)) & VU2band == activeBand.FM)
+                    {
+                        return "F";
+                    }
+
+                    if ((x <= 155995 & x >= 108000) & VU2band == activeBand.AM)
+                    {
+                        return "V";
+                    }
+
+                    if (((x <= 87975 & x >= 30000) & (VU2band == activeBand.HOPSETS)) || (x >= 0 & x <= 999))
+                    {
+                        return "E";
+                    }
+                }
 
 
                 return "";
@@ -23071,48 +26842,187 @@ namespace CDU3000
         {
             Char[] myChar = { '<', ' ', '*' };
 
-            recallVU2UHFchan = currentVU2chan;
-            recallVU2UHFfreq = currentVU2freq;
-            recallVU2UHFname = currentVU2name;
-            recallVU2Comsec = currentVU2ComsecVar;
-
-            switch (e)
+            if (VU2band == activeBand.UHF)
             {
-                case "VU2UHFpre1Name":
-                    currentVU2chan = VU2UHFpre1Chan.Trim(myChar);
-                    currentVU2freq = VU2UHFpre1Freq.Trim(myChar);
-                    currentVU2name = VU2UHFpre1Name.Trim(myChar);
-                    currentVU2ComsecVar = VU2UHFpre1Comsec;
-                    break;
+                recallVU2UHFchan = currentVU2chan;
+                recallVU2UHFfreq = currentVU2freq;
+                recallVU2UHFname = currentVU2name;
+                recallVU2Comsec = currentVU2ComsecVar;
 
-                case "VU2UHFpre2Name":
-                    currentVU2chan = VU2UHFpre2Chan.Trim(myChar);
-                    currentVU2freq = VU2UHFpre2Freq.Trim(myChar);
-                    currentVU2name = VU2UHFpre2Name.Trim(myChar);
-                    currentVU2ComsecVar = VU2UHFpre2Comsec;
-                    break;
+                switch (e)
+                {
+                    case "VU2UHFpre1Name":
+                        currentVU2chan = VU2UHFpre1Chan.Trim(myChar);
+                        currentVU2freq = VU2UHFpre1Freq.Trim(myChar);
+                        currentVU2name = VU2UHFpre1Name.Trim(myChar);
+                        currentVU2ComsecVar = VU2UHFpre1Comsec;
+                        break;
 
-                case "VU2UHFpre3Name":
-                    currentVU2chan = VU2UHFpre3Chan.Trim(myChar);
-                    currentVU2freq = VU2UHFpre3Freq.Trim(myChar);
-                    currentVU2name = VU2UHFpre3Name.Trim(myChar);
-                    currentVU2ComsecVar = VU2UHFpre3Comsec;
-                    break;
+                    case "VU2UHFpre2Name":
+                        currentVU2chan = VU2UHFpre2Chan.Trim(myChar);
+                        currentVU2freq = VU2UHFpre2Freq.Trim(myChar);
+                        currentVU2name = VU2UHFpre2Name.Trim(myChar);
+                        currentVU2ComsecVar = VU2UHFpre2Comsec;
+                        break;
 
-                case "VU2UHFpre4Name":
-                    currentVU2chan = VU2UHFpre4Chan.Trim(myChar);
-                    currentVU2freq = VU2UHFpre4Freq.Trim(myChar);
-                    currentVU2name = VU2UHFpre4Name.Trim(myChar);
-                    currentVU2ComsecVar = VU2UHFpre4Comsec;
-                    break;
+                    case "VU2UHFpre3Name":
+                        currentVU2chan = VU2UHFpre3Chan.Trim(myChar);
+                        currentVU2freq = VU2UHFpre3Freq.Trim(myChar);
+                        currentVU2name = VU2UHFpre3Name.Trim(myChar);
+                        currentVU2ComsecVar = VU2UHFpre3Comsec;
+                        break;
 
-                case "VU2UHFpre5Name":
-                    currentVU2chan = VU2UHFpre5Chan.Trim(myChar);
-                    currentVU2freq = VU2UHFpre5Freq.Trim(myChar);
-                    currentVU2name = VU2UHFpre5Name.Trim(myChar);
-                    currentVU2ComsecVar = VU2UHFpre5Comsec;
-                    break;
+                    case "VU2UHFpre4Name":
+                        currentVU2chan = VU2UHFpre4Chan.Trim(myChar);
+                        currentVU2freq = VU2UHFpre4Freq.Trim(myChar);
+                        currentVU2name = VU2UHFpre4Name.Trim(myChar);
+                        currentVU2ComsecVar = VU2UHFpre4Comsec;
+                        break;
+
+                    case "VU2UHFpre5Name":
+                        currentVU2chan = VU2UHFpre5Chan.Trim(myChar);
+                        currentVU2freq = VU2UHFpre5Freq.Trim(myChar);
+                        currentVU2name = VU2UHFpre5Name.Trim(myChar);
+                        currentVU2ComsecVar = VU2UHFpre5Comsec;
+                        break;
+                }
             }
+            else if (VU2band == activeBand.FM)
+            {
+                recallVU2FMchan = currentVU2chan;
+                recallVU2FMfreq = currentVU2freq;
+                recallVU2FMname = currentVU2name;
+                recallVU2Comsec = currentVU2ComsecVar;
+
+                switch (e)
+                {
+                    case "VU2FMpre1Name":
+                        currentVU2chan = VU2FMpre1Chan.Trim(myChar);
+                        currentVU2freq = VU2FMpre1Freq.Trim(myChar);
+                        currentVU2name = VU2FMpre1Name.Trim(myChar);
+                        currentVU2ComsecVar = VU2FMpre1Comsec;
+                        break;
+
+                    case "VU2FMpre2Name":
+                        currentVU2chan = VU2FMpre2Chan.Trim(myChar);
+                        currentVU2freq = VU2FMpre2Freq.Trim(myChar);
+                        currentVU2name = VU2FMpre2Name.Trim(myChar);
+                        currentVU2ComsecVar = VU2FMpre2Comsec;
+                        break;
+
+                    case "VU2FMpre3Name":
+                        currentVU2chan = VU2FMpre3Chan.Trim(myChar);
+                        currentVU2freq = VU2FMpre3Freq.Trim(myChar);
+                        currentVU2name = VU2FMpre3Name.Trim(myChar);
+                        currentVU2ComsecVar = VU2FMpre3Comsec;
+                        break;
+
+                    case "VU2FMpre4Name":
+                        currentVU2chan = VU2FMpre4Chan.Trim(myChar);
+                        currentVU2freq = VU2FMpre4Freq.Trim(myChar);
+                        currentVU2name = VU2FMpre4Name.Trim(myChar);
+                        currentVU2ComsecVar = VU2FMpre4Comsec;
+                        break;
+
+                    case "VU2FMpre5Name":
+                        currentVU2chan = VU2FMpre5Chan.Trim(myChar);
+                        currentVU2freq = VU2FMpre5Freq.Trim(myChar);
+                        currentVU2name = VU2FMpre5Name.Trim(myChar);
+                        currentVU2ComsecVar = VU2FMpre5Comsec;
+                        break;
+                }
+            }
+            else if (VU2band == activeBand.AM)
+            {
+                recallVU2AMchan = currentVU2chan;
+                recallVU2AMfreq = currentVU2freq;
+                recallVU2AMname = currentVU2name;
+                recallVU2Comsec = currentVU2ComsecVar;
+
+                switch (e)
+                {
+                    case "VU2AMpre1Name":
+                        currentVU2chan = VU2AMpre1Chan.Trim(myChar);
+                        currentVU2freq = VU2AMpre1Freq.Trim(myChar);
+                        currentVU2name = VU2AMpre1Name.Trim(myChar);
+                        currentVU2ComsecVar = VU2AMpre1Comsec;
+                        break;
+
+                    case "VU2AMpre2Name":
+                        currentVU2chan = VU2AMpre2Chan.Trim(myChar);
+                        currentVU2freq = VU2AMpre2Freq.Trim(myChar);
+                        currentVU2name = VU2AMpre2Name.Trim(myChar);
+                        currentVU2ComsecVar = VU2AMpre2Comsec;
+                        break;
+
+                    case "VU2AMpre3Name":
+                        currentVU2chan = VU2AMpre3Chan.Trim(myChar);
+                        currentVU2freq = VU2AMpre3Freq.Trim(myChar);
+                        currentVU2name = VU2AMpre3Name.Trim(myChar);
+                        currentVU2ComsecVar = VU2AMpre3Comsec;
+                        break;
+
+                    case "VU2AMpre4Name":
+                        currentVU2chan = VU2AMpre4Chan.Trim(myChar);
+                        currentVU2freq = VU2AMpre4Freq.Trim(myChar);
+                        currentVU2name = VU2AMpre4Name.Trim(myChar);
+                        currentVU2ComsecVar = VU2AMpre4Comsec;
+                        break;
+
+                    case "VU2AMpre5Name":
+                        currentVU2chan = VU2AMpre5Chan.Trim(myChar);
+                        currentVU2freq = VU2AMpre5Freq.Trim(myChar);
+                        currentVU2name = VU2AMpre5Name.Trim(myChar);
+                        currentVU2ComsecVar = VU2AMpre5Comsec;
+                        break;
+                }
+            }
+            else if (VU2band == activeBand.HOPSETS)
+            {
+                recallVU2HOPchan = currentVU2chan;
+                recallVU2HOPfreq = currentVU2freq;
+                recallVU2HOPname = currentVU2name;
+                recallVU2Comsec = currentVU2ComsecVar;
+
+                switch (e)
+                {
+                    case "VU2HOPpre1Name":
+                        currentVU2chan = VU2HOPpre1Chan.Trim(myChar);
+                        currentVU2freq = VU2HOPpre1Freq.Trim(myChar);
+                        currentVU2name = VU2HOPpre1Name.Trim(myChar);
+                        currentVU2ComsecVar = VU2HOPpre1Comsec;
+                        break;
+
+                    case "VU2HOPpre2Name":
+                        currentVU2chan = VU2HOPpre2Chan.Trim(myChar);
+                        currentVU2freq = VU2HOPpre2Freq.Trim(myChar);
+                        currentVU2name = VU2HOPpre2Name.Trim(myChar);
+                        currentVU2ComsecVar = VU2HOPpre2Comsec;
+                        break;
+
+                    case "VU2HOPpre3Name":
+                        currentVU2chan = VU2HOPpre3Chan.Trim(myChar);
+                        currentVU2freq = VU2HOPpre3Freq.Trim(myChar);
+                        currentVU2name = VU2HOPpre3Name.Trim(myChar);
+                        currentVU2ComsecVar = VU2HOPpre3Comsec;
+                        break;
+
+                    case "VU2HOPpre4Name":
+                        currentVU2chan = VU2HOPpre4Chan.Trim(myChar);
+                        currentVU2freq = VU2HOPpre4Freq.Trim(myChar);
+                        currentVU2name = VU2HOPpre4Name.Trim(myChar);
+                        currentVU2ComsecVar = VU2HOPpre4Comsec;
+                        break;
+
+                    case "VU2HOPpre5Name":
+                        currentVU2chan = VU2HOPpre5Chan.Trim(myChar);
+                        currentVU2freq = VU2HOPpre5Freq.Trim(myChar);
+                        currentVU2name = VU2HOPpre5Name.Trim(myChar);
+                        currentVU2ComsecVar = VU2HOPpre5Comsec;
+                        break;
+                }
+            }
+
         }
 
         private void PresetController()//used to update preset pages
@@ -23288,10 +27198,7 @@ namespace CDU3000
                         StartFresh();
                         VU1uhfPresetsPage1();
                         return;
-                        //end VU1 section
 
-
-                        //begin VU2 section
                     }
                     else
                         if (currentPageTitle == "V/U1 VHF-FM")
@@ -23393,10 +27300,7 @@ namespace CDU3000
                             StartFresh();
                             VU1vhfFMpresetsPage1();
                             return;
-                            //end VU1 section
 
-
-                            //begin VU2 section
                         }
 
                         else
@@ -23534,10 +27438,7 @@ namespace CDU3000
                                 StartFresh();
                                 VU1hopsetsPage1();
                                 return;
-                                //end VU1 section
 
-
-                                //begin VU2 section
                             }
 
                             else
@@ -23619,10 +27520,7 @@ namespace CDU3000
                                     StartFresh();
                                     VU1satcomPresetsPage1();
                                     return;
-                                    //end VU1 section
 
-
-                                    //begin VU2 section
                                 }
 
                                 else
@@ -23718,6 +27616,9 @@ namespace CDU3000
                                                                                     VU1AMpre5Comsec = scratchpad;
                                                                                 }
                                                                             }
+
+
+
 
 
                                         scratchpad = "";
@@ -23832,7 +27733,435 @@ namespace CDU3000
                                             StartFresh();
                                             VU2uhfPresetsPage1();
                                             return;
+
                                         }
+                                        else
+                                            if (currentPageTitle == "V/U2 VHF-FM")
+                                            {
+                                                if (!CheckValidity())
+                                                {
+                                                    return;
+                                                }
+
+                                                if (pushedButton == l1Btn)
+                                                {
+                                                    VU2FMpre1Name = scratchpad;
+                                                }
+                                                else
+                                                    if (pushedButton == l2Btn)
+                                                    {
+                                                        VU2FMpre2Name = scratchpad;
+                                                    }
+                                                    else
+                                                        if (pushedButton == l3Btn)
+                                                        {
+                                                            VU2FMpre3Name = scratchpad;
+                                                        }
+                                                        else
+                                                            if (pushedButton == l4Btn)
+                                                            {
+                                                                VU2FMpre4Name = scratchpad;
+                                                            }
+                                                            else
+                                                                if (pushedButton == l5Btn)
+                                                                {
+                                                                    VU2FMpre5Name = scratchpad;
+                                                                }
+                                                                else//update the frequencies or COMSEC
+                                                                    if (pushedButton == r1Btn)
+                                                                    {
+                                                                        if (scratchpad.Length > 3)
+                                                                        {
+                                                                            VU2FMpre1Freq = scratchpad.Insert(scratchpad.Length - 3, ".");
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            VU2FMpre1Comsec = scratchpad;
+                                                                        }
+
+                                                                    }
+                                                                    else
+                                                                        if (pushedButton == r2Btn)
+                                                                        {
+                                                                            if (scratchpad.Length > 3)
+                                                                            {
+                                                                                VU2FMpre2Freq = scratchpad.Insert(scratchpad.Length - 3, ".");
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                VU2FMpre2Comsec = scratchpad;
+                                                                            }
+                                                                        }
+                                                                        else
+                                                                            if (pushedButton == r3Btn)
+                                                                            {
+                                                                                if (scratchpad.Length > 3)
+                                                                                {
+                                                                                    VU2FMpre3Freq = scratchpad.Insert(scratchpad.Length - 3, ".");
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    VU2FMpre3Comsec = scratchpad;
+                                                                                }
+                                                                            }
+                                                                            else
+                                                                                if (pushedButton == r4Btn)
+                                                                                {
+                                                                                    if (scratchpad.Length > 3)
+                                                                                    {
+                                                                                        VU2FMpre4Freq = scratchpad.Insert(scratchpad.Length - 3, ".");
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                        VU2FMpre4Comsec = scratchpad;
+                                                                                    }
+                                                                                }
+                                                                                else
+                                                                                    if (pushedButton == r5Btn)
+                                                                                    {
+                                                                                        if (scratchpad.Length > 3)
+                                                                                        {
+                                                                                            VU2FMpre5Freq = scratchpad.Insert(scratchpad.Length - 3, ".");
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                            VU2FMpre5Comsec = scratchpad;
+                                                                                        }
+                                                                                    }
+
+
+                                                scratchpad = "";
+                                                sPad.Text = scratchpad;
+                                                StartFresh();
+                                                VU2vhfFMpresetsPage1();
+                                                return;
+
+                                            }
+
+                                            else
+                                                if (currentPageTitle == "V/U2 HOPSETS")
+                                                {
+                                                    if (!CheckValidity())
+                                                    {
+                                                        return;
+                                                    }
+
+                                                    if (pushedButton == l1Btn)
+                                                    {
+                                                        VU2HOPpre1Name = scratchpad;
+                                                    }
+                                                    else
+                                                        if (pushedButton == l2Btn)
+                                                        {
+                                                            VU2HOPpre2Name = scratchpad;
+                                                        }
+                                                        else
+                                                            if (pushedButton == l3Btn)
+                                                            {
+                                                                VU2HOPpre3Name = scratchpad;
+                                                            }
+                                                            else
+                                                                if (pushedButton == l4Btn)
+                                                                {
+                                                                    VU2HOPpre4Name = scratchpad;
+                                                                }
+                                                                else
+                                                                    if (pushedButton == l5Btn)
+                                                                    {
+                                                                        VU2HOPpre5Name = scratchpad;
+                                                                    }
+                                                                    else//update the frequencies or COMSEC
+                                                                        if (pushedButton == r1Btn)
+                                                                        {
+                                                                            if (scratchpad.Length > 3 || scratchpad.Contains("F"))
+                                                                            {
+                                                                                if (!scratchpad.Contains("F"))
+                                                                                {
+                                                                                    VU2HOPpre1Freq = scratchpad.Insert(scratchpad.Length - 3, ".");
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    VU2HOPpre1Freq = scratchpad;
+                                                                                }
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                VU2HOPpre1Comsec = scratchpad;
+                                                                            }
+
+                                                                        }
+                                                                        else
+                                                                            if (pushedButton == r2Btn)
+                                                                            {
+                                                                                if (scratchpad.Length > 3 || scratchpad.Contains("F"))
+                                                                                {
+                                                                                    if (!scratchpad.Contains("F"))
+                                                                                    {
+                                                                                        VU2HOPpre2Freq = scratchpad.Insert(scratchpad.Length - 3, ".");
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                        VU2HOPpre2Freq = scratchpad;
+                                                                                    }
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    VU2HOPpre2Comsec = scratchpad;
+                                                                                }
+                                                                            }
+                                                                            else
+                                                                                if (pushedButton == r3Btn)
+                                                                                {
+                                                                                    if (scratchpad.Length > 3 || scratchpad.Contains("F"))
+                                                                                    {
+                                                                                        if (!scratchpad.Contains("F"))
+                                                                                        {
+                                                                                            VU2HOPpre3Freq = scratchpad.Insert(scratchpad.Length - 3, ".");
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                            VU2HOPpre3Freq = scratchpad;
+                                                                                        }
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                        VU2HOPpre3Comsec = scratchpad;
+                                                                                    }
+                                                                                }
+                                                                                else
+                                                                                    if (pushedButton == r4Btn)
+                                                                                    {
+                                                                                        if (scratchpad.Length > 3 || scratchpad.Contains("F"))
+                                                                                        {
+                                                                                            if (!scratchpad.Contains("F"))
+                                                                                            {
+                                                                                                VU2HOPpre4Freq = scratchpad.Insert(scratchpad.Length - 3, ".");
+                                                                                            }
+                                                                                            else
+                                                                                            {
+                                                                                                VU2HOPpre4Freq = scratchpad;
+                                                                                            }
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                            VU2HOPpre4Comsec = scratchpad;
+                                                                                        }
+                                                                                    }
+                                                                                    else
+                                                                                        if (pushedButton == r5Btn)
+                                                                                        {
+                                                                                            if (scratchpad.Length > 3 || scratchpad.Contains("F"))
+                                                                                            {
+                                                                                                if (!scratchpad.Contains("F"))
+                                                                                                {
+                                                                                                    VU2HOPpre5Freq = scratchpad.Insert(scratchpad.Length - 3, ".");
+                                                                                                }
+                                                                                                else
+                                                                                                {
+                                                                                                    VU2HOPpre5Freq = scratchpad;
+                                                                                                }
+                                                                                            }
+                                                                                            else
+                                                                                            {
+                                                                                                VU2HOPpre5Comsec = scratchpad;
+                                                                                            }
+                                                                                        }
+
+
+                                                    scratchpad = "";
+                                                    sPad.Text = scratchpad;
+                                                    StartFresh();
+                                                    VU2hopsetsPage1();
+                                                    return;
+
+                                                }
+
+                                                else
+                                                    if (currentPageTitle == "V/U2 SATCOM")
+                                                    {
+                                                        if (!CheckValidity())
+                                                        {
+                                                            return;
+                                                        }
+
+                                                        if (pushedButton == l1Btn)
+                                                        {
+                                                            VU2SatcomPre1Name = scratchpad;
+                                                        }
+                                                        else
+                                                            if (pushedButton == l2Btn)
+                                                            {
+                                                                VU2SatcomPre1SATchan = scratchpad;
+                                                            }
+                                                            else
+                                                                if (pushedButton == l3Btn)
+                                                                {
+                                                                    VU2SatcomPre2Name = scratchpad;
+                                                                }
+                                                                else
+                                                                    if (pushedButton == l4Btn)
+                                                                    {
+                                                                        VU2SatcomPre2SATchan = scratchpad;
+                                                                    }
+
+                                                                    else//update the frequencies or COMSEC
+                                                                        if (pushedButton == r1Btn)
+                                                                        {
+                                                                            if (scratchpad.Length == 6)
+                                                                            {
+                                                                                VU2SatcomPre1Uplink = scratchpad.Insert(scratchpad.Length - 3, ".");
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                VU2SatcomPre1Comsec = scratchpad;
+                                                                            }
+
+                                                                        }
+                                                                        else
+                                                                            if (pushedButton == r2Btn)
+                                                                            {
+                                                                                if (scratchpad.Length == 6)
+                                                                                {
+                                                                                    VU2SatcomPre1Downlink = scratchpad.Insert(scratchpad.Length - 3, ".");
+                                                                                }
+
+                                                                            }
+                                                                            else
+                                                                                if (pushedButton == r3Btn)
+                                                                                {
+                                                                                    if (scratchpad.Length == 6)
+                                                                                    {
+                                                                                        VU2SatcomPre2Uplink = scratchpad.Insert(scratchpad.Length - 3, ".");
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                        VU2SatcomPre2Comsec = scratchpad;
+                                                                                    }
+                                                                                }
+                                                                                else
+                                                                                    if (pushedButton == r4Btn)
+                                                                                    {
+                                                                                        if (scratchpad.Length == 6)
+                                                                                        {
+                                                                                            VU2SatcomPre2Downlink = scratchpad.Insert(scratchpad.Length - 3, ".");
+                                                                                        }
+
+                                                                                    }
+
+
+
+                                                        scratchpad = "";
+                                                        sPad.Text = scratchpad;
+                                                        StartFresh();
+                                                        VU2satcomPresetsPage1();
+                                                        return;
+
+                                                    }
+
+                                                    else
+                                                        if (currentPageTitle == "V/U2 VHF-AM")
+                                                        {
+                                                            if (!CheckValidity())
+                                                            {
+                                                                return;
+                                                            }
+
+                                                            if (pushedButton == l1Btn)
+                                                            {
+                                                                VU2AMpre1Name = scratchpad;
+                                                            }
+                                                            else
+                                                                if (pushedButton == l2Btn)
+                                                                {
+                                                                    VU2AMpre2Name = scratchpad;
+                                                                }
+                                                                else
+                                                                    if (pushedButton == l3Btn)
+                                                                    {
+                                                                        VU2AMpre3Name = scratchpad;
+                                                                    }
+                                                                    else
+                                                                        if (pushedButton == l4Btn)
+                                                                        {
+                                                                            VU2AMpre4Name = scratchpad;
+                                                                        }
+                                                                        else
+                                                                            if (pushedButton == l5Btn)
+                                                                            {
+                                                                                VU2AMpre5Name = scratchpad;
+                                                                            }
+                                                                            else//update the frequencies or COMSEC
+                                                                                if (pushedButton == r1Btn)
+                                                                                {
+                                                                                    if (scratchpad.Length > 3)
+                                                                                    {
+                                                                                        VU2AMpre1Freq = scratchpad.Insert(scratchpad.Length - 3, ".");
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                        VU2AMpre1Comsec = scratchpad;
+                                                                                    }
+
+                                                                                }
+                                                                                else
+                                                                                    if (pushedButton == r2Btn)
+                                                                                    {
+                                                                                        if (scratchpad.Length > 3)
+                                                                                        {
+                                                                                            VU2AMpre2Freq = scratchpad.Insert(scratchpad.Length - 3, ".");
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                            VU2AMpre2Comsec = scratchpad;
+                                                                                        }
+                                                                                    }
+                                                                                    else
+                                                                                        if (pushedButton == r3Btn)
+                                                                                        {
+                                                                                            if (scratchpad.Length > 3)
+                                                                                            {
+                                                                                                VU2AMpre3Freq = scratchpad.Insert(scratchpad.Length - 3, ".");
+                                                                                            }
+                                                                                            else
+                                                                                            {
+                                                                                                VU2AMpre3Comsec = scratchpad;
+                                                                                            }
+                                                                                        }
+                                                                                        else
+                                                                                            if (pushedButton == r4Btn)
+                                                                                            {
+                                                                                                if (scratchpad.Length > 3)
+                                                                                                {
+                                                                                                    VU2AMpre4Freq = scratchpad.Insert(scratchpad.Length - 3, ".");
+                                                                                                }
+                                                                                                else
+                                                                                                {
+                                                                                                    VU2AMpre4Comsec = scratchpad;
+                                                                                                }
+                                                                                            }
+                                                                                            else
+                                                                                                if (pushedButton == r5Btn)
+                                                                                                {
+                                                                                                    if (scratchpad.Length > 3)
+                                                                                                    {
+                                                                                                        VU2AMpre5Freq = scratchpad.Insert(scratchpad.Length - 3, ".");
+                                                                                                    }
+                                                                                                    else
+                                                                                                    {
+                                                                                                        VU2AMpre5Comsec = scratchpad;
+                                                                                                    }
+                                                                                                }
+
+
+
+
+
+                                                            scratchpad = "";
+                                                            sPad.Text = scratchpad;
+                                                            StartFresh();
+                                                            VU2vhfAMpresetsPage1();
+                                                            return;
+                                                        }
 
 
 
@@ -24188,45 +28517,171 @@ namespace CDU3000
             {
                 case "V/U2 CONTROL":
                     #region VU2 section
-                    if (pushedButton == l1Btn)
+                    if (VU2band == activeBand.UHF)
                     {
-                        if (scratchpad == VU2UHFpre1Name)
+                        if (pushedButton == l1Btn)
                         {
-                            UpdateVU2("VU2UHFpre1Name");
-                            return true;
-                        }
-                        else
-                            if (scratchpad == VU2UHFpre2Name)
+                            if (scratchpad == VU2UHFpre1Name)
                             {
-                                UpdateVU2("VU2UHFpre2Name");
+                                UpdateVU2("VU2UHFpre1Name");
                                 return true;
                             }
                             else
-                                if (scratchpad == VU2UHFpre3Name)
+                                if (scratchpad == VU2UHFpre2Name)
                                 {
-                                    UpdateVU2("VU2UHFpre3Name");
+                                    UpdateVU2("VU2UHFpre2Name");
                                     return true;
                                 }
                                 else
-                                    if (scratchpad == VU2UHFpre4Name)
+                                    if (scratchpad == VU2UHFpre3Name)
                                     {
-                                        UpdateVU2("VU2UHFpre4Name");
+                                        UpdateVU2("VU2UHFpre3Name");
                                         return true;
                                     }
                                     else
-                                        if (scratchpad == VU2UHFpre5Name)
+                                        if (scratchpad == VU2UHFpre4Name)
                                         {
-                                            UpdateVU2("VU2UHFpre5Name");
+                                            UpdateVU2("VU2UHFpre4Name");
                                             return true;
                                         }
                                         else
-                                        {
+                                            if (scratchpad == VU2UHFpre5Name)
+                                            {
+                                                UpdateVU2("VU2UHFpre5Name");
+                                                return true;
+                                            }
+                                            else
+                                            {
 
-                                            return false;
-                                        }
-                    #endregion
+                                                return false;
+                                            }
 
+                        }
                     }
+                    else if (VU2band == activeBand.FM)
+                    {
+                        if (pushedButton == l1Btn)
+                        {
+                            if (scratchpad == VU2FMpre1Name)
+                            {
+                                UpdateVU2("VU2FMpre1Name");
+                                return true;
+                            }
+                            else
+                                if (scratchpad == VU2FMpre2Name)
+                                {
+                                    UpdateVU2("VU2FMpre2Name");
+                                    return true;
+                                }
+                                else
+                                    if (scratchpad == VU2FMpre3Name)
+                                    {
+                                        UpdateVU2("VU2FMpre3Name");
+                                        return true;
+                                    }
+                                    else
+                                        if (scratchpad == VU2FMpre4Name)
+                                        {
+                                            UpdateVU2("VU2FMpre4Name");
+                                            return true;
+                                        }
+                                        else
+                                            if (scratchpad == VU2FMpre5Name)
+                                            {
+                                                UpdateVU2("VU2FMpre5Name");
+                                                return true;
+                                            }
+                                            else
+                                            {
+
+                                                return false;
+                                            }
+
+                        }
+                    }
+                    else if (VU2band == activeBand.AM)
+                    {
+                        if (pushedButton == l1Btn)
+                        {
+                            if (scratchpad == VU2AMpre1Name)
+                            {
+                                UpdateVU2("VU2AMpre1Name");
+                                return true;
+                            }
+                            else
+                                if (scratchpad == VU2AMpre2Name)
+                                {
+                                    UpdateVU2("VU2AMpre2Name");
+                                    return true;
+                                }
+                                else
+                                    if (scratchpad == VU2AMpre3Name)
+                                    {
+                                        UpdateVU2("VU2AMpre3Name");
+                                        return true;
+                                    }
+                                    else
+                                        if (scratchpad == VU2AMpre4Name)
+                                        {
+                                            UpdateVU2("VU2AMpre4Name");
+                                            return true;
+                                        }
+                                        else
+                                            if (scratchpad == VU2AMpre5Name)
+                                            {
+                                                UpdateVU2("VU2AMpre5Name");
+                                                return true;
+                                            }
+                                            else
+                                            {
+
+                                                return false;
+                                            }
+
+                        }
+                    }
+                    else if (VU2band == activeBand.HOPSETS)
+                    {
+                        if (pushedButton == l1Btn)
+                        {
+                            if (scratchpad == VU2HOPpre1Name)
+                            {
+                                UpdateVU2("VU2HOPpre1Name");
+                                return true;
+                            }
+                            else
+                                if (scratchpad == VU2HOPpre2Name)
+                                {
+                                    UpdateVU2("VU2HOPpre2Name");
+                                    return true;
+                                }
+                                else
+                                    if (scratchpad == VU2HOPpre3Name)
+                                    {
+                                        UpdateVU2("VU2HOPpre3Name");
+                                        return true;
+                                    }
+                                    else
+                                        if (scratchpad == VU2HOPpre4Name)
+                                        {
+                                            UpdateVU2("VU2HOPpre4Name");
+                                            return true;
+                                        }
+                                        else
+                                            if (scratchpad == VU2HOPpre5Name)
+                                            {
+                                                UpdateVU2("VU2HOPpre5Name");
+                                                return true;
+                                            }
+                                            else
+                                            {
+
+                                                return false;
+                                            }
+
+                        }
+                    }
+                    #endregion
                     break;
 
 
@@ -25146,7 +29601,7 @@ namespace CDU3000
             return false;
         }
 
-        private void UpdateFreqswithRightBtnPush()
+        private void UpdateFreqswithRightBtnPush()//CHECK CYPHER INPUTS
         {
             if (pushedButton == r3Btn)//HF 
             {
@@ -25242,10 +29697,144 @@ namespace CDU3000
                                             VU2UHFpre5Freq = currentVU2freq;
                                         }
                     }
+                    else if (BandSelection(currentVU2freq, "VU2") == "V")//verifies the band is AM
+                    {
+                        currentVU2freq = scratchpad.Insert(scratchpad.Length - 3, ".");
+
+                        if (currentVU2chan == VU2AMpre1Chan.Trim('<', ' ', '*'))
+                        {
+                            VU2AMpre1Freq = currentVU2freq;
+                        }
+                        else
+                            if (currentVU2chan == VU2AMpre2Chan.Trim('<', ' ', '*'))
+                            {
+                                VU2AMpre2Freq = currentVU2freq;
+                            }
+                            else
+                                if (currentVU2chan == VU2AMpre3Chan.Trim('<', ' ', '*'))
+                                {
+                                    VU2AMpre3Freq = currentVU2freq;
+                                }
+                                else
+                                    if (currentVU2chan == VU2AMpre4Chan.Trim('<', ' ', '*'))
+                                    {
+                                        VU2AMpre4Freq = currentVU2freq;
+                                    }
+                                    else
+                                        if (currentVU2chan == VU2AMpre5Chan.Trim('<', ' ', '*'))
+                                        {
+                                            VU2AMpre5Freq = currentVU2freq;
+                                        }
+                    }
+                    else if (BandSelection(currentVU2freq, "VU2") == "F")//verifies the band is FM
+                    {
+                        currentVU2freq = scratchpad.Insert(scratchpad.Length - 3, ".");
+
+                        if (currentVU2chan == VU2FMpre1Chan.Trim('<', ' ', '*'))
+                        {
+                            VU2FMpre1Freq = currentVU2freq;
+                        }
+                        else
+                            if (currentVU2chan == VU2FMpre2Chan.Trim('<', ' ', '*'))
+                            {
+                                VU2FMpre2Freq = currentVU2freq;
+                            }
+                            else
+                                if (currentVU2chan == VU2FMpre3Chan.Trim('<', ' ', '*'))
+                                {
+                                    VU2FMpre3Freq = currentVU2freq;
+                                }
+                                else
+                                    if (currentVU2chan == VU2FMpre4Chan.Trim('<', ' ', '*'))
+                                    {
+                                        VU2FMpre4Freq = currentVU2freq;
+                                    }
+                                    else
+                                        if (currentVU2chan == VU2FMpre5Chan.Trim('<', ' ', '*'))
+                                        {
+                                            VU2FMpre5Freq = currentVU2freq;
+                                        }
+                    }
+                    else if (BandSelection(currentVU2freq, "VU2") == "S")//verifies the band is SATCOM
+                    {
+                        currentVU2freq = scratchpad.Insert(scratchpad.Length - 3, ".");
+
+                        if (currentVU2chan == VU2SatcomPre1Chan.Trim('<', ' ', '*'))
+                        {
+                            VU2SatcomPre1Uplink = currentVU2freq;
+                        }
+                        else
+                            if (currentVU2chan == VU2SatcomPre2Chan.Trim('<', ' ', '*'))
+                            {
+                                VU2SatcomPre2Uplink = currentVU2freq;
+                            }
+
+                    }
+                    else if (BandSelection(currentVU2freq, "VU2") == "E")//verifies the band is HOPSET
+                    {
+                        if (ContainsLetters() == false)
+                        {
+                            currentVU2freq = scratchpad.Insert(scratchpad.Length - 3, ".");
+
+                            if (currentVU2chan == VU2HOPpre1Chan.Trim('<', ' ', '*'))
+                            {
+                                VU2HOPpre1Freq = currentVU2freq;
+                            }
+                            else
+                                if (currentVU2chan == VU2HOPpre2Chan.Trim('<', ' ', '*'))
+                                {
+                                    VU2HOPpre2Freq = currentVU2freq;
+                                }
+                                else
+                                    if (currentVU2chan == VU2HOPpre3Chan.Trim('<', ' ', '*'))
+                                    {
+                                        VU2HOPpre3Freq = currentVU2freq;
+                                    }
+                                    else
+                                        if (currentVU2chan == VU2HOPpre4Chan.Trim('<', ' ', '*'))
+                                        {
+                                            VU2HOPpre4Freq = currentVU2freq;
+                                        }
+                                        else
+                                            if (currentVU2chan == VU2HOPpre5Chan.Trim('<', ' ', '*'))
+                                            {
+                                                VU2HOPpre5Freq = currentVU2freq;
+                                            }
+                        }
+                        else if (ContainsLetters() == true)
+                        {
+                            currentVU2freq = scratchpad;
+
+                            if (currentVU2chan == VU2HOPpre1Chan.Trim('<', ' ', '*'))
+                            {
+                                VU2HOPpre1Freq = currentVU2freq;
+                            }
+                            else
+                                if (currentVU2chan == VU2HOPpre2Chan.Trim('<', ' ', '*'))
+                                {
+                                    VU2HOPpre2Freq = currentVU2freq;
+                                }
+                                else
+                                    if (currentVU2chan == VU2HOPpre3Chan.Trim('<', ' ', '*'))
+                                    {
+                                        VU2HOPpre3Freq = currentVU2freq;
+                                    }
+                                    else
+                                        if (currentVU2chan == VU2HOPpre4Chan.Trim('<', ' ', '*'))
+                                        {
+                                            VU2HOPpre4Freq = currentVU2freq;
+                                        }
+                                        else
+                                            if (currentVU2chan == VU2HOPpre5Chan.Trim('<', ' ', '*'))
+                                            {
+                                                VU2HOPpre5Freq = currentVU2freq;
+                                            }
+                        }
+                    }
 
                 }
                 else
-                    if (pushedButton == r1Btn)//VU1
+                    if (pushedButton == r2Btn || currentPageTitle == "V/U1 CONTROL")//VU1
                     {
                         if (BandSelection(currentVU1freq, "VU1") == "U")//verifies the band is UHF
                         {
@@ -25276,6 +29865,141 @@ namespace CDU3000
                                                 VU1UHFpre5Freq = currentVU1freq;
                                             }
                         }
+                        else if (BandSelection(currentVU1freq, "VU1") == "V")//verifies the band is AM
+                        {
+                            currentVU1freq = scratchpad.Insert(scratchpad.Length - 3, ".");
+
+                            if (currentVU1chan == VU1AMpre1Chan.Trim('<', ' ', '*'))
+                            {
+                                VU1AMpre1Freq = currentVU1freq;
+                            }
+                            else
+                                if (currentVU1chan == VU1AMpre2Chan.Trim('<', ' ', '*'))
+                                {
+                                    VU1AMpre2Freq = currentVU1freq;
+                                }
+                                else
+                                    if (currentVU1chan == VU1AMpre3Chan.Trim('<', ' ', '*'))
+                                    {
+                                        VU1AMpre3Freq = currentVU1freq;
+                                    }
+                                    else
+                                        if (currentVU1chan == VU1AMpre4Chan.Trim('<', ' ', '*'))
+                                        {
+                                            VU1AMpre4Freq = currentVU1freq;
+                                        }
+                                        else
+                                            if (currentVU1chan == VU1AMpre5Chan.Trim('<', ' ', '*'))
+                                            {
+                                                VU1AMpre5Freq = currentVU1freq;
+                                            }
+                        }
+                        else if (BandSelection(currentVU1freq, "VU1") == "F")//verifies the band is FM
+                        {
+                            currentVU1freq = scratchpad.Insert(scratchpad.Length - 3, ".");
+
+                            if (currentVU1chan == VU1FMpre1Chan.Trim('<', ' ', '*'))
+                            {
+                                VU1FMpre1Freq = currentVU1freq;
+                            }
+                            else
+                                if (currentVU1chan == VU1FMpre2Chan.Trim('<', ' ', '*'))
+                                {
+                                    VU1FMpre2Freq = currentVU1freq;
+                                }
+                                else
+                                    if (currentVU1chan == VU1FMpre3Chan.Trim('<', ' ', '*'))
+                                    {
+                                        VU1FMpre3Freq = currentVU1freq;
+                                    }
+                                    else
+                                        if (currentVU1chan == VU1FMpre4Chan.Trim('<', ' ', '*'))
+                                        {
+                                            VU1FMpre4Freq = currentVU1freq;
+                                        }
+                                        else
+                                            if (currentVU1chan == VU1FMpre5Chan.Trim('<', ' ', '*'))
+                                            {
+                                                VU1FMpre5Freq = currentVU1freq;
+                                            }
+                        }
+                        else if (BandSelection(currentVU1freq, "VU1") == "S")//verifies the band is SATCOM
+                        {
+                            currentVU1freq = scratchpad.Insert(scratchpad.Length - 3, ".");
+
+                            if (currentVU1chan == VU1SatcomPre1Chan.Trim('<', ' ', '*'))
+                            {
+                                VU1SatcomPre1Uplink = currentVU1freq;
+                            }
+                            else
+                                if (currentVU1chan == VU1SatcomPre2Chan.Trim('<', ' ', '*'))
+                                {
+                                    VU1SatcomPre2Uplink = currentVU1freq;
+                                }
+
+                        }
+                        else if (BandSelection(currentVU1freq, "VU1") == "E")//verifies the band is HOPSET
+                        {
+                            if (ContainsLetters() == false)
+                            {
+                                currentVU1freq = scratchpad.Insert(scratchpad.Length - 3, ".");
+
+                                if (currentVU1chan == VU1HOPpre1Chan.Trim('<', ' ', '*'))
+                                {
+                                    VU1HOPpre1Freq = currentVU1freq;
+                                }
+                                else
+                                    if (currentVU1chan == VU1HOPpre2Chan.Trim('<', ' ', '*'))
+                                    {
+                                        VU1HOPpre2Freq = currentVU1freq;
+                                    }
+                                    else
+                                        if (currentVU1chan == VU1HOPpre3Chan.Trim('<', ' ', '*'))
+                                        {
+                                            VU1HOPpre3Freq = currentVU1freq;
+                                        }
+                                        else
+                                            if (currentVU1chan == VU1HOPpre4Chan.Trim('<', ' ', '*'))
+                                            {
+                                                VU1HOPpre4Freq = currentVU1freq;
+                                            }
+                                            else
+                                                if (currentVU1chan == VU1HOPpre5Chan.Trim('<', ' ', '*'))
+                                                {
+                                                    VU1HOPpre5Freq = currentVU1freq;
+                                                }
+                            }
+                            else if (ContainsLetters() == true)
+                            {
+                                currentVU1freq = scratchpad;
+
+                                if (currentVU1chan == VU1HOPpre1Chan.Trim('<', ' ', '*'))
+                                {
+                                    VU1HOPpre1Freq = currentVU1freq;
+                                }
+                                else
+                                    if (currentVU1chan == VU1HOPpre2Chan.Trim('<', ' ', '*'))
+                                    {
+                                        VU1HOPpre2Freq = currentVU1freq;
+                                    }
+                                    else
+                                        if (currentVU1chan == VU1HOPpre3Chan.Trim('<', ' ', '*'))
+                                        {
+                                            VU1HOPpre3Freq = currentVU1freq;
+                                        }
+                                        else
+                                            if (currentVU1chan == VU1HOPpre4Chan.Trim('<', ' ', '*'))
+                                            {
+                                                VU1HOPpre4Freq = currentVU1freq;
+                                            }
+                                            else
+                                                if (currentVU1chan == VU1HOPpre5Chan.Trim('<', ' ', '*'))
+                                                {
+                                                    VU1HOPpre5Freq = currentVU1freq;
+                                                }
+                            }
+                        }
+
                     }
         }
 
@@ -25335,6 +30059,106 @@ namespace CDU3000
                         catch (Exception)
                         {
 
+
+                        }
+                    }
+                    break;
+
+                case "AM":
+                    if (ContainsCharacters() == false & ContainsLetters() == false & scratchpad.Length == 6)
+                    {
+                        try
+                        {
+                            int x = Convert.ToInt32(scratchpad);
+                            if ((x >= 108000) == true & (x <= 155995) == true)
+                            {
+                                return true;
+                            }
+                        }
+                        catch (Exception)
+                        {
+
+
+                        }
+                    }
+                    break;
+
+                case "FM":
+                    if (ContainsCharacters() == false & ContainsLetters() == false & scratchpad.Length == 6)
+                    {
+                        try
+                        {
+                            int x = Convert.ToInt32(scratchpad);
+                            if (x >= 30000 == true & x <= 87995 == true)
+                            {
+                                return true;
+                            }
+                            else if (x >= 130000 == true & x <= 173995 == true)
+                            {
+                                return true;
+                            }
+                        }
+                        catch (Exception)
+                        {
+
+
+                        }
+                    }
+                    break;
+
+                case "SATCOM":
+                    if (ContainsCharacters() == false & ContainsLetters() == false & scratchpad.Length == 6)
+                    {
+                        try
+                        {
+                            int x = Convert.ToInt32(scratchpad);
+                            if ((x >= 225000) == true & (x <= 399995) == true)
+                            {
+                                return true;
+                            }
+                        }
+                        catch (Exception)
+                        {
+
+
+                        }
+                    }
+                    break;
+
+                case "HOPSET":
+                    if (ContainsCharacters() == false & ContainsLetters() == false & scratchpad.Length == 5)
+                    {
+                        try
+                        {
+                            int x = Convert.ToInt32(scratchpad);
+                            if ((x >= 30000) == true & (x <= 87975) == true)
+                            {
+                                return true;
+                            }
+                        }
+                        catch (Exception)
+                        {
+
+
+                        }
+                    }
+                    else if (ContainsCharacters() == false & ContainsLetters() == true & scratchpad.Length <= 4)
+                    {
+                        string z = null;
+                        try
+                        {
+                            if (scratchpad.Contains("F"))
+                            {
+                                z = scratchpad.Trim('F');
+                                int zInt = Convert.ToInt32(z);
+                                if (zInt >= 0 & zInt <= 999)
+                                {
+                                    return true;
+                                }
+                            }
+                        }
+                        catch (Exception)
+                        {
 
                         }
                     }
@@ -26098,6 +30922,38 @@ namespace CDU3000
                         currentVU2ComsecVar = VU2UHFpre1Comsec;
                     }
 
+                    if (pushedButton == l2Btn)
+                    {
+                        currentVU2name = VU2UHFpre2Name;
+                        currentVU2chan = VU2UHFpre2Chan.Trim('<', ' ', '*');
+                        currentVU2freq = VU2UHFpre2Freq;
+                        currentVU2ComsecVar = VU2UHFpre2Comsec;
+                    }
+
+                    if (pushedButton == l3Btn)
+                    {
+                        currentVU2name = VU2UHFpre3Name;
+                        currentVU2chan = VU2UHFpre3Chan.Trim('<', ' ', '*');
+                        currentVU2freq = VU2UHFpre3Freq;
+                        currentVU2ComsecVar = VU2UHFpre3Comsec;
+                    }
+
+                    if (pushedButton == l4Btn)
+                    {
+                        currentVU2name = VU2UHFpre4Name;
+                        currentVU2chan = VU2UHFpre4Chan.Trim('<', ' ', '*');
+                        currentVU2freq = VU2UHFpre4Freq;
+                        currentVU2ComsecVar = VU2UHFpre4Comsec;
+                    }
+
+                    if (pushedButton == l5Btn)
+                    {
+                        currentVU2name = VU2UHFpre5Name;
+                        currentVU2chan = VU2UHFpre5Chan.Trim('<', ' ', '*');
+                        currentVU2freq = VU2UHFpre5Freq;
+                        currentVU2ComsecVar = VU2UHFpre5Comsec;
+                    }
+                    VU2band = activeBand.UHF;
                     StartFresh();
                     VU2controlPage1();
                     return;
@@ -26208,11 +31064,586 @@ namespace CDU3000
                     }
                 }
 
-
+                VU2band = activeBand.UHF;
                 VU2activeBand = "U";
                 StartFresh();
                 VU2uhfPresetsPage1();
             }
+            else if (currentPageTitle == "V/U2 VHF-FM")
+            {
+                //return to HF Control Page
+                if ((pushedButton == l1Btn & l1text.Contains("*")) || (pushedButton == l2Btn & l2text.Contains("*")) || (pushedButton == l3Btn & l3text.Contains("*")) || (pushedButton == l4Btn & l4text.Contains("*")) || (pushedButton == l5Btn & l5text.Contains("*")))
+                {
+                    if (pushedButton == l1Btn)
+                    {
+                        currentVU2name = VU2FMpre1Name;
+                        currentVU2chan = VU2FMpre1Chan.Trim('<', ' ', '*');
+                        currentVU2freq = VU2FMpre1Freq;
+                        currentVU2ComsecVar = VU2FMpre1Comsec;
+                    }
+
+                    if (pushedButton == l2Btn)
+                    {
+                        currentVU2name = VU2FMpre2Name;
+                        currentVU2chan = VU2FMpre2Chan.Trim('<', ' ', '*');
+                        currentVU2freq = VU2FMpre2Freq;
+                        currentVU2ComsecVar = VU2FMpre2Comsec;
+                    }
+
+                    if (pushedButton == l3Btn)
+                    {
+                        currentVU2name = VU2FMpre3Name;
+                        currentVU2chan = VU2FMpre3Chan.Trim('<', ' ', '*');
+                        currentVU2freq = VU2FMpre3Freq;
+                        currentVU2ComsecVar = VU2FMpre3Comsec;
+                    }
+
+                    if (pushedButton == l4Btn)
+                    {
+                        currentVU2name = VU2FMpre4Name;
+                        currentVU2chan = VU2FMpre4Chan.Trim('<', ' ', '*');
+                        currentVU2freq = VU2FMpre4Freq;
+                        currentVU2ComsecVar = VU2FMpre4Comsec;
+                    }
+
+                    if (pushedButton == l5Btn)
+                    {
+                        currentVU2name = VU2FMpre5Name;
+                        currentVU2chan = VU2FMpre5Chan.Trim('<', ' ', '*');
+                        currentVU2freq = VU2FMpre5Freq;
+                        currentVU2ComsecVar = VU2FMpre5Comsec;
+                    }
+                    VU2band = activeBand.FM;
+                    StartFresh();
+                    VU2controlPage1();
+                    return;
+                }
+                else
+                {
+
+                    //add to allow preset recall 
+                    recallVU2FMfreq = currentVU2freq;
+                    recallVU2FMname = currentVU2name;
+                    recallVU2FMchan = currentVU2chan;
+                    recallVU2Comsec = currentVU2ComsecVar;
+
+                    char[] toTrim = { '<', ' ' };
+                    if (pushedButton == l1Btn || currentVU2chan == l1text)
+                    {
+                        if (l1text.Contains("<"))
+                        {
+                            l1text = l1text.TrimStart(toTrim);
+                            VU2FMpre1Chan = "* " + l1text;
+                            //basSelChanVar = l1text;
+                            currentVU2name = VU2FMpre1Name;
+                            currentVU2chan = l1text;
+                            currentVU2freq = VU2FMpre1Freq;
+                            currentVU2ComsecVar = VU2FMpre1Comsec;
+                        }
+                    }
+                    if (pushedButton == l2Btn || currentVU2chan == l2text)
+                    {
+                        if (l2text.Contains("<"))
+                        {
+                            l2text = l2text.TrimStart(toTrim);
+                            VU2FMpre2Chan = "* " + l2text;
+                            //basSelChanVar = l2text;
+                            currentVU2name = VU2FMpre2Name;
+                            currentVU2chan = l2text;
+                            currentVU2freq = VU2FMpre2Freq;
+                            currentVU2ComsecVar = VU2FMpre2Comsec;
+                        }
+                    }
+                    if (pushedButton == l3Btn)
+                    {
+                        if (l3text.Contains("<"))
+                        {
+                            l3text = l3text.TrimStart(toTrim);
+                            VU2FMpre3Chan = "* " + l3text;
+                            //basSelChanVar = l3text;
+                            currentVU2name = VU2FMpre3Name;
+                            currentVU2chan = l3text;
+                            currentVU2freq = VU2FMpre3Freq;
+                            currentVU2ComsecVar = VU2FMpre3Comsec;
+                        }
+                    }
+                    if (pushedButton == l4Btn)
+                    {
+                        if (l4text.Contains("<"))
+                        {
+                            l4text = l4text.TrimStart(toTrim);
+                            VU2FMpre4Chan = "* " + l4text;
+                            //basSelChanVar = l4text;
+                            currentVU2name = VU2FMpre4Name;
+                            currentVU2chan = l4text;
+                            currentVU2freq = VU2FMpre4Freq;
+                            currentVU2ComsecVar = VU2FMpre4Comsec;
+                        }
+                    }
+                    if (pushedButton == l5Btn)
+                    {
+                        if (l5text.Contains("<"))
+                        {
+                            l5text = l5text.TrimStart(toTrim);
+                            VU2FMpre5Chan = "* " + l5text;
+                            //basSelChanVar = l5text;
+                            currentVU2name = VU2FMpre5Name;
+                            currentVU2chan = l5text;
+                            currentVU2freq = VU2FMpre5Freq;
+                            currentVU2ComsecVar = VU2FMpre5Comsec;
+                        }
+                    }
+
+                    //reset the others
+                    char[] toCut = { '*' };
+
+                    if (l1text.Contains("*") & pushedButton != l1Btn)
+                    {
+                        l1text = l1text.TrimStart(toCut);
+                        VU2FMpre1Chan = "<" + l1text;
+                    }
+                    if (l2text.Contains("*") & pushedButton != l2Btn)
+                    {
+                        l2text = l2text.TrimStart(toCut);
+                        VU2FMpre2Chan = "<" + l2text;
+                    }
+                    if (l3text.Contains("*") & pushedButton != l3Btn)
+                    {
+                        l3text = l3text.TrimStart(toCut);
+                        VU2FMpre3Chan = "<" + l3text;
+                    }
+                    if (l4text.Contains("*") & pushedButton != l4Btn)
+                    {
+                        l4text = l4text.TrimStart(toCut);
+                        VU2FMpre4Chan = "<" + l4text;
+                    }
+                    if (l5text.Contains("*") & pushedButton != l5Btn)
+                    {
+                        l5text = l5text.TrimStart(toCut);
+                        VU2FMpre5Chan = "<" + l5text;
+                    }
+                }
+
+                VU2band = activeBand.FM;
+                VU2activeBand = "F";
+                StartFresh();
+                VU2vhfFMpresetsPage1();
+            }
+            else if (currentPageTitle == "V/U2 VHF-AM")
+            {
+                //return to HF Control Page
+                if ((pushedButton == l1Btn & l1text.Contains("*")) || (pushedButton == l2Btn & l2text.Contains("*")) || (pushedButton == l3Btn & l3text.Contains("*")) || (pushedButton == l4Btn & l4text.Contains("*")) || (pushedButton == l5Btn & l5text.Contains("*")))
+                {
+                    if (pushedButton == l1Btn)
+                    {
+                        currentVU2name = VU2AMpre1Name;
+                        currentVU2chan = VU2AMpre1Chan.Trim('<', ' ', '*');
+                        currentVU2freq = VU2AMpre1Freq;
+                        currentVU2ComsecVar = VU2AMpre1Comsec;
+                    }
+
+                    if (pushedButton == l2Btn)
+                    {
+                        currentVU2name = VU2AMpre2Name;
+                        currentVU2chan = VU2AMpre2Chan.Trim('<', ' ', '*');
+                        currentVU2freq = VU2AMpre2Freq;
+                        currentVU2ComsecVar = VU2AMpre2Comsec;
+                    }
+
+                    if (pushedButton == l3Btn)
+                    {
+                        currentVU2name = VU2AMpre3Name;
+                        currentVU2chan = VU2AMpre3Chan.Trim('<', ' ', '*');
+                        currentVU2freq = VU2AMpre3Freq;
+                        currentVU2ComsecVar = VU2AMpre3Comsec;
+                    }
+
+                    if (pushedButton == l4Btn)
+                    {
+                        currentVU2name = VU2AMpre4Name;
+                        currentVU2chan = VU2AMpre4Chan.Trim('<', ' ', '*');
+                        currentVU2freq = VU2AMpre4Freq;
+                        currentVU2ComsecVar = VU2AMpre4Comsec;
+                    }
+
+                    if (pushedButton == l5Btn)
+                    {
+                        currentVU2name = VU2AMpre5Name;
+                        currentVU2chan = VU2AMpre5Chan.Trim('<', ' ', '*');
+                        currentVU2freq = VU2AMpre5Freq;
+                        currentVU2ComsecVar = VU2AMpre5Comsec;
+                    }
+                    VU2band = activeBand.AM;
+                    StartFresh();
+                    VU2controlPage1();
+                    return;
+                }
+                else
+                {
+
+                    //add to allow preset recall 
+                    recallVU2AMfreq = currentVU2freq;
+                    recallVU2AMname = currentVU2name;
+                    recallVU2AMchan = currentVU2chan;
+                    recallVU2Comsec = currentVU2ComsecVar;
+
+                    char[] toTrim = { '<', ' ' };
+                    if (pushedButton == l1Btn || currentVU2chan == l1text)
+                    {
+                        if (l1text.Contains("<"))
+                        {
+                            l1text = l1text.TrimStart(toTrim);
+                            VU2AMpre1Chan = "* " + l1text;
+                            //basSelChanVar = l1text;
+                            currentVU2name = VU2AMpre1Name;
+                            currentVU2chan = l1text;
+                            currentVU2freq = VU2AMpre1Freq;
+                            currentVU2ComsecVar = VU2AMpre1Comsec;
+                        }
+                    }
+                    if (pushedButton == l2Btn || currentVU2chan == l2text)
+                    {
+                        if (l2text.Contains("<"))
+                        {
+                            l2text = l2text.TrimStart(toTrim);
+                            VU2AMpre2Chan = "* " + l2text;
+                            //basSelChanVar = l2text;
+                            currentVU2name = VU2AMpre2Name;
+                            currentVU2chan = l2text;
+                            currentVU2freq = VU2AMpre2Freq;
+                            currentVU2ComsecVar = VU2AMpre2Comsec;
+                        }
+                    }
+                    if (pushedButton == l3Btn)
+                    {
+                        if (l3text.Contains("<"))
+                        {
+                            l3text = l3text.TrimStart(toTrim);
+                            VU2AMpre3Chan = "* " + l3text;
+                            //basSelChanVar = l3text;
+                            currentVU2name = VU2AMpre3Name;
+                            currentVU2chan = l3text;
+                            currentVU2freq = VU2AMpre3Freq;
+                            currentVU2ComsecVar = VU2AMpre3Comsec;
+                        }
+                    }
+                    if (pushedButton == l4Btn)
+                    {
+                        if (l4text.Contains("<"))
+                        {
+                            l4text = l4text.TrimStart(toTrim);
+                            VU2AMpre4Chan = "* " + l4text;
+                            //basSelChanVar = l4text;
+                            currentVU2name = VU2AMpre4Name;
+                            currentVU2chan = l4text;
+                            currentVU2freq = VU2AMpre4Freq;
+                            currentVU2ComsecVar = VU2AMpre4Comsec;
+                        }
+                    }
+                    if (pushedButton == l5Btn)
+                    {
+                        if (l5text.Contains("<"))
+                        {
+                            l5text = l5text.TrimStart(toTrim);
+                            VU2AMpre5Chan = "* " + l5text;
+                            //basSelChanVar = l5text;
+                            currentVU2name = VU2AMpre5Name;
+                            currentVU2chan = l5text;
+                            currentVU2freq = VU2AMpre5Freq;
+                            currentVU2ComsecVar = VU2AMpre5Comsec;
+                        }
+                    }
+
+                    //reset the others
+                    char[] toCut = { '*' };
+
+                    if (l1text.Contains("*") & pushedButton != l1Btn)
+                    {
+                        l1text = l1text.TrimStart(toCut);
+                        VU2AMpre1Chan = "<" + l1text;
+                    }
+                    if (l2text.Contains("*") & pushedButton != l2Btn)
+                    {
+                        l2text = l2text.TrimStart(toCut);
+                        VU2AMpre2Chan = "<" + l2text;
+                    }
+                    if (l3text.Contains("*") & pushedButton != l3Btn)
+                    {
+                        l3text = l3text.TrimStart(toCut);
+                        VU2AMpre3Chan = "<" + l3text;
+                    }
+                    if (l4text.Contains("*") & pushedButton != l4Btn)
+                    {
+                        l4text = l4text.TrimStart(toCut);
+                        VU2AMpre4Chan = "<" + l4text;
+                    }
+                    if (l5text.Contains("*") & pushedButton != l5Btn)
+                    {
+                        l5text = l5text.TrimStart(toCut);
+                        VU2AMpre5Chan = "<" + l5text;
+                    }
+                }
+
+                VU2band = activeBand.AM;
+                VU2activeBand = "V";
+                StartFresh();
+                VU2vhfAMpresetsPage1();
+            }
+            else if (currentPageTitle == "V/U2 HOPSETS")
+            {
+                //return to HF Control Page
+                if ((pushedButton == l1Btn & l1text.Contains("*")) || (pushedButton == l2Btn & l2text.Contains("*")) || (pushedButton == l3Btn & l3text.Contains("*")) || (pushedButton == l4Btn & l4text.Contains("*")) || (pushedButton == l5Btn & l5text.Contains("*")))
+                {
+                    if (pushedButton == l1Btn)
+                    {
+                        currentVU2name = VU2HOPpre1Name;
+                        currentVU2chan = VU2HOPpre1Chan.Trim('<', ' ', '*');
+                        currentVU2freq = VU2HOPpre1Freq;
+                        currentVU2ComsecVar = VU2HOPpre1Comsec;
+                    }
+
+                    if (pushedButton == l2Btn)
+                    {
+                        currentVU2name = VU2HOPpre2Name;
+                        currentVU2chan = VU2HOPpre2Chan.Trim('<', ' ', '*');
+                        currentVU2freq = VU2HOPpre2Freq;
+                        currentVU2ComsecVar = VU2HOPpre2Comsec;
+                    }
+
+                    if (pushedButton == l3Btn)
+                    {
+                        currentVU2name = VU2HOPpre3Name;
+                        currentVU2chan = VU2HOPpre3Chan.Trim('<', ' ', '*');
+                        currentVU2freq = VU2HOPpre3Freq;
+                        currentVU2ComsecVar = VU2HOPpre3Comsec;
+                    }
+
+                    if (pushedButton == l4Btn)
+                    {
+                        currentVU2name = VU2HOPpre4Name;
+                        currentVU2chan = VU2HOPpre4Chan.Trim('<', ' ', '*');
+                        currentVU2freq = VU2HOPpre4Freq;
+                        currentVU2ComsecVar = VU2HOPpre4Comsec;
+                    }
+
+                    if (pushedButton == l5Btn)
+                    {
+                        currentVU2name = VU2HOPpre5Name;
+                        currentVU2chan = VU2HOPpre5Chan.Trim('<', ' ', '*');
+                        currentVU2freq = VU2HOPpre5Freq;
+                        currentVU2ComsecVar = VU2HOPpre5Comsec;
+                    }
+                    VU2band = activeBand.HOPSETS;
+                    StartFresh();
+                    VU2controlPage1();
+                    return;
+                }
+                else
+                {
+
+                    //add to allow preset recall 
+                    recallVU2HOPfreq = currentVU2freq;
+                    recallVU2HOPname = currentVU2name;
+                    recallVU2HOPchan = currentVU2chan;
+                    recallVU2Comsec = currentVU2ComsecVar;
+
+                    char[] toTrim = { '<', ' ' };
+                    if (pushedButton == l1Btn || currentVU2chan == l1text)
+                    {
+                        if (l1text.Contains("<"))
+                        {
+                            l1text = l1text.TrimStart(toTrim);
+                            VU2HOPpre1Chan = "* " + l1text;
+                            //basSelChanVar = l1text;
+                            currentVU2name = VU2HOPpre1Name;
+                            currentVU2chan = l1text;
+                            currentVU2freq = VU2HOPpre1Freq;
+                            currentVU2ComsecVar = VU2HOPpre1Comsec;
+                        }
+                    }
+                    if (pushedButton == l2Btn || currentVU2chan == l2text)
+                    {
+                        if (l2text.Contains("<"))
+                        {
+                            l2text = l2text.TrimStart(toTrim);
+                            VU2HOPpre2Chan = "* " + l2text;
+                            //basSelChanVar = l2text;
+                            currentVU2name = VU2HOPpre2Name;
+                            currentVU2chan = l2text;
+                            currentVU2freq = VU2HOPpre2Freq;
+                            currentVU2ComsecVar = VU2HOPpre2Comsec;
+                        }
+                    }
+                    if (pushedButton == l3Btn)
+                    {
+                        if (l3text.Contains("<"))
+                        {
+                            l3text = l3text.TrimStart(toTrim);
+                            VU2HOPpre3Chan = "* " + l3text;
+                            //basSelChanVar = l3text;
+                            currentVU2name = VU2HOPpre3Name;
+                            currentVU2chan = l3text;
+                            currentVU2freq = VU2HOPpre3Freq;
+                            currentVU2ComsecVar = VU2HOPpre3Comsec;
+                        }
+                    }
+                    if (pushedButton == l4Btn)
+                    {
+                        if (l4text.Contains("<"))
+                        {
+                            l4text = l4text.TrimStart(toTrim);
+                            VU2HOPpre4Chan = "* " + l4text;
+                            //basSelChanVar = l4text;
+                            currentVU2name = VU2HOPpre4Name;
+                            currentVU2chan = l4text;
+                            currentVU2freq = VU2HOPpre4Freq;
+                            currentVU2ComsecVar = VU2HOPpre4Comsec;
+                        }
+                    }
+                    if (pushedButton == l5Btn)
+                    {
+                        if (l5text.Contains("<"))
+                        {
+                            l5text = l5text.TrimStart(toTrim);
+                            VU2HOPpre5Chan = "* " + l5text;
+                            //basSelChanVar = l5text;
+                            currentVU2name = VU2HOPpre5Name;
+                            currentVU2chan = l5text;
+                            currentVU2freq = VU2HOPpre5Freq;
+                            currentVU2ComsecVar = VU2HOPpre5Comsec;
+                        }
+                    }
+
+                    //reset the others
+                    char[] toCut = { '*' };
+
+                    if (l1text.Contains("*") & pushedButton != l1Btn)
+                    {
+                        l1text = l1text.TrimStart(toCut);
+                        VU2HOPpre1Chan = "<" + l1text;
+                    }
+                    if (l2text.Contains("*") & pushedButton != l2Btn)
+                    {
+                        l2text = l2text.TrimStart(toCut);
+                        VU2HOPpre2Chan = "<" + l2text;
+                    }
+                    if (l3text.Contains("*") & pushedButton != l3Btn)
+                    {
+                        l3text = l3text.TrimStart(toCut);
+                        VU2HOPpre3Chan = "<" + l3text;
+                    }
+                    if (l4text.Contains("*") & pushedButton != l4Btn)
+                    {
+                        l4text = l4text.TrimStart(toCut);
+                        VU2HOPpre4Chan = "<" + l4text;
+                    }
+                    if (l5text.Contains("*") & pushedButton != l5Btn)
+                    {
+                        l5text = l5text.TrimStart(toCut);
+                        VU2HOPpre5Chan = "<" + l5text;
+                    }
+                }
+
+                VU2band = activeBand.HOPSETS;
+                VU2activeBand = "E";
+                StartFresh();
+                VU2hopsetsPage1();
+            }
+            else if (currentPageTitle == "V/U2 SATCOM")
+            {
+                //return to HF Control Page
+                if ((pushedButton == l1Btn & l1text.Contains("*")) || (pushedButton == l2Btn & l2text.Contains("*")) || (pushedButton == l3Btn & l3text.Contains("*")) || (pushedButton == l4Btn & l4text.Contains("*")) || (pushedButton == l5Btn & l5text.Contains("*")))
+                {
+                    if (pushedButton == l1Btn)
+                    {
+                        currentVU2name = VU2SatcomPre1Name;
+                        currentVU2chan = VU2SatcomPre1Chan.Trim('<', ' ', '*');
+                        currentVU2freq = VU2SatcomPre1Uplink;
+                        currentVU2ComsecVar = VU2SatcomPre1Comsec;
+                    }
+
+                    if (pushedButton == l3Btn)
+                    {
+                        currentVU2name = VU2SatcomPre2Name;
+                        currentVU2chan = VU2SatcomPre2Chan.Trim('<', ' ', '*');
+                        currentVU2freq = VU2SatcomPre2Uplink;
+                        currentVU2ComsecVar = VU2SatcomPre2Comsec;
+                    }
+
+
+                    VU2band = activeBand.SATCOM;
+                    StartFresh();
+                    VU2controlPage1();
+                    return;
+                }
+                else
+                {
+
+                    //add to allow Preset recall 
+                    recallVU2Satcomfreq = currentVU2freq;
+                    recallVU2Satcomname = currentVU2name;
+                    recallVU2Satcomchan = currentVU2chan;
+                    recallVU2Comsec = currentVU2ComsecVar;
+
+                    char[] toTrim = { '<', ' ' };
+                    if (pushedButton == l1Btn || currentVU2chan == l1text)
+                    {
+                        if (l1text.Contains("<"))
+                        {
+                            l1text = l1text.TrimStart(toTrim);
+                            VU2SatcomPre1Chan = "* " + l1text;
+                            //basSelChanVar = l1text;
+                            currentVU2name = VU2SatcomPre1Name;
+                            currentVU2chan = l1text;
+                            currentVU2freq = VU2SatcomPre1Uplink;
+                            currentVU2ComsecVar = VU2SatcomPre1Comsec;
+                        }
+                    }
+
+                    if (pushedButton == l3Btn)
+                    {
+                        if (l3text.Contains("<"))
+                        {
+                            l3text = l3text.TrimStart(toTrim);
+                            VU2SatcomPre2Chan = "* " + l3text;
+                            //basSelChanVar = l3text;
+                            currentVU2name = VU2SatcomPre2Name;
+                            currentVU2chan = l3text;
+                            currentVU2freq = VU2SatcomPre2Uplink;
+                            currentVU2ComsecVar = VU2SatcomPre2Comsec;
+                        }
+                    }
+
+
+
+                    //reset the others
+                    char[] toCut = { '*' };
+
+                    if (l1text.Contains("*") & pushedButton != l1Btn)
+                    {
+                        l1text = l1text.TrimStart(toCut);
+                        VU2SatcomPre1Chan = "<" + l1text;
+                    }
+                    if (l2text.Contains("*") & pushedButton != l2Btn)
+                    {
+                        l2text = l2text.TrimStart(toCut);
+                        VU2SatcomPre2Chan = "<" + l2text;
+                    }
+                    if (l3text.Contains("*") & pushedButton != l3Btn)
+                    {
+                        l3text = l3text.TrimStart(toCut);
+                        VU2SatcomPre2Chan = "<" + l3text;
+                    }
+
+                }
+
+                VU2band = activeBand.SATCOM;
+                VU2activeBand = "S";
+                StartFresh();
+                VU2satcomPresetsPage1();
+            }
+
+
         }
 
         private void CheckPresets()
@@ -28072,6 +33503,8 @@ namespace CDU3000
 
             //}
         }
+
+
 
 
 

@@ -1923,6 +1923,28 @@ namespace CDU3000
             InitializeComponent ( );
         }
 
+        private void mpAllOnBtn_Click(object sender, EventArgs e)
+        {
+            egiInuPowerCB.Checked = true;
+            CrpaPowerCB.Checked = true;
+            tcnPowerCB.Checked = true;
+            iffPowerCB.Checked = true;
+            vu1PowerCB.Checked = true;
+            vu2PowerCB.Checked = true;
+        }
+
+        private void mpAllOffBtn_Click(object sender, EventArgs e)
+        {
+            egiInuPowerCB.Checked = false;
+            CrpaPowerCB.Checked = false;
+            tcnPowerCB.Checked = false;
+            iffPowerCB.Checked = false;
+            vu1PowerCB.Checked = false;
+            vu2PowerCB.Checked = false;
+        }
+
+        
+
         
 
 

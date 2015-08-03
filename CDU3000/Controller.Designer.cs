@@ -15,9 +15,9 @@
         {
             if (disposing && (components != null))
             {
-                components.Dispose ( );
+                components.Dispose();
             }
-            base.Dispose (disposing);
+            base.Dispose(disposing);
         }
 
         #region Windows Form Designer generated code
@@ -26,7 +26,7 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent( )
+        private void InitializeComponent()
         {
             this.TACANgb = new System.Windows.Forms.GroupBox();
             this.TcnAllNGObtn = new System.Windows.Forms.Button();
@@ -114,8 +114,8 @@
             this.navTabPage = new System.Windows.Forms.TabPage();
             this.powerTabPage = new System.Windows.Forms.TabPage();
             this.powerGb = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.mpAllOffBtn = new System.Windows.Forms.Button();
+            this.mpAllOnBtn = new System.Windows.Forms.Button();
             this.egiInuPowerCB = new System.Windows.Forms.CheckBox();
             this.label31 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
@@ -1208,8 +1208,8 @@
             // 
             // powerGb
             // 
-            this.powerGb.Controls.Add(this.button1);
-            this.powerGb.Controls.Add(this.button2);
+            this.powerGb.Controls.Add(this.mpAllOffBtn);
+            this.powerGb.Controls.Add(this.mpAllOnBtn);
             this.powerGb.Controls.Add(this.egiInuPowerCB);
             this.powerGb.Controls.Add(this.label31);
             this.powerGb.Controls.Add(this.label38);
@@ -1229,23 +1229,25 @@
             this.powerGb.TabStop = false;
             this.powerGb.Text = "MISSION POWER SWITCHES";
             // 
-            // button1
+            // mpAllOffBtn
             // 
-            this.button1.Location = new System.Drawing.Point(24, 392);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 37;
-            this.button1.Text = "All OFF";
-            this.button1.UseVisualStyleBackColor = true;
+            this.mpAllOffBtn.Location = new System.Drawing.Point(24, 392);
+            this.mpAllOffBtn.Name = "mpAllOffBtn";
+            this.mpAllOffBtn.Size = new System.Drawing.Size(75, 23);
+            this.mpAllOffBtn.TabIndex = 37;
+            this.mpAllOffBtn.Text = "All OFF";
+            this.mpAllOffBtn.UseVisualStyleBackColor = true;
+            this.mpAllOffBtn.Click += new System.EventHandler(this.mpAllOffBtn_Click);
             // 
-            // button2
+            // mpAllOnBtn
             // 
-            this.button2.Location = new System.Drawing.Point(24, 368);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 36;
-            this.button2.Text = "All ON";
-            this.button2.UseVisualStyleBackColor = true;
+            this.mpAllOnBtn.Location = new System.Drawing.Point(24, 368);
+            this.mpAllOnBtn.Name = "mpAllOnBtn";
+            this.mpAllOnBtn.Size = new System.Drawing.Size(75, 23);
+            this.mpAllOnBtn.TabIndex = 36;
+            this.mpAllOnBtn.Text = "All ON";
+            this.mpAllOnBtn.UseVisualStyleBackColor = true;
+            this.mpAllOnBtn.Click += new System.EventHandler(this.mpAllOnBtn_Click);
             // 
             // egiInuPowerCB
             // 
@@ -2219,8 +2221,8 @@
         private System.Windows.Forms.TabPage navTabPage;
         private System.Windows.Forms.TabPage powerTabPage;
         private System.Windows.Forms.GroupBox powerGb;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button mpAllOffBtn;
+        private System.Windows.Forms.Button mpAllOnBtn;
         private System.Windows.Forms.CheckBox egiInuPowerCB;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label38;
