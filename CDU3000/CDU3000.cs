@@ -838,6 +838,36 @@ namespace CDU3000
             l0text = vu1Warning;
             TB(l0, col1, row1, l0text, Color.Orange);
 
+            if (CDUVU1power == "OFF" || myCont.VU1Power == "OFF")//Blanks the text if power is off
+            {
+                currentVU1chan = "- -";
+                currentVU1name = "- - - - - -";
+                currentVU1ComsecVar = "- -";
+                currentVU1freq = "- - - - - -";
+            }
+            else
+            {
+                currentVU1chan = VU1UHFpre1Chan.Trim('<', ' ');
+                currentVU1name = VU1UHFpre1Name;
+                currentVU1ComsecVar = VU1UHFpre1Comsec;
+                currentVU1freq = VU1UHFpre1Freq;
+            }
+
+            if (CDUVU2power == "OFF" || myCont.VU2Power == "OFF")//Blanks the text if power is off
+            {
+                currentVU2chan = "- -";
+                currentVU2name = "- - - - - -";
+                currentVU2ComsecVar = "- -";
+                currentVU2freq = "- - - - - -";
+            }
+            else
+            {
+                currentVU2chan = VU2UHFpre1Chan.Trim('<', ' ');
+                currentVU2name = VU2UHFpre1Name;
+                currentVU2ComsecVar = VU2UHFpre1Comsec;
+                currentVU2freq = VU2UHFpre1Freq;
+            }
+
             TextBox l0right = new TextBox();
             TB(l0right, col2, row1, "V/U1");
 
@@ -13546,17 +13576,35 @@ namespace CDU3000
             CheckStatus();
 
             #region MyRegion
+
+            string my1553 = null;
+
+            if (myCont.VU1Power == "OFF" || CDUVU1power == "OFF")
+            {
+                l3text = "- -";
+                l4text = "- -";
+                l5text = "- - - - - -";
+                r3text = "- -";
+                r4text = "- -";
+                r5text = "- -";
+                my1553 = "- -";
+            }
+            else
+            {
+                l3text = myCont.VU1Transmitter;
+                l4text = myCont.VU1PowerSupply;
+                l5text = "123-4567-890";
+                r3text = myCont.VU1Modem;
+                r4text = myCont.VU1RT;
+                r5text = myCont.VU1Comsec;
+                my1553 = myCont.VU11553;
+            }
+
             l1text = "ON";
             l2text = ">";
-            l3text = myCont.VU1Transmitter;
-            l4text = myCont.VU1PowerSupply;
-            l5text = "123-4567-890";
             l6text = "< FAULT HIST";
             r1text = "- - - <";
             r2text = "- - <";
-            r3text = myCont.VU1Modem;
-            r4text = myCont.VU1RT;
-            r5text = myCont.VU1Comsec;
             r6text = "RETURN";
 
             currentPageTitle = "V/U1 STATUS"; //page title and number used for navigating
@@ -13585,7 +13633,7 @@ namespace CDU3000
             CenterMe(center);
 
             TextBox bus = new TextBox();
-            TB(bus, col7, row2, myCont.VU11553, Color.White);
+            TB(bus, col7, row2, my1553 , Color.White);
             CenterMe(bus);
 
             TextBox l2t = new TextBox();
@@ -13701,17 +13749,35 @@ namespace CDU3000
             CDU7000Page = true;
 
             #region MyRegion
+
+            string my1553 = null;
+
+            if (myCont.VU2Power == "OFF" || CDUVU2power == "OFF")
+            {
+                l3text = "- -";
+                l4text = "- -";
+                l5text = "- - - - - -";
+                r3text = "- -";
+                r4text = "- -";
+                r5text = "- -";
+                my1553 = "- -";
+            }
+            else
+            {
+                l3text = myCont.VU2Transmitter;
+                l4text = myCont.VU2PowerSupply;
+                l5text = "123-4567-890";
+                r3text = myCont.VU2Modem;
+                r4text = myCont.VU2RT;
+                r5text = myCont.VU2Comsec;
+                my1553 = myCont.VU21553;
+            }
+
             l1text = "ON";
             l2text = ">";
-            l3text = myCont.VU2Transmitter;
-            l4text = myCont.VU2PowerSupply;
-            l5text = "123-4567-890";
             l6text = "< FAULT HIST";
             r1text = "- - - <";
             r2text = "- - <";
-            r3text = myCont.VU2Modem;
-            r4text = myCont.VU2RT;
-            r5text = myCont.VU2Comsec;
             r6text = "RETURN";
 
             currentPageTitle = "V/U2 STATUS"; //page title and number used for navigating
@@ -13740,7 +13806,7 @@ namespace CDU3000
             CenterMe(center);
 
             TextBox bus = new TextBox();
-            TB(bus, col7, row2, myCont.VU21553, Color.White);
+            TB(bus, col7, row2, my1553, Color.White);
             CenterMe(bus);
 
             TextBox l2t = new TextBox();
@@ -23320,11 +23386,13 @@ namespace CDU3000
                                                             if (pushedButton == r1Btn)
                                                             {
                                                                 CDUVU1power = "OFF";
+                                                                myCont.VU1ValueChanged = true;
                                                             }
                                                             else
                                                                 if (pushedButton == r2Btn)
                                                                 {
                                                                     CDUVU2power = "OFF";
+                                                                    myCont.VU2ValueChanged = true;
                                                                 }
                                                     }
 
@@ -32101,7 +32169,7 @@ namespace CDU3000
             #endregion
 
             #region VU1
-            if (myCont.VU11553 == "GO" & myCont.VU1Comsec == "GO" & myCont.VU1Modem == "GO" & myCont.VU1PowerSupply == "GO" & myCont.VU1RT == "GO" & myCont.VU1Transmitter == "GO")
+            if (CDUVU1power=="ON" & myCont.VU1Power=="ON" & myCont.VU11553 == "GO" & myCont.VU1Comsec == "GO" & myCont.VU1Modem == "GO" & myCont.VU1PowerSupply == "GO" & myCont.VU1RT == "GO" & myCont.VU1Transmitter == "GO")
             {
                 _VU1status = "GO";
             }
@@ -32112,7 +32180,7 @@ namespace CDU3000
             #endregion
 
             #region VU2
-            if (myCont.VU21553 == "GO" & myCont.VU2Comsec == "GO" & myCont.VU2Modem == "GO" & myCont.VU2PowerSupply == "GO" & myCont.VU2RT == "GO" & myCont.VU2Transmitter == "GO")
+            if (CDUVU2power == "ON" & myCont.VU2Power == "ON" & myCont.VU21553 == "GO" & myCont.VU2Comsec == "GO" & myCont.VU2Modem == "GO" & myCont.VU2PowerSupply == "GO" & myCont.VU2RT == "GO" & myCont.VU2Transmitter == "GO")
             {
                 _VU2status = "GO";
             }
@@ -32180,6 +32248,9 @@ namespace CDU3000
             #endregion
 
             #region COM STATUS
+
+            
+
             if (myCont.HF11553 == "GO" & myCont.HF1Ampl == "GO" & myCont.HF1Cplr == "GO" & myCont.HF1Eqpt == "GO" & myCont.HF1Fiber == "GO" & myCont.HF1HiTemp == "GO" & myCont.HF1OverVlt == "GO" & myCont.HF1RcvOvrld == "GO" & myCont.HF1RT == "GO" & myCont.HF1Tune == "GO" & myCont.HF1VSWR == "GO")
             {
                 _HF1status = "GO";

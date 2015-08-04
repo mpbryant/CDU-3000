@@ -89,7 +89,7 @@ namespace CDU3000
 
         //VU1 backing fields
         #region
-        private bool _VU1valChanged;
+        private bool _VU1valChanged = true;
         private string _VU1trans = "GO";
         private string _VU1PwrSply = "GO";
         private string _VU1modem = "GO";
@@ -101,7 +101,7 @@ namespace CDU3000
         //VU2 backing fields
         #region
         private string _VU2trans = "GO";
-        private bool _VU2valChanged;
+        private bool _VU2valChanged=true;
         private string _VU2PwrSply = "GO";
         private string _VU2modem = "GO";
         private string _VU2RT = "GO";
@@ -1500,12 +1500,41 @@ namespace CDU3000
             else
             {
                 _vu1Power = "OFF";
+                _VU1valChanged = true;
             }
         }
 
         private void vu2PowerCB_CheckedChanged(object sender, EventArgs e)
         {
+            if (vu2PowerCB.Checked == true)
+            {
+                _vu2Power = "ON";
+            }
+            else
+            {
+                _vu2Power = "OFF";
+                _VU2valChanged = true;
+            }
+        }
 
+        private void mpAllOnBtn_Click(object sender, EventArgs e)
+        {
+            egiInuPowerCB.Checked = true;
+            CrpaPowerCB.Checked = true;
+            tcnPowerCB.Checked = true;
+            iffPowerCB.Checked = true;
+            vu1PowerCB.Checked = true;
+            vu2PowerCB.Checked = true;
+        }
+
+        private void mpAllOffBtn_Click(object sender, EventArgs e)
+        {
+            egiInuPowerCB.Checked = false;
+            CrpaPowerCB.Checked = false;
+            tcnPowerCB.Checked = false;
+            iffPowerCB.Checked = false;
+            vu1PowerCB.Checked = false;
+            vu2PowerCB.Checked = false;
         }
 
         #endregion
@@ -1923,25 +1952,7 @@ namespace CDU3000
             InitializeComponent ( );
         }
 
-        private void mpAllOnBtn_Click(object sender, EventArgs e)
-        {
-            egiInuPowerCB.Checked = true;
-            CrpaPowerCB.Checked = true;
-            tcnPowerCB.Checked = true;
-            iffPowerCB.Checked = true;
-            vu1PowerCB.Checked = true;
-            vu2PowerCB.Checked = true;
-        }
-
-        private void mpAllOffBtn_Click(object sender, EventArgs e)
-        {
-            egiInuPowerCB.Checked = false;
-            CrpaPowerCB.Checked = false;
-            tcnPowerCB.Checked = false;
-            iffPowerCB.Checked = false;
-            vu1PowerCB.Checked = false;
-            vu2PowerCB.Checked = false;
-        }
+        
 
         
 
