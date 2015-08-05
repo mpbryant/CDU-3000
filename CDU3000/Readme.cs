@@ -8,9 +8,9 @@ namespace CDU3000
         #region Fields
 
         //creates a new instanceof the CDU3000 class
-        CDU3000 myCDU = new CDU3000 ( );
+        CDU3000 myCDU = new CDU3000();
 
-        
+
 
         #endregion
 
@@ -20,15 +20,15 @@ namespace CDU3000
 
         #region Initializes the Readme and CDU3000 forms
 
-        public Readme( )
+        public Readme()
         {
             //Initializes the Readme form
-            InitializeComponent ( );
+            InitializeComponent();
 
             //Initializes the CDU3000 form
-            myCDU.Show ( );
+            myCDU.Show();
 
-            
+
 
 
 
@@ -45,17 +45,21 @@ namespace CDU3000
             if (myCDU.FormBorderStyle == FormBorderStyle.None)
             {
                 myCDU.FormBorderStyle = FormBorderStyle.Fixed3D;
-                myCDU.HideFormBtns ( );
+                myCDU.HideFormBtns();
             }
             else
             {
                 myCDU.FormBorderStyle = FormBorderStyle.None;
-                myCDU.ShowFormBtns ( );
+                myCDU.ShowFormBtns();
             }
 
         }
 
         #endregion
+
+
+
+
 
     }
 }
