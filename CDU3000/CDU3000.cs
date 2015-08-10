@@ -847,10 +847,13 @@ namespace CDU3000
             }
             else
             {
-                currentVU1chan = VU1UHFpre1Chan.Trim('<', ' ');
-                currentVU1name = VU1UHFpre1Name;
-                currentVU1ComsecVar = VU1UHFpre1Comsec;
-                currentVU1freq = VU1UHFpre1Freq;
+                if (pushedButton != l1Btn & currentVU1chan == "- -")
+                {
+                    currentVU1chan = VU1UHFpre1Chan.Trim('<', ' ', '*');
+                    currentVU1name = VU1UHFpre1Name;
+                    currentVU1ComsecVar = VU1UHFpre1Comsec;
+                    currentVU1freq = VU1UHFpre1Freq;
+                }
             }
 
             if (CDUVU2power == "OFF" || myCont.VU2Power == "OFF")//Blanks the text if power is off
@@ -862,10 +865,13 @@ namespace CDU3000
             }
             else
             {
-                currentVU2chan = VU2UHFpre1Chan.Trim('<', ' ');
-                currentVU2name = VU2UHFpre1Name;
-                currentVU2ComsecVar = VU2UHFpre1Comsec;
-                currentVU2freq = VU2UHFpre1Freq;
+                if (pushedButton != l2Btn & currentVU2chan == "- -")
+                {
+                    currentVU2chan = VU2UHFpre1Chan.Trim('<', ' ', '*');
+                    currentVU2name = VU2UHFpre1Name;
+                    currentVU2ComsecVar = VU2UHFpre1Comsec;
+                    currentVU2freq = VU2UHFpre1Freq;
+                }
             }
 
             TextBox l0right = new TextBox();
@@ -890,7 +896,8 @@ namespace CDU3000
 
 
             TextBox l2 = new TextBox();
-            TB(l2, col1, row4, "<", Color.White);
+            l2text = "<";
+            TB(l2, col1, row4, l2text, Color.White);
 
             TextBox l2r = new TextBox();
             TB(l2r, col2, row4, currentVU2chan + "   " + currentVU2name, Color.White);
@@ -15902,6 +15909,7 @@ namespace CDU3000
             {
                 color3 = Color.Green;
                 color4 = Color.White;
+
             }
 
             if (CDUVU2power == "OFF")
@@ -15913,6 +15921,7 @@ namespace CDU3000
             {
                 color5 = Color.Green;
                 color6 = Color.White;
+
             }
 
             currentPageTitle = "POWER"; //page title and number used for navigating
@@ -26158,7 +26167,7 @@ namespace CDU3000
         {
             if (currentPageTitle == "comm" || currentPageTitle == "V/U2 CONTROL")
             {
-                if (pushedButton == l2Btn & (scratchpad == "" || scratchpad == null))//scratchpad != "0" & ContainsLetters() == false
+                if (((pushedButton == l2Btn & currentPageTitle == "comm") || (pushedButton == l1Btn & currentPageTitle == "V/U2 CONTROL")) & (scratchpad == "" || scratchpad == null))//scratchpad != "0" & ContainsLetters() == false
                 {
                     StartFresh();
                     if (currentPageTitle == "comm")
@@ -26176,7 +26185,7 @@ namespace CDU3000
                     return;
                 }
                 else
-                    if (pushedButton == l1Btn & scratchpad == "0")
+                    if (((pushedButton == l2Btn & currentPageTitle == "comm") || (pushedButton == l1Btn & currentPageTitle == "V/U2 CONTROL")) & scratchpad == "0")
                     {
                         if (VU2band == activeBand.UHF)
                         {
@@ -26262,7 +26271,7 @@ namespace CDU3000
                         return;
                     }
                     else
-                        if (pushedButton == l1Btn & ContainsLetters() == true)
+                        if (((pushedButton == l2Btn & currentPageTitle == "comm") || (pushedButton == l1Btn & currentPageTitle == "V/U2 CONTROL")) & ContainsLetters() == true)
                         {
                             if (SearchCallSign(scratchpad))/////////////
                             {
@@ -26299,7 +26308,7 @@ namespace CDU3000
 
                         }
                         else
-                            if (pushedButton == l1Btn & ContainsLetters() == false & ContainsNumbers() == true)
+                            if (((pushedButton == l2Btn & currentPageTitle == "comm") || (pushedButton == l1Btn & currentPageTitle == "V/U2 CONTROL")) & ContainsLetters() == false & ContainsNumbers() == true)//pushedButton == l2Btn & 
                             {
                                 if (SearchChannelNumbers(scratchpad))////////////////
                                 {
@@ -26338,172 +26347,7 @@ namespace CDU3000
             }
         }
 
-        //private void CheckVU2()
-        //{
-        //    if (currentPageTitle == "comm")
-        //    {
-        //        if (pushedButton == l2Btn & (scratchpad == "" || scratchpad == null))//scratchpad != "0" & ContainsLetters() == false
-        //        {
-        //            StartFresh();
-        //            VU2controlPage1();
-        //            return;
-        //        }
-        //        else
-        //            if (pushedButton == l2Btn & scratchpad == "0")
-        //            {
-        //                string tempChan = currentVU2chan;
-        //                string tempName = currentVU2name;
-        //                string tempFreq = currentVU2freq;
-        //                string tempComsec = currentVU2ComsecVar;
-
-        //                currentVU2chan = recallVU2UHFchan;
-        //                currentVU2name = recallVU2UHFname;
-        //                currentVU2freq = recallVU2UHFfreq;
-        //                currentVU2ComsecVar = recallVU2Comsec;
-
-        //                recallVU2UHFchan = tempChan;
-        //                recallVU2UHFname = tempName;
-        //                recallVU2UHFfreq = tempFreq;
-        //                recallVU2Comsec = tempComsec;
-
-
-        //                scratchpad = "";
-        //                sPad.Text = "";
-        //                StartFresh();
-        //                COMpage();
-        //                return;
-        //            }
-        //            else
-        //                if (pushedButton == l2Btn & ContainsLetters() == true)
-        //                {
-        //                    if (SearchCallSign(scratchpad))/////////////
-        //                    {
-        //                        sPad.Text = "";
-        //                        scratchpad = "";
-        //                        StartFresh();
-        //                        COMpage();
-        //                        return;
-        //                    }
-        //                    else
-        //                    {
-        //                        StartFresh();
-        //                        COMpage();
-        //                        scratchMessage = "INVALID ENTRY";
-        //                        ShowScratchMessage();
-        //                        ScratchMessageTimer.Start();
-        //                        return;
-        //                    }
-
-
-        //                }
-        //                else
-        //                    if (pushedButton == l2Btn & ContainsLetters() == false & ContainsNumbers() == true)
-        //                    {
-        //                        if (SearchChannelNumbers(scratchpad))////////////////
-        //                        {
-        //                            sPad.Text = "";
-        //                            scratchpad = "";
-        //                            StartFresh();
-        //                            COMpage();
-        //                            return;
-        //                        }
-        //                        else
-        //                        {
-        //                            StartFresh();
-        //                            COMpage();
-        //                            scratchMessage = "INVALID ENTRY";
-        //                            ShowScratchMessage();
-        //                            ScratchMessageTimer.Start();
-        //                            return;
-        //                        }
-
-
-        //                    }
-        //    }
-        //    else if (currentPageTitle == "V/U2 CONTROL")
-        //    {
-        //        if (pushedButton == l1Btn & (scratchpad == "" || scratchpad == null))//scratchpad != "0" & ContainsLetters() == false
-        //        {
-        //            StartFresh();
-        //            VU2controlPage1();
-        //            scratchMessage = "INVALID ENTRY";
-        //            ScratchMessageTimer.Start();
-        //            ShowScratchMessage();
-        //            return;
-        //        }
-        //        else
-        //            if (pushedButton == l1Btn & scratchpad == "0")
-        //            {
-        //                string tempChan = currentVU2chan;
-        //                string tempName = currentVU2name;
-        //                string tempFreq = currentVU2freq;
-        //                string tempComsec = currentVU2ComsecVar;
-
-        //                currentVU2chan = recallVU2UHFchan;
-        //                currentVU2name = recallVU2UHFname;
-        //                currentVU2freq = recallVU2UHFfreq;
-        //                currentVU2ComsecVar = recallVU2Comsec;
-
-        //                recallVU2UHFchan = tempChan;
-        //                recallVU2UHFname = tempName;
-        //                recallVU2UHFfreq = tempFreq;
-        //                recallVU2Comsec = tempComsec;
-
-
-        //                scratchpad = "";
-        //                sPad.Text = "";
-        //                StartFresh();
-        //                VU2controlPage1();
-        //                return;
-        //            }
-        //            else
-        //                if (pushedButton == l1Btn & ContainsLetters() == true)
-        //                {
-        //                    if (SearchCallSign(scratchpad))/////////////
-        //                    {
-        //                        sPad.Text = "";
-        //                        scratchpad = "";
-        //                        StartFresh();
-        //                        VU2controlPage1();
-        //                        return;
-        //                    }
-        //                    else
-        //                    {
-        //                        StartFresh();
-        //                        VU2controlPage1();
-        //                        scratchMessage = "INVALID ENTRY";
-        //                        ShowScratchMessage();
-        //                        ScratchMessageTimer.Start();
-        //                        return;
-        //                    }
-
-
-        //                }
-        //                else
-        //                    if (pushedButton == l1Btn & ContainsLetters() == false & ContainsNumbers() == true)
-        //                    {
-        //                        if (SearchChannelNumbers(scratchpad))////////////////
-        //                        {
-        //                            sPad.Text = "";
-        //                            scratchpad = "";
-        //                            StartFresh();
-        //                            VU2controlPage1();
-        //                            return;
-        //                        }
-        //                        else
-        //                        {
-        //                            StartFresh();
-        //                            VU2controlPage1();
-        //                            scratchMessage = "INVALID ENTRY";
-        //                            ShowScratchMessage();
-        //                            ScratchMessageTimer.Start();
-        //                            return;
-        //                        }
-
-
-        //                    }
-        //    }
-        //}
+        
 
         #endregion
 
@@ -30171,7 +30015,7 @@ namespace CDU3000
 
                 }
                 else
-                    if (pushedButton == r2Btn || currentPageTitle == "V/U1 CONTROL")//VU1
+                    if (pushedButton == r1Btn || currentPageTitle == "V/U1 CONTROL")//VU1
                     {
                         if (BandSelection(currentVU1freq, "VU1") == "U")//verifies the band is UHF
                         {
