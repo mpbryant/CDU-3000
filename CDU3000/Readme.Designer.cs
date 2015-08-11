@@ -81,6 +81,7 @@
             this.ViewMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.WindowBorderMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tabPage11 = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
@@ -120,6 +121,7 @@
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage11);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -709,6 +711,15 @@
             this.panel1.Size = new System.Drawing.Size(423, 573);
             this.panel1.TabIndex = 3;
             // 
+            // tabPage11
+            // 
+            this.tabPage11.Location = new System.Drawing.Point(4, 22);
+            this.tabPage11.Name = "tabPage11";
+            this.tabPage11.Size = new System.Drawing.Size(415, 547);
+            this.tabPage11.TabIndex = 4;
+            this.tabPage11.Text = "IFF";
+            this.tabPage11.UseVisualStyleBackColor = true;
+            // 
             // Readme
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -812,5 +823,6 @@
         private System.Windows.Forms.TabPage tabPage10;
         private System.Windows.Forms.PictureBox pictureBox17;
         private System.Windows.Forms.RichTextBox richTextBox18;
+        private System.Windows.Forms.TabPage tabPage11;
     }
 }

@@ -117,6 +117,8 @@ namespace CDU3000
         #region MyRegion
         private string _tacanPowerState;
         private string _tcnStatus;
+        private string tacanCurrentChan = "17X";
+        private string tacanStbyChan = "17X";
         #endregion
 
         //EGI specific fields
@@ -13640,7 +13642,7 @@ namespace CDU3000
             CenterMe(center);
 
             TextBox bus = new TextBox();
-            TB(bus, col7, row2, my1553 , Color.White);
+            TB(bus, col7, row2, my1553, Color.White);
             CenterMe(bus);
 
             TextBox l2t = new TextBox();
@@ -15462,18 +15464,63 @@ namespace CDU3000
             CDU7000Page = true;
 
             #region MyRegion
-            l1text = "ON";
-            l2text = myCont.TacanNVRAM;
-            l3text = myCont.TacanMicro;
-            l4text = myCont.TacanAudio;
-            l5text = myCont.TacanRt;
-            l6text = "< FAULT HIST";
-            r1text = "- - - ";
-            r2text = myCont.TacanSynth;
-            r3text = myCont.TacanDpdat;
-            r4text = myCont.TacanDpram;
-            r5text = "";
-            r6text = "RETURN";
+            string busStat;
+            string subStat;
+            string trmStat;
+            string pwrStat;
+            string ramStat;
+            string romStat;
+            string tunStat;
+            string rcvStat;
+
+            if (myCont.TacanPower == "OFF")
+            {
+                subStat = "- -";
+                trmStat = "- -";
+                pwrStat = "- -";
+                ramStat = "- -";
+                romStat = "- -";
+                tunStat = "- -";
+                rcvStat = "- -";
+                busStat = "- -";
+                l1text = "ON";
+                l2text = "- -";
+                l3text = "- -";
+                l4text = "- -";
+                l5text = "- -";
+                l6text = "< FAULT HIST";
+                r1text = "- - - ";
+                r2text = "- -";
+                r3text = "- -";
+                r4text = "- -";
+                r5text = "";
+                r6text = "RETURN";
+            }
+            else
+            {
+                subStat = myCont.TacanSub ;
+                trmStat = myCont.TacanTrm ;
+                pwrStat = myCont.TacanPwr ;
+                ramStat = myCont.TacanRam ;
+                romStat = myCont.TacanRom ;
+                tunStat = myCont.TacanTun ;
+                rcvStat = myCont.TacanRcv ;
+                busStat = myCont.Tacan1553;
+                l1text = "ON";
+                l2text = myCont.TacanNVRAM;
+                l3text = myCont.TacanMicro;
+                l4text = myCont.TacanAudio;
+                l5text = myCont.TacanRt;
+                l6text = "< FAULT HIST";
+                r1text = "- - - ";
+                r2text = myCont.TacanSynth;
+                r3text = myCont.TacanDpdat;
+                r4text = myCont.TacanDpram;
+                r5text = "";
+                r6text = "RETURN";
+            }
+
+            
 
             currentPageTitle = "TACAN STATUS"; //page title and number used for navigating
             currentPageNumber = 1;
@@ -15484,7 +15531,7 @@ namespace CDU3000
             TextBox status = new TextBox();
 
 
-            if (myCont.TacanNVRAM == "GO" & myCont.TacanMicro == "GO" & myCont.Tacan1553 == "GO" & myCont.TacanAudio == "GO" & myCont.TacanDpdat == "GO" & myCont.TacanDpram == "GO" & myCont.TacanPwr == "GO" & myCont.TacanRam == "GO" & myCont.TacanRcv == "GO" & myCont.TacanRom == "GO" & myCont.TacanRt == "GO" & myCont.TacanSub == "GO" & myCont.TacanSynth == "GO" & myCont.TacanTrm == "GO" & myCont.TacanTun == "GO")
+            if (myCont.TacanPower=="ON" & myCont.TacanNVRAM == "GO" & myCont.TacanMicro == "GO" & myCont.Tacan1553 == "GO" & myCont.TacanAudio == "GO" & myCont.TacanDpdat == "GO" & myCont.TacanDpram == "GO" & myCont.TacanPwr == "GO" & myCont.TacanRam == "GO" & myCont.TacanRcv == "GO" & myCont.TacanRom == "GO" & myCont.TacanRt == "GO" & myCont.TacanSub == "GO" & myCont.TacanSynth == "GO" & myCont.TacanTrm == "GO" & myCont.TacanTun == "GO")
             {
                 _tcnStatus = "GO";
             }
@@ -15493,7 +15540,16 @@ namespace CDU3000
                 _tcnStatus = "NGO";
             }
 
-            TB(status, title.Location.X + title.Width, row0, _tcnStatus, Color.White);
+            if (myCont.TacanPower == "OFF")
+            {
+                TB(status, title.Location.X + title.Width, row0, "OFF", Color.Yellow);
+            }
+            else
+            {
+                TB(status, title.Location.X + title.Width, row0, _tcnStatus, Color.White);
+            }
+
+            
 
 
             TextBox l1t = new TextBox();
@@ -15515,7 +15571,7 @@ namespace CDU3000
             CenterMe(l1c);
 
             TextBox bus = new TextBox();
-            TB(bus, col9, row2, myCont.Tacan1553, Color.White);
+            TB(bus, col9, row2, busStat, Color.White);
 
             TextBox l2t = new TextBox();
             TB(l2t, col2, row3, "NVRAM");
@@ -15527,13 +15583,13 @@ namespace CDU3000
             TB(sub, col6, row3, "SUB");
 
             TextBox subGo = new TextBox();
-            TB(subGo, col6, row4, myCont.TacanSub, Color.White);
+            TB(subGo, col6, row4, subStat , Color.White);
 
             TextBox trm = new TextBox();
             TB(trm, col9, row3, "TRM");
 
             TextBox trmGo = new TextBox();
-            TB(trmGo, col9, row4, myCont.TacanTrm, Color.White);
+            TB(trmGo, col9, row4, trmStat , Color.White);
 
             TextBox l3t = new TextBox();
             TB(l3t, col2, row5, "MICRO");
@@ -15545,7 +15601,7 @@ namespace CDU3000
             TB(pwr, col9, row5, "PWR");
 
             TextBox pwrGo = new TextBox();
-            TB(pwrGo, col9, row6, myCont.TacanPwr, Color.White);
+            TB(pwrGo, col9, row6, pwrStat , Color.White);
 
             TextBox l4t = new TextBox();
             TB(l4t, col2, row7, "AUDIO");
@@ -15557,13 +15613,13 @@ namespace CDU3000
             TB(ram, col6, row7, "RAM");
 
             TextBox ramGo = new TextBox();
-            TB(ramGo, col6, row8, myCont.TacanRam, Color.White);
+            TB(ramGo, col6, row8, ramStat , Color.White);
 
             TextBox rom = new TextBox();
             TB(rom, col9, row7, "ROM");
 
             TextBox romGo = new TextBox();
-            TB(romGo, col9, row8, myCont.TacanRom, Color.White);
+            TB(romGo, col9, row8, romStat , Color.White);
 
             TextBox l5t = new TextBox();
             TB(l5t, col2, row9, "RT");
@@ -15575,13 +15631,13 @@ namespace CDU3000
             TB(tun, col6, row9, "TUN");
 
             TextBox tunGo = new TextBox();
-            TB(tunGo, col6, row10, myCont.TacanTun, Color.White);
+            TB(tunGo, col6, row10, tunStat , Color.White);
 
             TextBox rcv = new TextBox();
             TB(rcv, col9, row9, "RCV");
 
             TextBox rcvGo = new TextBox();
-            TB(rcvGo, col9, row10, myCont.TacanRcv, Color.White);
+            TB(rcvGo, col9, row10, rcvStat , Color.White);
 
             //TextBox l6t = new TextBox();
             //TB(l6t, col2, row11, "IDENT");
@@ -15699,18 +15755,28 @@ namespace CDU3000
             l4text = "";
             l5text = "";
             l6text = "";
-            r1text = "17X";
-            r2text = "17X";
+            r1text = tacanCurrentChan;
+            r2text = tacanStbyChan;
             r3text = "";
             r4text = "";
             r5text = "";
             r6text = "RETURN";
+
+
+            CheckStatus();
+            
 
             currentPageTitle = "TACAN CONTROL"; //page title and number used for navigating
             currentPageNumber = 1;
 
             TextBox title = new TextBox();//displayed top center of screen
             TB(title, col7, row0, currentPageTitle);
+
+            if (_tcnStatus == "NGO")
+            {
+                TextBox tcnWarn = new TextBox();
+                TB(tcnWarn, title.Location.X-10, row0, "!", Color.Orange);
+            }
 
             //TextBox page = new TextBox ( );
             //TB (page, col14, row0, currentPageNumber + "/1");
@@ -15774,14 +15840,16 @@ namespace CDU3000
             TypeLeft(r1t);
 
             TextBox r1 = new TextBox();
-            TB(r1, col15, row2, r1text, Color.White);
+            TB(r1, col13 + 10, row2, r1text, Color.White);
+
 
             TextBox r2t = new TextBox();
             TB(r2t, col14 + 20, row3, "STBY CHAN");
             TypeLeft(r2t);
 
             TextBox r2 = new TextBox();
-            TB(r2, col15, row4, r2text, Color.White);
+            TB(r2, col13 + 10, row4, r2text, Color.White);
+
 
             //TextBox r3t = new TextBox();
             //TB(r3t, col14+20, row5, "IDENT");
@@ -24211,6 +24279,7 @@ namespace CDU3000
                     }
 
 
+
             #endregion Non-Fixed Button Selection
 
             #region Handles call from VU1 & VU2 CONTROL pages
@@ -24668,6 +24737,24 @@ namespace CDU3000
                 }
             }
 
+            #endregion
+
+            #region page selections from TACAN CONTROL page
+            if (currentPageTitle == "TACAN CONTROL")
+            {
+                if (pushedButton == r1Btn || pushedButton == r2Btn)
+                {
+                    TacanControlUpdate();
+                    return;
+                }
+                else if (pushedButton == r6Btn)
+                {
+                    StartFresh();
+                    ReturnList("TACAN CONTROL");
+                    return;
+                }
+
+            }
             #endregion
 
 
@@ -26347,7 +26434,7 @@ namespace CDU3000
             }
         }
 
-        
+
 
         #endregion
 
@@ -26523,6 +26610,10 @@ namespace CDU3000
                     {
                         return;
                     }
+                    if (currentPageTitle == "TACAN CONTROL")
+                    {
+                        TacanControlUpdate();
+                    }
                     r1text = scratchpad;
                     break;
 
@@ -26616,6 +26707,34 @@ namespace CDU3000
 
             scratchpad = null;
             sPad.Text = scratchpad;
+        }
+
+        private void TacanControlUpdate()
+        {
+
+            if (pushedButton == r1Btn)
+            {
+                if (CheckValidity())
+                {
+                    tacanCurrentChan = scratchpad;
+                    tacanStbyChan = r1text;
+                    r2text = tacanStbyChan;
+                    r1text = tacanCurrentChan;
+                    scratchpad = "";
+                    sPad.Text = scratchpad;
+                    StartFresh();
+                    TacanControlPage();
+                }
+            }
+            else if (pushedButton == r2Btn)
+            {
+                tacanCurrentChan = r2text;
+                tacanStbyChan = r1text;
+                StartFresh();
+                TacanControlPage();
+
+            }
+
         }
 
         private bool FindPushedButon(string e)  //locates the pushed button textbox 
@@ -32013,7 +32132,7 @@ namespace CDU3000
             #endregion
 
             #region VU1
-            if (CDUVU1power=="ON" & myCont.VU1Power=="ON" & myCont.VU11553 == "GO" & myCont.VU1Comsec == "GO" & myCont.VU1Modem == "GO" & myCont.VU1PowerSupply == "GO" & myCont.VU1RT == "GO" & myCont.VU1Transmitter == "GO")
+            if (CDUVU1power == "ON" & myCont.VU1Power == "ON" & myCont.VU11553 == "GO" & myCont.VU1Comsec == "GO" & myCont.VU1Modem == "GO" & myCont.VU1PowerSupply == "GO" & myCont.VU1RT == "GO" & myCont.VU1Transmitter == "GO")
             {
                 _VU1status = "GO";
             }
@@ -32093,7 +32212,7 @@ namespace CDU3000
 
             #region COM STATUS
 
-            
+
 
             if (myCont.HF11553 == "GO" & myCont.HF1Ampl == "GO" & myCont.HF1Cplr == "GO" & myCont.HF1Eqpt == "GO" & myCont.HF1Fiber == "GO" & myCont.HF1HiTemp == "GO" & myCont.HF1OverVlt == "GO" & myCont.HF1RcvOvrld == "GO" & myCont.HF1RT == "GO" & myCont.HF1Tune == "GO" & myCont.HF1VSWR == "GO")
             {
@@ -32485,6 +32604,41 @@ namespace CDU3000
                         }
                         break;
                     }
+                    #endregion
+
+                case "TACAN CONTROL":
+                    #region MyRegion
+                    try
+                    {
+                        foreach (Button btn in rightBtns)
+                        {
+                            if (scratchpad.Length <= 4 & scratchpad.Length >= 2 & (scratchpad.Substring(scratchpad.Length - 1) == "X" || scratchpad.Substring(scratchpad.Length - 1) == "Y"))
+                            {
+                                string tempScratch = scratchpad.Trim('X', 'Y');
+                                int x = Convert.ToInt32(tempScratch);
+                                if ((1 <= x) == true & (x <= 126) == true)
+                                {
+                                    return true;
+                                }
+                                else
+                                {
+                                    scratchMessage = "INVALID ENTRY";
+                                    break;
+                                }
+
+                            }
+                            else
+                            {
+                                scratchMessage = "INVALID ENTRY";
+                                break;
+                            }
+                        }
+                    }
+                    catch
+                    {
+
+                    }
+                    break;
                     #endregion
 
                 case "V/U1 UHF":
@@ -33532,16 +33686,24 @@ namespace CDU3000
 
         private void closeBtn_Click(object sender, EventArgs e)
         {
-            DeleteBtnTimer.Stop();
-            DeleteBtnTimer.Dispose();
-            DimBrtTimer.Stop();
-            DimBrtTimer.Dispose();
-            ScratchMessageTimer.Stop();
-            ScratchMessageTimer.Dispose();
-            UTCupdateTimer.Stop();
-            UTCupdateTimer.Dispose();
-            this.Close();
-            ActiveForm.Close();
+            try
+            {
+                DeleteBtnTimer.Stop();
+                DeleteBtnTimer.Dispose();
+                DimBrtTimer.Stop();
+                DimBrtTimer.Dispose();
+                ScratchMessageTimer.Stop();
+                ScratchMessageTimer.Dispose();
+                UTCupdateTimer.Stop();
+                UTCupdateTimer.Dispose();
+                this.Close();
+                ActiveForm.Close();
+            }
+            catch (Exception)
+            {
+
+
+            }
         }
 
         private void CDU3000_FormClosing(object sender, FormClosingEventArgs e)
