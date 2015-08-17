@@ -77,11 +77,40 @@
             this.pictureBox17 = new System.Windows.Forms.PictureBox();
             this.richTextBox18 = new System.Windows.Forms.RichTextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage11 = new System.Windows.Forms.TabPage();
+            this.tabPage12 = new System.Windows.Forms.TabPage();
+            this.tabControl4 = new System.Windows.Forms.TabControl();
+            this.tabPage13 = new System.Windows.Forms.TabPage();
+            this.richTextBox19 = new System.Windows.Forms.RichTextBox();
+            this.tabPage14 = new System.Windows.Forms.TabPage();
+            this.tabPage15 = new System.Windows.Forms.TabPage();
+            this.pictureBox18 = new System.Windows.Forms.PictureBox();
+            this.richTextBox20 = new System.Windows.Forms.RichTextBox();
+            this.tabPage16 = new System.Windows.Forms.TabPage();
+            this.richTextBox21 = new System.Windows.Forms.RichTextBox();
+            this.tabPage17 = new System.Windows.Forms.TabPage();
+            this.pictureBox19 = new System.Windows.Forms.PictureBox();
+            this.richTextBox22 = new System.Windows.Forms.RichTextBox();
             this.ReadmeMenu = new System.Windows.Forms.MenuStrip();
             this.ViewMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.WindowBorderMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.tabPage11 = new System.Windows.Forms.TabPage();
+            this.tabControl5 = new System.Windows.Forms.TabControl();
+            this.tabPage19 = new System.Windows.Forms.TabPage();
+            this.tabPage20 = new System.Windows.Forms.TabPage();
+            this.pictureBox26 = new System.Windows.Forms.PictureBox();
+            this.richTextBox30 = new System.Windows.Forms.RichTextBox();
+            this.pictureBox27 = new System.Windows.Forms.PictureBox();
+            this.richTextBox31 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox23 = new System.Windows.Forms.RichTextBox();
+            this.pictureBox20 = new System.Windows.Forms.PictureBox();
+            this.richTextBox24 = new System.Windows.Forms.RichTextBox();
+            this.pictureBox21 = new System.Windows.Forms.PictureBox();
+            this.pictureBox22 = new System.Windows.Forms.PictureBox();
+            this.richTextBox25 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox26 = new System.Windows.Forms.RichTextBox();
+            this.pictureBox23 = new System.Windows.Forms.PictureBox();
+            this.richTextBox27 = new System.Windows.Forms.RichTextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
@@ -111,8 +140,26 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
             this.tabPage10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            this.tabPage12.SuspendLayout();
+            this.tabControl4.SuspendLayout();
+            this.tabPage13.SuspendLayout();
+            this.tabPage15.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).BeginInit();
+            this.tabPage16.SuspendLayout();
+            this.tabPage17.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).BeginInit();
             this.ReadmeMenu.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.tabControl5.SuspendLayout();
+            this.tabPage19.SuspendLayout();
+            this.tabPage20.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox26)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox27)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox23)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -122,6 +169,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage11);
+            this.tabControl1.Controls.Add(this.tabPage12);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -458,7 +506,7 @@
             // pictureBox9
             // 
             this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
-            this.pictureBox9.Location = new System.Drawing.Point(10, 1159);
+            this.pictureBox9.Location = new System.Drawing.Point(10, 1224);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(353, 371);
             this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -469,7 +517,7 @@
             // 
             this.richTextBox10.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox10.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox10.Location = new System.Drawing.Point(8, 1046);
+            this.richTextBox10.Location = new System.Drawing.Point(8, 1112);
             this.richTextBox10.Name = "richTextBox10";
             this.richTextBox10.ReadOnly = true;
             this.richTextBox10.Size = new System.Drawing.Size(355, 107);
@@ -479,7 +527,7 @@
             // pictureBox8
             // 
             this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
-            this.pictureBox8.Location = new System.Drawing.Point(8, 624);
+            this.pictureBox8.Location = new System.Drawing.Point(8, 737);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(353, 371);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -490,7 +538,7 @@
             // 
             this.richTextBox9.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox9.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox9.Location = new System.Drawing.Point(6, 506);
+            this.richTextBox9.Location = new System.Drawing.Point(6, 620);
             this.richTextBox9.Name = "richTextBox9";
             this.richTextBox9.ReadOnly = true;
             this.richTextBox9.Size = new System.Drawing.Size(355, 112);
@@ -500,9 +548,9 @@
             // pictureBox7
             // 
             this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
-            this.pictureBox7.Location = new System.Drawing.Point(6, 78);
+            this.pictureBox7.Location = new System.Drawing.Point(6, 189);
             this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(353, 371);
+            this.pictureBox7.Size = new System.Drawing.Size(353, 425);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox7.TabIndex = 3;
             this.pictureBox7.TabStop = false;
@@ -514,9 +562,9 @@
             this.richTextBox8.Location = new System.Drawing.Point(6, 6);
             this.richTextBox8.Name = "richTextBox8";
             this.richTextBox8.ReadOnly = true;
-            this.richTextBox8.Size = new System.Drawing.Size(355, 66);
+            this.richTextBox8.Size = new System.Drawing.Size(355, 184);
             this.richTextBox8.TabIndex = 2;
-            this.richTextBox8.Text = "From the Mission Index page, Select STATUS.";
+            this.richTextBox8.Text = resources.GetString("richTextBox8.Text");
             // 
             // tabPage7
             // 
@@ -669,6 +717,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.tabControl5);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -676,6 +725,155 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "TACAN";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tabPage11
+            // 
+            this.tabPage11.Location = new System.Drawing.Point(4, 22);
+            this.tabPage11.Name = "tabPage11";
+            this.tabPage11.Size = new System.Drawing.Size(415, 547);
+            this.tabPage11.TabIndex = 4;
+            this.tabPage11.Text = "IFF";
+            this.tabPage11.UseVisualStyleBackColor = true;
+            // 
+            // tabPage12
+            // 
+            this.tabPage12.Controls.Add(this.tabControl4);
+            this.tabPage12.Location = new System.Drawing.Point(4, 22);
+            this.tabPage12.Name = "tabPage12";
+            this.tabPage12.Size = new System.Drawing.Size(415, 547);
+            this.tabPage12.TabIndex = 5;
+            this.tabPage12.Text = "EGI";
+            this.tabPage12.UseVisualStyleBackColor = true;
+            // 
+            // tabControl4
+            // 
+            this.tabControl4.Controls.Add(this.tabPage13);
+            this.tabControl4.Controls.Add(this.tabPage14);
+            this.tabControl4.Controls.Add(this.tabPage15);
+            this.tabControl4.Controls.Add(this.tabPage16);
+            this.tabControl4.Controls.Add(this.tabPage17);
+            this.tabControl4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl4.Location = new System.Drawing.Point(0, 0);
+            this.tabControl4.Name = "tabControl4";
+            this.tabControl4.SelectedIndex = 0;
+            this.tabControl4.Size = new System.Drawing.Size(415, 547);
+            this.tabControl4.TabIndex = 0;
+            // 
+            // tabPage13
+            // 
+            this.tabPage13.Controls.Add(this.richTextBox19);
+            this.tabPage13.Location = new System.Drawing.Point(4, 22);
+            this.tabPage13.Name = "tabPage13";
+            this.tabPage13.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage13.Size = new System.Drawing.Size(407, 521);
+            this.tabPage13.TabIndex = 0;
+            this.tabPage13.Text = "Normal Ops";
+            this.tabPage13.UseVisualStyleBackColor = true;
+            // 
+            // richTextBox19
+            // 
+            this.richTextBox19.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBox19.Location = new System.Drawing.Point(3, 3);
+            this.richTextBox19.Name = "richTextBox19";
+            this.richTextBox19.Size = new System.Drawing.Size(401, 515);
+            this.richTextBox19.TabIndex = 0;
+            this.richTextBox19.Text = resources.GetString("richTextBox19.Text");
+            // 
+            // tabPage14
+            // 
+            this.tabPage14.Location = new System.Drawing.Point(4, 22);
+            this.tabPage14.Name = "tabPage14";
+            this.tabPage14.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage14.Size = new System.Drawing.Size(407, 521);
+            this.tabPage14.TabIndex = 1;
+            this.tabPage14.Text = "Status Check";
+            this.tabPage14.UseVisualStyleBackColor = true;
+            // 
+            // tabPage15
+            // 
+            this.tabPage15.Controls.Add(this.pictureBox18);
+            this.tabPage15.Controls.Add(this.richTextBox20);
+            this.tabPage15.Location = new System.Drawing.Point(4, 22);
+            this.tabPage15.Name = "tabPage15";
+            this.tabPage15.Size = new System.Drawing.Size(407, 521);
+            this.tabPage15.TabIndex = 2;
+            this.tabPage15.Text = "Control Access";
+            this.tabPage15.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox18
+            // 
+            this.pictureBox18.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox18.Image")));
+            this.pictureBox18.Location = new System.Drawing.Point(27, 75);
+            this.pictureBox18.Name = "pictureBox18";
+            this.pictureBox18.Size = new System.Drawing.Size(353, 371);
+            this.pictureBox18.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox18.TabIndex = 9;
+            this.pictureBox18.TabStop = false;
+            // 
+            // richTextBox20
+            // 
+            this.richTextBox20.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox20.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox20.Location = new System.Drawing.Point(4, 3);
+            this.richTextBox20.Name = "richTextBox20";
+            this.richTextBox20.ReadOnly = true;
+            this.richTextBox20.Size = new System.Drawing.Size(390, 68);
+            this.richTextBox20.TabIndex = 2;
+            this.richTextBox20.Text = "Controls for the EGI are accessed through the START INIT page. To access the STAR" +
+    "T INIT page, select START INIT from the MISSION INDEX page. ";
+            // 
+            // tabPage16
+            // 
+            this.tabPage16.Controls.Add(this.richTextBox21);
+            this.tabPage16.Location = new System.Drawing.Point(4, 22);
+            this.tabPage16.Name = "tabPage16";
+            this.tabPage16.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage16.Size = new System.Drawing.Size(407, 521);
+            this.tabPage16.TabIndex = 3;
+            this.tabPage16.Text = "Start Init";
+            this.tabPage16.UseVisualStyleBackColor = true;
+            // 
+            // richTextBox21
+            // 
+            this.richTextBox21.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBox21.Location = new System.Drawing.Point(3, 3);
+            this.richTextBox21.Name = "richTextBox21";
+            this.richTextBox21.Size = new System.Drawing.Size(401, 515);
+            this.richTextBox21.TabIndex = 0;
+            this.richTextBox21.Text = resources.GetString("richTextBox21.Text");
+            // 
+            // tabPage17
+            // 
+            this.tabPage17.Controls.Add(this.pictureBox19);
+            this.tabPage17.Controls.Add(this.richTextBox22);
+            this.tabPage17.Location = new System.Drawing.Point(4, 22);
+            this.tabPage17.Name = "tabPage17";
+            this.tabPage17.Size = new System.Drawing.Size(407, 521);
+            this.tabPage17.TabIndex = 4;
+            this.tabPage17.Text = "EGI Control";
+            this.tabPage17.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox19
+            // 
+            this.pictureBox19.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox19.Image")));
+            this.pictureBox19.Location = new System.Drawing.Point(31, 85);
+            this.pictureBox19.Name = "pictureBox19";
+            this.pictureBox19.Size = new System.Drawing.Size(353, 371);
+            this.pictureBox19.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox19.TabIndex = 11;
+            this.pictureBox19.TabStop = false;
+            // 
+            // richTextBox22
+            // 
+            this.richTextBox22.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox22.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox22.Location = new System.Drawing.Point(8, 13);
+            this.richTextBox22.Name = "richTextBox22";
+            this.richTextBox22.ReadOnly = true;
+            this.richTextBox22.Size = new System.Drawing.Size(390, 68);
+            this.richTextBox22.TabIndex = 10;
+            this.richTextBox22.Text = "The EGI CONTROL page provides controls to manually initialize the EGI GPS unit an" +
+    "d align the EGI inertial navigation unit (INU).";
             // 
             // ReadmeMenu
             // 
@@ -711,14 +909,192 @@
             this.panel1.Size = new System.Drawing.Size(423, 573);
             this.panel1.TabIndex = 3;
             // 
-            // tabPage11
+            // tabControl5
             // 
-            this.tabPage11.Location = new System.Drawing.Point(4, 22);
-            this.tabPage11.Name = "tabPage11";
-            this.tabPage11.Size = new System.Drawing.Size(415, 547);
-            this.tabPage11.TabIndex = 4;
-            this.tabPage11.Text = "IFF";
-            this.tabPage11.UseVisualStyleBackColor = true;
+            this.tabControl5.Controls.Add(this.tabPage19);
+            this.tabControl5.Controls.Add(this.tabPage20);
+            this.tabControl5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl5.Location = new System.Drawing.Point(3, 3);
+            this.tabControl5.Multiline = true;
+            this.tabControl5.Name = "tabControl5";
+            this.tabControl5.SelectedIndex = 0;
+            this.tabControl5.Size = new System.Drawing.Size(409, 541);
+            this.tabControl5.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.tabControl5.TabIndex = 1;
+            // 
+            // tabPage19
+            // 
+            this.tabPage19.AutoScroll = true;
+            this.tabPage19.Controls.Add(this.richTextBox27);
+            this.tabPage19.Controls.Add(this.pictureBox23);
+            this.tabPage19.Controls.Add(this.richTextBox26);
+            this.tabPage19.Controls.Add(this.pictureBox22);
+            this.tabPage19.Controls.Add(this.richTextBox25);
+            this.tabPage19.Controls.Add(this.pictureBox21);
+            this.tabPage19.Controls.Add(this.richTextBox23);
+            this.tabPage19.Controls.Add(this.pictureBox20);
+            this.tabPage19.Controls.Add(this.richTextBox24);
+            this.tabPage19.Location = new System.Drawing.Point(4, 22);
+            this.tabPage19.Name = "tabPage19";
+            this.tabPage19.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage19.Size = new System.Drawing.Size(401, 515);
+            this.tabPage19.TabIndex = 1;
+            this.tabPage19.Text = "Status Check";
+            this.tabPage19.UseVisualStyleBackColor = true;
+            // 
+            // tabPage20
+            // 
+            this.tabPage20.AutoScroll = true;
+            this.tabPage20.Controls.Add(this.pictureBox26);
+            this.tabPage20.Controls.Add(this.richTextBox30);
+            this.tabPage20.Controls.Add(this.pictureBox27);
+            this.tabPage20.Controls.Add(this.richTextBox31);
+            this.tabPage20.Location = new System.Drawing.Point(4, 22);
+            this.tabPage20.Name = "tabPage20";
+            this.tabPage20.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage20.Size = new System.Drawing.Size(401, 515);
+            this.tabPage20.TabIndex = 2;
+            this.tabPage20.Text = "Control Access";
+            this.tabPage20.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox26
+            // 
+            this.pictureBox26.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox26.Image")));
+            this.pictureBox26.Location = new System.Drawing.Point(4, 916);
+            this.pictureBox26.Name = "pictureBox26";
+            this.pictureBox26.Size = new System.Drawing.Size(353, 371);
+            this.pictureBox26.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox26.TabIndex = 7;
+            this.pictureBox26.TabStop = false;
+            // 
+            // richTextBox30
+            // 
+            this.richTextBox30.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox30.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox30.Location = new System.Drawing.Point(4, 494);
+            this.richTextBox30.Name = "richTextBox30";
+            this.richTextBox30.ReadOnly = true;
+            this.richTextBox30.Size = new System.Drawing.Size(355, 411);
+            this.richTextBox30.TabIndex = 6;
+            this.richTextBox30.Text = resources.GetString("richTextBox30.Text");
+            // 
+            // pictureBox27
+            // 
+            this.pictureBox27.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox27.Image")));
+            this.pictureBox27.Location = new System.Drawing.Point(6, 107);
+            this.pictureBox27.Name = "pictureBox27";
+            this.pictureBox27.Size = new System.Drawing.Size(353, 371);
+            this.pictureBox27.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox27.TabIndex = 5;
+            this.pictureBox27.TabStop = false;
+            // 
+            // richTextBox31
+            // 
+            this.richTextBox31.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox31.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox31.Location = new System.Drawing.Point(6, 6);
+            this.richTextBox31.Name = "richTextBox31";
+            this.richTextBox31.ReadOnly = true;
+            this.richTextBox31.Size = new System.Drawing.Size(355, 93);
+            this.richTextBox31.TabIndex = 4;
+            this.richTextBox31.Text = resources.GetString("richTextBox31.Text");
+            // 
+            // richTextBox23
+            // 
+            this.richTextBox23.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox23.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox23.Location = new System.Drawing.Point(15, 630);
+            this.richTextBox23.Name = "richTextBox23";
+            this.richTextBox23.ReadOnly = true;
+            this.richTextBox23.Size = new System.Drawing.Size(355, 112);
+            this.richTextBox23.TabIndex = 7;
+            this.richTextBox23.Text = resources.GetString("richTextBox23.Text");
+            // 
+            // pictureBox20
+            // 
+            this.pictureBox20.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox20.Image")));
+            this.pictureBox20.Location = new System.Drawing.Point(15, 199);
+            this.pictureBox20.Name = "pictureBox20";
+            this.pictureBox20.Size = new System.Drawing.Size(353, 425);
+            this.pictureBox20.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox20.TabIndex = 6;
+            this.pictureBox20.TabStop = false;
+            // 
+            // richTextBox24
+            // 
+            this.richTextBox24.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox24.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox24.Location = new System.Drawing.Point(15, 16);
+            this.richTextBox24.Name = "richTextBox24";
+            this.richTextBox24.ReadOnly = true;
+            this.richTextBox24.Size = new System.Drawing.Size(355, 184);
+            this.richTextBox24.TabIndex = 5;
+            this.richTextBox24.Text = resources.GetString("richTextBox24.Text");
+            // 
+            // pictureBox21
+            // 
+            this.pictureBox21.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox21.Image")));
+            this.pictureBox21.Location = new System.Drawing.Point(16, 748);
+            this.pictureBox21.Name = "pictureBox21";
+            this.pictureBox21.Size = new System.Drawing.Size(353, 425);
+            this.pictureBox21.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox21.TabIndex = 8;
+            this.pictureBox21.TabStop = false;
+            // 
+            // pictureBox22
+            // 
+            this.pictureBox22.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox22.Image")));
+            this.pictureBox22.Location = new System.Drawing.Point(16, 1328);
+            this.pictureBox22.Name = "pictureBox22";
+            this.pictureBox22.Size = new System.Drawing.Size(353, 425);
+            this.pictureBox22.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox22.TabIndex = 10;
+            this.pictureBox22.TabStop = false;
+            // 
+            // richTextBox25
+            // 
+            this.richTextBox25.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox25.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox25.Location = new System.Drawing.Point(15, 1179);
+            this.richTextBox25.Name = "richTextBox25";
+            this.richTextBox25.ReadOnly = true;
+            this.richTextBox25.Size = new System.Drawing.Size(355, 143);
+            this.richTextBox25.TabIndex = 9;
+            this.richTextBox25.Text = resources.GetString("richTextBox25.Text");
+            // 
+            // richTextBox26
+            // 
+            this.richTextBox26.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox26.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox26.Location = new System.Drawing.Point(14, 1757);
+            this.richTextBox26.Name = "richTextBox26";
+            this.richTextBox26.ReadOnly = true;
+            this.richTextBox26.Size = new System.Drawing.Size(355, 143);
+            this.richTextBox26.TabIndex = 11;
+            this.richTextBox26.Text = "Notice the yellow NGO indication under the TACAN title and next to the page title" +
+    ". \n\nPress R1 to go to the TACAN STATUS page.";
+            // 
+            // pictureBox23
+            // 
+            this.pictureBox23.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox23.Image")));
+            this.pictureBox23.Location = new System.Drawing.Point(16, 1852);
+            this.pictureBox23.Name = "pictureBox23";
+            this.pictureBox23.Size = new System.Drawing.Size(353, 425);
+            this.pictureBox23.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox23.TabIndex = 12;
+            this.pictureBox23.TabStop = false;
+            // 
+            // richTextBox27
+            // 
+            this.richTextBox27.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox27.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox27.Location = new System.Drawing.Point(15, 2280);
+            this.richTextBox27.Name = "richTextBox27";
+            this.richTextBox27.ReadOnly = true;
+            this.richTextBox27.Size = new System.Drawing.Size(355, 56);
+            this.richTextBox27.TabIndex = 13;
+            this.richTextBox27.Text = "Notice the yellow NGO indication under the NVRAM title. This indicates a failure " +
+    "internal to the TACAN. ";
             // 
             // Readme
             // 
@@ -761,9 +1137,27 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
             this.tabPage10.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage12.ResumeLayout(false);
+            this.tabControl4.ResumeLayout(false);
+            this.tabPage13.ResumeLayout(false);
+            this.tabPage15.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).EndInit();
+            this.tabPage16.ResumeLayout(false);
+            this.tabPage17.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).EndInit();
             this.ReadmeMenu.ResumeLayout(false);
             this.ReadmeMenu.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.tabControl5.ResumeLayout(false);
+            this.tabPage19.ResumeLayout(false);
+            this.tabPage20.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox26)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox27)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox23)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -824,5 +1218,34 @@
         private System.Windows.Forms.PictureBox pictureBox17;
         private System.Windows.Forms.RichTextBox richTextBox18;
         private System.Windows.Forms.TabPage tabPage11;
+        private System.Windows.Forms.TabPage tabPage12;
+        private System.Windows.Forms.TabControl tabControl4;
+        private System.Windows.Forms.TabPage tabPage13;
+        private System.Windows.Forms.RichTextBox richTextBox19;
+        private System.Windows.Forms.TabPage tabPage14;
+        private System.Windows.Forms.TabPage tabPage15;
+        private System.Windows.Forms.PictureBox pictureBox18;
+        private System.Windows.Forms.RichTextBox richTextBox20;
+        private System.Windows.Forms.TabPage tabPage16;
+        private System.Windows.Forms.RichTextBox richTextBox21;
+        private System.Windows.Forms.TabPage tabPage17;
+        private System.Windows.Forms.PictureBox pictureBox19;
+        private System.Windows.Forms.RichTextBox richTextBox22;
+        private System.Windows.Forms.TabControl tabControl5;
+        private System.Windows.Forms.TabPage tabPage19;
+        private System.Windows.Forms.RichTextBox richTextBox23;
+        private System.Windows.Forms.PictureBox pictureBox20;
+        private System.Windows.Forms.RichTextBox richTextBox24;
+        private System.Windows.Forms.TabPage tabPage20;
+        private System.Windows.Forms.PictureBox pictureBox26;
+        private System.Windows.Forms.RichTextBox richTextBox30;
+        private System.Windows.Forms.PictureBox pictureBox27;
+        private System.Windows.Forms.RichTextBox richTextBox31;
+        private System.Windows.Forms.RichTextBox richTextBox27;
+        private System.Windows.Forms.PictureBox pictureBox23;
+        private System.Windows.Forms.RichTextBox richTextBox26;
+        private System.Windows.Forms.PictureBox pictureBox22;
+        private System.Windows.Forms.RichTextBox richTextBox25;
+        private System.Windows.Forms.PictureBox pictureBox21;
     }
 }

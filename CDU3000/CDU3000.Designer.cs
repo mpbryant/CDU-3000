@@ -149,6 +149,7 @@
             this.DimBrtTimer = new System.Windows.Forms.Timer(this.components);
             this.ScratchMessageTimer = new System.Windows.Forms.Timer(this.components);
             this.UTCupdateTimer = new System.Windows.Forms.Timer(this.components);
+            this.identTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // closeBtn
@@ -1790,6 +1791,11 @@
             this.UTCupdateTimer.Interval = 1000;
             this.UTCupdateTimer.Tick += new System.EventHandler(this.UTCupdateTimer_Tick);
             // 
+            // identTimer
+            // 
+            this.identTimer.Interval = 18000;
+            this.identTimer.Tick += new System.EventHandler(this.identTimer_Tick);
+            // 
             // CDU3000
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2012,6 +2018,7 @@
         private System.Windows.Forms.Timer DimBrtTimer;
         private System.Windows.Forms.Timer ScratchMessageTimer;
         private System.Windows.Forms.Timer UTCupdateTimer;
+        private System.Windows.Forms.Timer identTimer;
     }
 }
 

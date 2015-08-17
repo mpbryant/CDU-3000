@@ -135,7 +135,7 @@ namespace CDU3000
         #region MyRegion
         private string _egiInuStatus;
         private string _EgiAlignmentStatus = "> COMMAND";
-        private string _InitiateAlign = "> INITIATE";
+        private string _InitiateAlign = "* INITIATE";
         private string _AlignCEP = "1.2";
         private string _AlignMode = "GC ALIGN";
         private string _AlignTime = "00:03.6";
@@ -169,6 +169,8 @@ namespace CDU3000
         private string mode3code = "1234";
         private string m5pin = "01234";
         private string ntlOrg = "0101";
+        private string identChar = "<";
+        
         #endregion
 
         //SURVEILLANCE specific fields
@@ -14354,15 +14356,39 @@ namespace CDU3000
             CDU7000Page = true;
 
             #region MyRegion
-            l1text = _EgiAlignmentStatus;
+
+            string myAlignStat;
+            string myInitAlign;
+            string myCEP;
+            string myMode;
+            string myTime;
+
+            if (myCont.EgiInuPower == "OFF")
+            {
+                myAlignStat = "";
+                myInitAlign = "";
+                myCEP = "";
+                myMode = "";
+                myTime = "";
+            }
+            else
+            {
+                myAlignStat = _EgiAlignmentStatus;
+                myInitAlign = _InitiateAlign;
+                myCEP = _AlignCEP;
+                myMode = _AlignMode;
+                myTime = _AlignTime;
+            }
+
+            l1text = myAlignStat;
             l2text = "GC";
-            l3text = _InitiateAlign;
+            l3text = myInitAlign;
             l4text = "";
             l5text = "";
             l6text = "< RETURN";
-            r1text = _AlignMode;
-            r2text = _AlignCEP;
-            r3text = _AlignTime;
+            r1text = myMode;
+            r2text = myCEP;
+            r3text = myTime;
             r4text = "";
             r5text = "";
             r6text = "";
@@ -15498,13 +15524,13 @@ namespace CDU3000
             }
             else
             {
-                subStat = myCont.TacanSub ;
-                trmStat = myCont.TacanTrm ;
-                pwrStat = myCont.TacanPwr ;
-                ramStat = myCont.TacanRam ;
-                romStat = myCont.TacanRom ;
-                tunStat = myCont.TacanTun ;
-                rcvStat = myCont.TacanRcv ;
+                subStat = myCont.TacanSub;
+                trmStat = myCont.TacanTrm;
+                pwrStat = myCont.TacanPwr;
+                ramStat = myCont.TacanRam;
+                romStat = myCont.TacanRom;
+                tunStat = myCont.TacanTun;
+                rcvStat = myCont.TacanRcv;
                 busStat = myCont.Tacan1553;
                 l1text = "ON";
                 l2text = myCont.TacanNVRAM;
@@ -15520,7 +15546,7 @@ namespace CDU3000
                 r6text = "RETURN";
             }
 
-            
+
 
             currentPageTitle = "TACAN STATUS"; //page title and number used for navigating
             currentPageNumber = 1;
@@ -15531,7 +15557,7 @@ namespace CDU3000
             TextBox status = new TextBox();
 
 
-            if (myCont.TacanPower=="ON" & myCont.TacanNVRAM == "GO" & myCont.TacanMicro == "GO" & myCont.Tacan1553 == "GO" & myCont.TacanAudio == "GO" & myCont.TacanDpdat == "GO" & myCont.TacanDpram == "GO" & myCont.TacanPwr == "GO" & myCont.TacanRam == "GO" & myCont.TacanRcv == "GO" & myCont.TacanRom == "GO" & myCont.TacanRt == "GO" & myCont.TacanSub == "GO" & myCont.TacanSynth == "GO" & myCont.TacanTrm == "GO" & myCont.TacanTun == "GO")
+            if (myCont.TacanPower == "ON" & myCont.TacanNVRAM == "GO" & myCont.TacanMicro == "GO" & myCont.Tacan1553 == "GO" & myCont.TacanAudio == "GO" & myCont.TacanDpdat == "GO" & myCont.TacanDpram == "GO" & myCont.TacanPwr == "GO" & myCont.TacanRam == "GO" & myCont.TacanRcv == "GO" & myCont.TacanRom == "GO" & myCont.TacanRt == "GO" & myCont.TacanSub == "GO" & myCont.TacanSynth == "GO" & myCont.TacanTrm == "GO" & myCont.TacanTun == "GO")
             {
                 _tcnStatus = "GO";
             }
@@ -15549,7 +15575,7 @@ namespace CDU3000
                 TB(status, title.Location.X + title.Width, row0, _tcnStatus, Color.White);
             }
 
-            
+
 
 
             TextBox l1t = new TextBox();
@@ -15583,13 +15609,13 @@ namespace CDU3000
             TB(sub, col6, row3, "SUB");
 
             TextBox subGo = new TextBox();
-            TB(subGo, col6, row4, subStat , Color.White);
+            TB(subGo, col6, row4, subStat, Color.White);
 
             TextBox trm = new TextBox();
             TB(trm, col9, row3, "TRM");
 
             TextBox trmGo = new TextBox();
-            TB(trmGo, col9, row4, trmStat , Color.White);
+            TB(trmGo, col9, row4, trmStat, Color.White);
 
             TextBox l3t = new TextBox();
             TB(l3t, col2, row5, "MICRO");
@@ -15601,7 +15627,7 @@ namespace CDU3000
             TB(pwr, col9, row5, "PWR");
 
             TextBox pwrGo = new TextBox();
-            TB(pwrGo, col9, row6, pwrStat , Color.White);
+            TB(pwrGo, col9, row6, pwrStat, Color.White);
 
             TextBox l4t = new TextBox();
             TB(l4t, col2, row7, "AUDIO");
@@ -15613,13 +15639,13 @@ namespace CDU3000
             TB(ram, col6, row7, "RAM");
 
             TextBox ramGo = new TextBox();
-            TB(ramGo, col6, row8, ramStat , Color.White);
+            TB(ramGo, col6, row8, ramStat, Color.White);
 
             TextBox rom = new TextBox();
             TB(rom, col9, row7, "ROM");
 
             TextBox romGo = new TextBox();
-            TB(romGo, col9, row8, romStat , Color.White);
+            TB(romGo, col9, row8, romStat, Color.White);
 
             TextBox l5t = new TextBox();
             TB(l5t, col2, row9, "RT");
@@ -15631,13 +15657,13 @@ namespace CDU3000
             TB(tun, col6, row9, "TUN");
 
             TextBox tunGo = new TextBox();
-            TB(tunGo, col6, row10, tunStat , Color.White);
+            TB(tunGo, col6, row10, tunStat, Color.White);
 
             TextBox rcv = new TextBox();
             TB(rcv, col9, row9, "RCV");
 
             TextBox rcvGo = new TextBox();
-            TB(rcvGo, col9, row10, rcvStat , Color.White);
+            TB(rcvGo, col9, row10, rcvStat, Color.White);
 
             //TextBox l6t = new TextBox();
             //TB(l6t, col2, row11, "IDENT");
@@ -15764,7 +15790,7 @@ namespace CDU3000
 
 
             CheckStatus();
-            
+
 
             currentPageTitle = "TACAN CONTROL"; //page title and number used for navigating
             currentPageNumber = 1;
@@ -15775,7 +15801,7 @@ namespace CDU3000
             if (_tcnStatus == "NGO")
             {
                 TextBox tcnWarn = new TextBox();
-                TB(tcnWarn, title.Location.X-10, row0, "!", Color.Orange);
+                TB(tcnWarn, title.Location.X - 10, row0, "!", Color.Orange);
             }
 
             //TextBox page = new TextBox ( );
@@ -16644,6 +16670,12 @@ namespace CDU3000
             currentPageTitle = "IFF"; //page title and number used for navigating
             currentPageNumber = 1;
 
+            if (myCont.IffPower == "OFF" || CDUIFFpower=="OFF")
+            {
+                TextBox power = new TextBox();
+                TB(power, col6+30, row0, "!", Color.Orange);
+            }
+
             TextBox title = new TextBox();//displayed top center of screen
             TB(title, col7, row0, currentPageTitle);
 
@@ -16817,7 +16849,7 @@ namespace CDU3000
             if (r2text != "")
             {
                 TextBox r2r = new TextBox();
-                TB(r2r, col16, row4, "<", Color.White);
+                TB(r2r, col16, row4, identChar, Color.White);
             }
 
             if (r6text != "")
@@ -16869,6 +16901,12 @@ namespace CDU3000
 
             currentPageTitle = "IFF"; //page title and number used for navigating
             currentPageNumber = 2;
+
+            if (myCont.IffPower == "OFF" || CDUIFFpower == "OFF")
+            {
+                TextBox power = new TextBox();
+                TB(power, col6 -40, row0, "!", Color.Orange);
+            }
 
             TextBox title = new TextBox();//displayed top center of screen
             TB(title, col7, row0, currentPageTitle + " MODE 4/5");
@@ -17096,6 +17134,12 @@ namespace CDU3000
             currentPageTitle = "IFF"; //page title and number used for navigating
             currentPageNumber = 3;
 
+            if (myCont.IffPower == "OFF" || CDUIFFpower == "OFF")
+            {
+                TextBox power = new TextBox();
+                TB(power, col6 -50, row0, "!", Color.Orange);
+            }
+
             TextBox title = new TextBox();//displayed top center of screen
             TB(title, col7, row0, "MODE S / TCAS");
 
@@ -17165,7 +17209,7 @@ namespace CDU3000
             TB(r1, col15, row2, r1text, Color.White);
 
             TextBox t1 = new TextBox();
-            TB(t1, col7 + 5, row2, "STBY", Color.White);
+            TB(t1, col7 + 5, row2, "STBY", Color.Green);
 
             TextBox t1s = new TextBox();
             TB(t1s, t1.Location.X + t1.Width, row2, "/", Color.White);
@@ -22267,28 +22311,28 @@ namespace CDU3000
             {
                 StartFresh();
                 DefaultsPage2();
-                UpdateDisplay();
+
             }
             else
                 if (currentPageTitle == "DEFAULTS" & currentPageNumber == 2)
                 {
                     StartFresh();
                     DefaultsPage3();
-                    UpdateDisplay();
+
                 }
                 else
                     if (currentPageTitle == "DEFAULTS" & currentPageNumber == 3)
                     {
                         StartFresh();
                         DefaultsPage4();
-                        UpdateDisplay();
+
                     }
                     else
                         if (currentPageTitle == "DEFAULTS" & currentPageNumber == 4)
                         {
                             StartFresh();
                             DefaultsPage1();
-                            UpdateDisplay();
+
                         }
 
             #endregion
@@ -22299,14 +22343,14 @@ namespace CDU3000
             {
                 StartFresh();
                 GNSS1statusPage1();
-                UpdateDisplay();
+
             }
             else
                 if (currentPageTitle == "GNSS1 STATUS" & currentPageNumber == 1)
                 {
                     StartFresh();
                     GNSS1statusPage2();
-                    UpdateDisplay();
+
                 }
 
             #endregion
@@ -22317,14 +22361,14 @@ namespace CDU3000
             {
                 StartFresh();
                 GNSS2statusPage1();
-                UpdateDisplay();
+
             }
             else
                 if (currentPageTitle == "GNSS2 STATUS" & currentPageNumber == 1)
                 {
                     StartFresh();
                     GNSS2statusPage2();
-                    UpdateDisplay();
+
                 }
 
             #endregion
@@ -22336,21 +22380,21 @@ namespace CDU3000
                 {
                     StartFresh();
                     HFcontrolPage2();
-                    UpdateDisplay();
+
                 }
                 else
                     if (currentPageNumber == 2)
                     {
                         StartFresh();
                         HFcontrolPage3();
-                        UpdateDisplay();
+
                     }
                     else
                         if (currentPageNumber == 3)
                         {
                             StartFresh();
                             HFcontrolPage1();
-                            UpdateDisplay();
+
                         }
             }
             #endregion
@@ -22363,13 +22407,13 @@ namespace CDU3000
                 {
                     StartFresh();
                     HFALEfunctionPage2();
-                    UpdateDisplay();
+
                 }
                 else
                 {
                     StartFresh();
                     HFALEfunctionPage1();
-                    UpdateDisplay();
+
                 }
             }
 
@@ -22383,7 +22427,7 @@ namespace CDU3000
                 {
                     StartFresh();
                     IFFstatusPage2();
-                    UpdateDisplay();
+
                 }
                 else
                 {
@@ -22391,7 +22435,7 @@ namespace CDU3000
                     {
                         StartFresh();
                         IFFstatusPage1();
-                        UpdateDisplay();
+
                     }
                 }
             }
@@ -22402,7 +22446,7 @@ namespace CDU3000
                     {
                         StartFresh();
                         IFFcontrolPage2();
-                        UpdateDisplay();
+
                     }
                     else
 
@@ -22410,7 +22454,7 @@ namespace CDU3000
                         {
                             StartFresh();
                             IFFcontrolPage3();
-                            UpdateDisplay();
+
                         }
                         else
 
@@ -22418,7 +22462,7 @@ namespace CDU3000
                             {
                                 StartFresh();
                                 IFFcontrolPage1();
-                                UpdateDisplay();
+
                             }
 
 
@@ -22431,21 +22475,21 @@ namespace CDU3000
             {
                 StartFresh();
                 IdxPage2();
-                UpdateDisplay();
+
             }
             else
                 if (currentPageTitle == "index" & currentPageNumber == 2)
                 {
                     StartFresh();
                     IdxPage3();
-                    UpdateDisplay();
+
                 }
                 else
                     if (currentPageTitle == "index" & currentPageNumber == 3)
                     {
                         StartFresh();
                         IdxPage1();
-                        UpdateDisplay();
+
                     }
 
             #endregion
@@ -22456,14 +22500,14 @@ namespace CDU3000
             {
                 StartFresh();
                 PosInitPage1();
-                UpdateDisplay();
+
             }
             else
                 if (currentPageTitle == "posinit" & currentPageNumber == 1)
                 {
                     StartFresh();
                     PosInitPage2();
-                    UpdateDisplay();
+
                 }
 
             #endregion
@@ -22475,14 +22519,14 @@ namespace CDU3000
                 {
                     StartFresh();
                     VU1controlPage2();
-                    UpdateDisplay();
+
                 }
                 else
                     if (currentPageNumber == 2)
                     {
                         StartFresh();
                         VU1controlPage1();
-                        UpdateDisplay();
+
                     }
 
             }
@@ -22495,14 +22539,14 @@ namespace CDU3000
                 {
                     StartFresh();
                     VU1ComsecStatesPage2();
-                    UpdateDisplay();
+
                 }
                 else
                     if (currentPageNumber == 2)
                     {
                         StartFresh();
                         VU1ComsecStatesPage1();
-                        UpdateDisplay();
+
                     }
 
             }
@@ -22515,14 +22559,14 @@ namespace CDU3000
                 {
                     StartFresh();
                     VU2controlPage2();
-                    UpdateDisplay();
+
                 }
                 else
                     if (currentPageNumber == 2)
                     {
                         StartFresh();
                         VU2controlPage1();
-                        UpdateDisplay();
+
                     }
 
             }
@@ -22535,14 +22579,14 @@ namespace CDU3000
                 {
                     StartFresh();
                     VU2ComsecStatesPage2();
-                    UpdateDisplay();
+
                 }
                 else
                     if (currentPageNumber == 2)
                     {
                         StartFresh();
                         VU2ComsecStatesPage1();
-                        UpdateDisplay();
+
                     }
 
             }
@@ -22560,28 +22604,28 @@ namespace CDU3000
             {
                 StartFresh();
                 DefaultsPage2();
-                UpdateDisplay();
+
             }
             else
                 if (currentPageTitle == "DEFAULTS" & currentPageNumber == 4)
                 {
                     StartFresh();
                     DefaultsPage3();
-                    UpdateDisplay();
+
                 }
                 else
                     if (currentPageTitle == "DEFAULTS" & currentPageNumber == 1)
                     {
                         StartFresh();
                         DefaultsPage4();
-                        UpdateDisplay();
+
                     }
                     else
                         if (currentPageTitle == "DEFAULTS" & currentPageNumber == 2)
                         {
                             StartFresh();
                             DefaultsPage1();
-                            UpdateDisplay();
+
                         }
 
             #endregion
@@ -22592,14 +22636,14 @@ namespace CDU3000
             {
                 StartFresh();
                 GNSS1statusPage1();
-                UpdateDisplay();
+
             }
             else
                 if (currentPageTitle == "GNSS1 STATUS" & currentPageNumber == 1)
                 {
                     StartFresh();
                     GNSS1statusPage2();
-                    UpdateDisplay();
+
                 }
 
             #endregion
@@ -22610,14 +22654,14 @@ namespace CDU3000
             {
                 StartFresh();
                 GNSS2statusPage1();
-                UpdateDisplay();
+
             }
             else
                 if (currentPageTitle == "GNSS2 STATUS" & currentPageNumber == 1)
                 {
                     StartFresh();
                     GNSS2statusPage2();
-                    UpdateDisplay();
+
                 }
 
             #endregion
@@ -22629,21 +22673,21 @@ namespace CDU3000
                 {
                     StartFresh();
                     HFcontrolPage2();
-                    UpdateDisplay();
+
                 }
                 else
                     if (currentPageNumber == 1)
                     {
                         StartFresh();
                         HFcontrolPage3();
-                        UpdateDisplay();
+
                     }
                     else
                         if (currentPageNumber == 2)
                         {
                             StartFresh();
                             HFcontrolPage1();
-                            UpdateDisplay();
+
                         }
             }
             #endregion
@@ -22656,13 +22700,13 @@ namespace CDU3000
                 {
                     StartFresh();
                     HFALEfunctionPage2();
-                    UpdateDisplay();
+
                 }
                 else
                 {
                     StartFresh();
                     HFALEfunctionPage1();
-                    UpdateDisplay();
+
                 }
             }
 
@@ -22676,7 +22720,7 @@ namespace CDU3000
                 {
                     StartFresh();
                     IFFstatusPage2();
-                    UpdateDisplay();
+
                 }
                 else
                 {
@@ -22684,7 +22728,7 @@ namespace CDU3000
                     {
                         StartFresh();
                         IFFstatusPage1();
-                        UpdateDisplay();
+
                     }
                 }
             }
@@ -22695,7 +22739,7 @@ namespace CDU3000
                     {
                         StartFresh();
                         IFFcontrolPage2();
-                        UpdateDisplay();
+
                     }
                     else
 
@@ -22703,7 +22747,7 @@ namespace CDU3000
                         {
                             StartFresh();
                             IFFcontrolPage1();
-                            UpdateDisplay();
+
                         }
                         else
 
@@ -22711,7 +22755,7 @@ namespace CDU3000
                             {
                                 StartFresh();
                                 IFFcontrolPage3();
-                                UpdateDisplay();
+
                             }
 
 
@@ -22724,21 +22768,21 @@ namespace CDU3000
             {
                 StartFresh();
                 IdxPage2();
-                UpdateDisplay();
+
             }
             else
                 if (currentPageTitle == "index" & currentPageNumber == 1)
                 {
                     StartFresh();
                     IdxPage3();
-                    UpdateDisplay();
+
                 }
                 else
                     if (currentPageTitle == "index" & currentPageNumber == 2)
                     {
                         StartFresh();
                         IdxPage1();
-                        UpdateDisplay();
+
                     }
 
             #endregion
@@ -22749,14 +22793,14 @@ namespace CDU3000
             {
                 StartFresh();
                 PosInitPage1();
-                UpdateDisplay();
+
             }
             else
                 if (currentPageTitle == "posinit" & currentPageNumber == 1)
                 {
                     StartFresh();
                     PosInitPage2();
-                    UpdateDisplay();
+
                 }
 
             #endregion
@@ -22768,14 +22812,14 @@ namespace CDU3000
                 {
                     StartFresh();
                     VU1ComsecStatesPage2();
-                    UpdateDisplay();
+
                 }
                 else
                     if (currentPageNumber == 2)
                     {
                         StartFresh();
                         VU1ComsecStatesPage1();
-                        UpdateDisplay();
+
                     }
 
             }
@@ -22788,14 +22832,14 @@ namespace CDU3000
                 {
                     StartFresh();
                     VU1controlPage2();
-                    UpdateDisplay();
+
                 }
                 else
                     if (currentPageNumber == 2)
                     {
                         StartFresh();
                         VU1controlPage1();
-                        UpdateDisplay();
+
                     }
             }
             #endregion
@@ -22807,14 +22851,14 @@ namespace CDU3000
                 {
                     StartFresh();
                     VU2controlPage2();
-                    UpdateDisplay();
+
                 }
                 else
                     if (currentPageNumber == 2)
                     {
                         StartFresh();
                         VU2controlPage1();
-                        UpdateDisplay();
+
                     }
 
             }
@@ -22827,14 +22871,14 @@ namespace CDU3000
                 {
                     StartFresh();
                     VU2ComsecStatesPage2();
-                    UpdateDisplay();
+
                 }
                 else
                     if (currentPageNumber == 2)
                     {
                         StartFresh();
                         VU2ComsecStatesPage1();
-                        UpdateDisplay();
+
                     }
 
             }
@@ -22845,35 +22889,35 @@ namespace CDU3000
         {
             StartFresh();
             TunPage1();
-            UpdateDisplay();
+
         }
 
         private void idxBtn_Click(object sender, EventArgs e)
         {
             StartFresh();
             IdxPage1();
-            UpdateDisplay();
+
         }
 
         private void dirBtn_Click(object sender, EventArgs e)
         {
             StartFresh();
             DirPage1();
-            UpdateDisplay();
+
         }
 
         private void legsBtn_Click(object sender, EventArgs e)
         {
             StartFresh();
             ActiveLegsPage1();
-            UpdateDisplay();
+
         }
 
         private void fplnBtn_Click(object sender, EventArgs e)
         {
             StartFresh();
             FPLNpage1();
-            UpdateDisplay();
+
         }
 
         private void clrDelBtn_Click(object sender, EventArgs e)
@@ -23367,7 +23411,7 @@ namespace CDU3000
 
             #region Color toggle of Yes/No, Comp/Uncomp, Inhibit, etc (maximum two choices only)
 
-            if ((trimmedString == "OFF" & pushedButton == r4Btn & currentPageTitle == "IFF" & currentPageNumber == 1) || (pushedButton == r4Btn & currentPageTitle == "HF1 CONTROL"))
+            if (((scratchpad != "" & scratchpad != null) & currentPageTitle == "IFF" & currentPageNumber == 1 & (pushedButton == l2Btn || pushedButton == l3Btn || pushedButton == l4Btn)) || (currentPageTitle == "IFF" & currentPageNumber == 1 & pushedButton == r2Btn) || (trimmedString == "OFF" & pushedButton == r4Btn & currentPageTitle == "IFF" & currentPageNumber == 1) || (pushedButton == r4Btn & currentPageTitle == "HF1 CONTROL"))
             {
                 //skip the above under this condition
             }
@@ -23518,7 +23562,7 @@ namespace CDU3000
 
             #region Color toggle of multiple choices (more than two choices only)
 
-            if ((hfMode == "ALE" & trimmedString == "MAN") || (trimmedString == "2" & currentPageTitle != "V/U1 VHF-FM" & currentPageTitle != "V/U1 COMSEC VAR") || trimmedString == "NORM" || trimmedString == "CW" || trimmedString == "DIV" || (trimmedString == "OFF" & pushedButton == r4Btn & currentPageTitle == "IFF") || trimmedString == "1.2K" || trimmedString == "HIGH" || trimmedString == "UHF" || trimmedString == "0" || trimmedString == "NOR" || (trimmedString == "TR" & currentPageTitle == "TACAN CONTROL") || (currentPageTitle == "HF1 CONTROL" & trimmedString == "STBY"))//**Toggle colors
+            if ((trimmedString == "TA+RA") || (hfMode == "ALE" & trimmedString == "MAN") || (trimmedString == "2" & currentPageTitle != "V/U1 VHF-FM" & currentPageTitle != "V/U1 COMSEC VAR") || trimmedString == "NORM" || trimmedString == "CW" || trimmedString == "DIV" || (trimmedString == "OFF" & pushedButton == r4Btn & currentPageTitle == "IFF") || trimmedString == "1.2K" || trimmedString == "HIGH" || trimmedString == "UHF" || trimmedString == "0" || trimmedString == "NOR" || (trimmedString == "TR" & currentPageTitle == "TACAN CONTROL") || (currentPageTitle == "HF1 CONTROL" & trimmedString == "STBY"))//**Toggle colors
             {
                 try
                 {
@@ -24146,6 +24190,48 @@ namespace CDU3000
                                                                                                     }
                                                                                                 }
                                                                                         }
+                                                                                        else
+                                                                                            if (currentPageTitle == "IFF" & currentPageNumber == 3)
+                                                                                            {
+                                                                                                if (trimmedString == "TA+RA")
+                                                                                                {
+                                                                                                    #region STBY,TA,TA+RA
+
+                                                                                                    if (myTxt == "STBY")
+                                                                                                    {
+                                                                                                        if (y.Text == "TA")
+                                                                                                        {
+                                                                                                            y.ForeColor = Color.Green;
+                                                                                                            c.ForeColor = Color.White;
+                                                                                                            return;
+                                                                                                        }
+                                                                                                    }
+                                                                                                    else
+                                                                                                        if (myTxt == "TA")
+                                                                                                        {
+                                                                                                            if (y.Text == "TA+RA")
+                                                                                                            {
+                                                                                                                y.ForeColor = Color.Green;
+                                                                                                                c.ForeColor = Color.White;
+                                                                                                                return;
+                                                                                                            }
+                                                                                                        }
+                                                                                                        else
+                                                                                                            if (myTxt == "TA+RA")
+                                                                                                            {
+                                                                                                                if (y.Text == "STBY")
+                                                                                                                {
+                                                                                                                    y.ForeColor = Color.Green;
+                                                                                                                    c.ForeColor = Color.White;
+                                                                                                                    return;
+                                                                                                                }
+                                                                                                            }
+
+                                                                                                    #endregion
+                                                                                                }
+
+
+                                                                                            }
 
 
                                     }
@@ -24762,6 +24848,58 @@ namespace CDU3000
             #endregion Select Cases
 
 
+            if (currentPageTitle == "EGI CONTROL" & pushedButton != l6Btn)
+            {
+                return;
+            }
+
+            //handles the ident timer for IFF
+
+            if (currentPageTitle == "IFF" & currentPageNumber==1 & pushedButton == r2Btn)
+            {
+                identChar = "*";
+                StartFresh();
+                IFFcontrolPage1();
+                identTimer.Enabled = true;
+                identTimer.Start();
+                
+                
+                return;
+            }
+
+            //handles the code entry for modes 1, 2, and 3A
+            if (((scratchpad != "" & scratchpad != null) & currentPageTitle == "IFF" & currentPageNumber == 1 & (pushedButton == l2Btn || pushedButton == l3Btn || pushedButton == l4Btn)))
+            {
+                if (scratchpad.Length == 4 & ContainsNumbers() == true & ContainsLetters() == false)
+                {
+                    try
+                    {
+                        if (pushedButton == l2Btn)
+                        {
+                            mode1code = scratchpad;
+                        }
+                        else if (pushedButton == l3Btn)
+                        {
+                            mode2code = scratchpad;
+                        }
+                        else if (pushedButton == l4Btn)
+                        {
+                            mode3code = scratchpad;
+                        }
+                        scratchpad = null;
+                        sPad.Text = scratchpad;
+                        StartFresh();
+                        IFFcontrolPage1();
+                    }
+                    catch (Exception)
+                    {
+
+
+                    }
+                    return;
+                }
+            }
+
             switch (CDU7000Page)//determines if the current page is a CDU 7000 page
             {
                 case false://CDU3000 pages are here
@@ -25168,6 +25306,7 @@ namespace CDU3000
                             HFstandbyFunctionPage();
                             break;
 
+
                         //Lockouts page
                         case "LOCKOUTS":
                             StartFresh();
@@ -25370,7 +25509,7 @@ namespace CDU3000
 
             }
 
-            UpdateDisplay(); //updates the display after writing the page
+            //updates the display after writing the page
 
         }
 
@@ -33029,26 +33168,42 @@ namespace CDU3000
                 StartFresh();
                 HFstandbyFunctionPage();
             }
-
-            if (currentPageTitle == "START INIT")
-            {
-                StartFresh();
-                StartInitPage();
-            }
-
-            if (currentPageTitle == "status")
-            {
-                StartFresh();
-                StatusPage();
-            }
-
-            if (currentPageTitle == "IFF STATUS" & currentPageNumber == 1)
-            {
-                StartFresh();
-                IFFstatusPage1();
-            }
+            else
+                if (currentPageTitle == "START INIT")
+                {
+                    StartFresh();
+                    StartInitPage();
+                }
+                else
+                    if (currentPageTitle == "status")
+                    {
+                        StartFresh();
+                        StatusPage();
+                    }
+                    else
+                        if (currentPageTitle == "IFF STATUS" & currentPageNumber == 1)
+                        {
+                            StartFresh();
+                            IFFstatusPage1();
+                        }
+                        else
+                        {
+                            UTCupdateTimer.Stop();
+                        }
 
         }   //updates the clock and refreshes the page
+
+        private void identTimer_Tick(object sender, EventArgs e)
+        {
+            identChar = "<";
+            identTimer.Stop();
+            if (currentPageTitle == "IFF" & currentPageNumber == 1)
+            {
+                StartFresh();
+                IFFcontrolPage1();
+            }
+            
+        }
 
         private string LatLonFormat(string e)
         {
@@ -33536,11 +33691,7 @@ namespace CDU3000
 
         #region Development Tools
 
-        //used to update the textboxes on the face of the unit afterscratchpad paste
-        private void UpdateDisplay()
-        {
 
-        }
 
         #endregion
 
@@ -33849,6 +34000,8 @@ namespace CDU3000
 
             //}
         }
+
+        
 
 
 
