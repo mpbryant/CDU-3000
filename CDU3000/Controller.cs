@@ -17,7 +17,6 @@ namespace CDU3000
         private string _vu2Power = "ON";
         #endregion
 
-
         //TACAN backing fields
         #region MyRegion
         private bool _TCNvalChanged = false;
@@ -101,14 +100,30 @@ namespace CDU3000
         //VU2 backing fields
         #region
         private string _VU2trans = "GO";
-        private bool _VU2valChanged=true;
+        private bool _VU2valChanged = true;
         private string _VU2PwrSply = "GO";
         private string _VU2modem = "GO";
         private string _VU2RT = "GO";
         private string _VU21553 = "GO";
         private string _VU2comsec = "GO";
+
         #endregion
 
+        //IFF backing fields
+        #region
+        private string _IFFmodeS = "GO";
+        private string _IFFant = "GO";
+        private string _IFFmode4 = "GO";
+        private string _IFFmodeC = "GO";
+        private string _IFFtod = "GO";
+        private string _IFF1553 = "GO";
+        private string _IFFmode5 = "GO";
+        private string _IFFmode3 = "GO";
+        private string _IFFmode2 = "GO";
+        private string _IFFmode1 = "GO";
+
+        private bool _iffValueChanged;
+        #endregion
 
 
 
@@ -119,7 +134,7 @@ namespace CDU3000
         {
             get
             {
-                return _VU1valChanged ; ;
+                return _VU1valChanged; ;
             }
 
             set
@@ -1080,7 +1095,7 @@ namespace CDU3000
         {
             get
             {
-                return _HF1valueChanged; ;
+                return _HF1valueChanged;
             }
 
             set
@@ -1357,6 +1372,333 @@ namespace CDU3000
         }
         #endregion
 
+        //IFF
+
+        #region Accessors
+
+        public bool iffValChanged
+        {
+            get
+            {
+                return _iffValueChanged;
+            }
+
+            set
+            {
+                _iffValueChanged = false;
+            }
+        }
+
+        public string iffMode1
+        {
+            get
+            {
+                return _IFFmode1;
+            }
+        }
+
+        public string iffMode2
+        {
+            get
+            {
+                return _IFFmode2;
+            }
+        }
+
+        public string iffMode3
+        {
+            get
+            {
+                return _IFFmode3;
+            }
+        }
+
+        public string iffMode4
+        {
+            get
+            {
+                return _IFFmode4;
+            }
+        }
+
+        public string iffMode5
+        {
+            get
+            {
+                return _IFFmode5;
+            }
+        }
+
+        public string iffModeC
+        {
+            get
+            {
+                return _IFFmodeC;
+            }
+        }
+
+        public string iffModeS
+        {
+            get
+            {
+                return _IFFmodeS;
+            }
+        }
+
+        public string iffTOD
+        {
+            get
+            {
+                return _IFFtod;
+            }
+        }
+
+        public string iff1553
+        {
+            get
+            {
+                return _IFF1553;
+            }
+        }
+
+        public string iffAnt
+        {
+            get
+            {
+                return _IFFant;
+            }
+        }
+
+        #endregion
+
+        #region Checkboxes
+
+        private void antCB_CheckedChanged(object sender, EventArgs e)
+        {
+            string state;
+            CheckBox cb = (CheckBox)sender;
+            if (cb.Checked)
+            {
+                state = "GO";
+            }
+            else
+            {
+                state = "NGO";
+                _iffValueChanged = true;
+            }
+
+            _IFFant = state;
+        }
+
+        private void mode1CB_CheckedChanged(object sender, EventArgs e)
+        {
+            string state;
+            CheckBox cb = (CheckBox)sender;
+            if (cb.Checked)
+            {
+                state = "GO";
+            }
+            else
+            {
+                state = "NGO";
+                _iffValueChanged = true;
+            }
+
+            _IFFmode1 = state;
+        }
+
+        private void mode2CB_CheckedChanged(object sender, EventArgs e)
+        {
+            string state;
+            CheckBox cb = (CheckBox)sender;
+            if (cb.Checked)
+            {
+                state = "GO";
+            }
+            else
+            {
+                state = "NGO";
+                _iffValueChanged = true;
+            }
+
+            _IFFmode2 = state;
+        }
+
+        private void mode3CB_CheckedChanged(object sender, EventArgs e)
+        {
+            string state;
+            CheckBox cb = (CheckBox)sender;
+            if (cb.Checked)
+            {
+                state = "GO";
+            }
+            else
+            {
+                state = "NGO";
+                _iffValueChanged = true;
+            }
+
+            _IFFmode3 = state;
+        }
+
+        private void mode5CB_CheckedChanged(object sender, EventArgs e)
+        {
+            string state;
+            CheckBox cb = (CheckBox)sender;
+            if (cb.Checked)
+            {
+                state = "GO";
+            }
+            else
+            {
+                state = "NGO";
+                _iffValueChanged = true;
+            }
+
+            _IFFmode5 = state;
+        }
+
+        private void iff1553CB_CheckedChanged(object sender, EventArgs e)
+        {
+            string state;
+            CheckBox cb = (CheckBox)sender;
+            if (cb.Checked)
+            {
+                state = "GO";
+            }
+            else
+            {
+                state = "NGO";
+                _iffValueChanged = true;
+            }
+
+            _IFF1553 = state;
+        }
+
+        private void todCB_CheckedChanged(object sender, EventArgs e)
+        {
+            string state;
+            CheckBox cb = (CheckBox)sender;
+            if (cb.Checked)
+            {
+                state = "GO";
+            }
+            else
+            {
+                state = "NGO";
+                _iffValueChanged = true;
+            }
+
+            _IFFtod = state;
+        }
+
+        private void modecCB_CheckedChanged(object sender, EventArgs e)
+        {
+            string state;
+            CheckBox cb = (CheckBox)sender;
+            if (cb.Checked)
+            {
+                state = "GO";
+            }
+            else
+            {
+                state = "NGO";
+                _iffValueChanged = true;
+            }
+
+            _IFFmodeC = state;
+        }
+
+        private void mode4CB_CheckedChanged(object sender, EventArgs e)
+        {
+            string state;
+            CheckBox cb = (CheckBox)sender;
+            if (cb.Checked)
+            {
+                state = "GO";
+            }
+            else
+            {
+                state = "NGO";
+                _iffValueChanged = true;
+            }
+
+            _IFFmode4 = state;
+        }
+
+        private void modesCB_CheckedChanged(object sender, EventArgs e)
+        {
+            string state;
+            CheckBox cb = (CheckBox)sender;
+            if (cb.Checked)
+            {
+                state = "GO";
+            }
+            else
+            {
+                state = "NGO";
+                _iffValueChanged = true;
+            }
+
+            _IFFmodeS = state;
+        }
+
+        private void iffAllGObtn_Click(object sender, EventArgs e)
+        {
+            antCB.Checked = true;
+            iff1553CB.Checked = true;
+            mode1CB.Checked = true;
+            mode2CB.Checked = true;
+            mode3CB.Checked = true;
+            mode4CB.Checked = true;
+            mode5CB.Checked = true;
+            modecCB.Checked = true;
+            modesCB.Checked = true;
+            todCB.Checked = true;
+
+            _IFF1553 = "GO";
+            _IFFant = "GO";
+            _IFFmode1 = "GO";
+            _IFFmode2 = "GO";
+            _IFFmode3 = "GO";
+            _IFFmode4 = "GO";
+            _IFFmode5 = "GO";
+            _IFFmodeC = "GO";
+            _IFFmodeS = "GO";
+            _IFFtod = "GO";
+
+            _iffValueChanged = true;
+        }
+
+        private void iffAllNGObtn_Click(object sender, EventArgs e)
+        {
+            antCB.Checked = false;
+            iff1553CB.Checked = false;
+            mode1CB.Checked = false;
+            mode2CB.Checked = false;
+            mode3CB.Checked = false;
+            mode4CB.Checked = false;
+            mode5CB.Checked = false;
+            modecCB.Checked = false;
+            modesCB.Checked = false;
+            todCB.Checked = false;
+
+            _IFF1553 = "NGO";
+            _IFFant = "NGO";
+            _IFFmode1 = "NGO";
+            _IFFmode2 = "NGO";
+            _IFFmode3 = "NGO";
+            _IFFmode4 = "NGO";
+            _IFFmode5 = "NGO";
+            _IFFmodeC = "NGO";
+            _IFFmodeS = "NGO";
+            _IFFtod = "NGO";
+
+            _iffValueChanged = true;
+        }
+
+        #endregion
+
         //POWER
 
         #region Accessors
@@ -1418,9 +1760,9 @@ namespace CDU3000
             if (egiInuPowerCB.Checked == true)
             {
                 _egiInuPower = "ON";
-                EgiInuAllGObtn_Click (null, null);
-                EgiAllGobtn_Click (null, null);
-                EgiGpsAllGObtn_Click (null, null);
+                EgiInuAllGObtn_Click(null, null);
+                EgiAllGobtn_Click(null, null);
+                EgiGpsAllGObtn_Click(null, null);
 
 
             }
@@ -1428,9 +1770,9 @@ namespace CDU3000
             {
                 _egiInuPower = "OFF";
 
-                EgiInuAllNGObtn_Click (null, null);
-                EgiAllNGObtn_Click (null, null);
-                EgiGpsAllNGObtn_Click (null, null);
+                EgiInuAllNGObtn_Click(null, null);
+                EgiAllNGObtn_Click(null, null);
+                EgiGpsAllNGObtn_Click(null, null);
 
 
                 _EGIsub = "- - -";
@@ -1947,16 +2289,20 @@ namespace CDU3000
         }
         #endregion
 
-        public Controller( )
+        public Controller()
         {
-            InitializeComponent ( );
+            InitializeComponent();
         }
 
-        
 
-        
 
-        
+
+
+
+
+
+
+
 
 
 

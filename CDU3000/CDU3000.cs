@@ -170,7 +170,21 @@ namespace CDU3000
         private string m5pin = "01234";
         private string ntlOrg = "0101";
         private string identChar = "<";
-        
+        private string modeSaddress = "01234567";
+        private string mSdefault = "01234567";
+        private string flightID = "ABCD1234";
+        private bool viewModeSdefault = false;
+        private string iffAnt = "GO";
+        private string iffMode1 = "GO";
+        private string iffMode2 = "GO";
+        private string iffMode3 = "GO";
+        private string iffMode5 = "GO";
+        private string iffTOD = "GO";
+        private string iffModeC = "GO";
+        private string iffMode4 = "GO";
+        private string iffModeS = "GO";
+        private string iff1553 = "GO";
+
         #endregion
 
         //SURVEILLANCE specific fields
@@ -634,6 +648,11 @@ namespace CDU3000
         private string VU2comsecVar = "VINSON";
         private string currentVU1SelectedComsecVar = "* 1";
         private string currentVU2SelectedComsecVar = "* 1";
+
+
+
+
+
 
 
 
@@ -16477,6 +16496,8 @@ namespace CDU3000
 
         private void SurvStatusPage()
         {
+            CheckStatus();
+
             CDU7000Page = true;
 
             #region MyRegion
@@ -16670,10 +16691,10 @@ namespace CDU3000
             currentPageTitle = "IFF"; //page title and number used for navigating
             currentPageNumber = 1;
 
-            if (myCont.IffPower == "OFF" || CDUIFFpower=="OFF")
+            if (myCont.IffPower == "OFF" || CDUIFFpower == "OFF")
             {
                 TextBox power = new TextBox();
-                TB(power, col6+30, row0, "!", Color.Orange);
+                TB(power, col6 + 30, row0, "!", Color.Orange);
             }
 
             TextBox title = new TextBox();//displayed top center of screen
@@ -16905,7 +16926,7 @@ namespace CDU3000
             if (myCont.IffPower == "OFF" || CDUIFFpower == "OFF")
             {
                 TextBox power = new TextBox();
-                TB(power, col6 -40, row0, "!", Color.Orange);
+                TB(power, col6 - 40, row0, "!", Color.Orange);
             }
 
             TextBox title = new TextBox();//displayed top center of screen
@@ -17119,9 +17140,9 @@ namespace CDU3000
             r6tText = "";
 
             l1text = "";
-            l2text = "[01234567]";
+            l2text = "[" + modeSaddress + "]";
             l3text = "OCT";
-            l4text = "[ABCD1234]";
+            l4text = "[" + flightID + "]";
             l5text = "EHS";
             l6text = "";
             r1text = "TA+RA";
@@ -17137,7 +17158,7 @@ namespace CDU3000
             if (myCont.IffPower == "OFF" || CDUIFFpower == "OFF")
             {
                 TextBox power = new TextBox();
-                TB(power, col6 -50, row0, "!", Color.Orange);
+                TB(power, col6 - 50, row0, "!", Color.Orange);
             }
 
             TextBox title = new TextBox();//displayed top center of screen
@@ -17224,8 +17245,14 @@ namespace CDU3000
             TB(r2t, col14 + 20, row3, r2tText);
             TypeLeft(r2t);
 
-            //TextBox r2 = new TextBox ( );
-            //TB (r2, col15, row4, "[" + r2text + "]", Color.White);
+            if (viewModeSdefault)
+            {
+                TextBox r2title = new TextBox();
+                TB(r2title, col15, row3, "DEFAULT");
+
+                TextBox Sdefault = new TextBox();
+                TB(Sdefault, col11, row4, "[" + mSdefault + "]", Color.White);
+            }
 
             TextBox r3t = new TextBox();
             TB(r3t, col14 + 20, row5, r3tText);
@@ -17332,20 +17359,23 @@ namespace CDU3000
             CDU7000Page = true;
 
             #region MyRegion
+
+            CheckStatus();
+
             l1text = "ON";
-            l1centerText = "NGO-A";
-            l2text = "GO";
-            l3text = "GO";
-            l4text = "GO";
-            l5text = "GO";
+            l1centerText = myCont.iff1553;
+            l2text = myCont.iffAnt;
+            l3text = myCont.iffMode1;
+            l4text = myCont.iffMode2;
+            l5text = myCont.iffMode3;
             l5centerText = formattedTime;
-            l6text = "GO";
-            l6centerText = "GO";
+            l6text = myCont.iffMode5;
+            l6centerText = myCont.iffTOD;
             r1text = "- - -";
             r2text = "34268723";
-            r3text = "GO";
-            r4text = "NGO";
-            r5text = "GO";
+            r3text = myCont.iffModeC;
+            r4text = myCont.iffMode4;
+            r5text = myCont.iffModeS;
             r6text = "RETURN";
 
             currentPageTitle = "IFF STATUS"; //page title and number used for navigating
@@ -17493,6 +17523,8 @@ namespace CDU3000
 
             TextBox r6b = new TextBox();
             TB(r6b, col16, row13, "]");
+
+            myCont.iffValChanged = false;
             #endregion
         }
 
@@ -22303,6 +22335,11 @@ namespace CDU3000
 
         private void nextBtn_Click(object sender, EventArgs e)
         {
+            if (currentPageTitle == "IFF" & currentPageNumber != 3)
+            {
+                viewModeSdefault = false;
+            }
+
             NextPrevPresetSelect();
 
             #region Defaults pages
@@ -22596,6 +22633,11 @@ namespace CDU3000
 
         private void prevBtn_Click(object sender, EventArgs e)
         {
+            if (currentPageTitle == "IFF" & currentPageNumber != 3)
+            {
+                viewModeSdefault = false;
+            }
+
             NextPrevPresetSelect();
 
             #region Defaults pages
@@ -23297,8 +23339,8 @@ namespace CDU3000
                 {
                     myName.ForeColor = Color.White;
                 }
-                else
-                    if (myName.Text == "NGO" & (myCont.VU1ValueChanged == true || myCont.VU2ValueChanged == true || myCont.TCNvalueChanged == true || myCont.EGIvalueChanged == true || myCont.EgiInuValueChanged == true || myCont.EgiGpsValueChanged == true || myCont.HF1ValueChanged == true))
+                else//THIS NEXT SECTION NEEDS WORK. IT DOESN'T SWITCH COLORS BACK TO WHITE IF THERE ARE TWO OR MORE ISSUES CAUSING WARNINGS ie IFF AND COM1 ERRORS
+                    if (myName.Text == "NGO" & ((myCont.iffValChanged == true & currentPageTitle == "IFF") || myCont.VU1ValueChanged == true || myCont.VU2ValueChanged == true || myCont.TCNvalueChanged == true || myCont.EGIvalueChanged == true || myCont.EgiInuValueChanged == true || myCont.EgiGpsValueChanged == true || myCont.HF1ValueChanged == true))
                     {
                         myName.ForeColor = Color.Yellow;
                     }
@@ -23400,6 +23442,11 @@ namespace CDU3000
 
         private void PageSelection(String e) //used to select the proper Page from the input string
         {
+            if (currentPageTitle != "IFF" & currentPageNumber != 3)
+            {
+                viewModeSdefault = false;
+            }
+
             if (e == "")//added for validity check when a button that has no text is pushed
             {
                 scratchMessage = "KEY NOT ACTIVE";
@@ -23411,7 +23458,7 @@ namespace CDU3000
 
             #region Color toggle of Yes/No, Comp/Uncomp, Inhibit, etc (maximum two choices only)
 
-            if (((scratchpad != "" & scratchpad != null) & currentPageTitle == "IFF" & currentPageNumber == 1 & (pushedButton == l2Btn || pushedButton == l3Btn || pushedButton == l4Btn)) || (currentPageTitle == "IFF" & currentPageNumber == 1 & pushedButton == r2Btn) || (trimmedString == "OFF" & pushedButton == r4Btn & currentPageTitle == "IFF" & currentPageNumber == 1) || (pushedButton == r4Btn & currentPageTitle == "HF1 CONTROL"))
+            if (SkipME() || ((scratchpad != "" & scratchpad != null) & currentPageTitle == "IFF" & currentPageNumber == 1 & (pushedButton == l2Btn || pushedButton == l3Btn || pushedButton == l4Btn)) || (currentPageTitle == "IFF" & currentPageNumber == 1 & pushedButton == r2Btn) || (trimmedString == "OFF" & pushedButton == r4Btn & currentPageTitle == "IFF" & currentPageNumber == 1) || (pushedButton == r4Btn & currentPageTitle == "HF1 CONTROL"))
             {
                 //skip the above under this condition
             }
@@ -24855,15 +24902,15 @@ namespace CDU3000
 
             //handles the ident timer for IFF
 
-            if (currentPageTitle == "IFF" & currentPageNumber==1 & pushedButton == r2Btn)
+            if (currentPageTitle == "IFF" & currentPageNumber == 1 & pushedButton == r2Btn)
             {
                 identChar = "*";
                 StartFresh();
                 IFFcontrolPage1();
                 identTimer.Enabled = true;
                 identTimer.Start();
-                
-                
+
+
                 return;
             }
 
@@ -24899,6 +24946,17 @@ namespace CDU3000
                     return;
                 }
             }
+
+            if (IFFpage2CodeEntry()) //handles entry of codes for IFFpage2
+            {
+                return;//if code entry occured (IFFpage2CodeEntry() will return true), skip the next section
+            }
+
+            if (IFFpage3CodeEntry())//handles entry of codes for IFFpage3
+            {
+                return;//if code entry occured (IFFpage3CodeEntry() will return true), skip the next section
+            }
+
 
             switch (CDU7000Page)//determines if the current page is a CDU 7000 page
             {
@@ -25512,6 +25570,12 @@ namespace CDU3000
             //updates the display after writing the page
 
         }
+
+
+
+
+
+
 
         private void ComsecVarSelect(string currentPageTitle)
         {
@@ -32259,6 +32323,19 @@ namespace CDU3000
 
         private void CheckStatus()//determines GO/NGO status prior to displaying the page
         {
+            #region IFF
+
+            if (CDUIFFpower == "ON" & myCont.IffPower == "ON" & myCont.iffAnt == "GO" & myCont.iffMode1 == "GO" & myCont.iffMode2 == "GO" & myCont.iffMode3 == "GO" & myCont.iffMode4 == "GO" & myCont.iffMode5 == "GO" & myCont.iffTOD == "GO" & myCont.iffModeC == "GO" & myCont.iffModeS == "GO" & myCont.iff1553 == "GO")
+            {
+                _IFFstatus = "GO";
+            }
+            else
+            {
+                _IFFstatus = "NGO";
+            }
+
+            #endregion
+
             #region TACAN
             if (myCont.TacanPower == "ON" & myCont.TacanNVRAM == "GO" & myCont.TacanMicro == "GO" & myCont.Tacan1553 == "GO" & myCont.TacanAudio == "GO" & myCont.TacanDpdat == "GO" & myCont.TacanDpram == "GO" & myCont.TacanPwr == "GO" & myCont.TacanRam == "GO" & myCont.TacanRcv == "GO" & myCont.TacanRom == "GO" & myCont.TacanRt == "GO" & myCont.TacanSub == "GO" & myCont.TacanSynth == "GO" & myCont.TacanTrm == "GO" & myCont.TacanTun == "GO")
             {
@@ -33202,7 +33279,7 @@ namespace CDU3000
                 StartFresh();
                 IFFcontrolPage1();
             }
-            
+
         }
 
         private string LatLonFormat(string e)
@@ -33648,7 +33725,195 @@ namespace CDU3000
             ScratchMessageTimer.Start();
         }
 
+        private bool SkipME()
+        {
+            if (currentPageTitle == "IFF" & currentPageNumber == 2 & pushedButton == r1Btn)
+            {
+                return true;
+            }
 
+            if (currentPageTitle == "IFF" & currentPageNumber == 2 & pushedButton == r2Btn)
+            {
+                return true;
+            }
+
+            if (currentPageTitle == "IFF" & currentPageNumber == 3 & pushedButton == l2Btn)
+            {
+                return true;
+            }
+
+            if (currentPageTitle == "IFF" & currentPageNumber == 3 & pushedButton == l4Btn)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        private bool IFFpage2CodeEntry()
+        {
+
+            if ((scratchpad != "" & scratchpad != null) & currentPageTitle == "IFF" & currentPageNumber == 2 & pushedButton == r2Btn)
+            {
+                if (scratchpad.Length == 4 & ContainsNumbers() == true & ContainsLetters() == false)
+                {
+                    try
+                    {
+                        ntlOrg = scratchpad;
+                        scratchpad = null;
+                        sPad.Text = scratchpad;
+                        StartFresh();
+                        IFFcontrolPage2();
+                    }
+                    catch (Exception)
+                    {
+                        return false;
+
+                    }
+                    return true;
+                }
+            }
+            else
+                if ((scratchpad != "" & scratchpad != null) & currentPageTitle == "IFF" & currentPageNumber == 2 & pushedButton == r1Btn)
+                {
+                    if (scratchpad.Length == 5 & ContainsNumbers() == true & ContainsLetters() == false)
+                    {
+                        try
+                        {
+                            m5pin = scratchpad;
+                            scratchpad = null;
+                            sPad.Text = scratchpad;
+                            StartFresh();
+                            IFFcontrolPage2();
+                        }
+                        catch (Exception)
+                        {
+                            return false;
+
+                        }
+                        return true;
+                    }
+                }
+
+            scratchMessage = "INVALID ENTRY";
+            ShowScratchMessage();
+            ScratchMessageTimer.Start();
+            return false;
+        }
+
+        private bool IFFpage3CodeEntry()
+        {
+            if ((scratchpad != "" & scratchpad != null) & currentPageTitle == "IFF" & currentPageNumber == 3 & pushedButton == l2Btn)
+            {
+                if (scratchpad.Length >= 6 & scratchpad.Length <= 8)
+                {
+                    try
+                    {
+                        modeSaddress = scratchpad;
+                        scratchpad = null;
+                        sPad.Text = scratchpad;
+                        StartFresh();
+                        IFFcontrolPage3();
+                    }
+                    catch (Exception)
+                    {
+                        return false;
+
+                    }
+                    return true;
+                }
+            }
+            else
+                if ((scratchpad != "" & scratchpad != null) & currentPageTitle == "IFF" & currentPageNumber == 3 & pushedButton == l4Btn)
+                {
+                    if (scratchpad.Length == 8)
+                    {
+                        try
+                        {
+                            flightID = scratchpad;
+                            scratchpad = null;
+                            sPad.Text = scratchpad;
+                            StartFresh();
+                            IFFcontrolPage3();
+                        }
+                        catch (Exception)
+                        {
+                            return false;
+
+                        }
+                        return true;
+                    }
+                }
+                else
+                    if (scratchpad == "DEFAULT" & currentPageTitle == "IFF" & currentPageNumber == 3 & pushedButton == r2Btn)
+                    {
+
+                        try
+                        {
+                            viewModeSdefault = true;
+                            scratchpad = null;
+                            sPad.Text = scratchpad;
+                            StartFresh();
+                            IFFcontrolPage3();
+
+                        }
+                        catch (Exception)
+                        {
+                            return false;
+
+                        }
+                        return true;
+                    }
+                    else
+                        if (scratchpad == "SET" & currentPageTitle == "IFF" & currentPageNumber == 3 & pushedButton == r2Btn)
+                        {
+
+                            try
+                            {
+                                viewModeSdefault = false;
+                                modeSaddress = mSdefault;
+                                scratchpad = null;
+                                sPad.Text = scratchpad;
+                                StartFresh();
+                                IFFcontrolPage3();
+
+                            }
+                            catch (Exception)
+                            {
+                                return false;
+
+                            }
+                            return true;
+                        }
+                        else
+                            if ((scratchpad != "" & scratchpad != null) & currentPageTitle == "IFF" & currentPageNumber == 3 & pushedButton == r2Btn)
+                            {
+
+                                if (scratchpad.Length >= 6 & scratchpad.Length <= 8)
+                                {
+                                    try
+                                    {
+                                        mSdefault = scratchpad;
+                                        scratchpad = null;
+                                        sPad.Text = scratchpad;
+                                        StartFresh();
+                                        IFFcontrolPage3();
+                                    }
+                                    catch (Exception)
+                                    {
+                                        return false;
+
+                                    }
+                                    return true;
+                                }
+                            }
+
+
+            scratchMessage = "INVALID ENTRY";
+            ShowScratchMessage();
+            ScratchMessageTimer.Start();
+            return false;
+        }
 
         #region Move Form without border
 
@@ -33782,6 +34047,22 @@ namespace CDU3000
                 }
             }
             ScratchMessageTimer.Stop();
+
+            if (currentPageTitle == "IFF" & currentPageNumber == 1)
+            {
+                StartFresh();
+                IFFcontrolPage1();
+            }
+            if (currentPageTitle == "IFF" & currentPageNumber == 2)
+            {
+                StartFresh();
+                IFFcontrolPage2();
+            }
+            if (currentPageTitle == "IFF" & currentPageNumber == 3)
+            {
+                StartFresh();
+                IFFcontrolPage3();
+            }
         }
 
         public void ShowScratchMessage()
@@ -33847,8 +34128,11 @@ namespace CDU3000
                 ScratchMessageTimer.Dispose();
                 UTCupdateTimer.Stop();
                 UTCupdateTimer.Dispose();
+                identTimer.Stop();
+                identTimer.Dispose();
                 this.Close();
                 ActiveForm.Close();
+
             }
             catch (Exception)
             {
@@ -33867,6 +34151,8 @@ namespace CDU3000
             ScratchMessageTimer.Dispose();
             UTCupdateTimer.Stop();
             UTCupdateTimer.Dispose();
+            identTimer.Stop();
+            identTimer.Dispose();
 
         }
 
@@ -34001,7 +34287,7 @@ namespace CDU3000
             //}
         }
 
-        
+
 
 
 
